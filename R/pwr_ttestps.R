@@ -375,7 +375,7 @@ ttestPSClass <- R6::R6Class(
         .preparePowerContour = function(r, lst) {
             image <- self$results$powerContour
 
-            ps <- jpower::ttestPlotSettings
+            ps <- ttestPlotSettings
 
             calc <- self$options$calc
 
@@ -437,29 +437,29 @@ ttestPSClass <- R6::R6Class(
                     at.N <- round(exp(seq(log(min(nn)), log(max(nn)), len = ps$x.axis.n)))
                     axis(1, at = log(at.N), lab = at.N)
                     axis(2)
-                    jpower::striped.lines(col1 = ps$stripe.cols[1], col2 = ps$stripe.cols[2], x = log(nn), y = z.delta, lwd = 2)
+                    striped.lines(col1 = ps$stripe.cols[1], col2 = ps$stripe.cols[2], x = log(nn), y = z.delta, lwd = 2)
                     # contour(log(N), delta, z.pwr, add=TRUE)
                     if (calc == "n") {
-                        jpower::striped.Arrows(
+                        striped.Arrows(
                             col1 = ps$stripe.cols[1], col2 = ps$stripe.cols[2],
                             x1 = log(n1), y1 = par()$usr[3],
                             x0 = log(n1),
                             y0 = delta, lwd = 2, arr.adj = 1
                         )
-                        jpower::striped.segments(
+                        striped.segments(
                             col1 = ps$stripe.cols[1], col2 = ps$stripe.cols[2],
                             x0 = log(n1), y0 = delta,
                             x1 = par()$usr[1], y1 = delta,
                             lwd = 2
                         )
                     } else if (calc == "es") {
-                        jpower::striped.segments(
+                        striped.segments(
                             col1 = ps$stripe.cols[1], col2 = ps$stripe.cols[2],
                             x1 = log(n1), y1 = par()$usr[3],
                             x0 = log(n1),
                             y0 = delta, lwd = 2
                         )
-                        jpower::striped.Arrows(
+                        striped.Arrows(
                             col1 = ps$stripe.cols[1], col2 = ps$stripe.cols[2],
                             x0 = log(n1), y0 = delta,
                             x1 = par()$usr[1], y1 = delta,
@@ -477,7 +477,7 @@ ttestPSClass <- R6::R6Class(
         .preparePowerCurveES = function(r, lst) {
             image <- self$results$powerCurveES
 
-            ps <- jpower::ttestPlotSettings
+            ps <- ttestPlotSettings
 
             calc <- self$options$calc
 
@@ -509,7 +509,7 @@ ttestPSClass <- R6::R6Class(
             dd <- image$state$dd
             delta <- image$state$delta
 
-            ps <- jpower::ttestPlotSettings
+            ps <- ttestPlotSettings
 
 
             label <- jmvcore::format("  N = {}, \u03B1 = {}", n1, round(alpha, 3))
@@ -533,17 +533,17 @@ ttestPSClass <- R6::R6Class(
                 )
             }
 
-            jpower::striped.lines(
+            striped.lines(
                 col1 = ps$stripe.cols[1], col2 = ps$stripe.cols[2],
                 dd, y, lwd = 3
             )
-            jpower::striped.Arrows(
+            striped.Arrows(
                 col1 = ps$stripe.cols[1], col2 = ps$stripe.cols[2],
                 x0 = delta, y0 = pow,
                 x1 = delta,
                 y1 = 0, lwd = 3, arr.adj = 1
             )
-            jpower::striped.segments(
+            striped.segments(
                 col1 = ps$stripe.cols[1], col2 = ps$stripe.cols[2],
                 x0 = min(dd), y0 = pow,
                 x1 = delta, y1 = pow,
@@ -557,7 +557,7 @@ ttestPSClass <- R6::R6Class(
 
             calc <- self$options$calc
 
-            ps <- jpower::ttestPlotSettings
+            ps <- ttestPlotSettings
 
             n <- ifelse(calc == "n", r$n, lst$n)
             d <- ifelse(calc == "es", r$es, lst$es)
@@ -602,7 +602,7 @@ ttestPSClass <- R6::R6Class(
             n1 <- image$state$n1
             y <- image$state$y
 
-            ps <- jpower::ttestPlotSettings
+            ps <- ttestPlotSettings
 
             plot(log(nn), y,
                 ty = "n", xlim = log(lims$xlim), ylim = lims$ylim, las = 1, ylab = "Power",
@@ -628,17 +628,17 @@ ttestPSClass <- R6::R6Class(
                 )
             }
 
-            jpower::striped.lines(
+            striped.lines(
                 col1 = ps$stripe.cols[1], col2 = ps$stripe.cols[2],
                 log(nn), y, lwd = 3
             )
-            jpower::striped.Arrows(
+            striped.Arrows(
                 col1 = ps$stripe.cols[1], col2 = ps$stripe.cols[2],
                 x0 = log(n1), y0 = pow,
                 x1 = log(n1),
                 y1 = 0, lwd = 3, arr.adj = 1
             )
-            jpower::striped.segments(
+            striped.segments(
                 col1 = ps$stripe.cols[1], col2 = ps$stripe.cols[2],
                 x0 = min(log(nn)), y0 = pow,
                 x1 = log(n1), y1 = pow,
@@ -707,7 +707,7 @@ ttestPSClass <- R6::R6Class(
             image$setState(list(curves = curves, rect = rect, lims = lims))
         },
         .powerDist = function(image, ggtheme, ...) {
-            ps <- jpower::ttestPlotSettings
+            ps <- ttestPlotSettings
 
             if (is.null(image$state)) {
                   return(FALSE)
