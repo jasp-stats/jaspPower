@@ -46,7 +46,7 @@ anovaClass <- R6::R6Class(
             row[["val[power]"]] <- pow.pow
             row[["val[alpha]"]] <- pow.alpha
 
-            table$setRow(rowNo = 1, values = row)
+            table$addRows(rowNames = 1, row)
 
             ## Prepare plots
             lst <- list(n = n, pow = pow, es = f.es, k = k, alpha = alpha)

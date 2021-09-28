@@ -2,7 +2,7 @@
 
 ttestISClass <- R6::R6Class(
   "ttestISClass",
-  inherit = ttestISBase,
+  inherit = basicShimClass,
   private = list(
     #### Init + run functions ----
     .init = function() {
@@ -73,7 +73,22 @@ ttestISClass <- R6::R6Class(
 
     #### Init table ----
     .initPowerTab = function() {
-      table <- self$results$powertab
+      table <- self$jaspResults[["powertab"]]
+
+      if (is.null(table)) {
+        # Create table if it doesn't exist yet
+        table <- createJaspTable(title = "A Priori Power Analysis")
+        table$dependOn(c(
+          "es",
+          "power",
+          "n",
+          "alt",
+          "alpha",
+          "calc",
+          "n_ratio"
+        ))
+        self$jaspResults[["powertab"]] <- table
+      }
 
       calc <- self$options$calc
 
@@ -92,9 +107,9 @@ ttestISClass <- R6::R6Class(
       colType <- c("integer", "integer", "number", "number", "number", "number")
 
       for (i in seq_along(order)) {
-        table$addColumn(colNames[order[i]],
+        table$addColumnInfo(colNames[order[i]],
           title = colLabels[order[i]],
-          superTitle = if (calc == "n" && i > 2 || calc != "n" && i > 1) "User Defined" else NULL,
+          overtitle = if (calc == "n" && i > 2 || calc != "n" && i > 1) "User Defined" else NULL,
           type = colType[order[i]]
         )
       }
@@ -109,23 +124,59 @@ ttestISClass <- R6::R6Class(
         row[["n2"]] <- ceiling(self$options[["n"]] * self$options[["n_ratio"]])
       }
 
-      table$setRow(rowNo = 1, values = row)
+      table$addRows(rowNames = 1, row)
     },
     .initPowerESTab = function() {
-      table <- self$results$powerEStab
+      table <- self$jaspResults[["powerEStab"]]
+
+      if (is.null(table)) {
+        # Create table if it doesn't exist yet
+        table <- createJaspTable(title = "Power by Effect Size")
+        table$dependOn(c(
+          "es",
+          "power",
+          "n",
+          "alt",
+          "alpha",
+          "calc",
+          "n_ratio"
+        ))
+        self$jaspResults[["powerEStab"]] <- table
+      }
 
       pow <- c("\u226450%", "50% \u2013 80%", "80% \u2013 95%", "\u226595%")
       desc <- c("Likely miss", "Good chance of missing", "Probably detect", "Almost surely detect")
 
+      table$addColumnInfo(
+        name = "es",
+        title = "True effect size",
+        type = "number"
+      )
+      table$addColumnInfo(
+        name = "power",
+        title = "Power to detect",
+        type = "string"
+      )
+      table$addColumnInfo(
+        name = "desc",
+        title = "Description",
+        type = "string"
+      )
+
       for (i in 1:4) {
         row <- list("power" = pow[i], "desc" = desc[i])
-        table$setRow(rowNo = i, values = row)
+        table$addRows(row)
       }
     },
     .populateIntro = function() {
       calc <- self$options$calc
 
-      html <- self$results$intro
+      html <- self$results[["intro"]]
+      if (is.null(html)) {
+        html <- createJaspHtml()
+        html$dependOn(c("text"))
+        self$results[["intro"]] <- html
+      }
 
       str <- paste0(
         "The purpose of a <i>power analysis</i> is to evaluate ",
@@ -149,7 +200,7 @@ ttestISClass <- R6::R6Class(
         )
       }
 
-      html$setContent(str)
+      html[['text']] <- str
     },
     .populateTabText = function(r, lst) {
       html <- self$results$tabText
@@ -228,7 +279,7 @@ ttestISClass <- R6::R6Class(
 
       for (i in 1:4) {
         row <- list("es" = format(esText[i], nsmall = 3))
-        table$setRow(rowNo = i, values = row)
+        table$addRows(rowNames = i, row)
       }
     },
     #### Populate table ----
@@ -247,7 +298,7 @@ ttestISClass <- R6::R6Class(
       } else {
         row[[calc]] <- results[[calc]]
       }
-      table$setRow(rowNo = 1, values = row)
+      table$addRows(rowNames = 1, row)
     },
 
     #### Plot functions ----

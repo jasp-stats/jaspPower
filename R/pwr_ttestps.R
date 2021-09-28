@@ -78,9 +78,9 @@ ttestPSClass <- R6::R6Class(
             colType <- c("integer", "number", "number", "number")
 
             for (i in seq_along(order)) {
-                  table$addColumn(colNames[order[i]],
+                  table$addColumnInfo(colNames[order[i]],
                       title = colLabels[order[i]],
-                      superTitle = if (i > 1) "User Defined" else NULL,
+                      overtitle = if (i > 1) "User Defined" else NULL,
                       type = colType[order[i]]
                   )
               }
@@ -90,7 +90,7 @@ ttestPSClass <- R6::R6Class(
                   row[[colNames[order[i]]]] <- self$options[[colNames[order[i]]]]
               }
 
-            table$setRow(rowNo = 1, values = row)
+            table$addRows(rowNames = 1, row)
         },
         .initPowerESTab = function() {
             table <- self$results$powerEStab
@@ -100,7 +100,7 @@ ttestPSClass <- R6::R6Class(
 
             for (i in 1:4) {
                 row <- list("power" = pow[i], "desc" = desc[i])
-                table$setRow(rowNo = i, values = row)
+                table$addRows(rowNames = i, row)
             }
         },
 
@@ -351,7 +351,7 @@ ttestPSClass <- R6::R6Class(
             row <- list()
             row[[calc]] <- results[[calc]]
 
-            table$setRow(rowNo = 1, values = row)
+            table$addRows(rowNames = 1, row)
         },
         .populatepowerESTab = function() {
             table <- self$results$powerEStab
@@ -367,7 +367,7 @@ ttestPSClass <- R6::R6Class(
 
             for (i in 1:4) {
                 row <- list("es" = format(esText[i], nsmall = 3))
-                table$setRow(rowNo = i, values = row)
+                table$addRows(rowNames = i, row)
             }
         },
 
