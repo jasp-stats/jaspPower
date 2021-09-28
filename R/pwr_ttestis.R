@@ -171,11 +171,11 @@ ttestISClass <- R6::R6Class(
     .populateIntro = function() {
       calc <- self$options$calc
 
-      html <- self$results[["intro"]]
+      html <- self$jaspResults[["intro"]]
       if (is.null(html)) {
         html <- createJaspHtml()
         html$dependOn(c("text"))
-        self$results[["intro"]] <- html
+        self$jaspResults[["intro"]] <- html
       }
 
       str <- paste0(
