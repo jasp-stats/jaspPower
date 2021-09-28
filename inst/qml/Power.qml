@@ -142,7 +142,7 @@ Form
           indexDefaultValue: 0
           label: qsTr("")
           values: [
-            { label: "Two-sided", value: "twosided"},
+            { label: "Two-sided", value: "two.sided"},
             { label: "Less (One-sided)",  value: "less" },
             { label: "Greater (One-sided)",  value: "greater"}
           ]
