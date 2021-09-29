@@ -87,6 +87,7 @@ ttestISClass <- R6::R6Class(
           "calc",
           "n_ratio"
         ))
+        table$position <- 2
         self$jaspResults[["powertab"]] <- table
       }
 
@@ -141,6 +142,7 @@ ttestISClass <- R6::R6Class(
           "calc",
           "n_ratio"
         ))
+        table$position <- 4
         self$jaspResults[["powerEStab"]] <- table
       }
 
@@ -175,6 +177,7 @@ ttestISClass <- R6::R6Class(
       if (is.null(html)) {
         html <- createJaspHtml(title = "Introduction")
         html$dependOn(c("text"))
+        html$position <- 1
         self$jaspResults[["intro"]] <- html
       }
 
@@ -205,8 +208,9 @@ ttestISClass <- R6::R6Class(
     .populateTabText = function(r, lst) {
       html <- self$jaspResults[["tabText"]]
       if (is.null(html)) {
-        html <- createJaspHtml(title = "Table context")
+        html <- createJaspHtml()
         html$dependOn(c("text"))
+        html$position <- 3
         self$jaspResults[["tabText"]] <- html
       }
 
@@ -326,6 +330,7 @@ ttestISClass <- R6::R6Class(
           "calc",
           "n_ratio"
         ))
+        image$position <- 5
         self$jaspResults[["powerContour"]] <- image
       }
 
@@ -382,8 +387,6 @@ ttestISClass <- R6::R6Class(
           alternative = alt
         )$d
       })
-
-
 
       state = list(
         z.pwr = z.pwr,
@@ -466,6 +469,12 @@ ttestISClass <- R6::R6Class(
     },
     .populateContourText = function(r, lst) {
       html <- self$jaspResults[["contourText"]]
+      if (is.null(html)) {
+        html <- createJaspHtml()
+        html$dependOn(c("text"))
+        html$position <- 6
+        self$jaspResults[["contourText"]] <- html
+      }
 
       ## Get options from interface
       calc <- self$options$calc
@@ -504,6 +513,7 @@ ttestISClass <- R6::R6Class(
           "calc",
           "n_ratio"
         ))
+        image$position <- 7
         self$jaspResults[["powerCurveES"]] <- image
       }
 
@@ -581,6 +591,12 @@ ttestISClass <- R6::R6Class(
     },
     .populatePowerCurveESText = function(r, lst) {
       html <- self$jaspResults[["curveESText"]]
+      if (is.null(html)) {
+        html <- createJaspHtml()
+        html$dependOn(c("text"))
+        html$position <- 8
+        self$jaspResults[["curveESText"]] <- html
+      }
 
       ## Get options from interface
       calc <- self$options$calc
@@ -641,7 +657,8 @@ ttestISClass <- R6::R6Class(
           "calc",
           "n_ratio"
         ))
-        self$jaspResults[["powerContour"]] <- image
+        image$position <- 9
+        self$jaspResults[["powerCurveN"]] <- image
       }
 
       calc <- self$options$calc
@@ -766,6 +783,7 @@ ttestISClass <- R6::R6Class(
           "calc",
           "n_ratio"
         ))
+        image$position <- 11
         self$jaspResults[["powerDist"]] <- image
       }
 
@@ -829,6 +847,12 @@ ttestISClass <- R6::R6Class(
     },
     .populatePowerCurveNText = function(r, lst) {
       html <- self$jaspResults[["curveNText"]]
+      if (is.null(html)) {
+        html <- createJaspHtml()
+        html$dependOn(c("text"))
+        html$position <- 10
+        self$jaspResults[["curveNText"]] <- html
+      }
 
       ## Get options from interface
       calc <- self$options$calc
@@ -900,6 +924,12 @@ ttestISClass <- R6::R6Class(
     },
     .populateDistText = function(r, lst) {
       html <- self$jaspResults[["distText"]]
+      if (is.null(html)) {
+        html <- createJaspHtml()
+        html$dependOn(c("text"))
+        html$position <- 12
+        self$jaspResults[["distText"]] <- html
+      }
 
       ## Get options from interface
       calc <- self$options$calc
