@@ -401,7 +401,7 @@ ttestISClass <- R6::R6Class(
         minn = minn,
         maxn = maxn
       )
-      image$plotObject <- private$.powerContour(state = state, ggtheme = jmvTheme())
+      image$plotObject <- private$.powerContour(state = state, ggtheme = pwr_plot_theme())
     },
     .powerContour = function(state, ggtheme, ...) {
       calc <- self$options$calc
@@ -535,7 +535,7 @@ ttestISClass <- R6::R6Class(
       yrect <- seq(0, 1, 1 / ps$pow.n.levels)
 
       state = list(cols = cols, dd = dd, y = y, yrect = yrect, n1 = n1, n2 = n2, alpha = alpha, delta = d, pow = power)
-      image$plotObject <- private$.powerCurveES(state = state, ggtheme = jmvTheme())
+      image$plotObject <- private$.powerCurveES(state = state, ggtheme = pwr_plot_theme())
     },
     .powerCurveES = function(state, ggtheme, ...) {
       y <- state$y
@@ -710,7 +710,7 @@ ttestISClass <- R6::R6Class(
       )
 
       state = list(n1 = n1, cols = cols, nn = nn, y = y, yrect = yrect, lims = lims, delta = d, alpha = alpha, n_ratio = n_ratio, pow = power)
-      image$plotObject <- private$.powerCurveN(state = state, ggtheme = jmvTheme())
+      image$plotObject <- private$.powerCurveN(state = state, ggtheme = pwr_plot_theme())
     },
     .powerCurveN = function(state, ggtheme, ...) {
       cols <- state$cols
@@ -843,7 +843,7 @@ ttestISClass <- R6::R6Class(
       )
 
       state = list(curves = curves, rect = rect, lims = lims)
-      image$plotObject <- private$.powerDist(state = state, ggtheme = jmvTheme())
+      image$plotObject <- private$.powerDist(state = state, ggtheme = pwr_plot_theme())
     },
     .populatePowerCurveNText = function(r, lst) {
       html <- self$jaspResults[["curveNText"]]
