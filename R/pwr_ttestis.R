@@ -530,43 +530,43 @@ ttestISClass <- R6::R6Class(
       ps <- ttestPlotSettings
 
 
-      label <- paste0("N\u2081 = ", n1,", N\u2082 = ", n2,", \u03B1 = ", round(alpha, 3))
-
-      plot(dd, y,
-        ty = "n", ylim = c(0, 1), las = 1, ylab = "Power",
-        xlab = expression(paste("Hypothetical effect size (", delta, ")", sep = "")),
-        yaxs = "i", xaxs = "i"
-      )
-      mtext(substitute(
-        paste(N[1] == n1, ", ", N[2] == n2, ", ", alpha == a),
-        list(a = alpha, n1 = n1, n2 = n2)
-      ),
-      adj = 1
+      label <- paste0(
+        "N\u2081 = ", n1,", N\u2082 = ", n2,", \u03B1 = ", round(alpha, 3)
       )
 
+      p <- ggplot2::ggplot(data.frame(), ggplot2::aes(x = dd, y = y))
+
+      # Add shaded background
       for (i in 1:ps$pow.n.levels) {
-        rect(par()$usr[1], yrect[i], par()$usr[2], yrect[i + 1],
-          border = NA,
-          col = cols[i]
-        )
+        p <- p +
+          annotate(geom = "rect", xmin = min(dd), ymin = yrect[i], xmax = max(dd), ymax = yrect[i + 1], fill = cols[i])
       }
 
-      striped.lines(
-        col1 = ps$stripe.cols[1], col2 = ps$stripe.cols[2],
-        dd, y, lwd = 3
-      )
-      striped.Arrows(
-        col1 = ps$stripe.cols[1], col2 = ps$stripe.cols[2],
-        x0 = delta, y0 = pow,
-        x1 = delta,
-        y1 = 0, lwd = 3, arr.adj = 1
-      )
-      striped.segments(
-        col1 = ps$stripe.cols[1], col2 = ps$stripe.cols[2],
-        x0 = min(dd), y0 = pow,
-        x1 = delta, y1 = pow,
-        lwd = 3
-      )
+      p <- p +
+        ggplot2::geom_line(size = 1.5) +
+        ggplot2::labs(
+          x = expression(
+            paste("Hypothetical effect size (", delta, ")", sep = "")
+          ),
+          y = "Power",
+          subtitle = substitute(
+            paste(N[1] == n1, ", ", N[2] == n2, ", ", alpha == a),
+            list(a = alpha, n1 = n1, n2 = n2)
+          )
+        ) +
+        ggplot2::annotate(
+          geom = "segment",
+          x = delta, y = pow,
+          xend = delta, yend = 0
+        ) +
+        ggplot2::annotate(
+          geom = "segment",
+          x = min(dd), y = pow,
+          xend = delta, yend = pow,
+        ) +
+        ggtheme
+
+      return(p)
     },
     .populatePowerCurveESText = function(r, lst) {
       html <- self$jaspResults[["curveESText"]]
@@ -698,48 +698,49 @@ ttestISClass <- R6::R6Class(
 
       ps <- ttestPlotSettings
 
-      label <- paste0(" N\u2082 = ", round(n_ratio, 3), " \u00D7 N\u2081,  \u03B4 = ", round(delta, 3), ", \u03B1 = ", round(alpha, 3))
-
-      plot(log(nn), y,
-        ty = "n", xlim = log(lims$xlim), ylim = lims$ylim, las = 1, ylab = "Power",
-        xlab = "Sample size (group 1)",
-        yaxs = "i", xaxs = "i", axes = FALSE
+      label <- paste0(
+        " N\u2082 = ",
+        round(n_ratio, 3),
+        " \u00D7 N\u2081,  \u03B4 = ",
+        round(delta, 3),
+        ", \u03B1 = ", round(alpha, 3)
       )
 
-      at.N <- round(exp(seq(log(min(nn)), log(max(nn)), len = ps$x.axis.n)))
-      axis(1, at = log(at.N), lab = at.N)
-      axis(2, las = 1)
+      # Creat basic plot
+      p <- ggplot2::ggplot(data.frame(), ggplot2::aes(x = nn, y = y))
 
-      mtext(substitute(
-        paste(delta == d, ", ", N[2] == nr %*% N[1], ", ", alpha == a),
-        list(a = alpha, nr = n_ratio, d = round(delta, 3))
-      ),
-      adj = 1
-      )
-
+      # Add shaded background
       for (i in 1:ps$pow.n.levels) {
-        rect(par()$usr[1], yrect[i], par()$usr[2], yrect[i + 1],
-          border = NA,
-          col = cols[i]
-        )
+        p <- p +
+          annotate(geom = "rect", xmin = lims$xlim[1], ymin = yrect[i], xmax = lims$xlim[2], ymax = yrect[i + 1], fill = cols[i])
       }
 
-      striped.lines(
-        col1 = ps$stripe.cols[1], col2 = ps$stripe.cols[2],
-        log(nn), y, lwd = 3
-      )
-      striped.Arrows(
-        col1 = ps$stripe.cols[1], col2 = ps$stripe.cols[2],
-        x0 = log(n1), y0 = pow,
-        x1 = log(n1),
-        y1 = 0, lwd = 3, arr.adj = 1
-      )
-      striped.segments(
-        col1 = ps$stripe.cols[1], col2 = ps$stripe.cols[2],
-        x0 = min(log(nn)), y0 = pow,
-        x1 = log(n1), y1 = pow,
-        lwd = 3
-      )
+      # Add main plot
+      p <- p +
+        ggplot2::geom_line(size = 1.5) +
+        ggplot2::scale_x_log10(limits = lims$xlim) +
+        ggplot2::scale_y_continuous(limits = lims$ylim) +
+        ggplot2::labs(
+          x = "Sample size (group 1)",
+          y = "Power",
+          subtitle = substitute(
+            paste(delta == d, ", ", N[2] == nr %*% N[1], ", ", alpha == a),
+            list(a = alpha, nr = n_ratio, d = round(delta, 3))
+          )
+        ) +
+        ggplot2::annotate(
+          geom = "segment",
+          x = n1, y = pow,
+        xend = n1, yend = 0,
+        ) +
+        ggplot2::annotate(
+          geom = "segment",
+          x = min(nn), y = pow,
+          xend = n1, yend = pow,
+        ) +
+        ggtheme
+
+      return(p)
     },
     .preparePowerDist = function(r, lst) {
       image <- self$jaspResults[["powerDist"]]
