@@ -425,6 +425,16 @@ ttestISClass <- R6::R6Class(
         )
       }
 
+      # Checking whether geom_contour_filled is availaible
+      # (as it is e.g. not yet in the ggplot2 version of JASP 0.14.1)
+      # TODO: Remove this check in the future
+      if (!exists('geom_contour_filled', where=asNamespace('ggplot2'), mode='function')) {
+        return(
+          ggplot2::ggplot() +
+            ggplot2::labs(title = "ERROR: The power contour plot needs a newer version of ggplot / JASP to function")
+        )
+      }
+
       p <- ggplot2::ggplot(
         transformContourMatrix(x = nn, y = dd, z = z.pwr),
         ggplot2::aes(x = x, y = y, z = z)
@@ -436,6 +446,7 @@ ttestISClass <- R6::R6Class(
           y = expression(paste("Hypothetical effect size (", delta, ")", sep = "")),
           fill = "Power"
         ) +
+        guides(fill = guide_colorsteps(barheight = unit(7, "cm"))) +
         # Highlight boundary of power
         # TODO: This currently goes out of bounds
         # ggplot2::annotate("line", x = nn, y = z.delta) +
@@ -539,7 +550,7 @@ ttestISClass <- R6::R6Class(
       # Add shaded background
       for (i in 1:ps$pow.n.levels) {
         p <- p +
-          annotate(geom = "rect", xmin = min(dd), ymin = yrect[i], xmax = max(dd), ymax = yrect[i + 1], fill = cols[i])
+          ggplot2::annotate(geom = "rect", xmin = min(dd), ymin = yrect[i], xmax = max(dd), ymax = yrect[i + 1], fill = cols[i])
       }
 
       p <- p +
@@ -712,7 +723,7 @@ ttestISClass <- R6::R6Class(
       # Add shaded background
       for (i in 1:ps$pow.n.levels) {
         p <- p +
-          annotate(geom = "rect", xmin = lims$xlim[1], ymin = yrect[i], xmax = lims$xlim[2], ymax = yrect[i + 1], fill = cols[i])
+          ggplot2::annotate(geom = "rect", xmin = lims$xlim[1], ymin = yrect[i], xmax = lims$xlim[2], ymax = yrect[i + 1], fill = cols[i])
       }
 
       # Add main plot
