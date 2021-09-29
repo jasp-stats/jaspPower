@@ -302,16 +302,15 @@ ttestISClass <- R6::R6Class(
 
       row <- list()
 
-      # TODO: Fix table
-      row[["d50"]] <- results[["d50"]]
+      # Note: It is unclear what this value actualyl corresponds to
+      # row[["d50"]] <- results[["d50"]]
 
       if (calc == "n") {
-        row[["n1"]] <- results[["n1"]]
-        row[["n2"]] <- results[["n2"]]
+        table$addColumns(list(n1 = results[["n1"]]))
+        table$addColumns(list(n2 = results[["n2"]]))
       } else {
-        row[[calc]] <- results[[calc]]
+        table$addColumns(list(calc = results[["calc"]]))
       }
-      table$addRows(rowNames = 1, row)
     },
 
     #### Plot functions ----
