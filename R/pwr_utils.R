@@ -1,4 +1,20 @@
 # Originally based on https://github.com/richarddmorey/jpower
+
+# New Utility functions
+
+# Transform a contour matrix (z) and vectors for it's columns and rows (x, y)
+# into a dataframe with 3 columns (x, y, z) to be used for ggplot.
+transformContourMatrix <- function (x, y, z) {
+  return(data.frame(
+    # Ncol and nrow are different here then one would expect (!)
+    x = rep(x, ncol(z)),
+    y = rep(y, each = nrow(z)),
+    z = as.numeric(z)
+  ))
+}
+
+# Old utility functions below
+
 jmvTheme <- function() {
   ggplot2::theme(
     text = ggplot2::element_text(size = 16, colour = "#333333"),

@@ -416,60 +416,42 @@ ttestISClass <- R6::R6Class(
       delta <- state$delta
       n_ratio <- state$n_ratio
 
-      browser()
+      # If group sizes differ, provide a secondary axis
+      secondary_axis <- ggplot2::waiver()
+      if (n_ratio != 1) {
+        secondary_axis <- ggplot2::sec_axis(
+          ~ . * n_ratio,
+          name = "Sample size (group 2)"
+        )
+      }
 
-      filled.contour(
-        log(nn),
-        dd,
-        z.pwr,
-        color.palette = ps$pal,
-        nlevels = ps$pow.n.levels,
-        ylab = expression(paste("Hypothetical effect size (", delta, ")", sep = "")),
-        xlab = "Sample size (group 1)",
-        plot.axes = {
-          at.N <- round(exp(seq(log(min(nn)), log(max(nn)), len = ps$x.axis.n)))
-          axis(1, at = log(at.N), lab = at.N)
-          axis(2)
-          if (n_ratio != 1) {
-            axis(3, at = log(at.N), lab = ceiling(at.N * n_ratio))
-            mtext("Sample size (group 2)", 3, line = par()$mgp[1], adj = .5)
-          }
-          striped.lines(col1 = ps$stripe.cols[1], col2 = ps$stripe.cols[2], x = log(nn), y = z.delta, lwd = 2)
-          # contour(log(N), delta, z.pwr, add=TRUE)
-          if (calc == "n") {
-            striped.Arrows(
-              col1 = ps$stripe.cols[1], col2 = ps$stripe.cols[2],
-              x1 = log(n1), y1 = par()$usr[3],
-              x0 = log(n1),
-              y0 = delta, lwd = 2, arr.adj = 1
-            )
-            striped.segments(
-              col1 = ps$stripe.cols[1], col2 = ps$stripe.cols[2],
-              x0 = log(n1), y0 = delta,
-              x1 = par()$usr[1], y1 = delta,
-              lwd = 2
-            )
-          } else if (calc == "es") {
-            striped.segments(
-              col1 = ps$stripe.cols[1], col2 = ps$stripe.cols[2],
-              x1 = log(n1), y1 = par()$usr[3],
-              x0 = log(n1),
-              y0 = delta, lwd = 2
-            )
-            striped.Arrows(
-              col1 = ps$stripe.cols[1], col2 = ps$stripe.cols[2],
-              x0 = log(n1), y0 = delta,
-              x1 = par()$usr[1], y1 = delta,
-              lwd = 2, arr.adj = 1
-            )
-          }
-          points(log(n1), delta, pch = 21, col = "black", bg = "white", cex = 1.5)
-        }, key.title = {
-          mtext("Power", 3, .5)
-        }
-      )
+      p <- ggplot2::ggplot(
+        transformContourMatrix(x = nn, y = dd, z = z.pwr),
+        ggplot2::aes(x = x, y = y, z = z)
+      ) +
+        ggplot2::geom_contour_filled(bins = ps$pow.n.levels) +
+        ggplot2::scale_x_log10(sec.axis = secondary_axis) +
+        ggplot2::labs(
+          x = "Sample size (group 1)",
+          y = expression(paste("Hypothetical effect size (", delta, ")", sep = "")),
+          fill = "Power"
+        ) +
+        # Highlight boundary of power
+        # TODO: This currently goes out of bounds
+        # ggplot2::annotate("line", x = nn, y = z.delta) +
+        # Highlight N on axis
+        ggplot2::annotate(
+          "segment", x = n1, y = delta, xend = n1, yend = par()$usr[3]
+        ) +
+        # Highlight effect size on axis
+        ggplot2::annotate(
+          "segment", x = n1, y = delta, xend = par()$usr[1], yend = delta
+        ) +
+        # Add point highlighting intersection
+        ggplot2::annotate("point", x = n1, y = delta) +
+        ggtheme
 
-
+      return(p)
     },
     .populateContourText = function(r, lst) {
       html <- self$jaspResults[["contourText"]]
