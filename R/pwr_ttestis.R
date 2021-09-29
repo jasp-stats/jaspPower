@@ -165,7 +165,7 @@ ttestISClass <- R6::R6Class(
 
       for (i in 1:4) {
         row <- list("power" = pow[i], "desc" = desc[i])
-        table$addRows(row)
+        table$addRows(rowNames = i, row)
       }
     },
     .populateIntro = function() {
@@ -173,7 +173,7 @@ ttestISClass <- R6::R6Class(
 
       html <- self$jaspResults[["intro"]]
       if (is.null(html)) {
-        html <- createJaspHtml()
+        html <- createJaspHtml(title = "Introduction")
         html$dependOn(c("text"))
         self$jaspResults[["intro"]] <- html
       }
@@ -200,11 +200,18 @@ ttestISClass <- R6::R6Class(
         )
       }
 
-      html[['text']] <- str
+      html[["text"]] <- str
     },
     .populateTabText = function(r, lst) {
-      html <- self$results$tabText
-      table <- self$results$powerEStab
+      html <- self$jaspResults[["tabText"]]
+      if (is.null(html)) {
+        html <- createJaspHtml(title = "Table context")
+        html$dependOn(c("text"))
+        self$jaspResults[["tabText"]] <- html
+      }
+
+      # This table is created in init
+      table <- self$jaspResults[["powerEStab"]]
 
       ## Get options from interface
       calc <- self$options$calc
@@ -225,6 +232,7 @@ ttestISClass <- R6::R6Class(
         "one-sided"
       )
 
+      print("===> pre-calc")
       probs <- c(.5, .8, .95)
       probs_es <- sapply(probs, function(p) {
         pwr.t2n.test(
@@ -233,6 +241,8 @@ ttestISClass <- R6::R6Class(
           alternative = alt
         )$d
       })
+      print("===> post-calc")
+      print(probs_es)
 
       if (calc == "n") {
         str <- paste0(
@@ -268,7 +278,7 @@ ttestISClass <- R6::R6Class(
         "correctly conclude that ", hypo_text, " when the effect size is large enough to care about?"
       )
 
-      html$setContent(str)
+      html[["text"]] <- str
 
       esText <- c(
         paste0("0 < \u03B4 \u2264 ", format(round(probs_es[1], 3), nsmall = 3)),
@@ -277,19 +287,20 @@ ttestISClass <- R6::R6Class(
         paste0("\u03B4 \u2265 ", format(round(probs_es[3], 3), nsmall = 3))
       )
 
-      for (i in 1:4) {
-        row <- list("es" = format(esText[i], nsmall = 3))
-        table$addRows(rowNames = i, row)
-      }
+      cols <- list("es" = esText)
+      # TODO: Remove this temporary fix; currently JASP get's hung up here when passing the actual contents
+      cols <- list("es" = LETTERS[1:4])
+      table$addColumns(cols)
     },
     #### Populate table ----
     .populatePowerTab = function(results) {
-      table <- self$results$powertab
+      table <- self$jaspResults[["powertab"]]
 
       calc <- self$options$calc
 
       row <- list()
 
+      # TODO: Fix table
       row[["d50"]] <- results[["d50"]]
 
       if (calc == "n") {
@@ -303,7 +314,20 @@ ttestISClass <- R6::R6Class(
 
     #### Plot functions ----
     .preparePowerContour = function(r, lst) {
-      image <- self$results$powerContour
+      image <- self$jaspResults[["powerContour"]]
+      if (is.null(image)) {
+        image <- createJaspPlot(title="Power Contour", width=400, height=350)
+        image$dependOn(c(
+          "es",
+          "power",
+          "n",
+          "alt",
+          "alpha",
+          "calc",
+          "n_ratio"
+        ))
+        self$jaspResults[["powerContour"]] <- image
+      }
 
       ps <- ttestPlotSettings
 
@@ -361,7 +385,7 @@ ttestISClass <- R6::R6Class(
 
 
 
-      image$setState(list(
+      state = list(
         z.pwr = z.pwr,
         z.delta = z.delta,
         ps = ps,
@@ -373,32 +397,33 @@ ttestISClass <- R6::R6Class(
         alpha = alpha,
         minn = minn,
         maxn = maxn
-      ))
+      )
+      image$plotObject <- private$.powerContour(state = state, ggtheme = jmvTheme())
     },
-    .powerContour = function(image, ggtheme, ...) {
-      if (is.null(image$state)) {
-        return(FALSE)
-      }
-
+    .powerContour = function(state, ggtheme, ...) {
       calc <- self$options$calc
 
-      image <- self$results$powerContour
+      z.delta <- state$z.delta
+      z.pwr <- state$z.pwr
+      ps <- state$ps
+      pow <- state$pow
+      n1 <- state$n1
+      n2 <- state$n2
+      alpha <- state$alpha
+      dd <- state$dd
+      nn <- state$nn
+      ps <- state$ps
+      delta <- state$delta
+      n_ratio <- state$n_ratio
 
-      z.delta <- image$state$z.delta
-      z.pwr <- image$state$z.pwr
-      ps <- image$state$ps
-      pow <- image$state$pow
-      n1 <- image$state$n1
-      n2 <- image$state$n2
-      alpha <- image$state$alpha
-      dd <- image$state$dd
-      nn <- image$state$nn
-      ps <- image$state$ps
-      delta <- image$state$delta
-      n_ratio <- image$state$n_ratio
+      browser()
 
-      filled.contour(log(nn), dd, z.pwr,
-        color.palette = ps$pal, nlevels = ps$pow.n.levels,
+      filled.contour(
+        log(nn),
+        dd,
+        z.pwr,
+        color.palette = ps$pal,
+        nlevels = ps$pow.n.levels,
         ylab = expression(paste("Hypothetical effect size (", delta, ")", sep = "")),
         xlab = "Sample size (group 1)",
         plot.axes = {
@@ -445,10 +470,9 @@ ttestISClass <- R6::R6Class(
       )
 
 
-      TRUE
     },
     .populateContourText = function(r, lst) {
-      html <- self$results$contourText
+      html <- self$jaspResults[["contourText"]]
 
       ## Get options from interface
       calc <- self$options$calc
@@ -472,10 +496,23 @@ ttestISClass <- R6::R6Class(
         " design and effect size."
       )
 
-      html$setContent(str)
+      html[["text"]] <- str
     },
     .preparePowerCurveES = function(r, lst) {
-      image <- self$results$powerCurveES
+      image <- self$jaspResults[["powerCurveES"]]
+      if (is.null(image)) {
+        image <- createJaspPlot(title="Power Curve by Effect Size", width=400, height=350)
+        image$dependOn(c(
+          "es",
+          "power",
+          "n",
+          "alt",
+          "alpha",
+          "calc",
+          "n_ratio"
+        ))
+        self$jaspResults[["powerCurveES"]] <- image
+      }
 
       ps <- ttestPlotSettings
 
@@ -494,27 +531,24 @@ ttestISClass <- R6::R6Class(
       cols <- ps$pal(ps$pow.n.levels)
       yrect <- seq(0, 1, 1 / ps$pow.n.levels)
 
-      image$setState(list(cols = cols, dd = dd, y = y, yrect = yrect, n1 = n1, n2 = n2, alpha = alpha, delta = d, pow = power))
+      state = list(cols = cols, dd = dd, y = y, yrect = yrect, n1 = n1, n2 = n2, alpha = alpha, delta = d, pow = power)
+      image$plotObject <- private$.powerCurveES(state = state, ggtheme = jmvTheme())
     },
-    .powerCurveES = function(image, ggtheme, ...) {
-      if (is.null(image$state)) {
-        return(FALSE)
-      }
-
-      y <- image$state$y
-      cols <- image$state$cols
-      yrect <- image$state$yrect
-      pow <- image$state$pow
-      n1 <- image$state$n1
-      n2 <- image$state$n2
-      alpha <- image$state$alpha
-      dd <- image$state$dd
-      delta <- image$state$delta
+    .powerCurveES = function(state, ggtheme, ...) {
+      y <- state$y
+      cols <- state$cols
+      yrect <- state$yrect
+      pow <- state$pow
+      n1 <- state$n1
+      n2 <- state$n2
+      alpha <- state$alpha
+      dd <- state$dd
+      delta <- state$delta
 
       ps <- ttestPlotSettings
 
 
-      label <- jmvcore::format("  N\u2081 = {}, N\u2082 = {}, \u03B1 = {}", n1, n2, round(alpha, 3))
+      label <- paste0("N\u2081 = ", n1,", N\u2082 = ", n2,", \u03B1 = ", round(alpha, 3))
 
       plot(dd, y,
         ty = "n", ylim = c(0, 1), las = 1, ylab = "Power",
@@ -551,11 +585,9 @@ ttestISClass <- R6::R6Class(
         x1 = delta, y1 = pow,
         lwd = 3
       )
-
-      TRUE
     },
     .populatePowerCurveESText = function(r, lst) {
-      html <- self$results$curveESText
+      html <- self$jaspResults[["curveESText"]]
 
       ## Get options from interface
       calc <- self$options$calc
@@ -601,10 +633,23 @@ ttestISClass <- R6::R6Class(
         round(d50, 3), "."
       )
 
-      html$setContent(str)
+      html[["text"]] <- str
     },
     .preparePowerCurveN = function(r, lst) {
-      image <- self$results$powerCurveN
+      image <- self$jaspResults[["powerCurveN"]]
+      if (is.null(image)) {
+        image <- createJaspPlot(title="Power Curve by N", width=400, height=350)
+        image$dependOn(c(
+          "es",
+          "power",
+          "n",
+          "alt",
+          "alpha",
+          "calc",
+          "n_ratio"
+        ))
+        self$jaspResults[["powerContour"]] <- image
+      }
 
       calc <- self$options$calc
 
@@ -654,27 +699,24 @@ ttestISClass <- R6::R6Class(
         ylim = c(0, 1)
       )
 
-      image$setState(list(n1 = n1, cols = cols, nn = nn, y = y, yrect = yrect, lims = lims, delta = d, alpha = alpha, n_ratio = n_ratio, pow = power))
+      state = list(n1 = n1, cols = cols, nn = nn, y = y, yrect = yrect, lims = lims, delta = d, alpha = alpha, n_ratio = n_ratio, pow = power)
+      image$plotObject <- private$.powerCurveN(state = state, ggtheme = jmvTheme())
     },
-    .powerCurveN = function(image, ggtheme, ...) {
-      if (is.null(image$state)) {
-        return(FALSE)
-      }
-
-      cols <- image$state$cols
-      yrect <- image$state$yrect
-      lims <- image$state$lims
-      delta <- image$state$delta
-      alpha <- image$state$alpha
-      n_ratio <- image$state$n_ratio
-      nn <- image$state$nn
-      pow <- image$state$pow
-      n1 <- image$state$n1
-      y <- image$state$y
+    .powerCurveN = function(state, ggtheme, ...) {
+      cols <- state$cols
+      yrect <- state$yrect
+      lims <- state$lims
+      delta <- state$delta
+      alpha <- state$alpha
+      n_ratio <- state$n_ratio
+      nn <- state$nn
+      pow <- state$pow
+      n1 <- state$n1
+      y <- state$y
 
       ps <- ttestPlotSettings
 
-      label <- jmvcore::format(" N\u2082 = {} \u00D7 N\u2081,  \u03B4 = {}, \u03B1 = {}", round(n_ratio, 3), round(delta, 3), round(alpha, 3))
+      label <- paste0(" N\u2082 = ", round(n_ratio, 3), " \u00D7 N\u2081,  \u03B4 = ", round(delta, 3), ", \u03B1 = ", round(alpha, 3))
 
       plot(log(nn), y,
         ty = "n", xlim = log(lims$xlim), ylim = lims$ylim, las = 1, ylab = "Power",
@@ -716,11 +758,22 @@ ttestISClass <- R6::R6Class(
         x1 = log(n1), y1 = pow,
         lwd = 3
       )
-
-      TRUE
     },
     .preparePowerDist = function(r, lst) {
-      image <- self$results$powerDist
+      image <- self$jaspResults[["powerDist"]]
+      if (is.null(image)) {
+        image <- createJaspPlot(title="Power Demonstration", width=400, height=300)
+        image$dependOn(c(
+          "es",
+          "power",
+          "n",
+          "alt",
+          "alpha",
+          "calc",
+          "n_ratio"
+        ))
+        self$jaspResults[["powerDist"]] <- image
+      }
 
       calc <- self$options$calc
 
@@ -777,10 +830,11 @@ ttestISClass <- R6::R6Class(
         ylim = c(0, y.max * 1.1)
       )
 
-      image$setState(list(curves = curves, rect = rect, lims = lims))
+      state = list(curves = curves, rect = rect, lims = lims)
+      image$plotObject <- private$.powerDist(state = state, ggtheme = jmvTheme())
     },
     .populatePowerCurveNText = function(r, lst) {
-      html <- self$results$curveNText
+      html <- self$jaspResults[["curveNText"]]
 
       ## Get options from interface
       calc <- self$options$calc
@@ -817,18 +871,18 @@ ttestISClass <- R6::R6Class(
         "we would need ", n_text, "."
       )
 
-      html$setContent(str)
+      html[["text"]] <- str
     },
-    .powerDist = function(image, ggtheme, ...) {
+    .powerDist = function(state, ggtheme, ...) {
       ps <- ttestPlotSettings
 
-      if (is.null(image$state)) {
+      if (is.null(state)) {
         return(FALSE)
       }
 
-      curves <- image$state$curves
-      rect <- image$state$rect
-      lims <- image$state$lims
+      curves <- state$curves
+      rect <- state$rect
+      lims <- state$lims
       alt <- self$options$alt
 
       themeSpec <- ggplot2::theme(
@@ -848,12 +902,10 @@ ttestISClass <- R6::R6Class(
         themeSpec +
         ggplot2::scale_fill_manual(values = ps$pal(5)[c(4, 1)])
 
-      print(p)
-
-      TRUE
+      return(p)
     },
     .populateDistText = function(r, lst) {
-      html <- self$results$distText
+      html <- self$jaspResults[["distText"]]
 
       ## Get options from interface
       calc <- self$options$calc
@@ -899,7 +951,7 @@ ttestISClass <- R6::R6Class(
       )
 
 
-      html$setContent(str)
+      html[["text"]] <- str
     }
   )
 )

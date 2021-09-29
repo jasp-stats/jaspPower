@@ -132,7 +132,7 @@ ttestPSClass <- R6::R6Class(
                 )
             }
 
-            html$setContent(str)
+            html[["text"]] <- str
         },
         .populateTabText = function(r, lst) {
             html <- self$results$tabText
@@ -196,7 +196,7 @@ ttestPSClass <- R6::R6Class(
                 "correctly conclude that ", hypo_text, " when the effect size is large enough to care about?"
             )
 
-            html$setContent(str)
+            html[["text"]] <- str
         },
         .populateContourText = function(r, lst) {
             html <- self$results$contourText
@@ -218,7 +218,7 @@ ttestPSClass <- R6::R6Class(
                 " design and effect size."
             )
 
-            html$setContent(str)
+            html[["text"]] <- str
         },
         .populatePowerCurveESText = function(r, lst) {
             html <- self$results$curveESText
@@ -262,7 +262,7 @@ ttestPSClass <- R6::R6Class(
                 round(d50, 3), "."
             )
 
-            html$setContent(str)
+            html[["text"]] <- str
         },
         .populatePowerCurveNText = function(r, lst) {
             html <- self$results$curveNText
@@ -296,7 +296,7 @@ ttestPSClass <- R6::R6Class(
                 "we would need ", n_text, "."
             )
 
-            html$setContent(str)
+            html[["text"]] <- str
         },
         .populateDistText = function(r, lst) {
             html <- self$results$distText
@@ -340,7 +340,7 @@ ttestPSClass <- R6::R6Class(
             )
 
 
-            html$setContent(str)
+            html[["text"]] <- str
         },
 
         #### Populate table ----
