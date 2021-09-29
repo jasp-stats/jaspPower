@@ -152,7 +152,7 @@ ttestISClass <- R6::R6Class(
       table$addColumnInfo(
         name = "es",
         title = "True effect size",
-        type = "number"
+        type = "string"
       )
       table$addColumnInfo(
         name = "power",
@@ -292,8 +292,6 @@ ttestISClass <- R6::R6Class(
       )
 
       cols <- list("es" = esText)
-      # TODO: Remove this temporary fix; currently JASP get's hung up here when passing the actual contents
-      cols <- list("es" = LETTERS[1:4])
       table$addColumns(cols)
     },
     #### Populate table ----
