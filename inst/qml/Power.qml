@@ -65,7 +65,7 @@ Form
         }
 
 				Text {
-          text: qsTr("Minimally-interesting effect size:")
+          text: qsTr("Minimal effect size of interest:")
           enabled: calc.currentIndex != 2
         }
 				DoubleField {
