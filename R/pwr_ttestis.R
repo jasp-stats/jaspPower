@@ -272,7 +272,7 @@ ttestISClass <- R6::R6Class(
       }
 
       hypo_text <- ifelse(alt == "two.sided",
-        "<i>|\u03B4|>0</i>",
+        "|<i>\u03B4</i>|><i>0</i>",
         "<i>\u03B4>0</i>"
       )
 
@@ -614,7 +614,7 @@ ttestISClass <- R6::R6Class(
       if (alt == "two.sided") {
         tail_text <- "two-sided"
         null_text <- "<i>\u03B4\u2264</i>0,"
-        alt_text <- "<i>|\u03B4|\u003E</i>"
+        alt_text <- "|<i>\u03B4</i>|<i>\u003E</i>"
         crit_text <- "criteria"
       } else {
         tail_text <- "one-sided"
@@ -870,7 +870,7 @@ ttestISClass <- R6::R6Class(
       if (alt == "two.sided") {
         tail_text <- "two-sided"
         null_text <- "<i>\u03B4\u2264</i>0,"
-        alt_text <- "<i>|\u03B4|\u003E</i>0,"
+        alt_text <- "|<i>\u03B4</i>|<i>\u003E</i>0,"
         crit_text <- "criteria"
       } else {
         tail_text <- "one-sided"
@@ -947,7 +947,7 @@ ttestISClass <- R6::R6Class(
       if (alt == "two.sided") {
         tail_text <- "two-sided"
         null_text <- "<i>\u03B4=</i>0,"
-        alt_text <- "<i>|\u03B4|\u2265</i>"
+        alt_text <- "|<i>\u03B4</i>|<i>\u2265</i>"
         crit_text <- "criteria"
       } else {
         tail_text <- "one-sided"
