@@ -7,7 +7,10 @@ ttestISClass <- R6::R6Class(
     #### Init + run functions ----
     .init = function() {
       private$.initPowerTab()
-      private$.initPowerESTab()
+
+      if (self$options$text) {
+        private$.initPowerESTab()
+      }
     },
     .run = function() {
 
@@ -35,17 +38,38 @@ ttestISClass <- R6::R6Class(
       results <- private$.compute(stats)
 
       ## Populate tables and plots
-      private$.populateIntro()
-      private$.populateTabText(results, stats)
+      if (self$options$text) {
+        private$.populateIntro()
+
+        private$.populateTabText(results, stats)
+      }
+
       private$.populatePowerTab(results)
-      private$.preparePowerDist(results, stats)
-      private$.populateContourText(results, stats)
-      private$.preparePowerContour(results, stats)
-      private$.preparePowerCurveES(results, stats)
-      private$.populatePowerCurveESText(results, stats)
-      private$.populatePowerCurveNText(results, stats)
-      private$.populateDistText(results, stats)
-      private$.preparePowerCurveN(results, stats)
+
+      if (self$options$powerContour) {
+        private$.preparePowerContour(results, stats)
+        if (self$options$text) {
+          private$.populateContourText(results, stats)
+        }
+      }
+      if (self$options$powerCurveES) {
+        private$.preparePowerCurveES(results, stats)
+        if (self$options$text) {
+          private$.populatePowerCurveESText(results, stats)
+        }
+      }
+      if (self$options$powerCurveN) {
+        private$.preparePowerCurveN(results, stats)
+        if (self$options$text) {
+          private$.populatePowerCurveNText(results, stats)
+        }
+      }
+      if (self$options$powerDist) {
+        private$.preparePowerDist(results, stats)
+        if (self$options$text) {
+          private$.populateDistText(results, stats)
+        }
+      }
     },
 
     #### Compute results ----
@@ -328,7 +352,8 @@ ttestISClass <- R6::R6Class(
           "alt",
           "alpha",
           "calc",
-          "n_ratio"
+          "n_ratio",
+          "powerContour"
         ))
         image$position <- 5
         self$jaspResults[["powerContour"]] <- image
@@ -471,7 +496,7 @@ ttestISClass <- R6::R6Class(
       html <- self$jaspResults[["contourText"]]
       if (is.null(html)) {
         html <- createJaspHtml()
-        html$dependOn(c("test", "text"))
+        html$dependOn(c("test", "text", "powerContour"))
         html$position <- 6
         self$jaspResults[["contourText"]] <- html
       }
@@ -512,7 +537,8 @@ ttestISClass <- R6::R6Class(
           "alt",
           "alpha",
           "calc",
-          "n_ratio"
+          "n_ratio",
+          "powerCurveES"
         ))
         image$position <- 7
         self$jaspResults[["powerCurveES"]] <- image
@@ -594,7 +620,7 @@ ttestISClass <- R6::R6Class(
       html <- self$jaspResults[["curveESText"]]
       if (is.null(html)) {
         html <- createJaspHtml()
-        html$dependOn(c("test", "text"))
+        html$dependOn(c("test", "text", "powerCurveES"))
         html$position <- 8
         self$jaspResults[["curveESText"]] <- html
       }
@@ -657,7 +683,8 @@ ttestISClass <- R6::R6Class(
           "alt",
           "alpha",
           "calc",
-          "n_ratio"
+          "n_ratio",
+          "powerCurveN"
         ))
         image$position <- 9
         self$jaspResults[["powerCurveN"]] <- image
@@ -784,7 +811,8 @@ ttestISClass <- R6::R6Class(
           "alt",
           "alpha",
           "calc",
-          "n_ratio"
+          "n_ratio",
+          "powerDist"
         ))
         image$position <- 11
         self$jaspResults[["powerDist"]] <- image
@@ -852,7 +880,7 @@ ttestISClass <- R6::R6Class(
       html <- self$jaspResults[["curveNText"]]
       if (is.null(html)) {
         html <- createJaspHtml()
-        html$dependOn(c("test", "text"))
+        html$dependOn(c("test", "text", "powerCurveN"))
         html$position <- 10
         self$jaspResults[["curveNText"]] <- html
       }
@@ -929,7 +957,7 @@ ttestISClass <- R6::R6Class(
       html <- self$jaspResults[["distText"]]
       if (is.null(html)) {
         html <- createJaspHtml()
-        html$dependOn(c("test", "text"))
+        html$dependOn(c("test", "text", "powerDist"))
         html$position <- 12
         self$jaspResults[["distText"]] <- html
       }
