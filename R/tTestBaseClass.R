@@ -87,12 +87,12 @@ tTestBaseClass <- R6::R6Class(
       )
 
       test_names <- c(
-        ttest_independent = "indipendent samples",
-        ttest_paired = "paired samples",
-        ttest_onesample = "one sample"
+        ttest_independent = "an indipendent samples",
+        ttest_paired = "a paired samples",
+        ttest_onesample = "a one sample"
       )
       test_sentence_end <- paste0(
-        "when using a <i>", test_names[[self$options$test]], "</i> t-test."
+        "when using <i>", test_names[[self$options$test]], "</i> t-test."
       )
 
       if (calc == "n") {
