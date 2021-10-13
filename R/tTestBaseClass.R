@@ -69,6 +69,45 @@ tTestBaseClass <- R6::R6Class(
       }
     },
 
+    # ==== Functions to Populate Text ====
+    .populateIntro = function() {
+      calc <- self$options$calc
+
+      html <- self$jaspResults[["intro"]]
+      if (is.null(html)) {
+        html <- createJaspHtml(title = "Introduction")
+        html$dependOn(c("test", "text"))
+        html$position <- 1
+        self$jaspResults[["intro"]] <- html
+      }
+
+      str <- paste0(
+        "The purpose of a <i>power analysis</i> is to evaluate ",
+        "the sensitivity of a design and test. "
+      )
+
+      if (calc == "n") {
+        str <- paste0(
+          str, "You have chosen to calculate the minimum sample size needed ",
+          "to have an experiment sensitive enough to consistently ",
+          "detect the specified hypothetical effect size."
+        )
+      } else if (calc == "es") {
+        str <- paste0(
+          str, "You have chosen to calculate the minimum hypothetical ",
+          "effect size for which the chosen design will have the ",
+          "specified sensitivity."
+        )
+      } else if (calc == "power") {
+        str <- paste0(
+          str, "You have chosen to calculate the sensitivity of the ",
+          "chosen design for detecting the specified effect size."
+        )
+      }
+
+      html[["text"]] <- str
+    },
+
     # ==== Plotting Functions ====
     .powerContour = function(state, ggtheme, ...) {
       calc <- self$options$calc
