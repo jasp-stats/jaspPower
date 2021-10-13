@@ -86,22 +86,34 @@ tTestBaseClass <- R6::R6Class(
         "the sensitivity of a design and test. "
       )
 
+      test_names <- c(
+        ttest_independent = "indipendent samples",
+        ttest_paired = "paired samples",
+        ttest_onesample = "one sample"
+      )
+      test_sentence_end <- paste0(
+        "when using a <i>", test_names[[self$options$test]], "</i> t-test."
+      )
+
       if (calc == "n") {
         str <- paste0(
           str, "You have chosen to calculate the minimum sample size needed ",
           "to have an experiment sensitive enough to consistently ",
-          "detect the specified hypothetical effect size."
+          "detect the specified hypothetical effect size ",
+          test_sentence_end
         )
       } else if (calc == "es") {
         str <- paste0(
           str, "You have chosen to calculate the minimum hypothetical ",
           "effect size for which the chosen design will have the ",
-          "specified sensitivity."
+          "specified sensitivity",
+          test_sentence_end
         )
       } else if (calc == "power") {
         str <- paste0(
           str, "You have chosen to calculate the sensitivity of the ",
-          "chosen design for detecting the specified effect size."
+          "chosen design for detecting the specified effect size",
+          test_sentence_end
         )
       }
 
