@@ -5,13 +5,7 @@ ttestISClass <- R6::R6Class(
   inherit = basicShimClass,
   private = list(
     #### Init + run functions ----
-    .init = function() {
-      private$.initPowerTab()
-
-      if (self$options$text) {
-        private$.initPowerESTab()
-      }
-    },
+    .init = function() { },
     .run = function() {
 
       ## Get options from interface
@@ -37,14 +31,16 @@ ttestISClass <- R6::R6Class(
       ## Compute results
       results <- private$.compute(stats)
 
+      private$.initPowerTab(results)
+
+      if (self$options$text) {
+        private$.initPowerESTab(results, stats)
+      }
+
       ## Populate tables and plots
       if (self$options$text) {
         private$.populateIntro()
-
-        private$.populateTabText(results, stats)
       }
-
-      private$.populatePowerTab(results)
 
       if (self$options$powerContour) {
         private$.preparePowerContour(results, stats)
@@ -96,7 +92,7 @@ ttestISClass <- R6::R6Class(
     },
 
     #### Init table ----
-    .initPowerTab = function() {
+    .initPowerTab = function(results) {
       table <- self$jaspResults[["powertab"]]
 
       if (is.null(table)) {
@@ -114,6 +110,8 @@ ttestISClass <- R6::R6Class(
         ))
         table$position <- 2
         self$jaspResults[["powertab"]] <- table
+      } else {
+        return()
       }
 
       calc <- self$options$calc
@@ -151,8 +149,10 @@ ttestISClass <- R6::R6Class(
       }
 
       table$addRows(rowNames = 1, row)
+
+      private$.populatePowerTab(results)
     },
-    .initPowerESTab = function() {
+    .initPowerESTab = function(results, stats) {
       table <- self$jaspResults[["powerEStab"]]
 
       if (is.null(table)) {
@@ -166,10 +166,13 @@ ttestISClass <- R6::R6Class(
           "alt",
           "alpha",
           "calc",
-          "n_ratio"
+          "n_ratio",
+          "text"
         ))
         table$position <- 4
         self$jaspResults[["powerEStab"]] <- table
+      } else {
+        return()
       }
 
       pow <- c("\u226450%", "50% \u2013 80%", "80% \u2013 95%", "\u226595%")
@@ -195,6 +198,8 @@ ttestISClass <- R6::R6Class(
         row <- list("power" = pow[i], "desc" = desc[i])
         table$addRows(rowNames = i, row)
       }
+
+      private$.populatePowerESTab(results, stats)
     },
     .populateIntro = function() {
       calc <- self$options$calc
@@ -231,7 +236,7 @@ ttestISClass <- R6::R6Class(
 
       html[["text"]] <- str
     },
-    .populateTabText = function(r, lst) {
+    .populatePowerESTab = function(r, lst) {
       html <- self$jaspResults[["tabText"]]
       if (is.null(html)) {
         html <- createJaspHtml()
