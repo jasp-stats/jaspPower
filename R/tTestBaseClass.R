@@ -251,10 +251,7 @@ tTestBaseClass <- R6::R6Class(
         ggplot2::labs(
           x = "Sample size (group 1)",
           y = "Power",
-          subtitle = substitute(
-            paste(delta == d, ", ", N[2] == nr %*% N[1], ", ", alpha == a),
-            list(a = alpha, nr = n_ratio, d = round(delta, 3))
-          )
+          subtitle = plot_subtitle
         ) +
         ggplot2::annotate(
           geom = "segment",
