@@ -58,7 +58,7 @@ Form
           indexDefaultValue: 0
           label: qsTr("")
           values: [
-            { label: "N per group", value: "n"},
+            { label: "Sample Size N", value: "n"},
             { label: "Power",  value: "power" },
             { label: "Effect size",  value: "es"}
           ]
@@ -123,7 +123,7 @@ Form
         // No sample size ratio in single sample t-test
         Text {
           text: qsTr("Sample size ratio:")
-          visible: test.currentValue == 'ttest_independent' || test.currentValue == 'ttest_paired'
+          visible: test.currentValue == 'ttest_independent'
         }
 				DoubleField {
           id: n_ratio
@@ -131,7 +131,7 @@ Form
           label: qsTr("N₁/N₂")
           min: 0
           defaultValue: 1
-          visible: test.currentValue == 'ttest_independent' || test.currentValue == 'ttest_paired'
+          visible: test.currentValue == 'ttest_independent'
         }
 
         Text { text: qsTr("Alternative Hypothesis:") }
