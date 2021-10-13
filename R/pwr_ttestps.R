@@ -2,53 +2,14 @@
 
 ttestPSClass <- R6::R6Class(
     "ttestPSClass",
-    inherit = ttestPSBase,
+    inherit = tTestBaseClass,
     private = list(
         #### Member variables ----
         probs_es = NULL,
         type = "paired",
 
-        #### Init + run functions ----
-        .init = function() {
-            private$.initPowerTab()
-            private$.initPowerESTab()
-        },
-        .run = function() {
-
-            ## Get options from interface
-            n <- self$options$n
-            pow <- self$options$power
-            alt <- self$options$alt
-            es <- self$options$es
-            alpha <- self$options$alpha
-
-            if (pow >= 1) stop("Power must be less than 1.")
-
-            stats <- list(n = n, pow = pow, alt = alt, es = es, alpha = alpha)
-
-            ## Compute results
-            results <- private$.compute(stats)
-
-            ## Populate tables and texts
-            private$.populateIntro()
-            private$.populatePowerTab(results)
-            private$.populateTabText(results, stats)
-            private$.populatepowerESTab()
-            private$.populateContourText(results, stats)
-            private$.populatePowerCurveESText(results, stats)
-            private$.populatePowerCurveNText(results, stats)
-            private$.populateDistText(results, stats)
-
-            ## Populate plots
-            private$.preparePowerContour(results, stats)
-            private$.preparePowerCurveES(results, stats)
-            private$.preparePowerCurveN(results, stats)
-            private$.preparePowerDist(results, stats)
-        },
-
         #### Compute results ----
         .compute = function(stats) {
-
             ## Compute numbers for table
             pow.n <- ceiling(pwr::pwr.t.test(d = stats$es, sig.level = stats$alpha, power = stats$pow, alternative = stats$alt, type = private$type)$n)
             pow.es <- pwr::pwr.t.test(n = stats$n, power = stats$pow, sig.level = stats$alpha, alternative = stats$alt, type = private$type)$d
@@ -58,7 +19,7 @@ ttestPSClass <- R6::R6Class(
         },
 
         #### Init table ----
-        .initPowerTab = function() {
+        .initPowerTab = function(results) {
             table <- self$results$powertab
 
             calc <- self$options$calc
@@ -91,8 +52,10 @@ ttestPSClass <- R6::R6Class(
               }
 
             table$addRows(rowNames = 1, row)
+
+            private$.populatePowerTab(results)
         },
-        .initPowerESTab = function() {
+        .initPowerESTab = function(results, stats) {
             table <- self$results$powerEStab
 
             pow <- c("\u226450%", "50% \u2013 80%", "80% \u2013 95%", "\u226595%")
@@ -102,6 +65,8 @@ ttestPSClass <- R6::R6Class(
                 row <- list("power" = pow[i], "desc" = desc[i])
                 table$addRows(rowNames = i, row)
             }
+
+            private$.populatePowerESTab(results, stats)
         },
 
         #### Populate texts ----
