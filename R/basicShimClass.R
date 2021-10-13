@@ -8,7 +8,9 @@ basicShimClass <- R6::R6Class("basicShimClass", list(
       self$options <- options
       self$jaspResults <- jaspResults
 
-      private$.init()
+      if (!is.null(private$.init)) {
+        private$.init()
+      }
     },
 
     # Run analyses

@@ -5,7 +5,6 @@ ttestISClass <- R6::R6Class(
   inherit = basicShimClass,
   private = list(
     #### Init + run functions ----
-    .init = function() { },
     .run = function() {
 
       ## Get options from interface
