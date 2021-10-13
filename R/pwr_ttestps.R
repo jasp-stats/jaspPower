@@ -404,7 +404,7 @@ ttestPSClass <- R6::R6Class(
             row <- list()
             row[[calc]] <- results[[calc]]
 
-            table$addRows(rowNames = 1, row)
+            table$addColumns(row)
         },
         .populatePowerESTab = function() {
             table <- self$jaspResults[["powerEStab"]]
@@ -418,10 +418,8 @@ ttestPSClass <- R6::R6Class(
                 paste0("\u03B4 \u2265 ", format(round(probs_es[3], 3), nsmall = 3))
             )
 
-            for (i in 1:4) {
-                row <- list("es" = format(esText[i], nsmall = 3))
-                table$addRows(rowNames = i, row)
-            }
+            cols <- list("es" = esText)
+            table$addColumns(cols)
         },
 
         #### Plot functions ----
