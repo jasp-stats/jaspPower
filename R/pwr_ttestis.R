@@ -113,9 +113,6 @@ ttestISClass <- R6::R6Class(
         return()
       }
 
-      pow <- c("\u226450%", "50% \u2013 80%", "80% \u2013 95%", "\u226595%")
-      desc <- c("Likely miss", "Good chance of missing", "Probably detect", "Almost surely detect")
-
       table$addColumnInfo(
         name = "es",
         title = "True effect size",
@@ -131,6 +128,9 @@ ttestISClass <- R6::R6Class(
         title = "Description",
         type = "string"
       )
+
+      pow <- c("\u226450%", "50% \u2013 80%", "80% \u2013 95%", "\u226595%")
+      desc <- c("Likely miss", "Good chance of missing", "Probably detect", "Almost surely detect")
 
       for (i in 1:4) {
         row <- list("power" = pow[i], "desc" = desc[i])
