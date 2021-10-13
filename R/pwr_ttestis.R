@@ -79,6 +79,7 @@ ttestISClass <- R6::R6Class(
         # Create table if it doesn't exist yet
         table <- createJaspTable(title = "A Priori Power Analysis")
         table$dependOn(c(
+          "test",
           "es",
           "power",
           "n",
@@ -134,6 +135,7 @@ ttestISClass <- R6::R6Class(
         # Create table if it doesn't exist yet
         table <- createJaspTable(title = "Power by Effect Size")
         table$dependOn(c(
+          "test",
           "es",
           "power",
           "n",
@@ -176,7 +178,7 @@ ttestISClass <- R6::R6Class(
       html <- self$jaspResults[["intro"]]
       if (is.null(html)) {
         html <- createJaspHtml(title = "Introduction")
-        html$dependOn(c("text"))
+        html$dependOn(c("test", "text"))
         html$position <- 1
         self$jaspResults[["intro"]] <- html
       }
@@ -209,7 +211,7 @@ ttestISClass <- R6::R6Class(
       html <- self$jaspResults[["tabText"]]
       if (is.null(html)) {
         html <- createJaspHtml()
-        html$dependOn(c("text"))
+        html$dependOn(c("test", "text"))
         html$position <- 3
         self$jaspResults[["tabText"]] <- html
       }
@@ -319,6 +321,7 @@ ttestISClass <- R6::R6Class(
       if (is.null(image)) {
         image <- createJaspPlot(title="Power Contour", width=400, height=350)
         image$dependOn(c(
+          "test",
           "es",
           "power",
           "n",
@@ -468,7 +471,7 @@ ttestISClass <- R6::R6Class(
       html <- self$jaspResults[["contourText"]]
       if (is.null(html)) {
         html <- createJaspHtml()
-        html$dependOn(c("text"))
+        html$dependOn(c("test", "text"))
         html$position <- 6
         self$jaspResults[["contourText"]] <- html
       }
@@ -502,6 +505,7 @@ ttestISClass <- R6::R6Class(
       if (is.null(image)) {
         image <- createJaspPlot(title="Power Curve by Effect Size", width=400, height=350)
         image$dependOn(c(
+          "test",
           "es",
           "power",
           "n",
@@ -590,7 +594,7 @@ ttestISClass <- R6::R6Class(
       html <- self$jaspResults[["curveESText"]]
       if (is.null(html)) {
         html <- createJaspHtml()
-        html$dependOn(c("text"))
+        html$dependOn(c("test", "text"))
         html$position <- 8
         self$jaspResults[["curveESText"]] <- html
       }
@@ -646,6 +650,7 @@ ttestISClass <- R6::R6Class(
       if (is.null(image)) {
         image <- createJaspPlot(title="Power Curve by N", width=400, height=350)
         image$dependOn(c(
+          "test",
           "es",
           "power",
           "n",
@@ -772,6 +777,7 @@ ttestISClass <- R6::R6Class(
       if (is.null(image)) {
         image <- createJaspPlot(title="Power Demonstration", width=400, height=300)
         image$dependOn(c(
+          "test",
           "es",
           "power",
           "n",
@@ -846,7 +852,7 @@ ttestISClass <- R6::R6Class(
       html <- self$jaspResults[["curveNText"]]
       if (is.null(html)) {
         html <- createJaspHtml()
-        html$dependOn(c("text"))
+        html$dependOn(c("test", "text"))
         html$position <- 10
         self$jaspResults[["curveNText"]] <- html
       }
@@ -923,7 +929,7 @@ ttestISClass <- R6::R6Class(
       html <- self$jaspResults[["distText"]]
       if (is.null(html)) {
         html <- createJaspHtml()
-        html$dependOn(c("text"))
+        html$dependOn(c("test", "text"))
         html$position <- 12
         self$jaspResults[["distText"]] <- html
       }
