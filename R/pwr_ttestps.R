@@ -15,12 +15,39 @@ ttestPSClass <- R6::R6Class(
             pow.es <- pwr::pwr.t.test(n = stats$n, power = stats$pow, sig.level = stats$alpha, alternative = stats$alt, type = private$type)$d
             pow.pow <- pwr::pwr.t.test(n = stats$n, d = stats$es, sig.level = stats$alpha, alternative = stats$alt, type = private$type)$power
 
+            probs <- c(.5, .8, .95)
+            probs_es <- sapply(probs, function(p) {
+                pwr::pwr.t.test(
+                    n = stats$n, sig.level = stats$alpha, power = stats$p,
+                    alternative = stats$alt, type = private$type
+                )$d
+            })
+            private$probs_es <- probs_es
+
             return(list(n = pow.n, es = pow.es, power = pow.pow))
         },
 
         #### Init table ----
         .initPowerTab = function(results) {
-            table <- self$results$powertab
+            table <- self$jaspResults[["powertab"]]
+            if (is.null(table)) {
+                # Create table if it doesn't exist yet
+                table <- createJaspTable(title = "A Priori Power Analysis")
+                table$dependOn(c(
+                    "test",
+                    "es",
+                    "power",
+                    "n",
+                    "alt",
+                    "alpha",
+                    "calc",
+                    "n_ratio"
+                ))
+                table$position <- 2
+                self$jaspResults[["powertab"]] <- table
+            } else {
+                return()
+            }
 
             calc <- self$options$calc
 
@@ -39,12 +66,12 @@ ttestPSClass <- R6::R6Class(
             colType <- c("integer", "number", "number", "number")
 
             for (i in seq_along(order)) {
-                  table$addColumnInfo(colNames[order[i]],
-                      title = colLabels[order[i]],
-                      overtitle = if (i > 1) "User Defined" else NULL,
-                      type = colType[order[i]]
-                  )
-              }
+                table$addColumnInfo(colNames[order[i]],
+                    title = colLabels[order[i]],
+                    overtitle = if (i > 1) "User Defined" else NULL,
+                    type = colType[order[i]]
+                )
+            }
 
             row <- list()
             for (i in 2:4) {
@@ -56,7 +83,42 @@ ttestPSClass <- R6::R6Class(
             private$.populatePowerTab(results)
         },
         .initPowerESTab = function(results, stats) {
-            table <- self$results$powerEStab
+            table <- self$jaspResults[["powerEStab"]]
+            if (is.null(table)) {
+                # Create table if it doesn't exist yet
+                table <- createJaspTable(title = "Power by Effect Size")
+                table$dependOn(c(
+                    "test",
+                    "es",
+                    "power",
+                    "n",
+                    "alt",
+                    "alpha",
+                    "calc",
+                    "n_ratio",
+                    "text"
+                ))
+                table$position <- 4
+                self$jaspResults[["powerEStab"]] <- table
+            } else {
+                return()
+            }
+
+            table$addColumnInfo(
+                name = "es",
+                title = "True effect size",
+                type = "string"
+            )
+            table$addColumnInfo(
+                name = "power",
+                title = "Power to detect",
+                type = "string"
+            )
+            table$addColumnInfo(
+                name = "desc",
+                title = "Description",
+                type = "string"
+            )
 
             pow <- c("\u226450%", "50% \u2013 80%", "80% \u2013 95%", "\u226595%")
             desc <- c("Likely miss", "Good chance of missing", "Probably detect", "Almost surely detect")
@@ -66,14 +128,20 @@ ttestPSClass <- R6::R6Class(
                 table$addRows(rowNames = i, row)
             }
 
-            private$.populatePowerESTab(results, stats)
+            private$.populatePowerESTab()
         },
 
         #### Populate texts ----
         .populateIntro = function() {
             calc <- self$options$calc
 
-            html <- self$results$intro
+            html <- self$jaspResults[["intro"]]
+            if (is.null(html)) {
+                html <- createJaspHtml(title = "Introduction")
+                html$dependOn(c("test", "text"))
+                html$position <- 1
+                self$jaspResults[["intro"]] <- html
+            }
 
             str <- paste0(
                 "The purpose of a <i>power analysis</i> is to evaluate ",
@@ -100,7 +168,13 @@ ttestPSClass <- R6::R6Class(
             html[["text"]] <- str
         },
         .populateTabText = function(r, lst) {
-            html <- self$results$tabText
+            html <- self$jaspResults[["tabText"]]
+            if (is.null(html)) {
+                html <- createJaspHtml()
+                html$dependOn(c("test", "text"))
+                html$position <- 3
+                self$jaspResults[["tabText"]] <- html
+            }
 
             ## Get options from interface
             calc <- self$options$calc
@@ -116,16 +190,6 @@ ttestPSClass <- R6::R6Class(
                 "two-sided",
                 "one-sided"
             )
-
-            probs <- c(.5, .8, .95)
-            probs_es <- sapply(probs, function(p) {
-                pwr::pwr.t.test(
-                    n = n, sig.level = alpha, power = p,
-                    alternative = alt, type = private$type
-                )$d
-            })
-
-            private$probs_es <- probs_es
 
             if (calc == "n") {
                 str <- paste0(
@@ -164,7 +228,13 @@ ttestPSClass <- R6::R6Class(
             html[["text"]] <- str
         },
         .populateContourText = function(r, lst) {
-            html <- self$results$contourText
+            html <- self$jaspResults[["contourText"]]
+            if (is.null(html)) {
+                html <- createJaspHtml()
+                html$dependOn(c("test", "text", "powerContour"))
+                html$position <- 6
+                self$jaspResults[["contourText"]] <- html
+            }
 
             calc <- self$options$calc
 
@@ -186,7 +256,13 @@ ttestPSClass <- R6::R6Class(
             html[["text"]] <- str
         },
         .populatePowerCurveESText = function(r, lst) {
-            html <- self$results$curveESText
+            html <- self$jaspResults[["curveESText"]]
+            if (is.null(html)) {
+                html <- createJaspHtml()
+                html$dependOn(c("test", "text", "powerCurveES"))
+                html$position <- 8
+                self$jaspResults[["curveESText"]] <- html
+            }
 
             ## Get options from interface
             calc <- self$options$calc
@@ -230,7 +306,13 @@ ttestPSClass <- R6::R6Class(
             html[["text"]] <- str
         },
         .populatePowerCurveNText = function(r, lst) {
-            html <- self$results$curveNText
+            html <- self$jaspResults[["curveNText"]]
+            if (is.null(html)) {
+                html <- createJaspHtml()
+                html$dependOn(c("test", "text", "powerCurveN"))
+                html$position <- 10
+                self$jaspResults[["curveNText"]] <- html
+            }
 
             ## Get options from interface
             calc <- self$options$calc
@@ -264,7 +346,13 @@ ttestPSClass <- R6::R6Class(
             html[["text"]] <- str
         },
         .populateDistText = function(r, lst) {
-            html <- self$results$distText
+            html <- self$jaspResults[["distText"]]
+            if (is.null(html)) {
+                html <- createJaspHtml()
+                html$dependOn(c("test", "text", "powerDist"))
+                html$position <- 12
+                self$jaspResults[["distText"]] <- html
+            }
 
             ## Get options from interface
             calc <- self$options$calc
@@ -310,7 +398,7 @@ ttestPSClass <- R6::R6Class(
 
         #### Populate table ----
         .populatePowerTab = function(results) {
-            table <- self$results$powertab
+            table <- self$jaspResults[["powertab"]]
             calc <- self$options$calc
 
             row <- list()
@@ -318,8 +406,8 @@ ttestPSClass <- R6::R6Class(
 
             table$addRows(rowNames = 1, row)
         },
-        .populatepowerESTab = function() {
-            table <- self$results$powerEStab
+        .populatePowerESTab = function() {
+            table <- self$jaspResults[["powerEStab"]]
 
             probs_es <- private$probs_es
 
@@ -338,7 +426,23 @@ ttestPSClass <- R6::R6Class(
 
         #### Plot functions ----
         .preparePowerContour = function(r, lst) {
-            image <- self$results$powerContour
+            image <- self$jaspResults[["powerContour"]]
+            if (is.null(image)) {
+                image <- createJaspPlot(title="Power Contour", width=400, height=350)
+                image$dependOn(c(
+                    "test",
+                    "es",
+                    "power",
+                    "n",
+                    "alt",
+                    "alpha",
+                    "calc",
+                    "n_ratio",
+                    "powerContour"
+                ))
+                image$position <- 5
+                self$jaspResults[["powerContour"]] <- image
+            }
 
             ps <- ttestPlotSettings
 
@@ -369,78 +473,38 @@ ttestPSClass <- R6::R6Class(
                 pwr::pwr.t.test(N, sig.level = alpha, power = power, alternative = alt, type = private$type)$d
             })
 
-            image$setState(list(
-                z.pwr = z.pwr, z.delta = z.delta, ps = ps, nn = nn, dd = dd, n1 = n,
-                delta = d, alpha = alpha, minn = minn, maxn = maxn
-            ))
-        },
-        .powerContour = function(image, ggtheme, ...) {
-            if (is.null(image$state)) {
-                  return(FALSE)
-              }
-
-            calc <- self$options$calc
-
-            image <- self$results$powerContour
-
-            z.delta <- image$state$z.delta
-            z.pwr <- image$state$z.pwr
-            ps <- image$state$ps
-            pow <- image$state$pow
-            n1 <- image$state$n1
-            alpha <- image$state$alpha
-            dd <- image$state$dd
-            nn <- image$state$nn
-            ps <- image$state$ps
-            delta <- image$state$delta
-
-            filled.contour(log(nn), dd, z.pwr,
-                color.palette = ps$pal, nlevels = ps$pow.n.levels,
-                ylab = expression(paste("Hypothetical effect size (", delta, ")", sep = "")),
-                xlab = "Sample size",
-                plot.axes = {
-                    at.N <- round(exp(seq(log(min(nn)), log(max(nn)), len = ps$x.axis.n)))
-                    axis(1, at = log(at.N), lab = at.N)
-                    axis(2)
-                    striped.lines(col1 = ps$stripe.cols[1], col2 = ps$stripe.cols[2], x = log(nn), y = z.delta, lwd = 2)
-                    # contour(log(N), delta, z.pwr, add=TRUE)
-                    if (calc == "n") {
-                        striped.Arrows(
-                            col1 = ps$stripe.cols[1], col2 = ps$stripe.cols[2],
-                            x1 = log(n1), y1 = par()$usr[3],
-                            x0 = log(n1),
-                            y0 = delta, lwd = 2, arr.adj = 1
-                        )
-                        striped.segments(
-                            col1 = ps$stripe.cols[1], col2 = ps$stripe.cols[2],
-                            x0 = log(n1), y0 = delta,
-                            x1 = par()$usr[1], y1 = delta,
-                            lwd = 2
-                        )
-                    } else if (calc == "es") {
-                        striped.segments(
-                            col1 = ps$stripe.cols[1], col2 = ps$stripe.cols[2],
-                            x1 = log(n1), y1 = par()$usr[3],
-                            x0 = log(n1),
-                            y0 = delta, lwd = 2
-                        )
-                        striped.Arrows(
-                            col1 = ps$stripe.cols[1], col2 = ps$stripe.cols[2],
-                            x0 = log(n1), y0 = delta,
-                            x1 = par()$usr[1], y1 = delta,
-                            lwd = 2, arr.adj = 1
-                        )
-                    }
-                    points(log(n1), delta, pch = 21, col = "black", bg = "white", cex = 1.5)
-                }, key.title = {
-                    mtext("Power", 3, .5)
-                }
+            state = list(
+                z.pwr = z.pwr,
+                z.delta = z.delta,
+                ps = ps,
+                nn = nn,
+                dd = dd,
+                n = n,
+                delta = d,
+                alpha = alpha,
+                minn = minn,
+                maxn = maxn
             )
-
-            TRUE
+            image$plotObject <- private$.powerContour(state = state, ggtheme = pwr_plot_theme())
         },
         .preparePowerCurveES = function(r, lst) {
-            image <- self$results$powerCurveES
+            image <- self$jaspResults[["powerCurveES"]]
+            if (is.null(image)) {
+                image <- createJaspPlot(title="Power Curve by Effect Size", width=400, height=350)
+                image$dependOn(c(
+                    "test",
+                    "es",
+                    "power",
+                    "n",
+                    "alt",
+                    "alpha",
+                    "calc",
+                    "n_ratio",
+                    "powerCurveES"
+                ))
+                image$position <- 7
+                self$jaspResults[["powerCurveES"]] <- image
+            }
 
             ps <- ttestPlotSettings
 
@@ -458,67 +522,27 @@ ttestPSClass <- R6::R6Class(
             cols <- ps$pal(ps$pow.n.levels)
             yrect <- seq(0, 1, 1 / ps$pow.n.levels)
 
-            image$setState(list(cols = cols, dd = dd, y = y, yrect = yrect, n1 = n, alpha = alpha, delta = d, pow = power))
-        },
-        .powerCurveES = function(image, ggtheme, ...) {
-            if (is.null(image$state)) {
-                  return(FALSE)
-              }
-
-            y <- image$state$y
-            cols <- image$state$cols
-            yrect <- image$state$yrect
-            pow <- image$state$pow
-            n1 <- image$state$n1
-            alpha <- image$state$alpha
-            dd <- image$state$dd
-            delta <- image$state$delta
-
-            ps <- ttestPlotSettings
-
-
-            label <- jmvcore::format("  N = {}, \u03B1 = {}", n1, round(alpha, 3))
-
-            plot(dd, y,
-                ty = "n", ylim = c(0, 1), las = 1, ylab = "Power",
-                xlab = expression(paste("Hypothetical effect size (", delta, ")", sep = "")),
-                yaxs = "i", xaxs = "i"
-            )
-            mtext(substitute(
-                paste(N == n1, ", ", alpha == a),
-                list(a = alpha, n1 = n1)
-            ),
-            adj = 1
-            )
-
-            for (i in 1:ps$pow.n.levels) {
-                rect(par()$usr[1], yrect[i], par()$usr[2], yrect[i + 1],
-                    border = NA,
-                    col = cols[i]
-                )
-            }
-
-            striped.lines(
-                col1 = ps$stripe.cols[1], col2 = ps$stripe.cols[2],
-                dd, y, lwd = 3
-            )
-            striped.Arrows(
-                col1 = ps$stripe.cols[1], col2 = ps$stripe.cols[2],
-                x0 = delta, y0 = pow,
-                x1 = delta,
-                y1 = 0, lwd = 3, arr.adj = 1
-            )
-            striped.segments(
-                col1 = ps$stripe.cols[1], col2 = ps$stripe.cols[2],
-                x0 = min(dd), y0 = pow,
-                x1 = delta, y1 = pow,
-                lwd = 3
-            )
-
-            TRUE
+            state = list(cols = cols, dd = dd, y = y, yrect = yrect, n = n, alpha = alpha, delta = d, pow = power)
+            image$plotObject <- private$.powerCurveES(state = state, ggtheme = pwr_plot_theme())
         },
         .preparePowerCurveN = function(r, lst) {
-            image <- self$results$powerCurveN
+            image <- self$jaspResults[["powerCurveN"]]
+            if (is.null(image)) {
+                image <- createJaspPlot(title="Power Curve by N", width=400, height=350)
+                image$dependOn(c(
+                    "test",
+                    "es",
+                    "power",
+                    "n",
+                    "alt",
+                    "alpha",
+                    "calc",
+                    "n_ratio",
+                    "powerCurveN"
+                ))
+                image$position <- 9
+                self$jaspResults[["powerCurveN"]] <- image
+            }
 
             calc <- self$options$calc
 
@@ -550,70 +574,37 @@ ttestPSClass <- R6::R6Class(
                 ylim = c(0, 1)
             )
 
-            image$setState(list(n1 = n, cols = cols, nn = nn, y = y, yrect = yrect, lims = lims, delta = d, alpha = alpha, pow = power))
-        },
-        .powerCurveN = function(image, ggtheme, ...) {
-            if (is.null(image$state)) {
-                  return(FALSE)
-              }
-
-            cols <- image$state$cols
-            yrect <- image$state$yrect
-            lims <- image$state$lims
-            delta <- image$state$delta
-            alpha <- image$state$alpha
-            nn <- image$state$nn
-            pow <- image$state$pow
-            n1 <- image$state$n1
-            y <- image$state$y
-
-            ps <- ttestPlotSettings
-
-            plot(log(nn), y,
-                ty = "n", xlim = log(lims$xlim), ylim = lims$ylim, las = 1, ylab = "Power",
-                xlab = "Sample size",
-                yaxs = "i", xaxs = "i", axes = FALSE
+            state = list(
+                n = n,
+                cols = cols,
+                nn = nn,
+                y = y,
+                yrect = yrect,
+                lims = lims,
+                delta = d,
+                alpha = alpha,
+                pow = power
             )
-
-            at.N <- round(exp(seq(log(min(nn)), log(max(nn)), len = ps$x.axis.n)))
-            axis(1, at = log(at.N), lab = at.N)
-            axis(2, las = 1)
-
-            mtext(substitute(
-                paste(delta == d, ", ", alpha == a),
-                list(a = alpha, d = round(delta, 3))
-            ),
-            adj = 1
-            )
-
-            for (i in 1:ps$pow.n.levels) {
-                rect(par()$usr[1], yrect[i], par()$usr[2], yrect[i + 1],
-                    border = NA,
-                    col = cols[i]
-                )
-            }
-
-            striped.lines(
-                col1 = ps$stripe.cols[1], col2 = ps$stripe.cols[2],
-                log(nn), y, lwd = 3
-            )
-            striped.Arrows(
-                col1 = ps$stripe.cols[1], col2 = ps$stripe.cols[2],
-                x0 = log(n1), y0 = pow,
-                x1 = log(n1),
-                y1 = 0, lwd = 3, arr.adj = 1
-            )
-            striped.segments(
-                col1 = ps$stripe.cols[1], col2 = ps$stripe.cols[2],
-                x0 = min(log(nn)), y0 = pow,
-                x1 = log(n1), y1 = pow,
-                lwd = 3
-            )
-
-            TRUE
+            image$plotObject <- private$.powerCurveN(state = state, ggtheme = pwr_plot_theme())
         },
         .preparePowerDist = function(r, lst) {
-            image <- self$results$powerDist
+            image <- self$jaspResults[["powerDist"]]
+            if (is.null(image)) {
+                image <- createJaspPlot(title="Power Demonstration", width=400, height=300)
+                image$dependOn(c(
+                    "test",
+                    "es",
+                    "power",
+                    "n",
+                    "alt",
+                    "alpha",
+                    "calc",
+                    "n_ratio",
+                    "powerDist"
+                ))
+                image$position <- 11
+                self$jaspResults[["powerDist"]] <- image
+            }
 
             calc <- self$options$calc
 
@@ -669,40 +660,8 @@ ttestPSClass <- R6::R6Class(
                 ylim = c(0, y.max * 1.1)
             )
 
-            image$setState(list(curves = curves, rect = rect, lims = lims))
-        },
-        .powerDist = function(image, ggtheme, ...) {
-            ps <- ttestPlotSettings
-
-            if (is.null(image$state)) {
-                  return(FALSE)
-              }
-
-            curves <- image$state$curves
-            rect <- image$state$rect
-            lims <- image$state$lims
-            alt <- self$options$alt
-
-            themeSpec <- ggplot2::theme(
-                axis.text.y = ggplot2::element_blank(),
-                axis.ticks.y = ggplot2::element_blank(),
-                legend.position = "none"
-            )
-
-            p <- ggplot2::ggplot() +
-                ggplot2::geom_ribbon(data = curves, ggplot2::aes(x = x, ymin = ymin, ymax = ymax, fill = group), color = "#333333", alpha = .6) +
-                ggplot2::geom_rect(data = rect, ggplot2::aes(xmin = x1, xmax = x2, ymin = y1, ymax = y2), fill = "white", alpha = 0.4) +
-                ggplot2::geom_vline(data = rect, ggplot2::aes(xintercept = x1), linetype = "dashed") +
-                ggplot2::geom_vline(data = rect, ggplot2::aes(xintercept = x2), linetype = "dashed") +
-                ggplot2::coord_cartesian(xlim = lims$xlim, ylim = lims$ylim, expand = FALSE) +
-                ggplot2::labs(x = "Observed standardized effect size (d)", y = "Probability Density") +
-                ggtheme +
-                themeSpec +
-                ggplot2::scale_fill_manual(values = ps$pal(5)[c(4, 1)])
-
-            print(p)
-
-            TRUE
+            state = list(curves = curves, rect = rect, lims = lims)
+            image$plotObject <- private$.powerDist(state = state, ggtheme = pwr_plot_theme())
         }
     )
 )
