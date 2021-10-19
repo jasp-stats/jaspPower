@@ -234,8 +234,6 @@ ttestISClass <- R6::R6Class(
 
       calc <- self$options$calc
 
-      row <- list()
-
       # Note: It is unclear what this value actualyl corresponds to
       # row[["d50"]] <- results[["d50"]]
 
@@ -243,7 +241,9 @@ ttestISClass <- R6::R6Class(
         table$addColumns(list(n1 = results[["n1"]]))
         table$addColumns(list(n2 = results[["n2"]]))
       } else {
-        table$addColumns(list(calc = results[["calc"]]))
+        row <- list()
+        row[[calc]] <- results[[calc]]
+        table$addColumns(row)
       }
     },
 
