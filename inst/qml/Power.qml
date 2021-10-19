@@ -31,8 +31,8 @@ Form
     values: [
       { label: "Independent Samples T-Test", value: "ttest_independent"},
       { label: "Paired Samples T-Test",  value: "ttest_paired" },
-      { label: "One Sample T-Test",  value: "ttest_onesample"   },
-      { label: "ANOVA",  value: "anova" }
+      { label: "One Sample T-Test",  value: "ttest_onesample"   }
+      // { label: "ANOVA",  value: "anova" }
     ]
   }
 
