@@ -1,4 +1,4 @@
-![Two slightly overlapping normal distributions](inst/icons/power.svg)
+<img src="inst/icons/power.svg" width="100" alt="Two slightly overlapping normal distributions">
 
 # jaspPower: Power Module for JASP
 
