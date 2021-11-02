@@ -110,20 +110,6 @@ pwr.t2n.ratio <- function(n_ratio = 1, d, sig.level, power, alternative) {
   return(ceiling(rt))
 }
 
-striped.segments <- function(col1 = "black", col2 = "white", ...) {
-  segments(..., col = col1, lty = 1)
-  segments(..., col = col2, lty = 2)
-}
-
-striped.lines <- function(col1 = "black", col2 = "white", ...) {
-  lines(..., col = col1, lty = 1)
-  lines(..., col = col2, lty = 2)
-}
-
-striped.Arrows <- function(col1 = "black", col2 = "white", ...) {
-  segments(..., col = col1, lty = 1)
-  shape::Arrows(..., col = col2, lty = 2)
-}
 
 ttestPlotSettings <- list(
   lens = 20,
