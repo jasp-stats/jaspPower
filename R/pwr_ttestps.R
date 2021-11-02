@@ -213,8 +213,8 @@ ttestPSClass <- R6::R6Class(
                 "smaller effect sizes become reliably detectable.",
                 "<p>Conversely, if one is satisfied ",
                 "to reliably detect only larger effect sizes, smaller sample sizes are needed. ",
-                "The solid black curve on the contour plot shows sample size/effect size combinations
-                       with a power of ", round(power, 3), ". The point shows the specified ",
+                "The solid black curve on the contour plot shows sample size/effect size ",
+                "combinations with a power of ", round(power, 3), ". The point shows the specified ",
                 " design and effect size."
             )
 
