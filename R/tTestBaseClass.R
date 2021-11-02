@@ -178,7 +178,7 @@ tTestBaseClass <- R6::R6Class(
           y = expression(paste("Hypothetical effect size (", delta, ")", sep = "")),
           fill = "Power"
         ) +
-        ggplot2::guides(fill = guide_colorsteps(barheight = unit(7, "cm"))) +
+        ggplot2::guides(fill = ggplot2::guide_colorsteps(barheight = ggplot2::unit(7, "cm"))) +
         # Highlight boundary of power
         # TODO: This currently goes out of bounds
         # ggplot2::annotate("line", x = nn, y = z.delta) +
