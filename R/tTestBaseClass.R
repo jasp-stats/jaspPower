@@ -160,7 +160,7 @@ tTestBaseClass <- R6::R6Class(
       # Checking whether geom_contour_filled is availaible
       # (as it is e.g. not yet in the ggplot2 version of JASP 0.14.1)
       # TODO: Remove this check in the future
-      if (!exists('geom_contour_filled', where=asNamespace('ggplot2'), mode='function')) {
+      if (!exists("geom_contour_filled", where = asNamespace("ggplot2"), mode = "function")) {
         return(
           ggplot2::ggplot() +
             ggplot2::labs(title = "ERROR: The power contour plot needs a newer version of ggplot / JASP to function")
@@ -184,11 +184,13 @@ tTestBaseClass <- R6::R6Class(
         # ggplot2::annotate("line", x = nn, y = z.delta) +
         # Highlight N on axis
         ggplot2::annotate(
-          "segment", x = n, y = delta, xend = n, yend = par()$usr[3]
+          "segment",
+          x = n, y = delta, xend = n, yend = par()$usr[3]
         ) +
         # Highlight effect size on axis
         ggplot2::annotate(
-          "segment", x = n, y = delta, xend = par()$usr[1], yend = delta
+          "segment",
+          x = n, y = delta, xend = par()$usr[1], yend = delta
         ) +
         # Add point highlighting intersection
         ggplot2::annotate("point", x = n, y = delta) +
@@ -196,7 +198,6 @@ tTestBaseClass <- R6::R6Class(
 
       return(p)
     },
-
     .powerCurveES = function(state, ggtheme, ...) {
       y <- state$y
       cols <- state$cols
@@ -256,7 +257,6 @@ tTestBaseClass <- R6::R6Class(
 
       return(p)
     },
-
     .powerCurveN = function(state, ggtheme, ...) {
       cols <- state$cols
       yrect <- state$yrect
@@ -274,15 +274,15 @@ tTestBaseClass <- R6::R6Class(
       if (is.null(n_ratio)) {
         # Paired or one sample
         plot_subtitle <- substitute(
-            paste(delta == d, ", ", alpha == a),
-            list(a = alpha, d = round(delta, 3))
-          )
+          paste(delta == d, ", ", alpha == a),
+          list(a = alpha, d = round(delta, 3))
+        )
       } else {
         # Indipendent Samples
         plot_subtitle <- substitute(
-            paste(delta == d, ", ", N[2] == nr %*% N[1], ", ", alpha == a),
-            list(a = alpha, nr = n_ratio, d = round(delta, 3))
-          )
+          paste(delta == d, ", ", N[2] == nr %*% N[1], ", ", alpha == a),
+          list(a = alpha, nr = n_ratio, d = round(delta, 3))
+        )
       }
 
       # Creat basic plot
@@ -307,7 +307,7 @@ tTestBaseClass <- R6::R6Class(
         ggplot2::annotate(
           geom = "segment",
           x = n, y = pow,
-        xend = n, yend = 0,
+          xend = n, yend = 0,
         ) +
         ggplot2::annotate(
           geom = "segment",
@@ -318,7 +318,6 @@ tTestBaseClass <- R6::R6Class(
 
       return(p)
     },
-
     .powerDist = function(state, ggtheme, ...) {
       ps <- ttestPlotSettings
 
@@ -350,6 +349,5 @@ tTestBaseClass <- R6::R6Class(
 
       return(p)
     }
-
   )
 )
