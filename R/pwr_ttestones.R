@@ -4,7 +4,6 @@ ttestOneSClass <- R6::R6Class(
     "ttestOneSClass",
     inherit = ttestPSClass,
     private = list(
-        # TODO: Show test title somewhere
         type = "one.sample"
     )
 )
