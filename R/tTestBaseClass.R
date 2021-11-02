@@ -167,11 +167,14 @@ tTestBaseClass <- R6::R6Class(
         )
       }
 
+      # Dirty fix for a bug where ggplot is unable to properly bin values of 1...
+      z.pwr[z.pwr == 1] <- 0.999999999
+
       p <- ggplot2::ggplot(
         transformContourMatrix(x = nn, y = dd, z = z.pwr),
         ggplot2::aes(x = x, y = y, z = z)
       ) +
-        ggplot2::geom_contour_filled(bins = ps$pow.n.levels) +
+        ggplot2::geom_contour_filled(breaks = pretty(c(0, 1), n = ps$pow.n.levels)) +
         ggplot2::scale_x_log10(sec.axis = secondary_axis) +
         ggplot2::labs(
           x = "Sample size (group 1)",
@@ -180,17 +183,18 @@ tTestBaseClass <- R6::R6Class(
         ) +
         ggplot2::guides(fill = ggplot2::guide_colorsteps(barheight = ggplot2::unit(7, "cm"))) +
         # Highlight boundary of power
-        # TODO: This currently goes out of bounds
+        # Note: This doesn't render quite perfectly right now
+        # ggplot2::scale_y_continuous(limits = c(min(dd), max(dd))) +
         # ggplot2::annotate("line", x = nn, y = z.delta) +
         # Highlight N on axis
         ggplot2::annotate(
           "segment",
-          x = n, y = delta, xend = n, yend = par()$usr[3]
+          x = n, y = delta, xend = n, yend = min(dd)
         ) +
         # Highlight effect size on axis
         ggplot2::annotate(
           "segment",
-          x = n, y = delta, xend = par()$usr[1], yend = delta
+          x = n, y = delta, xend = min(nn), yend = delta
         ) +
         # Add point highlighting intersection
         ggplot2::annotate("point", x = n, y = delta) +
