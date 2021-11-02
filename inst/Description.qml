@@ -4,8 +4,9 @@ import JASP.Module	1.0
 Description
 {
 	name		: "jaspModule"
-	title		: qsTr("LearnStats--Power")
-	description	: qsTr("This module offers analyses.")
+	title		: qsTr("Power")
+	icon:			"power.svg"
+	description	: qsTr("This module allows you to conduct power analyses.")
 	version		: "0.1"
 	author		: "JASP Team"
 	maintainer	: "JASP Team <info@jasp-stats.org>"
