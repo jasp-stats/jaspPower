@@ -110,6 +110,15 @@ pwr.t2n.ratio <- function(n_ratio = 1, d, sig.level, power, alternative) {
   return(ceiling(rt))
 }
 
+# Convenience function to draw segment lines
+.segment <- function (...) {
+  return(ggplot2::annotate(
+    geom = "segment",
+    size = 1,
+    linetype = "dashed",
+    ...
+  ))
+}
 
 ttestPlotSettings <- list(
   lens = 20,

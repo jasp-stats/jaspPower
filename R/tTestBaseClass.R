@@ -187,17 +187,15 @@ tTestBaseClass <- R6::R6Class(
         # ggplot2::scale_y_continuous(limits = c(min(dd), max(dd))) +
         # ggplot2::annotate("line", x = nn, y = z.delta) +
         # Highlight N on axis
-        ggplot2::annotate(
-          "segment",
+        .segment(
           x = n, y = delta, xend = n, yend = min(dd)
         ) +
         # Highlight effect size on axis
-        ggplot2::annotate(
-          "segment",
+        .segment(
           x = n, y = delta, xend = min(nn), yend = delta
         ) +
         # Add point highlighting intersection
-        ggplot2::annotate("point", x = n, y = delta) +
+        ggplot2::annotate("point", x = n, y = delta, size = 3) +
         ggtheme
 
       return(p)
@@ -247,13 +245,11 @@ tTestBaseClass <- R6::R6Class(
           y = "Power",
           subtitle = plot_subtitle
         ) +
-        ggplot2::annotate(
-          geom = "segment",
+        .segment(
           x = delta, y = pow,
           xend = delta, yend = 0
         ) +
-        ggplot2::annotate(
-          geom = "segment",
+        .segment(
           x = min(dd), y = pow,
           xend = delta, yend = pow,
         ) +
@@ -308,13 +304,11 @@ tTestBaseClass <- R6::R6Class(
           y = "Power",
           subtitle = plot_subtitle
         ) +
-        ggplot2::annotate(
-          geom = "segment",
+        .segment(
           x = n, y = pow,
-          xend = n, yend = 0,
+          xend = n, yend = 0
         ) +
-        ggplot2::annotate(
-          geom = "segment",
+        .segment(
           x = min(nn), y = pow,
           xend = n, yend = pow,
         ) +
