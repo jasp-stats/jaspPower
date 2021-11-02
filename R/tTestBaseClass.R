@@ -174,7 +174,7 @@ tTestBaseClass <- R6::R6Class(
         transformContourMatrix(x = nn, y = dd, z = z.pwr),
         ggplot2::aes(x = x, y = y, z = z)
       ) +
-        ggplot2::geom_contour_filled(breaks = pretty(c(0, 1), n = ps$pow.n.levels)) +
+        ggplot2::geom_contour_filled(breaks = pretty(c(0, 1), n = ps$pow.n.levels), alpha = ps$background.alpha) +
         ggplot2::scale_x_log10(sec.axis = secondary_axis) +
         ggplot2::labs(
           x = "Sample size (group 1)",
