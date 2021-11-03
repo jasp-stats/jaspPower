@@ -42,6 +42,9 @@ options$powerDist <- TRUE
 results <- jaspTools::runAnalysis("Power", NULL, options)
 
 test_that("Power Contour plot matches", {
+	# Power Contour plot differs by OS, so skip the test for now on windows / linux
+	skip_on_os(c("windows", "linux"))
+
 	plotName <- results[["results"]][["powerContour"]][["data"]]
 	testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
 	jaspTools::expect_equal_plots(testPlot, "power-contour")
