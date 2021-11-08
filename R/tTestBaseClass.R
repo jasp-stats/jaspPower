@@ -2,6 +2,26 @@ tTestBaseClass <- R6::R6Class(
   "tTestBaseClass",
   inherit = basicShimClass,
   private = list(
+    .check = function () {
+      alternative <- self$options$alt
+      d <- self$options$es
+      # Check whether the provided effect size is valid
+      if (alternative == "two.sided") {
+        if (d == 0) {
+          stop("Effect size d can't be 0 with a two-sided alternative hypothesis.")
+        }
+      } else if (alternative == "less") {
+        if (d >= 0) {
+          stop("Effect size d has to be lower than 0 with an alternative hypothesis of lesser.")
+        }
+      } else if (alternative == "greater") {
+        if (d <= 0) {
+          stop("Effect size d has to be greater than 0 with an alternative hypothesis of greater.")
+        }
+      } else {
+        stop("Invalid alternative.")
+      }
+    },
     #### Init + run functions ----
     .run = function() {
 

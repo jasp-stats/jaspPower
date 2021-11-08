@@ -8,6 +8,11 @@ basicShimClass <- R6::R6Class("basicShimClass", list(
       self$options <- options
       self$jaspResults <- jaspResults
 
+      if (!is.null(private$.check)) {
+        # Run checks on theinput
+        private$.check()
+      }
+
       if (!is.null(private$.init)) {
         private$.init()
       }

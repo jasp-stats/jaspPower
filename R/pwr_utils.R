@@ -4,7 +4,7 @@
 
 # Transform a contour matrix (z) and vectors for it's columns and rows (x, y)
 # into a dataframe with 3 columns (x, y, z) to be used for ggplot.
-transformContourMatrix <- function (x, y, z) {
+transformContourMatrix <- function(x, y, z) {
   return(data.frame(
     # Ncol and nrow are different here then one would expect (!)
     x = rep(x, ncol(z)),
@@ -83,7 +83,6 @@ pwr.t2n.test <- function(n1 = NULL, n2 = NULL, d = NULL, sig.level = .05, power 
   }
 }
 
-
 pwr.t2n.ratio <- function(n_ratio = 1, d, sig.level, power, alternative) {
   if (power >= 1) {
     return(Inf)
@@ -93,12 +92,21 @@ pwr.t2n.ratio <- function(n_ratio = 1, d, sig.level, power, alternative) {
     df <- n1 * (1 + n_ratio) - 2
     ncp <- sqrt(effN) * d
     if (alternative == "two.sided") {
+      if (d == 0) {
+        stop("Effect size can't be 0 with a two-sided alternative hypothesis.")
+      }
       critt <- qt(sig.level / 2, df)
       pow <- pt(critt, df, ncp) + 1 - pt(-critt, df, ncp)
     } else if (alternative == "less") {
+      if (d >= 0) {
+        stop("Effect size has to be lower than 0 with an alternative of lesser.")
+      }
       critt <- qt(sig.level, df)
       pow <- pt(critt, df, ncp)
     } else if (alternative == "greater") {
+      if (d <= 0) {
+        stop("Effect size has to be greater than 0 with an alternative of greater.")
+      }
       critt <- qt(1 - sig.level, df)
       pow <- 1 - pt(critt, df, ncp)
     } else {
