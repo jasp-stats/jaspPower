@@ -3,7 +3,7 @@ import JASP.Module	1.0
 
 Description
 {
-	name		: "jaspModule"
+	name		: "jaspPower"
 	title		: qsTr("Power")
 	icon:			"power.svg"
 	description	: qsTr("This module allows you to conduct power analyses.")
