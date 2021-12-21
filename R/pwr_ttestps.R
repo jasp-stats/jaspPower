@@ -32,7 +32,7 @@ ttestPSClass <- R6::R6Class(
             table <- self$jaspResults[["powertab"]]
             if (is.null(table)) {
                 # Create table if it doesn't exist yet
-                table <- createJaspTable(title = "A Priori Power Analysis")
+                table <- createJaspTable(title = gettext("A Priori Power Analysis"))
                 table$dependOn(c(
                     "test",
                     "es",
@@ -62,13 +62,18 @@ ttestPSClass <- R6::R6Class(
               }
 
             colNames <- c("n", "es", "power", "alpha")
-            colLabels <- c("N", "Effect Size", "Power", "\u03B1")
+            colLabels <- c(
+                "N",
+                gettext("Effect Size"),
+                gettext("Power"),
+                "\u03B1"
+            )
             colType <- c("integer", "number", "number", "number")
 
             for (i in seq_along(order)) {
                 table$addColumnInfo(colNames[order[i]],
                     title = colLabels[order[i]],
-                    overtitle = if (i > 1) "User Defined" else NULL,
+                    overtitle = if (i > 1) gettext("User Defined") else NULL,
                     type = colType[order[i]]
                 )
             }
@@ -86,7 +91,7 @@ ttestPSClass <- R6::R6Class(
             table <- self$jaspResults[["powerEStab"]]
             if (is.null(table)) {
                 # Create table if it doesn't exist yet
-                table <- createJaspTable(title = "Power by Effect Size")
+                table <- createJaspTable(title = gettext("Power by Effect Size"))
                 table$dependOn(c(
                     "test",
                     "es",
@@ -106,22 +111,27 @@ ttestPSClass <- R6::R6Class(
 
             table$addColumnInfo(
                 name = "es",
-                title = "True effect size",
+                title = gettext("True effect size"),
                 type = "string"
             )
             table$addColumnInfo(
                 name = "power",
-                title = "Power to detect",
+                title = gettext("Power to detect"),
                 type = "string"
             )
             table$addColumnInfo(
                 name = "desc",
-                title = "Description",
+                title = gettext("Description"),
                 type = "string"
             )
 
             pow <- c("\u226450%", "50% \u2013 80%", "80% \u2013 95%", "\u226595%")
-            desc <- c("Likely miss", "Good chance of missing", "Probably detect", "Almost surely detect")
+            desc <- c(
+                gettext("Likely miss"),
+                gettext("Good chance of missing"),
+                gettext("Probably detect"),
+                gettext("Almost surely detect")
+            )
 
             for (i in 1:4) {
                 row <- list("power" = pow[i], "desc" = desc[i])
@@ -149,33 +159,27 @@ ttestPSClass <- R6::R6Class(
             alpha <- ifelse(calc == "alpha", r$alpha, lst$alpha)
             alt <- lst$alt
 
-            n_text <- paste0("a sample size of ", n)
+            n_text <- gettextf("a sample size of ", n)
 
             tail_text <- ifelse(alt == "two.sided",
-                "two-sided",
-                "one-sided"
+                gettext("two-sided"),
+                gettext("one-sided")
             )
 
             if (calc == "n") {
-                str <- paste0(
-                    "We would need ", n_text, " to reliably (with probability greater than ",
-                    power, ") detect an effect size of ",
-                    "<i>\u03B4\u2265</i>", d, ", assuming a ", tail_text, " criterion for detection that allows for a maximum Type I error rate of <i>α=</i>", alpha,
-                    "."
+                str <- gettextf(
+                    "We would need %s to reliably (with probability greater than %s) detect an effect size of <i>\u03B4\u2265</i>%s, assuming a %s criterion for detection that allows for a maximum Type I error rate of <i>α=</i>%s.",
+                    n_text, power, d, tail_text, alpha
                 )
             } else if (calc == "es") {
-                str <- paste0(
-                    "A design with ", n_text, "will reliably (with probability greater than ",
-                    power, ") detect effect sizes of <i>\u03B4\u2265</i>", round(d, 3),
-                    ", assuming a ", tail_text, " criterion for detection that allows for a maximum Type I error rate of <i>α=</i>", alpha,
-                    "."
+                str <- gettextf(
+                    "A design with %swill reliably (with probability greater than %s) detect effect sizes of <i>\u03B4\u2265</i>%s, assuming a %s criterion for detection that allows for a maximum Type I error rate of <i>α=</i>%s.",
+                    n_text, power, round(d, 3), tail_text, alpha
                 )
             } else if (calc == "power") {
-                str <- paste0(
-                    "A design with ", n_text, " can detect effect sizes of ",
-                    "<i>\u03B4\u2265</i>", d, " with a probability of at least",
-                    round(power, 3), ", assuming a ", tail_text, " criterion for detection that allows for a maximum Type I error rate of <i>α=</i>", alpha,
-                    "."
+                str <- gettextf(
+                    "A design with %s can detect effect sizes of <i>\u03B4\u2265</i>%s with a probability of at least%s, assuming a %s criterion for detection that allows for a maximum Type I error rate of <i>α=</i>%s.",
+                    n_text, d, round(power, 3), tail_text, alpha
                 )
             }
 
@@ -185,9 +189,11 @@ ttestPSClass <- R6::R6Class(
             )
 
             str <- paste0(
-                str, "<p>To evaluate the design specified in the table, we can consider ",
-                "how sensitive it is to true effects of increasing sizes; that is, are we likely to ",
-                "correctly conclude that ", hypo_text, " when the effect size is large enough to care about?"
+                str,
+                gettextf(
+                    "<p>To evaluate the design specified in the table, we can consider how sensitive it is to true effects of increasing sizes; that is, are we likely to correctly conclude that %s when the effect size is large enough to care about?",
+                    hypo_text
+                )
             )
 
             html[["text"]] <- str
@@ -206,16 +212,9 @@ ttestPSClass <- R6::R6Class(
             ## Get options from interface
             power <- ifelse(calc == "power", r$power, lst$pow)
 
-            str <- paste0(
-                "<p>The power contour plot shows how the sensitivity of the ",
-                "test changes with the hypothetical effect size ",
-                "and the sample sizes in the design. As we increase the sample sizes, ",
-                "smaller effect sizes become reliably detectable.",
-                "<p>Conversely, if one is satisfied ",
-                "to reliably detect only larger effect sizes, smaller sample sizes are needed. ",
-                "The solid black curve on the contour plot shows sample size/effect size ",
-                "combinations with a power of ", round(power, 3), ". The point shows the specified ",
-                " design and effect size."
+            str <- gettextf(
+                "<p>The power contour plot shows how the sensitivity of the test changes with the hypothetical effect size and the sample sizes in the design. As we increase the sample sizes, smaller effect sizes become reliably detectable.<p>Conversely, if one is satisfied to reliably detect only larger effect sizes, smaller sample sizes are needed. The solid black curve on the contour plot shows sample size/effect size combinations with a power of %s. The point shows the specified  design and effect size.",
+                round(power, 3)
             )
 
             html[["text"]] <- str
@@ -238,34 +237,31 @@ ttestPSClass <- R6::R6Class(
             alpha <- ifelse(calc == "alpha", r$alpha, lst$alpha)
             alt <- lst$alt
 
-            n_text <- paste0("sample sizes of ", n)
+            n_text <- gettextf("sample sizes of %s", n)
 
             if (alt == "two.sided") {
-                tail_text <- "two-sided"
+                tail_text <- gettext("two-sided")
                 null_text <- "<i>\u03B4\u2264</i>0,"
                 alt_text <- "<i>|\u03B4|\u003E</i>"
                 crit_text <- "criteria"
             } else {
-                tail_text <- "one-sided"
+                tail_text <- gettext("one-sided")
                 null_text <- "<i>\u03B4=</i>0,"
                 alt_text <- "<i>\u03B4\u003E</i>"
                 crit_text <- "criterion"
             }
 
             if (calc == "power") {
-                pwr_string <- paste0("have power of at least ", round(power, 3))
+                pwr_string <- gettextf("have power of at least %s", round(power, 3))
             } else {
-                pwr_string <- paste0("only be sufficiently sensitive (power >", round(power, 3), ")")
+                pwr_string <- gettextf("only be sufficiently sensitive (power >%s)", round(power, 3))
             }
 
             d50 <- pwr::pwr.t.test(n = n, sig.level = alpha, power = .5, alternative = alt, type = private$type)$d
 
-            str <- paste0(
-                "<p>The power curve above shows how the sensitivity of the test and design ",
-                "is larger for larger effect sizes. If we obtained ", n_text,
-                " our test and design would ", pwr_string, " to effect sizes of ", alt_text, d, ". ",
-                "<p>We would be more than likely to miss (power less than 50%) effect sizes less than <i>\u03B4=</i>",
-                round(d50, 3), "."
+            str <- gettextf(
+                "<p>The power curve above shows how the sensitivity of the test and design is larger for larger effect sizes. If we obtained %s our test and design would %s to effect sizes of %s%s. <p>We would be more than likely to miss (power less than 50%%) effect sizes less than <i>\u03B4=</i>%s.",
+                n_text, pwr_string, alt_text, d, round(d50, 3)
             )
 
             html[["text"]] <- str
@@ -287,7 +283,7 @@ ttestPSClass <- R6::R6Class(
             power <- ifelse(calc == "power", r$power, lst$pow)
             alt <- lst$alt
 
-            n_text <- paste0("sample sizes of at least ", n)
+            n_text <- gettextf("sample sizes of at least %s", n)
 
             if (alt == "two.sided") {
                 tail_text <- "two-sided"
@@ -301,11 +297,9 @@ ttestPSClass <- R6::R6Class(
                 crit_text <- "criterion"
             }
 
-            str <- paste0(
-                "<p>The power curve above shows how the sensitivity of the test and design ",
-                "is larger for larger effect sizes. In order for our test and design to have sufficient sensitivity ",
-                "(power > ", round(power, 3), ") to detect that ", alt_text, " when the effect size is ", d, " or larger, ",
-                "we would need ", n_text, "."
+            str <- gettextf(
+                "<p>The power curve above shows how the sensitivity of the test and design is larger for larger effect sizes. In order for our test and design to have sufficient sensitivity (power > %s) to detect that %s when the effect size is %s or larger, we would need %s.",
+                round(power, 3), alt_text, d, n_text
             )
 
             html[["text"]] <- str
@@ -328,33 +322,23 @@ ttestPSClass <- R6::R6Class(
             alpha <- ifelse(calc == "alpha", r$alpha, lst$alpha)
             alt <- lst$alt
 
-            n_text <- paste0("a sample size of ", n)
+            n_text <- gettextf("a sample size of %s", n)
 
             if (alt == "two.sided") {
-                tail_text <- "two-sided"
+                tail_text <- gettext("two-sided")
                 null_text <- "<i>\u03B4=</i>0,"
                 alt_text <- "<i>|\u03B4|\u2265</i>"
-                crit_text <- "criteria"
+                crit_text <- gettext("criteria")
             } else {
-                tail_text <- "one-sided"
+                tail_text <- gettext("one-sided")
                 null_text <- "<i>\u03B4\u2264</i>0,"
                 alt_text <- "<i>|\u03B4|\u2265</i>"
-                crit_text <- "criterion"
+                crit_text <- gettext("criterion")
             }
 
-            str <- paste0(
-                "<p>The figure above shows two sampling distributions: the sampling distribution ",
-                "of the <i>estimated</i> effect size when <i>\u03B4=</i>0 (left), and when <i>\u03B4=</i>", d,
-                " (right). Both assume ", n_text, ".",
-                "<p>The vertical dashed lines show the ", crit_text, " we would set for a ", tail_text,
-                " test with <i>α=</i>", alpha, ". When the observed effect size is far enough ",
-                "away from 0 to be more extreme than the ", crit_text, " we say we 'reject' the null hypothesis. ",
-                "If the null hypothesis were true and ", null_text,
-                " the evidence would lead us to wrongly reject the null hypothesis at most ", 100 * alpha, "% of the time. ",
-                "<p>On the other hand, if <i>\u03B4\u2265</i>", d, ", the evidence would exceed the criterion ",
-                " &mdash; and hence we would correctly claim that <i>\u03B4\u2265</i>0 &mdash; at least ",
-                100 * round(power, 3), "% of the time. The design's power for detecting effects of ", alt_text, d,
-                " is thus ", round(power, 3), "."
+            str <- gettextf(
+                "<p>The figure above shows two sampling distributions: the sampling distribution of the <i>estimated</i> effect size when <i>\u03B4=</i>0 (left), and when <i>\u03B4=</i>%s (right). Both assume %s.<p>The vertical dashed lines show the %s we would set for a %s test with <i>α=</i>%s. When the observed effect size is far enough away from 0 to be more extreme than the %s we say we 'reject' the null hypothesis. If the null hypothesis were true and %s the evidence would lead us to wrongly reject the null hypothesis at most %s% of the time. <p>On the other hand, if <i>\u03B4\u2265</i>%s, the evidence would exceed the criterion  &mdash; and hence we would correctly claim that <i>\u03B4\u2265</i>0 &mdash; at least %s% of the time. The design's power for detecting effects of %s%s is thus %s.",
+                d, n_text, crit_text, tail_text, alpha, crit_text, null_text, 100 * alpha, d, 100 * round(power, 3), alt_text, d, round(power, 3)
             )
 
 
@@ -377,10 +361,10 @@ ttestPSClass <- R6::R6Class(
             probs_es <- private$probs_es
 
             esText <- c(
-                paste0("0 < \u03B4 \u2264 ", format(round(probs_es[1], 3), nsmall = 3)),
-                paste0(format(round(probs_es[1], 3), nsmall = 3), " < \u03B4 \u2264 ", format(round(probs_es[2], 3), nsmall = 3)),
-                paste0(format(round(probs_es[2], 3), nsmall = 3), " < \u03B4 \u2264 ", format(round(probs_es[3], 3), nsmall = 3)),
-                paste0("\u03B4 \u2265 ", format(round(probs_es[3], 3), nsmall = 3))
+                gettextf("0 < \u03B4 \u2264 %s", format(round(probs_es[1], 3), nsmall = 3)),
+                gettextf("%s < \u03B4 \u2264 %s", format(round(probs_es[1], 3), nsmall = 3), format(round(probs_es[2], 3), nsmall = 3)),
+                gettextf("%s < \u03B4 \u2264 %s", format(round(probs_es[2], 3), nsmall = 3), format(round(probs_es[3], 3), nsmall = 3)),
+                gettextf("\u03B4 \u2265 %s", format(round(probs_es[3], 3), nsmall = 3))
             )
 
             cols <- list("es" = esText)
@@ -391,7 +375,7 @@ ttestPSClass <- R6::R6Class(
         .preparePowerContour = function(r, lst) {
             image <- self$jaspResults[["powerContour"]]
             if (is.null(image)) {
-                image <- createJaspPlot(title="Power Contour", width=400, height=350)
+                image <- createJaspPlot(title=gettext("Power Contour"), width=400, height=350)
                 image$dependOn(c(
                     "test",
                     "es",
@@ -453,7 +437,11 @@ ttestPSClass <- R6::R6Class(
         .preparePowerCurveES = function(r, lst) {
             image <- self$jaspResults[["powerCurveES"]]
             if (is.null(image)) {
-                image <- createJaspPlot(title="Power Curve by Effect Size", width=400, height=350)
+                image <- createJaspPlot(
+                    title = gettext("Power Curve by Effect Size"),
+                    width = 400,
+                    height = 350
+                )
                 image$dependOn(c(
                     "test",
                     "es",
@@ -491,7 +479,11 @@ ttestPSClass <- R6::R6Class(
         .preparePowerCurveN = function(r, lst) {
             image <- self$jaspResults[["powerCurveN"]]
             if (is.null(image)) {
-                image <- createJaspPlot(title="Power Curve by N", width=400, height=350)
+                image <- createJaspPlot(
+                    title = gettext("Power Curve by N"),
+                    width = 400,
+                    height = 350
+                )
                 image$dependOn(c(
                     "test",
                     "es",
@@ -553,7 +545,11 @@ ttestPSClass <- R6::R6Class(
         .preparePowerDist = function(r, lst) {
             image <- self$jaspResults[["powerDist"]]
             if (is.null(image)) {
-                image <- createJaspPlot(title="Power Demonstration", width=400, height=300)
+                image <- createJaspPlot(
+                    title = gettext("Power Demonstration"),
+                    width = 400,
+                    height = 300
+                )
                 image$dependOn(c(
                     "test",
                     "es",
