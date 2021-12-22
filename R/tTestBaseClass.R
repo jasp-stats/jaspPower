@@ -194,11 +194,9 @@ tTestBaseClass <- R6::R6Class(
         ggplot2::scale_x_log10(sec.axis = secondary_axis) +
         ggplot2::labs(
           x = gettext("Sample size (group 1)"),
-          y = gettext("Hypothetical effect size (&delta;)"),
+          y = gettext("Hypothetical effect size (δ)"),
           fill = gettext("Power")
         ) +
-        # To properly render &delta
-        ggplot2::theme(axis.title.y = ggtext::element_textbox_simple(valign = 0.5, width = NULL, orientation = "left-rotated")) +
         ggplot2::guides(fill = ggplot2::guide_colorsteps(barheight = ggplot2::unit(7, "cm"))) +
         # Highlight boundary of power
         # Note: This doesn't render quite perfectly right now
@@ -257,11 +255,10 @@ tTestBaseClass <- R6::R6Class(
       p <- p +
         ggplot2::geom_line(size = 1.5) +
         ggplot2::labs(
-          x = gettext("Hypothetical effect size (&delta;)"),
+          x = gettext("Hypothetical effect size (δ)"),
           y = gettext("Power"),
           subtitle = plot_subtitle
         ) +
-        ggplot2::theme(axis.title.x = ggtext::element_textbox_simple(halign = 0.5, width = NULL)) +
         .segment(
           x = delta, y = pow,
           xend = delta, yend = 0

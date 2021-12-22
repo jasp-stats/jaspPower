@@ -9,7 +9,6 @@ Maintainer: JASP Team <info@jasp-stats.org>
 Description: This module offers analyses.
 License: GPL (>= 2)
 Imports:
-  pwr,
-  ggtext
+  pwr
 Suggests:
   testthat
