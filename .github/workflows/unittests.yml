@@ -34,3 +34,10 @@ jobs:
       - name: Run unit tests
         run: source("tests/testthat.R")
         shell: Rscript {0}
+      - name: Archive plot snapshots on failure
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: plot-snapshots
+          path: tests/testthat/_snaps/**-new.svg
+          retention-days: 30
