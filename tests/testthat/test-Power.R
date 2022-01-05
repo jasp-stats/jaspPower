@@ -71,11 +71,11 @@ test_that("Power Demonstration plot matches", {
 test_that("Power by Effect Size table results match", {
 	table <- results[["results"]][["powerEStab"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list("Likely miss", "0 &lt; <unicode> <unicode> 0.870", "<unicode>50%",
-			 "Good chance of missing", "0.870 &lt; <unicode> <unicode> 0.870",
-			 "50% <unicode> 80%", "Probably detect", "0.870 &lt; <unicode> <unicode> 0.870",
-			 "80% <unicode> 95%", "Almost surely detect", "<unicode> <unicode> 0.870",
-			 "<unicode>95%"))
+  list("Likely miss", "0 &lt; <unicode> <unicode> 0.560", "<unicode>50%",
+      "Good chance of missing", "0.560 &lt; <unicode> <unicode> 0.764",
+      "50% <unicode> 80%", "Probably detect", "0.764 &lt; <unicode> <unicode> 0.958",
+      "80% <unicode> 95%", "Almost surely detect", "<unicode> <unicode> 0.958",
+      "<unicode>95%"))
 })
 
 test_that("A Priori Power Analysis table results match", {
