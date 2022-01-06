@@ -6,6 +6,7 @@ ttestPSClass <- R6::R6Class(
     private = list(
         #### Member variables ----
         type = "paired",
+        probs_es = NULL,
 
         #### Compute results ----
         .compute = function(stats) {
@@ -13,6 +14,16 @@ ttestPSClass <- R6::R6Class(
             pow.n <- ceiling(pwr::pwr.t.test(d = stats$es, sig.level = stats$alpha, power = stats$pow, alternative = stats$alt, type = private$type)$n)
             pow.es <- pwr::pwr.t.test(n = stats$n, power = stats$pow, sig.level = stats$alpha, alternative = stats$alt, type = private$type)$d
             pow.pow <- pwr::pwr.t.test(n = stats$n, d = stats$es, sig.level = stats$alpha, alternative = stats$alt, type = private$type)$power
+
+            # Calculate probs_es here to have access to stats list
+            probs <- c(.5, .8, .95)
+            probs_es <- sapply(probs, function(p) {
+                pwr::pwr.t.test(
+                    n = stats$n, sig.level = stats$alpha, power = p,
+                    alternative = stats$alt, type = private$type
+                )$d
+            })
+            private$probs_es <- probs_es
 
             return(list(n = pow.n, es = pow.es, power = pow.pow))
         },
@@ -364,13 +375,7 @@ ttestPSClass <- R6::R6Class(
         .populatePowerESTab = function() {
             table <- self$jaspResults[["powerEStab"]]
 
-            probs <- c(.5, .8, .95)
-            probs_es <- sapply(probs, function(p) {
-                pwr::pwr.t.test(
-                    n = stats$n, sig.level = stats$alpha, power = p,
-                    alternative = stats$alt, type = private$type
-                )$d
-            })
+            probs_es <- private$probs_es
 
             esText <- c(
                 paste0("0 < \u03B4 \u2264 ", format(round(probs_es[1], 3), nsmall = 3)),
