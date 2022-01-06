@@ -5,8 +5,8 @@ ttestPSClass <- R6::R6Class(
     inherit = tTestBaseClass,
     private = list(
         #### Member variables ----
-        probs_es = NULL,
         type = "paired",
+        probs_es = NULL,
 
         #### Compute results ----
         .compute = function(stats) {
@@ -15,10 +15,11 @@ ttestPSClass <- R6::R6Class(
             pow.es <- pwr::pwr.t.test(n = stats$n, power = stats$pow, sig.level = stats$alpha, alternative = stats$alt, type = private$type)$d
             pow.pow <- pwr::pwr.t.test(n = stats$n, d = stats$es, sig.level = stats$alpha, alternative = stats$alt, type = private$type)$power
 
+            # Calculate probs_es here to have access to stats list
             probs <- c(.5, .8, .95)
             probs_es <- sapply(probs, function(p) {
                 pwr::pwr.t.test(
-                    n = stats$n, sig.level = stats$alpha, power = stats$p,
+                    n = stats$n, sig.level = stats$alpha, power = p,
                     alternative = stats$alt, type = private$type
                 )$d
             })
