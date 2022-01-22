@@ -227,10 +227,10 @@ ttestISClass <- R6::R6Class(
       html[["text"]] <- str
 
       esText <- c(
-        gettextf("0 < \u03B4 \u2264 %s", format(round(probs_es[1], 3), nsmall = 3)),
-        gettextf("%s < \u03B4 \u2264 %s", format(round(probs_es[1], 3), nsmall = 3), format(round(probs_es[2], 3), nsmall = 3)),
-        gettextf("%s < \u03B4 \u2264 %s",format(round(probs_es[2], 3), nsmall = 3), format(round(probs_es[3], 3), nsmall = 3)),
-        gettextf("\u03B4 \u2265 %s", format(round(probs_es[3], 3), nsmall = 3))
+        gettextf("0 < %s %s  %s", "\u03B4", "\u2264", format(round(probs_es[1], 3), nsmall = 3)),
+        gettextf("%s < %s %s %s", format(round(probs_es[1], 3), nsmall = 3), "\u03B4", "\u2264", format(round(probs_es[2], 3), nsmall = 3)),
+        gettextf("%s < %s %s %s",format(round(probs_es[2], 3), nsmall = 3), "\u03B4", "\u2264", format(round(probs_es[3], 3), nsmall = 3)),
+        gettextf("%s %s %s", "\u03B4", "\u2265", format(round(probs_es[3], 3), nsmall = 3))
       )
 
       cols <- list("es" = esText)

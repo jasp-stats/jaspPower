@@ -194,7 +194,7 @@ tTestBaseClass <- R6::R6Class(
         ggplot2::scale_x_log10(sec.axis = secondary_axis) +
         ggplot2::labs(
           x = gettext("Sample size (group 1)"),
-          y = gettext("Hypothetical effect size (δ)"),
+          y = gettextf("Hypothetical effect size (%s)", "\u03B4"),
           fill = gettext("Power")
         ) +
         ggplot2::guides(fill = ggplot2::guide_colorsteps(barheight = ggplot2::unit(7, "cm"))) +
@@ -255,7 +255,7 @@ tTestBaseClass <- R6::R6Class(
       p <- p +
         ggplot2::geom_line(size = 1.5) +
         ggplot2::labs(
-          x = gettext("Hypothetical effect size (δ)"),
+          x = gettextf("Hypothetical effect size (%s)", "\u03B4"),
           y = gettext("Power"),
           subtitle = plot_subtitle
         ) +
