@@ -168,18 +168,18 @@ ttestPSClass <- R6::R6Class(
 
             if (calc == "n") {
                 str <- gettextf(
-                    "We would need %s to reliably (with probability greater than %s) detect an effect size of <i>\u03B4\u2265</i>%s, assuming a %s criterion for detection that allows for a maximum Type I error rate of <i>α=</i>%s.",
-                    n_text, power, d, tail_text, alpha
+                    "We would need %s to reliably (with probability greater than %s) detect an effect size of <i>%s%s</i>%s, assuming a %s criterion for detection that allows for a maximum Type I error rate of <i>α=</i>%s.",
+                    n_text, power, "\u03B4", "\u2265", d, tail_text, alpha
                 )
             } else if (calc == "es") {
                 str <- gettextf(
-                    "A design with %swill reliably (with probability greater than %s) detect effect sizes of <i>\u03B4\u2265</i>%s, assuming a %s criterion for detection that allows for a maximum Type I error rate of <i>α=</i>%s.",
-                    n_text, power, round(d, 3), tail_text, alpha
+                    "A design with %swill reliably (with probability greater than %s) detect effect sizes of <i>%s%s</i>%s, assuming a %s criterion for detection that allows for a maximum Type I error rate of <i>α=</i>%s.",
+                    n_text, power, "\u03B4", "\u2265", round(d, 3), tail_text, alpha
                 )
             } else if (calc == "power") {
                 str <- gettextf(
-                    "A design with %s can detect effect sizes of <i>\u03B4\u2265</i>%s with a probability of at least%s, assuming a %s criterion for detection that allows for a maximum Type I error rate of <i>α=</i>%s.",
-                    n_text, d, round(power, 3), tail_text, alpha
+                    "A design with %s can detect effect sizes of <i>%s%s</i>%s with a probability of at least%s, assuming a %s criterion for detection that allows for a maximum Type I error rate of <i>α=</i>%s.",
+                    n_text, "\u03B4", "\u2265", d, round(power, 3), tail_text, alpha
                 )
             }
 
@@ -260,8 +260,8 @@ ttestPSClass <- R6::R6Class(
             d50 <- pwr::pwr.t.test(n = n, sig.level = alpha, power = .5, alternative = alt, type = private$type)$d
 
             str <- gettextf(
-                "<p>The power curve above shows how the sensitivity of the test and design is larger for larger effect sizes. If we obtained %s our test and design would %s to effect sizes of %s%s. <p>We would be more than likely to miss (power less than 50%%) effect sizes less than <i>\u03B4=</i>%s.",
-                n_text, pwr_string, alt_text, d, round(d50, 3)
+                "<p>The power curve above shows how the sensitivity of the test and design is larger for larger effect sizes. If we obtained %s our test and design would %s to effect sizes of %s%s. <p>We would be more than likely to miss (power less than 50%%) effect sizes less than <i>%s=</i>%s.",
+                n_text, pwr_string, alt_text, d, "\u03B4", round(d50, 3)
             )
 
             html[["text"]] <- str
@@ -336,9 +336,18 @@ ttestPSClass <- R6::R6Class(
                 crit_text <- gettext("criterion")
             }
 
-            str <- gettextf(
-                "<p>The figure above shows two sampling distributions: the sampling distribution of the <i>estimated</i> effect size when <i>\u03B4=</i>0 (left), and when <i>\u03B4=</i>%s (right). Both assume %s.<p>The vertical dashed lines show the %s we would set for a %s test with <i>α=</i>%s. When the observed effect size is far enough away from 0 to be more extreme than the %s we say we 'reject' the null hypothesis. If the null hypothesis were true and %s the evidence would lead us to wrongly reject the null hypothesis at most %s%% of the time. <p>On the other hand, if <i>\u03B4\u2265</i>%s, the evidence would exceed the criterion  &mdash; and hence we would correctly claim that <i>\u03B4\u2265</i>0 &mdash; at least %s%% of the time. The design's power for detecting effects of %s%s is thus %s.",
-                d, n_text, crit_text, tail_text, alpha, crit_text, null_text, 100 * alpha, d, 100 * round(power, 3), alt_text, d, round(power, 3)
+            str <- paste(
+                "<p>",
+                gettextf("The figure above shows two sampling distributions: the sampling distribution of the <i>estimated</i> effect size when <i>%s=</i>0 (left), and when <i>%s=</i>%s (right).", "\u03B4", "\u03B4", d),
+                gettextf("Both assume %s.", n_text),
+                "</p><p>",
+                gettextf("The vertical dashed lines show the %s we would set for a %s test with <i>α=</i>%s.", crit_text, tail_text, alpha),
+                gettextf("When the observed effect size is far enough away from 0 to be more extreme than the %s we say we 'reject' the null hypothesis.", crit_text),
+                gettextf("If the null hypothesis were true and %s the evidence would lead us to wrongly reject the null hypothesis at most %s%% of the time.", null_text, 100 * alpha),
+                "</p><p>",
+                gettextf("On the other hand, if <i>%s%s</i>%s, the evidence would exceed the criterion  &mdash; and hence we would correctly claim that <i>%s%s</i>0 &mdash; at least %s%% of the time.", "\u03B4", "\u2265", d, "\u03B4", "\u2265", 100 * round(power, 3)),
+                gettextf("The design's power for detecting effects of %s%s is thus %s.", alt_text, d, round(power, 3)),
+                "</p>"
             )
 
 
