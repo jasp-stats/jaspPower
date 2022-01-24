@@ -8,18 +8,18 @@ tTestBaseClass <- R6::R6Class(
       # Check whether the provided effect size is valid
       if (alternative == "two.sided") {
         if (d == 0) {
-          stop("Effect size d can't be 0 with a two-sided alternative hypothesis.")
+          stop(gettext("Effect size d can't be 0 with a two-sided alternative hypothesis."))
         }
       } else if (alternative == "less") {
         if (d >= 0) {
-          stop("Effect size d has to be lower than 0 with an alternative hypothesis of lesser.")
+          stop(gettext("Effect size d has to be lower than 0 with an alternative hypothesis of lesser."))
         }
       } else if (alternative == "greater") {
         if (d <= 0) {
-          stop("Effect size d has to be greater than 0 with an alternative hypothesis of greater.")
+          stop(gettext("Effect size d has to be greater than 0 with an alternative hypothesis of greater."))
         }
       } else {
-        stop("Invalid alternative.")
+        stop(gettext("Invalid alternative."))
       }
     },
     #### Init + run functions ----
@@ -33,7 +33,7 @@ tTestBaseClass <- R6::R6Class(
       es <- self$options$es
       alpha <- self$options$alpha
 
-      if (pow >= 1) stop("Power must be less than 1.")
+      if (pow >= 1) stop(gettext("Power must be less than 1."))
 
       stats <- list(
         # Independentend samples
@@ -101,41 +101,37 @@ tTestBaseClass <- R6::R6Class(
         self$jaspResults[["intro"]] <- html
       }
 
-      str <- paste0(
-        "The purpose of a <i>power analysis</i> is to evaluate ",
-        "the sensitivity of a design and test. "
+      str <- gettext(
+        "The purpose of a <i>power analysis</i> is to evaluate the sensitivity of a design and test. "
       )
 
       test_names <- c(
-        ttest_independent = "an indipendent samples",
-        ttest_paired = "a paired samples",
-        ttest_onesample = "a one sample"
+        ttest_independent = gettext("an indipendent samples"),
+        ttest_paired = gettext("a paired samples"),
+        ttest_onesample = gettext("a one sample)")
       )
-      test_sentence_end <- paste0(
-        "when using <i>", test_names[[self$options$test]], "</i> t-test."
+      test_sentence_end <- gettextf(
+        "when using <i>%s</i> t-test.", test_names[[self$options$test]]
       )
 
       if (calc == "n") {
-        str <- paste0(
-          str, "You have chosen to calculate the minimum sample size needed ",
-          "to have an experiment sensitive enough to consistently ",
-          "detect the specified hypothetical effect size ",
-          test_sentence_end
+        mid_sentence <- gettextf(
+          "You have chosen to calculate the minimum sample size needed to have an experiment sensitive enough to consistently detect the specified hypothetical effect size"
         )
       } else if (calc == "es") {
-        str <- paste0(
-          str, "You have chosen to calculate the minimum hypothetical ",
-          "effect size for which the chosen design will have the ",
-          "specified sensitivity",
-          test_sentence_end
+        mid_sentence <- gettextf(
+          "You have chosen to calculate the minimum hypothetical effect size for which the chosen design will have the specified sensitivity"
         )
       } else if (calc == "power") {
-        str <- paste0(
-          str, "You have chosen to calculate the sensitivity of the ",
-          "chosen design for detecting the specified effect size",
-          test_sentence_end
+        mid_sentence <- gettextf(
+          "You have chosen to calculate the sensitivity of the chosen design for detecting the specified effect size"
         )
       }
+      str <- paste0(
+        str,
+        mid_sentence,
+        test_sentence_end
+      )
 
       html[["text"]] <- str
     },
@@ -173,7 +169,7 @@ tTestBaseClass <- R6::R6Class(
       if (n_ratio != 1) {
         secondary_axis <- ggplot2::sec_axis(
           ~ . * n_ratio,
-          name = "Sample size (group 2)"
+          name = gettext("Sample size (group 2)")
         )
       }
 
@@ -197,9 +193,9 @@ tTestBaseClass <- R6::R6Class(
         ggplot2::geom_contour_filled(breaks = pretty(c(0, 1), n = ps$pow.n.levels), alpha = ps$background.alpha) +
         ggplot2::scale_x_log10(sec.axis = secondary_axis) +
         ggplot2::labs(
-          x = "Sample size (group 1)",
-          y = expression(paste("Hypothetical effect size (", delta, ")", sep = "")),
-          fill = "Power"
+          x = gettext("Sample size (group 1)"),
+          y = gettextf("Hypothetical effect size (%s)", "\u03B4"),
+          fill = gettext("Power")
         ) +
         ggplot2::guides(fill = ggplot2::guide_colorsteps(barheight = ggplot2::unit(7, "cm"))) +
         # Highlight boundary of power
@@ -259,10 +255,8 @@ tTestBaseClass <- R6::R6Class(
       p <- p +
         ggplot2::geom_line(size = 1.5) +
         ggplot2::labs(
-          x = expression(
-            paste("Hypothetical effect size (", delta, ")", sep = "")
-          ),
-          y = "Power",
+          x = gettextf("Hypothetical effect size (%s)", "\u03B4"),
+          y = gettext("Power"),
           subtitle = plot_subtitle
         ) +
         .segment(
@@ -320,8 +314,8 @@ tTestBaseClass <- R6::R6Class(
         ggplot2::scale_x_log10(limits = lims$xlim) +
         ggplot2::scale_y_continuous(limits = lims$ylim) +
         ggplot2::labs(
-          x = "Sample size (group 1)",
-          y = "Power",
+          x = gettext("Sample size (group 1)"),
+          y = gettext("Power"),
           subtitle = plot_subtitle
         ) +
         .segment(
@@ -360,7 +354,7 @@ tTestBaseClass <- R6::R6Class(
         ggplot2::geom_vline(data = rect, ggplot2::aes(xintercept = x1), linetype = "dashed") +
         ggplot2::geom_vline(data = rect, ggplot2::aes(xintercept = x2), linetype = "dashed") +
         ggplot2::coord_cartesian(xlim = lims$xlim, ylim = lims$ylim, expand = FALSE) +
-        ggplot2::labs(x = "Observed standardized effect size (d)", y = "Probability Density") +
+        ggplot2::labs(x = gettext("Observed standardized effect size (d)"), y = gettext("Probability Density")) +
         ggtheme +
         themeSpec +
         ggplot2::scale_fill_manual(values = ps$pal(5)[c(4, 1)])

@@ -93,24 +93,24 @@ pwr.t2n.ratio <- function(n_ratio = 1, d, sig.level, power, alternative) {
     ncp <- sqrt(effN) * d
     if (alternative == "two.sided") {
       if (d == 0) {
-        stop("Effect size can't be 0 with a two-sided alternative hypothesis.")
+        stop(gettext("Effect size can't be 0 with a two-sided alternative hypothesis."))
       }
       critt <- qt(sig.level / 2, df)
       pow <- pt(critt, df, ncp) + 1 - pt(-critt, df, ncp)
     } else if (alternative == "less") {
       if (d >= 0) {
-        stop("Effect size has to be lower than 0 with an alternative of lesser.")
+        stop(gettext("Effect size has to be lower than 0 with an alternative of lesser."))
       }
       critt <- qt(sig.level, df)
       pow <- pt(critt, df, ncp)
     } else if (alternative == "greater") {
       if (d <= 0) {
-        stop("Effect size has to be greater than 0 with an alternative of greater.")
+        stop(gettext("Effect size has to be greater than 0 with an alternative of greater."))
       }
       critt <- qt(1 - sig.level, df)
       pow <- 1 - pt(critt, df, ncp)
     } else {
-      stop("Invalid alternative.")
+      stop(gettext("Invalid alternative."))
     }
     return(log(pow) - log(power))
   }, "n1")
