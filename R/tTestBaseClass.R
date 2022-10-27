@@ -3,24 +3,31 @@ tTestBaseClass <- R6::R6Class(
   inherit = basicShimClass,
   private = list(
     .check = function () {
-      alternative <- self$options$alt
-      d <- self$options$es
-      # Check whether the provided effect size is valid
-      if (alternative == "two.sided") {
-        if (d == 0) {
-          stop(gettext("Effect size d can't be 0 with a two-sided alternative hypothesis."))
-        }
-      } else if (alternative == "less") {
-        if (d >= 0) {
-          stop(gettext("Effect size d has to be lower than 0 with an alternative hypothesis of lesser."))
-        }
-      } else if (alternative == "greater") {
-        if (d <= 0) {
-          stop(gettext("Effect size d has to be greater than 0 with an alternative hypothesis of greater."))
+      if (self$options$test != "test_oneprop" && self$options$test != "test_twoprop") {
+        alternative <- self$options$alt
+        d <- self$options$es
+        # Check whether the provided effect size is valid
+        if (alternative == "two.sided") {
+          if (d == 0) {
+            stop(gettext("Effect size can't be 0 with a two-sided alternative hypothesis."))
+          }
+        } else if (alternative == "less") {
+          if (d >= 0) {
+            stop(gettext("Effect size has to be lower than 0 with an alternative hypothesis of lesser."))
+          }
+        } else if (alternative == "greater") {
+          if (d <= 0) {
+            stop(gettext("Effect size has to be greater than 0 with an alternative hypothesis of greater."))
+          }
+        } else {
+          stop(gettext("Invalid alternative."))
         }
       } else {
-        stop(gettext("Invalid alternative."))
+        d <- self$options$adp
+        if(d == 0)
+          stop(gettext("Absolute difference in proportions has to be greater than 0."))
       }
+
     },
     #### Init + run functions ----
     .run = function() {
@@ -30,6 +37,8 @@ tTestBaseClass <- R6::R6Class(
       n_ratio <- self$options$n_ratio
       pow <- self$options$power
       alt <- self$options$alt
+      p1 <- self$options$p1
+      adp <- self$options$adp
       es <- self$options$es
       alpha <- self$options$alpha
 
@@ -39,6 +48,9 @@ tTestBaseClass <- R6::R6Class(
         # Independentend samples
         n1 = n,
         n2 = ceiling(n_ratio * n),
+        # Proportion test
+        p1 = p1,
+        p2 = ifelse(alt == "greater", p1 - adp, p1 + adp),
         # Rest
         n = n,
         # Shared
@@ -50,6 +62,7 @@ tTestBaseClass <- R6::R6Class(
       )
 
       ## Compute results
+
       results <- private$.compute(stats)
 
       private$.initPowerTab(results)
@@ -106,12 +119,15 @@ tTestBaseClass <- R6::R6Class(
       )
 
       test_names <- c(
-        ttest_independent = gettext("an indipendent samples"),
-        ttest_paired = gettext("a paired samples"),
-        ttest_onesample = gettext("a one sample)")
+        ttest_independent = gettext("an indipendent samples t-test"),
+        ttest_paired = gettext("a paired samples t-test"),
+        ttest_onesample = gettext("a one sample t-test"),
+        ztest_onesample = gettext("a one sample z-test"),
+        test_oneprop = gettext("a one proportion test"),
+        test_twoprop = gettext("a two proportions test")
       )
       test_sentence_end <- gettextf(
-        "when using <i>%s</i> t-test.", test_names[[self$options$test]]
+        " when using <i>%s</i>.", test_names[[self$options$test]]
       )
 
       if (calc == "n") {

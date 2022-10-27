@@ -29,10 +29,13 @@ Form
     indexDefaultValue: 0
     label: qsTr("Statistical test:")
     values: [
-      { label: "Independent Samples T-Test", value: "ttest_independent"},
-      { label: "Paired Samples T-Test",  value: "ttest_paired" },
-      { label: "One Sample T-Test",  value: "ttest_onesample"   }
-      // { label: "ANOVA",  value: "anova" }
+      { label: "Independent Samples T-Test", value: "ttest_independent" },
+      { label: "Paired Samples T-Test",  value: "ttest_paired"          },
+      { label: "One Sample T-Test",  value: "ttest_onesample"           },
+      { label: "One Sample Z-Test",  value: "ztest_onesample"           },
+      { label: "One Proportion Test",  value: "test_oneprop"            },
+      { label: "Two Proportions Test",  value: "test_twoprop"           }
+      //{ label: "ANOVA",  value: "anova" }
     ]
   }
 
@@ -64,9 +67,37 @@ Form
           ]
         }
 
+        Text {
+          text: qsTr("First proportion")
+          enabled: test.currentIndex == 5
+        }
+				DoubleField {
+          id: p1
+          name: "p1"
+          label: qsTr("p1")
+          min: 0.01
+          max: 0.99
+          defaultValue: 0.5
+          enabled: test.currentIndex == 5
+        }
+
+        Text {
+          text: qsTr("Minimal absolute difference of interest")
+          enabled: test.currentIndex == 5 && calc.currentIndex != 2
+        }
+				DoubleField {
+          id: adp
+          name: "adp"
+          label: qsTr("|Δp|")
+          min: 0.01
+          max: 0.99
+          defaultValue: 0.1
+          enabled: test.currentIndex == 5 && calc.currentIndex != 2
+        }
+
 				Text {
           text: qsTr("Minimal effect size of interest:")
-          enabled: calc.currentIndex != 2
+          enabled: test.currentIndex != 5 && calc.currentIndex != 2
         }
 				DoubleField {
           id: es
@@ -74,7 +105,7 @@ Form
           label: qsTr("δ")
           min: 0.01
           defaultValue: 0.5
-          enabled: calc.currentIndex != 2
+          enabled: test.currentIndex != 5 && calc.currentIndex != 2
         }
 
 				Text {
@@ -94,12 +125,12 @@ Form
         // No groups in single sample t-test
 				Text {
           text: qsTr("Sample size:")
-          visible: test.currentValue == 'ttest_onesample'
+          visible: test.currentValue == 'ttest_onesample' || test.currentValue == 'test_oneprop' || test.currentValue == 'ztest_onesample'
           enabled: calc.currentIndex != 0
         }
         Text {
           text: qsTr("Sample size per group:")
-          visible: test.currentValue == 'ttest_independent' || test.currentValue == 'ttest_paired'
+          visible: test.currentValue == 'ttest_independent' || test.currentValue == 'ttest_paired' || test.currentValue == 'test_twoprop'
           enabled: calc.currentIndex != 0
         }
 				IntegerField {
@@ -123,7 +154,7 @@ Form
         // No sample size ratio in single sample t-test
         Text {
           text: qsTr("Sample size ratio:")
-          visible: test.currentValue == 'ttest_independent'
+          visible: test.currentValue == 'ttest_independent' || test.currentValue == 'test_twoprop'
         }
 				DoubleField {
           id: n_ratio
@@ -131,7 +162,7 @@ Form
           label: qsTr("N₁/N₂")
           min: 0
           defaultValue: 1
-          visible: test.currentValue == 'ttest_independent'
+          visible: test.currentValue == 'ttest_independent' || test.currentValue == 'test_twoprop'
         }
 
         Text { text: qsTr("Alternative Hypothesis:") }

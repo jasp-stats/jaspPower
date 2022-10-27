@@ -1,7 +1,7 @@
 # Originally based on https://github.com/richarddmorey/jpower
 
-ttestISClass <- R6::R6Class(
-  "ttestISClass",
+test2PoisClass <- R6::R6Class(
+  "test2PoisClass",
   inherit = tTestBaseClass,
   private = list(
     # Functions are called from .run in the parent class
@@ -11,20 +11,17 @@ ttestISClass <- R6::R6Class(
 
 
       ## Compute numbers for table
-      pow.n <- try(ceiling(pwr.t2n.ratio(n_ratio = stats$n_ratio, d = stats$es, sig.level = stats$alpha, power = stats$pow, alternative = stats$alt)), silent = TRUE)
-      pow.es <- try(pwr.t2n.test(n1 = stats$n1, n2 = stats$n2, power = stats$pow, sig.level = stats$alpha, alternative = stats$alt)$d, silent = TRUE)
-      pow.pow <- try(pwr.t2n.test(n1 = stats$n1, n2 = stats$n2, d = stats$es, sig.level = stats$alpha, alternative = stats$alt)$power, silent = TRUE)
-      #            pow.alpha = try(pwr.t2n.test(n1 = stats$n1, n2 = stats$n2, d = stats$es, sig.level = NULL, power = stats$pow, alternative = stats$alt)$sig.level, silent=TRUE)
+      pow.n <- try(ceiling(pwr.2p2n.ratio(n_ratio = stats$n_ratio, h = stats$es, sig.level = stats$alpha, power = stats$pow, alternative = stats$alt)), silent = TRUE)
+      pow.es <- try(pwr::pwr.2p2n.test(n1 = stats$n1, n2 = stats$n2, power = stats$pow, sig.level = stats$alpha, alternative = stats$alt)$h, silent = TRUE)
+      pow.pow <- try(pwr::pwr.2p2n.test(n1 = stats$n1, n2 = stats$n2, h = stats$es, sig.level = stats$alpha, alternative = stats$alt)$power, silent = TRUE)
 
-      #            if (class(pow.alpha) == 'try-error')
-      #                pow.alpha <- 0
 
-      d50 <- pwr.t2n.test(
+      d50 <- pwr::pwr.2p2n.test(
         n1 = stats$n1,
         n2 = stats$n2,
         sig.level = stats$alpha,
         power = .5, alternative = stats$alt
-      )$d
+      )$h
 
       return(list(n1 = pow.n, n2 = ceiling(pow.n * stats$n_ratio), es = pow.es, power = pow.pow, d50 = d50))
     },
@@ -77,9 +74,9 @@ ttestISClass <- R6::R6Class(
 
       for (i in seq_along(order)) {
         table$addColumnInfo(colNames[order[i]],
-          title = colLabels[order[i]],
-          overtitle = if (calc == "n" && i > 2 || calc != "n" && i > 1) "User Defined" else NULL,
-          type = colType[order[i]]
+                            title = colLabels[order[i]],
+                            overtitle = if (calc == "n" && i > 2 || calc != "n" && i > 1) "User Defined" else NULL,
+                            type = colType[order[i]]
         )
       }
 
@@ -174,22 +171,22 @@ ttestISClass <- R6::R6Class(
       alt <- lst$alt
 
       n_text <- ifelse(n1 == n2,
-        gettextf("a sample size of %s in each group ", n1),
-        gettextf("group sample sizes of %s and %s respectively, ", n1, n2)
+                       gettextf("a sample size of %s in each group ", n1),
+                       gettextf("group sample sizes of %s and %s respectively, ", n1, n2)
       )
       tail_text <- ifelse(alt == "two.sided",
-        "two-sided",
-        "one-sided"
+                          "two-sided",
+                          "one-sided"
       )
 
       print("===> pre-calc")
       probs <- c(.5, .8, .95)
       probs_es <- sapply(probs, function(p) {
-        pwr.t2n.test(
+        pwr::pwr.2p2n.test(
           n1 = n1, n2 = n2,
           sig.level = alpha, power = p,
           alternative = alt
-        )$d
+        )$h
       })
       print("===> post-calc")
       print(probs_es)
@@ -212,8 +209,8 @@ ttestISClass <- R6::R6Class(
       }
 
       hypo_text <- ifelse(alt == "two.sided",
-        "|<i>\u03B4</i>|><i>0</i>",
-        "<i>\u03B4>0</i>"
+                          "|<i>\u03B4</i>|><i>0</i>",
+                          "<i>\u03B4>0</i>"
       )
 
       str <- paste0(
@@ -292,10 +289,10 @@ ttestISClass <- R6::R6Class(
       alt <- lst$alt
 
 
-      maxn <- pwr.t2n.ratio(
+      maxn <- pwr.2p2n.ratio(
         n_ratio = n_ratio,
         power = max(0.9, power),
-        d = d,
+        h = d,
         sig.level = alpha,
         alternative = alt
       )
@@ -308,8 +305,8 @@ ttestISClass <- R6::R6Class(
 
 
       minn <- ifelse(n_ratio < 1,
-        max(ceiling(3 / (1 + n_ratio)), 2 / n_ratio),
-        max(ceiling(3 / (1 + n_ratio)), 2 * n_ratio)
+                     max(ceiling(3 / (1 + n_ratio)), 2 / n_ratio),
+                     max(ceiling(3 / (1 + n_ratio)), 2 * n_ratio)
       )
 
       nn <- unique(ceiling(exp(seq(log(minn), log(maxn), len = ps$lens)) - .001))
@@ -317,20 +314,20 @@ ttestISClass <- R6::R6Class(
       nn2 <- ceiling(n_ratio * nn)
 
       z.pwr <- sapply(dd, function(delta) {
-        pwr.t2n.test(n1 = nn, n2 = nn2,
-          d = delta,
-          sig.level = alpha,
-          alternative = alt
+        pwr::pwr.2p2n.test(n1 = nn, n2 = nn2,
+                           h = delta,
+                           sig.level = alpha,
+                           alternative = alt
         )$power
       })
 
       z.delta <- sapply(nn, function(N) {
         n2 <- ceiling(n_ratio * N)
-        pwr.t2n.test(n1 = N, n2 = n2,
-          sig.level = alpha,
-          power = power,
-          alternative = alt
-        )$d
+        pwr::pwr.2p2n.test(n1 = N, n2 = n2,
+                           sig.level = alpha,
+                           power = power,
+                           alternative = alt
+        )$h
       })
 
       state = list(
@@ -410,7 +407,7 @@ ttestISClass <- R6::R6Class(
 
       dd <- seq(ps$mind, ps$maxd, len = ps$curve.n)
 
-      y <- pwr.t2n.test(n1 = n1, n2 = n2, d = dd, sig.level = alpha, alternative = alt)$power
+      y <- pwr::pwr.2p2n.test(n1 = n1, n2 = n2, h = dd, sig.level = alpha, alternative = alt)$power
       cols <- ps$pal(ps$pow.n.levels)
       yrect <- seq(0, 1, 1 / ps$pow.n.levels)
 
@@ -438,8 +435,8 @@ ttestISClass <- R6::R6Class(
       alt <- lst$alt
 
       n_text <- ifelse(n1 == n2,
-        gettextf("sample sizes of %s in each group", n1),
-        gettextf("group sample sizes of %s and %s, respectively", n1, n2)
+                       gettextf("sample sizes of %s in each group", n1),
+                       gettextf("group sample sizes of %s and %s, respectively", n1, n2)
       )
 
       if (alt == "two.sided") {
@@ -460,7 +457,7 @@ ttestISClass <- R6::R6Class(
         pwr_string <- gettextf("only be sufficiently sensitive (power >%s)", round(power, 3))
       }
 
-      d50 <- pwr.t2n.test(n1 = n1, n2 = n2, sig.level = alpha, power = .5, alternative = alt)$d
+      d50 <- pwr::pwr.2p2n.test(n1 = n1, n2 = n2, sig.level = alpha, power = .5, alternative = alt)$h
 
       str <- gettextf(
         "<p>The power curve above shows how the sensitivity of the test and design is larger for larger effect sizes. If we obtained %s our test and design would %s to effect sizes of %s%s. <p>We would be more than likely to miss (power less than 50%%) effect sizes less than <i>%s=</i>%s.",
@@ -500,10 +497,10 @@ ttestISClass <- R6::R6Class(
       alpha <- ifelse(calc == "alpha", r$alpha, lst$alpha)
       alt <- lst$alt
 
-      maxn <- pwr.t2n.ratio(
+      maxn <- pwr.2p2n.ratio(
         n_ratio = n_ratio,
         power = max(0.9, power),
-        d = d,
+        h = d,
         sig.level = alpha,
         alternative = alt
       )
@@ -516,16 +513,16 @@ ttestISClass <- R6::R6Class(
 
 
       minn <- ifelse(n_ratio < 1,
-        max(ceiling(3 / (1 + n_ratio)), 2 / n_ratio),
-        max(ceiling(3 / (1 + n_ratio)), 2 * n_ratio)
+                     max(ceiling(3 / (1 + n_ratio)), 2 / n_ratio),
+                     max(ceiling(3 / (1 + n_ratio)), 2 * n_ratio)
       )
 
       nn <- seq(minn, maxn)
 
-      y <- pwr.t2n.test(
+      y <- pwr::pwr.2p2n.test(
         n1 = nn,
         n2 = ceiling(nn * lst$n_ratio),
-        d = d, sig.level = alpha, alternative = alt
+        h = d, sig.level = alpha, alternative = alt
       )$power
 
       cols <- ps$pal(ps$pow.n.levels)
@@ -637,8 +634,8 @@ ttestISClass <- R6::R6Class(
       alt <- lst$alt
 
       n_text <- ifelse(n1 == n2,
-        gettextf("sample sizes of at least %s in each group", n1),
-        gettextf("group sample sizes of at least %s and %s, respectively", n1, n2)
+                       gettextf("sample sizes of at least %s in each group", n1),
+                       gettextf("group sample sizes of at least %s and %s, respectively", n1, n2)
       )
 
       if (alt == "two.sided") {
@@ -681,8 +678,8 @@ ttestISClass <- R6::R6Class(
       alt <- lst$alt
 
       n_text <- ifelse(n1 == n2,
-        gettextf("a sample size of %s in each group", n1),
-        gettextf("group sample sizes of %s and %s, respectively", n1, n2)
+                       gettextf("a sample size of %s in each group", n1),
+                       gettextf("group sample sizes of %s and %s, respectively", n1, n2)
       )
 
       if (alt == "two.sided") {

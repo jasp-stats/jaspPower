@@ -423,11 +423,11 @@ ttestPSClass <- R6::R6Class(
             dd <- seq(ps$mind, ps$maxd, len = ps$lens)
 
             z.pwr <- sapply(dd, function(delta) {
-                pwr::pwr.t.test(nn, d = delta, sig.level = alpha, alternative = alt, type = private$type)$power
+                pwr::pwr.t.test(n = nn, d = delta, sig.level = alpha, alternative = alt, type = private$type)$power
             })
 
             z.delta <- sapply(nn, function(N) {
-                pwr::pwr.t.test(N, sig.level = alpha, power = power, alternative = alt, type = private$type)$d
+                pwr::pwr.t.test(n = N, sig.level = alpha, power = power, alternative = alt, type = private$type)$d
             })
 
             state = list(

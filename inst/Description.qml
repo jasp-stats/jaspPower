@@ -10,14 +10,13 @@ Description
 	version		: "0.1"
 	author		: "JASP Team"
 	maintainer	: "JASP Team <info@jasp-stats.org>"
-	website		: "https://jasp-stats.org"
+	website		: "jasp-stats.org"
 	license		: "GPL (>= 2)"
 	requiresData:	false
 
 	Analysis
 	{
 		title:	qsTr("Power")
-		qml: 	"Power.qml"
 		func: 	"Power"
 	}
 }
