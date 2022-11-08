@@ -448,7 +448,7 @@ test1PClass <- R6::R6Class(
           "test",
           "p0",
           "p1",
-          "es"
+          "es",
           "power",
           "n",
           "alt",

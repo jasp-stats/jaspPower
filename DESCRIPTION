@@ -11,7 +11,10 @@ License: GPL (>= 2)
 Encoding: UTF-8
 Imports:
   jaspBase,
-  pwr
-  
+  pwr,
+  jaspGraphs
+Remotes:
+  jasp-stats/jaspBase,
+  jasp-stats/jaspGraphs
 
 
