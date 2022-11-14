@@ -33,7 +33,7 @@ Form
       { label: "Paired Samples T-Test",  value: "ttest_paired"          },
       { label: "One Sample T-Test",  value: "ttest_onesample"           },
       { label: "One Sample Z-Test",  value: "ztest_onesample"           },
-      { label: "One Proportion Test",  value: "test_oneprop"            },
+    // { label: "One Proportion Test",  value: "test_oneprop"            },   currently broken
       { label: "Two Proportions Test",  value: "test_twoprop"           }
       //{ label: "ANOVA",  value: "anova" }
     ]
