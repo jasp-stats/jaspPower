@@ -1,8 +1,8 @@
-Package: jaspModule
+Package: jaspPower
 Type: Package
-Title: A module for JASP
+Title: Power Module for JASP
 Version: 0.1.0
-Date: 2020-10-15
+Date: 2021-09-28
 Author: JASP Team
 Website: jasp-stats.org
 Maintainer: JASP Team <info@jasp-stats.org>
@@ -10,10 +10,9 @@ Description: This module offers analyses.
 License: GPL (>= 2)
 Encoding: UTF-8
 Imports:
+  pwr,
   jaspBase,
   jaspGraphs
-Suggests:
-  testthat
 Remotes:
   jasp-stats/jaspBase,
   jasp-stats/jaspGraphs
