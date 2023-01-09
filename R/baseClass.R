@@ -227,11 +227,11 @@ baseClass <- R6::R6Class(
       }
       if (self$options$test == "independentSamplesTTest" || self$options$test == "pairedSamplesTTest" ||
            self$options$test == "oneSampleTTest" || self$options$test == "oneSampleZTest")
-        es <- gettext("|\u03B4|")
+        es <- "|\u03B4|"
       if (self$options$test == "oneSampleProportion" || self$options$test == "twoSamplesProportion")
-        es <- gettext("|h|")
+        es <- "|h|"
       if (self$options$test == "oneSampleVarianceRatio" || self$options$test == "twoSamplesVarianceRatio")
-        es <- gettext("\u03C1")
+        es <- "\u03C1"
 
 
       # If group sizes differ, provide a secondary axis
@@ -300,11 +300,11 @@ baseClass <- R6::R6Class(
 
       if (self$options$test == "independentSamplesTTest" || self$options$test == "pairedSamplesTTest" ||
           self$options$test == "oneSampleTTest" || self$options$test == "oneSampleZTest")
-        es <- gettext("|\u03B4|")
+        es <- "|\u03B4|"
       if (self$options$test == "oneSampleProportion" || self$options$test == "twoSamplesProportion")
-        es <- gettext("|h|")
+        es <- "|h|"
       if (self$options$test == "oneSampleVarianceRatio" || self$options$test == "twoSamplesVarianceRatio")
-        es <- gettext("\u03C1")
+        es <- "\u03C1"
 
       ps <- ttestPlotSettings
 
@@ -363,11 +363,11 @@ baseClass <- R6::R6Class(
 
       if (self$options$test == "independentSamplesTTest" || self$options$test == "pairedSamplesTTest" ||
           self$options$test == "oneSampleTTest" || self$options$test == "oneSampleZTest")
-        es <- gettext("|\u03B4|")
+        es <- "|\u03B4|"
       if (self$options$test == "oneSampleProportion" || self$options$test == "twoSamplesProportion")
-        es <- gettext("|h|")
+        es <- "|h|"
       if (self$options$test == "oneSampleVarianceRatio" || self$options$test == "twoSamplesVarianceRatio")
-        es <- gettext("\u03C1")
+        es <- "\u03C1"
 
       ps <- ttestPlotSettings
 
@@ -413,11 +413,11 @@ baseClass <- R6::R6Class(
     .powerDist = function(state, ggtheme, ...) {
       if (self$options$test == "independentSamplesTTest" || self$options$test == "pairedSamplesTTest" ||
           self$options$test == "oneSampleTTest" || self$options$test == "oneSampleZTest")
-        es <- gettext("|\u03B4|")
+        es <- "|\u03B4|"
       if (self$options$test == "oneSampleProportion" || self$options$test == "twoSamplesProportion")
-        es <- gettext("|h|")
+        es <- "|h|"
       if (self$options$test == "oneSampleVarianceRatio" || self$options$test == "twoSamplesVarianceRatio")
-        es <- ifelse(state$d < 1, gettext("1/\u03C1"), gettext("\u03C1"))
+        es <- ifelse(state$d < 1, "1/\u03C1", "\u03C1")
 
       ps <- ttestPlotSettings
 

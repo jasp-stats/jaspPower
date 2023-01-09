@@ -102,25 +102,25 @@ results <- jaspTools::runAnalysis("Power", NULL, options)
 test_that("Power Contour plot matches", {
   plotName <- results[["results"]][["powerContour"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "power-contour")
+  jaspTools::expect_equal_plots(testPlot, "power-contour-independent-samples-t-test")
 })
 
 test_that("Power Curve by Effect Size plot matches", {
   plotName <- results[["results"]][["powerCurveES"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "power-curve-by-effect-size")
+  jaspTools::expect_equal_plots(testPlot, "power-curve-by-effect-size-independent-samples-t-test")
 })
 
 test_that("Power Curve by N plot matches", {
   plotName <- results[["results"]][["powerCurveN"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "power-curve-by-n")
+  jaspTools::expect_equal_plots(testPlot, "power-curve-by-n-independent-samples-t-test")
 })
 
 test_that("Power Demonstration plot matches", {
   plotName <- results[["results"]][["powerDist"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "power-demonstration")
+  jaspTools::expect_equal_plots(testPlot, "power-demonstration-independent-samples-t-test")
 })
 
 test_that("Power by Effect Size table results match", {
@@ -156,25 +156,25 @@ results <- jaspTools::runAnalysis("Power", NULL, options)
 test_that("Power Contour plot matches", {
   plotName <- results[["results"]][["powerContour"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "power-contour")
+  jaspTools::expect_equal_plots(testPlot, "power-contour-paired-samples-t-test")
 })
 
 test_that("Power Curve by Effect Size plot matches", {
   plotName <- results[["results"]][["powerCurveES"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "power-curve-by-effect-size")
+  jaspTools::expect_equal_plots(testPlot, "power-curve-by-effect-size-paired-samples-t-test")
 })
 
 test_that("Power Curve by N plot matches", {
   plotName <- results[["results"]][["powerCurveN"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "power-curve-by-n")
+  jaspTools::expect_equal_plots(testPlot, "power-curve-by-n-paired-samples-t-test")
 })
 
 test_that("Power Demonstration plot matches", {
   plotName <- results[["results"]][["powerDist"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "power-demonstration")
+  jaspTools::expect_equal_plots(testPlot, "power-demonstration-paired-samples-t-test")
 })
 
 test_that("Power by Effect Size table results match", {
@@ -210,25 +210,25 @@ results <- jaspTools::runAnalysis("Power", NULL, options)
 test_that("Power Contour plot matches", {
   plotName <- results[["results"]][["powerContour"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "power-contour")
+  jaspTools::expect_equal_plots(testPlot, "power-contour-one-sample-t-test")
 })
 
 test_that("Power Curve by Effect Size plot matches", {
   plotName <- results[["results"]][["powerCurveES"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "power-curve-by-effect-size")
+  jaspTools::expect_equal_plots(testPlot, "power-curve-by-effect-size-one-sample-t-test")
 })
 
 test_that("Power Curve by N plot matches", {
   plotName <- results[["results"]][["powerCurveN"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "power-curve-by-n")
+  jaspTools::expect_equal_plots(testPlot, "power-curve-by-n-one-sample-t-test")
 })
 
 test_that("Power Demonstration plot matches", {
   plotName <- results[["results"]][["powerDist"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "power-demonstration")
+  jaspTools::expect_equal_plots(testPlot, "power-demonstration-one-sample-t-test")
 })
 
 test_that("Power by Effect Size table results match", {
@@ -264,25 +264,25 @@ results <- jaspTools::runAnalysis("Power", NULL, options)
 test_that("Power Contour plot matches", {
   plotName <- results[["results"]][["powerContour"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "power-contour")
+  jaspTools::expect_equal_plots(testPlot, "power-contour-one-sample-z-test")
 })
 
 test_that("Power Curve by Effect Size plot matches", {
   plotName <- results[["results"]][["powerCurveES"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "power-curve-by-effect-size")
+  jaspTools::expect_equal_plots(testPlot, "power-curve-by-effect-size-one-sample-z-test")
 })
 
 test_that("Power Curve by N plot matches", {
   plotName <- results[["results"]][["powerCurveN"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "power-curve-by-n")
+  jaspTools::expect_equal_plots(testPlot, "power-curve-by-n-one-sample-z-test")
 })
 
 test_that("Power Demonstration plot matches", {
   plotName <- results[["results"]][["powerDist"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "power-demonstration")
+  jaspTools::expect_equal_plots(testPlot, "power-demonstration-one-sample-z-test")
 })
 
 test_that("Power by Effect Size table results match", {
@@ -318,25 +318,25 @@ results <- jaspTools::runAnalysis("Power", NULL, options)
 test_that("Power Contour plot matches", {
   plotName <- results[["results"]][["powerContour"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "power-contour")
+  jaspTools::expect_equal_plots(testPlot, "power-contour-one-sample-proportion")
 })
 
 test_that("Power Curve by Effect Size plot matches", {
   plotName <- results[["results"]][["powerCurveES"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "power-curve-by-effect-size")
+  jaspTools::expect_equal_plots(testPlot, "power-curve-by-effect-size-one-sample-proportion")
 })
 
 test_that("Power Curve by N plot matches", {
   plotName <- results[["results"]][["powerCurveN"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "power-curve-by-n")
+  jaspTools::expect_equal_plots(testPlot, "power-curve-by-n-one-sample-proportion")
 })
 
 test_that("Power Demonstration plot matches", {
   plotName <- results[["results"]][["powerDist"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "power-demonstration")
+  jaspTools::expect_equal_plots(testPlot, "power-demonstration-one-sample-proportion")
 })
 
 test_that("Power by effect size table results match", {
@@ -372,25 +372,25 @@ results <- jaspTools::runAnalysis("Power", NULL, options)
 test_that("Power Contour plot matches", {
   plotName <- results[["results"]][["powerContour"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "power-contour")
+  jaspTools::expect_equal_plots(testPlot, "power-contour-two-samples-proportion")
 })
 
 test_that("Power Curve by Effect Size plot matches", {
   plotName <- results[["results"]][["powerCurveES"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "power-curve-by-effect-size")
+  jaspTools::expect_equal_plots(testPlot, "power-curve-by-effect-size-two-samples-proportion")
 })
 
 test_that("Power Curve by N plot matches", {
   plotName <- results[["results"]][["powerCurveN"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "power-curve-by-n")
+  jaspTools::expect_equal_plots(testPlot, "power-curve-by-n-two-samples-proportion")
 })
 
 test_that("Power Demonstration plot matches", {
   plotName <- results[["results"]][["powerDist"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "power-demonstration")
+  jaspTools::expect_equal_plots(testPlot, "power-demonstration-two-samples-proportion")
 })
 
 test_that("Power by Effect Size table results match", {
@@ -427,25 +427,25 @@ results <- jaspTools::runAnalysis("Power", NULL, options)
 test_that("Power Contour plot matches", {
   plotName <- results[["results"]][["powerContour"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "power-contour")
+  jaspTools::expect_equal_plots(testPlot, "power-contour-one-sample-variance-ratio")
 })
 
 test_that("Power Curve by variance ratio plot matches", {
   plotName <- results[["results"]][["powerCurveES"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "power-curve-by-variance-ratio")
+  jaspTools::expect_equal_plots(testPlot, "power-curve-by-variance-ratio-one-sample-variance-ratio")
 })
 
 test_that("Power Curve by N plot matches", {
   plotName <- results[["results"]][["powerCurveN"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "power-curve-by-n")
+  jaspTools::expect_equal_plots(testPlot, "power-curve-by-n-one-sample-variance-ratio")
 })
 
 test_that("Power Demonstration plot matches", {
   plotName <- results[["results"]][["powerDist"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "power-demonstration")
+  jaspTools::expect_equal_plots(testPlot, "power-demonstration-one-sample-variance-ratio")
 })
 
 test_that("Power by variance ratio table results match", {
@@ -481,25 +481,25 @@ results <- jaspTools::runAnalysis("Power", NULL, options)
 test_that("Power Contour plot matches", {
   plotName <- results[["results"]][["powerContour"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "power-contour")
+  jaspTools::expect_equal_plots(testPlot, "power-contour-two-samples-variance-ratio")
 })
 
 test_that("Power Curve by variance ratio plot matches", {
   plotName <- results[["results"]][["powerCurveES"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "power-curve-by-variance-ratio")
+  jaspTools::expect_equal_plots(testPlot, "power-curve-by-variance-ratio-two-samples-variance-ratio")
 })
 
 test_that("Power Curve by N plot matches", {
   plotName <- results[["results"]][["powerCurveN"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "power-curve-by-n")
+  jaspTools::expect_equal_plots(testPlot, "power-curve-by-n-two-samples-variance-ratio")
 })
 
 test_that("Power Demonstration plot matches", {
   plotName <- results[["results"]][["powerDist"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "power-demonstration")
+  jaspTools::expect_equal_plots(testPlot, "power-demonstration-two-samples-variance-ratio")
 })
 
 test_that("Power by variance ratio table results match", {
@@ -517,3 +517,5 @@ test_that("A Priori Power Analysis table results match", {
   jaspTools::expect_equal_tables(table,
                                  list(0.01, 5.5170628379941, 20, 20, 0.9))
 })
+
+
