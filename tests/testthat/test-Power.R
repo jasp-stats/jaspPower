@@ -1,3 +1,5 @@
+library(jaspGraphs)
+
 # ==== Test Different Types of Tests ====
 test_that("Results for Power Analysis for Indipendent Samples T-Test match", {
   options <- jaspTools::analysisOptions("Power")
