@@ -78,7 +78,7 @@
 <text x='432.87' y='534.10' text-anchor='middle' style='font-size: 12.80px; fill: #4D4D4D; font-family: sans;' textLength='14.24px' lengthAdjust='spacingAndGlyphs'>30</text>
 <text x='611.73' y='534.10' text-anchor='middle' style='font-size: 12.80px; fill: #4D4D4D; font-family: sans;' textLength='21.36px' lengthAdjust='spacingAndGlyphs'>100</text>
 <text x='351.27' y='557.73' text-anchor='middle' style='font-size: 16.00px; fill: #333333; font-family: sans;' textLength='156.54px' lengthAdjust='spacingAndGlyphs'>Sample size (group 1)</text>
-<text transform='translate(25.96,282.33) rotate(-90)' text-anchor='middle' style='font-size: 16.00px; fill: #333333; font-family: sans;' textLength='188.56px' lengthAdjust='spacingAndGlyphs'>Hypothetical effect size (δ)</text>
+<text transform='translate(25.96,282.33) rotate(-90)' text-anchor='middle' style='font-size: 16.00px; fill: #333333; font-family: sans;' textLength='196.88px' lengthAdjust='spacingAndGlyphs'>Hypothetical effect size (|δ|)</text>
 <rect x='648.74' y='166.49' width='56.32' height='231.69' style='stroke-width: 1.07; stroke: none;' />
 <rect x='654.22' y='372.85' width='17.28' height='19.84' style='stroke-width: 0.75; stroke: none; fill: #440154;' />
 <rect x='654.22' y='353.01' width='17.28' height='19.84' style='stroke-width: 0.75; stroke: none; fill: #482878;' />
@@ -100,6 +100,6 @@
 <text x='679.47' y='238.36' style='font-size: 12.80px; fill: #333333; font-family: sans;' textLength='17.79px' lengthAdjust='spacingAndGlyphs'>0.8</text>
 <text x='679.47' y='218.52' style='font-size: 12.80px; fill: #333333; font-family: sans;' textLength='17.79px' lengthAdjust='spacingAndGlyphs'>0.9</text>
 <text x='654.22' y='184.64' style='font-size: 16.00px; fill: #333333; font-family: sans;' textLength='45.36px' lengthAdjust='spacingAndGlyphs'>Power</text>
-<text x='64.76' y='28.16' style='font-size: 19.20px; fill: #333333; font-family: sans;' textLength='122.75px' lengthAdjust='spacingAndGlyphs'>power-contour</text>
+<text x='64.76' y='28.16' style='font-size: 19.20px; fill: #333333; font-family: sans;' textLength='321.24px' lengthAdjust='spacingAndGlyphs'>mac-power-contour-one-sample-t-test</text>
 </g>
 </svg>
