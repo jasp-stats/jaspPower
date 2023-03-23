@@ -1,4 +1,4 @@
-# Originally based on https://github.com/richarddmorey/jpower
+# Originally based on https://github.com/richarddmorey/jpower/commit/3825ec1c368669c3cb1168e292b465e1d5141a2f
 
 .runTest2Var <- function(jaspResults, options) {
   stats <- .prepareStats(options)
