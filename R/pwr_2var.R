@@ -898,7 +898,7 @@
     ratio_text <- gettext("<i>Note.</i> When the variance ratio is less than 1, the inverse of the variance ratio is displayed. Therefore, the first and second degrees of freedom of both F-distributions switched places.\n\n")
   }
   if (d > 1) {
-    ratio_text <- gettext("")
+    ratio_text <- ""
   }
 
   es_text <- ifelse(d < 1, gettextf("1/%1$s", "\u03C1"), gettextf("%1$s", "\u03C1"))
