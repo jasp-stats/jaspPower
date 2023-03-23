@@ -5,7 +5,7 @@
 
   ## Compute results
   results <- try(.computeTest1P(jaspResults, options, stats))
-  if (inherits(results, "try-error")) {
+  if (jaspBase::isTryError(results)) {
     .quitAnalysis(gettext("Unable to compute the power results. Try to enter less extreme values for the input parameters."))
   }
 
@@ -270,7 +270,7 @@
   }
 
   p50 <- try(.pwrPTest(n = n, p0 = p0, sig.level = alpha, power = .5, alternative = alt)$p)
-  if (inherits(p50, "try-error")) {
+  if (jaspBase::isTryError(p50)) {
     return()
   }
   d50 <- abs(2 * (asin(sqrt(p50)) - asin(sqrt(p0))))
@@ -497,7 +497,7 @@
       alternative = alt
     )$p[1]
   }))
-  if (inherits(probs_es, "try-error")) {
+  if (jaspBase::isTryError(probs_es)) {
     table$setError(gettext("The specified design leads to (an) unsolvable equation(s) while computing the values for this power table. Try to enter less extreme values for the parameters."))
     return()
   }
@@ -571,7 +571,7 @@
     sig.level = alpha,
     alternative = alt
   )$n))
-  if (inherits(maxn, "try-error")) {
+  if (jaspBase::isTryError(maxn)) {
     image$setError(gettext("The specified design leads to (an) unsolvable equation(s) while constructing the Power Contour plot. Try to enter less extreme values for the parameters"))
     return()
   }
@@ -588,7 +588,7 @@
 
   minn <- 2
   try <- try(.pwrPTest(n = minn, p0 = p0, sig.level = alpha, power = power, alternative = alt))
-  while (inherits(try, "try-error")) {
+  while (jaspBase::isTryError(try)) {
     minn <- minn + 1
     try <- try(.pwrPTest(n = minn, p0 = p0, sig.level = alpha, power = power, alternative = alt))
   }
@@ -605,7 +605,7 @@
   z.pwr <- try(sapply(pp, function(p) {
     .pwrPTest(n = nn, p0 = p0, p = p, sig.level = alpha, alternative = alt)$power
   }))
-  if (inherits(z.pwr, "try-error")) {
+  if (jaspBase::isTryError(z.pwr)) {
     image$setError(gettext("The specified design leads to (an) unsolvable equation(s) while constructing the Power Contour plot. Try to enter less extreme values for the parameters"))
     return()
   }
@@ -613,7 +613,7 @@
   z.delta <- try(sapply(nn, function(N) {
     abs(2 * (asin(sqrt(.pwrPTest(n = N, p0 = p0, sig.level = alpha, power = power, alternative = alt)$p)) - asin(sqrt(p0))))
   }))
-  if (inherits(z.delta, "try-error")) {
+  if (jaspBase::isTryError(z.delta)) {
     image$setError(gettext("The specified design leads to (an) unsolvable equation(s) while constructing the Power Contour plot. Try to enter less extreme values for the parameters"))
     return()
   }
@@ -691,7 +691,7 @@
   }
 
   y <- try(.pwrPTest(n = n, p0 = p0, p = pp, sig.level = alpha, alternative = alt)$power)
-  if (inherits(y, "try-error")) {
+  if (jaspBase::isTryError(y)) {
     image$setError(gettext("The specified design leads to (an) unsolvable equation(s) while constructing the power curve. Try to enter less extreme values for the parameters"))
     return()
   }
@@ -770,7 +770,7 @@
     sig.level = alpha,
     alternative = alt
   )$n))
-  if (inherits(maxn, "try-error")) {
+  if (jaspBase::isTryError(maxn)) {
     image$setError(gettext("The specified design leads to (an) unsolvable equation(s) while constructing the 'Power Curve by N' plot. Try to enter less extreme values for the parameters"))
     return()
   } else if (n >= maxn && n >= ps$maxn) {
@@ -779,7 +779,7 @@
 
   minn <- 2
   try <- try(.pwrPTest(n = minn, p0 = p0, sig.level = alpha, power = power, alternative = alt))
-  while (inherits(try, "try-error")) {
+  while (jaspBase::isTryError(try)) {
     minn <- minn + 1
     try <- try(.pwrPTest(n = minn, p0 = p0, sig.level = alpha, power = power, alternative = alt))
   }
@@ -787,7 +787,7 @@
   nn <- seq(minn, maxn)
 
   y <- try(.pwrPTest(n = nn, p0 = p0, p = p1, sig.level = alpha, alternative = alt)$power)
-  if (inherits(y, "try-error")) {
+  if (jaspBase::isTryError(y)) {
     image$setError(gettext("The specified design leads to (an) unsolvable equation(s) while constructing the 'Power Curve by N' plot. Try to enter less extreme values for the parameters"))
     return()
   }
@@ -979,7 +979,7 @@
   dataset <- data.frame(cbind(id, dependent))
 
   csv <- try(write.csv(dataset, options[["savePath"]], row.names = FALSE))
-  if (inherits(csv, "try-error")) {
+  if (jaspBase::isTryError(csv)) {
     .quitAnalysis(gettext("The generated dataset could not be saved. Please make sure that the specified path exists and the specified csv file is closed."))
   }
 

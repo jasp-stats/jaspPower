@@ -113,7 +113,7 @@
   if (is.null(d)) {
     if (power < sig.level) stop("power < alpha")
     x <- try(pwr::pwr.t2n.test(n1 = n1, n2 = n2, d = d, sig.level = sig.level, power = power, alternative = alternative), silent = TRUE)
-    if (inherits(x, "try-error")) {
+    if (jaspBase::isTryError(x)) {
       effN <- n1 * n2 / (n1 + n2)
       df <- n1 + n2 - 2
       if (length(alternative) > 1) alternative == alternative[1]
@@ -246,12 +246,12 @@
     if (tside == 2) {
       p_1 <- try(uniroot(function(p) eval(p.body) - power, c(p0, 1 - 1e-10))$root)
       p_2 <- try(uniroot(function(p) eval(p.body) - power, c(1e-10, p0))$root)
-      if (inherits(p_1, "try-error") && inherits(p_2, "try-error")) {
+      if (jaspBase::isTryError(p_1) && jaspBase::isTryError(p_2)) {
         stop("no solution found")
       } else {
-        if (inherits(p_1, "try-error")) {
+        if (jaspBase::isTryError(p_1)) {
           p <- c(NA, p_2)
-        } else if (inherits(p_2, "try-error")) {
+        } else if (jaspBase::isTryError(p_2)) {
           p <- c(p_1, NA)
         } else {
           p <- c(p_1, p_2)
@@ -323,12 +323,12 @@
     if (tside == 2) {
       p_1 <- try(uniroot(function(p1) eval(p.body) - power, c(p0, 1 - 1e-10))$root)
       p_2 <- try(uniroot(function(p1) eval(p.body) - power, c(1e-10, p0))$root)
-      if (inherits(p_1, "try-error") && inherits(p_2, "try-error")) {
+      if (jaspBase::isTryError(p_1) && jaspBase::isTryError(p_2)) {
         stop("no solution found")
       } else {
-        if (inherits(p_1, "try-error")) {
+        if (jaspBase::isTryError(p_1)) {
           p1 <- c(NA, p_2)
-        } else if (inherits(p_2, "try-error")) {
+        } else if (jaspBase::isTryError(p_2)) {
           p1 <- c(p_1, NA)
         } else {
           p1 <- c(p_1, p_2)
@@ -411,12 +411,12 @@
     if (tside == 2) {
       rho1 <- try(uniroot(function(rho) eval(p.body) - power, c(1 + 1e-10, 1e+09))$root)
       rho2 <- try(uniroot(function(rho) eval(p.body) - power, c(1e-10, 1 - 1e-10))$root)
-      if (inherits(rho1, "try-error") && inherits(rho2, "try-error")) {
+      if (jaspBase::isTryError(rho1) && jaspBase::isTryError(rho2)) {
         stop("no solution found")
       } else {
-        if (inherits(rho1, "try-error")) {
+        if (jaspBase::isTryError(rho1)) {
           rho <- c(NA, rho2)
-        } else if (inherits(rho2, "try-error")) {
+        } else if (jaspBase::isTryError(rho2)) {
           rho <- c(rho1, NA)
         } else {
           rho <- c(rho1, rho2)
@@ -502,12 +502,12 @@
     if (tside == 2) {
       rho1 <- try(uniroot(function(rho) eval(p.body) - power, c(1 + 1e-10, 1e+09))$root)
       rho2 <- try(uniroot(function(rho) eval(p.body) - power, c(1e-10, 1 - 1e-10))$root)
-      if (inherits(rho1, "try-error") && inherits(rho2, "try-error")) {
+      if (jaspBase::isTryError(rho1) && jaspBase::isTryError(rho2)) {
         stop("no solution found")
       } else {
-        if (inherits(rho1, "try-error")) {
+        if (jaspBase::isTryError(rho1)) {
           rho <- c(NA, rho2)
-        } else if (inherits(rho2, "try-error")) {
+        } else if (jaspBase::isTryError(rho2)) {
           rho <- c(rho1, NA)
         } else {
           rho <- c(rho1, rho2)

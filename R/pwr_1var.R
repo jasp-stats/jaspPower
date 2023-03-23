@@ -5,7 +5,7 @@
 
   ## Compute results
   results <- try(.computeTest1Var(jaspResults, options, stats))
-  if (inherits(results, "try-error")) {
+  if (jaspBase::isTryError(results)) {
     .quitAnalysis(gettext("Unable to compute the power results. Try to enter less extreme values for the input parameters."))
   }
 
@@ -243,7 +243,7 @@
       )
     )
   }
-  if (inherits(d, "try-error")) {
+  if (jaspBase::isTryError(d)) {
     return()
   } else {
     d <- round(as.numeric(d), 3)
@@ -265,13 +265,13 @@
 
   if (alt == "two.sided" && d < 1) {
     d50 <- try(.pwrVarTest(n = n, sig.level = alpha, power = .5, alternative = alt)$rho[2])
-    if (inherits(d50, "try-error")) {
+    if (jaspBase::isTryError(d50)) {
       return()
     }
     interval <- gettextf("1 > %1$s > %2$s", "\u03C1", round(d50, 3))
   } else {
     d50 <- try(.pwrVarTest(n = n, sig.level = alpha, power = .5, alternative = alt)$rho[1])
-    if (inherits(d50, "try-error")) {
+    if (jaspBase::isTryError(d50)) {
       return()
     }
     if (alt == "less") {
@@ -551,7 +551,7 @@
       )$rho[1]
     }
   }))
-  if (inherits(probs_es, "try-error")) {
+  if (jaspBase::isTryError(probs_es)) {
     table$setError(gettext("The specified design leads to (an) unsolvable equation(s) while computing the values for this power table. Try to enter less extreme values for the parameters."))
     return()
   }
@@ -614,7 +614,7 @@
   maxn <- try(ceiling(.pwrVarTest(
     rho = d, power = max(0.99, power), sig.level = alpha, alternative = alt
   )$n))
-  if (inherits(maxn, "try-error")) {
+  if (jaspBase::isTryError(maxn)) {
     image$setError(gettext("The specified design leads to (an) unsolvable equation(s) while constructing the Power Contour plot. Try to enter less extreme values for the parameters"))
     return()
   }
@@ -631,7 +631,7 @@
 
   minn <- 2
   try <- try(.pwrVarTest(n = minn, sig.level = alpha, power = power, alternative = alt))
-  while (inherits(try, "try-error")) {
+  while (jaspBase::isTryError(try)) {
     minn <- minn + 1
     try <- try(.pwrVarTest(n = minn, sig.level = alpha, power = power, alternative = alt))
   }
@@ -648,7 +648,7 @@
   z.pwr <- try(sapply(dd, function(delta) {
     .pwrVarTest(n = nn, rho = delta, sig.level = alpha, alternative = alt)$power
   }))
-  if (inherits(z.pwr, "try-error")) {
+  if (jaspBase::isTryError(z.pwr)) {
     image$setError(gettext("The specified design leads to (an) unsolvable equation(s) while constructing the Power Contour plot. Try to enter less extreme values for the parameters"))
     return()
   }
@@ -656,7 +656,7 @@
   z.delta <- try(sapply(nn, function(N) {
     .pwrVarTest(n = N, sig.level = alpha, power = power, alternative = alt)$rho
   }))
-  if (inherits(z.pwr, "try-error")) {
+  if (jaspBase::isTryError(z.pwr)) {
     image$setError(gettext("The specified design leads to (an) unsolvable equation(s) while constructing the Power Contour plot. Try to enter less extreme values for the parameters"))
     return()
   }
@@ -717,7 +717,7 @@
   ps <- .pwrPlotDefaultSettings
 
   maxd <- try(.pwrVarTest(n = n, power = max(0.999, power), sig.level = alpha, alternative = alt)$rho)
-  if (inherits(maxd, "try-error")) {
+  if (jaspBase::isTryError(maxd)) {
     mind <- ifelse(d < 1, d, 1)
     maxd <- ifelse(d < 1, 1, d)
   } else {
@@ -737,7 +737,7 @@
   dd <- seq(mind, maxd, len = ps$curve.n)
 
   y <- try(.pwrVarTest(n = n, rho = dd, sig.level = alpha, alternative = alt)$power)
-  if (inherits(y, "try-error")) {
+  if (jaspBase::isTryError(y)) {
     image$setError(gettext("The specified design leads to (an) unsolvable equation(s) while constructing the power curve. Try to enter less extreme values for the parameters"))
     return()
   }
@@ -793,7 +793,7 @@
     rho = d, power = max(0.99999, power), sig.level = alpha, alternative = alt
   )$n))
 
-  if (inherits(maxn, "try-error")) {
+  if (jaspBase::isTryError(maxn)) {
     image$setError(gettext("The specified design leads to (an) unsolvable equation(s) while constructing the 'Power Curve by N' plot. Try to enter less extreme values for the parameters"))
     return()
   } else if (n >= maxn && n >= ps$maxn) {
@@ -803,7 +803,7 @@
 
   minn <- 2
   try <- try(.pwrVarTest(n = minn, sig.level = alpha, power = power, alternative = alt))
-  while (inherits(try, "try-error")) {
+  while (jaspBase::isTryError(try)) {
     minn <- minn + 1
     try <- try(.pwrVarTest(n = minn, sig.level = alpha, power = power, alternative = alt))
   }
@@ -811,7 +811,7 @@
   nn <- seq(minn, maxn)
 
   y <- try(.pwrVarTest(n = nn, rho = d, sig.level = alpha, alternative = alt)$power)
-  if (inherits(y, "try-error")) {
+  if (jaspBase::isTryError(y)) {
     image$setError(gettext("The specified design leads to (an) unsolvable equation(s) while constructing the 'Power Curve by N' plot. Try to enter less extreme values for the parameters"))
     return()
   }
@@ -1017,7 +1017,7 @@
   dataset <- data.frame(cbind(id, dependent))
 
   csv <- try(write.csv(dataset, options[["savePath"]], row.names = FALSE))
-  if (inherits(csv, "try-error")) {
+  if (jaspBase::isTryError(csv)) {
     .quitAnalysis(gettext("The generated dataset could not be saved. Please make sure that the specified path exists and the specified csv file is closed."))
   }
 

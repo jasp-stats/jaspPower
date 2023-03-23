@@ -5,7 +5,7 @@
 
   ## Compute results
   results <- try(.computeTest1Pois(jaspResults, options, stats))
-  if (inherits(results, "try-error")) {
+  if (jaspBase::isTryError(results)) {
     .quitAnalysis(gettext("Unable to compute the power results. Try to enter less extreme values for the input parameters."))
   }
 
@@ -568,7 +568,7 @@
 
   minn <- 2
   try <- try(.pwrPoisTest(t = t, n = minn, lambda0 = p0, sig.level = alpha, power = power, alternative = alt))
-  while (inherits(try, "try-error")) {
+  while (jaspBase::isTryError(try)) {
     minn <- minn + 1
     try <- try(.pwrPoisTest(t = t, n = minn, lambda0 = p0, sig.level = alpha, power = power, alternative = alt))
   }

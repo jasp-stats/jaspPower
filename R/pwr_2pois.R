@@ -5,7 +5,7 @@
 
   ## Compute results
   results <- try(.computeTest2Pois(jaspResults, options, stats))
-  if (inherits(results, "try-error")) {
+  if (jaspBase::isTryError(results)) {
     .quitAnalysis(gettext("Unable to compute the power results. Try to enter less extreme values for the input parameters."))
   }
 
