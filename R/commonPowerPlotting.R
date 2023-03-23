@@ -95,16 +95,6 @@
     )
   }
 
-  # Checking whether geom_contour_filled is availaible
-  # (as it is e.g. not yet in the ggplot2 version of JASP 0.14.1)
-  # TODO: Remove this check in the future
-  if (!exists("geom_contour_filled", where = asNamespace("ggplot2"), mode = "function")) {
-    return(
-      ggplot2::ggplot() +
-        ggplot2::labs(title = "ERROR: The power contour plot needs a newer version of ggplot / JASP to function")
-    )
-  }
-
   # Dirty fix for a bug where ggplot is unable to properly bin values of 1...
   z.pwr[z.pwr == 1] <- 0.999999999
 
