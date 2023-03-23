@@ -237,18 +237,18 @@
 
   if (calc == "n") {
     str <- gettextf(
-      "We would need %s to reliably (with probability greater than %s) detect %s<i>%s</i>%s, assuming a %s criterion for detection that allows for a maximum Type I error rate of <i>α=</i>%s.",
-      n_text, power, d_text, "\u2265", d, tail_text, alpha
+      "We would need %s to reliably (with probability greater than %1$s) detect %2$s%3$s%4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s.",
+      n_text, power, d_text, "<i>\u2265</i>", d, tail_text, paste0("<i>\u03B1=</i>", alpha)
     )
   } else if (calc == "es") {
     str <- gettextf(
-      "A design with %s will reliably (with probability greater than %s) detect  %s<i>%s</i>%s, assuming a %s criterion for detection that allows for a maximum Type I error rate of <i>α=</i>%s.",
-      n_text, power, d_text, "\u2265", round(d, 3), tail_text, alpha
+      "A design with %s will reliably (with probability greater than %1$s) detect  %2$s%3$s%4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s.",
+      n_text, power, d_text, "<i>\u2265</i>", round(d, 3), tail_text, paste0("<i>\u03B1=</i>", alpha)
     )
   } else if (calc == "power") {
     str <- gettextf(
-      "A design with %s can detect %s<i>%s</i>%s with a probability of at least %s, assuming a %s criterion for detection that allows for a maximum Type I error rate of <i>α=</i>%s.",
-      n_text, d_text, "\u2265", d, round(power, 3), tail_text, alpha
+      "A design with %1$s can detect %2$s%3$s%4$s with a probability of at least %5$s, assuming a %6$s criterion for detection that allows for a maximum Type I error rate of %7$s.",
+      n_text, d_text, "<i>\u2265</i>", d, round(power, 3), tail_text, paste0("<i>\u03B1=</i>", alpha)
     )
   }
 
@@ -352,9 +352,13 @@
   l50 <- .pwrPoisTest(t = t, n = n, lambda0 = p0, sig.level = alpha, power = .5, alternative = alt)$lambda1
   d50 <- (l50 - lambda0) / sqrt(l50)
 
-  str <- gettextf(
-    "<p>The power curve above shows how the sensitivity of the test and design is larger for larger effect sizes. If we obtained %s our test and design would %s to effect sizes of %s%s. <p>We would be more than likely to miss (power less than 50%%) effect sizes less than <i>%s=</i>%s.",
-    n_text, pwr_string, alt_text, d, "(\u03BB\u2081-\u03BB\u2080)/\u221A\u03BB\u2081", round(d50, 3)
+  str <- paste(
+    "<p>",
+    gettextf(
+      "The power curve above shows how the sensitivity of the test and design is larger for larger effect sizes. If we obtained %1$s our test and design would %2$s to effect sizes of %3$s%4$s. <p>We would be more than likely to miss (power less than 50%%) effect sizes less than %5$s%6$s.",
+      n_text, pwr_string, alt_text, d, "<i>(\u03BB\u2081-\u03BB\u2080)/\u221A\u03BB\u2081=</i>", round(d50, 3)
+    ),
+    "</p>"
   )
 
   html[["text"]] <- str
@@ -397,7 +401,7 @@
   }
 
   str <- gettextf(
-    "<p>The power curve above shows how the sensitivity of the test and design is larger for larger effect sizes. In order for our test and design to have sufficient sensitivity (power > %s) to detect that %s when the effect size is %s or larger, we would need %s.",
+    "<p>The power curve above shows how the sensitivity of the test and design is larger for larger effect sizes. In order for our test and design to have sufficient sensitivity (power > %1$s) to detect that %2$s when the effect size is %3$s or larger, we would need %4$s.",
     round(power, 3), alt_text, d, n_text
   )
 
@@ -441,15 +445,34 @@
 
   str <- paste(
     "<p>",
-    gettextf("The figure above shows two sampling distributions: the sampling distribution of the <i>estimated</i> effect size when <i>%s=</i>0 (left), and when <i>%s=</i>%s (right).", "(\u03BB\u2081-\u03BB\u2080)/\u221A\u03BB\u2081", "(\u03BB\u2081-\u03BB\u2080)/\u221A\u03BB\u2081", d),
+    gettextf(
+      "The figure above shows two sampling distributions: the sampling distribution of the %1$s effect size when %2$s (left), and when %3$s (right).",
+      paste0("<i>", gettext("estimated"), "</i>"),
+      "<i>(\u03BB\u2081-\u03BB\u2080)/\u221A\u03BB\u2081=</i>0",
+      paste0("<i>(\u03BB\u2081-\u03BB\u2080)/\u221A\u03BB\u2081=</i>", d)
+    ),
     gettextf("Both assume %s.", n_text),
     "</p><p>",
-    gettextf("The vertical dashed lines show the %s we would set for a %s test with <i>α=</i>%s.", crit_text, tail_text, alpha),
+    gettextf(
+      "The vertical dashed lines show the %1$s we would set for a %2$s test with %3$s.",
+      crit_text, tail_text, paste0("<i>\u03B1=</i>", alpha)
+    ),
     gettextf("When the observed effect size is far enough away from 0 to be more extreme than the %s we say we 'reject' the null hypothesis.", crit_text),
-    gettextf("If the null hypothesis were true and %s the evidence would lead us to wrongly reject the null hypothesis at most %s%% of the time.", null_text, 100 * alpha),
+    gettextf(
+      "If the null hypothesis were true and %1$s the evidence would lead us to wrongly reject the null hypothesis at most %2$s%% of the time.",
+      null_text, 100 * alpha
+    ),
     "</p><p>",
-    gettextf("On the other hand, if <i>%s%s</i>%s, the evidence would exceed the criterion  &mdash; and hence we would correctly claim that <i>%s%s</i>0 &mdash; at least %s%% of the time.", "(\u03BB\u2081-\u03BB\u2080)/\u221A\u03BB\u2081", "\u2265", d, "(\u03BB\u2081-\u03BB\u2080)/\u221A\u03BB\u2081", "\u2265", 100 * round(power, 3)),
-    gettextf("The design's power for detecting effects of %s%s is thus %s.", alt_text, d, round(power, 3)),
+    gettextf(
+      "On the other hand, if %1$s, the evidence would exceed the criterion  &mdash; and hence we would correctly claim that %2$s &mdash; at least %3$s%% of the time.",
+      paste0("<i>", "(\u03BB\u2081-\u03BB\u2080)/\u221A\u03BB\u2081", "\u2265", "</i>", d),
+      paste0("<i>", "(\u03BB\u2081-\u03BB\u2080)/\u221A\u03BB\u2081", "\u2265", "</i>", "0"),
+      100 * round(power, 3)
+    ),
+    gettextf(
+      "The design's power for detecting effects of %1$s%2$s is thus %3$s.",
+      alt_text, d, round(power, 3)
+    ),
     "</p>"
   )
 
@@ -488,10 +511,10 @@
   dType_text <- ifelse(options$esType == "h", gettext("<i>h</i>"), gettext("|\u0394p|"))
 
   esText <- c(
-    gettextf("0 < %s %s  %s", dType_text, "\u2264", format(round(probs_es[1], 3), nsmall = 3)),
-    gettextf("%s < %s %s %s", format(round(probs_es[1], 3), nsmall = 3), dType_text, "\u2264", format(round(probs_es[2], 3), nsmall = 3)),
-    gettextf("%s < %s %s %s", format(round(probs_es[2], 3), nsmall = 3), dType_text, "\u2264", format(round(probs_es[3], 3), nsmall = 3)),
-    gettextf("%s %s %s", dType_text, "\u2265", format(round(probs_es[3], 3), nsmall = 3))
+    gettextf("0 < %1$s %2$s  %3$s", dType_text, "\u2264", format(round(probs_es[1], 3), nsmall = 3)),
+    gettextf("%1$s < %2$s %3$s %4$s", format(round(probs_es[1], 3), nsmall = 3), dType_text, "\u2264", format(round(probs_es[2], 3), nsmall = 3)),
+    gettextf("%1$s < %2$s %3$s %4$s", format(round(probs_es[2], 3), nsmall = 3), dType_text, "\u2264", format(round(probs_es[3], 3), nsmall = 3)),
+    gettextf("%1$s %2$s %3$s", dType_text, "\u2265", format(round(probs_es[3], 3), nsmall = 3))
   )
 
   cols <- list("es" = esText)

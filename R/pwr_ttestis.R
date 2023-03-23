@@ -222,18 +222,18 @@
 
   if (calc == "sampleSize") {
     str <- gettextf(
-      "We would need %1$s to reliably (with probability greater than or equal to %2$s) detect an effect size of <i>%3$s%4$s</i>%5$s, assuming a %6$s criterion for detection that allows for a maximum Type I error rate of <i>\u03B1=</i>%7$s.",
-      n_text, power, "|\u03B4|", "\u2265", d, tail_text, alpha
+      "We would need %1$s to reliably (with probability greater than or equal to %2$s) detect an effect size of %3$s%4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s.",
+      n_text, power, "<i>|\u03B4|\u2265</i>", d, tail_text, paste0("<i>\u03B1=</i>", alpha)
     )
   } else if (calc == "effectSize") {
     str <- gettextf(
-      "A design with %1$s will reliably (with probability greater than or equal to %2$s) detect effect sizes of <i>%3$s%4$s</i>%5$s, assuming a %6$s criterion for detection that allows for a maximum Type I error rate of <i>\u03B1=</i>%7$s.",
-      n_text, power, "|\u03B4|", "\u2265", round(d, 3), tail_text, alpha
+      "A design with %1$s will reliably (with probability greater than or equal to %2$s) detect effect sizes of %3$s%4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s.",
+      n_text, power, "<i>|\u03B4|\u2265</i>", round(d, 3), tail_text, paste0("<i>\u03B1=</i>", alpha)
     )
   } else if (calc == "power") {
     str <- gettextf(
-      "A design with %1$s can detect effect sizes of <i>%2$s%3$s</i>%4$s with a probability of at least %5$s, assuming a %6$s criterion for detection that allows for a maximum Type I error rate of <i>\u03B1=</i>%7$s.",
-      n_text, "|\u03B4|", "\u2265", d, round(power, 3), tail_text, alpha
+      "A design with %1$s can detect effect sizes of %2$s%3$s with a probability of at least %4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s.",
+      n_text, "<i>|\u03B4|\u2265</i>", d, round(power, 3), tail_text, paste0("<i>\u03B1=</i>", alpha)
     )
   }
 

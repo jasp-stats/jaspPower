@@ -235,18 +235,18 @@
 
   if (calc == "sampleSize") {
     str <- gettextf(
-      "We would need %1$s to reliably (with probability greater than or equal to %2$s) detect an effect size of <i>%3$s%4$s</i>%5$s, assuming a %6$s criterion for detection that allows for a maximum Type I error rate of <i>\u03B1=</i>%7$s.",
-      n_text, power, "|h|", "\u2265", round(d, 3), tail_text, alpha
+      "We would need %1$s to reliably (with probability greater than or equal to %2$s) detect an effect size of %3$s%4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s.",
+      n_text, power, "<i>|h|\u2265</i>", round(d, 3), tail_text, paste0("<i>\u03B1=</i>", alpha)
     )
   } else if (calc == "effectSize") {
     str <- gettextf(
-      "A design with %1$s will reliably (with probability greater than or equal to %2$s) detect effect sizes of <i>%3$s%4$s</i>%5$s, assuming a %6$s criterion for detection that allows for a maximum Type I error rate of <i>\u03B1=</i>%7$s.",
-      n_text, power, "|h|", "\u2265", round(d, 3), tail_text, alpha
+      "A design with %1$s will reliably (with probability greater than or equal to %2$s) detect effect sizes of %3$s%4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s.",
+      n_text, power, "<i>|h|\u2265</i>", round(d, 3), tail_text, paste0("<i>\u03B1=</i>", alpha)
     )
   } else if (calc == "power") {
     str <- gettextf(
-      "A design with %1$s can detect effect sizes of %2$s<i>%3$s</i>%4$s with a probability of at least %5$s, assuming a %6$s criterion for detection that allows for a maximum Type I error rate of <i>\u03B1=</i>%7$s.",
-      n_text, "|h|", "\u2265", round(d, 3), round(power, 3), tail_text, alpha
+      "A design with %1$s can detect effect sizes of %2$s%3$s with a probability of at least %4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s.",
+      n_text, "<i>|h|\u2265</i>", round(d, 3), round(power, 3), tail_text, paste0("<i>\u03B1=</i>", alpha)
     )
   }
 
@@ -887,15 +887,36 @@
 
   str <- paste(
     "<p>",
-    gettextf("The figure above shows two sampling distributions: the sampling distribution of the <i>estimated</i> effect size when <i>%1$s=</i>0 (left), and when <i>%2$s=</i>%3$s (right).", "h", "|h|", d),
-    gettextf("Both assume %1$s.", n_text),
+    gettextf(
+      "The figure above shows two sampling distributions: the sampling distribution of the %1$s effect size when %2$s (left), and when %3$s%4$s (right).",
+      paste0("<i>", gettext("estimated"), "</i>"), "<i>h=</i>0", "<i>|h|=</i>", d
+    ),
+    gettextf(
+      "Both assume %1$s.",
+      n_text
+    ),
     "</p><p>",
-    gettextf("The vertical dashed lines show the %1$s we would set for a %2$s test with <i>\u03B1=</i>%3$s.", crit_text, tail_text, alpha),
-    gettextf("When the observed effect size is far enough away from 0 to be more extreme than the %1$s we say we 'reject' the null hypothesis.", crit_text),
-    gettextf("If the null hypothesis were true and %1$s the evidence would lead us to wrongly reject the null hypothesis at most %2$s%% of the time.", null_text, 100 * alpha),
+    gettextf(
+      "The vertical dashed lines show the %1$s we would set for a %2$s test with %3$s.",
+      crit_text, tail_text, paste0("<i>\u03B1=</i>", alpha)
+    ),
+    gettextf(
+      "When the observed effect size is far enough away from 0 to be more extreme than the %1$s we say we 'reject' the null hypothesis.",
+      crit_text
+    ),
+    gettextf(
+      "If the null hypothesis were true and %1$s the evidence would lead us to wrongly reject the null hypothesis at most %2$s%% of the time.",
+      null_text, 100 * alpha
+    ),
     "</p><p>",
-    gettextf("On the other hand, if <i>%1$s%2$s</i>%3$s, the evidence would exceed the criterion  &mdash; and hence we would correctly claim that <i>%4$s%5$s</i>0 &mdash; at least %6$s%% of the time.", "|h|", "\u2265", d, "|h|", ">", 100 * round(power, 3)),
-    gettextf("The design's power for detecting effects of %1$s%2$s is thus %3$s.", alt_text, d, round(power, 3)),
+    gettextf(
+      "On the other hand, if %1$s%2$s, the evidence would exceed the criterion &mdash; and hence we would correctly claim that %3$s &mdash; at least %4$s%% of the time.",
+      "<i>|h|\u2265</i>", d, "<i>|h|></i>0", 100 * round(power, 3)
+    ),
+    gettextf(
+      "The design's power for detecting effects of %1$s%2$s is thus %3$s.",
+      alt_text, d, round(power, 3)
+    ),
     "</p>"
   )
 

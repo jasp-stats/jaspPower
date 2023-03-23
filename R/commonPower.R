@@ -70,15 +70,15 @@
   )
 
   if (calc == "sampleSize") {
-    mid_sentence <- gettextf(
+    mid_sentence <- gettext(
       "You have chosen to calculate the minimum sample size needed to have an experiment sensitive enough to consistently detect the specified hypothetical effect size"
     )
   } else if (calc == "effectSize") {
-    mid_sentence <- gettextf(
+    mid_sentence <- gettext(
       "You have chosen to calculate the minimum hypothetical effect size for which the chosen design will have the specified sensitivity"
     )
   } else if (calc == "power") {
-    mid_sentence <- gettextf(
+    mid_sentence <- gettext(
       "You have chosen to calculate the sensitivity of the chosen design for detecting the specified effect size"
     )
   }

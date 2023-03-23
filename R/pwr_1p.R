@@ -275,9 +275,19 @@
   }
   d50 <- abs(2 * (asin(sqrt(p50)) - asin(sqrt(p0))))
 
-  str <- gettextf(
-    "<p>The power curve above shows how the sensitivity of the test and design is larger for larger effect sizes. If we obtained %1$s our test and design would %2$s to effect sizes of %3$s%4$s. <p>We would be more than likely to miss (power less than 50%%) effect sizes less than <i>|h|=</i>%5$s.",
-    n_text, pwr_string, alt_text, d, round(d50, 3)
+  str <- paste(
+    "<p>",
+    gettextf(
+      "The power curve above shows how the sensitivity of the test and design is larger for larger effect sizes. If we obtained %1$s our test and design would %2$s to effect sizes of %3$s%4$s.",
+      n_text, pwr_string, alt_text, d
+    ),
+    "</p>",
+    "<p>",
+    gettextf(
+      "We would be more than likely to miss (power less than 50%%) effect sizes less than %1$s%2$s.",
+      "<i>|h|=</i>", round(d50, 3)
+    ),
+    "</p>"
   )
 
   html[["text"]] <- str
@@ -315,9 +325,13 @@
     crit_text <- gettext("criterion")
   }
 
-  str <- gettextf(
-    "<p>The power curve above shows how the sensitivity of the test and design is larger for larger effect sizes. In order for our test and design to have sufficient sensitivity (power > %1$s) to detect that %2$s when the effect size is %3$s or larger, we would need %4$s.",
-    round(power, 3), alt_text, d, n_text
+  str <- paste(
+    "<p>",
+    gettextf(
+      "The power curve above shows how the sensitivity of the test and design is larger for larger effect sizes. In order for our test and design to have sufficient sensitivity (power > %1$s) to detect that %2$s when the effect size is %3$s or larger, we would need %4$s.",
+      round(power, 3), alt_text, d, n_text
+    ),
+    "</p>"
   )
 
   html[["text"]] <- str
@@ -447,18 +461,18 @@
 
   if (calc == "sampleSize") {
     str <- gettextf(
-      "We would need %1$s to reliably (with probability greater than or equal to %2$s) detect an effect size of <i>|h|%3$s</i>%4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of <i>\u03B1=</i>%6$s.",
-      n_text, power, "\u2265", round(d, 3), tail_text, alpha
+      "We would need %1$s to reliably (with probability greater than or equal to %2$s) detect an effect size of %3$s%4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s.",
+      n_text, power, "<i>|h|\u2265</i>", round(d, 3), tail_text, paste0("<i>\u03B1=</i>", alpha)
     )
   } else if (calc == "effectSize") {
     str <- gettextf(
-      "A design with %1$s will reliably (with probability greater than or equal to %2$s) detect  effect sizes of <i>|h|%3$s</i>%4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of <i>\u03B1=</i>%6$s.",
-      n_text, power, "\u2265", round(d, 3), tail_text, alpha
+      "A design with %1$s will reliably (with probability greater than or equal to %2$s) detect  effect sizes of <i>|h|%3$s%4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s.",
+      n_text, power, "<i>|h|\u2265</i>", round(d, 3), tail_text, paste0("<i>\u03B1=</i>", alpha)
     )
   } else if (calc == "power") {
     str <- gettextf(
-      "A design with %1$s can detect effect sizes of <i>|h|%2$s</i>%3$s with a probability of at least %4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of <i>\u03B1=</i>%6$s.",
-      n_text, "\u2265", round(d, 3), round(power, 3), tail_text, alpha
+      "A design with %1$s can detect effect sizes of %2$s%3$s with a probability of at least %4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s.",
+      n_text, "<i>|h|\u2265</i>", round(d, 3), round(power, 3), tail_text, paste0("<i>\u03B1=</i>", alpha)
     )
   }
 

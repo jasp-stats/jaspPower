@@ -199,8 +199,12 @@
     jaspResults[["contourText"]] <- html
   }
 
-  str <- gettextf(
-    "<p>The power contour plot shows how the sensitivity of the test changes with the hypothetical variance ratio and the sample sizes in the design. As we increase the sample sizes, smaller variance ratios become reliably detectable.<p>Conversely, if one is satisfied to reliably detect only larger variance ratios, smaller sample sizes are needed. The point shows the power of specified  design and variance ratio."
+  str <- paste(
+    "<p>",
+    gettextf(
+      "The power contour plot shows how the sensitivity of the test changes with the hypothetical variance ratio and the sample sizes in the design. As we increase the sample sizes, smaller variance ratios become reliably detectable.<p>Conversely, if one is satisfied to reliably detect only larger variance ratios, smaller sample sizes are needed. The point shows the power of specified  design and variance ratio."
+    ),
+    "</p>"
   )
 
   html[["text"]] <- str
@@ -277,9 +281,13 @@
     }
   }
 
-  str <- gettextf(
-    "<p>The power curve above shows how the sensitivity of the test and design is larger for larger variance ratios. If we obtained %1$s our test and design would %2$s to variance ratios of %3$s%4$s. <p>We would be more than likely to miss (power less than 50%%) variance ratios of %5$s.",
-    n_text, pwr_string, alt_text, d, interval
+  str <- paste(
+    "<p>",
+    gettextf(
+      "The power curve above shows how the sensitivity of the test and design is larger for larger variance ratios. If we obtained %1$s our test and design would %2$s to variance ratios of %3$s%4$s. <p>We would be more than likely to miss (power less than 50%%) variance ratios of %5$s.",
+      n_text, pwr_string, alt_text, d, interval
+    ),
+    "</p>"
   )
 
   html[["text"]] <- str
@@ -314,9 +322,13 @@
     }
   }
 
-  str <- gettextf(
-    "<p>The power curve above shows how the sensitivity of the test and design is larger for larger sample sizes. In order for our test and design to have sufficient sensitivity (power > %1$s) to detect that %2$s when the variance ratio is %3$s or more extreme, we would need %4$s.",
-    round(power, 3), alt_text, d, n_text
+  str <- paste(
+    "<p>",
+    gettextf(
+      "The power curve above shows how the sensitivity of the test and design is larger for larger sample sizes. In order for our test and design to have sufficient sensitivity (power > %1$s) to detect that %2$s when the variance ratio is %3$s or more extreme, we would need %4$s.",
+      round(power, 3), alt_text, d, n_text
+    ),
+    "</p>"
   )
 
   html[["text"]] <- str
@@ -376,15 +388,36 @@
 
   str <- paste(
     "<p>",
-    gettextf("The figure above shows two sampling distributions: the sampling distribution of the <i>estimated</i> variance ratio when <i>%1$s=</i>1, and when <i>%2$s=</i>%3$s.", "\u03C1", "\u03C1", d),
-    gettextf("Both assume %1$s.", n_text),
+    gettextf(
+      "The figure above shows two sampling distributions: the sampling distribution of the %1$s variance ratio when %2$s, and when %3$s%4$s.",
+      paste0("<i>", gettext("estimated"), "</i>"), "<i>\u03C1=</i>1", "<i>\u03C1=</i>", d
+    ),
+    gettextf(
+      "Both assume %1$s.",
+      n_text
+    ),
     "</p><p>",
-    gettextf("The vertical dashed lines show the %1$s we would set for a %2$s test with <i>\u03B1=</i>%3$s.", crit_text, tail_text, alpha),
-    gettextf("When the observed variance ratio is far enough away from 1 to be more extreme than the %1$s we say we 'reject' the null hypothesis.", crit_text),
-    gettextf("If the null hypothesis were true and %1$s the evidence would lead us to wrongly reject the null hypothesis at most %2$s%% of the time.", null_text, 100 * alpha),
+    gettextf(
+      "The vertical dashed lines show the %1$s we would set for a %2$s test with %3$s.",
+      crit_text, tail_text, paste0("<i>\u03B1=</i>", alpha)
+    ),
+    gettextf(
+      "When the observed variance ratio is far enough away from 1 to be more extreme than the %1$s we say we 'reject' the null hypothesis.",
+      crit_text
+    ),
+    gettextf(
+      "If the null hypothesis were true and %1$s the evidence would lead us to wrongly reject the null hypothesis at most %2$s%% of the time.",
+      null_text, 100 * alpha
+    ),
     "</p><p>",
-    gettextf("On the other hand, if <i>%1$s</i>%2$s, the evidence would exceed the criterion  &mdash; and hence we would correctly claim that <i>%3$s</i>1 &mdash; at least %4$s%% of the time.", alt_text, d, hypo_text, 100 * round(power, 3)),
-    gettextf("The design's power for detecting effects of %1$s%2$s is thus %3$s.", alt_text, d, round(power, 3)),
+    gettextf(
+      "On the other hand, if %1$s%2$s, the evidence would exceed the criterion  &mdash; and hence we would correctly claim that %3$s &mdash; at least %4$s%% of the time.",
+      paste0("<i>", alt_text, "</i>"), d, paste0("<i>", hypo_text, "</i>", "1"), 100 * round(power, 3)
+    ),
+    gettextf(
+      "The design's power for detecting effects of %1$s%2$s is thus %3$s.",
+      alt_text, d, round(power, 3)
+    ),
     "</p>"
   )
 
@@ -419,12 +452,26 @@
 
   if (calc == "sampleSize") {
     if (round(.pwrVarTest(n = n, rho = d, sig.level = alpha, alternative = alt)$power, 3) == 1) {
-      table$addFootnote(gettextf("Due to the rounding of the sample size, the actual power can deviate from the target power. <b>Actual power: >0.999"))
+      table$addFootnote(
+        paste(
+          gettext("Due to the rounding of the sample size, the actual power can deviate from the target power."),
+          "<b>",
+          gettextf("Actual power: %s", ">0.999"),
+          "</b>"
+        )
+      )
     } else {
-      table$addFootnote(gettextf(
-        "Due to the rounding of the sample size, the actual power can deviate from the target power. <b>Actual power: %1$s</b>",
-        round(.pwrVarTest(n = n, rho = d, sig.level = alpha, alternative = alt)$power, 3)
-      ))
+      table$addFootnote(
+        paste(
+          gettext("Due to the rounding of the sample size, the actual power can deviate from the target power."),
+          "<b>",
+          gettextf(
+            "Actual power: %s",
+            round(.pwrVarTest(n = n, rho = d, sig.level = alpha, alternative = alt)$power, 3)
+          ),
+          "</b>"
+        )
+      )
     }
   }
 }
@@ -458,18 +505,18 @@
 
   if (calc == "sampleSize") {
     str <- gettextf(
-      "We would need %1$s to reliably (with probability greater than %2$s) detect a variance ratio of <i>%3$s%4$s</i>%5$s, assuming a %6$s criterion for detection that allows for a maximum Type I error rate of <i>\u03B1=</i>%7$s.",
-      n_text, power, "\u03C1", sign, d, tail_text, alpha
+      "We would need %1$s to reliably (with probability greater than %2$s) detect a variance ratio of %3$s, assuming a %4$s criterion for detection that allows for a maximum Type I error rate of %5$s.",
+      n_text, power, paste0("<i>\u03C1", sign, "</i>", d), tail_text, paste0("<i>\u03B1=</i>", alpha)
     )
   } else if (calc == "effectSize") {
     str <- gettextf(
-      "A design with %1$s will reliably (with probability greater than %2$s) detect variance ratios of <i>%3$s%4$s</i>%5$s, assuming a %6$s criterion for detection that allows for a maximum Type I error rate of <i>\u03B1=</i>%7$s.",
-      n_text, power, "\u03C1", sign, round(d, 3), tail_text, alpha
+      "A design with %1$s will reliably (with probability greater than %2$s) detect variance ratios of %3$s, assuming a %4$s criterion for detection that allows for a maximum Type I error rate of %5$s.",
+      n_text, power, paste0("<i>\u03C1", sign, "</i>", round(d, 3)), tail_text, paste0("<i>\u03B1=</i>", alpha)
     )
   } else if (calc == "power") {
     str <- gettextf(
-      "A design with %1$s can detect variance ratios of <i>%2$s%3$s</i>%4$s with a probability of at least %5$s, assuming a %6$s criterion for detection that allows for a maximum Type I error rate of <i>\u03B1=</i>%7$s.",
-      n_text, "\u03C1", sign, round(d, 3), round(power, 3), tail_text, alpha
+      "A design with %1$s can detect variance ratios of %2$s with a probability of at least %3$s, assuming a %4$s criterion for detection that allows for a maximum Type I error rate of %5$s.",
+      n_text, paste0("<i>\u03C1", sign, "</i>", round(d, 3)), round(power, 3), tail_text, paste0("<i>\u03B1=</i>", alpha)
     )
   }
 
