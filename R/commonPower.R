@@ -69,19 +69,18 @@
     " when using <i>%s</i>.", test_names[[options$test]]
   )
 
-  if (calc == "sampleSize") {
-    mid_sentence <- gettext(
+  mid_sentence <- switch(calc,
+    sampleSize = gettext(
       "You have chosen to calculate the minimum sample size needed to have an experiment sensitive enough to consistently detect the specified hypothetical effect size"
-    )
-  } else if (calc == "effectSize") {
-    mid_sentence <- gettext(
+    ),
+    effectSize = gettext(
       "You have chosen to calculate the minimum hypothetical effect size for which the chosen design will have the specified sensitivity"
-    )
-  } else if (calc == "power") {
-    mid_sentence <- gettext(
+    ),
+    power = gettext(
       "You have chosen to calculate the sensitivity of the chosen design for detecting the specified effect size"
     )
-  }
+  )
+
   str <- paste0(
     str,
     mid_sentence,
