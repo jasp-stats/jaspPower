@@ -63,7 +63,7 @@ Form
           name: "calculation"
           id:   calc
           indexDefaultValue: 0
-          label: qsTr("")
+          label: ""
           values: [
             { label: "Sample Size N", value: "sampleSize"},
             { label: "Power",  value: "power" },
@@ -76,11 +76,11 @@ Form
           visible: (test.currentIndex == 4 || test.currentIndex == 5 || test.currentIndex == 6 || test.currentIndex == 7) && calc.currentIndex == 2 && alt.value == "twoSided"
           enabled: calc.currentIndex == 2
         }
-				DropDown 
+				DropDown
         {
           id: direction
           name: "effectDirection"
-          label: qsTr("")
+          label: ""
           visible: (test.currentIndex == 4 || test.currentIndex == 5 || test.currentIndex == 6 || test.currentIndex == 7) && calc.currentIndex == 2 && alt.value == "twoSided"
           enabled: calc.currentIndex == 2
           values: [
@@ -366,6 +366,6 @@ Form
 			  Layout.leftMargin:  10 * preferencesModel.uiScale
 		  }
     }
-    SetSeed{}	  
+    SetSeed{}
   }
 }
