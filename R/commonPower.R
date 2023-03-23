@@ -39,6 +39,10 @@
 
 # Helper to populate the initial text that is shown
 .populateIntro <- function(jaspResults, options) {
+  if (!options$text) {
+    return()
+  }
+
   calc <- options$calculation
 
   html <- jaspResults[["intro"]]

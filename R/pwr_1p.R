@@ -14,9 +14,7 @@
   }
 
   ## Populate tables and plots
-  if (options$text) {
-    .populateIntro(jaspResults, options)
-  }
+  .populateIntro(jaspResults, options)
 
   if (options$powerContour) {
     .preparePowerContourTest1P(jaspResults, options, results, stats)

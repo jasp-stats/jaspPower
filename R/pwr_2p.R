@@ -13,10 +13,7 @@
     .initPowerESTabTest2P(jaspResults, options, results, stats)
   }
 
-  ## Populate tables and plots
-  if (options$text) {
-    .populateIntro(jaspResults, options)
-  }
+  ## Populate tables and plots.populateIntro(jaspResults, options)
 
   if (options$powerContour) {
     .preparePowerContourTest2P(jaspResults, options, results, stats)
