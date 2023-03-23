@@ -5,9 +5,7 @@
 
   ## Compute results
   results <- try(.computeTtestPS(jaspResults, options, stats))
-  if (jaspBase::isTryError(results)) {
-    .quitAnalysis(gettext("Unable to compute the power results. Try to enter less extreme values for the input parameters."))
-  }
+  .checkResults(results)
 
   .initPowerTabTtestPS(jaspResults, options, results, stats)
 

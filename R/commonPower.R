@@ -92,6 +92,12 @@
 
 # ==== Small Helper Functions ====
 
+.checkResults <- function(results) {
+  if (jaspBase::isTryError(results)) {
+    .quitAnalysis(gettext("Unable to compute the power results. Try to enter less extreme values for the input parameters."))
+  }
+}
+
 # Transform a contour matrix (z) and vectors for it's columns and rows (x, y)
 # into a dataframe with 3 columns (x, y, z) to be used for ggplot.
 .transformContourMatrix <- function(x, y, z) {
