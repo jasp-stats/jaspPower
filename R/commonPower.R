@@ -113,7 +113,9 @@
   ))
 }
 
-# Workaround for failure of pwr::.pwrT2NTest
+# Based upon: https://github.com/richarddmorey/jpower/blob/3825ec1c368669c3cb1168e292b465e1d5141a2f/jpower/R/utils.R#L19
+# Original comment from jpower:
+# Workaround for failure of pwr::pwr.t2n.test
 # with large effect sizes - optimization here is
 # better
 .pwrT2NTest <- function(n1 = NULL, n2 = NULL, d = NULL, sig.level = .05, power = NULL, alternative = c("two.sided", "less", "greater")) {
