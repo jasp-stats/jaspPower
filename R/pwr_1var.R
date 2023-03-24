@@ -516,7 +516,7 @@
   }
 
   hypo_text <- ifelse(alt == "two.sided",
-    gettextf("<i>%1$s</i>%2$s1", "\u03C1", "\u2260"),
+    "<i>\u03C1</i>\u2260",
     ifelse(alt == "less", "<i>\u03C1<1</i>", "<i>\u03C1>1</i>")
   )
 

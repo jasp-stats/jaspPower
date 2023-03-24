@@ -240,7 +240,7 @@
   }
 
   hypo_text <- ifelse(alt == "two.sided",
-    gettextf("<i>%1$s</i>%2$s1", "\u03C1", "\u2260"),
+    "<i>\u03C1</i>\u2260",
     ifelse(alt == "less", gettext("<i>\u03C1<1</i>"), gettext("<i>\u03C1>1</i>"))
   )
 
@@ -905,33 +905,54 @@
   d <- ifelse(d < 1, round(1 / d, 2), d)
   if (alt == "two.sided") {
     tail_text <- gettext("two-sided")
-    null_text <- gettextf("<i>%1$s=</i>1,", es_text)
-    alt_text <- gettextf("<i>%1$s</i><i>\u2260</i>", es_text)
+    null_text <- paste0("<i>", es_text, "=</i>1,")
+    alt_text <- paste0("<i>", es_text, "</i><i>\u2260</i>")
     crit_text <- gettext("criteria")
   } else if (alt == "less") {
     tail_text <- gettext("one-sided")
-    null_text <- gettextf("<i>%1$s\u2264</i>1,", es_text)
-    alt_text <- gettextf("<i>%1$s\u003E</i", es_text)
+    null_text <- paste0("<i>", es_text, "\u2264</i>1,")
+    alt_text <- paste0("<i>", es_text, "\u003E</i")
     crit_text <- gettext("criterion")
   } else {
     tail_text <- gettext("one-sided")
-    null_text <- gettextf("<i>%1$s\u2264</i>1,", es_text)
-    alt_text <- gettextf("<i>%1$s\u003E</i", es_text)
+    null_text <- paste0("<i>", es_text, "\u2264</i>1,")
+    alt_text <- paste0("<i>", es_text, "\u003E</i")
     crit_text <- gettext("criterion")
   }
 
 
   str <- paste(
     "<p>",
-    gettextf("%1$sThe figure above shows two sampling distributions: the sampling distribution of the <i>estimated</i> variance ratio when <i>%2$s=</i>1 (left), and when <i>%3$s=</i>%4$s (right).", ratio_text, es_text, es_text, d),
-    gettextf("Both assume %1$s.", n_text),
+    gettextf(
+      "%1$sThe figure above shows two sampling distributions: the sampling distribution of the %1$s variance ratio when %2$s (left), and when %3$s%4$s (right).",
+      paste0("<i>", gettext("estimated"), "</i>"), paste0("<i>", ratio_text, "=</i>1"), paste0("<i>", es_text, "=</i>"), d
+    ),
+    gettextf(
+      "Both assume %1$s.",
+      n_text
+    ),
     "</p><p>",
-    gettextf("The vertical dashed lines show the %1$s we would set for a %2$s test with <i>\u03B1=</i>%3$s.", crit_text, tail_text, alpha),
-    gettextf("When the observed variance ratio is far enough away from 1 to be more extreme than the %1$s we say we 'reject' the null hypothesis.", crit_text),
-    gettextf("If the null hypothesis were true and %1$s the evidence would lead us to wrongly reject the null hypothesis at most %2$s%% of the time.", null_text, 100 * alpha),
+    gettextf(
+      "The vertical dashed lines show the %1$s we would set for a %2$s test with %3$s.",
+      crit_text, tail_text, paste0("<i>\u03B1=</i>", alpha)
+    ),
+    gettextf(
+      "When the observed variance ratio is far enough away from 1 to be more extreme than the %1$s we say we 'reject' the null hypothesis.",
+      crit_text
+    ),
+    gettextf(
+      "If the null hypothesis were true and %1$s the evidence would lead us to wrongly reject the null hypothesis at most %2$s%% of the time.",
+      null_text, 100 * alpha
+    ),
     "</p><p>",
-    gettextf("On the other hand, if <i>%1$s%2$s</i>%3$s, the evidence would exceed the criterion  &mdash; and hence we would correctly claim that <i>%4$s</i>1 &mdash; at least %5$s%% of the time.", es_text, "\u2265", d, alt_text, 100 * round(power, 3)),
-    gettextf("The design's power for detecting effects of %1$s%2$s%3$s is thus %4$s.", es_text, "\u2265", d, round(power, 3)),
+    gettextf(
+      "On the other hand, if %3$s, the evidence would exceed the criterion  &mdash; and hence we would correctly claim that %4$s1 &mdash; at least %5$s%% of the time.",
+      paste0("<i>", es_text, "\u2265", "</i>", d), paste0("<i>", alt_text, "</i>"), 100 * round(power, 3)
+    ),
+    gettextf(
+      "The design's power for detecting effects of %1$s%2$s%3$s is thus %4$s.",
+      es_text, "\u2265", d, round(power, 3)
+    ),
     "</p>"
   )
 
