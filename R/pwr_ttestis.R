@@ -283,14 +283,18 @@
   if (calc == "sampleSize") {
     table$addColumns(list(n1 = n1))
     table$addColumns(list(n2 = n2))
-    if (round(.pwrT2NTest(n1 = n1, n2 = n2, d = d, sig.level = alpha, alternative = alt)$power, 3) == 1) {
-      table$addFootnote(gettextf("Due to the rounding of sample sizes, the actual power can deviate from the target power. <b>Actual power: >0.999"))
-    } else {
-      table$addFootnote(gettextf(
-        "Due to the rounding of sample sizes, the actual power can deviate from the target power. <b>Actual power: %1$s</b>",
-        round(.pwrT2NTest(n1 = n1, n2 = n2, d = d, sig.level = alpha, alternative = alt)$power, 3)
-      ))
+
+    power_rounded <- round(.pwrT2NTest(n1 = n1, n2 = n2, d = d, sig.level = alpha, alternative = alt)$power, 3)
+    if (power_rounded == 1) {
+      power_rounded <- ">0.999"
     }
+    table$addFootnote(paste(
+      gettext("Due to the rounding of the sample size, the actual power can deviate from the target power."),
+      "<b>",
+      gettext("Actual power:"),
+      power_rounded,
+      "</b>"
+    ))
   } else {
     row <- list()
     row[[calc]] <- r[[switch(calc,

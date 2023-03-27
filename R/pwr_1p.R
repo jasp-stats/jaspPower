@@ -439,14 +439,17 @@
   }
 
   if (calc == "sampleSize") {
-    if (round(.pwrPTest(n = n, p0 = p0, p = p1, sig.level = alpha, alternative = alt)$power, 3) == 1) {
-      table$addFootnote(gettext("Due to the rounding of the sample size, the actual power can deviate from the target power. <b>Actual power: >0.999"))
-    } else {
-      table$addFootnote(gettextf(
-        "Due to the rounding of the sample size, the actual power can deviate from the target power. <b>Actual power: %1$s</b>",
-        round(.pwrPTest(n = n, p0 = p0, p = p1, sig.level = alpha, alternative = alt)$power, 3)
-      ))
+    power_rounded <- round(.pwrPTest(n = n, p0 = p0, p = p1, sig.level = alpha, alternative = alt)$power, 3)
+    if (power_rounded == 1) {
+      power_rounded <- ">0.999"
     }
+    table$addFootnote(paste(
+      gettext("Due to the rounding of the sample size, the actual power can deviate from the target power."),
+      "<b>",
+      gettext("Actual power:"),
+      power_rounded,
+      "</b>"
+    ))
   }
 }
 
