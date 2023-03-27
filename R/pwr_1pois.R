@@ -605,7 +605,7 @@
     minn = minn,
     maxn = maxn
   )
-  image$plotObject <- .plotPowerContour(options, state = state, ggtheme = .pwrPlotTheme())
+  image$plotObject <- .plotPowerContour(options, state = state)
 }
 
 .preparePowerCurveESTest1Pois <- function(jaspResults, options, r, lst) {
@@ -665,7 +665,7 @@
   yrect <- seq(0, 1, 1 / ps$pow.n.levels)
 
   state <- list(cols = cols, dd = dd, y = y, yrect = yrect, n = n, alpha = alpha, delta = d, pow = power)
-  image$plotObject <- .plotPowerCurveES(options, state = state, ggtheme = .pwrPlotTheme())
+  image$plotObject <- .plotPowerCurveES(options, state = state)
 }
 
 .preparePowerCurveNTest1Pois <- function(jaspResults, options, r, lst) {
@@ -740,7 +740,7 @@
     alpha = alpha,
     pow = power
   )
-  image$plotObject <- .plotPowerCurveN(options, state = state, ggtheme = .pwrPlotTheme())
+  image$plotObject <- .plotPowerCurveN(options, state = state)
 }
 
 .preparePowerDistTest1Pois <- function(jaspResults, options, r, lst) {
@@ -825,5 +825,5 @@
   )
 
   state <- list(curves = curves, rect = rect, lims = lims)
-  image$plotObject <- .plotPowerDist(options, state = state, ggtheme = .pwrPlotTheme())
+  image$plotObject <- .plotPowerDist(options, state = state)
 }

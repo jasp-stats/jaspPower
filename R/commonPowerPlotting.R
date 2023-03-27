@@ -1,20 +1,11 @@
 # ==== Default Plotting Configurations ====
 
-# Common theme to be used for all plots
-.pwrPlotTheme <- function() {
-  ggplot2::theme_bw() +
-    ggplot2::theme(
-      text = ggplot2::element_text(size = 16, colour = "#333333"),
-      plot.background = ggplot2::element_rect(fill = "transparent", color = NA),
-      plot.margin = ggplot2::margin(15, 15, 15, 15),
-      axis.text.x = ggplot2::element_text(margin = ggplot2::margin(5, 0, 0, 0)),
-      axis.text.y = ggplot2::element_text(margin = ggplot2::margin(0, 5, 0, 0)),
-      axis.title.x = ggplot2::element_text(margin = ggplot2::margin(10, 0, 0, 0)),
-      axis.title.y = ggplot2::element_text(margin = ggplot2::margin(0, 10, 0, 0)),
-      plot.title = ggplot2::element_text(margin = ggplot2::margin(0, 0, 15, 0)),
-      legend.background = ggplot2::element_rect("transparent"),
-      legend.key = ggplot2::element_rect(fill = "#E8E8E8")
-    )
+# Apply a common theme for all plots
+# Due to jaspGraphs::geom_rangeframe this function cannot be used like regular ggplot theme
+.pwrApplyPlotTheme <- function(plot) {
+  plot +
+    jaspGraphs::geom_rangeframe() +
+    jaspGraphs::themeJaspRaw(legend.position = "right")
 }
 
 # Default settings to be used in plots
@@ -48,7 +39,7 @@
 }
 
 # ==== Major Plotting Functions ====
-.plotPowerContour <- function(options, state, ggtheme, ...) {
+.plotPowerContour <- function(options, state, ...) {
   calc <- options$calculation
 
   z.delta <- state$z.delta
@@ -123,13 +114,13 @@
       x = n, y = delta, xend = min(nn), yend = delta
     ) +
     # Add point highlighting intersection
-    ggplot2::annotate("point", x = n, y = delta, size = 3) +
-    ggtheme
+    ggplot2::annotate("point", x = n, y = delta, size = 3)
+  p <- .pwrApplyPlotTheme(p)
 
   return(p)
 }
 
-.plotPowerCurveES <- function(options, state, ggtheme, ...) {
+.plotPowerCurveES <- function(options, state, ...) {
   y <- state$y
   cols <- state$cols
   yrect <- state$yrect
@@ -190,13 +181,13 @@
     .segment(
       x = min(dd), y = pow,
       xend = delta, yend = pow,
-    ) +
-    ggtheme
+    )
+  p <- .pwrApplyPlotTheme(p)
 
   return(p)
 }
 
-.plotPowerCurveN <- function(options, state, ggtheme, ...) {
+.plotPowerCurveN <- function(options, state, ...) {
   cols <- state$cols
   yrect <- state$yrect
   lims <- state$lims
@@ -261,13 +252,13 @@
     .segment(
       x = min(nn), y = pow,
       xend = n, yend = pow,
-    ) +
-    ggtheme
+    )
+  p <- .pwrApplyPlotTheme(p)
 
   return(p)
 }
 
-.plotPowerDist <- function(options, state, ggtheme, ...) {
+.plotPowerDist <- function(options, state, ...) {
   if (options$test == "independentSamplesTTest" || options$test == "pairedSamplesTTest" ||
     options$test == "oneSampleTTest" || options$test == "oneSampleZTest") {
     es <- "|\u03B4|"
@@ -302,8 +293,9 @@
     ggplot2::geom_vline(data = rect, ggplot2::aes(xintercept = x1), linetype = "dashed") +
     ggplot2::geom_vline(data = rect, ggplot2::aes(xintercept = x2), linetype = "dashed") +
     ggplot2::coord_cartesian(xlim = lims$xlim, ylim = lims$ylim, expand = FALSE) +
-    ggplot2::labs(x = gettextf("Observed effect size (%s)", es), y = gettext("Probability Density")) +
-    ggtheme +
+    ggplot2::labs(x = gettextf("Observed effect size (%s)", es), y = gettext("Probability Density"))
+
+  p <- .pwrApplyPlotTheme(p) +
     themeSpec +
     ggplot2::scale_fill_manual(values = ps$pal(5)[c(4, 1)])
 

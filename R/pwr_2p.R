@@ -451,7 +451,7 @@
     minn = minn,
     maxn = maxn
   )
-  image$plotObject <- .plotPowerContour(options, state = state, ggtheme = .pwrPlotTheme())
+  image$plotObject <- .plotPowerContour(options, state = state)
 }
 .populateContourTextTest2P <- function(jaspResults, options, r, lst) {
   html <- jaspResults[["contourText"]]
@@ -546,7 +546,7 @@
   yrect <- seq(0, 1, 1 / ps$pow.n.levels)
 
   state <- list(cols = cols, dd = dd, y = y, yrect = yrect, n1 = n1, n2 = n2, alpha = alpha, delta = d, pow = power)
-  image$plotObject <- .plotPowerCurveES(options, state = state, ggtheme = .pwrPlotTheme())
+  image$plotObject <- .plotPowerCurveES(options, state = state)
 }
 .populatePowerCurveESTextTest2P <- function(jaspResults, options, r, lst) {
   html <- jaspResults[["curveESText"]]
@@ -702,7 +702,7 @@
   )
 
   state <- list(n = n1, cols = cols, nn = nn, y = y, yrect = yrect, lims = lims, delta = d, alpha = alpha, n_ratio = n_ratio, pow = power)
-  image$plotObject <- .plotPowerCurveN(options, state = state, ggtheme = .pwrPlotTheme())
+  image$plotObject <- .plotPowerCurveN(options, state = state)
 }
 .preparePowerDistTest2P <- function(jaspResults, options, r, lst) {
   image <- jaspResults[["powerDist"]]
@@ -790,7 +790,7 @@
   )
 
   state <- list(curves = curves, rect = rect, lims = lims)
-  image$plotObject <- .plotPowerDist(options, state = state, ggtheme = .pwrPlotTheme())
+  image$plotObject <- .plotPowerDist(options, state = state)
 }
 .populatePowerCurveNTextTest2P <- function(jaspResults, options, r, lst) {
   html <- jaspResults[["curveNText"]]
