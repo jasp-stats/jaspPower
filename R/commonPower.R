@@ -69,8 +69,8 @@
     oneSamplePoisson = gettext("a one sample Poisson rate test"),
     twoSamplesPoisson = gettext("a two samples Poisson rate test")
   )
-  test_sentence_end <- gettextf(
-    " when using <i>%s</i>.", test_names[[options$test]]
+  test_sentence_end <- paste0(
+    " ", gettext("when using"), " ", "<i>", test_names[[options$test]], "</i>."
   )
 
   mid_sentence <- switch(calc,

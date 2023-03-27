@@ -757,7 +757,7 @@
   }
 
   str <- gettextf(
-    "<p>The power curve above shows how the sensitivity of the test and design is larger for larger sample sizes. In order for our test and design to have sufficient sensitivity (power > %1$s) to detect that %2$s when the effect size is %3$s or larger, we would need %4$s.",
+    "The power curve above shows how the sensitivity of the test and design is larger for larger sample sizes. In order for our test and design to have sufficient sensitivity (power > %1$s) to detect that %2$s when the effect size is %3$s or larger, we would need %4$s.",
     round(power, 3), alt_text, d, n_text
   )
 
@@ -809,23 +809,37 @@
   str <- paste(
     "<p>",
     gettextf(
-      "The figure above shows two sampling distributions: the sampling distribution of the <i>estimated</i> effect size when <i>%1$s=</i>0 (left), and when <i>%2$s=</i>%3$s (right).",
-      "|\u03B4|", "|\u03B4|", d
+      "The figure above shows two sampling distributions: the sampling distribution of the %1$s effect size when %2$s (left), and when %3$s%4$s (right).",
+      paste0("<i>", gettext("estimated"), "</i>"), "<i>|\u03B4|=</i>0", "<i>|\u03B4|=</i>", d
     ),
-    gettextf("Both assume %1$s.", n_text),
-    "</p><p>",
-    gettextf("The vertical dashed lines show the %1$s we would set for a %2$s test with <i>\u03B1=</i>%3$s.", crit_text, tail_text, alpha),
-    gettextf("When the observed effect size is far enough away from 0 to be more extreme than the %1$s we say we 'reject' the null hypothesis.", crit_text),
-    gettextf("If the null hypothesis were true and %1$s the evidence would lead us to wrongly reject the null hypothesis at most %2$s%% of the time.", null_text, 100 * alpha),
+    gettextf(
+      "Both assume %1$s.",
+      n_text
+    ),
     "</p><p>",
     gettextf(
-      "On the other hand, if <i>%1$s%2$s</i>%3$s, the evidence would exceed the criterion  &mdash; and hence we would correctly claim that <i>%4$s%5$s</i>0 &mdash; at least %6$s%% of the time.",
-      "|\u03B4|", "\u2265", d, "|\u03B4|", ">", 100 * round(power, 3)
+      "The vertical dashed lines show the %1$s we would set for a %2$s test with %3$s.",
+      crit_text, tail_text, paste0("<i>\u03B1=</i>", alpha)
     ),
-    gettextf("The design's power for detecting effects of %1$s%2$s is thus %3$s.", alt_text, d, round(power, 3)),
+    gettextf(
+      "When the observed effect size is far enough away from 0 to be more extreme than the %1$s we say we 'reject' the null hypothesis.",
+      crit_text
+    ),
+    gettextf(
+      "If the null hypothesis were true and %1$s the evidence would lead us to wrongly reject the null hypothesis at most %2$s%% of the time.",
+      null_text, 100 * alpha
+    ),
+    "</p><p>",
+    gettextf(
+      "On the other hand, if %1$s%2$s, the evidence would exceed the criterion &mdash; and hence we would correctly claim that %3$s &mdash; at least %4$s%% of the time.",
+      "<i>|\u03B4|\u2265</i>", d, "<i>|\u03B4|></i>0", 100 * round(power, 3)
+    ),
+    gettextf(
+      "The design's power for detecting effects of %1$s%2$s is thus %3$s.",
+      alt_text, d, round(power, 3)
+    ),
     "</p>"
   )
-
 
   html[["text"]] <- str
 }

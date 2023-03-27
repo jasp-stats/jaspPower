@@ -554,9 +554,18 @@
     alternative = alt
   )$lambda1 / lambda2
 
-  str <- gettextf(
-    "<p>The power curve above shows how the sensitivity of the test and design is larger for larger effect sizes. If we obtained %s our test and design would %s to effect sizes of %s%s. <p>We would be more than likely to miss (power less than 50%%) effect sizes less than <i>%s=</i>%s.",
-    n_text, pwr_string, alt_text, d, "\u03BB\u2081/\u03BB\u2082", round(d50, 3)
+  str <- paste(
+    "<p>",
+    gettextf(
+      "The power curve above shows how the sensitivity of the test and design is larger for larger effect sizes. If we obtained %1$s our test and design would %2$s to effect sizes of %3$s%4$s.",
+      n_text, pwr_string, alt_text, d
+    ),
+    "</p>", "<p>",
+    gettextf(
+      "We would be more than likely to miss (power less than 50%%) effect sizes less than %1$s%2$s.",
+      "<i>\u03BB\u2081/\u03BB\u2082=</i>", round(d50, 3)
+    ),
+    "</p>"
   )
 
   html[["text"]] <- str

@@ -224,18 +224,18 @@
 
   if (calc == "sampleSize") {
     str <- gettextf(
-      "We would need %1$s to reliably (with probability greater than %2$s) detect a variance ratio of <i>%3$s%4$s</i>%5$s, assuming a %6$s criterion for detection that allows for a maximum Type I error rate of <i>\u03B1=</i>%7$s.",
-      n_text, power, "\u03C1", sign, d, tail_text, alpha
+      "We would need %1$s to reliably (with probability greater than %2$s) detect a variance ratio of %3$s, assuming a %4$s criterion for detection that allows for a maximum Type I error rate of %5$s.",
+      n_text, power, paste0("<i>\u03C1", sign, "</i>", d), tail_text, paste0("<i>\u03B1=</i>", alpha)
     )
   } else if (calc == "effectSize") {
     str <- gettextf(
-      "A design with %1$s will reliably (with probability greater than %2$s) detect variance ratios of <i>%3$s%4$s</i>%5$s, assuming a %6$s criterion for detection that allows for a maximum Type I error rate of <i>\u03B1=</i>%7$s.",
-      n_text, power, "\u03C1", sign, round(d, 3), tail_text, alpha
+      "A design with %1$s will reliably (with probability greater than %2$s) detect variance ratios of %3$s, assuming a %4$s criterion for detection that allows for a maximum Type I error rate of %5$s.",
+      n_text, power, paste0("<i>\u03C1", sign, "</i>", round(d, 3)), tail_text, paste0("<i>\u03B1=</i>", alpha)
     )
   } else if (calc == "power") {
     str <- gettextf(
-      "A design with %1$s can detect variance ratios of %2$s<i>%3$s</i>%4$s with a probability of at least %5$s, assuming a %6$s criterion for detection that allows for a maximum Type I error rate of <i>\u03B1=</i>%7$s.",
-      n_text, "\u03C1", sign, round(d, 3), round(power, 3), tail_text, alpha
+      "A design with %1$s can detect variance ratios of %2$s with a probability of at least %3$s, assuming a %4$s criterion for detection that allows for a maximum Type I error rate of %5$s.",
+      n_text, paste0("<i>\u03C1", sign, "</i>", round(d, 3)), round(power, 3), tail_text, paste0("<i>\u03B1=</i>", alpha)
     )
   }
 
@@ -620,9 +620,18 @@
     }
   }
 
-  str <- gettextf(
-    "<p>The power curve above shows how the sensitivity of the test and design is larger for more extreme variance ratios. If we obtained %1$s our test and design would %2$s to variance ratios of %3$s%4$s. <p>We would be more than likely to miss (power less than 50%%) variance ratios of %5$s.",
-    n_text, pwr_string, alt_text, d, interval
+  str <- paste(
+    "<p>",
+    gettextf(
+      "The power curve above shows how the sensitivity of the test and design is larger for more extreme variance ratios. If we obtained %1$s our test and design would %2$s to variance ratios of %3$s%4$s.",
+      n_text, pwr_string, alt_text, d
+    ),
+    "</p>", "<p>",
+    gettextf(
+      "We would be more than likely to miss (power less than 50%%) variance ratios of %1$s.",
+      interval
+    ),
+    "</p>"
   )
 
   html[["text"]] <- str
