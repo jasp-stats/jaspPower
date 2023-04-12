@@ -531,11 +531,11 @@
 
   if (alt == "two.sided") {
     tail_text <- gettext("two-sided")
-    alt_text <- gettext("|<i>\u03B4</i>|<i>\u003E</i>")
+    alt_text <- "|<i>\u03B4</i>|<i>\u003E</i>"
     crit_text <- gettext("criteria")
   } else {
     tail_text <- gettext("one-sided")
-    alt_text <- gettext("|<i>\u03B4</i>|<i>\u003E</i>")
+    alt_text <- "|<i>\u03B4</i>|<i>\u003E</i>"
     crit_text <- gettext("criterion")
   }
 
@@ -752,11 +752,11 @@
 
   if (alt == "two.sided") {
     tail_text <- gettext("two-sided")
-    alt_text <- gettext("|<i>\u03B4</i>|<i>\u003E</i>0,")
+    alt_text <- "|<i>\u03B4</i>|<i>\u003E</i>0,"
     crit_text <- gettext("criteria")
   } else {
     tail_text <- gettext("one-sided")
-    alt_text <- gettext("|<i>\u03B4</i>|<i>\u003E</i>0,")
+    alt_text <- "|<i>\u03B4</i>|<i>\u003E</i>0,"
     crit_text <- gettext("criterion")
   }
 
@@ -800,13 +800,13 @@
 
   if (alt == "two.sided") {
     tail_text <- gettext("two-sided")
-    null_text <- gettext("<i>|\u03B4|=</i>0,")
-    alt_text <- gettext("<i>|\u03B4|\u2265</i>")
+    null_text <- "<i>|\u03B4|=</i>0,"
+    alt_text <- "<i>|\u03B4|\u2265</i>"
     crit_text <- gettext("criteria")
   } else {
     tail_text <- gettext("one-sided")
-    null_text <- gettext("<i>|\u03B4|\u2264</i>0,")
-    alt_text <- gettext("<i>|\u03B4|\u2265</i>")
+    null_text <- "<i>|\u03B4|\u2264</i>0,"
+    alt_text <- "<i>|\u03B4|\u2265</i>"
     crit_text <- gettext("criterion")
   }
 

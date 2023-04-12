@@ -241,7 +241,7 @@
 
   hypo_text <- ifelse(alt == "two.sided",
     "<i>\u03C1</i>\u2260",
-    ifelse(alt == "less", gettext("<i>\u03C1<1</i>"), gettext("<i>\u03C1>1</i>"))
+    ifelse(alt == "less", "<i>\u03C1<1</i>", "<i>\u03C1>1</i>")
   )
 
   str <- paste0(

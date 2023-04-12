@@ -107,7 +107,7 @@
     "N",
     gettext("p\u2081"),
     gettext("p\u2080"),
-    gettext("Cohen's |<i>h</i>|"),
+    gettextf("Cohen's %s", "|<i>h</i>|"),
     gettext("Power"),
     "\u03B1"
   )
@@ -251,11 +251,11 @@
 
   if (alt == "two.sided") {
     tail_text <- gettext("two-sided")
-    alt_text <- gettext("<i>|h|\u003E</i>")
+    alt_text <- "<i>|h|\u003E</i>"
     crit_text <- gettext("criteria")
   } else {
     tail_text <- gettext("one-sided")
-    alt_text <- gettext("<i>|h|\u003E</i>")
+    alt_text <- "<i>|h|\u003E</i>"
     crit_text <- gettext("criterion")
   }
 
@@ -313,11 +313,11 @@
 
   if (alt == "two.sided") {
     tail_text <- gettext("two-sided")
-    alt_text <- gettext("<i>|h|\u003E</i>0,")
+    alt_text <- "<i>|h|\u003E</i>0,"
     crit_text <- gettext("criteria")
   } else {
     tail_text <- gettext("one-sided")
-    alt_text <- gettext("<i>|h|\u003E</i>0,")
+    alt_text <- "<i>|h|\u003E</i>0,"
     crit_text <- gettext("criterion")
   }
 
@@ -363,13 +363,13 @@
 
   if (alt == "two.sided") {
     tail_text <- gettext("two-sided")
-    null_text <- gettext("<i>h=</i>0,")
-    alt_text <- gettext("<i>|h|\u2265</i>")
+    null_text <- "<i>h=</i>0,"
+    alt_text <- "<i>|h|\u2265</i>"
     crit_text <- gettext("criteria")
   } else {
     tail_text <- gettext("one-sided")
-    null_text <- gettext("<i>h\u2264</i>0,")
-    alt_text <- gettext("<i>|h|\u2265</i>")
+    null_text <- "<i>h\u2264</i>0,"
+    alt_text <- "<i>|h|\u2265</i>"
     crit_text <- gettext("criterion")
   }
 
@@ -1033,7 +1033,7 @@
   # Post hoc power tab
   colNames <- c("es", "alt", "power", "alpha")
   colLabels <- c(
-    gettext("Cohen's |<i>h</i>|"),
+    gettextf("Cohen's %s", "|<i>h</i>|"),
     "Alternative hypothesis",
     gettext("Power"),
     "\u03B1"

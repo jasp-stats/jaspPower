@@ -357,9 +357,9 @@
 
   if (alt == "two.sided") {
     tail_text <- gettext("two-sided")
-    null_text <- gettext("<i>\u03C1=</i>1,")
+    null_text <- "<i>\u03C1=</i>1,"
     crit_text <- gettext("criteria")
-    hypo_text <- gettextf("%1$s%2$s", "\u03C1", "\u2260")
+    hypo_text <- "\u03C1\u2260"
     if (d > 1) {
       alt_text <- "<i>\u03C1\u2265</i>"
     }
@@ -371,12 +371,12 @@
     crit_text <- gettext("criterion")
     if (d > 1) {
       alt_text <- "<i>\u03C1\u2265</i>"
-      hypo_text <- gettextf("%1$s>", "\u03C1")
+      hypo_text <- "\u03C1>"
       null_text <- "<i>\u03C1\u2264</i>1,"
     }
     if (d < 1) {
       alt_text <- "<i>\u03C1\u2264</i>"
-      hypo_text <- gettextf("%1$s<", "\u03C1")
+      hypo_text <- "\u03C1<"
       null_text <- "<i>\u03C1\u2265</i>1,"
     }
   }

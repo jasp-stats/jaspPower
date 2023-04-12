@@ -228,7 +228,7 @@
     gettext("two-sided"),
     gettext("one-sided")
   )
-  d_text <- gettext("effect sizes of <i>(\u03BB\u2081-\u03BB\u2080)/\u221A\u03BB\u2081</i>")
+  d_text <- gettextf("effect sizes of %s", "<i>(\u03BB\u2081-\u03BB\u2080)/\u221A\u03BB\u2081</i>")
 
   if (calc == "n") {
     str <- gettextf(
@@ -328,13 +328,13 @@
 
   if (alt == "two.sided") {
     tail_text <- gettext("two-sided")
-    null_text <- gettext("<i>(\u03BB\u2081-\u03BB\u2080)/\u221A\u03BB\u2081\u2264</i>0,")
-    alt_text <- gettext("<i>|(\u03BB\u2081-\u03BB\u2080)/\u221A\u03BB\u2081|\u003E</i>")
+    null_text <- "<i>(\u03BB\u2081-\u03BB\u2080)/\u221A\u03BB\u2081\u2264</i>0,"
+    alt_text <- "<i>|(\u03BB\u2081-\u03BB\u2080)/\u221A\u03BB\u2081|\u003E</i>"
     crit_text <- "criteria"
   } else {
     tail_text <- gettext("one-sided")
-    null_text <- gettext("<i>(\u03BB\u2081-\u03BB\u2080)/\u221A\u03BB\u2081=</i>0,")
-    alt_text <- gettext("<i>(\u03BB\u2081-\u03BB\u2080)/\u221A\u03BB\u2081\u003E</i>")
+    null_text <- "<i>(\u03BB\u2081-\u03BB\u2080)/\u221A\u03BB\u2081=</i>0,"
+    alt_text <- "<i>(\u03BB\u2081-\u03BB\u2080)/\u221A\u03BB\u2081\u003E</i>"
     crit_text <- "criterion"
   }
 
@@ -385,13 +385,13 @@
 
   if (alt == "two.sided") {
     tail_text <- gettext("two-sided")
-    null_text <- gettext("<i>(\u03BB\u2081-\u03BB\u2080)/\u221A\u03BB\u2081\u2264</i>0,")
-    alt_text <- gettext("<i>|(\u03BB\u2081-\u03BB\u2080)/\u221A\u03BB\u2081|\u003E</i>0,")
+    null_text <- "<i>(\u03BB\u2081-\u03BB\u2080)/\u221A\u03BB\u2081\u2264</i>0,"
+    alt_text <- "<i>|(\u03BB\u2081-\u03BB\u2080)/\u221A\u03BB\u2081|\u003E</i>0,"
     crit_text <- gettext("criteria")
   } else {
     tail_text <- gettext("one-sided")
-    null_text <- gettext("<i>(\u03BB\u2081-\u03BB\u2080)/\u221A\u03BB\u2081=</i>0,")
-    alt_text <- gettext("<i>(\u03BB\u2081-\u03BB\u2080)/\u221A\u03BB\u2081\u2260</i>0,")
+    null_text <- "<i>(\u03BB\u2081-\u03BB\u2080)/\u221A\u03BB\u2081=</i>0,"
+    alt_text <- "<i>(\u03BB\u2081-\u03BB\u2080)/\u221A\u03BB\u2081\u2260</i>0,"
     crit_text <- gettext("criterion")
   }
 
@@ -428,13 +428,13 @@
 
   if (alt == "two.sided") {
     tail_text <- gettext("two-sided")
-    null_text <- gettext("<i>(\u03BB\u2081-\u03BB\u2080)/\u221A\u03BB\u2081=</i>0,")
-    alt_text <- gettext("<i>|(\u03BB\u2081-\u03BB\u2080)/\u221A\u03BB\u2081|\u2265</i>")
+    null_text <- "<i>(\u03BB\u2081-\u03BB\u2080)/\u221A\u03BB\u2081=</i>0,"
+    alt_text <- "<i>|(\u03BB\u2081-\u03BB\u2080)/\u221A\u03BB\u2081|\u2265</i>"
     crit_text <- gettext("criteria")
   } else {
     tail_text <- gettext("one-sided")
-    null_text <- gettext("<i>(\u03BB\u2081-\u03BB\u2080)/\u221A\u03BB\u2081\u2264</i>0,")
-    alt_text <- gettext("<i>|(\u03BB\u2081-\u03BB\u2080)/\u221A\u03BB\u2081|\u2265</i>")
+    null_text <- "<i>(\u03BB\u2081-\u03BB\u2080)/\u221A\u03BB\u2081\u2264</i>0,"
+    alt_text <- "<i>|(\u03BB\u2081-\u03BB\u2080)/\u221A\u03BB\u2081|\u2265</i>"
     crit_text <- gettext("criterion")
   }
 
@@ -503,7 +503,7 @@
     })
   }
 
-  dType_text <- ifelse(options$esType == "h", gettext("<i>h</i>"), gettext("|\u0394p|"))
+  dType_text <- ifelse(options$esType == "h", "<i>h</i>", "|\u0394p|")
 
   esText <- c(
     gettextf("0 < %1$s %2$s  %3$s", dType_text, "\u2264", format(round(probs_es[1], 3), nsmall = 3)),
