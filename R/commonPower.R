@@ -53,8 +53,9 @@
     jaspResults[["intro"]] <- html
   }
 
-  str <- gettext(
-    "The purpose of a <i>power analysis</i> is to evaluate the sensitivity of a design and test. "
+  str <- gettextf(
+    "The purpose of a %s is to evaluate the sensitivity of a design and test. ",
+    paste0("<i>", gettext("power analysis"), "</i>")
   )
 
   test_names <- c(

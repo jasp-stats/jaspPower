@@ -907,7 +907,13 @@
     gettextf("group sample sizes of %1$s and %2$s, respectively", n1, n2)
   )
   if (d < 1) {
-    ratio_text <- gettext("<i>Note.</i> When the variance ratio is less than 1, the inverse of the variance ratio is displayed. Therefore, the first and second degrees of freedom of both F-distributions switched places.\n\n")
+    ratio_text <- paste(
+      "<i>",
+      gettext("Note."),
+      "</i>",
+      gettext("When the variance ratio is less than 1, the inverse of the variance ratio is displayed. Therefore, the first and second degrees of freedom of both F-distributions switched places."),
+      "\n\n"
+    )
   }
   if (d > 1) {
     ratio_text <- ""
