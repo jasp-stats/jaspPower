@@ -97,9 +97,10 @@ Form
           id: p0
           name: "baselineProportion"
           label: (test.currentIndex == 4) ? qsTr("p₀") : qsTr("p₂")
-          min: 0.01
-          max: 0.99
+          min: 0
+          max: 1
           defaultValue: 0.5
+          inclusive: JASP.None
           visible: test.currentIndex == 4 || test.currentIndex == 5
         }
 
@@ -112,9 +113,10 @@ Form
           id: p1
           name: "comparisonProportion"
           label: qsTr("p₁")
-          min: 0.01
-          max: 0.99
+          min: 0
+          max: 1
           defaultValue: 0.6
+          inclusive: JASP.None
           visible: test.currentIndex == 4 || test.currentIndex == 5
           enabled: calc.currentIndex != 2
         }
@@ -156,9 +158,10 @@ Form
           name: "power"
           label: qsTr("(1-β)")
           min: 0.1
-          max: 0.999
+          max: 1
           defaultValue: 0.9
           enabled: calc.currentIndex != 1
+          inclusive: JASP.MinOnly
         }
 
         Text { text: qsTr("Type I error rate:") }
@@ -167,7 +170,9 @@ Form
           name: "alpha"
           label: qsTr("α")
           min: 0
+          max: 1
           defaultValue: 0.05
+          inclusive: JASP.None
         }
 
         // No groups in single sample t-test
@@ -201,6 +206,7 @@ Form
           label: qsTr("N₁/N₂")
           min: 0
           defaultValue: 1
+          inclusive: JASP.None
           visible: test.currentIndex == 0 || test.currentIndex == 5 || test.currentIndex == 7 || test.currentIndex == 9
         }
 
