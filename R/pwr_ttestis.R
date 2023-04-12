@@ -236,10 +236,12 @@
 
   str <- paste0(
     str,
+    "<p>",
     gettextf(
-      "<p>To evaluate the design specified in the table, we can consider how sensitive it is to true effects of increasing sizes; that is, are we likely to correctly conclude that %1$s when the effect size is large enough to care about?",
+      "To evaluate the design specified in the table, we can consider how sensitive it is to true effects of increasing sizes; that is, are we likely to correctly conclude that %1$s when the effect size is large enough to care about?",
       hypo_text
-    )
+    ),
+    "</p>"
   )
 
   html[["text"]] <- str
@@ -434,8 +436,17 @@
     jaspResults[["contourText"]] <- html
   }
 
-  str <- gettext(
-    "<p>The power contour plot shows how the sensitivity of the test changes with the hypothetical effect size and the sample sizes in the design. As we increase the sample sizes, smaller effect sizes become reliably detectable.<p>Conversely, if one is satisfied to reliably detect only larger effect sizes, smaller sample sizes are needed. The point shows the power of the specified design and effect size."
+  str <- paste(
+    "<p>",
+    gettext(
+      "The power contour plot shows how the sensitivity of the test changes with the hypothetical effect size and the sample sizes in the design. As we increase the sample sizes, smaller effect sizes become reliably detectable."
+    ),
+    "</p>",
+    "<p>",
+    gettext(
+      "Conversely, if one is satisfied to reliably detect only larger effect sizes, smaller sample sizes are needed. The point shows the power of the specified design and effect size."
+    ),
+    "</p>"
   )
 
   html[["text"]] <- str

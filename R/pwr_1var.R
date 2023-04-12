@@ -196,8 +196,13 @@
 
   str <- paste(
     "<p>",
-    gettextf(
-      "The power contour plot shows how the sensitivity of the test changes with the hypothetical variance ratio and the sample sizes in the design. As we increase the sample sizes, smaller variance ratios become reliably detectable.<p>Conversely, if one is satisfied to reliably detect only larger variance ratios, smaller sample sizes are needed. The point shows the power of specified  design and variance ratio."
+    gettext(
+      "The power contour plot shows how the sensitivity of the test changes with the hypothetical variance ratio and the sample sizes in the design. As we increase the sample sizes, smaller variance ratios become reliably detectable."
+    ),
+    "</p>",
+    "<p>",
+    gettext(
+      "Conversely, if one is satisfied to reliably detect only larger variance ratios, smaller sample sizes are needed. The point shows the power of specified  design and variance ratio."
     ),
     "</p>"
   )
@@ -279,8 +284,14 @@
   str <- paste(
     "<p>",
     gettextf(
-      "The power curve above shows how the sensitivity of the test and design is larger for larger variance ratios. If we obtained %1$s our test and design would %2$s to variance ratios of %3$s%4$s. <p>We would be more than likely to miss (power less than 50%%) variance ratios of %5$s.",
-      n_text, pwr_string, alt_text, d, interval
+      "The power curve above shows how the sensitivity of the test and design is larger for larger variance ratios. If we obtained %1$s our test and design would %2$s to variance ratios of %3$s%4$s.",
+      n_text, pwr_string, alt_text, d
+    ),
+    "</p>",
+    "<p>",
+    gettextf(
+      "We would be more than likely to miss (power less than 50%%) variance ratios of %s.",
+      interval
     ),
     "</p>"
   )
@@ -510,10 +521,12 @@
 
   str <- paste0(
     str,
+    "<p>",
     gettextf(
-      "<p>To evaluate the design specified in the table, we can consider how sensitive it is to true effects of increasing sizes; that is, are we likely to correctly conclude that %1$s when the variance ratio is large enough to care about?",
+      "To evaluate the design specified in the table, we can consider how sensitive it is to true effects of increasing sizes; that is, are we likely to correctly conclude that %1$s when the variance ratio is large enough to care about?",
       hypo_text
-    )
+    ),
+    "</p>"
   )
 
   html[["text"]] <- str

@@ -257,10 +257,12 @@
 
   str <- paste0(
     str,
+    "<p>",
     gettextf(
-      "<p>To evaluate the design specified in the table, we can consider how sensitive it is to true effects of increasing sizes; that is, are we likely to correctly conclude that %s when the effect size is large enough to care about?",
+      "To evaluate the design specified in the table, we can consider how sensitive it is to true effects of increasing sizes; that is, are we likely to correctly conclude that %s when the effect size is large enough to care about?",
       hypo_text
-    )
+    ),
+    "</p>"
   )
 
   html[["text"]] <- str
@@ -284,9 +286,18 @@
     gettext("absolute difference in proportions")
   )
 
-  str <- gettextf(
-    "<p>The power contour plot shows how the sensitivity of the test changes with the hypothetical effect size and the sample sizes in the design. As we increase the sample sizes, smaller effect sizes become reliably detectable.<p>Conversely, if one is satisfied to reliably detect only larger effect sizes, smaller sample sizes are needed. The solid black curve on the contour plot shows sample size/effect size combinations with a power of %s. The point shows the specified  design and %s.",
-    round(power, 3), dType_text
+  str <- paste(
+    "<p>",
+    gettext(
+      "The power contour plot shows how the sensitivity of the test changes with the hypothetical effect size and the sample sizes in the design. As we increase the sample sizes, smaller effect sizes become reliably detectable."
+    ),
+    "</p>",
+    "<p>",
+    gettextf(
+      "Conversely, if one is satisfied to reliably detect only larger effect sizes, smaller sample sizes are needed. The solid black curve on the contour plot shows sample size/effect size combinations with a power of %1$s. The point shows the specified design and %2$s.",
+      round(power, 3), dType_text
+    ),
+    "</p>"
   )
 
   html[["text"]] <- str
@@ -350,8 +361,14 @@
   str <- paste(
     "<p>",
     gettextf(
-      "The power curve above shows how the sensitivity of the test and design is larger for larger effect sizes. If we obtained %1$s our test and design would %2$s to effect sizes of %3$s%4$s. <p>We would be more than likely to miss (power less than 50%%) effect sizes less than %5$s%6$s.",
-      n_text, pwr_string, alt_text, d, "<i>(\u03BB\u2081-\u03BB\u2080)/\u221A\u03BB\u2081=</i>", round(d50, 3)
+      "The power curve above shows how the sensitivity of the test and design is larger for larger effect sizes. If we obtained %1$s our test and design would %2$s to effect sizes of %3$s%4$s.",
+      n_text, pwr_string, alt_text, d
+    ),
+    "</p>",
+    "<p>",
+    gettextf(
+      "We would be more than likely to miss (power less than 50%%) effect sizes less than %1$s%2$s.",
+      "<i>(\u03BB\u2081-\u03BB\u2080)/\u221A\u03BB\u2081=</i>", round(d50, 3)
     ),
     "</p>"
   )
@@ -396,7 +413,7 @@
   }
 
   str <- gettextf(
-    "<p>The power curve above shows how the sensitivity of the test and design is larger for larger effect sizes. In order for our test and design to have sufficient sensitivity (power > %1$s) to detect that %2$s when the effect size is %3$s or larger, we would need %4$s.",
+    "The power curve above shows how the sensitivity of the test and design is larger for larger effect sizes. In order for our test and design to have sufficient sensitivity (power > %1$s) to detect that %2$s when the effect size is %3$s or larger, we would need %4$s.",
     round(power, 3), alt_text, d, n_text
   )
 
