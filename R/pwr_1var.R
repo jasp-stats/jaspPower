@@ -268,16 +268,16 @@
     if (jaspBase::isTryError(d50)) {
       return()
     }
-    interval <- gettextf("1 > %1$s > %2$s", "\u03C1", round(d50, 3))
+    interval <- sprintf("1 > %1$s > %2$s", "\u03C1", round(d50, 3))
   } else {
     d50 <- try(.pwrVarTest(n = n, sig.level = alpha, power = .5, alternative = alt)$rho[1])
     if (jaspBase::isTryError(d50)) {
       return()
     }
     if (alt == "less") {
-      interval <- gettextf("1 > %1$s > %2$s", "\u03C1", round(d50, 3))
+      interval <- sprintf("1 > %1$s > %2$s", "\u03C1", round(d50, 3))
     } else {
-      interval <- gettextf("1 < %1$s < %2$s", "\u03C1", round(d50, 3))
+      interval <- sprintf("1 < %1$s < %2$s", "\u03C1", round(d50, 3))
     }
   }
 
@@ -556,10 +556,10 @@
   sign3 <- ifelse(alt == "less" || (alt == "two.sided" && d < 1), "\u2264", "\u2265")
 
   esText <- c(
-    gettextf("1 %1$s %2$s %3$s  %4$s", sign1, "\u03C1", sign2, format(round(probs_es[1], 3), nsmall = 3)),
-    gettextf("%1$s %2$s %3$s %4$s %5$s", format(round(probs_es[1], 3), nsmall = 3), sign1, "\u03C1", sign2, format(round(probs_es[2], 3), nsmall = 3)),
-    gettextf("%1$s %2$s %3$s %4$s %5$s", format(round(probs_es[2], 3), nsmall = 3), sign1, "\u03C1", sign2, format(round(probs_es[3], 3), nsmall = 3)),
-    gettextf("%1$s %2$s %3$s", "\u03C1", sign3, format(round(probs_es[3], 3), nsmall = 3))
+    sprintf("1 %1$s %2$s %3$s  %4$s", sign1, "\u03C1", sign2, format(round(probs_es[1], 3), nsmall = 3)),
+    sprintf("%1$s %2$s %3$s %4$s %5$s", format(round(probs_es[1], 3), nsmall = 3), sign1, "\u03C1", sign2, format(round(probs_es[2], 3), nsmall = 3)),
+    sprintf("%1$s %2$s %3$s %4$s %5$s", format(round(probs_es[2], 3), nsmall = 3), sign1, "\u03C1", sign2, format(round(probs_es[3], 3), nsmall = 3)),
+    sprintf("%1$s %2$s %3$s", "\u03C1", sign3, format(round(probs_es[3], 3), nsmall = 3))
   )
 
   cols <- list("es" = esText)

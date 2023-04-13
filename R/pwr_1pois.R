@@ -523,10 +523,10 @@
   dType_text <- ifelse(options$esType == "h", "<i>h</i>", "|\u0394p|")
 
   esText <- c(
-    gettextf("0 < %1$s %2$s  %3$s", dType_text, "\u2264", format(round(probs_es[1], 3), nsmall = 3)),
-    gettextf("%1$s < %2$s %3$s %4$s", format(round(probs_es[1], 3), nsmall = 3), dType_text, "\u2264", format(round(probs_es[2], 3), nsmall = 3)),
-    gettextf("%1$s < %2$s %3$s %4$s", format(round(probs_es[2], 3), nsmall = 3), dType_text, "\u2264", format(round(probs_es[3], 3), nsmall = 3)),
-    gettextf("%1$s %2$s %3$s", dType_text, "\u2265", format(round(probs_es[3], 3), nsmall = 3))
+    sprintf("0 < %1$s %2$s  %3$s", dType_text, "\u2264", format(round(probs_es[1], 3), nsmall = 3)),
+    sprintf("%1$s < %2$s %3$s %4$s", format(round(probs_es[1], 3), nsmall = 3), dType_text, "\u2264", format(round(probs_es[2], 3), nsmall = 3)),
+    sprintf("%1$s < %2$s %3$s %4$s", format(round(probs_es[2], 3), nsmall = 3), dType_text, "\u2264", format(round(probs_es[3], 3), nsmall = 3)),
+    sprintf("%1$s %2$s %3$s", dType_text, "\u2265", format(round(probs_es[3], 3), nsmall = 3))
   )
 
   cols <- list("es" = esText)

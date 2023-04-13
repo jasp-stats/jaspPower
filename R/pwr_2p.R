@@ -271,10 +271,10 @@
   }
 
   esText <- c(
-    gettextf("0 < %1$s %2$s  %3$s", "|h|", "\u2264", format(round(probs_es[1], 3), nsmall = 3)),
-    gettextf("%1$s < %2$s %3$s %4$s", format(round(probs_es[1], 3), nsmall = 3), "|h|", "\u2264", format(round(probs_es[2], 3), nsmall = 3)),
-    gettextf("%1$s < %2$s %3$s %4$s", format(round(probs_es[2], 3), nsmall = 3), "|h|", "\u2264", format(round(probs_es[3], 3), nsmall = 3)),
-    gettextf("%1$s %2$s %3$s", "|h|", "\u2265", format(round(probs_es[3], 3), nsmall = 3))
+    sprintf("0 < %1$s %2$s  %3$s", "|h|", "\u2264", format(round(probs_es[1], 3), nsmall = 3)),
+    sprintf("%1$s < %2$s %3$s %4$s", format(round(probs_es[1], 3), nsmall = 3), "|h|", "\u2264", format(round(probs_es[2], 3), nsmall = 3)),
+    sprintf("%1$s < %2$s %3$s %4$s", format(round(probs_es[2], 3), nsmall = 3), "|h|", "\u2264", format(round(probs_es[3], 3), nsmall = 3)),
+    sprintf("%1$s %2$s %3$s", "|h|", "\u2265", format(round(probs_es[3], 3), nsmall = 3))
   )
 
   cols <- list("es" = esText)

@@ -280,10 +280,10 @@
   sign3 <- ifelse(alt == "less" || (alt == "two.sided" && d < 1), "\u2264", "\u2265")
 
   esText <- c(
-    gettextf("1 %1$s %2$s %3$s  %4$s", sign1, "\u03C1", sign2, format(round(as.numeric(probs_es[1]), 3), nsmall = 3)),
-    gettextf("%1$s %2$s %3$s %4$s %5$s", format(round(as.numeric(probs_es[1]), 3), nsmall = 3), sign1, "\u03C1", sign2, format(round(as.numeric(probs_es[2]), 3), nsmall = 3)),
-    gettextf("%1$s %2$s %3$s %4$s %5$s", format(round(as.numeric(probs_es[2]), 3), nsmall = 3), sign1, "\u03C1", sign2, format(round(as.numeric(probs_es[3]), 3), nsmall = 3)),
-    gettextf("%1$s %2$s %3$s", "\u03C1", sign3, format(round(as.numeric(probs_es[3]), 3), nsmall = 3))
+    sprintf("1 %1$s %2$s %3$s  %4$s", sign1, "\u03C1", sign2, format(round(as.numeric(probs_es[1]), 3), nsmall = 3)),
+    sprintf("%1$s %2$s %3$s %4$s %5$s", format(round(as.numeric(probs_es[1]), 3), nsmall = 3), sign1, "\u03C1", sign2, format(round(as.numeric(probs_es[2]), 3), nsmall = 3)),
+    sprintf("%1$s %2$s %3$s %4$s %5$s", format(round(as.numeric(probs_es[2]), 3), nsmall = 3), sign1, "\u03C1", sign2, format(round(as.numeric(probs_es[3]), 3), nsmall = 3)),
+    sprintf("%1$s %2$s %3$s", "\u03C1", sign3, format(round(as.numeric(probs_es[3]), 3), nsmall = 3))
   )
 
   cols <- list("es" = esText)
@@ -621,16 +621,16 @@
     if (jaspBase::isTryError(d50)) {
       return()
     }
-    interval <- gettextf("1 > %1$s > %2$s", "\u03C1", round(d50, 3))
+    interval <- sprintf("1 > %1$s > %2$s", "\u03C1", round(d50, 3))
   } else {
     d50 <- try(.pwr2Var2NTest(n = n1, n.ratio = n_ratio, sig.level = alpha, power = .5, alternative = alt)$rho[1])
     if (jaspBase::isTryError(d50)) {
       return()
     }
     if (alt == "less" || alt == "two.sided" && d < 1) {
-      interval <- gettextf("1 > %1$s > %2$s", "\u03C1", round(as.numeric(d50), 3))
+      interval <- sprintf("1 > %1$s > %2$s", "\u03C1", round(as.numeric(d50), 3))
     } else {
-      interval <- gettextf("1 < %1$s < %2$s", "\u03C1", round(as.numeric(d50), 3))
+      interval <- sprintf("1 < %1$s < %2$s", "\u03C1", round(as.numeric(d50), 3))
     }
   }
 
@@ -930,7 +930,7 @@
     ratio_text <- ""
   }
 
-  es_text <- ifelse(d < 1, gettextf("1/%1$s", "\u03C1"), gettextf("%1$s", "\u03C1"))
+  es_text <- ifelse(d < 1, sprintf("1/%1$s", "\u03C1"), sprintf("%1$s", "\u03C1"))
   d <- ifelse(d < 1, round(1 / d, 2), d)
   if (alt == "two.sided") {
     tail_text <- gettext("two-sided")

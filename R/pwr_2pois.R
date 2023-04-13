@@ -280,10 +280,10 @@
   html[["text"]] <- str
 
   esText <- c(
-    gettextf("0 < %s %s  %s", "\u03BB\u2081/\u03BB\u2082", "\u2264", format(round(probs_es[1], 3), nsmall = 3)),
-    gettextf("%s < %s %s %s", format(round(probs_es[1], 3), nsmall = 3), "\u03BB\u2081/\u03BB\u2082", "\u2264", format(round(probs_es[2], 3), nsmall = 3)),
-    gettextf("%s < %s %s %s", format(round(probs_es[2], 3), nsmall = 3), "\u03BB\u2081/\u03BB\u2082", "\u2264", format(round(probs_es[3], 3), nsmall = 3)),
-    gettextf("%s %s %s", "\u03BB\u2081/\u03BB\u2082", "\u2265", format(round(probs_es[3], 3), nsmall = 3))
+    sprintf("0 < %s %s  %s", "\u03BB\u2081/\u03BB\u2082", "\u2264", format(round(probs_es[1], 3), nsmall = 3)),
+    sprintf("%s < %s %s %s", format(round(probs_es[1], 3), nsmall = 3), "\u03BB\u2081/\u03BB\u2082", "\u2264", format(round(probs_es[2], 3), nsmall = 3)),
+    sprintf("%s < %s %s %s", format(round(probs_es[2], 3), nsmall = 3), "\u03BB\u2081/\u03BB\u2082", "\u2264", format(round(probs_es[3], 3), nsmall = 3)),
+    sprintf("%s %s %s", "\u03BB\u2081/\u03BB\u2082", "\u2265", format(round(probs_es[3], 3), nsmall = 3))
   )
 
   cols <- list("es" = esText)

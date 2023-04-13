@@ -214,13 +214,13 @@
 
   if (is.null(n_ratio)) {
     # Paired or one sample
-    plot_subtitle <- gettextf(
+    plot_subtitle <- sprintf(
       "%1$s = %2$s, %3$s = %4$s",
       es, round(delta, 3), "\u03B1", alpha
     )
   } else {
     # Indipendent Samples
-    plot_subtitle <- gettextf(
+    plot_subtitle <- sprintf(
       "%1$s = %2$s, N%3$s = %4$s %5$s N%6$s, %7$s = %8$s",
       es, round(delta, 3), "\u2082", n_ratio, "\u00D7", "\u2081", "\u03B1", alpha
     )
