@@ -3,7 +3,7 @@ Power Analysis
 
 The module "Power Analysis" allows you to conduct analyses of statistical power. In statistics, power refers to the 'ability of a test to detect an effect of a particular size' (Field et al., 2012). The module allows you to compute (1) the necessary sample size to achieve a given power, (2) the power of detecting a particular effect, given a set sample size and (3) the minimum effect size, that could be detected with a given power and sample size.
 
-This module is based upon [jpower](https://github.com/richarddmorey/jpower) by Richard Moorey.
+This module is based upon [jpower](https://github.com/richarddmorey/jpower/commit/3825ec1c368669c3cb1168e292b465e1d5141a2f) by Richard Moorey.
 
 ### Input
 -------
@@ -45,7 +45,7 @@ This module is based upon [jpower](https://github.com/richarddmorey/jpower) by R
 
 ### References
 -------
-- Morey, R. (2021). Jpower [R]. https://github.com/richarddmorey/jpower (Original work published 2017)
+- Morey, R. (2021). Jpower [R]. https://github.com/richarddmorey/jpower/commit/3825ec1c368669c3cb1168e292b465e1d5141a2f (Original work published 2017)
 - Field, A. P., Miles, J., & Field, Z. (2012). Discovering statistics using R. Sage.
 
 ### R Packages

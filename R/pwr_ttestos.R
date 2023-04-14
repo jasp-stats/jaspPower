@@ -1,70 +1,70 @@
 # Originally based on https://github.com/richarddmorey/jpower/commit/3825ec1c368669c3cb1168e292b465e1d5141a2f
 
-.runTtestPS <- function(jaspResults, options) {
+.runTtestOneS <- function(jaspResults, options) {
   stats <- .prepareStats(options)
 
   ## Compute results
-  results <- try(.computeTtestPS(jaspResults, options, stats))
+  results <- try(.computeTtestOneS(jaspResults, options, stats))
   .checkResults(results)
 
-  .initPowerTabTtestPS(jaspResults, options, results, stats)
+  .initPowerTabTtestOneS(jaspResults, options, results, stats)
 
   if (options$text) {
-    .initPowerESTabTtestPS(jaspResults, options, results, stats)
+    .initPowerESTabTtestOneS(jaspResults, options, results, stats)
   }
 
   ## Populate tables and plots.populateIntro(jaspResults, options)
 
   if (options$powerContour) {
-    .preparePowerContourTtestPS(jaspResults, options, results, stats)
+    .preparePowerContourTtestOneS(jaspResults, options, results, stats)
     if (options$text) {
-      .populateContourTextTtestPS(jaspResults, options, results, stats)
+      .populateContourTextTtestOneS(jaspResults, options, results, stats)
     }
   }
   if (options$powerByEffectSize) {
-    .preparePowerCurveESTtestPS(jaspResults, options, results, stats)
+    .preparePowerCurveESTtestOneS(jaspResults, options, results, stats)
     if (options$text) {
-      .populatePowerCurveESTextTtestPS(jaspResults, options, results, stats)
+      .populatePowerCurveESTextTtestOneS(jaspResults, options, results, stats)
     }
   }
   if (options$powerBySampleSize) {
-    .preparePowerCurveNTtestPS(jaspResults, options, results, stats)
+    .preparePowerCurveNTtestOneS(jaspResults, options, results, stats)
     if (options$text) {
-      .populatePowerCurveNTextTtestPS(jaspResults, options, results, stats)
+      .populatePowerCurveNTextTtestOneS(jaspResults, options, results, stats)
     }
   }
   if (options$powerDemonstration) {
-    .preparePowerDistTtestPS(jaspResults, options, results, stats)
+    .preparePowerDistTtestOneS(jaspResults, options, results, stats)
     if (options$text) {
-      .populateDistTextTtestPS(jaspResults, options, results, stats)
+      .populateDistTextTtestOneS(jaspResults, options, results, stats)
     }
   }
   if (options$saveDataset && options$savePath != "") {
-    .generateDatasetTtestPS(jaspResults, options, results, stats)
+    .generateDatasetTtestOneS(jaspResults, options, results, stats)
   }
 }
 
 #### Compute results ----
-.computeTtestPS <- function(jaspResults, options, stats) {
+.computeTtestOneS <- function(jaspResults, options, stats) {
   ## Compute numbers for table
   pow.n <- NULL
   pow.es <- NULL
   pow.pow <- NULL
   if (options$calculation == "sampleSize") {
-    pow.n <- ceiling(pwr::pwr.t.test(d = stats$es, sig.level = stats$alpha, power = stats$pow, alternative = stats$alt, type = "paired")$n)
+    pow.n <- ceiling(pwr::pwr.t.test(d = stats$es, sig.level = stats$alpha, power = stats$pow, alternative = stats$alt, type = "one.sample")$n)
   }
   if (options$calculation == "effectSize") {
-    pow.es <- pwr::pwr.t.test(n = stats$n, power = stats$pow, sig.level = stats$alpha, alternative = stats$alt, type = "paired")$d
+    pow.es <- pwr::pwr.t.test(n = stats$n, power = stats$pow, sig.level = stats$alpha, alternative = stats$alt, type = "one.sample")$d
   }
   if (options$calculation == "power") {
-    pow.pow <- pwr::pwr.t.test(n = stats$n, d = stats$es, sig.level = stats$alpha, alternative = stats$alt, type = "paired")$power
+    pow.pow <- pwr::pwr.t.test(n = stats$n, d = stats$es, sig.level = stats$alpha, alternative = stats$alt, type = "one.sample")$power
   }
 
   return(list(n = pow.n, es = pow.es, power = pow.pow))
 }
 
 #### Init table ----
-.initPowerTabTtestPS <- function(jaspResults, options, results, stats) {
+.initPowerTabTtestOneS <- function(jaspResults, options, results, stats) {
   table <- jaspResults[["powertab"]]
   if (is.null(table)) {
     # Create table if it doesn't exist yet
@@ -121,9 +121,9 @@
 
   table$addRows(rowNames = 1, row)
 
-  .populatePowerTabTtestPS(jaspResults, options, results, stats)
+  .populatePowerTabTtestOneS(jaspResults, options, results, stats)
 }
-.initPowerESTabTtestPS <- function(jaspResults, options, results, stats) {
+.initPowerESTabTtestOneS <- function(jaspResults, options, results, stats) {
   table <- jaspResults[["powerEStab"]]
   if (is.null(table)) {
     # Create table if it doesn't exist yet
@@ -174,11 +174,11 @@
     table$addRows(rowNames = i, row)
   }
 
-  .populatePowerESTabTtestPS(jaspResults, options, results, stats)
+  .populatePowerESTabTtestOneS(jaspResults, options, results, stats)
 }
 
 #### Populate texts ----
-.populateContourTextTtestPS <- function(jaspResults, options, r, lst) {
+.populateContourTextTtestOneS <- function(jaspResults, options, r, lst) {
   html <- jaspResults[["contourText"]]
   if (is.null(html)) {
     html <- createJaspHtml()
@@ -207,7 +207,7 @@
 
   html[["text"]] <- str
 }
-.populatePowerCurveESTextTtestPS <- function(jaspResults, options, r, lst) {
+.populatePowerCurveESTextTtestOneS <- function(jaspResults, options, r, lst) {
   html <- jaspResults[["curveESText"]]
   if (is.null(html)) {
     html <- createJaspHtml()
@@ -225,7 +225,7 @@
   d <- ifelse(calc == "effectSize",
     r$es,
     ifelse(calc == "sampleSize",
-      pwr::pwr.t.test(n = n, power = power, sig.level = alpha, alternative = alt, type = "paired")$d,
+      pwr::pwr.t.test(n = n, power = power, sig.level = alpha, alternative = alt, type = "one.sample")$d,
       lst$es
     )
   )
@@ -249,7 +249,7 @@
     pwr_string <- gettextf("only be sufficiently sensitive (power >%1$s)", round(power, 3))
   }
 
-  d50 <- try(pwr::pwr.t.test(n = n, sig.level = alpha, power = .5, alternative = alt, type = "paired")$d)
+  d50 <- try(pwr::pwr.t.test(n = n, sig.level = alpha, power = .5, alternative = alt, type = "one.sample")$d)
   if (jaspBase::isTryError(d50)) {
     return()
   }
@@ -270,7 +270,7 @@
 
   html[["text"]] <- str
 }
-.populatePowerCurveNTextTtestPS <- function(jaspResults, options, r, lst) {
+.populatePowerCurveNTextTtestOneS <- function(jaspResults, options, r, lst) {
   html <- jaspResults[["curveNText"]]
   if (is.null(html)) {
     html <- createJaspHtml()
@@ -308,7 +308,7 @@
 
   html[["text"]] <- str
 }
-.populateDistTextTtestPS <- function(jaspResults, options, r, lst) {
+.populateDistTextTtestOneS <- function(jaspResults, options, r, lst) {
   html <- jaspResults[["distText"]]
   if (is.null(html)) {
     html <- createJaspHtml()
@@ -328,7 +328,7 @@
   power <- ifelse(calc == "power",
     r$power,
     ifelse(calc == "sampleSize",
-      pwr::pwr.t.test(n = n, d = d, sig.level = alpha, alternative = alt, type = "paired")$power,
+      pwr::pwr.t.test(n = n, d = d, sig.level = alpha, alternative = alt, type = "one.sample")$power,
       lst$pow
     )
   )
@@ -387,7 +387,7 @@
 }
 
 #### Populate table ----
-.populatePowerTabTtestPS <- function(jaspResults, options, r, lst) {
+.populatePowerTabTtestOneS <- function(jaspResults, options, r, lst) {
   table <- jaspResults[["powertab"]]
 
   calc <- options$calculation
@@ -406,7 +406,7 @@
 
   table$addColumns(row)
   if (calc == "sampleSize") {
-    power_rounded <- round(pwr::pwr.t.test(n = n, d = d, sig.level = alpha, alternative = alt, type = "paired")$power, 3)
+    power_rounded <- round(pwr::pwr.t.test(n = n, d = d, sig.level = alpha, alternative = alt, type = "one.sample")$power, 3)
     if (power_rounded == 1) {
       power_rounded <- ">0.999"
     }
@@ -419,7 +419,7 @@
     ))
   }
 }
-.populatePowerESTabTtestPS <- function(jaspResults, options, r, lst) {
+.populatePowerESTabTtestOneS <- function(jaspResults, options, r, lst) {
   html <- jaspResults[["tabText"]]
   if (is.null(html)) {
     html <- createJaspHtml()
@@ -481,7 +481,7 @@
   probs_es <- try(sapply(probs, function(p) {
     pwr::pwr.t.test(
       n = n, sig.level = alpha, power = p,
-      alternative = alt, type = "paired"
+      alternative = alt, type = "one.sample"
     )$d
   }))
   if (jaspBase::isTryError(probs_es)) {
@@ -501,7 +501,7 @@
 }
 
 #### Plot functions ----
-.preparePowerContourTtestPS <- function(jaspResults, options, r, lst) {
+.preparePowerContourTtestOneS <- function(jaspResults, options, r, lst) {
   image <- jaspResults[["powerContour"]]
   if (is.null(image)) {
     image <- createJaspPlot(title = gettext("Power Contour"), width = 400, height = 350)
@@ -530,7 +530,7 @@
   power <- ifelse(calc == "power",
     r$power,
     ifelse(calc == "sampleSize",
-      pwr::pwr.t.test(n = n, d = d, sig.level = alpha, alternative = alt, type = "paired")$power,
+      pwr::pwr.t.test(n = n, d = d, sig.level = alpha, alternative = alt, type = "one.sample")$power,
       lst$pow
     )
   )
@@ -540,7 +540,7 @@
     sig.level = alpha,
     power = max(0.99, power),
     alternative = alt,
-    type = "paired"
+    type = "one.sample"
   )$n))
   if (jaspBase::isTryError(maxn)) {
     image$setError(gettext("The specified design leads to (an) unsolvable equation(s) while constructing the Power Contour plot. Try to enter less extreme values for the parameters"))
@@ -565,7 +565,7 @@
   dd <- seq(ps$mind, ps$maxd, len = ps$lens)
 
   z.pwr <- try(sapply(dd, function(delta) {
-    pwr::pwr.t.test(n = nn, d = delta, sig.level = alpha, alternative = alt, type = "paired")$power
+    pwr::pwr.t.test(n = nn, d = delta, sig.level = alpha, alternative = alt, type = "one.sample")$power
   }))
   if (jaspBase::isTryError(z.pwr)) {
     image$setError(gettext("The specified design leads to (an) unsolvable equation(s) while constructing the Power Contour plot. Try to enter less extreme values for the parameters"))
@@ -573,7 +573,7 @@
   }
 
   z.delta <- try(sapply(nn, function(N) {
-    pwr::pwr.t.test(n = N, sig.level = alpha, power = power, alternative = alt, type = "paired")$d
+    pwr::pwr.t.test(n = N, sig.level = alpha, power = power, alternative = alt, type = "one.sample")$d
   }))
   if (jaspBase::isTryError(z.delta)) {
     image$setError(gettext("The specified design leads to (an) unsolvable equation(s) while constructing the Power Contour plot. Try to enter less extreme values for the parameters"))
@@ -594,7 +594,7 @@
   )
   image$plotObject <- .plotPowerContour(options, state = state)
 }
-.preparePowerCurveESTtestPS <- function(jaspResults, options, r, lst) {
+.preparePowerCurveESTtestOneS <- function(jaspResults, options, r, lst) {
   image <- jaspResults[["powerCurveES"]]
   if (is.null(image)) {
     image <- createJaspPlot(
@@ -627,19 +627,19 @@
   power <- ifelse(calc == "power",
     r$power,
     ifelse(calc == "sampleSize",
-      pwr::pwr.t.test(n = n, d = d, sig.level = alpha, alternative = alt, type = "paired")$power,
+      pwr::pwr.t.test(n = n, d = d, sig.level = alpha, alternative = alt, type = "one.sample")$power,
       lst$pow
     )
   )
 
-  maxd <- try(pwr::pwr.t.test(n = n, power = max(0.999, power), sig.level = alpha, alternative = alt, type = "paired")$d)
+  maxd <- try(pwr::pwr.t.test(n = n, power = max(0.999, power), sig.level = alpha, alternative = alt, type = "one.sample")$d)
   if (jaspBase::isTryError(maxd)) {
     maxd <- d
   }
 
   dd <- seq(ps$mind, maxd, len = ps$curve.n)
 
-  y <- try(pwr::pwr.t.test(n = n, d = dd, sig.level = alpha, alternative = alt, type = "paired")$power)
+  y <- try(pwr::pwr.t.test(n = n, d = dd, sig.level = alpha, alternative = alt, type = "one.sample")$power)
   if (jaspBase::isTryError(y)) {
     image$setError(gettext("The specified design leads to (an) unsolvable equation(s) while constructing the power curve. Try to enter less extreme values for the parameters"))
     return()
@@ -650,7 +650,7 @@
   state <- list(cols = cols, dd = dd, y = y, yrect = yrect, n = n, alpha = alpha, delta = d, pow = power)
   image$plotObject <- .plotPowerCurveES(options, state = state)
 }
-.preparePowerCurveNTtestPS <- function(jaspResults, options, r, lst) {
+.preparePowerCurveNTtestOneS <- function(jaspResults, options, r, lst) {
   image <- jaspResults[["powerCurveN"]]
   if (is.null(image)) {
     image <- createJaspPlot(
@@ -684,7 +684,7 @@
   power <- ifelse(calc == "power",
     r$power,
     ifelse(calc == "sampleSize",
-      pwr::pwr.t.test(n = n, d = d, sig.level = alpha, alternative = alt, type = "paired")$power,
+      pwr::pwr.t.test(n = n, d = d, sig.level = alpha, alternative = alt, type = "one.sample")$power,
       lst$pow
     )
   )
@@ -694,7 +694,7 @@
     sig.level = alpha,
     power = max(0.99999, power),
     alternative = alt,
-    type = "paired"
+    type = "one.sample"
   )$n))
 
   if (jaspBase::isTryError(maxn)) {
@@ -708,7 +708,7 @@
 
   nn <- seq(minn, maxn)
 
-  y <- try(pwr::pwr.t.test(n = nn, d = d, sig.level = alpha, alternative = alt, type = "paired")$power)
+  y <- try(pwr::pwr.t.test(n = nn, d = d, sig.level = alpha, alternative = alt, type = "one.sample")$power)
   if (jaspBase::isTryError(y)) {
     image$setError(gettext("The specified design leads to (an) unsolvable equation(s) while constructing the 'Power Curve by N' plot. Try to enter less extreme values for the parameters"))
     return()
@@ -735,7 +735,7 @@
   )
   image$plotObject <- .plotPowerCurveN(options, state = state)
 }
-.preparePowerDistTtestPS <- function(jaspResults, options, r, lst) {
+.preparePowerDistTtestOneS <- function(jaspResults, options, r, lst) {
   image <- jaspResults[["powerDist"]]
   if (is.null(image)) {
     image <- createJaspPlot(
@@ -767,7 +767,7 @@
   power <- ifelse(calc == "power",
     r$power,
     ifelse(calc == "sampleSize",
-      pwr::pwr.t.test(n = n, d = d, sig.level = alpha, alternative = alt, type = "paired")$power,
+      pwr::pwr.t.test(n = n, d = d, sig.level = alpha, alternative = alt, type = "one.sample")$power,
       lst$pow
     )
   )
@@ -824,7 +824,7 @@
 }
 
 #### Generate synthetic dataset ----
-.generateDatasetTtestPS <- function(jaspResults, options, r, lst) {
+.generateDatasetTtestOneS <- function(jaspResults, options, r, lst) {
   datasetContainer <- jaspResults[["datasetcont"]]
   if (is.null(datasetContainer)) {
     # Create Container if it doesn't exist yet
@@ -874,13 +874,13 @@
   power <- ifelse(calc == "power",
     r$power,
     ifelse(calc == "sampleSize",
-      pwr::pwr.t.test(n = n, d = d, sig.level = alpha, alternative = alt, type = "paired")$power,
+      pwr::pwr.t.test(n = n, d = d, sig.level = alpha, alternative = alt, type = "one.sample")$power,
       lst$pow
     )
   )
   df <- n - 1
 
-  if ("paired" == "paired") {
+  if ("one.sample" == "one.sample") {
     sd_1 <- options[["firstGroupSd"]]
     sd_2 <- options[["secondGroupSd"]]
 
@@ -974,7 +974,7 @@
   }
 
   # Characteristics tab
-  if ("paired" == "paired") {
+  if ("one.sample" == "one.sample") {
     colNames <- c("n", "mean1", "mean2", "s1", "s2")
     colLabels <- c(
       gettext("N"),
