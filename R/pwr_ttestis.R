@@ -102,7 +102,7 @@
   colLabels <- c(
     "N\u2081",
     "N\u2082",
-    gettext("Cohen's |\u03B4|"),
+    gettextf("Cohen's %s", "|\u03B4|"),
     gettext("Power"),
     "\u03B1"
   )
@@ -967,12 +967,12 @@
   # Characteristics tab
   colNames <- c("n1", "n2", "mean1", "mean2", "s1", "s2")
   colLabels <- c(
-    gettext("N\u2081"),
-    gettext("N\u2082"),
-    gettext("\u0078\u0305\u2081"),
-    gettext("\u0078\u0305\u2082"),
-    gettext("s\u2081"),
-    gettext("s\u2082")
+    "N\u2081",
+    "N\u2082",
+    "\u0078\u0305\u2081",
+    "\u0078\u0305\u2082",
+    "s\u2081",
+    "s\u2082"
   )
   colType <- c("integer", "integer", "number", "number", "number", "number")
 
@@ -996,8 +996,8 @@
   # Post hoc Power tab
   colNames <- c("es", "alt", "power", "alpha")
   colLabels <- c(
-    gettext("Cohen's |\u03B4|"),
-    "Alternative hypothesis",
+    gettextf("Cohen's %s", "|\u03B4|"),
+    gettext("Alternative hypothesis"),
     gettext("Power"),
     "\u03B1"
   )

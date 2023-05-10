@@ -100,7 +100,7 @@
   colNames <- c("sampleSize", "effectSize", "power", "alpha")
   colLabels <- c(
     "N",
-    gettext("Cohen's |\u03B4|"),
+    gettextf("Cohen's %s", "|\u03B4|"),
     gettext("Power"),
     "\u03B1"
   )
@@ -977,11 +977,11 @@
   if ("one.sample" == "one.sample") {
     colNames <- c("n", "mean1", "mean2", "s1", "s2")
     colLabels <- c(
-      gettext("N"),
-      gettext("\u0078\u0305\u2081"),
-      gettext("\u0078\u0305\u2082"),
-      gettext("s\u2081"),
-      gettext("s\u2082")
+      "N",
+      "\u0078\u0305\u2081",
+      "\u0078\u0305\u2082",
+      "s\u2081",
+      "s\u2082"
     )
     colType <- c("integer", "number", "number", "number", "number")
 
@@ -1003,10 +1003,10 @@
   } else {
     colNames <- c("n", "mean", "testValue", "s")
     colLabels <- c(
-      gettext("N"),
-      gettext("\u0078\u0305"),
-      gettext("\u03BC\u2080"),
-      gettext("s")
+      "N",
+      "\u0078\u0305",
+      "\u03BC\u2080",
+      "s"
     )
     colType <- c("integer", "number", "number", "number")
 
@@ -1029,8 +1029,8 @@
   # Post hoc power tab
   colNames <- c("es", "alt", "power", "alpha")
   colLabels <- c(
-    gettext("Cohen's |\u03B4|"),
-    "Alternative hypothesis",
+    gettextf("Cohen's %s", "|\u03B4|"),
+    gettext("Alternative hypothesis"),
     gettext("Power"),
     "\u03B1"
   )
