@@ -104,7 +104,7 @@
   colLabels <- c(
     "N\u2081",
     "N\u2082",
-    gettext("Variance ratio (\u03C1)"),
+    gettextf("Variance ratio (%s)", "\u03C1"),
     gettext("Power"),
     "\u03B1"
   )
