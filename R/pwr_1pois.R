@@ -108,9 +108,9 @@
   colLabels <- c(
     "N",
     "t",
-    gettext("Hypothesized rate (\u03BB\u2080)"),
-    gettext("Comparison rate (\u03BB\u2081)"),
-    gettext("Effect size ((\u03BB\u2081-\u03BB\u2080)/\u221A\u03BB\u2081)"),
+    gettextf("Hypothesized rate (%s)", "\u03BB\u2080"),
+    gettextf("Comparison rate (%s)", "\u03BB\u2081"),
+    gettextf("Effect size (%s)", "(\u03BB\u2081-\u03BB\u2080)/\u221A\u03BB\u2081"),
     gettext("Power"),
     "\u03B1"
   )
@@ -170,7 +170,7 @@
 
   table$addColumnInfo(
     name = "es",
-    title = gettext("True effect size ((\u03BB\u2081-\u03BB\u2080)/\u221A\u03BB\u2081)"),
+    title = gettextf("True effect size (%s)", "(\u03BB\u2081-\u03BB\u2080)/\u221A\u03BB\u2081"),
     type = "string"
   )
   table$addColumnInfo(
@@ -331,8 +331,8 @@
     gettext("absolute differences in proportions")
   )
   dType_symbol <- ifelse(options$esType == "h",
-    gettext("h"),
-    gettext("\u0394p")
+    "h",
+    "\u0394p"
   )
 
 

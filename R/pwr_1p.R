@@ -105,8 +105,8 @@
   colNames <- c("sampleSize", "comparisonProportion", "baselineProportion", "effectSize", "power", "alpha")
   colLabels <- c(
     "N",
-    gettext("p\u2081"),
-    gettext("p\u2080"),
+    "p\u2081",
+    "p\u2080",
     gettextf("Cohen's %s", "|<i>h</i>|"),
     gettext("Power"),
     "\u03B1"
@@ -1018,8 +1018,8 @@
   colNames <- c("n", "p1", "p0")
   colLabels <- c(
     "N",
-    gettext("p\u2081"),
-    gettext("p\u2080")
+    "p\u2081",
+    "p\u2080"
   )
   colType <- c("integer", "number", "number")
 

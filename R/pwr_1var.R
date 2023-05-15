@@ -103,7 +103,7 @@
   colNames <- c("sampleSize", "effectSize", "power", "alpha")
   colLabels <- c(
     "N",
-    gettext("Variance ratio (\u03C1)"),
+    gettextf("Variance ratio (%s)", "\u03C1"),
     gettext("Power"),
     "\u03B1"
   )
@@ -153,7 +153,7 @@
 
   table$addColumnInfo(
     name = "es",
-    title = gettext("True variance ratio (\u03C1)"),
+    title = gettextf("True variance ratio (%s)", "\u03C1"),
     type = "string"
   )
   table$addColumnInfo(
@@ -1024,10 +1024,10 @@
   # Characteristics tab
   colNames <- c("n", "mean", "s", "s0")
   colLabels <- c(
-    gettext("N"),
-    gettext("\u0078\u0305"),
-    gettext("s"),
-    gettext("\u03C3\u2080")
+    "N",
+    "\u0078\u0305",
+    "s",
+    "\u03C3\u2080"
   )
   colType <- c("integer", "number", "number", "number")
 
@@ -1049,8 +1049,8 @@
   # Post hoc power tab
   colNames <- c("es", "alt", "power", "alpha")
   colLabels <- c(
-    gettext("Variance ratio (\u03C1)"),
-    "Alternative hypothesis",
+    gettextf("Variance ratio (%s)", "\u03C1"),
+    gettext("Alternative hypothesis"),
     gettext("Power"),
     "\u03B1"
   )

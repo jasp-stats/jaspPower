@@ -105,8 +105,8 @@
   colLabels <- c(
     "N\u2081",
     "N\u2082",
-    gettext("p\u2081"),
-    gettext("p\u2082"),
+    "p\u2081",
+    "p\u2082",
     gettextf("Cohen's %s", "|<i>h</i>|"),
     gettext("Power"),
     "\u03B1"
@@ -1033,8 +1033,8 @@
   colLabels <- c(
     "N\u2081",
     "N\u2082",
-    gettext("p\u2081"),
-    gettext("p\u2082")
+    "p\u2081",
+    "p\u2082"
   )
   colType <- c("integer", "integer", "number", "number")
 
