@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspPower 0.1.0\n"
-"POT-Creation-Date: 2023-05-10 13:48\n"
+"POT-Creation-Date: 2023-05-15 10:21\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -125,12 +125,6 @@ msgid "Probability Density"
 msgstr ""
 
 msgid "A Priori Power Analysis"
-msgstr ""
-
-msgid "p₁"
-msgstr ""
-
-msgid "p₀"
 msgstr ""
 
 msgid "Cohen's %s"
@@ -292,16 +286,16 @@ msgstr ""
 msgid "The synthetic dataset is saved as %s"
 msgstr ""
 
-msgid "Hypothesized rate (λ₀)"
+msgid "Hypothesized rate (%s)"
 msgstr ""
 
-msgid "Comparison rate (λ₁)"
+msgid "Comparison rate (%s)"
 msgstr ""
 
-msgid "Effect size ((λ₁-λ₀)/√λ₁)"
+msgid "Effect size (%s)"
 msgstr ""
 
-msgid "True effect size ((λ₁-λ₀)/√λ₁)"
+msgid "True effect size (%s)"
 msgstr ""
 
 msgid "a sample size of"
@@ -340,12 +334,6 @@ msgstr ""
 msgid "absolute differences in proportions"
 msgstr ""
 
-msgid "h"
-msgstr ""
-
-msgid "Δp"
-msgstr ""
-
 msgid "have power of at least %s"
 msgstr ""
 
@@ -367,13 +355,13 @@ msgstr ""
 msgid "On the other hand, if %1$s, the evidence would exceed the criterion  &mdash; and hence we would correctly claim that %2$s &mdash; at least %3$s%% of the time."
 msgstr ""
 
-msgid "Variance ratio (ρ)"
+msgid "Variance ratio (%s)"
 msgstr ""
 
 msgid "Power by variance ratio"
 msgstr ""
 
-msgid "True variance ratio (ρ)"
+msgid "True variance ratio (%s)"
 msgstr ""
 
 msgid "The power contour plot shows how the sensitivity of the test changes with the hypothetical variance ratio and the sample sizes in the design. As we increase the sample sizes, smaller variance ratios become reliably detectable."
@@ -418,19 +406,7 @@ msgstr ""
 msgid "Power Curve by variance ratio"
 msgstr ""
 
-msgid "N"
-msgstr ""
-
-msgid "x̅"
-msgstr ""
-
-msgid "s"
-msgstr ""
-
-msgid "σ₀"
-msgstr ""
-
-msgid "p₂"
+msgid "Alternative hypothesis"
 msgstr ""
 
 msgid "Power by Effect Size"
@@ -547,29 +523,8 @@ msgstr ""
 msgid "The design's power for detecting effects of %1$s%2$s%3$s is thus %4$s."
 msgstr ""
 
-msgid "N₁"
-msgstr ""
-
-msgid "N₂"
-msgstr ""
-
-msgid "x̅₁"
-msgstr ""
-
-msgid "x̅₂"
-msgstr ""
-
-msgid "s₁"
-msgstr ""
-
-msgid "s₂"
-msgstr ""
-
-msgid "Cohen's |δ|"
-msgstr ""
-
 msgid "The power curve above shows how the sensitivity of the test and design is larger for larger sample sizes. In order for our test and design to have sufficient sensitivity (power > %1$s) to detect that %2$s when the effect size is %3$s or larger, we would need %4$s."
 msgstr ""
 
-msgid "μ₀"
+msgid "Cohen's"
 msgstr ""
