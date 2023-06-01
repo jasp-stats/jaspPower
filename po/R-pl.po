@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspPower 0.1.0\n"
 "POT-Creation-Date: 2023-05-15 10:21\n"
-"PO-Revision-Date: 2023-05-28 00:24+0000\n"
+"PO-Revision-Date: 2023-06-02 20:51+0000\n"
 "Last-Translator: Tomasz Misiuro <tomaszmisiuro@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/jasp/jasppower-r/"
 "pl/>\n"
@@ -286,9 +286,11 @@ msgstr ""
 
 msgid "The generated dataset could not be saved. Please make sure that the specified path exists and the specified csv file is closed."
 msgstr ""
+"Wygenerowany plik danych nie mógł zostać zapisany. Proszę się upewnić, że "
+"podana ścieżka istnieje a plik csv jest zamknięty."
 
 msgid "The synthetic dataset is saved as %s"
-msgstr ""
+msgstr "Syntetyczny zestaw danych został zapisany jako %s"
 
 msgid "Hypothesized rate (%s)"
 msgstr ""
@@ -411,13 +413,13 @@ msgid "Power Curve by variance ratio"
 msgstr ""
 
 msgid "Alternative hypothesis"
-msgstr ""
+msgstr "Hipoteza alternatywna"
 
 msgid "Power by Effect Size"
-msgstr ""
+msgstr "Moc przez wielkość efektu"
 
 msgid "a sample size of %1$s in each group"
-msgstr ""
+msgstr "wielkość próby %1$s w każdej grupie"
 
 msgid "group sample sizes of %1$s and %2$s respectively,"
 msgstr ""
