@@ -2,16 +2,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspPower 0.1.0\n"
 "POT-Creation-Date: 2023-05-15 10:21\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2023-06-02 20:51+0000\n"
+"Last-Translator: Tomasz Misiuro <tomaszmisiuro@gmail.com>\n"
+"Language-Team: Polish <https://hosted.weblate.org/projects/jasp/jasppower-r/"
+"pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.18-dev\n"
 
 msgid "Effect size can't be 0."
-msgstr ""
+msgstr "Wielkość efektu nie może wynosić 0."
 
 msgid "The comparison proportion can't be equal to the hypothesized proportion with a 'Two-sided' alternative hypothesis."
 msgstr ""
@@ -44,28 +48,28 @@ msgid "The variance ratio has to be greater than 1 with an alternative hypothesi
 msgstr ""
 
 msgid "Power must be less than 1."
-msgstr ""
+msgstr "Moc musi być mniejsza niż 1."
 
 msgid "The purpose of a %s is to evaluate the sensitivity of a design and test."
 msgstr ""
 
 msgid "an independent samples t-test"
-msgstr ""
+msgstr "test t dla prób niezależnych"
 
 msgid "a paired samples t-test"
-msgstr ""
+msgstr "test t dla prób zależnych"
 
 msgid "a one sample t-test"
-msgstr ""
+msgstr "test t dla jednej próby"
 
 msgid "a one sample z-test"
-msgstr ""
+msgstr "test Z dla jednej próby"
 
 msgid "a one sample proportions test"
-msgstr ""
+msgstr "test dla jednej proporcji"
 
 msgid "a two samples proportions test"
-msgstr ""
+msgstr "test dla dwóch proporcji"
 
 msgid "a one sample variance test"
 msgstr ""
@@ -80,7 +84,7 @@ msgid "a two samples Poisson rate test"
 msgstr ""
 
 msgid "when using"
-msgstr ""
+msgstr "gdy użyte"
 
 msgid "You have chosen to calculate the minimum sample size needed to have an experiment sensitive enough to consistently detect the specified hypothetical effect size"
 msgstr ""
@@ -95,7 +99,7 @@ msgid "Unable to compute the power results. Try to enter less extreme values for
 msgstr ""
 
 msgid "Power cannot be 1"
-msgstr ""
+msgstr "Moc nie może wynosić 1"
 
 msgid "Effect size can't be 0 with a two-sided alternative hypothesis."
 msgstr ""
@@ -107,28 +111,28 @@ msgid "Effect size has to be greater than 0 with an alternative of greater."
 msgstr ""
 
 msgid "Sample size (group 2)"
-msgstr ""
+msgstr "Wielkość próby (grupa 2)"
 
 msgid "Sample size (group 1)"
-msgstr ""
+msgstr "Wielkość próby (grupa 1)"
 
 msgid "Hypothetical effect size (%s)"
-msgstr ""
+msgstr "Oczekiwana wielkość efektu (%s)"
 
 msgid "Power"
-msgstr ""
+msgstr "Moc"
 
 msgid "Observed effect size (%s)"
-msgstr ""
+msgstr "Obserwowana wielkość efektu (%s)"
 
 msgid "Probability Density"
-msgstr ""
+msgstr "Gęstość prawdopodobieństwa"
 
 msgid "A Priori Power Analysis"
-msgstr ""
+msgstr "Analiza mocy a priori"
 
 msgid "Cohen's %s"
-msgstr ""
+msgstr "%s Cohena"
 
 msgid "User Defined"
 msgstr ""
@@ -137,13 +141,13 @@ msgid "Power by effect size"
 msgstr ""
 
 msgid "True effect size"
-msgstr ""
+msgstr "Prawdziwa wielkość efektu"
 
 msgid "Power to detect"
 msgstr ""
 
 msgid "Description"
-msgstr ""
+msgstr "Opis"
 
 msgid "Likely miss"
 msgstr ""
@@ -164,22 +168,22 @@ msgid "Conversely, if one is satisfied to reliably detect only larger effect siz
 msgstr ""
 
 msgid "sample sizes of %1$s"
-msgstr ""
+msgstr "wielkość próby równa %1$s"
 
 msgid "two-sided"
-msgstr ""
+msgstr "dwustronna"
 
 msgid "criteria"
-msgstr ""
+msgstr "kryteria"
 
 msgid "one-sided"
-msgstr ""
+msgstr "jednostronna"
 
 msgid "criterion"
-msgstr ""
+msgstr "kreterium"
 
 msgid "have power of at least %1$s"
-msgstr ""
+msgstr "ma moc równą co najmniej %1$s"
 
 msgid "only be sufficiently sensitive (power >%1$s)"
 msgstr ""
@@ -191,19 +195,19 @@ msgid "We would be more than likely to miss (power less than 50%%) effect sizes 
 msgstr ""
 
 msgid "sample sizes of at least %1$s"
-msgstr ""
+msgstr "wielkość próby równa co najmniej %1$s"
 
 msgid "The power curve above shows how the sensitivity of the test and design is larger for larger effect sizes. In order for our test and design to have sufficient sensitivity (power > %1$s) to detect that %2$s when the effect size is %3$s or larger, we would need %4$s."
 msgstr ""
 
 msgid "a sample size of %1$s"
-msgstr ""
+msgstr "wielkość próby %1$s"
 
 msgid "The figure above shows two sampling distributions: the sampling distribution of the %1$s effect size when %2$s (left), and when %3$s%4$s (right)."
 msgstr ""
 
 msgid "Both assume %1$s."
-msgstr ""
+msgstr "Oba zakładają %1$s."
 
 msgid "The vertical dashed lines show the %1$s we would set for a %2$s test with %3$s."
 msgstr ""
@@ -224,10 +228,10 @@ msgid "Due to the rounding of the sample size, the actual power can deviate from
 msgstr ""
 
 msgid "Actual power:"
-msgstr ""
+msgstr "Rzeczywista moc:"
 
 msgid "a sample size of %s"
-msgstr ""
+msgstr "wielkość próby %s"
 
 msgid "We would need %1$s to reliably (with probability greater than or equal to %2$s) detect an effect size of %3$s%4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s."
 msgstr ""
@@ -245,7 +249,7 @@ msgid "The specified design leads to (an) unsolvable equation(s) while computing
 msgstr ""
 
 msgid "|h|"
-msgstr ""
+msgstr "|h|"
 
 msgid "Power Contour"
 msgstr ""
@@ -269,22 +273,24 @@ msgid "Power Demonstration"
 msgstr ""
 
 msgid "Synthetic Dataset"
-msgstr ""
+msgstr "Sztuczny zbiór danych"
 
 msgid "Characteristics"
 msgstr ""
 
 msgid "Post Hoc Power Analysis"
-msgstr ""
+msgstr "Analiza mocy post-hoc"
 
 msgid "The generated dataset must be saved as a .csv or .txt file."
 msgstr ""
 
 msgid "The generated dataset could not be saved. Please make sure that the specified path exists and the specified csv file is closed."
 msgstr ""
+"Wygenerowany plik danych nie mógł zostać zapisany. Proszę się upewnić, że "
+"podana ścieżka istnieje a plik csv jest zamknięty."
 
 msgid "The synthetic dataset is saved as %s"
-msgstr ""
+msgstr "Syntetyczny zestaw danych został zapisany jako %s"
 
 msgid "Hypothesized rate (%s)"
 msgstr ""
@@ -293,16 +299,16 @@ msgid "Comparison rate (%s)"
 msgstr ""
 
 msgid "Effect size (%s)"
-msgstr ""
+msgstr "Wielkość efektu (%s)"
 
 msgid "True effect size (%s)"
-msgstr ""
+msgstr "Prawdziwa wielkość efektu (%s)"
 
 msgid "a sample size of"
-msgstr ""
+msgstr "wielkość próby"
 
 msgid "effect sizes of %s"
-msgstr ""
+msgstr "wielkość efektu %s"
 
 msgid "We would need %s to reliably (with probability greater than %1$s) detect %2$s%3$s%4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s."
 msgstr ""
@@ -317,7 +323,7 @@ msgid "To evaluate the design specified in the table, we can consider how sensit
 msgstr ""
 
 msgid "effect size"
-msgstr ""
+msgstr "wielkość efektu"
 
 msgid "absolute difference in proportions"
 msgstr ""
@@ -329,25 +335,25 @@ msgid "sample sizes of %s"
 msgstr ""
 
 msgid "effect sizes"
-msgstr ""
+msgstr "wielkości efektów"
 
 msgid "absolute differences in proportions"
 msgstr ""
 
 msgid "have power of at least %s"
-msgstr ""
+msgstr "ma moc równą co najmniej %s"
 
 msgid "only be sufficiently sensitive (power >%s)"
 msgstr ""
 
 msgid "sample sizes of at least %s"
-msgstr ""
+msgstr "wielkość próby równa co najmniej %s"
 
 msgid "The figure above shows two sampling distributions: the sampling distribution of the %1$s effect size when %2$s (left), and when %3$s (right)."
 msgstr ""
 
 msgid "Both assume %s."
-msgstr ""
+msgstr "Oba zakładają %s."
 
 msgid "When the observed effect size is far enough away from 0 to be more extreme than the %s we say we 'reject' the null hypothesis."
 msgstr ""
@@ -407,13 +413,13 @@ msgid "Power Curve by variance ratio"
 msgstr ""
 
 msgid "Alternative hypothesis"
-msgstr ""
+msgstr "Hipoteza alternatywna"
 
 msgid "Power by Effect Size"
-msgstr ""
+msgstr "Moc przez wielkość efektu"
 
 msgid "a sample size of %1$s in each group"
-msgstr ""
+msgstr "wielkość próby %1$s w każdej grupie"
 
 msgid "group sample sizes of %1$s and %2$s respectively,"
 msgstr ""
@@ -431,10 +437,10 @@ msgid "group sample sizes of %1$s and %2$s, respectively"
 msgstr ""
 
 msgid "sample sizes of at least %1$s in each group"
-msgstr ""
+msgstr "wielkość próby równa co najmniej %1$s w każdej grupie"
 
 msgid "group sample sizes of at least %1$s and %2$s, respectively"
-msgstr ""
+msgstr "wielkość grupo równe kolejno co najmniej %1$s and %2$s"
 
 msgid "On the other hand, if %1$s%2$s, the evidence would exceed the criterion &mdash; and hence we would correctly claim that %3$s &mdash; at least %4$s%% of the time."
 msgstr ""
@@ -446,7 +452,7 @@ msgid "True Poisson rate ratio"
 msgstr ""
 
 msgid "a sample size of %s in each group"
-msgstr ""
+msgstr "wielkość próby %s w każdej grupie"
 
 msgid "group sample sizes of %s and %s respectively,"
 msgstr ""
@@ -473,7 +479,7 @@ msgid "group sample sizes of %s and %s, respectively"
 msgstr ""
 
 msgid "sample sizes of at least %s in each group"
-msgstr ""
+msgstr "wielkość próby równa co najmniej %s w każdej grupie"
 
 msgid "group sample sizes of at least %s and %s, respectively"
 msgstr ""
@@ -509,7 +515,7 @@ msgid "The specified design leads to (an) unsolvable equation(s) while construct
 msgstr ""
 
 msgid "Note."
-msgstr ""
+msgstr "Uwaga."
 
 msgid "When the variance ratio is less than 1, the inverse of the variance ratio is displayed. Therefore, the first and second degrees of freedom of both F-distributions switched places."
 msgstr ""
@@ -527,4 +533,4 @@ msgid "The power curve above shows how the sensitivity of the test and design is
 msgstr ""
 
 msgid "Cohen's"
-msgstr ""
+msgstr "Cohena"
