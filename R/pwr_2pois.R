@@ -221,7 +221,7 @@
 
   n_text <- ifelse(n1 == n2,
     gettextf("a sample size of %s in each group ", n1),
-    gettextf("group sample sizes of %s and %s respectively, ", n1, n2)
+    gettextf("group sample sizes of %1$s and %2$s respectively, ", n1, n2)
   )
   tail_text <- ifelse(alt == "two.sided",
     "two-sided",
@@ -535,7 +535,7 @@
 
   n_text <- ifelse(n1 == n2,
     gettextf("sample sizes of %s in each group", n1),
-    gettextf("group sample sizes of %s and %s, respectively", n1, n2)
+    gettextf("group sample sizes of %1$s and %2$s, respectively", n1, n2)
   )
 
   if (alt == "two.sided") {
@@ -773,7 +773,7 @@
 
   n_text <- ifelse(n1 == n2,
     gettextf("sample sizes of at least %s in each group", n1),
-    gettextf("group sample sizes of at least %s and %s, respectively", n1, n2)
+    gettextf("group sample sizes of at least %1$s and %2$s, respectively", n1, n2)
   )
 
   if (alt == "two.sided") {
@@ -789,7 +789,7 @@
   }
 
   str <- gettextf(
-    "The power curve above shows how the sensitivity of the test and design is larger for larger effect sizes. In order for our test and design to have sufficient sensitivity (power > %s) to detect that %s when the effect size is %s or larger, we would need %s.",
+    "The power curve above shows how the sensitivity of the test and design is larger for larger effect sizes. In order for our test and design to have sufficient sensitivity (power > %1$s) to detect that %2$s when the effect size is %3$s or larger, we would need %4$s.",
     round(power, 3), alt_text, d, n_text
   )
 
@@ -821,7 +821,7 @@
 
   n_text <- ifelse(n1 == n2,
     gettextf("a sample size of %s in each group", n1),
-    gettextf("group sample sizes of %s and %s, respectively", n1, n2)
+    gettextf("group sample sizes of %1$s and %2$s, respectively", n1, n2)
   )
 
   if (alt == "two.sided") {
@@ -865,7 +865,7 @@
       "<i>\u03BB\u2081/\u03BB\u2082\u2265</i>", d, "<i>\u03BB\u2081/\u03BB\u2082\u2265</i>0", 100 * round(power, 3)
     ),
     gettextf(
-      "The design's power for detecting effects of %s%s is thus %s.",
+      "The design's power for detecting effects of %1$s%2$s is thus %3$s.",
       alt_text, d, round(power, 3)
     ),
     "</p>"

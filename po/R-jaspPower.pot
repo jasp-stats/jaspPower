@@ -448,7 +448,7 @@ msgstr ""
 msgid "a sample size of %s in each group"
 msgstr ""
 
-msgid "group sample sizes of %s and %s respectively,"
+msgid "group sample sizes of %1$s and %2$s respectively,"
 msgstr ""
 
 msgid "We would need %1$s to reliably (with probability greater than %2$s) detect a Poisson rate ratio of %3$s%4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s."
@@ -469,19 +469,19 @@ msgstr ""
 msgid "sample sizes of %s in each group"
 msgstr ""
 
-msgid "group sample sizes of %s and %s, respectively"
+msgid "group sample sizes of %1$s and %2$s, respectively"
 msgstr ""
 
 msgid "sample sizes of at least %s in each group"
 msgstr ""
 
-msgid "group sample sizes of at least %s and %s, respectively"
+msgid "group sample sizes of at least %1$s and %2$s, respectively"
 msgstr ""
 
-msgid "The power curve above shows how the sensitivity of the test and design is larger for larger effect sizes. In order for our test and design to have sufficient sensitivity (power > %s) to detect that %s when the effect size is %s or larger, we would need %s."
+msgid "The power curve above shows how the sensitivity of the test and design is larger for larger effect sizes. In order for our test and design to have sufficient sensitivity (power > %1$s) to detect that %2$s when the effect size is %3$s or larger, we would need %4$s."
 msgstr ""
 
-msgid "The design's power for detecting effects of %s%s is thus %s."
+msgid "The design's power for detecting effects of %1$s%2$s is thus %3$s."
 msgstr ""
 
 msgid "True variance ratio"
