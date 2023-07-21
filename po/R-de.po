@@ -780,9 +780,6 @@ msgstr ""
 msgid "a sample size of %s in each group"
 msgstr "ein Stichprobenumfang von %s pro Gruppe"
 
-msgid "group sample sizes of %1$s and %2$s respectively,"
-msgstr "Gruppenstichprobengrößen von %1$s bzw. %2$s"
-
 msgid ""
 "We would need %1$s to reliably (with probability greater than %2$s) detect a "
 "Poisson rate ratio of %3$s%4$s, assuming a %5$s criterion for detection that "
@@ -818,31 +815,8 @@ msgstr ""
 msgid "sample sizes of %s in each group"
 msgstr "Stichprobenumfänge von %s in jeder Gruppe"
 
-msgid "group sample sizes of %1$s and %2$s, respectively"
-msgstr "Gruppenstichprobenumfänge von %1$s bzw. %2$s"
-
 msgid "sample sizes of at least %s in each group"
 msgstr "Stichprobenumfänge von mindestens %s in jeder Gruppe"
-
-msgid "group sample sizes of at least %1$s and %2$s, respectively"
-msgstr "Gruppenstichprobenumfänge von mindestens %1$s bzw. %2$s"
-
-#, fuzzy
-msgid ""
-"The power curve above shows how the sensitivity of the test and design is "
-"larger for larger effect sizes. In order for our test and design to have "
-"sufficient sensitivity (power > %1$s) to detect that %2$s when the effect size "
-"is %3$s or larger, we would need %4$s."
-msgstr ""
-"Die obige Teststärke-Kurve zeigt, dass die Sensitivität des Tests und "
-"Designs bei größeren Effektstärken größer ist. Damit unser Test und Design "
-"eine ausreichende Sensitivität (Teststärke > %1$s) haben, um aufzudecken dass "
-"%2$s, wenn die Effektstärke %3$s oder größer ist, würden wir %4$s benötigen."
-
-msgid "The design's power for detecting effects of %1$s%2$s is thus %3$s."
-msgstr ""
-"Die Teststärke des Designs zur Aufdeckung von Effekten von %1$s%2$s beträgt "
-"somit %3$s."
 
 msgid "True variance ratio"
 msgstr "Wahres Varianzverhältnis"
