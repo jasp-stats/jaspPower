@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-07-22 10:07+0000\n"
+"PO-Revision-Date: 2023-07-22 18:10+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/"
 "jasppower-qml/de/>\n"
@@ -63,12 +63,11 @@ msgstr "ρ < 1"
 
 msgctxt "Power|"
 msgid "Hypothesized proportion"
-msgstr "Hypothetischer Anteil"
+msgstr "Hypothetischer Anteilswert"
 
-#, fuzzy
 msgctxt "Power|"
 msgid "Baseline proportion"
-msgstr "Baseline-Anteil"
+msgstr "Basis-Anteilswert"
 
 msgctxt "Power|"
 msgid "p₀"
@@ -80,7 +79,7 @@ msgstr "p₂"
 
 msgctxt "Power|"
 msgid "Comparison proportion"
-msgstr "Vergleichsanteil"
+msgstr "Vergleichs-Anteilswert"
 
 msgctxt "Power|"
 msgid "p₁"
