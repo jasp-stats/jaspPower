@@ -7,7 +7,7 @@ Description
 	title		: qsTr("Power")
 	icon:			"power.svg"
 	description	: qsTr("This module allows you to conduct power analyses.")
-	version			: "0.17.3"
+	version			: "0.18.0"
 	author		: "JASP Team"
 	maintainer	: "JASP Team <info@jasp-stats.org>"
 	website		: "jasp-stats.org"
