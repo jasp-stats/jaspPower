@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2023-07-22 18:10+0000\n"
+"Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/jasp/"
+"jasppower-qml/de/>\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.0-dev\n"
 "X-Language: de\n"
 "X-Qt-Contexts: true\n"
 
@@ -57,12 +63,11 @@ msgstr "ρ < 1"
 
 msgctxt "Power|"
 msgid "Hypothesized proportion"
-msgstr "Hypothetischer Anteil"
+msgstr "Hypothetischer Anteilswert"
 
-#, fuzzy
 msgctxt "Power|"
 msgid "Baseline proportion"
-msgstr "Baseline-Anteil"
+msgstr "Basis-Anteilswert"
 
 msgctxt "Power|"
 msgid "p₀"
@@ -74,7 +79,7 @@ msgstr "p₂"
 
 msgctxt "Power|"
 msgid "Comparison proportion"
-msgstr "Vergleichsanteil"
+msgstr "Vergleichs-Anteilswert"
 
 msgctxt "Power|"
 msgid "p₁"
@@ -126,7 +131,7 @@ msgstr "N"
 
 msgctxt "Power|"
 msgid "Sample size ratio:"
-msgstr "Stichprobengrößenverhältnis:"
+msgstr "Stichprobenumfangsverhältnis:"
 
 msgctxt "Power|"
 msgid "N₁/N₂"
