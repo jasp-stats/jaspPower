@@ -1,0 +1,515 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: jaspPower 0.18.0\n"
+"POT-Creation-Date: 2023-07-27 12:17\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Effect size can't be 0."
+msgstr ""
+
+msgid "The comparison proportion can't be equal to the hypothesized proportion with a 'Two-sided' alternative hypothesis."
+msgstr ""
+
+msgid "The comparison proportion has to be less than the hypothesized proportion with an alternative hypothesis of 'Less'."
+msgstr ""
+
+msgid "The comparison proportion has to be greater than the hypothesized proportion with an alternative hypothesis of 'Greater'."
+msgstr ""
+
+msgid "Invalid alternative."
+msgstr ""
+
+msgid "The comparison proportion can't be equal to the baseline proportion with a 'Two-sided' alternative hypothesis."
+msgstr ""
+
+msgid "The comparison proportion has to be less than the baseline proportion with an alternative hypothesis of 'Less'."
+msgstr ""
+
+msgid "The comparison proportion has to be greater than the baseline proportion with an alternative hypothesis of 'Greater'."
+msgstr ""
+
+msgid "The variance ratio can't be 1 with a 'Two-sided' alternative hypothesis."
+msgstr ""
+
+msgid "The variance ratio has to be less than 1 with an alternative hypothesis 'Less'."
+msgstr ""
+
+msgid "The variance ratio has to be greater than 1 with an alternative hypothesis of 'Greater'."
+msgstr ""
+
+msgid "Power must be less than 1."
+msgstr ""
+
+msgid "The purpose of a %s is to evaluate the sensitivity of a design and test."
+msgstr ""
+
+msgid "an independent samples t-test"
+msgstr ""
+
+msgid "a paired samples t-test"
+msgstr ""
+
+msgid "a one sample t-test"
+msgstr ""
+
+msgid "a one sample z-test"
+msgstr ""
+
+msgid "a one sample proportions test"
+msgstr ""
+
+msgid "a two samples proportions test"
+msgstr ""
+
+msgid "a one sample variance test"
+msgstr ""
+
+msgid "a two samples variance test"
+msgstr ""
+
+msgid "a one sample Poisson rate test"
+msgstr ""
+
+msgid "a two samples Poisson rate test"
+msgstr ""
+
+msgid "when using"
+msgstr ""
+
+msgid "You have chosen to calculate the minimum sample size needed to have an experiment sensitive enough to consistently detect the specified hypothetical effect size"
+msgstr ""
+
+msgid "You have chosen to calculate the minimum hypothetical effect size for which the chosen design will have the specified sensitivity"
+msgstr ""
+
+msgid "You have chosen to calculate the sensitivity of the chosen design for detecting the specified effect size"
+msgstr ""
+
+msgid "Unable to compute the power results. Try to enter less extreme values for the input parameters."
+msgstr ""
+
+msgid "Power cannot be 1"
+msgstr ""
+
+msgid "Effect size can't be 0 with a two-sided alternative hypothesis."
+msgstr ""
+
+msgid "Effect size has to be lower than 0 with an alternative of lesser."
+msgstr ""
+
+msgid "Effect size has to be greater than 0 with an alternative of greater."
+msgstr ""
+
+msgid "Sample size (group 2)"
+msgstr ""
+
+msgid "Sample size (group 1)"
+msgstr ""
+
+msgid "Hypothetical effect size (%s)"
+msgstr ""
+
+msgid "Power"
+msgstr ""
+
+msgid "Observed effect size (%s)"
+msgstr ""
+
+msgid "Probability Density"
+msgstr ""
+
+msgid "A Priori Power Analysis"
+msgstr ""
+
+msgid "Cohen's %s"
+msgstr ""
+
+msgid "User Defined"
+msgstr ""
+
+msgid "Power by effect size"
+msgstr ""
+
+msgid "True effect size"
+msgstr ""
+
+msgid "Power to detect"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "Likely miss"
+msgstr ""
+
+msgid "Good chance of missing"
+msgstr ""
+
+msgid "Probably detect"
+msgstr ""
+
+msgid "Almost surely detect"
+msgstr ""
+
+msgid "The power contour plot shows how the sensitivity of the test changes with the hypothetical effect size and the sample sizes in the design. As we increase the sample sizes, smaller effect sizes become reliably detectable."
+msgstr ""
+
+msgid "Conversely, if one is satisfied to reliably detect only larger effect sizes, smaller sample sizes are needed. The point shows the power of the specified design and effect size."
+msgstr ""
+
+msgid "sample sizes of %1$s"
+msgstr ""
+
+msgid "two-sided"
+msgstr ""
+
+msgid "criteria"
+msgstr ""
+
+msgid "one-sided"
+msgstr ""
+
+msgid "criterion"
+msgstr ""
+
+msgid "have power of at least %1$s"
+msgstr ""
+
+msgid "only be sufficiently sensitive (power >%1$s)"
+msgstr ""
+
+msgid "The power curve above shows how the sensitivity of the test and design is larger for larger effect sizes. If we obtained %1$s our test and design would %2$s to effect sizes of %3$s%4$s."
+msgstr ""
+
+msgid "We would be more than likely to miss (power less than 50%%) effect sizes less than %1$s%2$s."
+msgstr ""
+
+msgid "sample sizes of at least %1$s"
+msgstr ""
+
+msgid "The power curve above shows how the sensitivity of the test and design is larger for larger effect sizes. In order for our test and design to have sufficient sensitivity (power > %1$s) to detect that %2$s when the effect size is %3$s or larger, we would need %4$s."
+msgstr ""
+
+msgid "a sample size of %1$s"
+msgstr ""
+
+msgid "The figure above shows two sampling distributions: the sampling distribution of the %1$s effect size when %2$s (left), and when %3$s%4$s (right)."
+msgstr ""
+
+msgid "Both assume %1$s."
+msgstr ""
+
+msgid "The vertical dashed lines show the %1$s we would set for a %2$s test with %3$s."
+msgstr ""
+
+msgid "When the observed effect size is far enough away from 0 to be more extreme than the %1$s we say we 'reject' the null hypothesis."
+msgstr ""
+
+msgid "If the null hypothesis were true and %1$s the evidence would lead us to wrongly reject the null hypothesis at most %2$s%% of the time."
+msgstr ""
+
+msgid "On the other hand, if %1$s%2$s, the evidence would exceed the criterion  &mdash; and hence we would correctly claim that %3$s &mdash; at least %4$s%% of the time."
+msgstr ""
+
+msgid "The design's power for detecting effects of %1$s%2$s is thus %3$s."
+msgstr ""
+
+msgid "Due to the rounding of the sample size, the actual power can deviate from the target power."
+msgstr ""
+
+msgid "Actual power:"
+msgstr ""
+
+msgid "a sample size of %s"
+msgstr ""
+
+msgid "We would need %1$s to reliably (with probability greater than or equal to %2$s) detect an effect size of %3$s%4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s."
+msgstr ""
+
+msgid "A design with %1$s will reliably (with probability greater than or equal to %2$s) detect  effect sizes of %3$s%4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s."
+msgstr ""
+
+msgid "A design with %1$s can detect effect sizes of %2$s%3$s with a probability of at least %4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s."
+msgstr ""
+
+msgid "To evaluate the design specified in the table, we can consider how sensitive it is to true effects of increasing sizes; that is, are we likely to correctly conclude that %1$s when the effect size is large enough to care about?"
+msgstr ""
+
+msgid "The specified design leads to (an) unsolvable equation(s) while computing the values for this power table. Try to enter less extreme values for the parameters."
+msgstr ""
+
+msgid "|h|"
+msgstr ""
+
+msgid "Power Contour"
+msgstr ""
+
+msgid "The specified design leads to (an) unsolvable equation(s) while constructing the Power Contour plot. Try to enter less extreme values for the parameters"
+msgstr ""
+
+msgid "Power Curve by Effect Size"
+msgstr ""
+
+msgid "The specified design leads to (an) unsolvable equation(s) while constructing the power curve. Try to enter less extreme values for the parameters"
+msgstr ""
+
+msgid "Power Curve by N"
+msgstr ""
+
+msgid "The specified design leads to (an) unsolvable equation(s) while constructing the 'Power Curve by N' plot. Try to enter less extreme values for the parameters"
+msgstr ""
+
+msgid "Power Demonstration"
+msgstr ""
+
+msgid "Synthetic Dataset"
+msgstr ""
+
+msgid "Characteristics"
+msgstr ""
+
+msgid "Post Hoc Power Analysis"
+msgstr ""
+
+msgid "The generated dataset must be saved as a .csv or .txt file."
+msgstr ""
+
+msgid "The generated dataset could not be saved. Please make sure that the specified path exists and the specified csv file is closed."
+msgstr ""
+
+msgid "The synthetic dataset is saved as %s"
+msgstr ""
+
+msgid "Hypothesized rate (%s)"
+msgstr ""
+
+msgid "Comparison rate (%s)"
+msgstr ""
+
+msgid "Effect size (%s)"
+msgstr ""
+
+msgid "True effect size (%s)"
+msgstr ""
+
+msgid "a sample size of"
+msgstr ""
+
+msgid "effect sizes of %s"
+msgstr ""
+
+msgid "We would need %s to reliably (with probability greater than %1$s) detect %2$s%3$s%4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s."
+msgstr ""
+
+msgid "A design with %s will reliably (with probability greater than %1$s) detect  %2$s%3$s%4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s."
+msgstr ""
+
+msgid "A design with %1$s can detect %2$s%3$s%4$s with a probability of at least %5$s, assuming a %6$s criterion for detection that allows for a maximum Type I error rate of %7$s."
+msgstr ""
+
+msgid "To evaluate the design specified in the table, we can consider how sensitive it is to true effects of increasing sizes; that is, are we likely to correctly conclude that %s when the effect size is large enough to care about?"
+msgstr ""
+
+msgid "effect size"
+msgstr ""
+
+msgid "absolute difference in proportions"
+msgstr ""
+
+msgid "Conversely, if one is satisfied to reliably detect only larger effect sizes, smaller sample sizes are needed. The solid black curve on the contour plot shows sample size/effect size combinations with a power of %1$s. The point shows the specified design and %2$s."
+msgstr ""
+
+msgid "sample sizes of %s"
+msgstr ""
+
+msgid "effect sizes"
+msgstr ""
+
+msgid "absolute differences in proportions"
+msgstr ""
+
+msgid "have power of at least %s"
+msgstr ""
+
+msgid "only be sufficiently sensitive (power >%s)"
+msgstr ""
+
+msgid "sample sizes of at least %s"
+msgstr ""
+
+msgid "The figure above shows two sampling distributions: the sampling distribution of the %1$s effect size when %2$s (left), and when %3$s (right)."
+msgstr ""
+
+msgid "Both assume %s."
+msgstr ""
+
+msgid "When the observed effect size is far enough away from 0 to be more extreme than the %s we say we 'reject' the null hypothesis."
+msgstr ""
+
+msgid "On the other hand, if %1$s, the evidence would exceed the criterion  &mdash; and hence we would correctly claim that %2$s &mdash; at least %3$s%% of the time."
+msgstr ""
+
+msgid "Variance ratio (%s)"
+msgstr ""
+
+msgid "Power by variance ratio"
+msgstr ""
+
+msgid "True variance ratio (%s)"
+msgstr ""
+
+msgid "The power contour plot shows how the sensitivity of the test changes with the hypothetical variance ratio and the sample sizes in the design. As we increase the sample sizes, smaller variance ratios become reliably detectable."
+msgstr ""
+
+msgid "Conversely, if one is satisfied to reliably detect only larger variance ratios, smaller sample sizes are needed. The point shows the power of specified  design and variance ratio."
+msgstr ""
+
+msgid "only be sufficiently sensitive (power > %1$s)"
+msgstr ""
+
+msgid "The power curve above shows how the sensitivity of the test and design is larger for larger variance ratios. If we obtained %1$s our test and design would %2$s to variance ratios of %3$s%4$s."
+msgstr ""
+
+msgid "We would be more than likely to miss (power less than 50%%) variance ratios of %s."
+msgstr ""
+
+msgid "The power curve above shows how the sensitivity of the test and design is larger for larger sample sizes. In order for our test and design to have sufficient sensitivity (power > %1$s) to detect that %2$s when the variance ratio is %3$s or more extreme, we would need %4$s."
+msgstr ""
+
+msgid "The figure above shows two sampling distributions: the sampling distribution of the %1$s variance ratio when %2$s, and when %3$s%4$s."
+msgstr ""
+
+msgid "When the observed variance ratio is far enough away from 1 to be more extreme than the %1$s we say we 'reject' the null hypothesis."
+msgstr ""
+
+msgid "We would need %1$s to reliably (with probability greater than %2$s) detect a variance ratio of %3$s, assuming a %4$s criterion for detection that allows for a maximum Type I error rate of %5$s."
+msgstr ""
+
+msgid "A design with %1$s will reliably (with probability greater than %2$s) detect variance ratios of %3$s, assuming a %4$s criterion for detection that allows for a maximum Type I error rate of %5$s."
+msgstr ""
+
+msgid "A design with %1$s can detect variance ratios of %2$s with a probability of at least %3$s, assuming a %4$s criterion for detection that allows for a maximum Type I error rate of %5$s."
+msgstr ""
+
+msgid "To evaluate the design specified in the table, we can consider how sensitive it is to true effects of increasing sizes; that is, are we likely to correctly conclude that %1$s when the variance ratio is large enough to care about?"
+msgstr ""
+
+msgid "To improve readability of this power table for a 'Two-sided' alternative hypothesis, only the intervals in the direction of the specified variance ratio are displayed under 'True variance ratio'"
+msgstr ""
+
+msgid "Power Curve by variance ratio"
+msgstr ""
+
+msgid "Alternative hypothesis"
+msgstr ""
+
+msgid "Power by Effect Size"
+msgstr ""
+
+msgid "a sample size of %1$s in each group"
+msgstr ""
+
+msgid "group sample sizes of %1$s and %2$s respectively,"
+msgstr ""
+
+msgid "A design with %1$s will reliably (with probability greater than or equal to %2$s) detect effect sizes of %3$s%4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s."
+msgstr ""
+
+msgid "Conversely, if one is satisfied to reliably detect only larger effect sizes, smaller sample sizes are needed The point shows the power of the specified  design and effect size."
+msgstr ""
+
+msgid "sample sizes of %1$s in each group"
+msgstr ""
+
+msgid "group sample sizes of %1$s and %2$s, respectively"
+msgstr ""
+
+msgid "sample sizes of at least %1$s in each group"
+msgstr ""
+
+msgid "group sample sizes of at least %1$s and %2$s, respectively"
+msgstr ""
+
+msgid "On the other hand, if %1$s%2$s, the evidence would exceed the criterion &mdash; and hence we would correctly claim that %3$s &mdash; at least %4$s%% of the time."
+msgstr ""
+
+msgid "Power by Poisson Rate Ratio"
+msgstr ""
+
+msgid "True Poisson rate ratio"
+msgstr ""
+
+msgid "a sample size of %s in each group"
+msgstr ""
+
+msgid "We would need %1$s to reliably (with probability greater than %2$s) detect a Poisson rate ratio of %3$s%4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s."
+msgstr ""
+
+msgid "A design with %1$s will reliably (with probability greater than %2$s) detect Poisson rate ratios of %3$s%4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s."
+msgstr ""
+
+msgid "A design with %1$s can detect Poisson rate ratios of %2$s%3$s with a probability of at least %4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s."
+msgstr ""
+
+msgid "The power contour plot shows how the sensitivity of the test changes with the hypothetical Poisson rate ratio and the sample sizes in the design. As we increase the sample sizes, Poisson rate ratios closer to one become reliably detectable."
+msgstr ""
+
+msgid "Conversely, if one is satisfied to reliably detect only larger effects, smaller sample sizes are needed. The solid black curve on the contour plot shows sample size/Poisson rate ratios combinations with a power of %s. The point shows the specified  design and Poisson rate ratio."
+msgstr ""
+
+msgid "sample sizes of %s in each group"
+msgstr ""
+
+msgid "sample sizes of at least %s in each group"
+msgstr ""
+
+msgid "True variance ratio"
+msgstr ""
+
+msgid "To evaluate the design specified in the table, we can consider how sensitive it is to true effects of increasing sizes; that is, are we likely to correctly conclude that %1$s when the variance ratio is extreme enough to care about?"
+msgstr ""
+
+msgid "The specified design leads to (an) unsolvable equation while constructing the Power Contour plot. Try to enter less extreme values for the parameters"
+msgstr ""
+
+msgid "The power contour plot shows how the sensitivity of the test changes with the hypothetical variance ratio and the sample sizes in the design. As we increase the sample sizes, less extreme variance ratios become reliably detectable."
+msgstr ""
+
+msgid "Conversely, if one is satisfied to reliably detect only more extreme variance ratios, smaller sample sizes are needed. The point shows the power of the specified design and variance ratio."
+msgstr ""
+
+msgid "The power curve above shows how the sensitivity of the test and design is larger for more extreme variance ratios. If we obtained %1$s our test and design would %2$s to variance ratios of %3$s%4$s."
+msgstr ""
+
+msgid "We would be more than likely to miss (power less than 50%%) variance ratios of %1$s."
+msgstr ""
+
+msgid "The specified design leads to (an) unsolvable equation(s) while constructing the curves for the Power Demonstration. Try to enter less extreme values for the parameters"
+msgstr ""
+
+msgid "Note."
+msgstr ""
+
+msgid "When the variance ratio is less than 1, the inverse of the variance ratio is displayed. Therefore, the first and second degrees of freedom of both F-distributions switched places."
+msgstr ""
+
+msgid "%1$sThe figure above shows two sampling distributions: the sampling distribution of the %1$s variance ratio when %2$s (left), and when %3$s%4$s (right)."
+msgstr ""
+
+msgid "On the other hand, if %3$s, the evidence would exceed the criterion  &mdash; and hence we would correctly claim that %4$s1 &mdash; at least %5$s%% of the time."
+msgstr ""
+
+msgid "The design's power for detecting effects of %1$s%2$s%3$s is thus %4$s."
+msgstr ""
+
+msgid "The power curve above shows how the sensitivity of the test and design is larger for larger sample sizes. In order for our test and design to have sufficient sensitivity (power > %1$s) to detect that %2$s when the effect size is %3$s or larger, we would need %4$s."
+msgstr ""
+
+msgid "Cohen's"
+msgstr ""
