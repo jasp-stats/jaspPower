@@ -232,12 +232,12 @@
 
   if (calc == "n") {
     str <- gettextf(
-      "We would need %s to reliably (with probability greater than %1$s) detect %2$s%3$s%4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s.",
+      "We would need %1$s to reliably (with probability greater than %2$s) detect %3$s%4$s%5$s, assuming a %6$s criterion for detection that allows for a maximum Type I error rate of %7$s.",
       n_text, power, d_text, "<i>\u2265</i>", d, tail_text, paste0("<i>\u03B1=</i>", alpha)
     )
   } else if (calc == "es") {
     str <- gettextf(
-      "A design with %s will reliably (with probability greater than %1$s) detect  %2$s%3$s%4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s.",
+      "A design with %1$s will reliably (with probability greater than %2$s) detect  %3$s%4$s%5$s, assuming a %6$s criterion for detection that allows for a maximum Type I error rate of %7$s.",
       n_text, power, d_text, "<i>\u2265</i>", round(d, 3), tail_text, paste0("<i>\u03B1=</i>", alpha)
     )
   } else if (calc == "power") {
