@@ -1,0 +1,240 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Language: br_FR\n"
+"X-Qt-Contexts: true\n"
+
+msgctxt "Description|"
+msgid "Power"
+msgstr ""
+
+msgctxt "Description|"
+msgid "This module allows you to conduct power analyses."
+msgstr ""
+
+msgctxt "Power|"
+msgid "Statistical test:"
+msgstr ""
+
+msgctxt "Power|"
+msgid "Parameters"
+msgstr ""
+
+msgctxt "Power|"
+msgid "I want to calculate the ..."
+msgstr ""
+
+msgctxt "Power|"
+msgid "Direction of the effect:"
+msgstr ""
+
+msgctxt "Power|"
+msgid "p₁ > p₀"
+msgstr ""
+
+msgctxt "Power|"
+msgid "p₁ > p₂"
+msgstr ""
+
+msgctxt "Power|"
+msgid "ρ > 1"
+msgstr ""
+
+msgctxt "Power|"
+msgid "p₁ < p₀"
+msgstr ""
+
+msgctxt "Power|"
+msgid "p₁ < p₂"
+msgstr ""
+
+msgctxt "Power|"
+msgid "ρ < 1"
+msgstr ""
+
+msgctxt "Power|"
+msgid "Hypothesized proportion"
+msgstr ""
+
+msgctxt "Power|"
+msgid "Baseline proportion"
+msgstr ""
+
+msgctxt "Power|"
+msgid "p₀"
+msgstr ""
+
+msgctxt "Power|"
+msgid "p₂"
+msgstr ""
+
+msgctxt "Power|"
+msgid "Comparison proportion"
+msgstr ""
+
+msgctxt "Power|"
+msgid "p₁"
+msgstr ""
+
+msgctxt "Power|"
+msgid "Minimal effect size of interest:"
+msgstr ""
+
+msgctxt "Power|"
+msgid "|δ|"
+msgstr ""
+
+msgctxt "Power|"
+msgid "ρ (σ₁²/σ₂²)"
+msgstr ""
+
+msgctxt "Power|"
+msgid "ρ (σ²/σ₀²)"
+msgstr ""
+
+msgctxt "Power|"
+msgid "Minimal desired power:"
+msgstr ""
+
+msgctxt "Power|"
+msgid "(1-β)"
+msgstr ""
+
+msgctxt "Power|"
+msgid "Type I error rate:"
+msgstr ""
+
+msgctxt "Power|"
+msgid "α"
+msgstr ""
+
+msgctxt "Power|"
+msgid "Sample size:"
+msgstr ""
+
+msgctxt "Power|"
+msgid "Sample size per group:"
+msgstr ""
+
+msgctxt "Power|"
+msgid "N"
+msgstr ""
+
+msgctxt "Power|"
+msgid "Sample size ratio:"
+msgstr ""
+
+msgctxt "Power|"
+msgid "N₁/N₂"
+msgstr ""
+
+msgctxt "Power|"
+msgid "Alternative Hypothesis:"
+msgstr ""
+
+msgctxt "Power|"
+msgid "H₁"
+msgstr ""
+
+msgctxt "Power|"
+msgid "Plots"
+msgstr ""
+
+msgctxt "Power|"
+msgid "Power contour plot"
+msgstr ""
+
+msgctxt "Power|"
+msgid "Power demonstration"
+msgstr ""
+
+msgctxt "Power|"
+msgid "Power curve by effect size"
+msgstr ""
+
+msgctxt "Power|"
+msgid "Power curve by N"
+msgstr ""
+
+msgctxt "Power|"
+msgid "Explanatory text"
+msgstr ""
+
+msgctxt "Power|"
+msgid "Data Generation"
+msgstr ""
+
+msgctxt "Power|"
+msgid "x̅"
+msgstr ""
+
+msgctxt "Power|"
+msgid "x̅₁"
+msgstr ""
+
+msgctxt "Power|"
+msgid "x̅₂"
+msgstr ""
+
+msgctxt "Power|"
+msgid "μ₀"
+msgstr ""
+
+msgctxt "Power|"
+msgid "s"
+msgstr ""
+
+msgctxt "Power|"
+msgid "s₁"
+msgstr ""
+
+msgctxt "Power|"
+msgid "σ"
+msgstr ""
+
+msgctxt "Power|"
+msgid "σ₀"
+msgstr ""
+
+msgctxt "Power|"
+msgid "s₂"
+msgstr ""
+
+msgctxt "Power|"
+msgid "Effect direction"
+msgstr ""
+
+msgctxt "Power|"
+msgid "x̅ < μ₀"
+msgstr ""
+
+msgctxt "Power|"
+msgid "x̅₁ < x̅₂"
+msgstr ""
+
+msgctxt "Power|"
+msgid "x̅ > μ₀"
+msgstr ""
+
+msgctxt "Power|"
+msgid "x̅₁ > x̅₂"
+msgstr ""
+
+msgctxt "Power|"
+msgid "Export synthetic dataset"
+msgstr ""
+
+msgctxt "Power|"
+msgid "Save as"
+msgstr ""
+
+msgctxt "Power|"
+msgid "e.g., location/power.csv"
+msgstr ""
+
+msgctxt "Power|"
+msgid "Save generated dataset"
+msgstr ""
