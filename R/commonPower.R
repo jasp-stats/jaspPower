@@ -705,3 +705,12 @@
     alternative = alternative, method = METHOD
   ), class = "power.htest"))
 }
+
+.errorMessageUnsolvable <- function (errorObject) {
+  return(paste(
+    gettext("The specified design leads to (an) unsolvable equation(s) while constructing the power curve. Try to enter less extreme values for the parameters"),
+    gettext("Error Message:"),
+    errorObject,
+    sep = "\n"
+  ))
+}
