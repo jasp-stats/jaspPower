@@ -611,7 +611,7 @@
     rho = d, power = max(0.99, power), sig.level = alpha, alternative = alt
   )$n))
   if (jaspBase::isTryError(maxn)) {
-    image$setError(gettext("The specified design leads to (an) unsolvable equation(s) while constructing the Power Contour plot. Try to enter less extreme values for the parameters"))
+    image$setError(.errorMessageUnsolvable(maxn))
     return()
   }
 
@@ -644,16 +644,18 @@
   z.pwr <- try(sapply(dd, function(delta) {
     .pwrVarTest(n = nn, rho = delta, sig.level = alpha, alternative = alt)$power
   }))
+
   if (jaspBase::isTryError(z.pwr)) {
-    image$setError(gettext("The specified design leads to (an) unsolvable equation(s) while constructing the Power Contour plot. Try to enter less extreme values for the parameters"))
+    image$setError(.errorMessageUnsolvable(z.pwr))
     return()
   }
 
   z.delta <- try(sapply(nn, function(N) {
     .pwrVarTest(n = N, sig.level = alpha, power = power, alternative = alt)$rho
   }))
-  if (jaspBase::isTryError(z.pwr)) {
-    image$setError(gettext("The specified design leads to (an) unsolvable equation(s) while constructing the Power Contour plot. Try to enter less extreme values for the parameters"))
+
+  if (jaspBase::isTryError(z.delta)) {
+    image$setError(.errorMessageUnsolvable(z.delta))
     return()
   }
 
@@ -734,7 +736,7 @@
 
   y <- try(.pwrVarTest(n = n, rho = dd, sig.level = alpha, alternative = alt)$power)
   if (jaspBase::isTryError(y)) {
-    image$setError(gettext("The specified design leads to (an) unsolvable equation(s) while constructing the power curve. Try to enter less extreme values for the parameters"))
+    image$setError(.errorMessageUnsolvable(y))
     return()
   }
   cols <- ps$pal(ps$pow.n.levels)
@@ -790,7 +792,7 @@
   )$n))
 
   if (jaspBase::isTryError(maxn)) {
-    image$setError(gettext("The specified design leads to (an) unsolvable equation(s) while constructing the 'Power Curve by N' plot. Try to enter less extreme values for the parameters"))
+    image$setError(.errorMessageUnsolvable(maxn))
     return()
   } else if (n >= maxn && n >= ps$maxn) {
     maxn <- ceiling(n * ps$max.scale)
@@ -808,7 +810,7 @@
 
   y <- try(.pwrVarTest(n = nn, rho = d, sig.level = alpha, alternative = alt)$power)
   if (jaspBase::isTryError(y)) {
-    image$setError(gettext("The specified design leads to (an) unsolvable equation(s) while constructing the 'Power Curve by N' plot. Try to enter less extreme values for the parameters"))
+    image$setError(.errorMessageUnsolvable(y))
     return()
   }
 

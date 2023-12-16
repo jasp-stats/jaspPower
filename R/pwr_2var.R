@@ -387,7 +387,7 @@
     alternative = alt
   )$n))
   if (jaspBase::isTryError(maxn)) {
-    image$setError(gettext("The specified design leads to (an) unsolvable equation(s) while constructing the Power Contour plot. Try to enter less extreme values for the parameters"))
+    image$setError(.errorMessageUnsolvable(maxn))
     return()
   }
 
@@ -426,8 +426,9 @@
       alternative = alt
     )$power
   }))
+
   if (jaspBase::isTryError(z.pwr)) {
-    image$setError(gettext("The specified design leads to (an) unsolvable equation(s) while constructing the Power Contour plot. Try to enter less extreme values for the parameters"))
+    image$setError(.errorMessageUnsolvable(z.pwr))
     return()
   }
 
@@ -441,7 +442,7 @@
     )$rho
   }))
   if (jaspBase::isTryError(z.delta)) {
-    image$setError(gettext("The specified design leads to (an) unsolvable equation while constructing the Power Contour plot. Try to enter less extreme values for the parameters"))
+    image$setError(.errorMessageUnsolvable(z.delta))
     return()
   }
 
@@ -548,7 +549,7 @@
 
   y <- try(.pwr2Var2NTest(n = n1, n.ratio = n_ratio, rho = dd, sig.level = alpha, alternative = alt)$power)
   if (jaspBase::isTryError(y)) {
-    image$setError(gettext("The specified design leads to (an) unsolvable equation(s) while constructing the power curve. Try to enter less extreme values for the parameters"))
+    image$setError(.errorMessageUnsolvable(y))
     return()
   }
   cols <- ps$pal(ps$pow.n.levels)
@@ -696,7 +697,7 @@
     alternative = alt
   )$n))
   if (jaspBase::isTryError(maxn)) {
-    image$setError(gettext("The specified design leads to (an) unsolvable equation(s) while constructing the 'Power Curve by N' plot. Try to enter less extreme values for the parameters"))
+    image$setError(.errorMessageUnsolvable(maxn))
     return()
   } else if (n1 >= maxn && n1 >= ps$maxn) {
     maxn <- ceiling(n1 * ps$max.scale)
@@ -718,7 +719,7 @@
     rho = d, sig.level = alpha, alternative = alt
   )$power)
   if (jaspBase::isTryError(y)) {
-    image$setError(gettext("The specified design leads to (an) unsolvable equation(s) while constructing the 'Power Curve by N' plot. Try to enter less extreme values for the parameters"))
+    image$setError(.errorMessageUnsolvable(y))
     return()
   }
 
