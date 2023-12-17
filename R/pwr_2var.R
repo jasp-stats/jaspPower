@@ -975,7 +975,7 @@
     ),
     "</p><p>",
     gettextf(
-      "On the other hand, if %3$s, the evidence would exceed the criterion  &mdash; and hence we would correctly claim that %4$s1 &mdash; at least %5$s%% of the time.",
+      "On the other hand, if %1$s, the evidence would exceed the criterion  &mdash; and hence we would correctly claim that %2$s1 &mdash; at least %3$s%% of the time.",
       paste0("<i>", es_text, "\u2265", "</i>", d), paste0("<i>", alt_text, "</i>"), 100 * round(power, 3)
     ),
     gettextf(
