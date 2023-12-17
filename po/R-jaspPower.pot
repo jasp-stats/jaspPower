@@ -502,7 +502,7 @@ msgstr ""
 msgid "%1$sThe figure above shows two sampling distributions: the sampling distribution of the %1$s variance ratio when %2$s (left), and when %3$s%4$s (right)."
 msgstr ""
 
-msgid "On the other hand, if %3$s, the evidence would exceed the criterion  &mdash; and hence we would correctly claim that %4$s1 &mdash; at least %5$s%% of the time."
+msgid "On the other hand, if %1$s, the evidence would exceed the criterion  &mdash; and hence we would correctly claim that %2$s1 &mdash; at least %3$s%% of the time."
 msgstr ""
 
 msgid "The design's power for detecting effects of %1$s%2$s%3$s is thus %4$s."
