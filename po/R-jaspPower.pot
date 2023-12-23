@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspPower 0.18.2\n"
-"POT-Creation-Date: 2023-11-17 12:27\n"
+"POT-Creation-Date: 2023-12-23 03:34\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -104,6 +104,12 @@ msgid "Effect size has to be lower than 0 with an alternative of lesser."
 msgstr ""
 
 msgid "Effect size has to be greater than 0 with an alternative of greater."
+msgstr ""
+
+msgid "The specified design leads to (an) unsolvable equation(s) while constructing the power curve. Try to enter less extreme values for the parameters"
+msgstr ""
+
+msgid "Error Message:"
 msgstr ""
 
 msgid "Sample size (group 2)"
@@ -250,19 +256,10 @@ msgstr ""
 msgid "Power Contour"
 msgstr ""
 
-msgid "The specified design leads to (an) unsolvable equation(s) while constructing the Power Contour plot. Try to enter less extreme values for the parameters"
-msgstr ""
-
 msgid "Power Curve by Effect Size"
 msgstr ""
 
-msgid "The specified design leads to (an) unsolvable equation(s) while constructing the power curve. Try to enter less extreme values for the parameters"
-msgstr ""
-
 msgid "Power Curve by N"
-msgstr ""
-
-msgid "The specified design leads to (an) unsolvable equation(s) while constructing the 'Power Curve by N' plot. Try to enter less extreme values for the parameters"
 msgstr ""
 
 msgid "Power Demonstration"
@@ -473,9 +470,6 @@ msgid "True variance ratio"
 msgstr ""
 
 msgid "To evaluate the design specified in the table, we can consider how sensitive it is to true effects of increasing sizes; that is, are we likely to correctly conclude that %1$s when the variance ratio is extreme enough to care about?"
-msgstr ""
-
-msgid "The specified design leads to (an) unsolvable equation while constructing the Power Contour plot. Try to enter less extreme values for the parameters"
 msgstr ""
 
 msgid "The power contour plot shows how the sensitivity of the test changes with the hypothetical variance ratio and the sample sizes in the design. As we increase the sample sizes, less extreme variance ratios become reliably detectable."
