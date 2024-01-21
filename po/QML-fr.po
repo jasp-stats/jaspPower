@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2024-01-21 19:01+0000\n"
+"PO-Revision-Date: 2024-01-22 18:11+0000\n"
 "Last-Translator: robachowyk <kaya.robach@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/jasp/"
 "jasppower-qml/fr/>\n"
@@ -31,11 +31,11 @@ msgstr ""
 
 msgctxt "Power|"
 msgid "I want to calculate the ..."
-msgstr ""
+msgstr "Je voudrais calculer ..."
 
 msgctxt "Power|"
 msgid "Direction of the effect:"
-msgstr ""
+msgstr "Direction de l'effet :"
 
 msgctxt "Power|"
 msgid "p₁ > p₀"
