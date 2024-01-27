@@ -1,240 +1,251 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2024-01-21 19:01+0000\n"
+"Last-Translator: Rania Rahida <raniarahida@gmail.com>\n"
+"Language-Team: Indonesian <https://hosted.weblate.org/projects/jasp/"
+"jasppower-qml/id/>\n"
+"Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.4-dev\n"
 "X-Language: id\n"
 "X-Qt-Contexts: true\n"
 
 msgctxt "Description|"
 msgid "Power"
-msgstr ""
+msgstr "Daya"
 
 msgctxt "Description|"
 msgid "This module allows you to conduct power analyses."
-msgstr ""
+msgstr "Modul ini memungkinkan Anda melakukan analisis daya."
 
 msgctxt "Power|"
 msgid "Statistical test:"
-msgstr ""
+msgstr "Uji statistik:"
 
 msgctxt "Power|"
 msgid "Parameters"
-msgstr ""
+msgstr "Parameter"
 
 msgctxt "Power|"
 msgid "I want to calculate the ..."
-msgstr ""
+msgstr "Saya ingin menghitung ..."
 
 msgctxt "Power|"
 msgid "Direction of the effect:"
-msgstr ""
+msgstr "Arah efek:"
 
 msgctxt "Power|"
 msgid "p₁ > p₀"
-msgstr ""
+msgstr "p₁ > p₀"
 
 msgctxt "Power|"
 msgid "p₁ > p₂"
-msgstr ""
+msgstr "p₁ > p₂"
 
 msgctxt "Power|"
 msgid "ρ > 1"
-msgstr ""
+msgstr "ρ > 1"
 
 msgctxt "Power|"
 msgid "p₁ < p₀"
-msgstr ""
+msgstr "p₁ < p₀"
 
 msgctxt "Power|"
 msgid "p₁ < p₂"
-msgstr ""
+msgstr "p₁ < p₂"
 
 msgctxt "Power|"
 msgid "ρ < 1"
-msgstr ""
+msgstr "ρ < 1"
 
 msgctxt "Power|"
 msgid "Hypothesized proportion"
-msgstr ""
+msgstr "Proporsi yang dihipotesiskan"
 
 msgctxt "Power|"
 msgid "Baseline proportion"
-msgstr ""
+msgstr "Proporsi dasar"
 
 msgctxt "Power|"
 msgid "p₀"
-msgstr ""
+msgstr "p₀"
 
 msgctxt "Power|"
 msgid "p₂"
-msgstr ""
+msgstr "p₂"
 
 msgctxt "Power|"
 msgid "Comparison proportion"
-msgstr ""
+msgstr "Proporsi perbandingan"
 
 msgctxt "Power|"
 msgid "p₁"
-msgstr ""
+msgstr "p₁"
 
 msgctxt "Power|"
 msgid "Minimal effect size of interest:"
-msgstr ""
+msgstr "Ukuran efek minimal yang menarik:"
 
 msgctxt "Power|"
 msgid "|δ|"
-msgstr ""
+msgstr "|δ|"
 
 msgctxt "Power|"
 msgid "ρ (σ₁²/σ₂²)"
-msgstr ""
+msgstr "ρ (σ₁²/σ₂²)"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "ρ (σ²/σ₀²)"
-msgstr ""
+msgstr "ρ (σ²/σ₀²)"
 
 msgctxt "Power|"
 msgid "Minimal desired power:"
-msgstr ""
+msgstr "Daya minimal yang diinginkan:"
 
 msgctxt "Power|"
 msgid "(1-β)"
-msgstr ""
+msgstr "(1-β)"
 
 msgctxt "Power|"
 msgid "Type I error rate:"
-msgstr ""
+msgstr "Tingkat kesalahan tipe I:"
 
 msgctxt "Power|"
 msgid "α"
-msgstr ""
+msgstr "α"
 
 msgctxt "Power|"
 msgid "Sample size:"
-msgstr ""
+msgstr "Ukuran sampel:"
 
 msgctxt "Power|"
 msgid "Sample size per group:"
-msgstr ""
+msgstr "Ukuran sampel per kelompok:"
 
 msgctxt "Power|"
 msgid "N"
-msgstr ""
+msgstr "N"
 
 msgctxt "Power|"
 msgid "Sample size ratio:"
-msgstr ""
+msgstr "Rasio ukuran sampel:"
 
 msgctxt "Power|"
 msgid "N₁/N₂"
-msgstr ""
+msgstr "N₁/N₂"
 
 msgctxt "Power|"
 msgid "Alternative Hypothesis:"
-msgstr ""
+msgstr "Hipotesis Alternatif:"
 
 msgctxt "Power|"
 msgid "H₁"
-msgstr ""
+msgstr "H₁"
 
 msgctxt "Power|"
 msgid "Plots"
-msgstr ""
+msgstr "Plot"
 
 msgctxt "Power|"
 msgid "Power contour plot"
-msgstr ""
+msgstr "Plot kontur daya"
 
 msgctxt "Power|"
 msgid "Power demonstration"
-msgstr ""
+msgstr "Demonstrasi kekuatan"
 
 msgctxt "Power|"
 msgid "Power curve by effect size"
-msgstr ""
+msgstr "Kurva daya berdasarkan ukuran efek"
 
 msgctxt "Power|"
 msgid "Power curve by N"
-msgstr ""
+msgstr "Kurva daya oleh N"
 
 msgctxt "Power|"
 msgid "Explanatory text"
-msgstr ""
+msgstr "Teks penjelasan"
 
 msgctxt "Power|"
 msgid "Data Generation"
-msgstr ""
+msgstr "Pembuatan Data"
 
 msgctxt "Power|"
 msgid "x̅"
-msgstr ""
+msgstr "x̅"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "x̅₁"
-msgstr ""
+msgstr "x̅₁"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "x̅₂"
-msgstr ""
+msgstr "x̅₂"
 
 msgctxt "Power|"
 msgid "μ₀"
-msgstr ""
+msgstr "μ₀"
 
 msgctxt "Power|"
 msgid "s"
-msgstr ""
+msgstr "s"
 
 msgctxt "Power|"
 msgid "s₁"
-msgstr ""
+msgstr "s₁"
 
 msgctxt "Power|"
 msgid "σ"
-msgstr ""
+msgstr "σ"
 
 msgctxt "Power|"
 msgid "σ₀"
-msgstr ""
+msgstr "σ₀"
 
 msgctxt "Power|"
 msgid "s₂"
-msgstr ""
+msgstr "s₂"
 
 msgctxt "Power|"
 msgid "Effect direction"
-msgstr ""
+msgstr "Arah efek"
 
 msgctxt "Power|"
 msgid "x̅ < μ₀"
-msgstr ""
+msgstr "x̅ < μ₀"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "x̅₁ < x̅₂"
-msgstr ""
+msgstr "x̅₁ < x̅₂"
 
 msgctxt "Power|"
 msgid "x̅ > μ₀"
-msgstr ""
+msgstr "x̅ > μ₀"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "x̅₁ > x̅₂"
-msgstr ""
+msgstr "x̅₁ > x̅₂"
 
 msgctxt "Power|"
 msgid "Export synthetic dataset"
-msgstr ""
+msgstr "Ekspor dataset sintetis"
 
 msgctxt "Power|"
 msgid "Save as"
-msgstr ""
+msgstr "Simpan sebagai"
 
 msgctxt "Power|"
 msgid "e.g., location/power.csv"
-msgstr ""
+msgstr "misalnya, lokasi/power.csv"
 
 msgctxt "Power|"
 msgid "Save generated dataset"
-msgstr ""
+msgstr "Simpan set data yang dihasilkan"
