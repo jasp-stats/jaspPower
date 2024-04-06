@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2024-04-06 03:33+0000\n"
+"PO-Revision-Date: 2024-04-07 21:02+0000\n"
 "Last-Translator: robachowyk <kaya.robach@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/jasp/"
 "jasppower-qml/fr/>\n"
@@ -59,19 +59,19 @@ msgstr ""
 
 msgctxt "Power|"
 msgid "ρ < 1"
-msgstr ""
+msgstr "ρ < 1"
 
 msgctxt "Power|"
 msgid "Hypothesized proportion"
-msgstr ""
+msgstr "Proportion hypothétique"
 
 msgctxt "Power|"
 msgid "Baseline proportion"
-msgstr ""
+msgstr "Proportion de référence"
 
 msgctxt "Power|"
 msgid "p₀"
-msgstr ""
+msgstr "p₀"
 
 msgctxt "Power|"
 msgid "p₂"
