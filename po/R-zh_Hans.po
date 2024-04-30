@@ -2,16 +2,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspPower 0.18.1\n"
 "POT-Creation-Date: 2023-12-23 03:34\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2024-04-30 07:07+0000\n"
+"Last-Translator: Cochrane <cunyikang@qq.com>\n"
+"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
+"jasp/jasppower-r/zh_Hans/>\n"
 "Language: zh_Hans\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.5.2\n"
 
 msgid "Effect size can't be 0."
-msgstr ""
+msgstr "效应大小不能为0。"
 
 msgid ""
 "The comparison proportion can't be equal to the hypothesized proportion with "
@@ -61,29 +64,29 @@ msgid ""
 msgstr ""
 
 msgid "Power must be less than 1."
-msgstr ""
+msgstr "检验力必须小于1。"
 
 msgid ""
 "The purpose of a %s is to evaluate the sensitivity of a design and test."
 msgstr ""
 
 msgid "an independent samples t-test"
-msgstr ""
+msgstr "独立样本t检验"
 
 msgid "a paired samples t-test"
-msgstr ""
+msgstr "配对样本t检验"
 
 msgid "a one sample t-test"
-msgstr ""
+msgstr "单样本t检验"
 
 msgid "a one sample z-test"
-msgstr ""
+msgstr "单样本z检验"
 
 msgid "a one sample proportions test"
-msgstr ""
+msgstr "单样本比率检验"
 
 msgid "a two samples proportions test"
-msgstr ""
+msgstr "双样本比率检验"
 
 msgid "a one sample variance test"
 msgstr ""
@@ -92,10 +95,10 @@ msgid "a two samples variance test"
 msgstr ""
 
 msgid "a one sample Poisson rate test"
-msgstr ""
+msgstr "单样本泊松比率检验"
 
 msgid "a two samples Poisson rate test"
-msgstr ""
+msgstr "双样本泊松比率检验"
 
 msgid "when using"
 msgstr ""
@@ -122,16 +125,16 @@ msgid ""
 msgstr ""
 
 msgid "Power cannot be 1"
-msgstr ""
+msgstr "检验力不能为1"
 
 msgid "Effect size can't be 0 with a two-sided alternative hypothesis."
 msgstr ""
 
 msgid "Effect size has to be lower than 0 with an alternative of lesser."
-msgstr ""
+msgstr "备择假设更小时，效应量需小于0。"
 
 msgid "Effect size has to be greater than 0 with an alternative of greater."
-msgstr ""
+msgstr "备择假设更大时，效应量需大于0。"
 
 msgid ""
 "The specified design leads to (an) unsolvable equation(s) while constructing "
@@ -139,31 +142,31 @@ msgid ""
 msgstr ""
 
 msgid "Error Message:"
-msgstr ""
+msgstr "错误信息："
 
 msgid "Sample size (group 2)"
-msgstr ""
+msgstr "样本量（组2）"
 
 msgid "Sample size (group 1)"
-msgstr ""
+msgstr "样本量（组1）"
 
 msgid "Hypothetical effect size (%s)"
-msgstr ""
+msgstr "假设效应大小（%s）"
 
 msgid "Power"
-msgstr ""
+msgstr "检验力"
 
 msgid "Observed effect size (%s)"
-msgstr ""
+msgstr "观测效应大小（%s）"
 
 msgid "Probability Density"
-msgstr ""
+msgstr "概率密度"
 
 msgid "A Priori Power Analysis"
-msgstr ""
+msgstr "先验功效分析"
 
 msgid "Cohen's %s"
-msgstr ""
+msgstr "Cohen's %s"
 
 msgid "User Defined"
 msgstr ""
@@ -208,13 +211,13 @@ msgid "sample sizes of %1$s"
 msgstr ""
 
 msgid "two-sided"
-msgstr ""
+msgstr "双尾"
 
 msgid "criteria"
 msgstr ""
 
 msgid "one-sided"
-msgstr ""
+msgstr "单尾"
 
 msgid "criterion"
 msgstr ""
@@ -287,7 +290,7 @@ msgid ""
 msgstr ""
 
 msgid "Actual power:"
-msgstr ""
+msgstr "实际检验力："
 
 msgid "a sample size of %s"
 msgstr ""
@@ -539,7 +542,7 @@ msgid "Power Curve by variance ratio"
 msgstr ""
 
 msgid "Alternative hypothesis"
-msgstr ""
+msgstr "备择假设"
 
 msgid "Power by Effect Size"
 msgstr ""
@@ -587,7 +590,7 @@ msgid "True Poisson rate ratio"
 msgstr ""
 
 msgid "a sample size of %s in each group"
-msgstr ""
+msgstr "每组有%s个样本"
 
 msgid ""
 "We would need %1$s to reliably (with probability greater than %2$s) detect a "
@@ -622,10 +625,10 @@ msgid ""
 msgstr ""
 
 msgid "sample sizes of %s in each group"
-msgstr ""
+msgstr "每组有%s个样本"
 
 msgid "sample sizes of at least %s in each group"
-msgstr ""
+msgstr "每组至少有%s个样本"
 
 msgid "True variance ratio"
 msgstr ""
@@ -699,4 +702,4 @@ msgid ""
 msgstr ""
 
 msgid "Cohen's"
-msgstr ""
+msgstr "Cohen's"
