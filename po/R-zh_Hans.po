@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspPower 0.18.1\n"
 "POT-Creation-Date: 2023-12-23 03:34\n"
-"PO-Revision-Date: 2024-04-30 07:07+0000\n"
+"PO-Revision-Date: 2024-05-06 03:07+0000\n"
 "Last-Translator: Cochrane <cunyikang@qq.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "jasp/jasppower-r/zh_Hans/>\n"
@@ -11,10 +11,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.5.2\n"
+"X-Generator: Weblate 5.5.3\n"
 
 msgid "Effect size can't be 0."
-msgstr "效应大小不能为0。"
+msgstr "效应量不能为0。"
 
 msgid ""
 "The comparison proportion can't be equal to the hypothesized proportion with "
@@ -64,7 +64,7 @@ msgid ""
 msgstr ""
 
 msgid "Power must be less than 1."
-msgstr "检验力必须小于1。"
+msgstr "效力必须小于1。"
 
 msgid ""
 "The purpose of a %s is to evaluate the sensitivity of a design and test."
@@ -125,10 +125,10 @@ msgid ""
 msgstr ""
 
 msgid "Power cannot be 1"
-msgstr "检验力不能为1"
+msgstr "效力不能为1"
 
 msgid "Effect size can't be 0 with a two-sided alternative hypothesis."
-msgstr ""
+msgstr "双尾备择假设下，效应量不能为0。"
 
 msgid "Effect size has to be lower than 0 with an alternative of lesser."
 msgstr "备择假设更小时，效应量需小于0。"
@@ -151,19 +151,19 @@ msgid "Sample size (group 1)"
 msgstr "样本量（组1）"
 
 msgid "Hypothetical effect size (%s)"
-msgstr "假设效应大小（%s）"
+msgstr "假设效应量（%s）"
 
 msgid "Power"
-msgstr "检验力"
+msgstr "效力"
 
 msgid "Observed effect size (%s)"
-msgstr "观测效应大小（%s）"
+msgstr "观测效应量（%s）"
 
 msgid "Probability Density"
 msgstr "概率密度"
 
 msgid "A Priori Power Analysis"
-msgstr "先验功效分析"
+msgstr "先验效力分析"
 
 msgid "Cohen's %s"
 msgstr "Cohen's %s"
@@ -290,7 +290,7 @@ msgid ""
 msgstr ""
 
 msgid "Actual power:"
-msgstr "实际检验力："
+msgstr "实际效力："
 
 msgid "a sample size of %s"
 msgstr ""
