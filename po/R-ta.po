@@ -2,508 +2,690 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspPower 0.19.2\n"
 "POT-Creation-Date: 2024-10-19 03:38\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2025-01-04 21:55+0000\n"
+"Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
+"Language-Team: Tamil <https://hosted.weblate.org/projects/jasp/jasppower-r/"
+"ta/>\n"
 "Language: ta\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.10-dev\n"
 
 msgid "Effect size can't be 0."
-msgstr ""
+msgstr "விளைவு அளவு 0 ஆக இருக்க முடியாது."
 
 msgid "The comparison proportion can't be equal to the hypothesized proportion with a 'Two-sided' alternative hypothesis."
 msgstr ""
+"ஒப்பீட்டு விகிதம் 'இரு பக்க' மாற்று கருதுகோளுடன் கருதுகோள் விகிதத்திற்கு சமமாக இருக்க "
+"முடியாது."
 
 msgid "The comparison proportion has to be less than the hypothesized proportion with an alternative hypothesis of 'Less'."
 msgstr ""
+"ஒப்பீட்டு விகிதம் 'குறைவான' என்ற மாற்று கருதுகோளுடன் கருதுகோள் விகிதத்தை விட குறைவாக "
+"இருக்க வேண்டும்."
 
 msgid "The comparison proportion has to be greater than the hypothesized proportion with an alternative hypothesis of 'Greater'."
 msgstr ""
+"ஒப்பீட்டு விகிதம் 'பெரியது' என்ற மாற்று கருதுகோளுடன் கருதுகோள் விகிதத்தை விட அதிகமாக "
+"இருக்க வேண்டும்."
 
 msgid "Invalid alternative."
-msgstr ""
+msgstr "தவறான மாற்று."
 
 msgid "The comparison proportion can't be equal to the baseline proportion with a 'Two-sided' alternative hypothesis."
 msgstr ""
+"ஒப்பீட்டு விகிதம் 'இரு பக்க' மாற்று கருதுகோளுடன் அடிப்படை விகிதத்திற்கு சமமாக இருக்க "
+"முடியாது."
 
 msgid "The comparison proportion has to be less than the baseline proportion with an alternative hypothesis of 'Less'."
 msgstr ""
+"ஒப்பீட்டு விகிதம் 'குறைவான' என்ற மாற்று கருதுகோளுடன் அடிப்படை விகிதத்தை விட குறைவாக "
+"இருக்க வேண்டும்."
 
 msgid "The comparison proportion has to be greater than the baseline proportion with an alternative hypothesis of 'Greater'."
 msgstr ""
+"ஒப்பீட்டு விகிதம் 'பெரியது' என்ற மாற்று கருதுகோளுடன் அடிப்படை விகிதத்தை விட அதிகமாக "
+"இருக்க வேண்டும்."
 
 msgid "The variance ratio can't be 1 with a 'Two-sided' alternative hypothesis."
-msgstr ""
+msgstr "மாறுபாடு விகிதம் 'இரு பக்க' மாற்று கருதுகோளுடன் 1 ஆக இருக்க முடியாது."
 
 msgid "The variance ratio has to be less than 1 with an alternative hypothesis 'Less'."
-msgstr ""
+msgstr "மாறுபாடு விகிதம் 1 க்கும் குறைவாக இருக்க வேண்டும்."
 
 msgid "The variance ratio has to be greater than 1 with an alternative hypothesis of 'Greater'."
 msgstr ""
+"மாறுபாடு விகிதம் 'பெரியது' என்ற மாற்று கருதுகோளுடன் 1 ஐ விட அதிகமாக இருக்க வேண்டும்."
 
 msgid "Power must be less than 1."
-msgstr ""
+msgstr "ஆற்றல் 1 க்கும் குறைவாக இருக்க வேண்டும்."
 
 msgid "The purpose of a %s is to evaluate the sensitivity of a design and test."
 msgstr ""
+"ஒரு %s இன் நோக்கம் ஒரு வடிவமைப்பு மற்றும் சோதனையின் உணர்திறனை மதிப்பிடுவதாகும்."
 
 msgid "an independent samples t-test"
-msgstr ""
+msgstr "ஒரு சுயாதீன மாதிரிகள் டி-சோதனை"
 
 msgid "a paired samples t-test"
-msgstr ""
+msgstr "ஒரு இணை மாதிரிகள் டி-சோதனை"
 
 msgid "a one sample t-test"
-msgstr ""
+msgstr "ஒரு மாதிரி டி-சோதனை"
 
 msgid "a one sample z-test"
-msgstr ""
+msgstr "ஒரு மாதிரி z- சோதனை"
 
 msgid "a one sample proportions test"
-msgstr ""
+msgstr "ஒரு மாதிரி விகிதாச்சார சோதனை"
 
 msgid "a two samples proportions test"
-msgstr ""
+msgstr "இரண்டு மாதிரிகள் விகிதாச்சாரம் சோதனை"
 
 msgid "a one sample variance test"
-msgstr ""
+msgstr "ஒரு மாதிரி மாறுபாடு சோதனை"
 
 msgid "a two samples variance test"
-msgstr ""
+msgstr "இரண்டு மாதிரிகள் மாறுபாடு சோதனை"
 
 msgid "a one sample Poisson rate test"
-msgstr ""
+msgstr "ஒரு மாதிரி பாய்சன் வீத சோதனை"
 
 msgid "a two samples Poisson rate test"
-msgstr ""
+msgstr "இரண்டு மாதிரிகள் பாய்சன் வீத சோதனை"
 
 msgid "when using"
-msgstr ""
+msgstr "பயன்படுத்தும் போது"
 
 msgid "You have chosen to calculate the minimum sample size needed to have an experiment sensitive enough to consistently detect the specified hypothetical effect size"
 msgstr ""
+"குறிப்பிட்ட அனுமான விளைவு அளவைக் கண்டறியும் அளவுக்கு ஒரு பரிசோதனையை உணர தேவையான "
+"குறைந்தபட்ச மாதிரி அளவைக் கணக்கிட நீங்கள் தேர்ந்தெடுத்துள்ளீர்கள்"
 
 msgid "You have chosen to calculate the minimum hypothetical effect size for which the chosen design will have the specified sensitivity"
 msgstr ""
+"தேர்ந்தெடுக்கப்பட்ட வடிவமைப்பு குறிப்பிட்ட உணர்திறன் கொண்ட குறைந்தபட்ச அனுமான விளைவு அளவைக்"
+" கணக்கிட நீங்கள் தேர்ந்தெடுத்துள்ளீர்கள்"
 
 msgid "You have chosen to calculate the sensitivity of the chosen design for detecting the specified effect size"
 msgstr ""
+"குறிப்பிட்ட விளைவு அளவைக் கண்டறிய தேர்ந்தெடுக்கப்பட்ட வடிவமைப்பின் உணர்திறனைக் கணக்கிட நீங்கள்"
+" தேர்ந்தெடுத்துள்ளீர்கள்"
 
 msgid "Unable to compute the power results. Try to enter less extreme values for the input parameters."
 msgstr ""
+"ஆற்றல் முடிவுகளை கணக்கிட முடியவில்லை. உள்ளீட்டு அளவுருக்களுக்கு குறைந்த தீவிர மதிப்புகளை "
+"உள்ளிட முயற்சிக்கவும்."
 
 msgid "Power cannot be 1"
-msgstr ""
+msgstr "ஆற்றல் 1 ஆக இருக்க முடியாது"
 
 msgid "Effect size can't be 0 with a two-sided alternative hypothesis."
-msgstr ""
+msgstr "விளைவு அளவு இரண்டு பக்க மாற்று கருதுகோளுடன் 0 ஆக இருக்க முடியாது."
 
 msgid "Effect size has to be lower than 0 with an alternative of lesser."
-msgstr ""
+msgstr "குறைவான மாற்றாக விளைவு அளவு 0 ஐ விட குறைவாக இருக்க வேண்டும்."
 
 msgid "Effect size has to be greater than 0 with an alternative of greater."
-msgstr ""
+msgstr "விளைவு அளவு 0 ஐ விட அதிகமாக இருக்க வேண்டும்."
 
 msgid "The specified design leads to (an) unsolvable equation(s) while constructing the power curve. Try to enter less extreme values for the parameters"
 msgstr ""
+"குறிப்பிட்ட வடிவமைப்பு ஆற்றல் வளைவை உருவாக்கும் போது (ஒரு) தீர்க்க முடியாத சமன்பாடு (கள்)"
+" க்கு வழிவகுக்கிறது. அளவுருக்களுக்கு குறைந்த தீவிர மதிப்புகளை உள்ளிட முயற்சிக்கவும்"
 
 msgid "Error Message:"
-msgstr ""
+msgstr "பிழை செய்தி:"
 
 msgid "Sample size (group 2)"
-msgstr ""
+msgstr "மாதிரி அளவு (குழு 2)"
 
 msgid "Sample size (group 1)"
-msgstr ""
+msgstr "மாதிரி அளவு (குழு 1)"
 
 msgid "Hypothetical effect size (%s)"
-msgstr ""
+msgstr "அனுமான விளைவு அளவு (%s)"
 
 msgid "Power"
-msgstr ""
+msgstr "விசை"
 
 msgid "Observed effect size (%s)"
-msgstr ""
+msgstr "கவனிக்கப்பட்ட விளைவு அளவு (%s)"
 
 msgid "Probability Density"
-msgstr ""
+msgstr "நிகழ்தகவு அடர்த்தி"
 
 msgid "A Priori Power Analysis"
-msgstr ""
+msgstr "ஒரு ப்ரியோரி ஆற்றல் பகுப்பாய்வு"
 
 msgid "Cohen's %s"
-msgstr ""
+msgstr "கோஅனின் %s"
 
 msgid "User Defined"
-msgstr ""
+msgstr "பயனர் வரையறுக்கப்பட்டுள்ளது"
 
 msgid "Power by effect size"
-msgstr ""
+msgstr "விளைவு அளவு மூலம் ஆற்றல்"
 
 msgid "True effect size"
-msgstr ""
+msgstr "உண்மையான விளைவு அளவு"
 
 msgid "Power to detect"
-msgstr ""
+msgstr "கண்டறிய ஆற்றல்"
 
 msgid "Description"
-msgstr ""
+msgstr "விவரம்"
 
 msgid "Likely miss"
-msgstr ""
+msgstr "மிச்"
 
 msgid "Good chance of missing"
-msgstr ""
+msgstr "காணாமல் போனதற்கான நல்ல வாய்ப்பு"
 
 msgid "Probably detect"
-msgstr ""
+msgstr "அநேகமாக கண்டறிதல்"
 
 msgid "Almost surely detect"
-msgstr ""
+msgstr "கிட்டத்தட்ட நிச்சயமாக கண்டறியவும்"
 
 msgid "The power contour plot shows how the sensitivity of the test changes with the hypothetical effect size and the sample sizes in the design. As we increase the sample sizes, smaller effect sizes become reliably detectable."
 msgstr ""
+"சோதனையின் உணர்திறன் கற்பனையான விளைவு அளவு மற்றும் வடிவமைப்பில் உள்ள மாதிரி அளவுகளுடன் "
+"எவ்வாறு மாறுகிறது என்பதை ஆற்றல் விளிம்பு சூழ்ச்சி காட்டுகிறது. மாதிரி அளவுகளை நாம் "
+"அதிகரிக்கும்போது, சிறிய விளைவு அளவுகள் நம்பத்தகுந்த வகையில் கண்டறியப்படுகின்றன."
 
 msgid "Conversely, if one is satisfied to reliably detect only larger effect sizes, smaller sample sizes are needed. The point shows the power of the specified design and effect size."
 msgstr ""
+"மாறாக, பெரிய விளைவு அளவுகளை மட்டுமே நம்பத்தகுந்த முறையில் கண்டறிய ஒருவர் நிறைவு "
+"அடைந்தால், சிறிய மாதிரி அளவுகள் தேவைப்படுகின்றன. புள்ளி குறிப்பிட்ட வடிவமைப்பு மற்றும் "
+"விளைவு அளவின் சக்தியைக் காட்டுகிறது."
 
 msgid "sample sizes of %1$s"
-msgstr ""
+msgstr "மாதிரி அளவுகள் %1$s"
 
 msgid "two-sided"
-msgstr ""
+msgstr "இரு பக்க"
 
 msgid "criteria"
-msgstr ""
+msgstr "அளவுகோல்கள்"
 
 msgid "one-sided"
-msgstr ""
+msgstr "ஒரு பக்க"
 
 msgid "criterion"
-msgstr ""
+msgstr "அளவுகோல்"
 
 msgid "have power of at least %1$s"
-msgstr ""
+msgstr "குறைந்தது %1$s ஆற்றல் உள்ளது"
 
 msgid "only be sufficiently sensitive (power >%1$s)"
-msgstr ""
+msgstr "போதுமான உணர்திறன் மட்டுமே (சக்தி>%1$s)"
 
 msgid "The power curve above shows how the sensitivity of the test and design is larger for larger effect sizes. If we obtained %1$s our test and design would %2$s to effect sizes of %3$s%4$s."
 msgstr ""
+"சோதனை மற்றும் வடிவமைப்பின் உணர்திறன் பெரிய விளைவு அளவுகளுக்கு எவ்வாறு பெரியது என்பதை "
+"மேலே உள்ள ஆற்றல் வளைவு காட்டுகிறது. நாங்கள் %1$s ஐப் பெற்றால், எங்கள் சோதனை மற்றும் "
+"வடிவமைப்பு %3$s %4 $ s அளவுகளை பாதிக்க %2$s ஆகும்."
 
 msgid "We would be more than likely to miss (power less than 50%%) effect sizes less than %1$s%2$s."
 msgstr ""
+"1 $ s%2$s க்கும் குறைவான விளைவு அளவுகள் (50 %ுறத்திற்கும் குறைவாக) விளைவு அளவுகளை "
+"நாங்கள் தவறவிடுவோம்."
 
 msgid "sample sizes of at least %1$s"
-msgstr ""
+msgstr "குறைந்தது %1$s மாதிரி அளவுகள்"
 
 msgid "The power curve above shows how the sensitivity of the test and design is larger for larger effect sizes. In order for our test and design to have sufficient sensitivity (power > %1$s) to detect that %2$s when the effect size is %3$s or larger, we would need %4$s."
 msgstr ""
+"சோதனை மற்றும் வடிவமைப்பின் உணர்திறன் பெரிய விளைவு அளவுகளுக்கு எவ்வாறு பெரியது என்பதை "
+"மேலே உள்ள ஆற்றல் வளைவு காட்டுகிறது. விளைவு அளவு %3$s அல்லது பெரியதாக இருக்கும்போது "
+"%2$s ஐக் கண்டறிய எங்கள் சோதனை மற்றும் வடிவமைப்பு போதுமான உணர்திறன் (சக்தி> %1$s) இருக்"
+"க, எங்களுக்கு %4 $ s தேவைப்படும்."
 
 msgid "a sample size of %1$s"
-msgstr ""
+msgstr "மாதிரி அளவு %1$s"
 
 msgid "The figure above shows two sampling distributions: the sampling distribution of the %1$s effect size when %2$s (left), and when %3$s%4$s (right)."
 msgstr ""
+"மேலே உள்ள படம் இரண்டு மாதிரி விநியோகங்களைக் காட்டுகிறது: %2$s (இடது) போது %1$s "
+"விளைவு அளவின் மாதிரி வழங்கல், மற்றும் %3$s %4 $ s (வலது)."
 
 msgid "Both assume %1$s."
-msgstr ""
+msgstr "இரண்டும் %1$s என்று கருதுகின்றன."
 
 msgid "The vertical dashed lines show the %1$s we would set for a %2$s test with %3$s."
 msgstr ""
+"செங்குத்து கோடு கோடுகள் %3$s உடன் %2$s சோதனைக்கு நாங்கள் நிர்ணயிக்கும் %1$s ஐக் "
+"காட்டுகின்றன."
 
 msgid "When the observed effect size is far enough away from 0 to be more extreme than the %1$s we say we 'reject' the null hypothesis."
 msgstr ""
+"கவனிக்கப்பட்ட விளைவு அளவு 0 இலிருந்து %1$s ஐ விட தீவிரமாக இருக்கும்போது, பூச்ய "
+"கருதுகோளை நாங்கள் 'நிராகரிக்கிறோம்' என்று கூறுகிறோம்."
 
 msgid "If the null hypothesis were true and %1$s the evidence would lead us to wrongly reject the null hypothesis at most %2$s%% of the time."
 msgstr ""
+"சுழிய கருதுகோள் உண்மையாகவும், %1$s ஆகவும் இருந்தால், சான்று சுழிய கருதுகோளை தவறாக "
+"நிராகரிக்க வழிவகுக்கும்."
 
 msgid "On the other hand, if %1$s%2$s, the evidence would exceed the criterion  &mdash; and hence we would correctly claim that %3$s &mdash; at least %4$s%% of the time."
 msgstr ""
+"மறுபுறம், %1$s %2$s என்றால், சான்றுகள் அளவுகோலை விட அதிகமாக இருக்கும் & mdash; எனவே "
+"%3$s & mdash என்று நாங்கள் சரியாகக் கூறுவோம்; குறைந்தது%4 $ s %% நேரம்."
 
 msgid "The design's power for detecting effects of %1$s%2$s is thus %3$s."
 msgstr ""
+"%1$s %2$s இன் விளைவுகளைக் கண்டறிவதற்கான வடிவமைப்பின் ஆற்றல் இவ்வாறு %3$s ஆகும்."
 
 msgid "Due to the rounding of the sample size, the actual power can deviate from the target power."
 msgstr ""
+"மாதிரி அளவின் ரவுண்டிங் காரணமாக, உண்மையான ஆற்றல் இலக்கு சக்தியிலிருந்து விலகக்கூடும்."
 
 msgid "Actual power:"
-msgstr ""
+msgstr "உண்மையான சக்தி:"
 
 msgid "a sample size of %s"
-msgstr ""
+msgstr "%s இன் மாதிரி அளவு"
 
 msgid "We would need %1$s to reliably (with probability greater than or equal to %2$s) detect an effect size of %3$s%4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s."
 msgstr ""
+"நம்பகத்தன்மையுடன் ( %2$s ஐ விட அதிகமாகவோ அல்லது சமமாகவோ நிகழ்தகவு) %3$s %4 $ s இன் "
+"விளைவு அளவைக் கண்டறிவதற்கு எங்களுக்கு %1$s தேவைப்படும், இது அதிகபட்சத்தை அனுமதிக்கும் "
+"கண்டறிதலுக்கான %5 $ S அளவுகோலைக் கருதி வகை I பிழை விகிதம் %6 $ s."
 
 msgid "A design with %1$s will reliably (with probability greater than or equal to %2$s) detect  effect sizes of %3$s%4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s."
 msgstr ""
+"%1$s கொண்ட ஒரு வடிவமைப்பு நம்பகத்தன்மையுடன் ( %2$s ஐ விட அதிகமாகவோ அல்லது சமமாகவோ "
+"நிகழ்தகவு) %3$s %4 $ s இன் விளைவு அளவுகளைக் கண்டறிகிறது, இது அதிகபட்ச வகையை "
+"அனுமதிக்கும் கண்டறிதலுக்கான %5 $ s அளவுகோலைக் கருதி நான் %6 $ s பிழை விகிதம்."
 
 msgid "A design with %1$s can detect effect sizes of %2$s%3$s with a probability of at least %4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s."
 msgstr ""
+"%1$s கொண்ட ஒரு வடிவமைப்பு குறைந்தது %4 $ s நிகழ்தகவுடன் %2$s %3$s இன் விளைவு அளவைக் "
+"கண்டறிய முடியும், இது அதிகபட்ச வகை I பிழை விகிதத்தை அனுமதிக்கும் கண்டறிதலுக்கான %5 $ "
+"s அளவுகோலைக் கருதுகிறது %6 $ கள்."
 
 msgid "To evaluate the design specified in the table, we can consider how sensitive it is to true effects of increasing sizes; that is, are we likely to correctly conclude that %1$s when the effect size is large enough to care about?"
 msgstr ""
+"அட்டவணையில் குறிப்பிடப்பட்டுள்ள வடிவமைப்பை மதிப்பீடு செய்ய, அதிகரிக்கும் அளவுகளின் உண்மையா"
+"ன விளைவுகளுக்கு இது எவ்வளவு உணர்திறன் கொண்டது என்பதை நாம் கருத்தில் கொள்ளலாம்; அதாவது, "
+"விளைவு அளவு பெரியதாக இருக்கும்போது %1$s என்று நாம் சரியாக முடிவு செய்ய வாய்ப்புள்ளதா?"
 
 msgid "The specified design leads to (an) unsolvable equation(s) while computing the values for this power table. Try to enter less extreme values for the parameters."
 msgstr ""
+"இந்த ஆற்றல் அட்டவணைக்கான மதிப்புகளைக் கணக்கிடும்போது குறிப்பிட்ட வடிவமைப்பு (ஒரு) தீர்க்க "
+"முடியாத சமன்பாடு (கள்) க்கு வழிவகுக்கிறது. அளவுருக்களுக்கு குறைந்த தீவிர மதிப்புகளை "
+"உள்ளிட முயற்சிக்கவும்."
 
 msgid "|h|"
-msgstr ""
+msgstr "| எச் |"
 
 msgid "Power Contour"
-msgstr ""
+msgstr "ஆற்றல் விளிம்பு"
 
 msgid "Power Curve by Effect Size"
-msgstr ""
+msgstr "விளைவு அளவு மூலம் ஆற்றல் வளைவு"
 
 msgid "Power Curve by N"
-msgstr ""
+msgstr "ஆற்றல் வளைவு n"
 
 msgid "Power Demonstration"
-msgstr ""
+msgstr "ஆற்றல் ஆர்ப்பாட்டம்"
 
 msgid "Synthetic Dataset"
-msgstr ""
+msgstr "செயற்கை தரவுத்தொகுப்பு"
 
 msgid "Characteristics"
-msgstr ""
+msgstr "பண்புகள்"
 
 msgid "Post Hoc Power Analysis"
-msgstr ""
+msgstr "பிந்தைய தற்காலிக ஆற்றல் பகுப்பாய்வு"
 
 msgid "The generated dataset must be saved as a .csv or .txt file."
 msgstr ""
+"உருவாக்கப்பட்ட தரவுத்தொகுப்பு .csv அல்லது .txt கோப்பாக சேமிக்கப்பட வேண்டும்."
 
 msgid "The generated dataset could not be saved. Please make sure that the specified path exists and the specified csv file is closed."
 msgstr ""
+"உருவாக்கப்பட்ட தரவுத்தொகுப்பை சேமிக்க முடியவில்லை. குறிப்பிட்ட பாதை இருப்பதையும் "
+"குறிப்பிட்ட காபிம கோப்பு மூடப்பட்டிருப்பதையும் உறுதிப்படுத்தவும்."
 
 msgid "The synthetic dataset is saved as %s"
-msgstr ""
+msgstr "செயற்கை தரவுத்தொகுப்பு %s ஆக சேமிக்கப்படுகிறது"
 
 msgid "Hypothesized rate (%s)"
-msgstr ""
+msgstr "அனுமான விகிதம் (%s)"
 
 msgid "Comparison rate (%s)"
-msgstr ""
+msgstr "ஒப்பீட்டு விகிதம் (%s)"
 
 msgid "Effect size (%s)"
-msgstr ""
+msgstr "விளைவு அளவு (%s)"
 
 msgid "True effect size (%s)"
-msgstr ""
+msgstr "உண்மையான விளைவு அளவு (%s)"
 
 msgid "a sample size of"
-msgstr ""
+msgstr "ஒரு மாதிரி அளவு"
 
 msgid "effect sizes of %s"
-msgstr ""
+msgstr "%s இன் விளைவு அளவுகள்"
 
 msgid "We would need %1$s to reliably (with probability greater than %2$s) detect %3$s%4$s%5$s, assuming a %6$s criterion for detection that allows for a maximum Type I error rate of %7$s."
 msgstr ""
+"நம்பகத்தன்மையுடன் எங்களுக்கு %1$s தேவைப்படும் (நிகழ்தகவு %2$s க்கும் அதிகமாக) %3$s %4 $ "
+"s %5 $ s ஐக் கண்டறிதல், அதிகபட்ச வகை I பிழையை அனுமதிக்கும் கண்டறிதலுக்கான %6 $ s "
+"அளவுகோலைக் கருதி %7 $ s வீதம்."
 
 msgid "A design with %1$s will reliably (with probability greater than %2$s) detect  %3$s%4$s%5$s, assuming a %6$s criterion for detection that allows for a maximum Type I error rate of %7$s."
 msgstr ""
+"%1$s உடன் ஒரு வடிவமைப்பு நம்பத்தகுந்ததாக இருக்கும் (நிகழ்தகவு %2$s க்கும் அதிகமாக "
+"உள்ளது) %3$s %4 $ s %5 $ s ஐக் கண்டறிதல், அதிகபட்ச வகை I பிழையை அனுமதிக்கும் "
+"கண்டறிதலுக்கான %6 $ s அளவுகோலைக் கருதுகிறது %7 $ s வீதம்."
 
 msgid "A design with %1$s can detect %2$s%3$s%4$s with a probability of at least %5$s, assuming a %6$s criterion for detection that allows for a maximum Type I error rate of %7$s."
 msgstr ""
+"%1$s கொண்ட ஒரு வடிவமைப்பு %2$s %3$s %4 $ s ஐ குறைந்தது %5 $ s நிகழ்தகவுடன் கண்டறிய "
+"முடியும், இது அதிகபட்ச வகை I பிழை வீதத்தை அனுமதிக்கும் கண்டறிதலுக்கான %6 gs அளவுகோலைக்"
+" கருதி of %7 $ s."
 
 msgid "To evaluate the design specified in the table, we can consider how sensitive it is to true effects of increasing sizes; that is, are we likely to correctly conclude that %s when the effect size is large enough to care about?"
 msgstr ""
+"அட்டவணையில் குறிப்பிடப்பட்டுள்ள வடிவமைப்பை மதிப்பீடு செய்ய, அதிகரிக்கும் அளவுகளின் உண்மையா"
+"ன விளைவுகளுக்கு இது எவ்வளவு உணர்திறன் கொண்டது என்பதை நாம் கருத்தில் கொள்ளலாம்; அதாவது, "
+"விளைவு அளவு பெரியதாக இருக்கும்போது %s என்று நாம் சரியாக முடிவு செய்ய வாய்ப்புள்ளதா?"
 
 msgid "effect size"
-msgstr ""
+msgstr "விளைவு அளவு"
 
 msgid "absolute difference in proportions"
-msgstr ""
+msgstr "விகிதாச்சாரத்தில் முழுமையான வேறுபாடு"
 
 msgid "Conversely, if one is satisfied to reliably detect only larger effect sizes, smaller sample sizes are needed. The solid black curve on the contour plot shows sample size/effect size combinations with a power of %1$s. The point shows the specified design and %2$s."
 msgstr ""
+"மாறாக, பெரிய விளைவு அளவுகளை மட்டுமே நம்பத்தகுந்த முறையில் கண்டறிய ஒருவர் நிறைவு "
+"அடைந்தால், சிறிய மாதிரி அளவுகள் தேவைப்படுகின்றன. விளிம்பு சதித்திட்டத்தில் உள்ள திட "
+"கருப்பு வளைவு %1$s சக்தியுடன் மாதிரி அளவு/விளைவு அளவு சேர்க்கைகளைக் காட்டுகிறது. "
+"புள்ளி குறிப்பிட்ட வடிவமைப்பு மற்றும் %2$s ஐக் காட்டுகிறது."
 
 msgid "sample sizes of %s"
-msgstr ""
+msgstr "%s இன் மாதிரி அளவுகள்"
 
 msgid "effect sizes"
-msgstr ""
+msgstr "விளைவு அளவுகள்"
 
 msgid "absolute differences in proportions"
-msgstr ""
+msgstr "விகிதாச்சாரத்தில் முழுமையான வேறுபாடுகள்"
 
 msgid "have power of at least %s"
-msgstr ""
+msgstr "குறைந்தது %s ஆற்றல் உள்ளது"
 
 msgid "only be sufficiently sensitive (power >%s)"
-msgstr ""
+msgstr "போதுமான உணர்திறன் மட்டுமே (சக்தி>%s)"
 
 msgid "sample sizes of at least %s"
-msgstr ""
+msgstr "மாதிரி அளவுகள் குறைந்தது %s"
 
 msgid "The figure above shows two sampling distributions: the sampling distribution of the %1$s effect size when %2$s (left), and when %3$s (right)."
 msgstr ""
+"மேலே உள்ள படம் இரண்டு மாதிரி விநியோகங்களைக் காட்டுகிறது: %2$s (இடது) போது %1$s "
+"விளைவு அளவின் மாதிரி வழங்கல், மற்றும் %3$s (வலது) போது."
 
 msgid "Both assume %s."
-msgstr ""
+msgstr "இரண்டும் %s என்று கருதுகின்றன."
 
 msgid "When the observed effect size is far enough away from 0 to be more extreme than the %s we say we 'reject' the null hypothesis."
 msgstr ""
+"கவனிக்கப்பட்ட விளைவு அளவு 0 இலிருந்து வெகு தொலைவில் இருக்கும்போது, %களை விட தீவிரமாக "
+"இருக்க வேண்டும், நாங்கள் சுழிய கருதுகோளை 'நிராகரிக்கிறோம்' என்று கூறுகிறோம்."
 
 msgid "On the other hand, if %1$s, the evidence would exceed the criterion  &mdash; and hence we would correctly claim that %2$s &mdash; at least %3$s%% of the time."
 msgstr ""
+"மறுபுறம், %1$s என்றால், சான்றுகள் அளவுகோலை மீறும் & mdash; எனவே %2$s & mdash என்று "
+"நாங்கள் சரியாகக் கூறுவோம்; குறைந்தது%3$s %% நேரம்."
 
 msgid "Variance ratio (%s)"
-msgstr ""
+msgstr "மாறுபாடு விகிதம் (%s)"
 
 msgid "Power by variance ratio"
-msgstr ""
+msgstr "மாறுபாடு விகிதத்தால் ஆற்றல்"
 
 msgid "True variance ratio (%s)"
-msgstr ""
+msgstr "உண்மையான மாறுபாடு விகிதம் (%s)"
 
 msgid "The power contour plot shows how the sensitivity of the test changes with the hypothetical variance ratio and the sample sizes in the design. As we increase the sample sizes, smaller variance ratios become reliably detectable."
 msgstr ""
+"அனுமான மாறுபாடு விகிதம் மற்றும் வடிவமைப்பில் மாதிரி அளவுகளுடன் சோதனையின் உணர்திறன் "
+"எவ்வாறு மாறுகிறது என்பதை ஆற்றல் விளிம்பு சூழ்ச்சி காட்டுகிறது. மாதிரி அளவுகளை நாம் "
+"அதிகரிக்கும்போது, சிறிய மாறுபாடு விகிதங்கள் நம்பத்தகுந்த வகையில் கண்டறியப்படுகின்றன."
 
 msgid "Conversely, if one is satisfied to reliably detect only larger variance ratios, smaller sample sizes are needed. The point shows the power of specified  design and variance ratio."
 msgstr ""
+"மாறாக, பெரிய மாறுபாடு விகிதங்களை மட்டுமே நம்பத்தகுந்த முறையில் கண்டறிய ஒருவர் நிறைவு "
+"அடைந்தால், சிறிய மாதிரி அளவுகள் தேவைப்படுகின்றன. புள்ளி குறிப்பிட்ட வடிவமைப்பு மற்றும் "
+"மாறுபாடு விகிதத்தின் சக்தியைக் காட்டுகிறது."
 
 msgid "only be sufficiently sensitive (power > %1$s)"
-msgstr ""
+msgstr "போதுமான உணர்திறன் மட்டுமே (சக்தி> %1$s)"
 
 msgid "The power curve above shows how the sensitivity of the test and design is larger for larger variance ratios. If we obtained %1$s our test and design would %2$s to variance ratios of %3$s%4$s."
 msgstr ""
+"பெரிய மாறுபாடு விகிதங்களுக்கு சோதனை மற்றும் வடிவமைப்பின் உணர்திறன் எவ்வாறு பெரியது "
+"என்பதை மேலே உள்ள ஆற்றல் வளைவு காட்டுகிறது. நாங்கள் %1$s ஐப் பெற்றால், எங்கள் சோதனை மற்றும் "
+"வடிவமைப்பு %3$s %4 $ s மாறுபாடு விகிதங்களுக்கு %2$s ஆகும்."
 
 msgid "We would be more than likely to miss (power less than 50%%) variance ratios of %s."
 msgstr ""
+"%s இன் மாறுபாடு விகிதங்களை நாம் தவறவிட வாய்ப்புள்ளது (50 %% க்கும் குறைவான சக்தி)."
 
 msgid "The power curve above shows how the sensitivity of the test and design is larger for larger sample sizes. In order for our test and design to have sufficient sensitivity (power > %1$s) to detect that %2$s when the variance ratio is %3$s or more extreme, we would need %4$s."
 msgstr ""
+"பெரிய மாதிரி அளவுகளுக்கு சோதனை மற்றும் வடிவமைப்பின் உணர்திறன் எவ்வாறு பெரியது என்பதை "
+"மேலே உள்ள ஆற்றல் வளைவு காட்டுகிறது. எங்கள் சோதனை மற்றும் வடிவமைப்பு மாறுபாடு விகிதம் "
+"%3$s அல்லது அதற்கு மேற்பட்ட தீவிரமாக இருக்கும்போது %2$s ஐக் கண்டறிய போதுமான உணர்திறன் "
+"(சக்தி> %1$s) இருக்க, எங்களுக்கு %4 $ s தேவைப்படும்."
 
 msgid "The figure above shows two sampling distributions: the sampling distribution of the %1$s variance ratio when %2$s, and when %3$s%4$s."
 msgstr ""
+"மேலே உள்ள படம் இரண்டு மாதிரி விநியோகங்களைக் காட்டுகிறது: %2$s போது %1$s மாறுபாடு "
+"விகிதத்தின் மாதிரி வழங்கல், மற்றும் %3$s %4 $ s போது."
 
 msgid "When the observed variance ratio is far enough away from 1 to be more extreme than the %1$s we say we 'reject' the null hypothesis."
 msgstr ""
+"கவனிக்கப்பட்ட மாறுபாடு விகிதம் 1 இலிருந்து %1$s ஐ விட தீவிரமானதாக இருக்கும்போது, பூச்"
+"ய கருதுகோளை நாங்கள் 'நிராகரிக்கிறோம்' என்று கூறுகிறோம்."
 
 msgid "We would need %1$s to reliably (with probability greater than %2$s) detect a variance ratio of %3$s, assuming a %4$s criterion for detection that allows for a maximum Type I error rate of %5$s."
 msgstr ""
+"நம்பகத்தன்மையுடன் ( %2$s க்கும் அதிகமான நிகழ்தகவுடன்) %3$s மாறுபாடு விகிதத்தைக் "
+"கண்டறிவதற்கு எங்களுக்கு %1$s தேவைப்படும், இது கண்டறிதலுக்கான %4 $ S அளவுகோலைக் கருதி, "
+"அதிகபட்ச வகை I பிழை விகிதத்தை %5 இன் பிழை விகிதத்தை அனுமதிக்கிறது $ கள்."
 
 msgid "A design with %1$s will reliably (with probability greater than %2$s) detect variance ratios of %3$s, assuming a %4$s criterion for detection that allows for a maximum Type I error rate of %5$s."
 msgstr ""
+"%1$s உடன் ஒரு வடிவமைப்பு நம்பகத்தன்மையுடன் ( %2$s க்கும் அதிகமாக நிகழ்தகவு) %3$s "
+"மாறுபாடு விகிதங்களைக் கண்டறிதல், கண்டறிதலுக்கான %4 $ s அளவுகோலைக் கருதி, அதிகபட்ச வகை"
+" I பிழை விகிதத்தை %5 $ அனுமதிக்கிறது கள்."
 
 msgid "A design with %1$s can detect variance ratios of %2$s with a probability of at least %3$s, assuming a %4$s criterion for detection that allows for a maximum Type I error rate of %5$s."
 msgstr ""
+"%1$s கொண்ட ஒரு வடிவமைப்பு %2$s இன் மாறுபாடு விகிதங்களை குறைந்தது %3$s நிகழ்தகவுடன் "
+"கண்டறிய முடியும், இது கண்டறிதலுக்கான %4 $ s அளவுகோலைக் கருதி, அதிகபட்ச வகை I பிழை "
+"விகிதத்தை %5 $ s அனுமதிக்கிறது ."
 
 msgid "To evaluate the design specified in the table, we can consider how sensitive it is to true effects of increasing sizes; that is, are we likely to correctly conclude that %1$s when the variance ratio is large enough to care about?"
 msgstr ""
+"அட்டவணையில் குறிப்பிடப்பட்டுள்ள வடிவமைப்பை மதிப்பீடு செய்ய, அதிகரிக்கும் அளவுகளின் உண்மையா"
+"ன விளைவுகளுக்கு இது எவ்வளவு உணர்திறன் கொண்டது என்பதை நாம் கருத்தில் கொள்ளலாம்; அதாவது, "
+"மாறுபாடு விகிதம் பெரியதாக இருக்கும்போது %1$s என்று நாம் சரியாக முடிவு செய்ய "
+"வாய்ப்புள்ளதா?"
 
 msgid "To improve readability of this power table for a 'Two-sided' alternative hypothesis, only the intervals in the direction of the specified variance ratio are displayed under 'True variance ratio'"
 msgstr ""
+"'இரு பக்க' மாற்று கருதுகோளுக்கு இந்த ஆற்றல் அட்டவணையின் வாசிப்புத்திறனை மேம்படுத்த, "
+"குறிப்பிட்ட மாறுபாடு விகிதத்தின் திசையில் இடைவெளிகள் மட்டுமே 'உண்மையான மாறுபாடு "
+"விகிதத்தின்' கீழ் காட்டப்படும்"
 
 msgid "Power Curve by variance ratio"
-msgstr ""
+msgstr "மாறுபாடு விகிதத்தால் ஆற்றல் வளைவு"
 
 msgid "Alternative hypothesis"
-msgstr ""
+msgstr "மாற்று கருதுகோள்"
 
 msgid "Power by Effect Size"
-msgstr ""
+msgstr "விளைவு அளவு மூலம் ஆற்றல்"
 
 msgid "a sample size of %1$s in each group"
-msgstr ""
+msgstr "ஒவ்வொரு குழுவிலும் %1$s மாதிரி அளவு"
 
 msgid "group sample sizes of %1$s and %2$s respectively,"
-msgstr ""
+msgstr "குழு மாதிரி அளவுகள் முறையே %1$s மற்றும் %2$s,"
 
 msgid "A design with %1$s will reliably (with probability greater than or equal to %2$s) detect effect sizes of %3$s%4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s."
 msgstr ""
+"%1$s கொண்ட ஒரு வடிவமைப்பு நம்பகத்தன்மையுடன் ( %2$s ஐ விட அதிகமாகவோ அல்லது சமமாகவோ "
+"நிகழ்தகவு) %3$s %4 $ s இன் விளைவு அளவுகளைக் கண்டறிகிறது, இது அதிகபட்ச வகையை "
+"அனுமதிக்கும் கண்டறிதலுக்கான %5 $ s அளவுகோலைக் கருதி நான் %6 $ s பிழை விகிதம்."
 
 msgid "Conversely, if one is satisfied to reliably detect only larger effect sizes, smaller sample sizes are needed The point shows the power of the specified  design and effect size."
 msgstr ""
+"மாறாக, பெரிய விளைவு அளவுகளை மட்டுமே நம்பத்தகுந்த முறையில் கண்டறிய ஒருவர் நிறைவு "
+"அடைந்தால், சிறிய மாதிரி அளவுகள் தேவைப்படுகின்றன, புள்ளி குறிப்பிட்ட வடிவமைப்பு மற்றும் "
+"விளைவு அளவின் சக்தியைக் காட்டுகிறது."
 
 msgid "sample sizes of %1$s in each group"
-msgstr ""
+msgstr "ஒவ்வொரு குழுவிலும் %1$s மாதிரி அளவுகள்"
 
 msgid "group sample sizes of %1$s and %2$s, respectively"
-msgstr ""
+msgstr "குழு மாதிரி அளவுகள் முறையே %1$s மற்றும் %2$s"
 
 msgid "sample sizes of at least %1$s in each group"
-msgstr ""
+msgstr "ஒவ்வொரு குழுவிலும் குறைந்தது %1$s மாதிரி அளவுகள்"
 
 msgid "group sample sizes of at least %1$s and %2$s, respectively"
-msgstr ""
+msgstr "குழு மாதிரி அளவுகள் முறையே குறைந்தது %1$s மற்றும் %2$s"
 
 msgid "On the other hand, if %1$s%2$s, the evidence would exceed the criterion &mdash; and hence we would correctly claim that %3$s &mdash; at least %4$s%% of the time."
 msgstr ""
+"மறுபுறம், %1$s %2$s என்றால், சான்றுகள் அளவுகோலை விட அதிகமாக இருக்கும் & mdash; எனவே "
+"%3$s & mdash என்று நாங்கள் சரியாகக் கூறுவோம்; குறைந்தது%4 $ s %% நேரம்."
 
 msgid "Power by Poisson Rate Ratio"
-msgstr ""
+msgstr "பாய்சன் வீத விகிதத்தால் ஆற்றல்"
 
 msgid "True Poisson rate ratio"
-msgstr ""
+msgstr "உண்மையான பாய்சன் வீத விகிதம்"
 
 msgid "a sample size of %s in each group"
-msgstr ""
+msgstr "ஒவ்வொரு குழுவிலும் %s மாதிரி அளவு"
 
 msgid "We would need %1$s to reliably (with probability greater than %2$s) detect a Poisson rate ratio of %3$s%4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s."
 msgstr ""
+"நம்பகத்தன்மையுடன் எங்களுக்கு %1$s தேவைப்படும் (நிகழ்தகவு %2$s க்கும் அதிகமாக) %3$s %4 $ "
+"s என்ற பாய்சன் விகித விகிதத்தைக் கண்டறிந்து, அதிகபட்ச வகை I ஐ அனுமதிக்கும் கண்டறிதலுக்கா"
+"ன %5 $ S அளவுகோலைக் கருதி %6 $ s பிழை விகிதம்."
 
 msgid "A design with %1$s will reliably (with probability greater than %2$s) detect Poisson rate ratios of %3$s%4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s."
 msgstr ""
+"%1$s கொண்ட ஒரு வடிவமைப்பு நம்பத்தகுந்ததாக இருக்கும் (நிகழ்தகவு %2$s க்கும் அதிகமாக "
+"உள்ளது) %3$s %4 $ s இன் பாய்சன் வீத விகிதங்களைக் கண்டறிகிறது, இது அதிகபட்ச வகை I "
+"பிழையை அனுமதிக்கும் கண்டறிதலுக்கான %5 $ S அளவுகோலைக் கருதி %6 $ s வீதம்."
 
 msgid "A design with %1$s can detect Poisson rate ratios of %2$s%3$s with a probability of at least %4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s."
 msgstr ""
+"%1$s கொண்ட ஒரு வடிவமைப்பு குறைந்தது %4 $ s நிகழ்தகவுடன் %2$s %3$s இன் பாய்சன் வீத "
+"விகிதங்களைக் கண்டறிய முடியும், இது அதிகபட்ச வகை I பிழை வீதத்தை அனுமதிக்கும் "
+"கண்டறிதலுக்கான %5 $ S அளவுகோலைக் கருதி %6 $ s."
 
 msgid "The power contour plot shows how the sensitivity of the test changes with the hypothetical Poisson rate ratio and the sample sizes in the design. As we increase the sample sizes, Poisson rate ratios closer to one become reliably detectable."
 msgstr ""
+"கற்பனையான பாய்சன் விகித விகிதம் மற்றும் வடிவமைப்பில் மாதிரி அளவுகளுடன் சோதனையின் "
+"உணர்திறன் எவ்வாறு மாறுகிறது என்பதை ஆற்றல் விளிம்பு சூழ்ச்சி காட்டுகிறது. மாதிரி அளவுகளை"
+" நாம் அதிகரிக்கும்போது, பாய்சன் வீத விகிதங்கள் ஒன்றுக்கு நெருக்கமானவை."
 
 msgid "Conversely, if one is satisfied to reliably detect only larger effects, smaller sample sizes are needed. The solid black curve on the contour plot shows sample size/Poisson rate ratios combinations with a power of %s. The point shows the specified  design and Poisson rate ratio."
 msgstr ""
+"மாறாக, பெரிய விளைவுகளை மட்டுமே நம்பத்தகுந்த முறையில் கண்டறிய ஒருவர் நிறைவு அடைந்தால், "
+"சிறிய மாதிரி அளவுகள் தேவைப்படுகின்றன. விளிம்பு சதித்திட்டத்தின் திட கருப்பு வளைவு "
+"மாதிரி அளவு/பாய்சன் வீத விகித விகிதங்களை %s சக்தியுடன் காட்டுகிறது. புள்ளி குறிப்பிட்ட "
+"வடிவமைப்பு மற்றும் பாய்சன் வீத விகிதத்தைக் காட்டுகிறது."
 
 msgid "sample sizes of %s in each group"
-msgstr ""
+msgstr "ஒவ்வொரு குழுவிலும் %s மாதிரி அளவுகள்"
 
 msgid "sample sizes of at least %s in each group"
-msgstr ""
+msgstr "ஒவ்வொரு குழுவிலும் குறைந்தது %s மாதிரி அளவுகள்"
 
 msgid "True variance ratio"
-msgstr ""
+msgstr "உண்மையான மாறுபாடு விகிதம்"
 
 msgid "To evaluate the design specified in the table, we can consider how sensitive it is to true effects of increasing sizes; that is, are we likely to correctly conclude that %1$s when the variance ratio is extreme enough to care about?"
 msgstr ""
+"அட்டவணையில் குறிப்பிடப்பட்டுள்ள வடிவமைப்பை மதிப்பீடு செய்ய, அதிகரிக்கும் அளவுகளின் உண்மையா"
+"ன விளைவுகளுக்கு இது எவ்வளவு உணர்திறன் கொண்டது என்பதை நாம் கருத்தில் கொள்ளலாம்; அதாவது, "
+"மாறுபாடு விகிதம் அக்கறை கொள்ள போதுமானதாக இருக்கும்போது %1$s என்று நாம் சரியாக முடிவு"
+" செய்ய வாய்ப்புள்ளதா?"
 
 msgid "The power contour plot shows how the sensitivity of the test changes with the hypothetical variance ratio and the sample sizes in the design. As we increase the sample sizes, less extreme variance ratios become reliably detectable."
 msgstr ""
+"அனுமான மாறுபாடு விகிதம் மற்றும் வடிவமைப்பில் மாதிரி அளவுகளுடன் சோதனையின் உணர்திறன் "
+"எவ்வாறு மாறுகிறது என்பதை ஆற்றல் விளிம்பு சூழ்ச்சி காட்டுகிறது. மாதிரி அளவுகளை நாம் "
+"அதிகரிக்கும்போது, குறைவான தீவிர மாறுபாடு விகிதங்கள் நம்பத்தகுந்த வகையில் "
+"கண்டறியப்படுகின்றன."
 
 msgid "Conversely, if one is satisfied to reliably detect only more extreme variance ratios, smaller sample sizes are needed. The point shows the power of the specified design and variance ratio."
 msgstr ""
+"மாறாக, அதிக தீவிர மாறுபாடு விகிதங்களை மட்டுமே நம்பத்தகுந்த முறையில் கண்டறிய ஒருவர் "
+"நிறைவு அடைந்தால், சிறிய மாதிரி அளவுகள் தேவை. புள்ளி குறிப்பிட்ட வடிவமைப்பு மற்றும் "
+"மாறுபாடு விகிதத்தின் சக்தியைக் காட்டுகிறது."
 
 msgid "The power curve above shows how the sensitivity of the test and design is larger for more extreme variance ratios. If we obtained %1$s our test and design would %2$s to variance ratios of %3$s%4$s."
 msgstr ""
+"மேலே உள்ள ஆற்றல் வளைவு சோதனை மற்றும் வடிவமைப்பின் உணர்திறன் எவ்வாறு தீவிர மாறுபாடு "
+"விகிதங்களுக்கு பெரியது என்பதைக் காட்டுகிறது. நாங்கள் %1$s ஐப் பெற்றால், எங்கள் சோதனை "
+"மற்றும் வடிவமைப்பு %3$s %4 $ s மாறுபாடு விகிதங்களுக்கு %2$s ஆகும்."
 
 msgid "We would be more than likely to miss (power less than 50%%) variance ratios of %1$s."
 msgstr ""
+"%1$s இன் மாறுபாடு விகிதங்களை நாம் தவறவிட வாய்ப்புள்ளது (50 %ண்ட் சக்தி)."
 
 msgid "The specified design leads to (an) unsolvable equation(s) while constructing the curves for the Power Demonstration. Try to enter less extreme values for the parameters"
 msgstr ""
+"குறிப்பிட்ட வடிவமைப்பு (ஒரு) தீர்க்க முடியாத சமன்பாடு (கள்) க்கு வழிவகுக்கிறது, அதே "
+"நேரத்தில் ஆற்றல் ஆர்ப்பாட்டத்திற்கான வளைவுகளை உருவாக்குகிறது. அளவுருக்களுக்கு குறைந்த தீவி"
+"ர மதிப்புகளை உள்ளிட முயற்சிக்கவும்"
 
 msgid "Note."
-msgstr ""
+msgstr "குறிப்பு."
 
 msgid "When the variance ratio is less than 1, the inverse of the variance ratio is displayed. Therefore, the first and second degrees of freedom of both F-distributions switched places."
 msgstr ""
+"மாறுபாடு விகிதம் 1 க்கும் குறைவாக இருக்கும்போது, மாறுபாடு விகிதத்தின் தலைகீழ் "
+"காட்டப்படும். எனவே, எஃப்-டிச்ட்ரிபூசன்சின் முதல் மற்றும் இரண்டாவது டிகிரி விடுதலை இடங்களை "
+"மாற்றியது."
 
 msgid "%1$sThe figure above shows two sampling distributions: the sampling distribution of the %1$s variance ratio when %2$s (left), and when %3$s%4$s (right)."
 msgstr ""
+"%1$sthe படம் இரண்டு மாதிரி விநியோகங்களைக் காட்டுகிறது: %2$s (இடது) போது %1$s "
+"மாறுபாடு விகிதத்தின் மாதிரி வழங்கல், மற்றும் %3$s %4 $ s (வலது)."
 
 msgid "On the other hand, if %1$s, the evidence would exceed the criterion  &mdash; and hence we would correctly claim that %2$s1 &mdash; at least %3$s%% of the time."
 msgstr ""
+"மறுபுறம், %1$s என்றால், சான்றுகள் அளவுகோலை மீறும் & mdash; எனவே %2$s1 & mdash; "
+"குறைந்தது%3$s %% நேரம்."
 
 msgid "The design's power for detecting effects of %1$s%2$s%3$s is thus %4$s."
 msgstr ""
+"%1$s %2$s %3$s இன் விளைவுகளைக் கண்டறிவதற்கான வடிவமைப்பின் ஆற்றல் இவ்வாறு %4 $ s ஆகும்."
 
 msgid "The power curve above shows how the sensitivity of the test and design is larger for larger sample sizes. In order for our test and design to have sufficient sensitivity (power > %1$s) to detect that %2$s when the effect size is %3$s or larger, we would need %4$s."
 msgstr ""
+"பெரிய மாதிரி அளவுகளுக்கு சோதனை மற்றும் வடிவமைப்பின் உணர்திறன் எவ்வாறு பெரியது என்பதை "
+"மேலே உள்ள ஆற்றல் வளைவு காட்டுகிறது. விளைவு அளவு %3$s அல்லது பெரியதாக இருக்கும்போது "
+"%2$s ஐக் கண்டறிய எங்கள் சோதனை மற்றும் வடிவமைப்பு போதுமான உணர்திறன் (சக்தி> %1$s) இருக்"
+"க, எங்களுக்கு %4 $ s தேவைப்படும்."
 
 msgid "Cohen's"
-msgstr ""
+msgstr "கோஅன்ச்"
