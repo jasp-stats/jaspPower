@@ -1,0 +1,245 @@
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2025-01-06 12:25+0000\n"
+"Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
+"Language-Team: Tamil <https://hosted.weblate.org/projects/jasp/jasppower-qml/"
+"ta/>\n"
+"Language: ta\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.10-dev\n"
+"X-Qt-Contexts: true\n"
+
+msgctxt "Description|"
+msgid "Power"
+msgstr "விசை"
+
+msgctxt "Description|"
+msgid "This module allows you to conduct power analyses."
+msgstr "ஆற்றல் பகுப்பாய்வுகளை நடத்த இந்த தொகுதி உங்களை அனுமதிக்கிறது."
+
+msgctxt "Power|"
+msgid "Statistical test:"
+msgstr "புள்ளிவிவர சோதனை:"
+
+msgctxt "Power|"
+msgid "Parameters"
+msgstr "அளவுருக்கள்"
+
+msgctxt "Power|"
+msgid "I want to calculate the ..."
+msgstr "நான் கணக்கிட விரும்புகிறேன் ..."
+
+msgctxt "Power|"
+msgid "Direction of the effect:"
+msgstr "விளைவின் திசை:"
+
+msgctxt "Power|"
+msgid "p₁ > p₀"
+msgstr "P₁> P₀"
+
+msgctxt "Power|"
+msgid "p₁ > p₂"
+msgstr "P₁> P₂"
+
+msgctxt "Power|"
+msgid "ρ > 1"
+msgstr "ப> 1"
+
+msgctxt "Power|"
+msgid "p₁ < p₀"
+msgstr "P₁ <P₀"
+
+msgctxt "Power|"
+msgid "p₁ < p₂"
+msgstr "P₁ <P₂"
+
+msgctxt "Power|"
+msgid "ρ < 1"
+msgstr "பி <1"
+
+msgctxt "Power|"
+msgid "Hypothesized proportion"
+msgstr "கருதுகோள் விகிதம்"
+
+msgctxt "Power|"
+msgid "Baseline proportion"
+msgstr "அடிப்படை விகிதம்"
+
+msgctxt "Power|"
+msgid "p₀"
+msgstr "p₀"
+
+msgctxt "Power|"
+msgid "p₂"
+msgstr "p₂"
+
+msgctxt "Power|"
+msgid "Comparison proportion"
+msgstr "ஒப்பீட்டு விகிதம்"
+
+msgctxt "Power|"
+msgid "p₁"
+msgstr "p₁"
+
+msgctxt "Power|"
+msgid "Minimal effect size of interest:"
+msgstr "ஆர்வத்தின் குறைந்தபட்ச விளைவு அளவு:"
+
+msgctxt "Power|"
+msgid "|δ|"
+msgstr "|"
+
+msgctxt "Power|"
+msgid "ρ (σ₁²/σ₂²)"
+msgstr "பி (σ₁²/σ₂²)"
+
+msgctxt "Power|"
+msgid "ρ (σ²/σ₀²)"
+msgstr "பி (σ²/σ₀²)"
+
+msgctxt "Power|"
+msgid "Minimal desired power:"
+msgstr "விரும்பிய குறைந்த சக்தி:"
+
+msgctxt "Power|"
+msgid "(1-β)"
+msgstr "(1-பி)"
+
+msgctxt "Power|"
+msgid "Type I error rate:"
+msgstr "வகை I பிழை வீதம்:"
+
+msgctxt "Power|"
+msgid "α"
+msgstr "a"
+
+msgctxt "Power|"
+msgid "Sample size:"
+msgstr "மாதிரி அளவு:"
+
+msgctxt "Power|"
+msgid "Sample size per group:"
+msgstr "ஒரு குழுவிற்கு மாதிரி அளவு:"
+
+msgctxt "Power|"
+msgid "N"
+msgstr "N"
+
+msgctxt "Power|"
+msgid "Sample size ratio:"
+msgstr "மாதிரி அளவு விகிதம்:"
+
+msgctxt "Power|"
+msgid "N₁/N₂"
+msgstr "N₁/n₂"
+
+msgctxt "Power|"
+msgid "Alternative Hypothesis:"
+msgstr "மாற்று கருதுகோள்:"
+
+msgctxt "Power|"
+msgid "H₁"
+msgstr "H₁"
+
+msgctxt "Power|"
+msgid "Plots"
+msgstr "அடுக்கு"
+
+msgctxt "Power|"
+msgid "Power contour plot"
+msgstr "ஆற்றல் விளிம்பு சூழ்ச்சி"
+
+msgctxt "Power|"
+msgid "Power demonstration"
+msgstr "ஆற்றல் ஆர்ப்பாட்டம்"
+
+msgctxt "Power|"
+msgid "Power curve by effect size"
+msgstr "விளைவு அளவு மூலம் ஆற்றல் வளைவு"
+
+msgctxt "Power|"
+msgid "Power curve by N"
+msgstr "ஆற்றல் வளைவு n"
+
+msgctxt "Power|"
+msgid "Explanatory text"
+msgstr "விளக்க உரை"
+
+msgctxt "Power|"
+msgid "Data Generation"
+msgstr "தரவு உருவாக்கம்"
+
+msgctxt "Power|"
+msgid "x̅"
+msgstr "x̅"
+
+msgctxt "Power|"
+msgid "x̅₁"
+msgstr "x̅₁"
+
+msgctxt "Power|"
+msgid "x̅₂"
+msgstr "x̅₂"
+
+msgctxt "Power|"
+msgid "μ₀"
+msgstr "m₀"
+
+msgctxt "Power|"
+msgid "s"
+msgstr "கள்"
+
+msgctxt "Power|"
+msgid "s₁"
+msgstr "எச்"
+
+msgctxt "Power|"
+msgid "σ"
+msgstr "a"
+
+msgctxt "Power|"
+msgid "σ₀"
+msgstr "நீங்கள்"
+
+msgctxt "Power|"
+msgid "s₂"
+msgstr "எச்"
+
+msgctxt "Power|"
+msgid "Effect direction"
+msgstr "விளைவு திசை"
+
+msgctxt "Power|"
+msgid "x̅ < μ₀"
+msgstr "x̅ <m₀"
+
+msgctxt "Power|"
+msgid "x̅₁ < x̅₂"
+msgstr "X̅₁ <x̅₂"
+
+msgctxt "Power|"
+msgid "x̅ > μ₀"
+msgstr "X̅> M₀"
+
+msgctxt "Power|"
+msgid "x̅₁ > x̅₂"
+msgstr "x̅₁> x̅₂"
+
+msgctxt "Power|"
+msgid "Export synthetic dataset"
+msgstr "செயற்கை தரவுத்தொகுப்பை ஏற்றுமதி செய்யுங்கள்"
+
+msgctxt "Power|"
+msgid "Save as"
+msgstr "என சேமி"
+
+msgctxt "Power|"
+msgid "e.g., location/power.csv"
+msgstr "எ.கா., இருப்பிடம்/பவர்.கே.வி."
+
+msgctxt "Power|"
+msgid "Save generated dataset"
+msgstr "உருவாக்கப்பட்ட தரவுத்தொகுப்பை சேமிக்கவும்"
