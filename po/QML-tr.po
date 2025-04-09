@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-04-04 15:07+0000\n"
+"PO-Revision-Date: 2025-04-10 05:00+0000\n"
 "Last-Translator: Uğur ÇELİK <prof_ugur@hotmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/jasp/"
 "jasppower-qml/tr/>\n"
@@ -39,208 +39,208 @@ msgstr "Etkinin yönü:"
 
 msgctxt "Power|"
 msgid "p₁ > p₀"
-msgstr ""
+msgstr "p₁ > p₀"
 
 msgctxt "Power|"
 msgid "p₁ > p₂"
-msgstr ""
+msgstr "p₁ > p₂"
 
 msgctxt "Power|"
 msgid "ρ > 1"
-msgstr ""
+msgstr "ρ > 1"
 
 msgctxt "Power|"
 msgid "p₁ < p₀"
-msgstr ""
+msgstr "p₁ < p₀"
 
 msgctxt "Power|"
 msgid "p₁ < p₂"
-msgstr ""
+msgstr "p₁ < p₂"
 
 msgctxt "Power|"
 msgid "ρ < 1"
-msgstr ""
+msgstr "ρ < 1"
 
 msgctxt "Power|"
 msgid "Hypothesized proportion"
-msgstr ""
+msgstr "Varsayılan oran"
 
 msgctxt "Power|"
 msgid "Baseline proportion"
-msgstr ""
+msgstr "Temel oran"
 
 msgctxt "Power|"
 msgid "p₀"
-msgstr ""
+msgstr "p₀"
 
 msgctxt "Power|"
 msgid "p₂"
-msgstr ""
+msgstr "p₂"
 
 msgctxt "Power|"
 msgid "Comparison proportion"
-msgstr ""
+msgstr "Karşılaştırma oranı"
 
 msgctxt "Power|"
 msgid "p₁"
-msgstr ""
+msgstr "p₁"
 
 msgctxt "Power|"
 msgid "Minimal effect size of interest:"
-msgstr ""
+msgstr "İlgi duyulan minimum etki büyüklüğü:"
 
 msgctxt "Power|"
 msgid "|δ|"
-msgstr ""
+msgstr "|δ|"
 
 msgctxt "Power|"
 msgid "ρ (σ₁²/σ₂²)"
-msgstr ""
+msgstr "ρ (σ₁²/σ₂²)"
 
 msgctxt "Power|"
 msgid "ρ (σ²/σ₀²)"
-msgstr ""
+msgstr "ρ (σ²/σ₀²)"
 
 msgctxt "Power|"
 msgid "Minimal desired power:"
-msgstr ""
+msgstr "İstenilen minimum kuvvet:"
 
 msgctxt "Power|"
 msgid "(1-β)"
-msgstr ""
+msgstr "(1-β)"
 
 msgctxt "Power|"
 msgid "Type I error rate:"
-msgstr ""
+msgstr "Tip I hata oranı:"
 
 msgctxt "Power|"
 msgid "α"
-msgstr ""
+msgstr "α"
 
 msgctxt "Power|"
 msgid "Sample size:"
-msgstr ""
+msgstr "Örneklem büyüklüğü:"
 
 msgctxt "Power|"
 msgid "Sample size per group:"
-msgstr ""
+msgstr "Grup başına örneklem büyüklüğü:"
 
 msgctxt "Power|"
 msgid "N"
-msgstr ""
+msgstr "N"
 
 msgctxt "Power|"
 msgid "Sample size ratio:"
-msgstr ""
+msgstr "Örneklem büyüklüğü oranı:"
 
 msgctxt "Power|"
 msgid "N₁/N₂"
-msgstr ""
+msgstr "N₁/N₂"
 
 msgctxt "Power|"
 msgid "Alternative Hypothesis:"
-msgstr ""
+msgstr "Alternatif hipotez:"
 
 msgctxt "Power|"
 msgid "H₁"
-msgstr ""
+msgstr "H₁"
 
 msgctxt "Power|"
 msgid "Plots"
-msgstr ""
+msgstr "Grafikler"
 
 msgctxt "Power|"
 msgid "Power contour plot"
-msgstr ""
+msgstr "Güç kontur grafiği"
 
 msgctxt "Power|"
 msgid "Power demonstration"
-msgstr ""
+msgstr "Kuvvet göstergesi"
 
 msgctxt "Power|"
 msgid "Power curve by effect size"
-msgstr ""
+msgstr "Etki büyüklüğüne göre güç eğrisi"
 
 msgctxt "Power|"
 msgid "Power curve by N"
-msgstr ""
+msgstr "N'ye göre güç eğrisi"
 
 msgctxt "Power|"
 msgid "Explanatory text"
-msgstr ""
+msgstr "Açıklayıcı metin"
 
 msgctxt "Power|"
 msgid "Data Generation"
-msgstr ""
+msgstr "Veri Üretimi"
 
 msgctxt "Power|"
 msgid "x̅"
-msgstr ""
+msgstr "x̅"
 
 msgctxt "Power|"
 msgid "x̅₁"
-msgstr ""
+msgstr "x̅₁"
 
 msgctxt "Power|"
 msgid "x̅₂"
-msgstr ""
+msgstr "x̅₂"
 
 msgctxt "Power|"
 msgid "μ₀"
-msgstr ""
+msgstr "μ₀"
 
 msgctxt "Power|"
 msgid "s"
-msgstr ""
+msgstr "s"
 
 msgctxt "Power|"
 msgid "s₁"
-msgstr ""
+msgstr "s₁"
 
 msgctxt "Power|"
 msgid "σ"
-msgstr ""
+msgstr "σ"
 
 msgctxt "Power|"
 msgid "σ₀"
-msgstr ""
+msgstr "σ₀"
 
 msgctxt "Power|"
 msgid "s₂"
-msgstr ""
+msgstr "s₂"
 
 msgctxt "Power|"
 msgid "Effect direction"
-msgstr ""
+msgstr "Etki yönü"
 
 msgctxt "Power|"
 msgid "x̅ < μ₀"
-msgstr ""
+msgstr "x̅ < μ₀"
 
 msgctxt "Power|"
 msgid "x̅₁ < x̅₂"
-msgstr ""
+msgstr "x̅₁ < x̅₂"
 
 msgctxt "Power|"
 msgid "x̅ > μ₀"
-msgstr ""
+msgstr "x̅ > μ₀"
 
 msgctxt "Power|"
 msgid "x̅₁ > x̅₂"
-msgstr ""
+msgstr "x̅₁ > x̅₂"
 
 msgctxt "Power|"
 msgid "Export synthetic dataset"
-msgstr ""
+msgstr "Sentetik veri setini dışa aktar"
 
 msgctxt "Power|"
 msgid "Save as"
-msgstr ""
+msgstr "Farklı kaydet"
 
 msgctxt "Power|"
 msgid "e.g., location/power.csv"
-msgstr ""
+msgstr "örneğin, konum/kuvvet.csv"
 
 msgctxt "Power|"
 msgid "Save generated dataset"
-msgstr ""
+msgstr "Oluşturulan veri kümesini kaydet"
