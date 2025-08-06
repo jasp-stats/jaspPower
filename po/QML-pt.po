@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-08-06 02:02+0000\n"
+"PO-Revision-Date: 2025-08-06 07:43+0000\n"
 "Last-Translator: Wendel Paulo Silvestre <wpsilvestre@ucs.br>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
 "jasppower-qml/pt/>\n"
@@ -51,39 +51,39 @@ msgstr "ρ > 1"
 
 msgctxt "Power|"
 msgid "p₁ < p₀"
-msgstr ""
+msgstr "p₁ < p₀"
 
 msgctxt "Power|"
 msgid "p₁ < p₂"
-msgstr ""
+msgstr "p₁ < p₂"
 
 msgctxt "Power|"
 msgid "ρ < 1"
-msgstr ""
+msgstr "ρ < 1"
 
 msgctxt "Power|"
 msgid "Hypothesized proportion"
-msgstr ""
+msgstr "Proporção hipotética"
 
 msgctxt "Power|"
 msgid "Baseline proportion"
-msgstr ""
+msgstr "Proporção de base"
 
 msgctxt "Power|"
 msgid "p₀"
-msgstr ""
+msgstr "p₀"
 
 msgctxt "Power|"
 msgid "p₂"
-msgstr ""
+msgstr "p₂"
 
 msgctxt "Power|"
 msgid "Comparison proportion"
-msgstr ""
+msgstr "Proporção de comparação"
 
 msgctxt "Power|"
 msgid "p₁"
-msgstr ""
+msgstr "p₁"
 
 msgctxt "Power|"
 msgid "Minimal effect size of interest:"
