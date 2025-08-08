@@ -2,509 +2,726 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspPower 0.19.2\n"
 "POT-Creation-Date: 2024-10-19 03:38\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2025-08-09 17:01+0000\n"
+"Last-Translator: Wendel Paulo Silvestre <wpsilvestre@ucs.br>\n"
+"Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
+"jasppower-r/pt/>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 5.13-dev\n"
 
 msgid "Effect size can't be 0."
-msgstr ""
+msgstr "O tamanho de efeito não pode ser 0."
 
 msgid "The comparison proportion can't be equal to the hypothesized proportion with a 'Two-sided' alternative hypothesis."
 msgstr ""
+"A proporção de comparação não pode ser igual à proporção hipotetizada com "
+"uma hipótese alternativa 'bicaudal'."
 
 msgid "The comparison proportion has to be less than the hypothesized proportion with an alternative hypothesis of 'Less'."
 msgstr ""
+"A proporção de comparação deve ser menor do que a proporção hipotetizada com "
+"uma hipótese alternativa de 'Menos'."
 
 msgid "The comparison proportion has to be greater than the hypothesized proportion with an alternative hypothesis of 'Greater'."
 msgstr ""
+"A proporção de comparação deve ser maior do que a proporção hipotetizada com "
+"uma hipótese alternativa de 'Maior'."
 
 msgid "Invalid alternative."
-msgstr ""
+msgstr "Alternativa inválida."
 
 msgid "The comparison proportion can't be equal to the baseline proportion with a 'Two-sided' alternative hypothesis."
 msgstr ""
+"A proporção de comparação não pode ser igual à proporção de base com uma "
+"hipótese alternativa 'bicaudal'."
 
 msgid "The comparison proportion has to be less than the baseline proportion with an alternative hypothesis of 'Less'."
 msgstr ""
+"A proporção de comparação deve ser menor do que a proporção de base com uma "
+"hipótese alternativa de 'Menos'."
 
 msgid "The comparison proportion has to be greater than the baseline proportion with an alternative hypothesis of 'Greater'."
 msgstr ""
+"A proporção de comparação deve ser maior do que a proporção de base com uma "
+"hipótese alternativa de 'Maior'."
 
 msgid "The variance ratio can't be 1 with a 'Two-sided' alternative hypothesis."
 msgstr ""
+"A razão das variâncias não pode ser 1 com uma hipótese alternativa "
+"'bicaudal'."
 
 msgid "The variance ratio has to be less than 1 with an alternative hypothesis 'Less'."
 msgstr ""
+"A razão das variâncias deve ser menor do que 1 com uma hipótese alternativa "
+"de 'Menos'."
 
 msgid "The variance ratio has to be greater than 1 with an alternative hypothesis of 'Greater'."
 msgstr ""
+"A razão das variâncias deve ser maior do que 1 com uma hipótese alternativa "
+"de 'Maior'."
 
 msgid "Power must be less than 1."
-msgstr ""
+msgstr "A potência deve ser menor do que 1."
 
 msgid "The purpose of a %s is to evaluate the sensitivity of a design and test."
 msgstr ""
+"O propósito de um %s é avaliar a sensibilidade de um delineamento e teste."
 
 msgid "an independent samples t-test"
-msgstr ""
+msgstr "um teste t de amostras independentes"
 
 msgid "a paired samples t-test"
-msgstr ""
+msgstr "teste t de amostras pareadas"
 
 msgid "a one sample t-test"
-msgstr ""
+msgstr "teste t para uma amostra"
 
 msgid "a one sample z-test"
-msgstr ""
+msgstr "teste z para uma amostra"
 
 msgid "a one sample proportions test"
-msgstr ""
+msgstr "teste de proporções para uma amostra"
 
 msgid "a two samples proportions test"
-msgstr ""
+msgstr "teste de proporções para duas amostras"
 
 msgid "a one sample variance test"
-msgstr ""
+msgstr "teste de variância para uma amostra"
 
 msgid "a two samples variance test"
-msgstr ""
+msgstr "teste de variância para duas amostras"
 
 msgid "a one sample Poisson rate test"
-msgstr ""
+msgstr "teste da razão de Poisson para uma amostra"
 
 msgid "a two samples Poisson rate test"
-msgstr ""
+msgstr "teste da razão de Poisson para duas amostras"
 
 msgid "when using"
-msgstr ""
+msgstr "ao usar"
 
 msgid "You have chosen to calculate the minimum sample size needed to have an experiment sensitive enough to consistently detect the specified hypothetical effect size"
 msgstr ""
+"Você escolheu calcular o tamanho mínimo da amostra necessário para ter um "
+"experimento sensível o suficiente para detectar consistentemente o tamanho "
+"do efeito hipotético especificado"
 
 msgid "You have chosen to calculate the minimum hypothetical effect size for which the chosen design will have the specified sensitivity"
 msgstr ""
+"Você escolheu calcular o tamanho mínimo do efeito hipotético para o qual o "
+"delineamento escolhido terá a sensibilidade especificada"
 
 msgid "You have chosen to calculate the sensitivity of the chosen design for detecting the specified effect size"
 msgstr ""
+"Você escolheu calcular a sensibilidade do delineamento escolhido para "
+"detectar o tamanho do efeito especificado"
 
 msgid "Unable to compute the power results. Try to enter less extreme values for the input parameters."
 msgstr ""
+"Incapaz de calcular os resultados de potência. Tente introduzir valores "
+"menos extremos nos parâmetros de entrada."
 
 msgid "Power cannot be 1"
-msgstr ""
+msgstr "A potência não pode ser 1"
 
 msgid "Effect size can't be 0 with a two-sided alternative hypothesis."
 msgstr ""
+"O tamanho de efeito não pode ser 0 com uma hipótese alternativa 'bicaudal'."
 
 msgid "Effect size has to be lower than 0 with an alternative of lesser."
-msgstr ""
+msgstr "O tamanho do efeito deve ser menor que 0, com uma alternativa menor."
 
 msgid "Effect size has to be greater than 0 with an alternative of greater."
-msgstr ""
+msgstr "O tamanho do efeito deve ser maior que 0, com uma alternativa maior."
 
 msgid "The specified design leads to (an) unsolvable equation(s) while constructing the power curve. Try to enter less extreme values for the parameters"
 msgstr ""
+"O delineamento especificado leva a uma ou mais equações insolúveis ao "
+"construir a curva de potência. Tente inserir valores menos extremos para os "
+"parâmetros"
 
 msgid "Error Message:"
-msgstr ""
+msgstr "Mensagem de Erro:"
 
 msgid "Sample size (group 2)"
-msgstr ""
+msgstr "Tamanho de amostra (grupo 2)"
 
 msgid "Sample size (group 1)"
-msgstr ""
+msgstr "Tamanho de amostra (grupo 1)"
 
 msgid "Hypothetical effect size (%s)"
-msgstr ""
+msgstr "Tamanho de efeito hipotético (%s)"
 
 msgid "Power"
-msgstr ""
+msgstr "Potência"
 
 msgid "Observed effect size (%s)"
-msgstr ""
+msgstr "Tamanho de efeito observado (%s)"
 
 msgid "Probability Density"
-msgstr ""
+msgstr "Densidade de Probabilidade"
 
 msgid "A Priori Power Analysis"
-msgstr ""
+msgstr "Análise de Potência a priori"
 
 msgid "Cohen's %s"
-msgstr ""
+msgstr "%s de Cohen"
 
 msgid "User Defined"
-msgstr ""
+msgstr "Definido pelo Usuário"
 
 msgid "Power by effect size"
-msgstr ""
+msgstr "Potência pelo tamanho de efeito"
 
 msgid "True effect size"
-msgstr ""
+msgstr "Tamanho de efeito verdadeiro"
 
 msgid "Power to detect"
-msgstr ""
+msgstr "Poder de detecção"
 
 msgid "Description"
-msgstr ""
+msgstr "Descrição"
 
 msgid "Likely miss"
-msgstr ""
+msgstr "Provável falha"
 
 msgid "Good chance of missing"
-msgstr ""
+msgstr "Boa chance de errar"
 
 msgid "Probably detect"
-msgstr ""
+msgstr "Provavelmente detectar"
 
 msgid "Almost surely detect"
-msgstr ""
+msgstr "Quase certamente detectar"
 
 msgid "The power contour plot shows how the sensitivity of the test changes with the hypothetical effect size and the sample sizes in the design. As we increase the sample sizes, smaller effect sizes become reliably detectable."
 msgstr ""
+"O gráfico de contorno de potência mostra como a sensibilidade do teste muda "
+"com o tamanho do efeito hipotético e os tamanhos das amostras no "
+"delineamento. À medida que se aumenta os tamanhos das amostras, tamanhos de "
+"efeito menores tornam-se detectáveis de forma confiável."
 
 msgid "Conversely, if one is satisfied to reliably detect only larger effect sizes, smaller sample sizes are needed. The point shows the power of the specified design and effect size."
 msgstr ""
+"Por outro lado, se alguém estiver satisfeito em detectar de forma confiável "
+"apenas tamanhos de efeito maiores, serão necessários tamanhos de amostra "
+"menores. O ponto demonstra o poder do delineamento e do tamanho do efeito "
+"especificados."
 
 msgid "sample sizes of %1$s"
-msgstr ""
+msgstr "tamanho de amostras de %1$s"
 
 msgid "two-sided"
-msgstr ""
+msgstr "bicaudal"
 
 msgid "criteria"
-msgstr ""
+msgstr "critérios"
 
 msgid "one-sided"
-msgstr ""
+msgstr "unicaudal"
 
 msgid "criterion"
-msgstr ""
+msgstr "critério"
 
 msgid "have power of at least %1$s"
-msgstr ""
+msgstr "tem potência de, pelo menos, %1$s"
 
 msgid "only be sufficiently sensitive (power >%1$s)"
-msgstr ""
+msgstr "ser apenas suficientemente sensível (potência >%1$s)"
 
 msgid "The power curve above shows how the sensitivity of the test and design is larger for larger effect sizes. If we obtained %1$s our test and design would %2$s to effect sizes of %3$s%4$s."
 msgstr ""
+"A curva de potência acima mostra como a sensibilidade do teste e do "
+"delineamento é maior para tamanhos de efeito maiores. Se obtivermos %1$s, "
+"nosso teste e delineamento seriam %2$s para tamanhos de efeito de %3$s%4$s."
 
 msgid "We would be more than likely to miss (power less than 50%%) effect sizes less than %1$s%2$s."
 msgstr ""
+"É mais do que provável perder (potência menor que 50%%) tamanhos de efeito "
+"menores que %1$s%2$s."
 
 msgid "sample sizes of at least %1$s"
-msgstr ""
+msgstr "tamanhos de amostra de, pelo menos, %1$s"
 
 msgid "The power curve above shows how the sensitivity of the test and design is larger for larger effect sizes. In order for our test and design to have sufficient sensitivity (power > %1$s) to detect that %2$s when the effect size is %3$s or larger, we would need %4$s."
 msgstr ""
+"A curva de potência acima mostra como a sensibilidade do teste e do "
+"delineamento é maior para tamanhos de efeito maiores. Para que nosso teste e "
+"delineamento tenham sensibilidade suficiente (potência > %1$s) para detectar "
+"%2$s quando o tamanho do efeito é %3$s ou maior, precisaríamos de %4$s."
 
 msgid "a sample size of %1$s"
-msgstr ""
+msgstr "um tamanho de amostra de %1$s"
 
 msgid "The figure above shows two sampling distributions: the sampling distribution of the %1$s effect size when %2$s (left), and when %3$s%4$s (right)."
 msgstr ""
+"A figura acima mostra duas distribuições de amostragem: a distribuição de "
+"amostragem do tamanho do efeito %1$s quando %2$s (esquerda) e quando %3$s%4$"
+"s (direita)."
 
 msgid "Both assume %1$s."
-msgstr ""
+msgstr "Ambos assumem %1$s."
 
 msgid "The vertical dashed lines show the %1$s we would set for a %2$s test with %3$s."
 msgstr ""
+"A linha vertical tracejada mostra que %1$s deveríamos definir para um teste "
+"%2$s com %3$s."
 
 msgid "When the observed effect size is far enough away from 0 to be more extreme than the %1$s we say we 'reject' the null hypothesis."
 msgstr ""
+"Quando o tamanho do efeito observado está longe o suficiente de 0 para ser "
+"mais extremo do que %1$s, dizemos que 'rejeitamos' a hipótese nula."
 
 msgid "If the null hypothesis were true and %1$s the evidence would lead us to wrongly reject the null hypothesis at most %2$s%% of the time."
 msgstr ""
+"Se a hipótese nula fosse verdadeira e %1$s, a evidência nos levaria a "
+"rejeitar erroneamente a hipótese nula no máximo %2$s%% das vezes."
 
 msgid "On the other hand, if %1$s%2$s, the evidence would exceed the criterion  &mdash; and hence we would correctly claim that %3$s &mdash; at least %4$s%% of the time."
 msgstr ""
+"Por outro lado, se %1$s%2$s, a evidência excederia o critério  &mdash; e, "
+"portanto, afirmaríamos corretamente que %3$s &mdash; pelo menos %4$s%% das "
+"vezes."
 
 msgid "The design's power for detecting effects of %1$s%2$s is thus %3$s."
 msgstr ""
+"O poder do delineamento para detectar efeitos de %1$s%2$s é, portanto, %3$s."
 
 msgid "Due to the rounding of the sample size, the actual power can deviate from the target power."
 msgstr ""
+"Devido ao arredondamento do tamanho de amostra, a potência real pode se "
+"desviar da potência alvo."
 
 msgid "Actual power:"
-msgstr ""
+msgstr "Potência real:"
 
 msgid "a sample size of %s"
-msgstr ""
+msgstr "um tamanho de amostra de %s"
 
 msgid "We would need %1$s to reliably (with probability greater than or equal to %2$s) detect an effect size of %3$s%4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s."
 msgstr ""
+"Precisaríamos de %1$s para detectar de forma confiável (com probabilidade "
+"maior ou igual a %2$s) um tamanho de efeito de %3$s%4$s, assumindo um "
+"critério de detecção de %5$s que permite uma taxa máxima de erro do tipo I "
+"de %6$s."
 
 msgid "A design with %1$s will reliably (with probability greater than or equal to %2$s) detect  effect sizes of %3$s%4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s."
 msgstr ""
+"Um delineamento com %1$s detectará de forma confiável (com probabilidade "
+"maior ou igual a %2$s) tamanhos de efeito de %3$s%4$s, assumindo um critério "
+"de detecção de %5$s que permite uma taxa máxima de erro do tipo I de %6$s."
 
 msgid "A design with %1$s can detect effect sizes of %2$s%3$s with a probability of at least %4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s."
 msgstr ""
+"Um design com %1$s pode detectar tamanhos de efeito de %2$s%3$s com uma "
+"probabilidade de pelo menos %4$s, assumindo um critério de detecção de %5$s "
+"que permite uma taxa máxima de erro do tipo I de %6$s."
 
 msgid "To evaluate the design specified in the table, we can consider how sensitive it is to true effects of increasing sizes; that is, are we likely to correctly conclude that %1$s when the effect size is large enough to care about?"
 msgstr ""
+"Para avaliar o delineamento especificado na tabela, podemos considerar o "
+"quão sensível ele é aos efeitos reais do aumento de tamanhos; ou seja, é "
+"provável que concluamos corretamente que %1$s quando o tamanho do efeito é "
+"grande o suficiente para ser considerado?"
 
 msgid "The specified design leads to (an) unsolvable equation(s) while computing the values for this power table. Try to enter less extreme values for the parameters."
 msgstr ""
+"O delineamento especificado leva a uma ou mais equações insolúveis ao "
+"calcular os valores para esta tabela de potência. Tente inserir valores "
+"menos extremos para os parâmetros."
 
 msgid "|h|"
-msgstr ""
+msgstr "|h|"
 
 msgid "Power Contour"
-msgstr ""
+msgstr "Contorno de Potência"
 
 msgid "Power Curve by Effect Size"
-msgstr ""
+msgstr "Curva de Potência por Tamanho de Efeito"
 
 msgid "Power Curve by N"
-msgstr ""
+msgstr "Curva de Potência por N"
 
 msgid "Power Demonstration"
-msgstr ""
+msgstr "Demonstração de Potência"
 
 msgid "Synthetic Dataset"
-msgstr ""
+msgstr "Conjunto de Dados Sintético"
 
 msgid "Characteristics"
-msgstr ""
+msgstr "Características"
 
 msgid "Post Hoc Power Analysis"
-msgstr ""
+msgstr "Análise de Potência Post Hoc"
 
 msgid "The generated dataset must be saved as a .csv or .txt file."
 msgstr ""
+"O conjunto de dados gerado deve ser salvo como um arquivo .csv ou arquivo de "
+"texto .txt."
 
 msgid "The generated dataset could not be saved. Please make sure that the specified path exists and the specified csv file is closed."
 msgstr ""
+"O conjunto de dados gerado não pôde ser salvo. Por favor, certifique-se de "
+"que o caminho especificado existe e o arquivo csv especificado está fechado."
 
 msgid "The synthetic dataset is saved as %s"
-msgstr ""
+msgstr "O conjunto de dados sintético foi salvo como %s"
 
 msgid "Hypothesized rate (%s)"
-msgstr ""
+msgstr "Taxa hipotetizada (%s)"
 
 msgid "Comparison rate (%s)"
-msgstr ""
+msgstr "Taxa de comparação (%s)"
 
 msgid "Effect size (%s)"
-msgstr ""
+msgstr "Tamanho de efeito (%s)"
 
 msgid "True effect size (%s)"
-msgstr ""
+msgstr "Tamanho de efeito verdadeiro (%s)"
 
 msgid "a sample size of"
-msgstr ""
+msgstr "um tamanho de amostra de"
 
 msgid "effect sizes of %s"
-msgstr ""
+msgstr "tamanhos de efeito de %s"
 
 msgid "We would need %1$s to reliably (with probability greater than %2$s) detect %3$s%4$s%5$s, assuming a %6$s criterion for detection that allows for a maximum Type I error rate of %7$s."
 msgstr ""
+"Precisaríamos de %1$s para detectar %3$s%4$s%5$s de forma confiável (com "
+"probabilidade maior que %2$s), assumindo um critério %6$s para detecção que "
+"permite uma taxa máxima de erro do tipo I de %7$s."
 
 msgid "A design with %1$s will reliably (with probability greater than %2$s) detect  %3$s%4$s%5$s, assuming a %6$s criterion for detection that allows for a maximum Type I error rate of %7$s."
 msgstr ""
+"Um delineamento com %1$s detectará de forma confiável (com probabilidade "
+"maior que %2$s) %3$s%4$s%5$s, assumindo um critério %6$s para detecção que "
+"permite uma taxa máxima de erro do tipo I de %7$s."
 
 msgid "A design with %1$s can detect %2$s%3$s%4$s with a probability of at least %5$s, assuming a %6$s criterion for detection that allows for a maximum Type I error rate of %7$s."
 msgstr ""
+"Um delineamento com %1$s pode detectar %2$s%3$s%4$s com uma probabilidade de "
+"pelo menos %5$s, assumindo um critério de detecção de %6$s que permite uma "
+"taxa máxima de erro do tipo I de %7$s."
 
 msgid "To evaluate the design specified in the table, we can consider how sensitive it is to true effects of increasing sizes; that is, are we likely to correctly conclude that %s when the effect size is large enough to care about?"
 msgstr ""
+"Para avaliar o delineamento especificado na tabela, podemos considerar o "
+"quão sensível ele é aos efeitos reais do aumento de tamanhos; ou seja, é "
+"provável que concluamos corretamente que %s quando o tamanho do efeito é "
+"grande o suficiente para ser considerado?"
 
 msgid "effect size"
-msgstr ""
+msgstr "tamanho de efeito"
 
 msgid "absolute difference in proportions"
-msgstr ""
+msgstr "diferença absoluta em proporções"
 
 msgid "Conversely, if one is satisfied to reliably detect only larger effect sizes, smaller sample sizes are needed. The solid black curve on the contour plot shows sample size/effect size combinations with a power of %1$s. The point shows the specified design and %2$s."
 msgstr ""
+"Por outro lado, se estivermos satisfeitos em detectar de forma confiável "
+"apenas tamanhos de efeito maiores, serão necessários tamanhos de amostra "
+"menores. A curva preta sólida no gráfico de contorno mostra combinações de "
+"tamanho de amostra/tamanho de efeito com uma potência de %1$s. O ponto "
+"mostra o delineamento especificado e %2$s."
 
 msgid "sample sizes of %s"
-msgstr ""
+msgstr "tamanhos de amostra de %s"
 
 msgid "effect sizes"
-msgstr ""
+msgstr "tamanhos de efeito"
 
 msgid "absolute differences in proportions"
-msgstr ""
+msgstr "diferenças absolutas em proporções"
 
 msgid "have power of at least %s"
-msgstr ""
+msgstr "tem a potência de, pelo menos, %s"
 
 msgid "only be sufficiently sensitive (power >%s)"
-msgstr ""
+msgstr "ser suficientemente sensível (potência >%s)"
 
 msgid "sample sizes of at least %s"
-msgstr ""
+msgstr "tamanhos de amostra de, pelo menos, %s"
 
 msgid "The figure above shows two sampling distributions: the sampling distribution of the %1$s effect size when %2$s (left), and when %3$s (right)."
 msgstr ""
+"A figura acima mostra duas distribuições de amostragem: a distribuição de "
+"amostragem do tamanho do efeito %1$s quando %2$s (esquerda) e quando %3$s "
+"(direita)."
 
 msgid "Both assume %s."
-msgstr ""
+msgstr "Ambos assumem %s."
 
 msgid "When the observed effect size is far enough away from 0 to be more extreme than the %s we say we 'reject' the null hypothesis."
 msgstr ""
+"Quando o tamanho do efeito observado está longe o suficiente de 0 para ser "
+"mais extremo do que %s, dizemos que 'rejeitamos' a hipótese nula."
 
 msgid "On the other hand, if %1$s, the evidence would exceed the criterion  &mdash; and hence we would correctly claim that %2$s &mdash; at least %3$s%% of the time."
 msgstr ""
+"Por outro lado, se %1$s, a evidência excederia o critério &mdash; e, "
+"portanto, afirmaríamos corretamente que %2$s &mdash; pelo menos %3$s%% das "
+"vezes."
 
 msgid "Variance ratio (%s)"
-msgstr ""
+msgstr "Razão das variâncias (%s)"
 
 msgid "Power by variance ratio"
-msgstr ""
+msgstr "Potência pela razão das variâncias"
 
 msgid "True variance ratio (%s)"
-msgstr ""
+msgstr "Razão das variâncias verdadeiras (%s)"
 
 msgid "The power contour plot shows how the sensitivity of the test changes with the hypothetical variance ratio and the sample sizes in the design. As we increase the sample sizes, smaller variance ratios become reliably detectable."
 msgstr ""
+"O gráfico de contorno de potência mostra como a sensibilidade do teste muda "
+"com a razão de variância hipotética e os tamanhos de amostra no "
+"delineamento. À medida que aumentamos os tamanhos de amostra, razões de "
+"variância menores tornam-se detectáveis de forma confiável."
 
 msgid "Conversely, if one is satisfied to reliably detect only larger variance ratios, smaller sample sizes are needed. The point shows the power of specified  design and variance ratio."
 msgstr ""
+"Por outro lado, se alguém estiver satisfeito em detectar de forma confiável "
+"apenas taxas de variância maiores, serão necessários tamanhos de amostra "
+"menores. Este ponto demonstra o poder do delineamento especificado e da taxa "
+"de variância."
 
 msgid "only be sufficiently sensitive (power > %1$s)"
-msgstr ""
+msgstr "ser suficientemente sensível (potência > %1$s)"
 
 msgid "The power curve above shows how the sensitivity of the test and design is larger for larger variance ratios. If we obtained %1$s our test and design would %2$s to variance ratios of %3$s%4$s."
 msgstr ""
+"A curva de potência acima mostra como a sensibilidade do teste e do "
+"delineamento é maior para taxas de variância maiores. Se obtivermos %1$s, "
+"nosso teste e delineamento resultariam em taxas de variância de %2$s para "
+"%3$s%4$s."
 
 msgid "We would be more than likely to miss (power less than 50%%) variance ratios of %s."
 msgstr ""
+"É mais provável que se perca (potência menor que 50%) taxas de variância de "
+"%s."
 
 msgid "The power curve above shows how the sensitivity of the test and design is larger for larger sample sizes. In order for our test and design to have sufficient sensitivity (power > %1$s) to detect that %2$s when the variance ratio is %3$s or more extreme, we would need %4$s."
 msgstr ""
+"A curva de potência acima mostra como a sensibilidade do teste e do "
+"delineamento é maior para tamanhos amostrais maiores. Para que nosso teste e "
+"delineamento tenham sensibilidade suficiente (potência > %1$s) para detectar "
+"%2$s quando a razão de variância for %3$s ou mais extrema, precisaríamos de "
+"%4$s."
 
 msgid "The figure above shows two sampling distributions: the sampling distribution of the %1$s variance ratio when %2$s, and when %3$s%4$s."
 msgstr ""
+"A figura acima mostra duas distribuições de amostragem: a distribuição de "
+"amostragem da razão de variância %1$s quando %2$s e quando %3$s%4$s."
 
 msgid "When the observed variance ratio is far enough away from 1 to be more extreme than the %1$s we say we 'reject' the null hypothesis."
 msgstr ""
+"Quando a razão de variância observada está longe o suficiente de 1 para ser "
+"mais extrema que %1$s, dizemos que 'rejeitamos' a hipótese nula."
 
 msgid "We would need %1$s to reliably (with probability greater than %2$s) detect a variance ratio of %3$s, assuming a %4$s criterion for detection that allows for a maximum Type I error rate of %5$s."
 msgstr ""
+"Precisaríamos de %1$s para detectar de forma confiável (com probabilidade "
+"maior que %2$s) uma taxa de variância de %3$s, assumindo um critério de "
+"detecção de %4$s que permite uma taxa máxima de erro do tipo I de %5$s."
 
 msgid "A design with %1$s will reliably (with probability greater than %2$s) detect variance ratios of %3$s, assuming a %4$s criterion for detection that allows for a maximum Type I error rate of %5$s."
 msgstr ""
+"Um delineamento com %1$s detectará de forma confiável (com probabilidade "
+"maior que %2$s) taxas de variância de %3$s, assumindo um critério %4$s para "
+"detecção que permite uma taxa máxima de erro do tipo I de %5$s."
 
 msgid "A design with %1$s can detect variance ratios of %2$s with a probability of at least %3$s, assuming a %4$s criterion for detection that allows for a maximum Type I error rate of %5$s."
 msgstr ""
+"Um delineamento com %1$s pode detectar taxas de variância de %2$s com uma "
+"probabilidade de pelo menos %3$s, assumindo um critério %4$s para detecção "
+"que permite uma taxa máxima de erro do tipo I de %5$s."
 
 msgid "To evaluate the design specified in the table, we can consider how sensitive it is to true effects of increasing sizes; that is, are we likely to correctly conclude that %1$s when the variance ratio is large enough to care about?"
 msgstr ""
+"Para avaliar o delineamento especificado na tabela, podemos considerar o "
+"quão sensível ele é aos efeitos reais do aumento de tamanhos; ou seja, é "
+"provável que concluamos corretamente que %1$s quando a taxa de variância é "
+"grande o suficiente para ser considerada?"
 
 msgid "To improve readability of this power table for a 'Two-sided' alternative hypothesis, only the intervals in the direction of the specified variance ratio are displayed under 'True variance ratio'"
 msgstr ""
+"Para melhorar a legibilidade desta tabela de potência para uma hipótese "
+"alternativa 'Bicaudal', apenas os intervalos na direção da razão de "
+"variância especificada são exibidos em 'Razão de variância verdadeira'"
 
 msgid "Power Curve by variance ratio"
-msgstr ""
+msgstr "Curva de Potência pela razão das variâncias"
 
 msgid "Alternative hypothesis"
-msgstr ""
+msgstr "Hipótese alternativa"
 
 msgid "Power by Effect Size"
-msgstr ""
+msgstr "Potência pelo Tamanho de Efeito"
 
 msgid "a sample size of %1$s in each group"
-msgstr ""
+msgstr "um tamanho de amostra de %1$s em cada grupo"
 
 msgid "group sample sizes of %1$s and %2$s respectively,"
-msgstr ""
+msgstr "tamanho de amostra dos grupos %1$s e %2$s, respectivamente,"
 
 msgid "A design with %1$s will reliably (with probability greater than or equal to %2$s) detect effect sizes of %3$s%4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s."
 msgstr ""
+"Um delineamento com %1$s detectará de forma confiável (com probabilidade "
+"maior ou igual a %2$s) tamanhos de efeito de %3$s%4$s, assumindo um critério "
+"de detecção de %5$s que permite uma taxa máxima de erro do tipo I de %6$s."
 
 msgid "Conversely, if one is satisfied to reliably detect only larger effect sizes, smaller sample sizes are needed The point shows the power of the specified  design and effect size."
 msgstr ""
+"Por outro lado, se alguém estiver satisfeito em detectar de forma confiável "
+"apenas tamanhos de efeito maiores, serão necessários tamanhos de amostra "
+"menores. O ponto mostra o poder do design e do tamanho do efeito "
+"especificados."
 
 msgid "sample sizes of %1$s in each group"
-msgstr ""
+msgstr "tamanhos de amostra de %1$s em cada grupo"
 
 msgid "group sample sizes of %1$s and %2$s, respectively"
-msgstr ""
+msgstr "tamanhos de amostra de %1$s e%2$s em cada grupo, respectivamente"
 
 msgid "sample sizes of at least %1$s in each group"
-msgstr ""
+msgstr "tamanhos de amostra de, pelo menos, %1$s em cada grupo"
 
 msgid "group sample sizes of at least %1$s and %2$s, respectively"
-msgstr ""
+msgstr "tamanhos de amostra de grupo de pelo menos %1$s e %2$s, respectivamente"
 
 msgid "On the other hand, if %1$s%2$s, the evidence would exceed the criterion &mdash; and hence we would correctly claim that %3$s &mdash; at least %4$s%% of the time."
 msgstr ""
+"Por outro lado, se %1$s%2$s, a evidência excederia o critério &mdash; e, "
+"portanto, afirmaríamos corretamente que %3$s &mdash; pelo menos %4$s%% das "
+"vezes."
 
 msgid "Power by Poisson Rate Ratio"
-msgstr ""
+msgstr "Potência pela razão de taxa de Poisson"
 
 msgid "True Poisson rate ratio"
-msgstr ""
+msgstr "Razão de taxa de Poisson Verdadeira"
 
 msgid "a sample size of %s in each group"
-msgstr ""
+msgstr "um tamanho de amostra de %s em cada grupo"
 
 msgid "We would need %1$s to reliably (with probability greater than %2$s) detect a Poisson rate ratio of %3$s%4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s."
 msgstr ""
+"Precisaríamos de %1$s para detectar de forma confiável (com probabilidade "
+"maior que %2$s) uma taxa de Poisson de %3$s%4$s, assumindo um critério de "
+"detecção de %5$s que permite uma taxa máxima de erro do tipo I de %6$s."
 
 msgid "A design with %1$s will reliably (with probability greater than %2$s) detect Poisson rate ratios of %3$s%4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s."
 msgstr ""
+"Um delineamento com %1$s detectará de forma confiável (com probabilidade "
+"maior que %2$s) razões de Poisson de %3$s%4$s, assumindo um critério de "
+"detecção de %5$s que permite uma taxa máxima de erro do tipo I de %6$s."
 
 msgid "A design with %1$s can detect Poisson rate ratios of %2$s%3$s with a probability of at least %4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s."
 msgstr ""
+"Um delineamento com %1$s pode detectar taxas de Poisson de %2$s%3$s com uma "
+"probabilidade de pelo menos %4$s, assumindo um critério de detecção de %5$s "
+"que permite uma taxa máxima de erro do tipo I de %6$s."
 
 msgid "The power contour plot shows how the sensitivity of the test changes with the hypothetical Poisson rate ratio and the sample sizes in the design. As we increase the sample sizes, Poisson rate ratios closer to one become reliably detectable."
 msgstr ""
+"O gráfico de contorno de potência mostra como a sensibilidade do teste muda "
+"com a razão de Poisson hipotética e os tamanhos de amostra no delineamento. "
+"À medida que aumentamos os tamanhos de amostra, razões de Poisson mais "
+"próximas de um tornam-se detectáveis de forma confiável."
 
 msgid "Conversely, if one is satisfied to reliably detect only larger effects, smaller sample sizes are needed. The solid black curve on the contour plot shows sample size/Poisson rate ratios combinations with a power of %s. The point shows the specified  design and Poisson rate ratio."
 msgstr ""
+"Por outro lado, se estivermos satisfeitos em detectar apenas efeitos maiores "
+"de forma confiável, serão necessários tamanhos de amostra menores. A curva "
+"preta sólida no gráfico de contorno mostra combinações de tamanho de amostra/"
+"taxa de Poisson com uma potência de %s. O ponto mostra o delineamento "
+"especificado e a taxa de Poisson."
 
 msgid "sample sizes of %s in each group"
-msgstr ""
+msgstr "tamanhos de amostra de %s em cada grupo"
 
 msgid "sample sizes of at least %s in each group"
-msgstr ""
+msgstr "tamanhos de amostra de pelo menos %s em cada grupo"
 
 msgid "True variance ratio"
-msgstr ""
+msgstr "Proporção de variâncias verdadeira"
 
 msgid "To evaluate the design specified in the table, we can consider how sensitive it is to true effects of increasing sizes; that is, are we likely to correctly conclude that %1$s when the variance ratio is extreme enough to care about?"
 msgstr ""
+"Para avaliar o delineamento especificado na tabela, podemos considerar o "
+"quão sensível ele é aos efeitos reais do aumento de tamanhos; ou seja, é "
+"provável que concluamos corretamente que %1$s quando a taxa de variância é "
+"extrema o suficiente para nos importarmos?"
 
 msgid "The power contour plot shows how the sensitivity of the test changes with the hypothetical variance ratio and the sample sizes in the design. As we increase the sample sizes, less extreme variance ratios become reliably detectable."
 msgstr ""
+"O gráfico de contorno de potência mostra como a sensibilidade do teste muda "
+"com a razão de variância hipotética e os tamanhos de amostra no "
+"delineamento. À medida que aumentamos os tamanhos de amostra, razões de "
+"variância menos extremas tornam-se detectáveis de forma confiável."
 
 msgid "Conversely, if one is satisfied to reliably detect only more extreme variance ratios, smaller sample sizes are needed. The point shows the power of the specified design and variance ratio."
 msgstr ""
+"Por outro lado, se alguém estiver satisfeito em detectar de forma confiável "
+"apenas taxas de variância mais extremas, serão necessários tamanhos de "
+"amostra menores. O ponto demonstra o poder do delineamento e da taxa de "
+"variância especificados."
 
 msgid "The power curve above shows how the sensitivity of the test and design is larger for more extreme variance ratios. If we obtained %1$s our test and design would %2$s to variance ratios of %3$s%4$s."
 msgstr ""
+"A curva de potência acima mostra como a sensibilidade do teste e do "
+"delineamento é maior para taxas de variância mais extremas. Se obtivermos %1$"
+"s, nosso teste e delineamento resultariam em taxas de variância de %2$s para "
+"%3$s%4$s."
 
 msgid "We would be more than likely to miss (power less than 50%%) variance ratios of %1$s."
 msgstr ""
+"É mais provável que se perca (poder menor que 50%) taxas de variância de "
+"%1$s."
 
 msgid "The specified design leads to (an) unsolvable equation(s) while constructing the curves for the Power Demonstration. Try to enter less extreme values for the parameters"
 msgstr ""
+"O delineamento especificado leva a uma ou mais equações insolúveis ao "
+"construir as curvas para a Demonstração de Potência. Tente inserir valores "
+"menos extremos para os parâmetros"
 
 msgid "Note."
-msgstr ""
+msgstr "Nota."
 
 msgid "When the variance ratio is less than 1, the inverse of the variance ratio is displayed. Therefore, the first and second degrees of freedom of both F-distributions switched places."
 msgstr ""
+"Quando a razão de variância é menor que 1, o inverso da razão de variância é "
+"exibido. Portanto, o primeiro e o segundo graus de liberdade de ambas as "
+"distribuições F trocaram de lugar."
 
 msgid "%1$sThe figure above shows two sampling distributions: the sampling distribution of the %1$s variance ratio when %2$s (left), and when %3$s%4$s (right)."
 msgstr ""
+"%1$sA figura acima mostra duas distribuições de amostragem: a distribuição "
+"de amostragem da razão de variância %1$s quando %2$s (esquerda) e quando "
+"%3$s%4$s (direita)."
 
 msgid "On the other hand, if %1$s, the evidence would exceed the criterion  &mdash; and hence we would correctly claim that %2$s1 &mdash; at least %3$s%% of the time."
 msgstr ""
+"Por outro lado, se %1$s, a evidência excederia o critério &mdash; e, "
+"portanto, afirmaríamos corretamente que %2$s1 &mdash; pelo menos %3$s%% das "
+"vezes."
 
 msgid "The design's power for detecting effects of %1$s%2$s%3$s is thus %4$s."
 msgstr ""
+"O poder do delineamento para detectar efeitos de %1$s%2$s%3$s é, portanto, "
+"%4$s."
 
 msgid "The power curve above shows how the sensitivity of the test and design is larger for larger sample sizes. In order for our test and design to have sufficient sensitivity (power > %1$s) to detect that %2$s when the effect size is %3$s or larger, we would need %4$s."
 msgstr ""
+"A curva de potência acima mostra como a sensibilidade do teste e do "
+"delineamento é maior para tamanhos de amostra maiores. Para que nosso teste "
+"e delineamento tenham sensibilidade suficiente (potência > %1$s) para "
+"detectar %2$s quando o tamanho do efeito é %3$s ou maior, precisaríamos de "
+"%4$s."
 
 msgid "Cohen's"
-msgstr ""
+msgstr "de Cohen"
