@@ -3,17 +3,12 @@ import JASP.Module
 
 Description
 {
-	name		: "jaspPower"
-	title		: qsTr("Power")
-	icon:			"power.svg"
-	description	: qsTr("This module allows you to conduct power analyses.")
-	version			: "0.95.0"
-	author		: "JASP Team"
-	maintainer	: "JASP Team <info@jasp-stats.org>"
-	website		: "jasp-stats.org"
-	license		: "GPL (>= 2)"
+	title		: 	qsTr("Power")
+	icon		: 	"power.svg"
+	description	: 	qsTr("This module allows you to conduct power analyses.")
 	requiresData:	false
-
+	hasWrappers: 	false
+	
 	Analysis
 	{
 		title:	qsTr("Power")
