@@ -1,242 +1,301 @@
 msgid ""
 msgstr ""
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2026-01-06 15:03+0000\n"
+"Last-Translator: Zev Oster <zevelijah@gmail.com>\n"
+"Language-Team: Tibetan <https://hosted.weblate.org/projects/jasp/jasppower-"
+"qml/bo/>\n"
 "Language: bo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.15.1\n"
 "X-Qt-Contexts: true\n"
 
+#, fuzzy
 msgctxt "Description|"
 msgid "Power"
-msgstr ""
+msgstr "ནུས་པ།"
 
 msgctxt "Description|"
 msgid "This module allows you to conduct power analyses."
 msgstr ""
 
+#, fuzzy
 msgctxt "Power|"
 msgid "Statistical test:"
-msgstr ""
+msgstr "སྡོམ་རྩིས་ཚོད་ལྟ།:"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "Parameters"
-msgstr ""
+msgstr "ཞུགས་གྲངས།"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "I want to calculate the ..."
-msgstr ""
+msgstr "ངས་ ... རྩིས་རྒྱག་འདོད་ཡོད།"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "Direction of the effect:"
-msgstr ""
+msgstr "ཕན་ནུས་ཀྱི་ཁ་ཕྱོགས།:"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "p₁ > p₀"
-msgstr ""
+msgstr "p₁ > p₀"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "p₁ > p₂"
-msgstr ""
+msgstr "p₁ > p₂"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "ρ > 1"
-msgstr ""
+msgstr "ρ > 1"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "p₁ < p₀"
-msgstr ""
+msgstr "p₁ < p₀"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "p₁ < p₂"
-msgstr ""
+msgstr "p₁ < p₂"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "ρ < 1"
-msgstr ""
+msgstr "ρ < 1"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "Hypothesized proportion"
-msgstr ""
+msgstr "ཚོད་གཞག་བྱས་པའི་བསྡུར་ཚད།"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "Baseline proportion"
-msgstr ""
+msgstr "གཞི་རྩའི་བསྡུར་ཚད།"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "p₀"
-msgstr ""
+msgstr "p₀"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "p₂"
-msgstr ""
+msgstr "p₂"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "Comparison proportion"
-msgstr ""
+msgstr "བསྡུར་བའི་བསྡུར་ཚད།"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "p₁"
-msgstr ""
+msgstr "p₁"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "Minimal effect size of interest:"
-msgstr ""
+msgstr "དོ་སྣང་བྱེད་སའི་ཆུང་ཤོས་ཀྱི་ཕན་ནུས་ཆེ་ཆུང་།:"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "|δ|"
-msgstr ""
+msgstr "|δ|"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "ρ (σ₁²/σ₂²)"
-msgstr ""
+msgstr "ρ (σ₁²/σ₂²)"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "ρ (σ²/σ₀²)"
-msgstr ""
+msgstr "ρ (σ²/σ₀²)"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "Minimal desired power:"
-msgstr ""
+msgstr "ཆུང་ཤོས་ཀྱི་འདོད་པའི་ནུས་པ།:"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "(1-β)"
-msgstr ""
+msgstr "(1-β)"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "Type I error rate:"
-msgstr ""
+msgstr "Type I འཁྲུལ་བའི་འགྲོས་ཚད།:"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "α"
-msgstr ""
+msgstr "α"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "Sample size:"
-msgstr ""
+msgstr "མ་དཔེའི་ཆེ་ཆུང་།:"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "Sample size per group:"
-msgstr ""
+msgstr "ཚོགས་པ་རེའི་མ་དཔེའི་ཆེ་ཆུང་།:"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "N"
-msgstr ""
+msgstr "N"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "Sample size ratio:"
-msgstr ""
+msgstr "མ་དཔེའི་ཆེ་ཆུང་གི་བསྡུར་ཚད།:"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "N₁/N₂"
-msgstr ""
+msgstr "N₁/N₂"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "Alternative Hypothesis:"
-msgstr ""
+msgstr "ཚོད་གཞག་གཞན།:"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "H₁"
-msgstr ""
+msgstr "H₁"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "Plots"
-msgstr ""
+msgstr "དཔེ་རིས།"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "Power contour plot"
-msgstr ""
+msgstr "ནུས་པའི་ contour དཔེ་རིས།"
 
 msgctxt "Power|"
 msgid "Power demonstration"
 msgstr ""
 
+#, fuzzy
 msgctxt "Power|"
 msgid "Power curve by effect size"
-msgstr ""
+msgstr "ཕན་ནུས་ཆེ་ཆུང་ལྟར་གྱི་ནུས་པའི་འཁྱོག་ཐིག"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "Power curve by N"
-msgstr ""
+msgstr "N ལྟར་གྱི་ནུས་པའི་འཁྱོག་ཐིག"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "Explanatory text"
-msgstr ""
+msgstr "འགྲེལ་བརྗོད་ཡི་གེ།"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "Data Generation"
-msgstr ""
+msgstr "གཞི་གྲངས་བཟོ་སྐྲུན།"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "x̅"
-msgstr ""
+msgstr "x̅"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "x̅₁"
-msgstr ""
+msgstr "x̅₁"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "x̅₂"
-msgstr ""
+msgstr "x̅₂"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "μ₀"
-msgstr ""
+msgstr "μ₀"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "s"
-msgstr ""
+msgstr "s"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "s₁"
-msgstr ""
+msgstr "s₁"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "σ"
-msgstr ""
+msgstr "σ"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "σ₀"
-msgstr ""
+msgstr "σ₀"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "s₂"
-msgstr ""
+msgstr "s₂"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "Effect direction"
-msgstr ""
+msgstr "ཕན་ནུས་ཀྱི་ཁ་ཕྱོགས།"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "x̅ < μ₀"
-msgstr ""
+msgstr "x̅ < μ₀"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "x̅₁ < x̅₂"
-msgstr ""
+msgstr "x̅₁ < x̅₂"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "x̅ > μ₀"
-msgstr ""
+msgstr "x̅ > μ₀"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "x̅₁ > x̅₂"
-msgstr ""
+msgstr "x̅₁ > x̅₂"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "Export synthetic dataset"
-msgstr ""
+msgstr "བཟོས་པའི་གཞི་གྲངས་ཚོགས་པ་ཕྱིར་འདྲེན་བྱེད་པ།"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "Save as"
-msgstr ""
+msgstr "... ལྟར་ཉར་ཚགས་བྱེད་པ།"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "e.g., location/power.csv"
-msgstr ""
+msgstr "དཔེར་ན།, location/power.csv"
 
+#, fuzzy
 msgctxt "Power|"
 msgid "Save generated dataset"
-msgstr ""
+msgstr "བཟོས་པའི་གཞི་གྲངས་ཚོགས་པ་ཉར་ཚགས་བྱེད་པ།"
