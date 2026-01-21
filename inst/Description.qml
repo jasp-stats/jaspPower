@@ -8,6 +8,7 @@ Description
 	description	: 	qsTr("This module allows you to conduct power analyses.")
 	requiresData:	false
 	hasWrappers: 	false
+	preloadData:  	false
 	
 	Analysis
 	{
