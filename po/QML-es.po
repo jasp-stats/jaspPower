@@ -13,7 +13,7 @@ msgstr "Potencia"
 
 msgctxt "Description|"
 msgid "This module allows you to conduct power analyses."
-msgstr "Este módulo te ayuda a realizar análisis de potencia."
+msgstr "Este módulo ayuda a realizar análisis de potencia."
 
 msgctxt "Power|"
 msgid "Statistical test:"
@@ -125,7 +125,7 @@ msgstr "N"
 
 msgctxt "Power|"
 msgid "Sample size ratio:"
-msgstr "Proporción de tamaño muestral:"
+msgstr "Proporción del tamaño muestral:"
 
 msgctxt "Power|"
 msgid "N₁/N₂"

@@ -1,86 +1,103 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: jaspPower 0.95.5\n"
-"POT-Creation-Date: 2025-11-15 03:45\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Project-Id-Version: jaspPower 0.19.2\n"
+"POT-Creation-Date: 2024-10-19 03:38\n"
+"PO-Revision-Date: 2025-04-15 23:01+0000\n"
+"Last-Translator: Marko Bojović <bojovicmarko@outlook.com>\n"
+"Language-Team: Serbian <https://hosted.weblate.org/projects/jasp/jasppower-r/"
+"sr/>\n"
+"Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 5.11-dev\n"
 
 msgid "Effect size can't be 0."
-msgstr ""
+msgstr "Величина ефекта не може бити 0."
 
 msgid "The comparison proportion can't be equal to the hypothesized proportion with a 'Two-sided' alternative hypothesis."
 msgstr ""
+"Пропорција поређења не може бити једнака хипотетисаној пропорцији са "
+"„двостраном“ алтернативном хипотезом."
 
+#, fuzzy
 msgid "The comparison proportion has to be less than the hypothesized proportion with an alternative hypothesis of 'Less'."
 msgstr ""
+"Пропорција поређења мора бити мања од хипотетисане пропорције са "
+"алтернативном хипотезом 'Мање'."
 
 msgid "The comparison proportion has to be greater than the hypothesized proportion with an alternative hypothesis of 'Greater'."
 msgstr ""
+"Пропорција поређења мора бити већа од хипотетисане пропорције са "
+"алтернативном хипотезом 'Веће'."
 
 msgid "Invalid alternative."
-msgstr ""
+msgstr "Неважећа алтернатива."
 
 msgid "The comparison proportion can't be equal to the baseline proportion with a 'Two-sided' alternative hypothesis."
 msgstr ""
+"Пропорција за поређење не може бити једнака базној пропорцији код "
+"'Двостране' алтернативне хипотезе."
 
 msgid "The comparison proportion has to be less than the baseline proportion with an alternative hypothesis of 'Less'."
 msgstr ""
+"Пропорција за поређење мора бити мања од базне пропорције код алтернативне "
+"хипотезе 'Мање'."
 
 msgid "The comparison proportion has to be greater than the baseline proportion with an alternative hypothesis of 'Greater'."
 msgstr ""
+"ропорција за поређење мора бити већа од базне пропорције код алтернативне "
+"хипотезе 'Веће'."
 
 msgid "The variance ratio can't be 1 with a 'Two-sided' alternative hypothesis."
-msgstr ""
+msgstr "Однос варијанси не може бити 1 код 'Двостране' алтернативне хипотезе."
 
 msgid "The variance ratio has to be less than 1 with an alternative hypothesis 'Less'."
-msgstr ""
+msgstr "Однос варијанси мора бити мањи од 1 код алтернативне хипотезе 'Мање'."
 
 msgid "The variance ratio has to be greater than 1 with an alternative hypothesis of 'Greater'."
-msgstr ""
+msgstr "Однос варијанси мора бити већи од 1 код алтернативне хипотезе 'Веће'."
 
 msgid "Power must be less than 1."
-msgstr ""
+msgstr "Снага мора бити мања од 1."
 
 msgid "The purpose of a %s is to evaluate the sensitivity of a design and test."
-msgstr ""
+msgstr "Сврха %s је да оцени осетљивост дизајна и теста."
 
 msgid "an independent samples t-test"
-msgstr ""
+msgstr "t-тест независних узорака"
 
 msgid "a paired samples t-test"
-msgstr ""
+msgstr "t-тест упарених узорака"
 
 msgid "a one sample t-test"
-msgstr ""
+msgstr "t-тест једног узорка"
 
 msgid "a one sample z-test"
-msgstr ""
+msgstr "z-тест једног узорка"
 
 msgid "a one sample proportions test"
-msgstr ""
+msgstr "Тест пропорције једног узорка"
 
 msgid "a two samples proportions test"
-msgstr ""
+msgstr "Тест пропорција два узорка"
 
 msgid "a one sample variance test"
-msgstr ""
+msgstr "Тест варијансе једног узорка"
 
 msgid "a two samples variance test"
-msgstr ""
+msgstr "Тест варијансе два узорка"
 
 msgid "a one sample Poisson rate test"
-msgstr ""
+msgstr "Тест Поасонове стопе једног узорка"
 
 msgid "a two samples Poisson rate test"
-msgstr ""
+msgstr "Тест Поасонове стопе два узорка"
 
 msgid "when using"
-msgstr ""
+msgstr "када се користе"
 
 msgid "You have chosen to calculate the minimum sample size needed to have an experiment sensitive enough to consistently detect the specified hypothetical effect size"
 msgstr ""

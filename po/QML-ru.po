@@ -10,7 +10,7 @@ msgstr ""
 
 msgctxt "Description|"
 msgid "Power"
-msgstr ""
+msgstr "Мощность"
 
 msgctxt "Description|"
 msgid "This module allows you to conduct power analyses."
