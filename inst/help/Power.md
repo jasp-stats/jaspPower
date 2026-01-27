@@ -15,7 +15,7 @@ This module is based upon [jpower](https://github.com/richarddmorey/jpower/commi
   - Sample Size N: Calculate the necessary sample size to achieve a given power.
   - Power: Calculate the power of detecting a particular effect, given a set sample size and effect size.
   - Effect size: Calculate the minimum effect size, that could be detected with a given power and sample size.
-- Minimal effect size of interest (δ): The minimal effect size using Cohen's d, that would be interesting to detect.
+- Minimal effect size of interest (δ): The minimal effect size using Cohen's δ, that would be interesting to detect.
 - Minimum desired power (1-β): The minimum desired probability of detecting an effect (statistical power). β refers to the probability of conducting a Type II error (false negative), therefore power is defined as the opposite i.e. 1-β.
 - Sample size / Sample size per group (N): The given sample size.
 - Sample size ratio (N₁/N₂): Ratio between first and second groups sample size (independent samples t-test only).
