@@ -46,9 +46,7 @@ vignettes/*.pdf
 .Renviron
 
 # pkgdown site
-docs/*
-!docs/jaspPower/
-!docs/jaspPower/**
+docs/
 
 # translation temp files
 po/*~
