@@ -18,6 +18,12 @@ Power <- function(jaspResults, dataset, options) {
     .runTest1Var(jaspResults, options)
   } else if (options$test == "twoSamplesVarianceRatio") {
     .runTest2Var(jaspResults, options)
+  } else if (options$test == "bayesianOneSampleTTest") {
+    .runBayesianOneSampleT(jaspResults, options)
+  } else if (options$test == "bayesianIndependentSamplesTTest") {
+    .runBayesianIndependentSamplesT(jaspResults, options)
+  } else if (options$test == "bayesianOneSampleProportion") {
+    .runBayesianOneSampleProportion(jaspResults, options)
   } else if (options$test == "oneSamplePoisson") {
     .runTest2Var(jaspResults, options)
   } else if (options$test == "twoSamplesPoisson") {
@@ -31,9 +37,81 @@ Power <- function(jaspResults, dataset, options) {
 
 # Check options and overwrite certain settings if necessary
 .checkOptions <- function(options) {
+  isBayesian <- options$test %in% c(
+    "bayesianOneSampleTTest",
+    "bayesianIndependentSamplesTTest",
+    "bayesianOneSampleProportion"
+  )
+
   # Overwrite options for certain tests
   if (options$test == "oneSampleVarianceRatio" || options$test == "twoSamplesVarianceRatio") {
     options$effectSize <- options$varianceRatio
+  }
+
+  if (isBayesian) {
+    isMissingScalar <- function(x) {
+      is.null(x) || length(x) == 0 || is.na(x) || (is.character(x) && !nzchar(x))
+    }
+
+    if (options$bayesianThreshold <= 1) {
+      .quitAnalysis(gettext("The Bayes factor evidence threshold must be larger than 1."))
+    }
+
+    if (options$bayesianCalculation == "sampleSize") {
+      if (options$bayesianTrueRate <= 0.6 || options$bayesianTrueRate >= 0.999) {
+        .quitAnalysis(gettext("The target true rate must be strictly between 0.6 and 0.999."))
+      }
+      if (options$bayesianFalseRate <= 0.001 || options$bayesianFalseRate >= 0.1) {
+        .quitAnalysis(gettext("The target false rate must be strictly between 0.001 and 0.1."))
+      }
+    }
+
+    if (options$test == "bayesianIndependentSamplesTTest") {
+      if (options$sampleSizeRatio <= 0) {
+        .quitAnalysis(gettext("Sample size ratio must be larger than 0."))
+      }
+      if (options$bayesianCalculation == "evidenceRates" &&
+        ceiling(options$sampleSize * options$sampleSizeRatio) < 2) {
+        .quitAnalysis(gettext("The second-group sample size must be at least 2. Increase N or the sample size ratio."))
+      }
+    }
+
+    if (options$test == "bayesianOneSampleProportion") {
+      if (isMissingScalar(options$bayesianPrior)) {
+        options$bayesianPrior <- "beta"
+      }
+
+      if (options$baselineProportion < 0.1 || options$baselineProportion > 0.9) {
+        .quitAnalysis(gettext("The null proportion must be between 0.1 and 0.9."))
+      }
+      if (options$bayesianPrior == "beta") {
+        if (options$bayesianPriorAlpha <= 0 || options$bayesianPriorBeta <= 0) {
+          .quitAnalysis(gettext("For the Beta prior, both prior shape parameters must be greater than 0."))
+        }
+      } else if (options$bayesianPrior == "Moment") {
+        if (options$bayesianPriorScale <= 0) {
+          .quitAnalysis(gettext("For the Moment prior, the prior scale must be greater than 0."))
+        }
+      } else {
+        .quitAnalysis(gettext("Invalid Bayesian prior for the one sample proportion test."))
+      }
+    } else {
+      if (isMissingScalar(options$bayesianPrior)) {
+        options$bayesianPrior <- "Normal"
+      }
+
+      if (!(options$bayesianPrior %in% c("Normal", "Moment", "t-distribution"))) {
+        .quitAnalysis(gettext("Invalid Bayesian prior for this t-test."))
+      }
+      if (options$bayesianPriorScale <= 0) {
+        .quitAnalysis(gettext("The prior scale must be greater than 0."))
+      }
+      if (options$bayesianPrior == "t-distribution" && options$bayesianPriorDf <= 0) {
+        .quitAnalysis(gettext("For a t-distribution prior, prior degrees of freedom must be greater than 0."))
+      }
+    }
+
+    return(options)
   }
 
   # Check options for problems

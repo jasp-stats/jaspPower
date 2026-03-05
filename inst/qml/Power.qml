@@ -22,24 +22,44 @@ import JASP.Controls
 
 Form
 {
+	readonly property bool isIndependentSamplesTTest: test.currentValue === "independentSamplesTTest"
+	readonly property bool isPairedSamplesTTest: test.currentValue === "pairedSamplesTTest"
+	readonly property bool isOneSampleTTest: test.currentValue === "oneSampleTTest"
+	readonly property bool isOneSampleZTest: test.currentValue === "oneSampleZTest"
+	readonly property bool isOneSampleProportionTest: test.currentValue === "oneSampleProportion"
+	readonly property bool isTwoSamplesProportionTest: test.currentValue === "twoSamplesProportion"
+	readonly property bool isOneSampleVarianceRatioTest: test.currentValue === "oneSampleVarianceRatio"
+	readonly property bool isTwoSamplesVarianceRatioTest: test.currentValue === "twoSamplesVarianceRatio"
+	readonly property bool isBayesianOneSampleTTest: test.currentValue === "bayesianOneSampleTTest"
+	readonly property bool isBayesianIndependentSamplesTTest: test.currentValue === "bayesianIndependentSamplesTTest"
+	readonly property bool isBayesianOneSampleProportion: test.currentValue === "bayesianOneSampleProportion"
+	readonly property bool isBayesianTest: isBayesianOneSampleTTest || isBayesianIndependentSamplesTTest || isBayesianOneSampleProportion
+	readonly property bool isFrequentistTOrZTest: isIndependentSamplesTTest || isPairedSamplesTTest || isOneSampleTTest || isOneSampleZTest
+	readonly property bool isSingleSampleSizeTest: isOneSampleTTest || isOneSampleZTest || isOneSampleProportionTest || isOneSampleVarianceRatioTest || isBayesianOneSampleTTest || isBayesianOneSampleProportion
+	readonly property bool isPerGroupSampleSizeTest: isIndependentSamplesTTest || isPairedSamplesTTest || isTwoSamplesProportionTest || isTwoSamplesVarianceRatioTest || isBayesianIndependentSamplesTTest
+	readonly property bool hasSampleSizeRatio: isIndependentSamplesTTest || isTwoSamplesProportionTest || isTwoSamplesVarianceRatioTest || isBayesianIndependentSamplesTTest
+
 	DropDown
 	{
 		name: "test"
 		id:   test
 		indexDefaultValue: 0
 		label: qsTr("Statistical test:")
-		values: [
-			{ label: "Independent Samples T-Test", value: "independentSamplesTTest" },
-			{ label: "Paired Samples T-Test",  value: "pairedSamplesTTest"          },
-			{ label: "One Sample T-Test",  value: "oneSampleTTest"           },
-			{ label: "One Sample Z-Test",  value: "oneSampleZTest"           },
-			{ label: "One Sample Proportion Test",  value: "oneSampleProportion"     },
-			{ label: "Two Samples Proportion Test",  value: "twoSamplesProportion"    },
-			{ label: "One Sample Variance Ratio Test",  value: "oneSampleVarianceRatio" },
-			{ label: "Two Samples Variance Ratio Test",  value: "twoSamplesVarianceRatio"}
-			//{ label: "One Sample Poisson Rate Test",  value: "oneSamplePoisson"   },
-			//{ label: "Two Samples Poisson Rate Test",  value: "twoSamplesPoisson"  }
-			//{ label: "ANOVA",  value: "anova" }
+			values: [
+				{ label: "Independent Samples T-Test", value: "independentSamplesTTest" },
+				{ label: "Paired Samples T-Test",  value: "pairedSamplesTTest"          },
+				{ label: "One Sample T-Test",  value: "oneSampleTTest"           },
+				{ label: "One Sample Z-Test",  value: "oneSampleZTest"           },
+				{ label: "One Sample Proportion Test",  value: "oneSampleProportion"     },
+				{ label: "Two Samples Proportion Test",  value: "twoSamplesProportion"    },
+				{ label: "One Sample Variance Ratio Test",  value: "oneSampleVarianceRatio" },
+				{ label: "Two Samples Variance Ratio Test",  value: "twoSamplesVarianceRatio"},
+				{ label: "Bayesian One Sample T-Test", value: "bayesianOneSampleTTest" },
+				{ label: "Bayesian Independent Samples T-Test", value: "bayesianIndependentSamplesTTest" },
+				{ label: "Bayesian One Sample Proportion Test", value: "bayesianOneSampleProportion" }
+				//{ label: "One Sample Poisson Rate Test",  value: "oneSamplePoisson"   },
+				//{ label: "Two Samples Poisson Rate Test",  value: "twoSamplesPoisson"  }
+				//{ label: "ANOVA",  value: "anova" }
 		]
 	}
 
@@ -54,17 +74,31 @@ Form
 		{
 			columns: 3
 
-			Text { Layout.columnSpan: 2; text: qsTr("I want to calculate the ...") }
+			Text { Layout.columnSpan: 2; text: qsTr("I want to calculate the ..."); visible: !isBayesianTest }
 			DropDown
 			{
 				name: "calculation"
 				id:   calc
 				indexDefaultValue: 0
 				label: ""
+				visible: !isBayesianTest
 				values: [
 					{ label: "Sample Size N", value: "sampleSize"},
 					{ label: "Power",  value: "power" },
 					{ label: "Effect size",  value: "effectSize"}
+				]
+			}
+			Text { Layout.columnSpan: 2; text: qsTr("I want to calculate the ..."); visible: isBayesianTest }
+			DropDown
+			{
+				name: "bayesianCalculation"
+				id: bayesianCalc
+				indexDefaultValue: 0
+				label: ""
+				visible: isBayesianTest
+				values: [
+					{ label: "Required sample size", value: "sampleSize" },
+					{ label: "Evidence rates", value: "evidenceRates" }
 				]
 			}
 
@@ -72,31 +106,31 @@ Form
 			{
 				Layout.columnSpan: 2;
 				text: qsTr("Direction of the effect:")
-				visible: (test.currentIndex == 4 || test.currentIndex == 5 || test.currentIndex == 6 || test.currentIndex == 7) && calc.currentIndex == 2 && alt.value == "twoSided"
-				enabled: calc.currentIndex == 2
+				visible: (isOneSampleProportionTest || isTwoSamplesProportionTest || isOneSampleVarianceRatioTest || isTwoSamplesVarianceRatioTest) && calc.currentValue == "effectSize" && alt.value == "twoSided"
+				enabled: calc.currentValue == "effectSize"
 			}
 			DropDown
 			{
 				id: direction
 				name: "effectDirection"
 				label: ""
-				visible: (test.currentIndex == 4 || test.currentIndex == 5 || test.currentIndex == 6 || test.currentIndex == 7) && calc.currentIndex == 2 && alt.value == "twoSided"
-				enabled: calc.currentIndex == 2
+				visible: (isOneSampleProportionTest || isTwoSamplesProportionTest || isOneSampleVarianceRatioTest || isTwoSamplesVarianceRatioTest) && calc.currentValue == "effectSize" && alt.value == "twoSided"
+				enabled: calc.currentValue == "effectSize"
 				values: [
-					{ label: (test.currentIndex == 4 || test.currentIndex == 5) ? ((test.currentIndex == 4) ? qsTr("p\u2081 > p\u2080") : qsTr("p\u2081 > p\u2082")) : qsTr("\u03C1 > 1"), value: "greater"},
-					{ label: (test.currentIndex == 4 || test.currentIndex == 5) ? ((test.currentIndex == 4) ? qsTr("p\u2081 < p\u2080") : qsTr("p\u2081 < p\u2082")) : qsTr("\u03C1 < 1"),  value: "less" }
+					{ label: (isOneSampleProportionTest || isTwoSamplesProportionTest) ? (isOneSampleProportionTest ? qsTr("p\u2081 > p\u2080") : qsTr("p\u2081 > p\u2082")) : qsTr("\u03C1 > 1"), value: "greater"},
+					{ label: (isOneSampleProportionTest || isTwoSamplesProportionTest) ? (isOneSampleProportionTest ? qsTr("p\u2081 < p\u2080") : qsTr("p\u2081 < p\u2082")) : qsTr("\u03C1 < 1"),  value: "less" }
 				]
 			}
 
 			Text
 			{
-				text: (test.currentIndex == 4) ? qsTr("Hypothesized proportion") : qsTr("Baseline proportion")
-				visible: test.currentIndex == 4 || test.currentIndex == 5
+				text: isOneSampleProportionTest ? qsTr("Hypothesized proportion") : (isBayesianOneSampleProportion ? qsTr("Null proportion") : qsTr("Baseline proportion"))
+				visible: isOneSampleProportionTest || isTwoSamplesProportionTest || isBayesianOneSampleProportion
 			}
 			Text
 			{
-				visible: test.currentIndex == 4 || test.currentIndex == 5
-				text: (test.currentIndex == 4) ? qsTr("p₀") : qsTr("p₂")
+				visible: isOneSampleProportionTest || isTwoSamplesProportionTest || isBayesianOneSampleProportion
+				text: isOneSampleProportionTest || isBayesianOneSampleProportion ? qsTr("p₀") : qsTr("p₂")
 			}
 			DoubleField
 			{
@@ -106,20 +140,20 @@ Form
 				max: 1
 				defaultValue: 0.5
 				inclusive: JASP.None
-				visible: test.currentIndex == 4 || test.currentIndex == 5
+				visible: isOneSampleProportionTest || isTwoSamplesProportionTest || isBayesianOneSampleProportion
 			}
 
 			Text
 			{
 				text: qsTr("Comparison proportion")
-				visible: test.currentIndex == 4 || test.currentIndex == 5
-				enabled: calc.currentIndex != 2
+				visible: isOneSampleProportionTest || isTwoSamplesProportionTest
+				enabled: calc.currentValue != "effectSize"
 			}
 			Text
 			{
 				text: qsTr("p₁")
-				visible: test.currentIndex == 4 || test.currentIndex == 5
-				enabled: calc.currentIndex != 2
+				visible: isOneSampleProportionTest || isTwoSamplesProportionTest
+				enabled: calc.currentValue != "effectSize"
 			}
 			DoubleField
 			{
@@ -129,61 +163,63 @@ Form
 				max: 1
 				defaultValue: 0.6
 				inclusive: JASP.None
-				visible: test.currentIndex == 4 || test.currentIndex == 5
-				enabled: calc.currentIndex != 2
+				visible: isOneSampleProportionTest || isTwoSamplesProportionTest
+				enabled: calc.currentValue != "effectSize"
 			}
 
 			Text
 			{
 				text: qsTr("Minimal effect size of interest:")
-				visible: test.currentIndex == 0 || test.currentIndex == 1 || test.currentIndex == 2 || test.currentIndex == 3
-				enabled: calc.currentIndex != 2
+				visible: isFrequentistTOrZTest
+				enabled: calc.currentValue != "effectSize"
 			}
 			Text
 			{
 				text: qsTr("|δ|")
-				visible: test.currentIndex == 0 || test.currentIndex == 1 || test.currentIndex == 2 || test.currentIndex == 3
-				enabled: calc.currentIndex != 2
+				visible: isFrequentistTOrZTest
+				enabled: calc.currentValue != "effectSize"
 			}
 			DoubleField
 			{
 				id: es
 				name: "effectSize"
 				defaultValue: 0.5
-				visible: test.currentIndex == 0 || test.currentIndex == 1 || test.currentIndex == 2 || test.currentIndex == 3
-				enabled: calc.currentIndex != 2
+				visible: isFrequentistTOrZTest
+				enabled: calc.currentValue != "effectSize"
 			}
 
 			Text
 			{
 				text: qsTr("Minimal effect size of interest:")
-				visible: test.currentIndex == 6 || test.currentIndex == 7
-				enabled: calc.currentIndex != 2
+				visible: isOneSampleVarianceRatioTest || isTwoSamplesVarianceRatioTest
+				enabled: calc.currentValue != "effectSize"
 			}
 			Text
 			{
-				text: (test.currentIndex == 7) ? qsTr("\u03C1 (\u03C3\u2081\u00B2/\u03C3\u2082\u00B2)") : qsTr("\u03C1 (\u03C3\u00B2/\u03C3\u2080\u00B2)")
-				visible: test.currentIndex == 6 || test.currentIndex == 7
-				enabled: calc.currentIndex != 2
+				text: isTwoSamplesVarianceRatioTest ? qsTr("\u03C1 (\u03C3\u2081\u00B2/\u03C3\u2082\u00B2)") : qsTr("\u03C1 (\u03C3\u00B2/\u03C3\u2080\u00B2)")
+				visible: isOneSampleVarianceRatioTest || isTwoSamplesVarianceRatioTest
+				enabled: calc.currentValue != "effectSize"
 			}
 			DoubleField
 			{
 				id: rho
 				name: "varianceRatio"
 				defaultValue: 2
-				visible: test.currentIndex == 6 || test.currentIndex == 7
-				enabled: calc.currentIndex != 2
+				visible: isOneSampleVarianceRatioTest || isTwoSamplesVarianceRatioTest
+				enabled: calc.currentValue != "effectSize"
 			}
 
 			Text
 			{
 				text: qsTr("Minimal desired power:")
-				enabled: calc.currentIndex != 1
+				visible: !isBayesianTest
+				enabled: calc.currentValue != "power"
 			}
 			Text
 			{
 				text: qsTr("(1-β)")
-				enabled: calc.currentIndex != 1
+				visible: !isBayesianTest
+				enabled: calc.currentValue != "power"
 			}
 			DoubleField
 			{
@@ -192,12 +228,13 @@ Form
 				min: 0.1
 				max: 1
 				defaultValue: 0.9
-				enabled: calc.currentIndex != 1
+				visible: !isBayesianTest
+				enabled: calc.currentValue != "power"
 				inclusive: JASP.MinOnly
 			}
 
-			Text { text: qsTr("Type I error rate:") }
-			Text { text: qsTr("α") }
+			Text { text: qsTr("Type I error rate:"); visible: !isBayesianTest }
+			Text { text: qsTr("α"); visible: !isBayesianTest }
 			DoubleField
 			{
 				id: alpha
@@ -206,25 +243,27 @@ Form
 				max: 1
 				defaultValue: 0.05
 				inclusive: JASP.None
+				visible: !isBayesianTest
 			}
 
 			// No groups in single sample t-test
 			Text
 			{
 				text: qsTr("Sample size:")
-				visible: test.currentIndex == 2 || test.currentIndex == 3 || test.currentIndex == 4 || test.currentIndex == 6 || test.currentIndex == 8
-				enabled: calc.currentIndex != 0
+				visible: isSingleSampleSizeTest
+				enabled: isBayesianTest ? bayesianCalc.currentValue == "evidenceRates" : calc.currentValue != "sampleSize"
 			}
 			Text
 			{
 				text: qsTr("Sample size per group:")
-				visible: test.currentIndex == 0 || test.currentIndex == 1 || test.currentIndex == 5 || test.currentIndex == 7 || test.currentIndex == 9
-				enabled: calc.currentIndex != 0
+				visible: isPerGroupSampleSizeTest
+				enabled: isBayesianTest ? bayesianCalc.currentValue == "evidenceRates" : calc.currentValue != "sampleSize"
 			}
 			Text
 			{
 				text: qsTr("N")
-				enabled: calc.currentIndex != 0
+				visible: isSingleSampleSizeTest || isPerGroupSampleSizeTest
+				enabled: isBayesianTest ? bayesianCalc.currentValue == "evidenceRates" : calc.currentValue != "sampleSize"
 			}
 			IntegerField
 			{
@@ -232,19 +271,20 @@ Form
 				name: "sampleSize"
 				min: 2
 				defaultValue: 20
-				enabled: calc.currentIndex != 0
+				visible: isSingleSampleSizeTest || isPerGroupSampleSizeTest
+				enabled: isBayesianTest ? bayesianCalc.currentValue == "evidenceRates" : calc.currentValue != "sampleSize"
 			}
 
 			// No sample size ratio in single sample t-test
 			Text
 			{
 				text: qsTr("Sample size ratio:")
-				visible: test.currentIndex == 0 || test.currentIndex == 5 || test.currentIndex == 7 || test.currentIndex == 9
+				visible: hasSampleSizeRatio
 			}
 			Text
 			{
 				text: qsTr("N₁/N₂")
-				visible: test.currentIndex == 0 || test.currentIndex == 5 || test.currentIndex == 7 || test.currentIndex == 9
+				visible: hasSampleSizeRatio
 			}
 			DoubleField
 			{
@@ -253,7 +293,7 @@ Form
 				min: 0
 				defaultValue: 1
 				inclusive: JASP.None
-				visible: test.currentIndex == 0 || test.currentIndex == 5 || test.currentIndex == 7 || test.currentIndex == 9
+				visible: hasSampleSizeRatio
 			}
 
 			Text { text: qsTr("Alternative Hypothesis:") }
@@ -263,7 +303,7 @@ Form
 				name: "alternative"
 				id:   alt
 				indexDefaultValue: 0
-				values: (test.currentIndex == 0 || test.currentIndex == 1 || test.currentIndex == 2 || test.currentIndex == 3) ?
+				values: isFrequentistTOrZTest ?
 				[
 					{ label: "Two-sided", value: "twoSided"},
 					{ label: "One-sided",  value: "greater" }
@@ -273,6 +313,206 @@ Form
 					{ label: "Less (One-sided)",  value: "less" },
 					{ label: "Greater (One-sided)",  value: "greater"}
 				]
+			}
+
+			Text
+			{
+				text: qsTr("BF evidence threshold:")
+				visible: isBayesianTest
+			}
+			Text
+			{
+				text: qsTr("B")
+				visible: isBayesianTest
+			}
+			DoubleField
+			{
+				name: "bayesianThreshold"
+				min: 1
+				defaultValue: 3
+				inclusive: JASP.MinOnly
+				visible: isBayesianTest
+			}
+
+			Text
+			{
+				text: qsTr("Rate type:")
+				visible: isBayesianTest && bayesianCalc.currentValue == "sampleSize"
+			}
+			Text
+			{
+				text: qsTr("Target")
+				visible: isBayesianTest && bayesianCalc.currentValue == "sampleSize"
+			}
+			DropDown
+			{
+				id: bayesianRateType
+				name: "bayesianRateType"
+				visible: isBayesianTest && bayesianCalc.currentValue == "sampleSize"
+				values: [
+					{ label: "True/False Positive", value: "positive" },
+					{ label: "True/False Negative", value: "negative" }
+				]
+			}
+
+			Text
+			{
+				text: qsTr("Target true rate:")
+				visible: isBayesianTest && bayesianCalc.currentValue == "sampleSize"
+			}
+			Text
+			{
+				text: qsTr("T")
+				visible: isBayesianTest && bayesianCalc.currentValue == "sampleSize"
+			}
+			DoubleField
+			{
+				name: "bayesianTrueRate"
+				min: 0.6
+				max: 0.999
+				defaultValue: 0.8
+				inclusive: JASP.None
+				visible: isBayesianTest && bayesianCalc.currentValue == "sampleSize"
+			}
+
+			Text
+			{
+				text: qsTr("Target false rate:")
+				visible: isBayesianTest && bayesianCalc.currentValue == "sampleSize"
+			}
+			Text
+			{
+				text: qsTr("F")
+				visible: isBayesianTest && bayesianCalc.currentValue == "sampleSize"
+			}
+			DoubleField
+			{
+				name: "bayesianFalseRate"
+				min: 0.001
+				max: 0.1
+				defaultValue: 0.05
+				inclusive: JASP.None
+				visible: isBayesianTest && bayesianCalc.currentValue == "sampleSize"
+			}
+
+			Text
+			{
+				text: qsTr("Analysis prior:")
+				visible: isBayesianTest
+			}
+			Text
+			{
+				text: qsTr("Type")
+				visible: isBayesianTest
+			}
+			DropDown
+			{
+				id: bayesianPrior
+				name: "bayesianPrior"
+				visible: isBayesianTest
+				values: isBayesianOneSampleProportion ?
+				[
+					{ label: "Beta", value: "beta" },
+					{ label: "Moment", value: "Moment" }
+				] :
+				[
+					{ label: "Normal", value: "Normal" },
+					{ label: "Moment", value: "Moment" },
+					{ label: "t-distribution", value: "t-distribution" }
+				]
+			}
+
+			Text
+			{
+				text: qsTr("Prior location:")
+				visible: isBayesianTest && !isBayesianOneSampleProportion
+			}
+			Text
+			{
+				text: qsTr("μ")
+				visible: isBayesianTest && !isBayesianOneSampleProportion
+			}
+			DoubleField
+			{
+				name: "bayesianPriorLocation"
+				defaultValue: 0
+				visible: isBayesianTest && !isBayesianOneSampleProportion
+			}
+
+			Text
+			{
+				text: qsTr("Prior scale:")
+				visible: isBayesianTest && (!isBayesianOneSampleProportion || bayesianPrior.currentValue == "Moment")
+			}
+			Text
+			{
+				text: qsTr("σ")
+				visible: isBayesianTest && (!isBayesianOneSampleProportion || bayesianPrior.currentValue == "Moment")
+			}
+			DoubleField
+			{
+				name: "bayesianPriorScale"
+				min: 0
+				defaultValue: isBayesianOneSampleProportion ? 0.1 : 0.707
+				inclusive: JASP.None
+				visible: isBayesianTest && (!isBayesianOneSampleProportion || bayesianPrior.currentValue == "Moment")
+			}
+
+			Text
+			{
+				text: qsTr("Prior degrees of freedom:")
+				visible: isBayesianTest && !isBayesianOneSampleProportion && bayesianPrior.currentValue == "t-distribution"
+			}
+			Text
+			{
+				text: qsTr("ν")
+				visible: isBayesianTest && !isBayesianOneSampleProportion && bayesianPrior.currentValue == "t-distribution"
+			}
+			DoubleField
+			{
+				name: "bayesianPriorDf"
+				min: 0
+				defaultValue: 1
+				inclusive: JASP.None
+				visible: isBayesianTest && !isBayesianOneSampleProportion && bayesianPrior.currentValue == "t-distribution"
+			}
+
+			Text
+			{
+				text: qsTr("Beta prior α:")
+				visible: isBayesianOneSampleProportion && bayesianPrior.currentValue == "beta"
+			}
+			Text
+			{
+				text: qsTr("α")
+				visible: isBayesianOneSampleProportion && bayesianPrior.currentValue == "beta"
+			}
+			DoubleField
+			{
+				name: "bayesianPriorAlpha"
+				min: 0
+				defaultValue: 1
+				inclusive: JASP.None
+				visible: isBayesianOneSampleProportion && bayesianPrior.currentValue == "beta"
+			}
+
+			Text
+			{
+				text: qsTr("Beta prior β:")
+				visible: isBayesianOneSampleProportion && bayesianPrior.currentValue == "beta"
+			}
+			Text
+			{
+				text: qsTr("β")
+				visible: isBayesianOneSampleProportion && bayesianPrior.currentValue == "beta"
+			}
+			DoubleField
+			{
+				name: "bayesianPriorBeta"
+				min: 0
+				defaultValue: 1
+				inclusive: JASP.None
+				visible: isBayesianOneSampleProportion && bayesianPrior.currentValue == "beta"
 			}
 		}
 	}
@@ -289,6 +529,7 @@ Form
 			id: powerContour
 			name: "powerContour"
 			checked: true
+			visible: !isBayesianTest
 		}
 
 		CheckBox {
@@ -296,6 +537,7 @@ Form
 			id: powerDist
 			name: "powerDemonstration"
 			checked: false
+			visible: !isBayesianTest
 		}
 
 		CheckBox {
@@ -303,6 +545,7 @@ Form
 			id: powerCurveES
 			name: "powerByEffectSize"
 			checked: true
+			visible: !isBayesianTest
 		}
 
 		CheckBox {
@@ -310,6 +553,7 @@ Form
 			id: powerCurveN
 			name: "powerBySampleSize"
 			checked: false
+			visible: !isBayesianTest
 		}
 
 		CheckBox {
@@ -323,11 +567,12 @@ Form
 	{
 		expanded: true
 		title: qsTr("Data Generation")
+		visible: !isBayesianTest
 
 		Group
 		{
 			id:	parameters
-			visible: test.currentIndex != 4 && test.currentIndex != 5
+			visible: !isOneSampleProportionTest && !isTwoSamplesProportionTest
 			columns: 2
 
 			Group
@@ -336,9 +581,9 @@ Form
 				DoubleField
 				{
 					name: "firstGroupMean"
-					label: test.currentIndex == 6 ? qsTr("\u0078\u0305") : qsTr("\u0078\u0305\u2081")
+					label: isOneSampleVarianceRatioTest ? qsTr("\u0078\u0305") : qsTr("\u0078\u0305\u2081")
 					defaultValue: 0
-					visible: test.currentIndex == 6 || test.currentIndex == 7
+					visible: isOneSampleVarianceRatioTest || isTwoSamplesVarianceRatioTest
 				}
 
 				DoubleField
@@ -346,7 +591,7 @@ Form
 					name: "secondGroupMean"
 					label: qsTr("\u0078\u0305\u2082")
 					defaultValue: 0
-					visible: test.currentIndex == 0 || test.currentIndex == 1 || test.currentIndex == 7
+					visible: isIndependentSamplesTTest || isPairedSamplesTTest || isTwoSamplesVarianceRatioTest
 				}
 
 				DoubleField
@@ -354,23 +599,23 @@ Form
 					name: "testValue"
 					label: qsTr("\u03BC\u2080")
 					defaultValue: 0
-					visible: test.currentIndex == 2 || test.currentIndex == 3
+					visible: isOneSampleTTest || isOneSampleZTest
 				}
 
 				DoubleField
 				{
 					name: "firstGroupSd"
-					label: (test.currentIndex == 2) ? qsTr("s") : qsTr("s\u2081")
+					label: isOneSampleTTest ? qsTr("s") : qsTr("s\u2081")
 					defaultValue: 1
-					visible: test.currentIndex == 0 || test.currentIndex == 1 || test.currentIndex == 2
+					visible: isIndependentSamplesTTest || isPairedSamplesTTest || isOneSampleTTest
 				}
 
 				DoubleField
 				{
 					name: "populationSd"
-					label: test.currentIndex == 3 ? qsTr("\u03C3") : qsTr("\u03C3\u2080")
+					label: isOneSampleZTest ? qsTr("\u03C3") : qsTr("\u03C3\u2080")
 					defaultValue: 1
-					visible: test.currentIndex == 3 || test.currentIndex == 6
+					visible: isOneSampleZTest || isOneSampleVarianceRatioTest
 				}
 
 				DoubleField
@@ -378,7 +623,7 @@ Form
 					name: "secondGroupSd"
 					label: qsTr("s\u2082")
 					defaultValue: 1
-					visible: test.currentIndex == 0 || test.currentIndex == 1 || test.currentIndex == 7
+					visible: isIndependentSamplesTTest || isPairedSamplesTTest || isTwoSamplesVarianceRatioTest
 				}
 			}
 
@@ -386,9 +631,9 @@ Form
 			{
 				name: "effectDirectionSyntheticDataset"
 				title: qsTr("Effect direction")
-				visible: test.currentIndex != 6 && test.currentIndex != 7
-				RadioButton { value: "less"; label: (test.currentIndex == 2 || test.currentIndex == 3) ? qsTr("\u0078\u0305 < \u03BC\u2080") : qsTr("\u0078\u0305\u2081 < \u0078\u0305\u2082"); checked: true }
-				RadioButton { value: "greater"; label: (test.currentIndex == 2 || test.currentIndex == 3) ? qsTr("\u0078\u0305 > \u03BC\u2080") : qsTr("\u0078\u0305\u2081 > \u0078\u0305\u2082") }
+				visible: !isOneSampleVarianceRatioTest && !isTwoSamplesVarianceRatioTest
+				RadioButton { value: "less"; label: (isOneSampleTTest || isOneSampleZTest) ? qsTr("\u0078\u0305 < \u03BC\u2080") : qsTr("\u0078\u0305\u2081 < \u0078\u0305\u2082"); checked: true }
+				RadioButton { value: "greater"; label: (isOneSampleTTest || isOneSampleZTest) ? qsTr("\u0078\u0305 > \u03BC\u2080") : qsTr("\u0078\u0305\u2081 > \u0078\u0305\u2082") }
 			}
 		}
 

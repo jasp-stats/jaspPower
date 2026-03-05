@@ -43,7 +43,12 @@
     return()
   }
 
-  calc <- options$calculation
+  isBayesian <- options$test %in% c(
+    "bayesianOneSampleTTest",
+    "bayesianIndependentSamplesTTest",
+    "bayesianOneSampleProportion"
+  )
+  calc <- if (isBayesian) options$bayesianCalculation else options$calculation
 
   html <- jaspResults[["intro"]]
   if (is.null(html)) {
@@ -68,23 +73,38 @@
     oneSampleVarianceRatio = gettext("a one sample variance test"),
     twoSamplesVarianceRatio = gettext("a two samples variance test"),
     oneSamplePoisson = gettext("a one sample Poisson rate test"),
-    twoSamplesPoisson = gettext("a two samples Poisson rate test")
+    twoSamplesPoisson = gettext("a two samples Poisson rate test"),
+    bayesianOneSampleTTest = gettext("a Bayesian one sample t-test"),
+    bayesianIndependentSamplesTTest = gettext("a Bayesian independent samples t-test"),
+    bayesianOneSampleProportion = gettext("a Bayesian one sample proportion test")
   )
   test_sentence_end <- paste0(
     " ", gettext("when using"), " ", "<i>", test_names[[options$test]], "</i>."
   )
 
-  mid_sentence <- switch(calc,
-    sampleSize = gettext(
-      "You have chosen to calculate the minimum sample size needed to have an experiment sensitive enough to consistently detect the specified hypothetical effect size"
-    ),
-    effectSize = gettext(
-      "You have chosen to calculate the minimum hypothetical effect size for which the chosen design will have the specified sensitivity"
-    ),
-    power = gettext(
-      "You have chosen to calculate the sensitivity of the chosen design for detecting the specified effect size"
+  if (isBayesian) {
+    mid_sentence <- switch(calc,
+      sampleSize = gettext(
+        "You have chosen to calculate the minimum sample size needed to reach the selected true and false evidence-rate targets"
+      ),
+      evidenceRates = gettext(
+        "You have chosen to calculate the true and false evidence rates for the selected sample size and Bayes factor threshold"
+      ),
+      gettext("You have chosen a Bayesian power analysis configuration")
     )
-  )
+  } else {
+    mid_sentence <- switch(calc,
+      sampleSize = gettext(
+        "You have chosen to calculate the minimum sample size needed to have an experiment sensitive enough to consistently detect the specified hypothetical effect size"
+      ),
+      effectSize = gettext(
+        "You have chosen to calculate the minimum hypothetical effect size for which the chosen design will have the specified sensitivity"
+      ),
+      power = gettext(
+        "You have chosen to calculate the sensitivity of the chosen design for detecting the specified effect size"
+      )
+    )
+  }
 
   str <- paste0(
     str,

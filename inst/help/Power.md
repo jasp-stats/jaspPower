@@ -22,6 +22,22 @@ This module is based upon [jpower](https://github.com/richarddmorey/jpower/commi
 - Type I error rate (α): The Type I error rate (false positive) threshold which will be used when running tests later.
 - Alternative Hypothesis: Whether a one-sided or two-sided hypothesis will be tested.
 
+#### Parameters (Bayesian tests)
+- I want to calculate the ...
+  - Required sample size: Calculate the minimum sample size that reaches the requested evidence-rate targets.
+  - Evidence rates: Calculate the true/false evidence rates for a fixed sample size.
+- Null proportion (one sample proportion): The hypothesized proportion under the null model.
+- Sample size / Sample size per group (N): The fixed sample size used when calculating evidence rates.
+- Sample size ratio (N₁/N₂): Ratio between group sample sizes for the Bayesian independent samples t-test.
+- Alternative Hypothesis: Whether a one-sided or two-sided Bayesian hypothesis is tested.
+- BF evidence threshold (B): Bayes factor threshold used to define compelling evidence.
+- Rate type: Whether the target constraints are true/false positive or true/false negative rates.
+- Target true rate (T): Desired lower bound for the true evidence rate.
+- Target false rate (F): Desired upper bound for the false evidence rate.
+- Analysis prior: Prior distribution used under the alternative model.
+  - Bayesian t-tests: Normal, Moment, or t-distribution priors with location, scale, and (for t-distribution) degrees of freedom.
+  - Bayesian one sample proportion: Beta prior (α, β) or Moment prior (scale).
+
 #### Display
 - Power contour plot: Include a power contour plot in results? (see Output for detailed explanation)
 - Power curve by effect size: Include a plot showing the power curve for different values of effect size in results? (see Output for detailed explanation)
@@ -29,12 +45,16 @@ This module is based upon [jpower](https://github.com/richarddmorey/jpower/commi
 - Power demonstration: Include a explanatory demonstration of power in results?
 - Explanatory text: Should explanatory text and additional information be shown with the results?
 
+For Bayesian analyses, only the explanatory text option is available; frequentist power plots and data generation controls are hidden.
+
 ### Output
 -------
 
 #### Introduction
 - A Priori Power Analysis (table): This table shows the statistic (sample size, power or effect size) the user chose to calculate alongside the user-defined values they entered.
 - Power by Effect Size (table): This table illustrates how statistical power would change with different effect sizes. (Only shown when explanatory text is enabled)
+- Bayesian Power Analysis (table): This table reports estimated true/false evidence rates (TP, FN, TN, FP) and sample size outputs for Bayesian analyses.
+- Bayesian explanatory text: A short interpretation of the selected Bayesian setup, prior, threshold, and resulting evidence rates.
 
 #### Plots
 - Power Contour: This plot illustrates how power changes depending on the combination of sample size (X-Axis) and effect size (Y-Axis). Statistical power is denoted by color, the black curved line corresponds to user-defined value of power.
@@ -52,4 +72,4 @@ This module is based upon [jpower](https://github.com/richarddmorey/jpower/commi
 ---
 - pwr
 - ggplot2
-
+- BayesPower

@@ -29,6 +29,31 @@ test_variant_dependent_plot <- function(variant, all_variants, plot, name) {
   jaspTools::expect_equal_plots(plot, actual_test_name)
 }
 
+# Bayesian result tables can arrive either as a data frame or as a list with one row-list.
+extract_powertab_row <- function(results) {
+  tab <- results[["results"]][["powertab"]][["data"]]
+
+  if (is.data.frame(tab)) {
+    return(tab[1, , drop = FALSE])
+  }
+
+  if (is.list(tab) && length(tab) >= 1) {
+    row <- tab[[1]]
+    if (is.list(row)) {
+      return(as.data.frame(row, stringsAsFactors = FALSE))
+    }
+    if (is.atomic(row)) {
+      return(as.data.frame(as.list(row), stringsAsFactors = FALSE))
+    }
+  }
+
+  stop("Unexpected structure for results[['results']][['powertab']][['data']].")
+}
+
+extract_powertab_values <- function(row, cols) {
+  as.numeric(unlist(row[1, cols, drop = FALSE], use.names = FALSE))
+}
+
 # ==== Test Different Types of Tests ====
 test_that("Results for Power Analysis for Independent Samples T-Test match", {
   options <- jaspTools::analysisOptions("Power")
@@ -109,6 +134,71 @@ test_that("Results for Power Analysis for Two Variances Test match", {
   table <- results[["results"]][["powertab"]][["data"]]
 
   jaspTools::expect_equal_tables(table, list(0.05, 2, 90, 90, 0.9))
+})
+
+test_that("Results for Bayesian One Sample T-Test are structurally valid", {
+  options <- jaspTools::analysisOptions("Power")
+  options$test <- "bayesianOneSampleTTest"
+  options$alternative <- "twoSided"
+  options$bayesianCalculation <- "sampleSize"
+  options$text <- TRUE
+
+  results <- jaspTools::runAnalysis("Power", NULL, options)
+  table <- extract_powertab_row(results)
+  text <- results[["results"]][["tabText"]][["text"]]
+  values <- extract_powertab_values(table, c("tp", "fn", "tn", "fp", "sampleSize"))
+
+  testthat::expect_true(all(c("tp", "fn", "tn", "fp", "sampleSize") %in% colnames(table)))
+  testthat::expect_equal(nrow(table), 1L)
+  testthat::expect_true(all(is.finite(values)))
+  testthat::expect_true(all(values[1:4] >= 0 & values[1:4] <= 1))
+  testthat::expect_true(values[5] >= 2)
+  testthat::expect_true(grepl("Bayes factor threshold", text, fixed = TRUE))
+})
+
+test_that("Results for Bayesian Independent Samples T-Test respect fixed N mode", {
+  options <- jaspTools::analysisOptions("Power")
+  options$test <- "bayesianIndependentSamplesTTest"
+  options$alternative <- "twoSided"
+  options$bayesianCalculation <- "evidenceRates"
+  options$sampleSize <- 20
+  options$sampleSizeRatio <- 1.5
+  options$text <- TRUE
+
+  results <- jaspTools::runAnalysis("Power", NULL, options)
+  table <- extract_powertab_row(results)
+  text <- results[["results"]][["tabText"]][["text"]]
+  values <- extract_powertab_values(table, c("tp", "fn", "tn", "fp", "n1", "n2"))
+
+  testthat::expect_true(all(c("tp", "fn", "tn", "fp", "n1", "n2") %in% colnames(table)))
+  testthat::expect_equal(nrow(table), 1L)
+  testthat::expect_true(all(is.finite(values)))
+  testthat::expect_true(all(values[1:4] >= 0 & values[1:4] <= 1))
+  testthat::expect_equal(values[5], 20)
+  testthat::expect_equal(values[6], 30)
+  testthat::expect_true(grepl("fixed", text, ignore.case = TRUE))
+})
+
+test_that("Results for Bayesian One Sample Proportion Test are structurally valid", {
+  options <- jaspTools::analysisOptions("Power")
+  options$test <- "bayesianOneSampleProportion"
+  options$alternative <- "twoSided"
+  options$bayesianCalculation <- "sampleSize"
+  options$baselineProportion <- 0.5
+  options$bayesianPrior <- "beta"
+  options$text <- TRUE
+
+  results <- jaspTools::runAnalysis("Power", NULL, options)
+  table <- extract_powertab_row(results)
+  text <- results[["results"]][["tabText"]][["text"]]
+  values <- extract_powertab_values(table, c("tp", "fn", "tn", "fp", "sampleSize"))
+
+  testthat::expect_true(all(c("tp", "fn", "tn", "fp", "sampleSize") %in% colnames(table)))
+  testthat::expect_equal(nrow(table), 1L)
+  testthat::expect_true(all(is.finite(values)))
+  testthat::expect_true(all(values[1:4] >= 0 & values[1:4] <= 1))
+  testthat::expect_true(values[5] >= 2)
+  testthat::expect_true(grepl("Beta prior", text, fixed = TRUE))
 })
 
 
