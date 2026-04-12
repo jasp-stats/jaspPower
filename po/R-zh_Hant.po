@@ -2,509 +2,614 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspPower 0.96.1\n"
 "POT-Creation-Date: 2026-04-11 04:19\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2026-04-12 22:12+0000\n"
+"Last-Translator: 陳正昌 <chencc99@gmail.com>\n"
+"Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
+"projects/jasp/jasppower-r/zh_Hant/>\n"
 "Language: zh_Hant\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.17-dev\n"
 
 msgid "Effect size can't be 0."
-msgstr ""
+msgstr "效果量不能為 0。"
 
 msgid "The comparison proportion can't be equal to the hypothesized proportion with a 'Two-sided' alternative hypothesis."
-msgstr ""
+msgstr "在雙尾對立假設下，比較比例不能等於假設比例。"
 
 msgid "The comparison proportion has to be less than the hypothesized proportion with an alternative hypothesis of 'Less'."
-msgstr ""
+msgstr "在「小於」的對立假設下，比較比例必須小於假設比例。"
 
 msgid "The comparison proportion has to be greater than the hypothesized proportion with an alternative hypothesis of 'Greater'."
-msgstr ""
+msgstr "比較比例必須大於假設比例，且對立假設為「大於」。"
 
 msgid "Invalid alternative."
-msgstr ""
+msgstr "對立假設無效。"
 
 msgid "The comparison proportion can't be equal to the baseline proportion with a 'Two-sided' alternative hypothesis."
-msgstr ""
+msgstr "在對立假設為「雙尾」的情況下，比較比例不能等於基準比例。"
 
 msgid "The comparison proportion has to be less than the baseline proportion with an alternative hypothesis of 'Less'."
-msgstr ""
+msgstr "在對立假設為「小於」的情況下，比較比例必須小於基準比例。"
 
 msgid "The comparison proportion has to be greater than the baseline proportion with an alternative hypothesis of 'Greater'."
-msgstr ""
+msgstr "在對立假設為「大於」的情況下，比較比例必須大於基準比例。"
 
 msgid "The variance ratio can't be 1 with a 'Two-sided' alternative hypothesis."
-msgstr ""
+msgstr "在對立假設為「雙尾」的情況下，變異數比不能等於1。"
 
 msgid "The variance ratio has to be less than 1 with an alternative hypothesis 'Less'."
-msgstr ""
+msgstr "在對立假設為「小於」的情況下，變異數比必須小於1。"
 
 msgid "The variance ratio has to be greater than 1 with an alternative hypothesis of 'Greater'."
-msgstr ""
+msgstr "在對立假設為「大於」的情況下，變異數比必須大於1。"
 
 msgid "Power must be less than 1."
-msgstr ""
+msgstr "檢定力必須小於1。"
 
 msgid "The purpose of a %s is to evaluate the sensitivity of a design and test."
-msgstr ""
+msgstr "%s 的目的在於評估設計與檢定的敏感度。"
 
 msgid "an independent samples t-test"
-msgstr ""
+msgstr "獨立樣本 t 檢定"
 
 msgid "a paired samples t-test"
-msgstr ""
+msgstr "成對樣本 t 檢定"
 
 msgid "a one sample t-test"
-msgstr ""
+msgstr "單一樣本 t 檢定"
 
 msgid "a one sample z-test"
-msgstr ""
+msgstr "單一樣本 z 檢定"
 
 msgid "a one sample proportions test"
-msgstr ""
+msgstr "單一樣本比例檢定"
 
 msgid "a two samples proportions test"
-msgstr ""
+msgstr "雙樣本比例檢定"
 
 msgid "a one sample variance test"
-msgstr ""
+msgstr "單一樣本變異數檢定"
 
 msgid "a two samples variance test"
-msgstr ""
+msgstr "雙樣本變異數檢定"
 
 msgid "a one sample Poisson rate test"
-msgstr ""
+msgstr "單一樣本卜瓦松率檢定"
 
 msgid "a two samples Poisson rate test"
-msgstr ""
+msgstr "雙樣本卜瓦松率檢定"
 
 msgid "when using"
-msgstr ""
+msgstr "當使用"
 
 msgid "You have chosen to calculate the minimum sample size needed to have an experiment sensitive enough to consistently detect the specified hypothetical effect size"
 msgstr ""
+"您已選擇計算所需的最小樣本數，以使實驗具有足夠的敏感度，能持續偵測到指定的假"
+"設效果量"
 
 msgid "You have chosen to calculate the minimum hypothetical effect size for which the chosen design will have the specified sensitivity"
-msgstr ""
+msgstr "您已選擇計算指定的設計能達到指定敏感度時的最小假設效果量"
 
 msgid "You have chosen to calculate the sensitivity of the chosen design for detecting the specified effect size"
-msgstr ""
+msgstr "您已選擇計算指定設計在偵測指定效果量時的敏感度"
 
 msgid "Unable to compute the power results. Try to enter less extreme values for the input parameters."
-msgstr ""
+msgstr "無法計算檢定力結果。請嘗試為輸入參數設定較不極端的數值。"
 
 msgid "Power cannot be 1"
-msgstr ""
+msgstr "檢定力不能為1"
 
 msgid "Effect size can't be 0 with a two-sided alternative hypothesis."
-msgstr ""
+msgstr "在對立假設為雙尾的情況下，效果量不能為0。"
 
 msgid "Effect size has to be lower than 0 with an alternative of lesser."
-msgstr ""
+msgstr "在對立假設為小於的情況下，效果量必須小於0。"
 
 msgid "Effect size has to be greater than 0 with an alternative of greater."
-msgstr ""
+msgstr "在對立假設為大於的情況下，效果量必須大於0。"
 
 msgid "The specified design leads to (an) unsolvable equation(s) while constructing the power curve. Try to enter less extreme values for the parameters"
-msgstr ""
+msgstr "指定的設計在構建檢定力曲線時導致方程式無解。請嘗試為參數設定較不極端的數值"
 
 msgid "Error Message:"
-msgstr ""
+msgstr "錯誤訊息："
 
 msgid "Sample size (group 2)"
-msgstr ""
+msgstr "樣本數（組別2）"
 
 msgid "Sample size (group 1)"
-msgstr ""
+msgstr "樣本數（組別1）"
 
 msgid "Hypothetical effect size (%s)"
-msgstr ""
+msgstr "假設效果量（%s）"
 
 msgid "Power"
-msgstr ""
+msgstr "檢定力"
 
 msgid "Observed effect size (%s)"
-msgstr ""
+msgstr "觀察效果量（%s）"
 
 msgid "Probability Density"
-msgstr ""
+msgstr "機率密度"
 
 msgid "A Priori Power Analysis"
-msgstr ""
+msgstr "先驗檢定力分析"
 
 msgid "Cohen's %s"
 msgstr ""
 
 msgid "User Defined"
-msgstr ""
+msgstr "使用者自訂"
 
 msgid "Power by effect size"
-msgstr ""
+msgstr "以效果量為變項的檢定力"
 
 msgid "True effect size"
-msgstr ""
+msgstr "真實效果量"
 
 msgid "Power to detect"
-msgstr ""
+msgstr "偵測之檢定力"
 
 msgid "Description"
-msgstr ""
+msgstr "說明"
 
 msgid "Likely miss"
-msgstr ""
+msgstr "可能未命中"
 
 msgid "Good chance of missing"
-msgstr ""
+msgstr "有較高未命中機率"
 
 msgid "Probably detect"
-msgstr ""
+msgstr "很可能偵測到"
 
 msgid "Almost surely detect"
-msgstr ""
+msgstr "幾乎肯定能偵測到"
 
 msgid "The power contour plot shows how the sensitivity of the test changes with the hypothetical effect size and the sample sizes in the design. As we increase the sample sizes, smaller effect sizes become reliably detectable."
 msgstr ""
+"檢定力等值線圖顯示檢定的敏感度如何隨假設效果量及設計中的樣本數而變化。當樣本"
+"數增加時，較小的效果量也能被可靠地偵測到。"
 
 msgid "Conversely, if one is satisfied to reliably detect only larger effect sizes, smaller sample sizes are needed. The point shows the power of the specified design and effect size."
 msgstr ""
+"反之，若僅滿足於可靠地偵測較大的效果量，則所需的樣本數較小。圖中的點即表示指"
+"定設計與效果量下的檢定力。"
 
 msgid "sample sizes of %1$s"
-msgstr ""
+msgstr "%1$s 的樣本數"
 
 msgid "two-sided"
-msgstr ""
+msgstr "雙尾"
 
 msgid "criteria"
-msgstr ""
+msgstr "判斷準則"
 
 msgid "one-sided"
-msgstr ""
+msgstr "單尾"
 
 msgid "criterion"
-msgstr ""
+msgstr "判斷準則"
 
 msgid "have power of at least %1$s"
-msgstr ""
+msgstr "具有至少 %1$s 的檢定力"
 
 msgid "only be sufficiently sensitive (power >%1$s)"
-msgstr ""
+msgstr "僅在檢定力 >%1$s 時才具備足夠的敏感度"
 
 msgid "The power curve above shows how the sensitivity of the test and design is larger for larger effect sizes. If we obtained %1$s our test and design would %2$s to effect sizes of %3$s%4$s."
 msgstr ""
+"上方的檢定力曲線顯示，對於較大的效果量，檢定與設計的敏感度也較高。若我們獲得 "
+"%1$s，則我們的檢定與設計對於 %3$s%4$s 的效果量將 %2$s。"
 
 msgid "We would be more than likely to miss (power less than 50%%) effect sizes less than %1$s%2$s."
-msgstr ""
+msgstr "對於小於 %1$s%2$s 的效果量，我們將很有可能無法偵測到（檢定力低於 50%%）。"
 
 msgid "sample sizes of at least %1$s"
-msgstr ""
+msgstr "至少 %1$s 的樣本數"
 
 msgid "The power curve above shows how the sensitivity of the test and design is larger for larger effect sizes. In order for our test and design to have sufficient sensitivity (power > %1$s) to detect that %2$s when the effect size is %3$s or larger, we would need %4$s."
 msgstr ""
+"上方的檢定力曲線顯示，對於較大的效果量，檢定與設計的敏感度也較高。為了使我們"
+"的檢定與設計在效果量為 %3$s 或以上時，具有足夠的敏感度（檢定力 > %1$s）以偵測"
+"到該 %2$s，我們將需要 %4$s。"
 
 msgid "a sample size of %1$s"
-msgstr ""
+msgstr "樣本數為 %1$s"
 
 msgid "The figure above shows two sampling distributions: the sampling distribution of the %1$s effect size when %2$s (left), and when %3$s%4$s (right)."
 msgstr ""
+"上圖顯示兩個抽樣分配：左側為當 %2$s 時 %1$s 效果量的抽樣分配，右側為當 "
+"%3$s%4$s 時的抽樣分配。"
 
 msgid "Both assume %1$s."
-msgstr ""
+msgstr "兩者皆假設 %1$s。"
 
 msgid "The vertical dashed lines show the %1$s we would set for a %2$s test with %3$s."
-msgstr ""
+msgstr "垂直虛線表示我們針對具有 %3$s 的 %2$s 檢定所設定的 %1$s。"
 
 msgid "When the observed effect size is far enough away from 0 to be more extreme than the %1$s we say we 'reject' the null hypothesis."
 msgstr ""
+"當觀察到的效果量與0的距離足夠遠，以致比 %1$s 更為極端時，我們稱之為「拒絕」虛"
+"無假設。"
 
 msgid "If the null hypothesis were true and %1$s the evidence would lead us to wrongly reject the null hypothesis at most %2$s%% of the time."
-msgstr ""
+msgstr "若虛無假設為真且 %1$s，則證據會導致我們錯誤拒絕虛無假設的機率最多為 %2$s%%。"
 
 msgid "On the other hand, if %1$s%2$s, the evidence would exceed the criterion  &mdash; and hence we would correctly claim that %3$s &mdash; at least %4$s%% of the time."
 msgstr ""
+"另一方面，若 %1$s%2$s，則證據會超過判斷準則 — 因此我們至少有 %4$s%% 的機率會"
+"正確地宣稱 %3$s。"
 
 msgid "The design's power for detecting effects of %1$s%2$s is thus %3$s."
-msgstr ""
+msgstr "因此，該設計對於偵測 %1$s%2$s 效果量的檢定力為 %3$s。"
 
 msgid "Due to the rounding of the sample size, the actual power can deviate from the target power."
-msgstr ""
+msgstr "由於樣本數進位的緣故，實際的檢定力可能會偏離目標檢定力。"
 
 msgid "Actual power:"
-msgstr ""
+msgstr "實際檢定力："
 
 msgid "a sample size of %s"
-msgstr ""
+msgstr "樣本數為 %s"
 
 msgid "We would need %1$s to reliably (with probability greater than or equal to %2$s) detect an effect size of %3$s%4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s."
 msgstr ""
+"若要可靠地（機率大於或等於 %2$s）偵測到效果量 %3$s%4$s，並假設偵測的判斷準則"
+"為 %5$s（其容許的最大型一誤差率為 %6$s），我們將需要 %1$s。"
 
 msgid "A design with %1$s will reliably (with probability greater than or equal to %2$s) detect  effect sizes of %3$s%4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s."
 msgstr ""
+"一個具有 %1$s 的設計，在假設偵測的判斷準則為 %5$s（其容許的最大型一誤差率為 "
+"%6$s）之下，將能可靠地（機率大於或等於 %2$s）偵測到效果量 %3$s%4$s。"
 
 msgid "A design with %1$s can detect effect sizes of %2$s%3$s with a probability of at least %4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s."
 msgstr ""
+"一個具有 %1$s 的設計，在假設偵測的判斷準則為 %5$s（其容許的最大型一誤差率為 "
+"%6$s）之下，能夠以至少 %4$s 的機率偵測到效果量 %2$s%3$s。"
 
 msgid "To evaluate the design specified in the table, we can consider how sensitive it is to true effects of increasing sizes; that is, are we likely to correctly conclude that %1$s when the effect size is large enough to care about?"
 msgstr ""
+"若要評估表格中指定的設計，我們可以考量其對於逐漸增大之真實效果的敏感度；亦即"
+"，當效果量大到值得關注時，我們是否有可能正確地推論出 %1$s？"
 
 msgid "The specified design leads to (an) unsolvable equation(s) while computing the values for this power table. Try to enter less extreme values for the parameters."
 msgstr ""
+"指定的設計在計算此檢定力表格的數值時導致方程式無解。請嘗試為參數設定較不極端"
+"的數值。"
 
 msgid "|h|"
 msgstr ""
 
 msgid "Power Contour"
-msgstr ""
+msgstr "檢定力等值線圖"
 
 msgid "Power Curve by Effect Size"
-msgstr ""
+msgstr "以效果量為變項的檢定力曲線"
 
 msgid "Power Curve by N"
-msgstr ""
+msgstr "以樣本數為變項的檢定力曲線"
 
 msgid "Power Demonstration"
-msgstr ""
+msgstr "檢定力示範"
 
 msgid "Synthetic Dataset"
-msgstr ""
+msgstr "合成資料集"
 
 msgid "Characteristics"
-msgstr ""
+msgstr "特徵"
 
 msgid "Post Hoc Power Analysis"
-msgstr ""
+msgstr "事後檢定力分析"
 
 msgid "The generated dataset must be saved as a .csv or .txt file."
-msgstr ""
+msgstr "生成的資料集必須儲存為 .csv 或 .txt 檔案。"
 
 msgid "The generated dataset could not be saved. Please make sure that the specified path exists and the specified csv file is closed."
-msgstr ""
+msgstr "無法儲存生成的資料集。請確認指定的路徑存在，且指定的 csv 檔案已關閉。"
 
 msgid "The synthetic dataset is saved as %s"
-msgstr ""
+msgstr "合成資料集已儲存為 %s"
 
 msgid "Hypothesized rate (%s)"
-msgstr ""
+msgstr "假設率（%s）"
 
 msgid "Comparison rate (%s)"
-msgstr ""
+msgstr "比較率（%s）"
 
 msgid "Effect size (%s)"
-msgstr ""
+msgstr "效果量（%s）"
 
 msgid "True effect size (%s)"
-msgstr ""
+msgstr "真實效果量（%s）"
 
 msgid "a sample size of"
-msgstr ""
+msgstr "樣本數為"
 
 msgid "effect sizes of %s"
-msgstr ""
+msgstr "效果量 %s"
 
 msgid "We would need %1$s to reliably (with probability greater than %2$s) detect %3$s%4$s%5$s, assuming a %6$s criterion for detection that allows for a maximum Type I error rate of %7$s."
 msgstr ""
+"若要可靠地（機率大於 %2$s）偵測到 %3$s%4$s%5$s，並假設偵測的判斷準則為 %6$s（"
+"其容許的最大型一誤差率為 %7$s），我們將需要 %1$s。"
 
 msgid "A design with %1$s will reliably (with probability greater than %2$s) detect  %3$s%4$s%5$s, assuming a %6$s criterion for detection that allows for a maximum Type I error rate of %7$s."
 msgstr ""
+"一個具有 %1$s 的設計，在假設偵測的判斷準則為 %6$s（其容許的最大型一誤差率為 "
+"%7$s）之下，將能可靠地（機率大於 %2$s）偵測到 %3$s%4$s%5$s。"
 
 msgid "A design with %1$s can detect %2$s%3$s%4$s with a probability of at least %5$s, assuming a %6$s criterion for detection that allows for a maximum Type I error rate of %7$s."
 msgstr ""
+"一個具有 %1$s 的設計，在假設偵測的判斷準則為 %6$s（其容許的最大型一誤差率為 "
+"%7$s）之下，能夠以至少 %5$s 的機率偵測到 %2$s%3$s%4$s。"
 
 msgid "To evaluate the design specified in the table, we can consider how sensitive it is to true effects of increasing sizes; that is, are we likely to correctly conclude that %s when the effect size is large enough to care about?"
 msgstr ""
+"若要評估表格中指定的設計，我們可以考量其對於逐漸增大之真實效果的敏感度；亦即"
+"，當效果量大到值得關注時，我們是否有可能正確地推論出 %s？"
 
 msgid "effect size"
-msgstr ""
+msgstr "效果量"
 
 msgid "absolute difference in proportions"
-msgstr ""
+msgstr "比例之絕對差異"
 
 msgid "Conversely, if one is satisfied to reliably detect only larger effect sizes, smaller sample sizes are needed. The solid black curve on the contour plot shows sample size/effect size combinations with a power of %1$s. The point shows the specified design and %2$s."
 msgstr ""
+"反之，若僅滿足於可靠地偵測較大的效果量，則所需的樣本數較小。等值線圖上的黑色"
+"實線曲線顯示出檢定力為 %1$s 時的樣本數與效果量組合。圖中的點則表示指定的設計"
+"與 %2$s。"
 
 msgid "sample sizes of %s"
-msgstr ""
+msgstr "樣本數 %s"
 
 msgid "effect sizes"
-msgstr ""
+msgstr "效果量"
 
 msgid "absolute differences in proportions"
-msgstr ""
+msgstr "比例之絕對差異"
 
 msgid "have power of at least %s"
-msgstr ""
+msgstr "具有至少 %s 的檢定力"
 
 msgid "only be sufficiently sensitive (power >%s)"
-msgstr ""
+msgstr "僅在檢定力 >%s 時才具備足夠的敏感度"
 
 msgid "sample sizes of at least %s"
-msgstr ""
+msgstr "至少 %s 的樣本數"
 
 msgid "The figure above shows two sampling distributions: the sampling distribution of the %1$s effect size when %2$s (left), and when %3$s (right)."
 msgstr ""
+"上圖顯示兩個抽樣分配：左側為當 %2$s 時 %1$s 效果量的抽樣分配，右側為當 %3$s "
+"時的抽樣分配。"
 
 msgid "Both assume %s."
-msgstr ""
+msgstr "兩者皆假設 %s。"
 
 msgid "When the observed effect size is far enough away from 0 to be more extreme than the %s we say we 'reject' the null hypothesis."
 msgstr ""
+"當觀察到的效果量與0的距離足夠遠，以致比 %s 更為極端時，我們稱之為「拒絕」虛無"
+"假設。"
 
 msgid "On the other hand, if %1$s, the evidence would exceed the criterion  &mdash; and hence we would correctly claim that %2$s &mdash; at least %3$s%% of the time."
 msgstr ""
+"另一方面，若 %1$s，則證據會超過判斷準則 — 因此我們至少有 %3$s%% 的機率會正確"
+"地宣稱 %2$s。"
 
 msgid "Variance ratio (%s)"
-msgstr ""
+msgstr "變異數比（%s）"
 
 msgid "Power by variance ratio"
-msgstr ""
+msgstr "以變異數比為變項的檢定力"
 
 msgid "True variance ratio (%s)"
-msgstr ""
+msgstr "真實變異數比（%s）"
 
 msgid "The power contour plot shows how the sensitivity of the test changes with the hypothetical variance ratio and the sample sizes in the design. As we increase the sample sizes, smaller variance ratios become reliably detectable."
 msgstr ""
+"檢定力等值線圖顯示檢定的敏感度如何隨假設變異數比及設計中的樣本數而變化。當樣"
+"本數增加時，較小的變異數比也能被可靠地偵測到。"
 
 msgid "Conversely, if one is satisfied to reliably detect only larger variance ratios, smaller sample sizes are needed. The point shows the power of specified  design and variance ratio."
 msgstr ""
+"反之，若僅滿足於可靠地偵測較大的變異數比，則所需的樣本數較小。圖中的點即表示"
+"指定設計與變異數比下的檢定力。"
 
 msgid "only be sufficiently sensitive (power > %1$s)"
-msgstr ""
+msgstr "僅在檢定力 > %1$s 時才具備足夠的敏感度"
 
 msgid "The power curve above shows how the sensitivity of the test and design is larger for larger variance ratios. If we obtained %1$s our test and design would %2$s to variance ratios of %3$s%4$s."
 msgstr ""
+"上方的檢定力曲線顯示，對於較大的變異數比，檢定與設計的敏感度也較高。若我們獲"
+"得 %1$s，則我們的檢定與設計對於 %3$s%4$s 的變異數比將 %2$s。"
 
 msgid "We would be more than likely to miss (power less than 50%%) variance ratios of %s."
-msgstr ""
+msgstr "對於變異數比 %s，我們將很有可能無法偵測到（檢定力低於 50%%）。"
 
 msgid "The power curve above shows how the sensitivity of the test and design is larger for larger sample sizes. In order for our test and design to have sufficient sensitivity (power > %1$s) to detect that %2$s when the variance ratio is %3$s or more extreme, we would need %4$s."
 msgstr ""
+"上方的檢定力曲線顯示，對於較大的樣本數，檢定與設計的敏感度也較高。為了使我們"
+"的檢定與設計在變異數比為 %3$s 或更極端時，具有足夠的敏感度（檢定力 > %1$s）以"
+"偵測到該 %2$s，我們將需要 %4$s。"
 
 msgid "The figure above shows two sampling distributions: the sampling distribution of the %1$s variance ratio when %2$s, and when %3$s%4$s."
 msgstr ""
+"上圖顯示兩個抽樣分配：當 %2$s 時的 %1$s 變異數比抽樣分配，以及當 %3$s%4$s 時"
+"的抽樣分配。"
 
 msgid "When the observed variance ratio is far enough away from 1 to be more extreme than the %1$s we say we 'reject' the null hypothesis."
 msgstr ""
+"當觀察到的變異數比與1的距離足夠遠，以致比 %1$s 更為極端時，我們稱之為「拒絕」"
+"虛無假設。"
 
 msgid "We would need %1$s to reliably (with probability greater than %2$s) detect a variance ratio of %3$s, assuming a %4$s criterion for detection that allows for a maximum Type I error rate of %5$s."
 msgstr ""
+"若要可靠地（機率大於 %2$s）偵測到變異數比 %3$s，並假設偵測的判斷準則為 %4$s（"
+"其容許的最大型一誤差率為 %5$s），我們將需要 %1$s。"
 
 msgid "A design with %1$s will reliably (with probability greater than %2$s) detect variance ratios of %3$s, assuming a %4$s criterion for detection that allows for a maximum Type I error rate of %5$s."
 msgstr ""
+"一個具有 %1$s 的設計，在假設偵測的判斷準則為 %4$s（其容許的最大型一誤差率為 "
+"%5$s）之下，將能可靠地（機率大於 %2$s）偵測到變異數比 %3$s。"
 
 msgid "A design with %1$s can detect variance ratios of %2$s with a probability of at least %3$s, assuming a %4$s criterion for detection that allows for a maximum Type I error rate of %5$s."
 msgstr ""
+"一個具有 %1$s 的設計，在假設偵測的判斷準則為 %4$s（其容許的最大型一誤差率為 "
+"%5$s）之下，能夠以至少 %3$s 的機率偵測到變異數比 %2$s。"
 
 msgid "To evaluate the design specified in the table, we can consider how sensitive it is to true effects of increasing sizes; that is, are we likely to correctly conclude that %1$s when the variance ratio is large enough to care about?"
 msgstr ""
+"若要評估表格中指定的設計，我們可以考量其對於逐漸增大之真實效果的敏感度；亦即"
+"，當變異數比大到值得關注時，我們是否有可能正確地推論出 %1$s？"
 
 msgid "To improve readability of this power table for a 'Two-sided' alternative hypothesis, only the intervals in the direction of the specified variance ratio are displayed under 'True variance ratio'"
 msgstr ""
+"為提升此檢定力表格在對立假設為「雙尾」時的可讀性，僅顯示指定變異數比方向下的"
+"區間於「真實變異數比」欄位中"
 
 msgid "Power Curve by variance ratio"
-msgstr ""
+msgstr "以變異數比為變項的檢定力曲線"
 
 msgid "Alternative hypothesis"
-msgstr ""
+msgstr "對立假設"
 
 msgid "Power by Effect Size"
-msgstr ""
+msgstr "以效果量為變項的檢定力"
 
 msgid "a sample size of %1$s in each group"
-msgstr ""
+msgstr "各組樣本數皆為 %1$s"
 
 msgid "group sample sizes of %1$s and %2$s respectively,"
-msgstr ""
+msgstr "組別樣本數分別為 %1$s 與 %2$s，"
 
 msgid "A design with %1$s will reliably (with probability greater than or equal to %2$s) detect effect sizes of %3$s%4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s."
 msgstr ""
+"一個具有 %1$s 的設計，在假設偵測的判斷準則為 %5$s（其容許的最大型一誤差率為 "
+"%6$s）之下，將能可靠地（機率大於或等於 %2$s）偵測到效果量 %3$s%4$s。"
 
 msgid "Conversely, if one is satisfied to reliably detect only larger effect sizes, smaller sample sizes are needed The point shows the power of the specified  design and effect size."
 msgstr ""
+"反之，若僅滿足於可靠地偵測較大的效果量，則所需的樣本數較小。圖中的點即表示指"
+"定設計與效果量下的檢定力。"
 
 msgid "sample sizes of %1$s in each group"
-msgstr ""
+msgstr "各組樣本數皆為 %1$s"
 
 msgid "group sample sizes of %1$s and %2$s, respectively"
-msgstr ""
+msgstr "組別樣本數分別為 %1$s 與 %2$s"
 
 msgid "sample sizes of at least %1$s in each group"
-msgstr ""
+msgstr "各組樣本數至少為 %1$s"
 
 msgid "group sample sizes of at least %1$s and %2$s, respectively"
-msgstr ""
+msgstr "組別樣本數分別至少為 %1$s 與 %2$s"
 
 msgid "On the other hand, if %1$s%2$s, the evidence would exceed the criterion &mdash; and hence we would correctly claim that %3$s &mdash; at least %4$s%% of the time."
 msgstr ""
+"另一方面，若 %1$s%2$s，則證據會超過判斷準則 — 因此我們至少有 %4$s%% 的機率會"
+"正確地宣稱 %3$s。"
 
 msgid "Power by Poisson Rate Ratio"
-msgstr ""
+msgstr "以卜瓦松率比為變項的檢定力"
 
 msgid "True Poisson rate ratio"
-msgstr ""
+msgstr "真實卜瓦松率比"
 
 msgid "a sample size of %s in each group"
-msgstr ""
+msgstr "各組樣本數為 %s"
 
 msgid "We would need %1$s to reliably (with probability greater than %2$s) detect a Poisson rate ratio of %3$s%4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s."
 msgstr ""
+"若要可靠地（機率大於 %2$s）偵測到卜瓦松率比 %3$s%4$s，並假設偵測的判斷準則為 "
+"%5$s（其容許的最大型一誤差率為 %6$s），我們將需要 %1$s。"
 
 msgid "A design with %1$s will reliably (with probability greater than %2$s) detect Poisson rate ratios of %3$s%4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s."
 msgstr ""
+"一個具有 %1$s 的設計，在假設偵測的判斷準則為 %5$s（其容許的最大型一誤差率為 "
+"%6$s）之下，將能可靠地（機率大於 %2$s）偵測到卜瓦松率比 %3$s%4$s。"
 
 msgid "A design with %1$s can detect Poisson rate ratios of %2$s%3$s with a probability of at least %4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s."
 msgstr ""
+"一個具有 %1$s 的設計，在假設偵測的判斷準則為 %5$s（其容許的最大型一誤差率為 "
+"%6$s）之下，能夠以至少 %4$s 的機率偵測到卜瓦松率比 %2$s%3$s。"
 
 msgid "The power contour plot shows how the sensitivity of the test changes with the hypothetical Poisson rate ratio and the sample sizes in the design. As we increase the sample sizes, Poisson rate ratios closer to one become reliably detectable."
 msgstr ""
+"檢定力等值線圖顯示檢定的敏感度如何隨假設卜瓦松率比及設計中的樣本數而變化。當"
+"樣本數增加時，較接近1的卜瓦松率比也能被可靠地偵測到。"
 
 msgid "Conversely, if one is satisfied to reliably detect only larger effects, smaller sample sizes are needed. The solid black curve on the contour plot shows sample size/Poisson rate ratios combinations with a power of %s. The point shows the specified  design and Poisson rate ratio."
 msgstr ""
+"反之，若僅滿足於可靠地偵測較大的效果，則所需的樣本數較小。等值線圖上的黑色實"
+"線曲線顯示出檢定力為 %s 時的樣本數與卜瓦松率比組合。圖中的點則表示指定的設計"
+"與卜瓦松率比。"
 
 msgid "sample sizes of %s in each group"
-msgstr ""
+msgstr "各組樣本數為 %s"
 
 msgid "sample sizes of at least %s in each group"
-msgstr ""
+msgstr "各組樣本數至少為 %s"
 
 msgid "True variance ratio"
-msgstr ""
+msgstr "真實變異數比"
 
 msgid "To evaluate the design specified in the table, we can consider how sensitive it is to true effects of increasing sizes; that is, are we likely to correctly conclude that %1$s when the variance ratio is extreme enough to care about?"
 msgstr ""
+"若要評估表格中指定的設計，我們可以考量其對於逐漸增大之真實效果的敏感度；亦即"
+"，當變異數比極端到值得關注時，我們是否有可能正確地推論出 %1$s？"
 
 msgid "The power contour plot shows how the sensitivity of the test changes with the hypothetical variance ratio and the sample sizes in the design. As we increase the sample sizes, less extreme variance ratios become reliably detectable."
 msgstr ""
+"檢定力等值線圖顯示檢定的敏感度如何隨假設變異數比及設計中的樣本數而變化。當樣"
+"本數增加時，較不極端的變異數比也能被可靠地偵測到。"
 
 msgid "Conversely, if one is satisfied to reliably detect only more extreme variance ratios, smaller sample sizes are needed. The point shows the power of the specified design and variance ratio."
 msgstr ""
+"反之，若僅滿足於可靠地偵測更極端的變異數比，則所需的樣本數較小。圖中的點即表"
+"示指定設計與變異數比下的檢定力。"
 
 msgid "The power curve above shows how the sensitivity of the test and design is larger for more extreme variance ratios. If we obtained %1$s our test and design would %2$s to variance ratios of %3$s%4$s."
 msgstr ""
+"上方的檢定力曲線顯示，對於更極端的變異數比，檢定與設計的敏感度也較高。若我們"
+"獲得 %1$s，則我們的檢定與設計對於 %3$s%4$s 的變異數比將 %2$s。"
 
 msgid "We would be more than likely to miss (power less than 50%%) variance ratios of %1$s."
-msgstr ""
+msgstr "對於變異數比 %1$s，我們將很有可能無法偵測到（檢定力低於 50%%）。"
 
 msgid "The specified design leads to (an) unsolvable equation(s) while constructing the curves for the Power Demonstration. Try to enter less extreme values for the parameters"
 msgstr ""
+"指定的設計在建構檢定力展示曲線時導致方程式無解。請嘗試為參數設定較不極端的數"
+"值"
 
 msgid "Note."
-msgstr ""
+msgstr "備註。"
 
 msgid "When the variance ratio is less than 1, the inverse of the variance ratio is displayed. Therefore, the first and second degrees of freedom of both F-distributions switched places."
 msgstr ""
+"當變異數比小於1時，將顯示變異數比的倒數。因此，兩個F分配的第一與第二自由度會"
+"互換位置。"
 
 msgid "%1$sThe figure above shows two sampling distributions: the sampling distribution of the %1$s variance ratio when %2$s (left), and when %3$s%4$s (right)."
 msgstr ""
+"%1$s上圖顯示兩個抽樣分配：左側為當 %2$s 時的 %1$s 變異數比抽樣分配，右側為當 "
+"%3$s%4$s 時的抽樣分配。"
 
 msgid "On the other hand, if %1$s, the evidence would exceed the criterion  &mdash; and hence we would correctly claim that %2$s1 &mdash; at least %3$s%% of the time."
 msgstr ""
+"另一方面，若 %1$s，則證據會超過判斷準則 — 因此我們至少有 %3$s%% 的機率會正確"
+"地宣稱 %2$s1。"
 
 msgid "The design's power for detecting effects of %1$s%2$s%3$s is thus %4$s."
-msgstr ""
+msgstr "因此，該設計對於偵測 %1$s%2$s%3$s 效果量的檢定力為 %4$s。"
 
 msgid "The power curve above shows how the sensitivity of the test and design is larger for larger sample sizes. In order for our test and design to have sufficient sensitivity (power > %1$s) to detect that %2$s when the effect size is %3$s or larger, we would need %4$s."
 msgstr ""
+"上方的檢定力曲線顯示，對於較大的樣本數，檢定與設計的敏感度也較高。為了使我們"
+"的檢定與設計在效果量為 %3$s 或以上時，具有足夠的敏感度（檢定力 > %1$s）以偵測"
+"到該 %2$s，我們將需要 %4$s。"
 
 msgid "Cohen's"
 msgstr ""
