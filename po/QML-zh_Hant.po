@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2026-04-12 22:13+0000\n"
+"Last-Translator: 陳正昌 <chencc99@gmail.com>\n"
+"Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
+"projects/jasp/jasppower-qml/zh_Hant/>\n"
+"Language: zh_Hant\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.17-dev\n"
 "X-Language: zh_Hant\n"
 "X-Qt-Contexts: true\n"
 
@@ -25,11 +31,11 @@ msgstr "參數"
 
 msgctxt "Power|"
 msgid "I want to calculate the ..."
-msgstr ""
+msgstr "我想計算……"
 
 msgctxt "Power|"
 msgid "Direction of the effect:"
-msgstr ""
+msgstr "效果方向："
 
 msgctxt "Power|"
 msgid "p₁ > p₀"
@@ -57,11 +63,11 @@ msgstr ""
 
 msgctxt "Power|"
 msgid "Hypothesized proportion"
-msgstr ""
+msgstr "假設比例"
 
 msgctxt "Power|"
 msgid "Baseline proportion"
-msgstr ""
+msgstr "基準比例"
 
 msgctxt "Power|"
 msgid "p₀"
@@ -73,7 +79,7 @@ msgstr ""
 
 msgctxt "Power|"
 msgid "Comparison proportion"
-msgstr ""
+msgstr "比較比例"
 
 msgctxt "Power|"
 msgid "p₁"
@@ -81,7 +87,7 @@ msgstr ""
 
 msgctxt "Power|"
 msgid "Minimal effect size of interest:"
-msgstr ""
+msgstr "最小關注效果量："
 
 msgctxt "Power|"
 msgid "|δ|"
@@ -97,7 +103,7 @@ msgstr ""
 
 msgctxt "Power|"
 msgid "Minimal desired power:"
-msgstr ""
+msgstr "最低期望檢定力："
 
 msgctxt "Power|"
 msgid "(1-β)"
@@ -105,7 +111,7 @@ msgstr ""
 
 msgctxt "Power|"
 msgid "Type I error rate:"
-msgstr ""
+msgstr "第一類型錯誤率："
 
 msgctxt "Power|"
 msgid "α"
@@ -113,11 +119,11 @@ msgstr ""
 
 msgctxt "Power|"
 msgid "Sample size:"
-msgstr ""
+msgstr "樣本數："
 
 msgctxt "Power|"
 msgid "Sample size per group:"
-msgstr ""
+msgstr "每組樣本數："
 
 msgctxt "Power|"
 msgid "N"
@@ -125,7 +131,7 @@ msgstr ""
 
 msgctxt "Power|"
 msgid "Sample size ratio:"
-msgstr ""
+msgstr "樣本數比例："
 
 msgctxt "Power|"
 msgid "N₁/N₂"
@@ -133,7 +139,7 @@ msgstr ""
 
 msgctxt "Power|"
 msgid "Alternative Hypothesis:"
-msgstr ""
+msgstr "對立假設："
 
 msgctxt "Power|"
 msgid "H₁"
@@ -141,31 +147,31 @@ msgstr ""
 
 msgctxt "Power|"
 msgid "Plots"
-msgstr ""
+msgstr "圖"
 
 msgctxt "Power|"
 msgid "Power contour plot"
-msgstr ""
+msgstr "檢定力等高線圖"
 
 msgctxt "Power|"
 msgid "Power demonstration"
-msgstr ""
+msgstr "檢定力示範"
 
 msgctxt "Power|"
 msgid "Power curve by effect size"
-msgstr ""
+msgstr "以效果量為變項的檢定力曲線"
 
 msgctxt "Power|"
 msgid "Power curve by N"
-msgstr ""
+msgstr "以樣本數為變項的檢定力曲線"
 
 msgctxt "Power|"
 msgid "Explanatory text"
-msgstr ""
+msgstr "說明文字"
 
 msgctxt "Power|"
 msgid "Data Generation"
-msgstr ""
+msgstr "資料生成"
 
 msgctxt "Power|"
 msgid "x̅"
@@ -205,7 +211,7 @@ msgstr ""
 
 msgctxt "Power|"
 msgid "Effect direction"
-msgstr ""
+msgstr "效果方向"
 
 msgctxt "Power|"
 msgid "x̅ < μ₀"
@@ -225,16 +231,16 @@ msgstr ""
 
 msgctxt "Power|"
 msgid "Export synthetic dataset"
-msgstr ""
+msgstr "匯出合成資料集"
 
 msgctxt "Power|"
 msgid "Save as"
-msgstr ""
+msgstr "另存為"
 
 msgctxt "Power|"
 msgid "e.g., location/power.csv"
-msgstr ""
+msgstr "例如：位置/power.csv"
 
 msgctxt "Power|"
 msgid "Save generated dataset"
-msgstr ""
+msgstr "儲存生成的資料集"
