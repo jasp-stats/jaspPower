@@ -16,6 +16,12 @@
 
 # jaspPower (development version)
 
+---
+
+
+# jaspModuleTemplate 0.96.6
+## Added
+* Fixed a bug in the power demonstration graph of the one sample z-test. Now n correctly determines the precision (width) of the distributions, making the visual consistent with the numerical result.  
 
 
 ---
