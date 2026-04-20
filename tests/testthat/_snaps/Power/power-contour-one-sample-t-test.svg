@@ -89,6 +89,6 @@
 <text x='690.89' y='112.27' style='font-size: 17.00px; font-family: sans;' textLength='23.63px' lengthAdjust='spacingAndGlyphs'>0.7</text>
 <text x='690.89' y='92.43' style='font-size: 17.00px; font-family: sans;' textLength='23.63px' lengthAdjust='spacingAndGlyphs'>0.8</text>
 <text x='690.89' y='72.59' style='font-size: 17.00px; font-family: sans;' textLength='23.63px' lengthAdjust='spacingAndGlyphs'>0.9</text>
-<text x='354.95' y='11.70' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='311.82px' lengthAdjust='spacingAndGlyphs'>mac-power-contour-paired-samples-t-test</text>
+<text x='354.95' y='11.70' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='246.64px' lengthAdjust='spacingAndGlyphs'>power-contour-one-sample-t-test</text>
 </g>
 </svg>

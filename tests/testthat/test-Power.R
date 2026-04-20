@@ -1,33 +1,3 @@
-library(jaspGraphs)
-
-# Some plot snapshots slightly differ by operating system, this code will first
-# decide which os-specific variant to use and will then use the correct variant
-# and make sure that unused variants are not automatically deleted
-running_on_mac <- tolower(Sys.info()[["sysname"]]) == "darwin"
-power_contour_variant <- if (running_on_mac) "mac" else "default"
-possible_power_contour_variants <- c("mac", "default")
-
-test_variant_dependent_plot <- function(variant, all_variants, plot, name) {
-  # Use the 3rd edition of test_that to use announce_snapshot_file
-  testthat::local_edition(3)
-
-  # Function to combine the variant and test/file name, just used here
-  # to guarantee consistenccy
-  make_variant_name <- function(variant, name) {
-    paste(variant, name, sep = "-")
-  }
-  alternative_names <- make_variant_name(
-    all_variants[all_variants != variant],
-    name
-  )
-  actual_test_name <- make_variant_name(variant, name)
-
-  # Register alternative files so they don't get deleted / trigger warnings
-  testthat::announce_snapshot_file(paste0(alternative_names, ".svg"))
-
-  # Run actual test
-  jaspTools::expect_equal_plots(plot, actual_test_name)
-}
 
 # ==== Test Different Types of Tests ====
 test_that("Results for Power Analysis for Independent Samples T-Test match", {
@@ -133,7 +103,7 @@ results <- jaspTools::runAnalysis("Power", NULL, options)
 test_that("Power Contour plot matches", {
   plotName <- results[["results"]][["powerContour"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  test_variant_dependent_plot(variant = power_contour_variant, all_variants = possible_power_contour_variants, testPlot, "power-contour-independent-samples-t-test")
+  jaspTools::expect_equal_plots(testPlot, "power-contour-independent-samples-t-test")
 })
 
 test_that("Power Curve by Effect Size plot matches", {
@@ -193,7 +163,7 @@ results <- jaspTools::runAnalysis("Power", NULL, options)
 test_that("Power Contour plot matches", {
   plotName <- results[["results"]][["powerContour"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  test_variant_dependent_plot(variant = power_contour_variant, all_variants = possible_power_contour_variants, testPlot, "power-contour-paired-samples-t-test")
+  jaspTools::expect_equal_plots(testPlot, "power-contour-paired-samples-t-test")
 })
 
 test_that("Power Curve by Effect Size plot matches", {
@@ -253,7 +223,7 @@ results <- jaspTools::runAnalysis("Power", NULL, options)
 test_that("Power Contour plot matches", {
   plotName <- results[["results"]][["powerContour"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  test_variant_dependent_plot(variant = power_contour_variant, all_variants = possible_power_contour_variants, testPlot, "power-contour-one-sample-t-test")
+  jaspTools::expect_equal_plots(testPlot, "power-contour-one-sample-t-test")
 })
 
 test_that("Power Curve by Effect Size plot matches", {
@@ -313,7 +283,7 @@ results <- jaspTools::runAnalysis("Power", NULL, options)
 test_that("Power Contour plot matches", {
   plotName <- results[["results"]][["powerContour"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  test_variant_dependent_plot(variant = power_contour_variant, all_variants = possible_power_contour_variants, testPlot, "power-contour-one-sample-z-test")
+  jaspTools::expect_equal_plots(testPlot, "power-contour-one-sample-z-test")
 })
 
 test_that("Power Curve by Effect Size plot matches", {
@@ -373,7 +343,7 @@ results <- jaspTools::runAnalysis("Power", NULL, options)
 test_that("Power Contour plot matches", {
   plotName <- results[["results"]][["powerContour"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  test_variant_dependent_plot(variant = power_contour_variant, all_variants = possible_power_contour_variants, testPlot, "power-contour-one-sample-proportion")
+  jaspTools::expect_equal_plots(testPlot, "power-contour-one-sample-proportion")
 })
 
 test_that("Power Curve by Effect Size plot matches", {
@@ -433,7 +403,7 @@ results <- jaspTools::runAnalysis("Power", NULL, options)
 test_that("Power Contour plot matches", {
   plotName <- results[["results"]][["powerContour"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  test_variant_dependent_plot(variant = power_contour_variant, all_variants = possible_power_contour_variants, testPlot, "power-contour-two-samples-proportion")
+  jaspTools::expect_equal_plots(testPlot, "power-contour-two-samples-proportion")
 })
 
 test_that("Power Curve by Effect Size plot matches", {
@@ -494,7 +464,7 @@ results <- jaspTools::runAnalysis("Power", NULL, options)
 test_that("Power Contour plot matches", {
   plotName <- results[["results"]][["powerContour"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  test_variant_dependent_plot(variant = power_contour_variant, all_variants = possible_power_contour_variants, testPlot, "power-contour-one-sample-variance-ratio")
+  jaspTools::expect_equal_plots(testPlot, "power-contour-one-sample-variance-ratio")
 })
 
 test_that("Power Curve by variance ratio plot matches", {
@@ -554,7 +524,7 @@ results <- jaspTools::runAnalysis("Power", NULL, options)
 test_that("Power Contour plot matches", {
   plotName <- results[["results"]][["powerContour"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  test_variant_dependent_plot(variant = power_contour_variant, all_variants = possible_power_contour_variants, testPlot, "power-contour-two-samples-variance-ratio")
+  jaspTools::expect_equal_plots(testPlot, "power-contour-two-samples-variance-ratio")
 })
 
 test_that("Power Curve by variance ratio plot matches", {
