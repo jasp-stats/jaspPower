@@ -767,23 +767,25 @@
   )
 
 
+  ncp <- sqrt(n) * d
+
   if (alt == "two.sided") {
-    crit <- qnorm(p = 1 - alpha / 2)
+    crit <- qnorm(p = 1 - alpha / 2) / sqrt(n)
   } else {
-    crit <- qnorm(p = 1 - alpha)
+    crit <- qnorm(p = 1 - alpha) / sqrt(n)
   }
 
   if (lst$es > 0) {
-    xlims <- c(qnorm(.001), qnorm(.999, mean = d))
+    xlims <- c(qnorm(.001), qnorm(.999, mean = ncp)) / sqrt(n)
   } else {
-    xlims <- c(qnorm(.001, mean = d), qnorm(.999))
+    xlims <- c(qnorm(.001, mean = ncp), qnorm(.999)) / sqrt(n)
   }
 
-  y.max <- dnorm(0)
+  y.max <- dnorm(0) * sqrt(n)
 
   xx <- seq(xlims[1], xlims[2], len = 100)
-  yy.null <- dnorm(xx)
-  yy.alt <- dnorm(xx, mean = d)
+  yy.null <- dnorm(xx * sqrt(n)) * sqrt(n)
+  yy.alt  <- dnorm(xx * sqrt(n), mean = ncp) * sqrt(n)
 
   curves <- data.frame(
     x = rep(xx, 2),
