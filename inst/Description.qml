@@ -15,4 +15,10 @@ Description
 		title:	qsTr("Power")
 		func: 	"Power"
 	}
+
+	Analysis
+	{
+		title:	qsTr("Evidence")
+		func: 	"Evidence"
+	}
 }

@@ -1,3 +1,4 @@
 import(jaspBase)
+export(Evidence)
 export(Power)
 
