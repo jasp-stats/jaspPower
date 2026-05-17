@@ -283,7 +283,7 @@ Form
 					{ label: qsTr("Normal-moment (spread)"),  value: "normalMomentSpread" }
 				] :
 				[
-					{ label: qsTr("t prior"), value: "t" }
+					{ label: qsTr("Student-t"), value: "t" }
 				])
 			}
 

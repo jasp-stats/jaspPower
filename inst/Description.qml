@@ -10,10 +10,22 @@ Description
 	hasWrappers: 	false
 	preloadData:  	false
 	
+	GroupTitle
+	{
+		title:		qsTr("Classical")
+		icon:		"power.svg"
+	}
+
 	Analysis
 	{
 		title:	qsTr("Power")
 		func: 	"Power"
+	}
+
+	GroupTitle
+	{
+		title:		qsTr("Bayesian")
+		icon:		"powerBayes.svg"
 	}
 
 	Analysis
