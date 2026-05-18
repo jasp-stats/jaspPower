@@ -1,22 +1,26 @@
 Evidence <- function(jaspResults, dataset, options) {
-  settings <- .evPrepareSettings(options)
-  result   <- try(.evComputeResult(settings), silent = TRUE)
+  settings   <- .evPrepareSettings(options)
+  validation <- try(.evValidateSettings(settings), silent = TRUE)
+  result     <- if (jaspBase::isTryError(validation)) validation else try(.evComputeResult(settings), silent = TRUE)
 
   .evResultsTable(jaspResults, settings, result)
   .evDesignOutcomeTable(jaspResults, settings, result)
-  .evPriorsTable(jaspResults, settings)
+  .evPriorsTable(jaspResults, settings, validation)
 
   if (isTRUE(options[["text"]]))
     .evText(jaspResults, settings, result)
 
-  if (isTRUE(options[["evidenceByEffectSize"]]) && !settings[["isBinomial"]])
+  if (isTRUE(options[["generateRCode"]]))
+    .evRCode(jaspResults, settings, result, validation)
+
+  if (isTRUE(options[["evidenceByEffectSize"]]))
     .evEffectSizePlot(jaspResults, settings, result)
 
   if (isTRUE(options[["evidenceBySampleSize"]]))
     .evSampleSizePlot(jaspResults, settings, result)
 
   if (isTRUE(options[["priorDistribution"]]))
-    .evPriorPlot(jaspResults, settings)
+    .evPriorPlot(jaspResults, settings, validation)
 
   return()
 }
@@ -24,14 +28,15 @@ Evidence <- function(jaspResults, dataset, options) {
 .evDependencies <- c(
   "test", "calculation", "evidenceTarget", "bfThreshold",
   "evidenceProbability", "sampleSize", "sampleSizeRatio", "standardDeviation",
+  "generalZParameterization", "unitInformationSd",
   "alternative", "nullPriorDistribution", "nullValue", "nullProportion",
-  "analysisPriorDistribution", "analysisPriorMean", "analysisPriorSd",
-  "momentPriorSpread", "momentPriorMode", "tPriorLocation", "tPriorScale",
-  "tPriorDf", "analysisPriorSuccesses", "analysisPriorFailures",
+  "analysisPriorDistribution", "analysisPriorPoint", "analysisPriorMean",
+  "analysisPriorSd", "momentPriorSpread", "momentPriorMode", "tPriorLocation",
+  "tPriorScale", "tPriorDf", "analysisPriorSuccesses", "analysisPriorFailures",
   "designPrior", "designPriorMean", "designPriorSd", "binomialDesignPrior",
   "designProportion", "designPriorSuccesses", "designPriorFailures",
   "designPriorLower", "designPriorUpper", "sampleSizeRangeMin",
-  "sampleSizeRangeMax"
+  "sampleSizeRangeMax", "drangeMode", "drangeLower", "drangeUpper"
 )
 
 .evPrepareSettings <- function(options) {
@@ -43,7 +48,8 @@ Evidence <- function(jaspResults, dataset, options) {
     testType             = .evTestType(test),
     isIndependentSamples = grepl("independentSamples", test, fixed = TRUE),
     isTTest              = grepl("TTest", test, fixed = TRUE),
-    isZTest              = grepl("ZTest", test, fixed = TRUE),
+    isGeneralZ           = identical(test, "generalZApproximation"),
+    isZTest              = grepl("ZTest", test, fixed = TRUE) || identical(test, "generalZApproximation"),
     isBinomial           = identical(test, "oneSampleProportion"),
     calculation          = options[["calculation"]],
     evidenceTarget       = options[["evidenceTarget"]],
@@ -72,6 +78,8 @@ Evidence <- function(jaspResults, dataset, options) {
 .evAddContinuousSettings <- function(settings, options) {
   settings[["nullValue"]]         <- options[["nullValue"]]
   settings[["standardDeviation"]] <- options[["standardDeviation"]]
+  settings[["generalZParameterization"]] <- options[["generalZParameterization"]]
+  settings[["unitInformationSd"]]        <- options[["unitInformationSd"]]
   settings[["alternative"]]       <- switch(options[["alternative"]], twoSided = "two.sided", options[["alternative"]])
   settings[["n1"]]                <- options[["sampleSize"]]
   settings[["n2"]]                <- if (settings[["isIndependentSamples"]]) ceiling(options[["sampleSize"]] * options[["sampleSizeRatio"]]) else options[["sampleSize"]]
@@ -82,8 +90,8 @@ Evidence <- function(jaspResults, dataset, options) {
 
   if (settings[["isZTest"]]) {
     settings[["analysisPriorDistribution"]] <- options[["analysisPriorDistribution"]]
-    settings[["analysisPriorMean"]]         <- options[["analysisPriorMean"]]
-    settings[["analysisPriorSd"]]           <- options[["analysisPriorSd"]]
+    settings[["analysisPriorMean"]]         <- if (options[["analysisPriorDistribution"]] == "point") options[["analysisPriorPoint"]] else options[["analysisPriorMean"]]
+    settings[["analysisPriorSd"]]           <- if (options[["analysisPriorDistribution"]] == "point") 0 else options[["analysisPriorSd"]]
     settings[["momentPriorSpread"]]         <- if (options[["analysisPriorDistribution"]] == "normalMomentMode") {
       options[["momentPriorMode"]] / sqrt(2)
     } else {
@@ -95,6 +103,10 @@ Evidence <- function(jaspResults, dataset, options) {
     settings[["tPriorLocation"]]            <- options[["tPriorLocation"]]
     settings[["tPriorScale"]]               <- options[["tPriorScale"]]
     settings[["tPriorDf"]]                  <- options[["tPriorDf"]]
+    settings[["tPriorLocationRelative"]]    <- settings[["tPriorLocation"]] - settings[["nullValue"]]
+    settings[["drangeMode"]]                <- options[["drangeMode"]]
+    settings[["drangeLower"]]               <- options[["drangeLower"]]
+    settings[["drangeUpper"]]               <- options[["drangeUpper"]]
   }
 
   return(settings)
@@ -120,11 +132,15 @@ Evidence <- function(jaspResults, dataset, options) {
 }
 
 .evComputeResult <- function(settings) {
+  .evValidateSettings(settings)
+
   if (settings[["calculation"]] == "sampleSize") {
     n1 <- .evFindSampleSize(settings)
   } else {
     n1 <- settings[["sampleSize"]]
   }
+
+  .evValidateSampleSize(settings, n1)
 
   probability <- .evEvidenceProbability(settings, n1 = n1)
   n2          <- .evSampleSizeSecondGroup(settings, n1)
@@ -142,7 +158,8 @@ Evidence <- function(jaspResults, dataset, options) {
   lowerTail <- target == "h1"
 
   if (settings[["isBinomial"]]) {
-    return(.evEvidenceProbabilityBinomial(settings, n1, k, lowerTail))
+    designArguments <- if (is.null(designPriorMean)) NULL else list(dp = designPriorMean)
+    return(.evEvidenceProbabilityBinomial(settings, n1, k, lowerTail, designArguments))
   }
 
   if (is.null(designPriorMean))
@@ -159,7 +176,7 @@ Evidence <- function(jaspResults, dataset, options) {
 .evEvidenceProbabilityZ <- function(settings, n1, k, lowerTail, designPriorMean, designPriorSd) {
   unitSd <- .evZUnitStandardDeviation(settings, n1)
 
-  if (settings[["analysisPriorDistribution"]] == "normal") {
+  if (settings[["analysisPriorDistribution"]] %in% c("point", "normal")) {
     return(bfpwr::pbf01(
       k          = k,
       n          = n1,
@@ -194,14 +211,15 @@ Evidence <- function(jaspResults, dataset, options) {
     n1          = n1,
     n2          = n2,
     null        = settings[["nullValue"]],
-    plocation   = settings[["tPriorLocation"]],
+    plocation   = settings[["tPriorLocationRelative"]],
     pscale      = settings[["tPriorScale"]],
     pdf         = settings[["tPriorDf"]],
     dpm         = designPriorMean,
     dpsd        = designPriorSd,
     type        = settings[["testType"]],
     alternative = settings[["alternative"]],
-    lower.tail  = lowerTail
+    lower.tail  = lowerTail,
+    drange      = .evTSearchRange(settings, n1, k)
   ))
 }
 
@@ -269,7 +287,7 @@ Evidence <- function(jaspResults, dataset, options) {
     ))
   }
 
-  if (settings[["isZTest"]] && settings[["analysisPriorDistribution"]] == "normal") {
+  if (settings[["isZTest"]] && settings[["analysisPriorDistribution"]] %in% c("point", "normal")) {
     return(bfpwr::nbf01(
       k          = settings[["eventK"]],
       power      = settings[["targetProbability"]],
@@ -301,11 +319,17 @@ Evidence <- function(jaspResults, dataset, options) {
   if (settings[["isIndependentSamples"]] && settings[["sampleSizeRatio"]] != 1)
     stop(gettext("Sample-size search for unequal group sizes is handled internally."))
 
+  if (settings[["drangeMode"]] == "custom")
+    stop(gettext("Sample-size search for custom t search ranges is handled internally."))
+
+  if (!isTRUE(all.equal(settings[["nullValue"]], 0)))
+    stop(gettext("Sample-size search for nonzero null values is handled internally."))
+
   return(bfpwr::ntbf01(
     k           = settings[["eventK"]],
     power       = settings[["targetProbability"]],
     null        = settings[["nullValue"]],
-    plocation   = settings[["tPriorLocation"]],
+    plocation   = settings[["tPriorLocationRelative"]],
     pscale      = settings[["tPriorScale"]],
     pdf         = settings[["tPriorDf"]],
     type        = settings[["testType"]],
@@ -378,7 +402,7 @@ Evidence <- function(jaspResults, dataset, options) {
     table$addFootnote(gettext("Due to rounding of the sample size, the actual evidence probability can deviate from the target probability."))
 
   if (settings[["isIndependentSamples"]])
-    table$addFootnote(gettext("For independent samples, N\u2081 is the sample size in group 1 and N\u2082 is rounded up from the requested sample-size ratio."))
+    table$addFootnote(gettext("For independent samples, N\u2081 is the sample size in group 1 and N\u2082 is rounded up from the requested N\u2082/N\u2081 sample-size ratio."))
 }
 
 .evAddResultsTableColumns <- function(table, settings) {
@@ -499,7 +523,7 @@ Evidence <- function(jaspResults, dataset, options) {
   return(.evEvidenceProbabilityBinomial(settings, n1, k, lowerTail, designArguments))
 }
 
-.evPriorsTable <- function(jaspResults, settings) {
+.evPriorsTable <- function(jaspResults, settings, validation) {
   if (!is.null(jaspResults[["evidencePriors"]]))
     return()
 
@@ -511,6 +535,11 @@ Evidence <- function(jaspResults, dataset, options) {
   table$addColumnInfo(name = "section", title = gettext("Section"), type = "string")
   table$addColumnInfo(name = "distribution", title = gettext("Distribution"), type = "string")
   table$addColumnInfo(name = "parameters", title = gettext("Parameters"), type = "string")
+
+  if (jaspBase::isTryError(validation)) {
+    table$setError(gettextf("Unable to describe priors: %1$s", .evCleanError(validation)))
+    return()
+  }
 
   table$setData(data.frame(
     section      = c(gettext("Prior Under H\u2080"), gettext("Prior Under H\u2081"), gettext("Design Prior")),
@@ -570,6 +599,200 @@ Evidence <- function(jaspResults, dataset, options) {
   )
 }
 
+.evRCode <- function(jaspResults, settings, result, validation) {
+  if (!is.null(jaspResults[["evidenceRCode"]]))
+    return()
+
+  html <- createJaspHtml(title = gettext("R Code"))
+  html$dependOn(c(.evDependencies, "generateRCode"))
+  html$position <- 8
+  jaspResults[["evidenceRCode"]] <- html
+
+  if (jaspBase::isTryError(validation)) {
+    html[["text"]] <- gettextf("Unable to generate R code: %1$s", .evCleanError(validation))
+    return()
+  }
+
+  code <- try(.evBfpwrCall(settings, result), silent = TRUE)
+  if (jaspBase::isTryError(code)) {
+    html[["text"]] <- gettextf("Unable to generate R code: %1$s", .evCleanError(code))
+    return()
+  }
+
+  html[["text"]] <- .evCodeHtml(code)
+}
+
+.evBfpwrCall <- function(settings, result = NULL) {
+  if (settings[["isBinomial"]])
+    return(.evBinomialBfpwrCall(settings))
+
+  if (settings[["isZTest"]])
+    return(.evZBfpwrCall(settings))
+
+  return(.evTBfpwrCall(settings))
+}
+
+.evBinomialBfpwrCall <- function(settings) {
+  if (settings[["calculation"]] == "sampleSize") {
+    args <- c(
+      list(
+        k          = settings[["eventK"]],
+        power      = settings[["targetProbability"]],
+        p0         = settings[["nullProportion"]],
+        type       = settings[["nullPriorDistribution"]],
+        a          = settings[["analysisPriorSuccesses"]],
+        b          = settings[["analysisPriorFailures"]],
+        lower.tail = settings[["lowerTail"]],
+        nrange     = c(.evMinimumSampleSize(settings), ceiling(settings[["rangeMax"]]))
+      ),
+      .evBinomialDesignArguments(settings)
+    )
+
+    return(.evFormatRCall("bfpwr::nbinbf01", args))
+  }
+
+  k         <- if (settings[["evidenceTarget"]] == "h1") 1 / settings[["bfThreshold"]] else settings[["bfThreshold"]]
+  lowerTail <- settings[["evidenceTarget"]] == "h1"
+  args <- c(
+    list(
+      k          = k,
+      n          = settings[["sampleSize"]],
+      p0         = settings[["nullProportion"]],
+      type       = settings[["nullPriorDistribution"]],
+      a          = settings[["analysisPriorSuccesses"]],
+      b          = settings[["analysisPriorFailures"]],
+      lower.tail = lowerTail
+    ),
+    .evBinomialDesignArguments(settings)
+  )
+
+  return(.evFormatRCall("bfpwr::pbinbf01", args))
+}
+
+.evZBfpwrCall <- function(settings) {
+  normalPrior <- settings[["analysisPriorDistribution"]] %in% c("point", "normal")
+
+  if (settings[["calculation"]] == "sampleSize") {
+    n <- .evMinimumSampleSize(settings)
+    if (normalPrior) {
+      args <- list(
+        k          = settings[["eventK"]],
+        power      = settings[["targetProbability"]],
+        usd        = .evZUnitStandardDeviation(settings, n),
+        null       = settings[["nullValue"]],
+        pm         = settings[["analysisPriorMean"]],
+        psd        = settings[["analysisPriorSd"]],
+        dpm        = settings[["designPriorMean"]],
+        dpsd       = settings[["designPriorSd"]],
+        nrange     = c(n, ceiling(settings[["rangeMax"]])),
+        lower.tail = settings[["lowerTail"]]
+      )
+
+      return(.evFormatRCall("bfpwr::nbf01", args))
+    }
+
+    args <- list(
+      k          = settings[["eventK"]],
+      power      = settings[["targetProbability"]],
+      usd        = .evZUnitStandardDeviation(settings, n),
+      null       = settings[["nullValue"]],
+      psd        = settings[["momentPriorSpread"]],
+      dpm        = settings[["designPriorMean"]],
+      dpsd       = settings[["designPriorSd"]],
+      nrange     = c(n, ceiling(settings[["rangeMax"]])),
+      lower.tail = settings[["lowerTail"]]
+    )
+
+    return(.evFormatRCall("bfpwr::nnmbf01", args))
+  }
+
+  k         <- if (settings[["evidenceTarget"]] == "h1") 1 / settings[["bfThreshold"]] else settings[["bfThreshold"]]
+  lowerTail <- settings[["evidenceTarget"]] == "h1"
+  n         <- settings[["sampleSize"]]
+
+  if (normalPrior) {
+    args <- list(
+      k          = k,
+      n          = n,
+      usd        = .evZUnitStandardDeviation(settings, n),
+      null       = settings[["nullValue"]],
+      pm         = settings[["analysisPriorMean"]],
+      psd        = settings[["analysisPriorSd"]],
+      dpm        = settings[["designPriorMean"]],
+      dpsd       = settings[["designPriorSd"]],
+      lower.tail = lowerTail
+    )
+
+    return(.evFormatRCall("bfpwr::pbf01", args))
+  }
+
+  args <- list(
+    k          = k,
+    n          = n,
+    usd        = .evZUnitStandardDeviation(settings, n),
+    null       = settings[["nullValue"]],
+    psd        = settings[["momentPriorSpread"]],
+    dpm        = settings[["designPriorMean"]],
+    dpsd       = settings[["designPriorSd"]],
+    lower.tail = lowerTail
+  )
+
+  return(.evFormatRCall("bfpwr::pnmbf01", args))
+}
+
+.evTBfpwrCall <- function(settings) {
+  if (settings[["calculation"]] == "sampleSize") {
+    if (settings[["isIndependentSamples"]] && settings[["sampleSizeRatio"]] != 1)
+      stop(gettext("R code generation for t-test sample-size search with unequal group sizes is not available."))
+
+    if (settings[["drangeMode"]] == "custom")
+      stop(gettext("R code generation for t-test sample-size search with a custom t search range is not available."))
+
+    if (!isTRUE(all.equal(settings[["nullValue"]], 0)))
+      stop(gettext("R code generation for t-test sample-size search with a nonzero null value is not available."))
+
+    args <- list(
+      k           = settings[["eventK"]],
+      power       = settings[["targetProbability"]],
+      null        = settings[["nullValue"]],
+      plocation   = settings[["tPriorLocationRelative"]],
+      pscale      = settings[["tPriorScale"]],
+      pdf         = settings[["tPriorDf"]],
+      type        = settings[["testType"]],
+      alternative = settings[["alternative"]],
+      dpm         = settings[["designPriorMean"]],
+      dpsd        = settings[["designPriorSd"]],
+      lower.tail  = settings[["lowerTail"]],
+      nrange      = c(.evMinimumSampleSize(settings), ceiling(settings[["rangeMax"]]))
+    )
+
+    return(.evFormatRCall("bfpwr::ntbf01", args))
+  }
+
+  n1        <- settings[["sampleSize"]]
+  n2        <- .evSampleSizeSecondGroup(settings, n1)
+  k         <- if (settings[["evidenceTarget"]] == "h1") 1 / settings[["bfThreshold"]] else settings[["bfThreshold"]]
+  lowerTail <- settings[["evidenceTarget"]] == "h1"
+  args <- list(
+    k           = k,
+    n           = n1,
+    n1          = n1,
+    n2          = n2,
+    null        = settings[["nullValue"]],
+    plocation   = settings[["tPriorLocationRelative"]],
+    pscale      = settings[["tPriorScale"]],
+    pdf         = settings[["tPriorDf"]],
+    dpm         = settings[["designPriorMean"]],
+    dpsd        = settings[["designPriorSd"]],
+    type        = settings[["testType"]],
+    alternative = settings[["alternative"]],
+    lower.tail  = lowerTail,
+    drange      = .evTSearchRange(settings, n1, k)
+  )
+
+  return(.evFormatRCall("bfpwr::ptbf01", args))
+}
+
 .evSampleSizePlot <- function(jaspResults, settings, result) {
   if (!is.null(jaspResults[["evidenceBySampleSizePlot"]]))
     return()
@@ -607,7 +830,7 @@ Evidence <- function(jaspResults, dataset, options) {
   xLabel <- if (settings[["isIndependentSamples"]]) gettext("Sample size (group 1)") else gettext("Sample size")
 
   plot <- ggplot2::ggplot(data, ggplot2::aes(x = n, y = probability, color = target)) +
-    ggplot2::geom_line(size = 1.2) +
+    ggplot2::geom_line(linewidth = 1.2) +
     ggplot2::scale_x_log10() +
     ggplot2::scale_y_continuous(limits = c(0, 1), labels = function(x) paste0(round(100 * x), "%")) +
     ggplot2::labs(x = xLabel, y = gettext("Evidence probability"), color = gettext("Target")) +
@@ -626,7 +849,8 @@ Evidence <- function(jaspResults, dataset, options) {
   if (!is.null(jaspResults[["evidenceByEffectSizePlot"]]))
     return()
 
-  plot <- createJaspPlot(title = gettext("Evidence Curve by Effect Size"), width = 735, height = 350)
+  plotTitle <- if (settings[["isBinomial"]]) gettext("Evidence Curve by Proportion") else gettext("Evidence Curve by Effect Size")
+  plot      <- createJaspPlot(title = plotTitle, width = 735, height = 350)
   plot$dependOn(c(.evDependencies, "evidenceByEffectSize", "showBothEvidenceTargets", "plotPoints"))
   plot$position <- 5
   jaspResults[["evidenceByEffectSizePlot"]] <- plot
@@ -646,13 +870,16 @@ Evidence <- function(jaspResults, dataset, options) {
 }
 
 .evBuildEffectSizePlot <- function(settings, result) {
+  if (settings[["isBinomial"]])
+    return(.evBuildBinomialProportionPlot(settings, result))
+
   effectRange <- .evEffectRange(settings)
   effect      <- seq(effectRange[1], effectRange[2], length.out = settings[["plotPoints"]])
   targets     <- if (isTRUE(settings[["showBothTargets"]])) c("h1", "h0") else settings[["evidenceTarget"]]
   data        <- .evCurveByEffectSize(settings, effect, targets, result[["n1"]])
 
   plot <- ggplot2::ggplot(data, ggplot2::aes(x = effect, y = probability, color = target)) +
-    ggplot2::geom_line(size = 1.2) +
+    ggplot2::geom_line(linewidth = 1.2) +
     ggplot2::scale_y_continuous(limits = c(0, 1), labels = function(x) paste0(round(100 * x), "%")) +
     ggplot2::labs(x = gettext("Design prior mean"), y = gettext("Evidence probability"), color = gettext("Target")) +
     .evSegment(x = settings[["designPriorMean"]], xend = settings[["designPriorMean"]], y = 0, yend = result[["probability"]]) +
@@ -666,7 +893,38 @@ Evidence <- function(jaspResults, dataset, options) {
   return(.pwrApplyPlotTheme(plot))
 }
 
-.evPriorPlot <- function(jaspResults, settings) {
+.evBuildBinomialProportionPlot <- function(settings, result) {
+  proportionAxis <- .evBinomialProportionAxis(settings)
+  xRange         <- c(max(proportionAxis[["range"]][1], .Machine$double.eps), min(proportionAxis[["range"]][2], 1 - .Machine$double.eps))
+  proportion     <- seq(xRange[1], xRange[2], length.out = settings[["plotPoints"]])
+  targets        <- if (isTRUE(settings[["showBothTargets"]])) c("h1", "h0") else settings[["evidenceTarget"]]
+  data           <- .evCurveByProportion(settings, proportion, targets, result[["n1"]])
+
+  plot <- ggplot2::ggplot(data, ggplot2::aes(x = proportion, y = probability, color = target)) +
+    ggplot2::geom_line(linewidth = 1.2) +
+    ggplot2::scale_y_continuous(limits = c(0, 1), labels = function(x) paste0(round(100 * x), "%")) +
+    jaspGraphs::scale_x_continuous(
+      name   = gettext("Design proportion"),
+      breaks = proportionAxis[["breaks"]],
+      limits = proportionAxis[["range"]]
+    ) +
+    ggplot2::labs(y = gettext("Evidence probability"), color = gettext("Target"))
+
+  if (settings[["binomialDesignPrior"]] == "point") {
+    plot <- plot +
+      .evSegment(x = settings[["designProportion"]], xend = settings[["designProportion"]], y = 0, yend = result[["probability"]]) +
+      .evSegment(x = min(proportion), xend = settings[["designProportion"]], y = result[["probability"]], yend = result[["probability"]])
+  }
+
+  if (settings[["calculation"]] == "sampleSize") {
+    plot <- plot +
+      ggplot2::geom_hline(yintercept = settings[["targetProbability"]], linetype = "dotted", color = "#555555")
+  }
+
+  return(.pwrApplyPlotTheme(plot))
+}
+
+.evPriorPlot <- function(jaspResults, settings, validation) {
   if (!is.null(jaspResults[["evidencePriorPlot"]]))
     return()
 
@@ -674,6 +932,11 @@ Evidence <- function(jaspResults, dataset, options) {
   plot$dependOn(c(.evDependencies, "priorDistribution", "plotPoints"))
   plot$position <- 7
   jaspResults[["evidencePriorPlot"]] <- plot
+
+  if (jaspBase::isTryError(validation)) {
+    plot$setError(gettextf("Unable to compute prior distribution plot: %1$s", .evCleanError(validation)))
+    return()
+  }
 
   plotResult <- try(.evBuildPriorPlot(settings), silent = TRUE)
   if (jaspBase::isTryError(plotResult)) {
@@ -717,13 +980,26 @@ Evidence <- function(jaspResults, dataset, options) {
   return(do.call(rbind, rows))
 }
 
+.evCurveByProportion <- function(settings, proportion, targets, n1) {
+  rows <- lapply(targets, function(target) {
+    data.frame(
+      proportion  = proportion,
+      probability = .evEvidenceProbability(settings, n1 = n1, target = target, designPriorMean = proportion),
+      target      = .evTargetLabel(target),
+      stringsAsFactors = FALSE
+    )
+  })
+
+  return(do.call(rbind, rows))
+}
+
 .evBuildContinuousPriorPlot <- function(settings) {
   priorAxis   <- .evPriorAxis(settings)
   x           <- seq(priorAxis[["range"]][1], priorAxis[["range"]][2], length.out = settings[["plotPoints"]])
   densityData <- .evContinuousPriorDensityData(settings, x)
 
   plot <- ggplot2::ggplot(densityData, ggplot2::aes(x = x, y = density, color = prior)) +
-    ggplot2::geom_line(size = 1.1) +
+    ggplot2::geom_line(linewidth = 1.1) +
     ggplot2::labs(y = gettext("Density"), color = gettext("Prior")) +
     jaspGraphs::scale_x_continuous(
       name   = gettext("Parameter value"),
@@ -733,6 +1009,9 @@ Evidence <- function(jaspResults, dataset, options) {
 
   plot <- plot + ggplot2::geom_vline(xintercept = settings[["nullValue"]], linetype = "dashed", color = "#444444")
 
+  if (settings[["isZTest"]] && settings[["analysisPriorDistribution"]] == "point")
+    plot <- plot + ggplot2::geom_vline(xintercept = settings[["analysisPriorMean"]], linetype = "dotdash", color = "#D55E00")
+
   if (settings[["designPrior"]] == "point")
     plot <- plot + ggplot2::geom_vline(xintercept = settings[["designPriorMean"]], linetype = "dotted", color = "#0072B2")
 
@@ -741,7 +1020,9 @@ Evidence <- function(jaspResults, dataset, options) {
 
 .evContinuousPriorDensityData <- function(settings, x) {
   h1Density <- if (settings[["isZTest"]]) {
-    if (settings[["analysisPriorDistribution"]] == "normal") {
+    if (settings[["analysisPriorDistribution"]] == "point") {
+      NULL
+    } else if (settings[["analysisPriorDistribution"]] %in% c("normal", "directional")) {
       stats::dnorm(x, mean = settings[["analysisPriorMean"]], sd = settings[["analysisPriorSd"]])
     } else {
       ((x - settings[["nullValue"]])^2 / settings[["momentPriorSpread"]]^2) *
@@ -751,12 +1032,16 @@ Evidence <- function(jaspResults, dataset, options) {
     .evTAnalysisPriorDensity(settings, x)
   }
 
-  rows <- list(data.frame(
-    x       = x,
-    density = h1Density,
-    prior   = gettext("Prior Under H\u2081"),
-    stringsAsFactors = FALSE
-  ))
+  rows <- list()
+
+  if (!is.null(h1Density)) {
+    rows[[length(rows) + 1]] <- data.frame(
+      x       = x,
+      density = h1Density,
+      prior   = gettext("Prior Under H\u2081"),
+      stringsAsFactors = FALSE
+    )
+  }
 
   if (settings[["designPrior"]] == "normal") {
     rows[[length(rows) + 1]] <- data.frame(
@@ -767,21 +1052,31 @@ Evidence <- function(jaspResults, dataset, options) {
     )
   }
 
+  if (length(rows) == 0) {
+    return(data.frame(
+      x       = numeric(0),
+      density = numeric(0),
+      prior   = character(0),
+      stringsAsFactors = FALSE
+    ))
+  }
+
   return(do.call(rbind, rows))
 }
 
 .evTAnalysisPriorDensity <- function(settings, x) {
   rawDensity <- stats::dt((x - settings[["tPriorLocation"]]) / settings[["tPriorScale"]], df = settings[["tPriorDf"]]) / settings[["tPriorScale"]]
+  nullValue  <- settings[["nullValue"]]
 
   if (settings[["alternative"]] == "two.sided")
     return(rawDensity)
 
   if (settings[["alternative"]] == "greater") {
-    normalizer <- 1 - stats::pt((0 - settings[["tPriorLocation"]]) / settings[["tPriorScale"]], df = settings[["tPriorDf"]])
-    rawDensity[x <= 0] <- 0
+    normalizer <- 1 - stats::pt((nullValue - settings[["tPriorLocation"]]) / settings[["tPriorScale"]], df = settings[["tPriorDf"]])
+    rawDensity[x <= nullValue] <- 0
   } else {
-    normalizer <- stats::pt((0 - settings[["tPriorLocation"]]) / settings[["tPriorScale"]], df = settings[["tPriorDf"]])
-    rawDensity[x >= 0] <- 0
+    normalizer <- stats::pt((nullValue - settings[["tPriorLocation"]]) / settings[["tPriorScale"]], df = settings[["tPriorDf"]])
+    rawDensity[x >= nullValue] <- 0
   }
 
   return(rawDensity / normalizer)
@@ -794,7 +1089,7 @@ Evidence <- function(jaspResults, dataset, options) {
   densityData <- .evBinomialPriorDensityData(settings, x)
 
   plot <- ggplot2::ggplot(densityData, ggplot2::aes(x = x, y = density, color = prior)) +
-    ggplot2::geom_line(size = 1.1) +
+    ggplot2::geom_line(linewidth = 1.1) +
     ggplot2::labs(y = gettext("Density"), color = gettext("Prior")) +
     jaspGraphs::scale_x_continuous(
       name   = gettext("Proportion"),
@@ -859,6 +1154,13 @@ Evidence <- function(jaspResults, dataset, options) {
 }
 
 .evZUnitStandardDeviation <- function(settings, n1) {
+  if (isTRUE(settings[["isGeneralZ"]])) {
+    if (settings[["generalZParameterization"]] == "unitInformationSd")
+      return(settings[["unitInformationSd"]])
+
+    return(1)
+  }
+
   if (!settings[["isIndependentSamples"]])
     return(settings[["standardDeviation"]])
 
@@ -871,6 +1173,11 @@ Evidence <- function(jaspResults, dataset, options) {
     return(n1)
 
   return(ceiling(n1 * settings[["sampleSizeRatio"]]))
+}
+
+.evValidateSampleSize <- function(settings, n1) {
+  if (settings[["isIndependentSamples"]] && settings[["isTTest"]] && .evSampleSizeSecondGroup(settings, n1) <= 1)
+    stop(gettext("The sample-size ratio leads to a second-group sample size smaller than 2."))
 }
 
 .evMinimumSampleSize <- function(settings) {
@@ -911,6 +1218,56 @@ Evidence <- function(jaspResults, dataset, options) {
   return(list(dp = settings[["nullProportion"]]))
 }
 
+.evValidateSettings <- function(settings) {
+  if (settings[["isBinomial"]] && settings[["binomialDesignPrior"]] == "beta" &&
+      settings[["designPriorLower"]] >= settings[["designPriorUpper"]]) {
+    stop(gettext("The lower beta design-prior truncation must be smaller than the upper truncation."))
+  }
+}
+
+.evDrange <- function(settings) {
+  if (settings[["drangeMode"]] != "custom")
+    return("adaptive")
+
+  if (settings[["drangeLower"]] >= settings[["drangeUpper"]])
+    stop(gettext("The lower t search bound must be smaller than the upper bound."))
+
+  return(c(settings[["drangeLower"]], settings[["drangeUpper"]]))
+}
+
+.evTSearchRange <- function(settings, n1, k) {
+  if (settings[["drangeMode"]] == "custom")
+    return(.evDrange(settings))
+
+  if (isTRUE(all.equal(settings[["nullValue"]], 0)))
+    return("adaptive")
+
+  if (settings[["alternative"]] != "two.sided")
+    return("adaptive")
+
+  n2    <- .evSampleSizeSecondGroup(settings, n1)
+  neff  <- if (settings[["testType"]] == "two.sample") 1 / (1 / n1 + 1 / n2) else n1
+  pscale <- settings[["tPriorScale"]]
+  ploc   <- settings[["tPriorLocationRelative"]]
+
+  suppressWarnings({
+    x <- (log(1 + neff * pscale^2) + ploc^2 / pscale^2 - log(k^2)) *
+      (1 + 1 / neff / pscale^2) / neff
+    sqrtX <- sqrt(x)
+  })
+
+  if (is.nan(sqrtX))
+    sqrtX <- 0.3
+
+  m     <- ploc / neff / pscale^2
+  lower <- -sqrtX - m
+  upper <-  sqrtX - m
+
+  searchRange <- settings[["nullValue"]] + c(min(lower, upper) - 0.01, max(lower, upper) + 0.01)
+
+  return(range(c(searchRange, .evEffectRange(settings))))
+}
+
 .evPriorAxis <- function(settings) {
   requestedRange <- if (settings[["isBinomial"]]) .evBinomialPriorRange(settings) else .evContinuousPriorRange(settings)
   breaks         <- .evPrettyPriorBreaks(requestedRange, isBinomial = settings[["isBinomial"]])
@@ -924,7 +1281,9 @@ Evidence <- function(jaspResults, dataset, options) {
 .evContinuousPriorRange <- function(settings) {
   rangeValues <- c(settings[["nullValue"]])
 
-  if (settings[["isZTest"]] && settings[["analysisPriorDistribution"]] == "normal") {
+  if (settings[["isZTest"]] && settings[["analysisPriorDistribution"]] == "point") {
+    rangeValues <- c(rangeValues, settings[["analysisPriorMean"]])
+  } else if (settings[["isZTest"]] && settings[["analysisPriorDistribution"]] %in% c("normal", "directional")) {
     rangeValues <- c(rangeValues, .evPriorInterval(settings[["analysisPriorMean"]], settings[["analysisPriorSd"]]))
   } else if (settings[["isZTest"]]) {
     rangeValues <- c(rangeValues, .evPriorInterval(settings[["nullValue"]], sqrt(3) * settings[["momentPriorSpread"]]))
@@ -932,7 +1291,7 @@ Evidence <- function(jaspResults, dataset, options) {
     rangeValues <- c(rangeValues, .evPriorInterval(settings[["tPriorLocation"]], .evStudentTPriorSpread(settings)))
 
     if (settings[["alternative"]] != "two.sided")
-      rangeValues <- c(rangeValues, 0)
+      rangeValues <- c(rangeValues, settings[["nullValue"]])
   }
 
   if (settings[["designPrior"]] == "normal") {
@@ -964,6 +1323,16 @@ Evidence <- function(jaspResults, dataset, options) {
   rangeValues <- pmin(1, pmax(0, rangeValues))
 
   return(.evFiniteRange(rangeValues, fallback = c(0, 1)))
+}
+
+.evBinomialProportionAxis <- function(settings) {
+  requestedRange <- .evBinomialPriorRange(settings)
+  breaks         <- .evPrettyPriorBreaks(requestedRange, isBinomial = TRUE)
+
+  return(list(
+    breaks = breaks,
+    range  = range(breaks)
+  ))
 }
 
 .evPriorInterval <- function(center, sd) {
@@ -1027,7 +1396,10 @@ Evidence <- function(jaspResults, dataset, options) {
 .evEffectRange <- function(settings) {
   anchors <- c(settings[["nullValue"]], settings[["designPriorMean"]])
 
-  if (settings[["isZTest"]] && settings[["analysisPriorDistribution"]] == "normal") {
+  if (settings[["isZTest"]] && settings[["analysisPriorDistribution"]] == "point") {
+    anchors <- c(anchors, settings[["analysisPriorMean"]])
+    spread  <- max(settings[["designPriorSd"]], abs(diff(range(anchors))), 0.25)
+  } else if (settings[["isZTest"]] && settings[["analysisPriorDistribution"]] %in% c("normal", "directional")) {
     anchors <- c(anchors, settings[["analysisPriorMean"]])
     spread  <- max(settings[["analysisPriorSd"]], settings[["designPriorSd"]], abs(diff(range(anchors))), 0.25)
   } else if (settings[["isZTest"]]) {
@@ -1052,7 +1424,8 @@ Evidence <- function(jaspResults, dataset, options) {
     pairedSamplesZTest      = "paired",
     oneSampleTTest          = "one.sample",
     oneSampleZTest          = "one.sample",
-    oneSampleProportion     = "binomial"
+    oneSampleProportion     = "binomial",
+    generalZApproximation   = "general"
   )
 }
 
@@ -1064,7 +1437,8 @@ Evidence <- function(jaspResults, dataset, options) {
     independentSamplesZTest = gettext("independent samples z-test"),
     pairedSamplesZTest      = gettext("paired samples z-test"),
     oneSampleZTest          = gettext("one sample z-test"),
-    oneSampleProportion     = gettext("one sample proportion test")
+    oneSampleProportion     = gettext("one sample proportion test"),
+    generalZApproximation   = gettext("general z-approximation")
   )
 }
 
@@ -1097,6 +1471,9 @@ Evidence <- function(jaspResults, dataset, options) {
 }
 
 .evNullPriorLabel <- function(settings) {
+  if (.evUsesDirectionalZTest(settings))
+    return(gettext("Directional"))
+
   if (!settings[["isBinomial"]])
     return(gettext("Point null"))
 
@@ -1107,6 +1484,13 @@ Evidence <- function(jaspResults, dataset, options) {
 }
 
 .evNullPriorParameters <- function(settings) {
+  if (.evUsesDirectionalZTest(settings)) {
+    if (settings[["alternative"]] == "less")
+      return(gettextf("\u03B8 >= \u03B8\u2080, \u03B8\u2080 = %1$s", .evFormatNumber(settings[["nullValue"]])))
+
+    return(gettextf("\u03B8 <= \u03B8\u2080, \u03B8\u2080 = %1$s", .evFormatNumber(settings[["nullValue"]])))
+  }
+
   if (!settings[["isBinomial"]])
     return(gettextf("\u03B8\u2080 = %1$s", .evFormatNumber(settings[["nullValue"]])))
 
@@ -1116,6 +1500,13 @@ Evidence <- function(jaspResults, dataset, options) {
   return(gettextf("p\u2080 = %1$s", .evFormatNumber(settings[["nullProportion"]])))
 }
 
+.evUsesDirectionalZTest <- function(settings) {
+  if (isTRUE(settings[["isBinomial"]]))
+    return(FALSE)
+
+  return(isTRUE(settings[["isDirectionalZTest"]]) || identical(settings[["analysisPriorDistribution"]], "directional"))
+}
+
 .evAnalysisPriorLabel <- function(settings) {
   if (settings[["isBinomial"]])
     return(gettext("Beta"))
@@ -1123,7 +1514,10 @@ Evidence <- function(jaspResults, dataset, options) {
   if (settings[["isTTest"]])
     return(gettext("Student-t"))
 
-  if (settings[["analysisPriorDistribution"]] == "normal")
+  if (settings[["analysisPriorDistribution"]] == "point")
+    return(gettext("Point"))
+
+  if (settings[["analysisPriorDistribution"]] %in% c("normal", "directional"))
     return(gettext("Normal"))
 
   return(gettext("Normal-moment"))
@@ -1147,7 +1541,14 @@ Evidence <- function(jaspResults, dataset, options) {
     ))
   }
 
-  if (settings[["analysisPriorDistribution"]] == "normal") {
+  if (settings[["analysisPriorDistribution"]] == "point") {
+    return(gettextf(
+      "\u03B8\u2081 = %1$s",
+      .evFormatNumber(settings[["analysisPriorMean"]])
+    ))
+  }
+
+  if (settings[["analysisPriorDistribution"]] %in% c("normal", "directional")) {
     return(gettextf(
       "mean = %1$s, scale = %2$s",
       .evFormatNumber(settings[["analysisPriorMean"]]),
@@ -1214,6 +1615,57 @@ Evidence <- function(jaspResults, dataset, options) {
   message <- sub("^Error[^:]*: ", "", message)
 
   return(message)
+}
+
+.evCodeHtml <- function(code) {
+  paste0("<pre><code>", .evEscapeHtml(code), "</code></pre>")
+}
+
+.evEscapeHtml <- function(text) {
+  text <- gsub("&", "&amp;", text, fixed = TRUE)
+  text <- gsub("<", "&lt;", text, fixed = TRUE)
+  text <- gsub(">", "&gt;", text, fixed = TRUE)
+
+  return(text)
+}
+
+.evFormatRCall <- function(functionName, args) {
+  argNames <- names(args)
+  values   <- vapply(args, .evFormatRValue, character(1))
+  width    <- max(nchar(argNames))
+  lines    <- paste0("  ", sprintf(paste0("%-", width, "s"), argNames), " = ", values)
+
+  return(paste0(
+    functionName,
+    "(\n",
+    paste(lines, collapse = ",\n"),
+    "\n)"
+  ))
+}
+
+.evFormatRValue <- function(x) {
+  if (is.null(x))
+    return("NULL")
+
+  if (length(x) != 1) {
+    values <- vapply(as.list(x), .evFormatRValue, character(1))
+    return(paste0("c(", paste(values, collapse = ", "), ")"))
+  }
+
+  if (is.character(x))
+    return(encodeString(x, quote = "\""))
+
+  if (is.logical(x))
+    return(if (isTRUE(x)) "TRUE" else "FALSE")
+
+  if (is.numeric(x)) {
+    if (is.na(x))
+      return(if (is.integer(x)) "NA_integer_" else "NA_real_")
+
+    return(format(signif(x, 12), scientific = FALSE, trim = TRUE))
+  }
+
+  return(encodeString(as.character(x), quote = "\""))
 }
 
 .evClampProbability <- function(x) {

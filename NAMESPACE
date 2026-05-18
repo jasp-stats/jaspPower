@@ -1,4 +1,5 @@
 import(jaspBase)
 export(Evidence)
+export(EvidenceSequential)
 export(Power)
-
+export(PowerSequential)

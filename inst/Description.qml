@@ -22,6 +22,12 @@ Description
 		func: 	"Power"
 	}
 
+	Analysis
+	{
+		title:	qsTr("Group Sequential Design")
+		func: 	"PowerSequential"
+	}
+
 	GroupTitle
 	{
 		title:		qsTr("Bayesian")
@@ -32,5 +38,11 @@ Description
 	{
 		title:	qsTr("Evidence")
 		func: 	"Evidence"
+	}
+
+	Analysis
+	{
+		title:	qsTr("Evidence (Sequential)")
+		func: 	"EvidenceSequential"
 	}
 }
