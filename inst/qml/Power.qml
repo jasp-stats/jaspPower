@@ -310,6 +310,13 @@ Form
 			id: powerCurveN
 			name: "powerBySampleSize"
 			checked: false
+
+			CheckBox
+			{
+				label: qsTr("Log sample size")
+				name:  "logSampleSize"
+				checked: true
+			}
 		}
 
 		CheckBox {

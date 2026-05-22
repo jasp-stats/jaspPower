@@ -643,7 +643,8 @@
       "alpha",
       "calculation",
       "sampleSizeRatio",
-      "powerBySampleSize"
+      "powerBySampleSize",
+      "logSampleSize"
     ))
     image$position <- 9
     jaspResults[["powerCurveN"]] <- image

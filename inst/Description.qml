@@ -8,7 +8,7 @@ Description
 	description	: 	qsTr("This module allows you to conduct power analyses.")
 	requiresData:	false
 	hasWrappers: 	false
-	preloadData:  	false
+	preloadData:  	true
 	
 	GroupTitle
 	{
@@ -36,13 +36,13 @@ Description
 
 	Analysis
 	{
-		title:	qsTr("Evidence")
+		title:	qsTr("Bayes Factor Design")
 		func: 	"Evidence"
 	}
 
 	Analysis
 	{
-		title:	qsTr("Evidence (Sequential)")
+		title:	qsTr("Bayes Factor Sequential Design")
 		func: 	"EvidenceSequential"
 	}
 }

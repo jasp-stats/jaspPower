@@ -236,9 +236,15 @@
   }
 
   # Add main plot
+  xScale <- if (isTRUE(.pwrOption(options, "logSampleSize", TRUE))) {
+    ggplot2::scale_x_log10(limits = lims$xlim)
+  } else {
+    ggplot2::scale_x_continuous(limits = lims$xlim)
+  }
+
   p <- p +
     ggplot2::geom_line(size = 1.5) +
-    ggplot2::scale_x_log10(limits = lims$xlim) +
+    xScale +
     ggplot2::scale_y_continuous(limits = lims$ylim) +
     ggplot2::labs(
       x = gettext("Sample size (group 1)"),
@@ -256,6 +262,14 @@
   p <- .pwrApplyPlotTheme(p)
 
   return(p)
+}
+
+.pwrOption <- function(options, name, default = NULL) {
+  value <- options[[name]]
+  if (is.null(value))
+    return(default)
+
+  return(value)
 }
 
 .plotPowerDist <- function(options, state, ...) {
