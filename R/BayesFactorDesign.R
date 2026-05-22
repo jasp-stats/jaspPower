@@ -1,4 +1,4 @@
-Evidence <- function(jaspResults, dataset, options) {
+BayesFactorDesign <- function(jaspResults, dataset, options) {
   settings   <- .evPrepareSettings(options)
   validation <- try(.evValidateSettings(settings), silent = TRUE)
   result     <- if (jaspBase::isTryError(validation)) validation else try(.evComputeResult(settings), silent = TRUE)

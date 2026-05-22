@@ -25,7 +25,7 @@ Description
 	Analysis
 	{
 		title:	qsTr("Group Sequential Design")
-		func: 	"PowerSequential"
+		func: 	"GroupSequentialDesign"
 	}
 
 	GroupTitle
@@ -37,12 +37,12 @@ Description
 	Analysis
 	{
 		title:	qsTr("Bayes Factor Design")
-		func: 	"Evidence"
+		func: 	"BayesFactorDesign"
 	}
 
 	Analysis
 	{
 		title:	qsTr("Bayes Factor Sequential Design")
-		func: 	"EvidenceSequential"
+		func: 	"BayesFactorSequentialDesign"
 	}
 }

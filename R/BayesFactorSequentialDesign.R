@@ -1,4 +1,4 @@
-EvidenceSequential <- function(jaspResults, dataset, options) {
+BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
   settings    <- .evSeqPrepareSettings(options)
   computation <- .evSeqCachedComputation(jaspResults, settings)
   settings    <- computation[["settings"]]
