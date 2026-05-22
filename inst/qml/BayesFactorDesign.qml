@@ -22,45 +22,50 @@ import JASP.Controls
 
 Form
 {
-	DropDown
-	{
-		name: "test"
-		id:   test
-		indexDefaultValue: 0
-		label: qsTr("Statistical test:")
-		values: [
-			{ label: qsTr("Independent Samples T-Test"), value: "independentSamplesTTest" },
-			{ label: qsTr("Paired Samples T-Test"),      value: "pairedSamplesTTest"      },
-			{ label: qsTr("One Sample T-Test"),          value: "oneSampleTTest"          },
-			{ label: qsTr("Independent Samples Z-Test"), value: "independentSamplesZTest" },
-			{ label: qsTr("Paired Samples Z-Test"),      value: "pairedSamplesZTest"      },
-			{ label: qsTr("One Sample Z-Test"),          value: "oneSampleZTest"          },
-			{ label: qsTr("One Sample Proportion Test"), value: "oneSampleProportion"     },
-			{ label: qsTr("General (z-approximation)"),  value: "generalZApproximation"   }
-		]
-	}
 
-	CheckBox
+	Group
 	{
-		label: qsTr("Explanatory text")
-		id:    text
-		name:  "text"
-		checked: true
-	}
 
-	CheckBox
-	{
-		label: qsTr("Generate report")
-		id:    generateReport
-		name:  "generateReport"
-		checked: false
+		DropDown
+		{
+			name: "test"
+			id:   test
+			indexDefaultValue: 0
+			label: qsTr("Statistical test:")
+			values: [
+				{ label: qsTr("Independent Samples T-Test"), value: "independentSamplesTTest" },
+				{ label: qsTr("Paired Samples T-Test"),      value: "pairedSamplesTTest"      },
+				{ label: qsTr("One Sample T-Test"),          value: "oneSampleTTest"          },
+				{ label: qsTr("Independent Samples Z-Test"), value: "independentSamplesZTest" },
+				{ label: qsTr("Paired Samples Z-Test"),      value: "pairedSamplesZTest"      },
+				{ label: qsTr("One Sample Z-Test"),          value: "oneSampleZTest"          },
+				{ label: qsTr("One Sample Proportion Test"), value: "oneSampleProportion"     },
+				{ label: qsTr("General (z-approximation)"),  value: "generalZApproximation"   }
+			]
+		}
 
 		CheckBox
 		{
-			label: qsTr("LaTeX formatted output")
-			id:    generateReportLatex
-			name:  "generateReportLatex"
+			label: qsTr("Explanatory text")
+			id:    text
+			name:  "text"
+			checked: true
+		}
+
+		CheckBox
+		{
+			label: qsTr("Generate report")
+			id:    generateReport
+			name:  "generateReport"
 			checked: false
+
+			CheckBox
+			{
+				label: qsTr("LaTeX formatted output")
+				id:    generateReportLatex
+				name:  "generateReportLatex"
+				checked: false
+			}
 		}
 	}
 
@@ -942,35 +947,39 @@ Form
 		expanded: true
 		title: qsTr("Plots")
 
-		CheckBox
+		Group
 		{
-			label: test.currentValue === "oneSampleProportion" ? qsTr("Conclusive evidence and misleading evidence by proportion") : qsTr("Conclusive evidence and misleading evidence by effect size")
-			id:    evidenceByEffectSize
-			name:  "evidenceByEffectSize"
-			checked: true
-		}
-
-		CheckBox
-		{
-			label: qsTr("Conclusive evidence and misleading evidence by N")
-			id:    evidenceBySampleSize
-			name:  "evidenceBySampleSize"
-			checked: false
+			CheckBox
+			{
+				label:  qsTr("Evidence by effect size")
+				id:     evidenceByEffectSize
+				name:   "evidenceByEffectSize"
+				checked: true
+			}
 
 			CheckBox
 			{
-				label: qsTr("Log sample size")
-				name:  "logSampleSize"
-				checked: true
-			}
-		}
+				label: qsTr("Evidence by sample size")
+				id:    evidenceBySampleSize
+				name:  "evidenceBySampleSize"
+				checked: false
 
-		CheckBox
-		{
-			label: qsTr("Show BF\u2081\u2080 and BF\u2080\u2081 targets")
-			id:    showBothEvidenceTargets
-			name:  "showBothEvidenceTargets"
-			checked: true
+				CheckBox
+				{
+					label: qsTr("Log sample size")
+					name:  "logSampleSize"
+					checked: true
+				}
+			}
+
+			CheckBox
+			{
+				Layout.columnSpan: 3
+				name: "mergeH1H0Figures"
+				id:   mergeH1H0Figures
+				label: qsTr("Merge H\u2081 and H\u2080 figures")
+				checked: false
+			}
 		}
 
 		CheckBox
@@ -999,6 +1008,17 @@ Form
 				label: qsTr("Merge figures")
 				name:  "priorDistributionMerge"
 				checked: false
+			}
+		}
+
+		Group
+		{
+			CheckBox
+			{
+				label: qsTr("Show BF\u2081\u2080 and BF\u2080\u2081 targets")
+				id:    showBothEvidenceTargets
+				name:  "showBothEvidenceTargets"
+				checked: true
 			}
 		}
 
@@ -1329,15 +1349,6 @@ Form
 				name: "generateRCode"
 				id:   generateRCode
 				label: qsTr("Generate R Code")
-				checked: false
-			}
-
-			CheckBox
-			{
-				Layout.columnSpan: 3
-				name: "mergeH1H0Figures"
-				id:   mergeH1H0Figures
-				label: qsTr("Merge H\u2081 and H\u2080 figures")
 				checked: false
 			}
 

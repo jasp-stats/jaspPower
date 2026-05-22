@@ -22,44 +22,48 @@ import JASP.Controls
 
 Form
 {
-	DropDown
-	{
-		name: "test"
-		id:   test
-		indexDefaultValue: 0
-		label: qsTr("Statistical test:")
-		values: [
-			{ label: qsTr("Independent Samples T-Test"), value: "independentSamplesTTest" },
-			{ label: qsTr("Paired Samples T-Test"),      value: "pairedSamplesTTest"      },
-			{ label: qsTr("One Sample T-Test"),          value: "oneSampleTTest"          },
-			{ label: qsTr("Independent Samples Z-Test"), value: "independentSamplesZTest" },
-			{ label: qsTr("Paired Samples Z-Test"),      value: "pairedSamplesZTest"      },
-			{ label: qsTr("One Sample Z-Test"),          value: "oneSampleZTest"          },
-			{ label: qsTr("General (z-approximation)"),  value: "generalZApproximation"   }
-		]
-	}
 
-	CheckBox
+	Group
 	{
-		label: qsTr("Explanatory text")
-		id:    text
-		name:  "text"
-		checked: true
-	}
-
-	CheckBox
-	{
-		label: qsTr("Generate report")
-		id:    generateReport
-		name:  "generateReport"
-		checked: false
+		DropDown
+		{
+			name: "test"
+			id:   test
+			indexDefaultValue: 0
+			label: qsTr("Statistical test:")
+			values: [
+				{ label: qsTr("Independent Samples T-Test"), value: "independentSamplesTTest" },
+				{ label: qsTr("Paired Samples T-Test"),      value: "pairedSamplesTTest"      },
+				{ label: qsTr("One Sample T-Test"),          value: "oneSampleTTest"          },
+				{ label: qsTr("Independent Samples Z-Test"), value: "independentSamplesZTest" },
+				{ label: qsTr("Paired Samples Z-Test"),      value: "pairedSamplesZTest"      },
+				{ label: qsTr("One Sample Z-Test"),          value: "oneSampleZTest"          },
+				{ label: qsTr("General (z-approximation)"),  value: "generalZApproximation"   }
+			]
+		}
 
 		CheckBox
 		{
-			label: qsTr("LaTeX formatted output")
-			id:    generateReportLatex
-			name:  "generateReportLatex"
+			label: qsTr("Explanatory text")
+			id:    text
+			name:  "text"
+			checked: true
+		}
+
+		CheckBox
+		{
+			label: qsTr("Generate report")
+			id:    generateReport
+			name:  "generateReport"
 			checked: false
+
+			CheckBox
+			{
+				label: qsTr("LaTeX formatted output")
+				id:    generateReportLatex
+				name:  "generateReportLatex"
+				checked: false
+			}
 		}
 	}
 
