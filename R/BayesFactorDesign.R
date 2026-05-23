@@ -55,7 +55,7 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
   "observedMean2", "observedSd", "observedSd1", "observedSd2",
   "observedMeanDifference", "observedSdDifference", "observedEstimate",
   "observedStandardError", "observedTStatistic", "observedCohensD",
-  "observedSuccesses", "observedTrials",
+  "observedSuccesses", "observedFailures", "observedTrials",
   "observedVariable", "observedFirstVariable", "observedSecondVariable",
   "observedDependentVariable", "observedGroupingVariable",
   "observedProportionVariable", "observedSuccessValue"
@@ -113,7 +113,8 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
     rangeMax             = options[["sampleSizeRangeMax"]],
     plotPoints           = options[["plotPoints"]],
     logSampleSize        = .evOption(options, "logSampleSize", TRUE),
-    showBothTargets      = options[["showBothEvidenceTargets"]],
+    legendPosition       = .evOption(options, "legendPosition", "right"),
+    colorPalette         = .evOption(options, "colorPalette", "colorblind"),
     mergeH1H0Figures     = .evOption(options, "mergeH1H0Figures", FALSE),
     priorPlotDesign      = .evOption(options, "priorDistributionDesign", TRUE),
     priorPlotAnalysis    = .evOption(options, "priorDistributionAnalysis", TRUE),
@@ -1031,8 +1032,9 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
 .evObservedSummaryInputStarted <- function(options, settings) {
   if (settings[["isBinomial"]]) {
     trials    <- .evObservedOptionNumber(options, "observedTrials")
+    failures  <- .evObservedOptionNumber(options, "observedFailures")
     successes <- .evObservedOptionNumber(options, "observedSuccesses")
-    return(trials > 0 || successes > 0)
+    return(trials > 0 || failures > 0 || successes > 0)
   }
 
   if (settings[["isGeneralZ"]])
@@ -1103,23 +1105,20 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
     return(.evObservedTSummaryFromOptions(options, settings, source))
 
   if (settings[["isBinomial"]]) {
-    trials    <- .evObservedInteger(options, "observedTrials", gettext("Trials"), minimum = 1)
-    successes <- .evObservedInteger(options, "observedSuccesses", gettext("Successes"), minimum = 0)
-    if (successes > trials)
-      stop(gettext("The number of successes cannot exceed the number of trials."))
+    counts <- .evObservedBinomialCounts(options)
 
     return(list(
       source     = source,
       variable   = gettext("Summary statistics"),
-      successes  = successes,
-      trials     = trials,
-      proportion = successes / trials
+      successes  = counts[["successes"]],
+      trials     = counts[["trials"]],
+      proportion = counts[["successes"]] / counts[["trials"]]
     ))
   }
 
   if (settings[["isGeneralZ"]]) {
     estimate <- .evObservedNumber(options, "observedEstimate", gettext("Estimate"))
-    se       <- .evObservedPositive(options, "observedStandardError", gettext("Standard error"))
+    se       <- .evObservedPositive(options, "observedStandardError", gettext("SE"))
     summary  <- .evObservedZSummary(source, gettext("Summary statistics"), estimate, se)
     summary[["testStatistic"]] <- (estimate - settings[["nullValue"]]) / se
     return(summary)
@@ -1262,6 +1261,29 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
     t             = t,
     n             = n
   ))
+}
+
+.evObservedBinomialCounts <- function(options) {
+  successes <- .evObservedInteger(options, "observedSuccesses", gettext("Successes"), minimum = 0)
+
+  legacyTrials <- .evObservedOptionNumber(options, "observedTrials")
+  failures     <- .evObservedOptionNumber(options, "observedFailures")
+  useLegacy    <- legacyTrials > 0 && failures == 0 && legacyTrials >= successes
+
+  if (is.null(options[["observedFailures"]]) || useLegacy) {
+    trials <- .evObservedInteger(options, "observedTrials", gettext("Trials"), minimum = 1)
+    if (successes > trials)
+      stop(gettext("The number of successes cannot exceed the number of trials."))
+
+    return(list(successes = successes, trials = trials))
+  }
+
+  failures <- .evObservedInteger(options, "observedFailures", gettext("Failures"), minimum = 0)
+  trials   <- successes + failures
+  if (trials < 1)
+    stop(gettext("The total number of successes and failures must be at least 1."))
+
+  return(list(successes = successes, trials = trials))
 }
 
 .evObservedTStatisticSummary <- function(source, variable, estimate, standardError, t, n = NA_integer_,
@@ -2428,8 +2450,8 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
   if (!is.null(jaspResults[[key]]))
     return()
 
-  plot <- createJaspPlot(title = title, width = 735, height = 350)
-  plot$dependOn(c(.evDependencies, "evidenceBySampleSize", "showBothEvidenceTargets", "mergeH1H0Figures", "plotPoints", "logSampleSize"))
+  plot <- createJaspPlot(title = title, width = .evPlotWidth(settings), height = 350)
+  plot$dependOn(c(.evDependencies, "evidenceBySampleSize", "mergeH1H0Figures", "plotPoints", "logSampleSize", "legendPosition", "colorPalette"))
   plot$position <- position
   jaspResults[[key]] <- plot
 
@@ -2529,7 +2551,7 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
       ggplot2::geom_hline(yintercept = unique(vapply(unders, function(under) .evTargetPower(settings, under), numeric(1))), linetype = "dotted", color = "#555555")
   }
 
-  return(.pwrApplyPlotTheme(plot))
+  return(.evApplyPlotTheme(plot, settings))
 }
 
 .evEffectSizePlot <- function(jaspResults, settings, result) {
@@ -2550,8 +2572,8 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
   if (!is.null(jaspResults[[key]]))
     return()
 
-  plot <- createJaspPlot(title = title, width = 735, height = 350)
-  plot$dependOn(c(.evDependencies, "evidenceByEffectSize", "showBothEvidenceTargets", "mergeH1H0Figures", "plotPoints"))
+  plot <- createJaspPlot(title = title, width = .evPlotWidth(settings), height = 350)
+  plot$dependOn(c(.evDependencies, "evidenceByEffectSize", "mergeH1H0Figures", "plotPoints", "legendPosition", "colorPalette"))
   plot$position <- position
   jaspResults[[key]] <- plot
 
@@ -2604,7 +2626,7 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
       ggplot2::geom_hline(yintercept = unique(vapply(unders, function(under) .evTargetPower(settings, under), numeric(1))), linetype = "dotted", color = "#555555")
   }
 
-  return(.pwrApplyPlotTheme(plot))
+  return(.evApplyPlotTheme(plot, settings))
 }
 
 .evDesignPriorEffectAxisLabel <- function(settings) {
@@ -2650,7 +2672,7 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
       ggplot2::geom_hline(yintercept = unique(vapply(unders, function(under) .evTargetPower(settings, under), numeric(1))), linetype = "dotted", color = "#555555")
   }
 
-  return(.pwrApplyPlotTheme(plot))
+  return(.evApplyPlotTheme(plot, settings))
 }
 
 .evPriorPlot <- function(jaspResults, settings, validation) {
@@ -2671,7 +2693,8 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
   container <- createJaspContainer(title = gettext("Prior Distribution"))
   container$dependOn(c(
     dependencies, "priorDistribution", "priorDistributionDesign",
-    "priorDistributionAnalysis", "priorDistributionMerge", "plotPoints"
+    "priorDistributionAnalysis", "priorDistributionMerge", "plotPoints",
+    "legendPosition", "colorPalette"
   ))
   container$position <- position
   jaspResults[[key]] <- container
@@ -2679,7 +2702,7 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
   specs <- .evPriorPlotSpecs(settings)
   for (i in seq_along(specs)) {
     spec <- specs[[i]]
-    plot <- createJaspPlot(title = spec[["title"]], width = 735, height = 350)
+    plot <- createJaspPlot(title = spec[["title"]], width = .evPlotWidth(settings), height = 350)
     plot$position <- i
     container[[spec[["key"]]]] <- plot
 
@@ -2791,10 +2814,7 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
 }
 
 .evCurveUnders <- function(settings) {
-  if (isTRUE(settings[["showBothTargets"]]))
-    return(c("h1", "h0"))
-
-  return(settings[["evidenceTarget"]])
+  return(c("h1", "h0"))
 }
 
 .evCurveOutcomes <- function() {
@@ -2938,7 +2958,7 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
     ) +
     ggplot2::labs(y = gettext("Density"), color = legendTitle)
 
-  return(.pwrApplyPlotTheme(plot))
+  return(.evApplyPlotTheme(plot, settings))
 }
 
 .evContinuousPriorDensityData <- function(settings, x, priorSet) {
@@ -3149,7 +3169,7 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
     ) +
     ggplot2::labs(y = gettext("Density"), color = legendTitle)
 
-  return(.pwrApplyPlotTheme(plot))
+  return(.evApplyPlotTheme(plot, settings))
 }
 
 .evBinomialPriorDensityData <- function(settings, x, priorSet) {
@@ -3400,6 +3420,104 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
   data <- data[is.finite(data[["x"]]) & is.finite(data[["density"]]), , drop = FALSE]
 
   return(data)
+}
+
+.evApplyPlotTheme <- function(plot, settings) {
+  palette        <- .evOption(settings, "colorPalette", "colorblind")
+  legendPosition <- .evOption(settings, "legendPosition", "right")
+
+  plot <- .pwrApplyPlotTheme(plot, legendPosition = .evLegendPosition(legendPosition)) +
+    jaspGraphs::scale_JASPcolor_discrete(palette, labels = .evPlotmathLabels) +
+    ggplot2::scale_linetype_discrete(labels = .evPlotmathLabels)
+
+  if (legendPosition == "rightInside") {
+    plot <- plot +
+      ggplot2::theme(
+        legend.position.inside = c(0.98, 0.5),
+        legend.justification   = c(1, 0.5)
+      )
+  }
+
+  return(plot)
+}
+
+.evLegendPosition <- function(legendPosition) {
+  if (identical(legendPosition, "rightInside"))
+    return("inside")
+
+  return(legendPosition)
+}
+
+.evPlotWidth <- function(settings) {
+  width <- 735
+  if (.evOption(settings, "legendPosition", "right") %in% c("top", "bottom", "rightInside"))
+    return(round(width * 0.8))
+
+  return(width)
+}
+
+.evPlotmathLabels <- function(labels) {
+  labels <- as.character(labels)
+  parsed <- vapply(labels, .evPlotmathLabel, character(1), USE.NAMES = FALSE)
+  parse(text = parsed)
+}
+
+.evPlotmathLabel <- function(label) {
+  tokenMap <- setNames(
+    c(
+      'BF["10"]', 'BF["01"]', "H[1]", "H[0]",
+      "N[1]", "N[2]", "n[1]", "n[2]",
+      "p[0]", "p[1]", "p[2]",
+      "theta[0]", "lambda[0]", "lambda[1]", "lambda[2]",
+      "mu[0]", "sigma[0]", "s[1]", "s[2]"
+    ),
+    c(
+      paste0("BF", "\u2081", "\u2080"), paste0("BF", "\u2080", "\u2081"),
+      paste0("H", "\u2081"), paste0("H", "\u2080"),
+      paste0("N", "\u2081"), paste0("N", "\u2082"),
+      paste0("n", "\u2081"), paste0("n", "\u2082"),
+      paste0("p", "\u2080"), paste0("p", "\u2081"), paste0("p", "\u2082"),
+      paste0("\u03B8", "\u2080"),
+      paste0("\u03BB", "\u2080"), paste0("\u03BB", "\u2081"), paste0("\u03BB", "\u2082"),
+      paste0("\u03BC", "\u2080"), paste0("\u03C3", "\u2080"),
+      paste0("s", "\u2081"), paste0("s", "\u2082")
+    )
+  )
+  pattern <- paste(names(tokenMap), collapse = "|")
+  matches <- gregexpr(pattern, label, perl = TRUE)[[1]]
+
+  if (matches[1] == -1)
+    return(.evPlotmathText(label))
+
+  matchLengths <- attr(matches, "match.length")
+  parts        <- character()
+  cursor       <- 1
+
+  for (i in seq_along(matches)) {
+    start <- matches[i]
+    end   <- start + matchLengths[i] - 1
+
+    if (start > cursor)
+      parts <- c(parts, .evPlotmathText(substr(label, cursor, start - 1)))
+
+    token <- substr(label, start, end)
+    parts <- c(parts, unname(tokenMap[[token]]))
+    cursor <- end + 1
+  }
+
+  if (cursor <= nchar(label))
+    parts <- c(parts, .evPlotmathText(substr(label, cursor, nchar(label))))
+
+  if (length(parts) == 1)
+    return(parts)
+
+  paste0("paste(", paste(parts, collapse = ", "), ")")
+}
+
+.evPlotmathText <- function(text) {
+  text <- gsub("\\", "\\\\", text, fixed = TRUE)
+  text <- gsub("\"", "\\\"", text, fixed = TRUE)
+  paste0("\"", text, "\"")
 }
 
 .evZUnitStandardDeviation <- function(settings, n1) {

@@ -974,9 +974,7 @@ Form
 
 			CheckBox
 			{
-				Layout.columnSpan: 3
 				name: "mergeH1H0Figures"
-				id:   mergeH1H0Figures
 				label: qsTr("Merge H\u2081 and H\u2080 figures")
 				checked: false
 			}
@@ -1013,28 +1011,47 @@ Form
 
 		Group
 		{
-			CheckBox
+			columns: 1
+
+			DropDown
 			{
-				label: qsTr("Show BF\u2081\u2080 and BF\u2080\u2081 targets")
-				id:    showBothEvidenceTargets
-				name:  "showBothEvidenceTargets"
-				checked: true
+				name:       "legendPosition"
+				label:      qsTr("Legend position")
+				startValue: "right"
+				values:
+				[
+					{ label: qsTr("None"),   value: "none"   },
+					{ label: qsTr("Bottom"), value: "bottom" },
+					{ label: qsTr("Right"),  value: "right"  },
+					{ label: qsTr("Right (inside)"), value: "rightInside" },
+					{ label: qsTr("Top"),    value: "top"    },
+					{ label: qsTr("Left"),   value: "left"   }
+				]
+			}
+
+			ColorPalette
+			{
+				name:      "colorPalette"
+				label:     qsTr("Color palette")
+				infoLabel: qsTr("Color palette")
+				info:      qsTr("Customize the color palette used in the plots.")
 			}
 		}
-
 	}
 
 	Section
 	{
 		expanded: false
 		title: qsTr("Analysis")
-		columns: 1
+		columns: 2
 
 		RadioButtonGroup
 		{
-			name:  "observedAnalysisInput"
-			id:    observedAnalysisInput
-			title: qsTr("Input")
+			Layout.columnSpan:      2
+			name:                   "observedAnalysisInput"
+			id:                     observedAnalysisInput
+			radioButtonsOnSameRow:	true
+			title:                  qsTr("Input")
 
 			RadioButton
 			{
@@ -1048,67 +1065,13 @@ Form
 			{
 				id:    observedColumnInput
 				value: "columns"
-				label: qsTr("Columns")
+				label: qsTr("Dataset")
 			}
 		}
 
 		Group
 		{
-			title: qsTr("Summary Statistics")
-			columns: 2
 			visible: observedAnalysisInput.value === "summaryStatistics"
-
-			RadioButtonGroup
-			{
-				name:  "observedInputType"
-				id:    observedInputType
-				title: qsTr("Input Type")
-				Layout.columnSpan: 2
-				visible: test.currentValue.indexOf("TTest") !== -1
-
-				RadioButton
-				{
-					value:   "tAndN"
-					label:   test.currentValue === "independentSamplesTTest" ? qsTr("t and Sample Sizes") : qsTr("t and Sample Size")
-					checked: true
-				}
-
-				RadioButton
-				{
-					value: "cohensD"
-					label: test.currentValue === "independentSamplesTTest" ? qsTr("Cohen's d and Sample Sizes") : qsTr("Cohen's d and Sample Size")
-				}
-
-				RadioButton
-				{
-					value:   "meansAndSDs"
-					label:   qsTr("Means, SDs, and Sample Sizes")
-					visible: test.currentValue === "independentSamplesTTest"
-				}
-
-				RadioButton
-				{
-					value:   "meanDiffAndSD"
-					label:   qsTr("Mean Diff., SD, and Sample Size")
-					visible: test.currentValue === "pairedSamplesTTest"
-				}
-
-				RadioButton
-				{
-					value:   "meanAndSD"
-					label:   qsTr("Mean, SD, and Sample Size")
-					visible: test.currentValue === "oneSampleTTest"
-				}
-			}
-
-			IntegerField
-			{
-				name: "observedTrials"
-				label: qsTr("Trials")
-				min: 0
-				defaultValue: 0
-				visible: test.currentValue === "oneSampleProportion"
-			}
 
 			IntegerField
 			{
@@ -1119,10 +1082,19 @@ Form
 				visible: test.currentValue === "oneSampleProportion"
 			}
 
+			IntegerField
+			{
+				name: "observedFailures"
+				label: qsTr("Failures")
+				min: 0
+				defaultValue: 0
+				visible: test.currentValue === "oneSampleProportion"
+			}
+
 			DoubleField
 			{
 				name: "observedEstimate"
-				label: qsTr("Estimate")
+				label: qsTr("Effect size")
 				defaultValue: 0
 				negativeValues: true
 				visible: test.currentValue === "generalZApproximation"
@@ -1131,7 +1103,7 @@ Form
 			DoubleField
 			{
 				name: "observedStandardError"
-				label: qsTr("Standard error")
+				label: qsTr("SE")
 				min: 0
 				defaultValue: 0
 				inclusive: JASP.MinOnly
@@ -1156,6 +1128,102 @@ Form
 				visible: test.currentValue.indexOf("TTest") !== -1 && observedInputType.value === "cohensD"
 			}
 
+			Group
+			{
+				columns: 2
+				visible: test.currentValue === "independentSamplesZTest" || (test.currentValue === "independentSamplesTTest" && observedInputType.value === "meansAndSDs")
+
+				DoubleField
+				{
+					name: "observedMean1"
+					label: qsTr("Mean 1")
+					defaultValue: 0
+					negativeValues: true
+				}
+
+				DoubleField
+				{
+					name: "observedSd1"
+					label: qsTr("SD 1")
+					min: 0
+					defaultValue: 1
+					inclusive: JASP.None
+					visible: test.currentValue === "independentSamplesTTest"
+				}
+			}
+
+			Group
+			{
+				columns: 2
+				visible: test.currentValue === "independentSamplesZTest" || (test.currentValue === "independentSamplesTTest" && observedInputType.value === "meansAndSDs")
+
+				DoubleField
+				{
+					name: "observedMean2"
+					label: qsTr("Mean 2")
+					defaultValue: 0
+					negativeValues: true
+				}
+
+				DoubleField
+				{
+					name: "observedSd2"
+					label: qsTr("SD 2")
+					min: 0
+					defaultValue: 1
+					inclusive: JASP.None
+					visible: test.currentValue === "independentSamplesTTest"
+				}
+			}
+
+			Group
+			{
+				columns: 2
+				visible: test.currentValue === "oneSampleZTest" || (test.currentValue === "oneSampleTTest" && observedInputType.value === "meanAndSD")
+
+				DoubleField
+				{
+					name: "observedMean"
+					label: qsTr("Mean")
+					defaultValue: 0
+					negativeValues: true
+				}
+
+				DoubleField
+				{
+					name: "observedSd"
+					label: qsTr("SD")
+					min: 0
+					defaultValue: 1
+					inclusive: JASP.None
+					visible: test.currentValue === "oneSampleTTest"
+				}
+			}
+
+			Group
+			{
+				columns: 2
+				visible: test.currentValue === "pairedSamplesZTest" || (test.currentValue === "pairedSamplesTTest" && observedInputType.value === "meanDiffAndSD")
+
+				DoubleField
+				{
+					name: "observedMeanDifference"
+					label: qsTr("Mean difference")
+					defaultValue: 0
+					negativeValues: true
+				}
+
+				DoubleField
+				{
+					name: "observedSdDifference"
+					label: qsTr("SD")
+					min: 0
+					defaultValue: 1
+					inclusive: JASP.None
+					visible: test.currentValue === "pairedSamplesTTest"
+				}
+			}
+
 			IntegerField
 			{
 				name: "observedN1"
@@ -1174,44 +1242,6 @@ Form
 				visible: test.currentValue.indexOf("independentSamples") !== -1
 			}
 
-			DoubleField
-			{
-				name: "observedMean1"
-				label: qsTr("Mean 1")
-				defaultValue: 0
-				negativeValues: true
-				visible: test.currentValue === "independentSamplesZTest" || (test.currentValue === "independentSamplesTTest" && observedInputType.value === "meansAndSDs")
-			}
-
-			DoubleField
-			{
-				name: "observedMean2"
-				label: qsTr("Mean 2")
-				defaultValue: 0
-				negativeValues: true
-				visible: test.currentValue === "independentSamplesZTest" || (test.currentValue === "independentSamplesTTest" && observedInputType.value === "meansAndSDs")
-			}
-
-			DoubleField
-			{
-				name: "observedSd1"
-				label: qsTr("SD 1")
-				min: 0
-				defaultValue: 1
-				inclusive: JASP.None
-				visible: test.currentValue === "independentSamplesTTest" && observedInputType.value === "meansAndSDs"
-			}
-
-			DoubleField
-			{
-				name: "observedSd2"
-				label: qsTr("SD 2")
-				min: 0
-				defaultValue: 1
-				inclusive: JASP.None
-				visible: test.currentValue === "independentSamplesTTest" && observedInputType.value === "meansAndSDs"
-			}
-
 			IntegerField
 			{
 				name: "observedN"
@@ -1220,48 +1250,53 @@ Form
 				defaultValue: 0
 				visible: test.currentValue.indexOf("independentSamples") === -1 && test.currentValue !== "oneSampleProportion" && test.currentValue !== "generalZApproximation"
 			}
+		}
 
-			DoubleField
+		RadioButtonGroup
+		{
+			name:    "observedInputType"
+			id:      observedInputType
+			title:   qsTr("Input Type")
+			visible: observedAnalysisInput.value === "summaryStatistics" && test.currentValue.indexOf("TTest") !== -1
+
+			RadioButton
 			{
-				name: "observedMean"
-				label: qsTr("Mean")
-				defaultValue: 0
-				negativeValues: true
-				visible: test.currentValue === "oneSampleZTest" || (test.currentValue === "oneSampleTTest" && observedInputType.value === "meanAndSD")
+				value:   "tAndN"
+				label:   test.currentValue === "independentSamplesTTest" ? qsTr("t and Sample Sizes") : qsTr("t and Sample Size")
+				checked: true
 			}
 
-			DoubleField
+			RadioButton
 			{
-				name: "observedSd"
-				label: qsTr("SD")
-				min: 0
-				defaultValue: 1
-				inclusive: JASP.None
-				visible: test.currentValue === "oneSampleTTest" && observedInputType.value === "meanAndSD"
+				value: "cohensD"
+				label: test.currentValue === "independentSamplesTTest" ? qsTr("Cohen's d and Sample Sizes") : qsTr("Cohen's d and Sample Size")
 			}
 
-			DoubleField
+			RadioButton
 			{
-				name: "observedMeanDifference"
-				label: qsTr("Mean difference")
-				defaultValue: 0
-				negativeValues: true
-				visible: test.currentValue === "pairedSamplesZTest" || (test.currentValue === "pairedSamplesTTest" && observedInputType.value === "meanDiffAndSD")
+				value:   "meansAndSDs"
+				label:   qsTr("Means, SDs, and Sample Sizes")
+				visible: test.currentValue === "independentSamplesTTest"
 			}
 
-			DoubleField
+			RadioButton
 			{
-				name: "observedSdDifference"
-				label: qsTr("SD difference")
-				min: 0
-				defaultValue: 1
-				inclusive: JASP.None
-				visible: test.currentValue === "pairedSamplesTTest" && observedInputType.value === "meanDiffAndSD"
+				value:   "meanDiffAndSD"
+				label:   qsTr("Mean Diff., SD, and Sample Size")
+				visible: test.currentValue === "pairedSamplesTTest"
+			}
+
+			RadioButton
+			{
+				value:   "meanAndSD"
+				label:   qsTr("Mean, SD, and Sample Size")
+				visible: test.currentValue === "oneSampleTTest"
 			}
 		}
 
 		VariablesForm
 		{
+			Layout.columnSpan: 2
 			visible: observedAnalysisInput.value === "columns"
 
 			AvailableVariablesList
@@ -1326,6 +1361,7 @@ Form
 
 		TextField
 		{
+			Layout.columnSpan: 2
 			name: "observedSuccessValue"
 			label: qsTr("Success value")
 			defaultValue: "1"

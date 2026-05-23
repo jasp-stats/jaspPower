@@ -1885,6 +1885,7 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
       ggplot2::geom_line(size = 1.1) +
       ggplot2::geom_point(size = 2) +
       ggplot2::scale_y_continuous(limits = c(0, 1), labels = function(x) paste0(round(100 * x), "%")) +
+      ggplot2::scale_linetype_discrete(labels = .evPlotmathLabels) +
       ggplot2::labs(x = xLabel, y = gettext("Cumulative probability"), color = gettext("Evidence"), linetype = gettext("Design Prior"))
   } else {
     plot <- ggplot2::ggplot(data, ggplot2::aes(x = n, y = probability, color = outcome)) +
@@ -1987,6 +1988,7 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
   plot <- ggplot2::ggplot(data, ggplot2::aes(x = n, y = criticalValue, color = target, linetype = boundary)) +
     ggplot2::geom_line(size = 1.1) +
     ggplot2::geom_point(size = 2) +
+    ggplot2::scale_color_discrete(labels = .evPlotmathLabels) +
     ggplot2::labs(x = xLabel, y = gettext("Critical value"), color = gettext("Target"), linetype = gettext("Boundary")) +
     ggplot2::geom_hline(yintercept = 0, linetype = "dotted", color = "#666666")
 

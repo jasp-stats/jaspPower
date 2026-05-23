@@ -2,10 +2,10 @@
 
 # Apply a common theme for all plots
 # Due to jaspGraphs::geom_rangeframe this function cannot be used like regular ggplot theme
-.pwrApplyPlotTheme <- function(plot) {
+.pwrApplyPlotTheme <- function(plot, legendPosition = "right") {
   plot +
     jaspGraphs::geom_rangeframe() +
-    jaspGraphs::themeJaspRaw(legend.position = "right")
+    jaspGraphs::themeJaspRaw(legend.position = legendPosition)
 }
 
 # Default settings to be used in plots
@@ -214,15 +214,15 @@
 
   if (is.null(n_ratio)) {
     # Paired or one sample
-    plot_subtitle <- sprintf(
-      "%1$s = %2$s, %3$s = %4$s",
-      es, round(delta, 3), "\u03B1", alpha
+    plot_subtitle <- substitute(
+      paste(es == d, ", ", alpha == a),
+      list(es = es, d = round(delta, 3), a = alpha)
     )
   } else {
     # Indipendent Samples
-    plot_subtitle <- sprintf(
-      "%1$s = %2$s, N%3$s = %4$s %5$s N%6$s, %7$s = %8$s",
-      es, round(delta, 3), "\u2082", n_ratio, "\u00D7", "\u2081", "\u03B1", alpha
+    plot_subtitle <- substitute(
+      paste(es == d, ", ", N[2] == ratio %*% N[1], ", ", alpha == a),
+      list(es = es, d = round(delta, 3), ratio = n_ratio, a = alpha)
     )
   }
 
