@@ -56,3 +56,50 @@
 
   return(html)
 }
+
+.bfdExplanatoryTextEnabled <- function(settings) {
+  identical(settings[["explanatoryText"]], TRUE)
+}
+
+.bfdAddExplanationFootnotes <- function(table, settings, notes) {
+  if (!.bfdExplanatoryTextEnabled(settings))
+    return(invisible(FALSE))
+
+  notes <- notes[!is.na(notes) & nzchar(notes)]
+  if (length(notes) == 0)
+    return(invisible(FALSE))
+
+  for (note in notes)
+    table$addFootnote(note, symbol = gettext("Explanation:"))
+
+  return(invisible(TRUE))
+}
+
+.bfdAddExplanationHtml <- function(parent, key, settings, position, dependencies, text,
+                                  title = gettext("Explanation")) {
+  if (!.bfdExplanatoryTextEnabled(settings)) {
+    if (!is.null(parent[[key]]))
+      parent[[key]] <- NULL
+    return(invisible(FALSE))
+  }
+
+  text <- text[!is.na(text) & nzchar(text)]
+  if (length(text) == 0) {
+    if (!is.null(parent[[key]]))
+      parent[[key]] <- NULL
+    return(invisible(FALSE))
+  }
+
+  html <- .bfdCreateHtml(
+    parent       = parent,
+    key          = key,
+    title        = title,
+    position     = position,
+    dependencies = dependencies
+  )
+  if (is.null(html))
+    return(invisible(FALSE))
+
+  html[["text"]] <- paste0("<p>", paste(text, collapse = "</p><p>"), "</p>")
+  return(invisible(TRUE))
+}

@@ -41,6 +41,7 @@ Section
 		{
 			name: "designNullPriorDistribution"
 			id:   designNullPrior
+			info: qsTr("Design prior under H\u2080 used to evaluate study outcomes when the null hypothesis is true.")
 			indexDefaultValue: 0
 			label: ""
 			values: [
@@ -55,6 +56,7 @@ Section
 		{
 			name: "designNullPriorMean"
 			id:   designNullPriorMean
+			info: qsTr("Location or mean of the H\u2080 design prior.")
 			defaultValue: 0
 			negativeValues: true
 		}
@@ -73,6 +75,7 @@ Section
 		{
 			name: "designNullPriorStandardDeviation"
 			id:   designNullPriorSd
+			info: qsTr("Standard deviation of the normal H\u2080 design prior.")
 			min: 0
 			defaultValue: 0.1
 			inclusive: JASP.None
@@ -91,6 +94,7 @@ Section
 		{
 			name: "binomialDesignNullPriorDistribution"
 			id:   binomialDesignNullPrior
+			info: qsTr("Design prior under H\u2080 used to evaluate binomial study outcomes when the null hypothesis is true.")
 			indexDefaultValue: 0
 			label: ""
 			values: [
@@ -113,6 +117,7 @@ Section
 		{
 			name: "designNullProportion"
 			id:   designNullProportion
+			info: qsTr("Point proportion assumed under the H\u2080 design prior.")
 			min: 0
 			max: 1
 			defaultValue: 0.5
@@ -134,6 +139,7 @@ Section
 		{
 			name: "designNullPriorSuccesses"
 			id:   designNullPriorSuccesses
+			info: qsTr("Success parameter of the beta H\u2080 design prior.")
 			min: 0
 			defaultValue: 1
 			inclusive: JASP.None
@@ -154,6 +160,7 @@ Section
 		{
 			name: "designNullPriorFailures"
 			id:   designNullPriorFailures
+			info: qsTr("Failure parameter of the beta H\u2080 design prior.")
 			min: 0
 			defaultValue: 1
 			inclusive: JASP.None
@@ -174,6 +181,7 @@ Section
 		{
 			name: "designNullPriorLowerTruncation"
 			id:   designNullPriorLower
+			info: qsTr("Lower truncation point for the beta H\u2080 design prior.")
 			min: 0
 			max: 1
 			defaultValue: 0
@@ -195,6 +203,7 @@ Section
 		{
 			name: "designNullPriorUpperTruncation"
 			id:   designNullPriorUpper
+			info: qsTr("Upper truncation point for the beta H\u2080 design prior.")
 			min: 0
 			max: 1
 			defaultValue: 0.5
@@ -214,6 +223,7 @@ Section
 		{
 			name: "designPriorDistribution"
 			id:   designPrior
+			info: qsTr("Design prior under H\u2081 used to evaluate study outcomes when the alternative hypothesis is true.")
 			indexDefaultValue: 0
 			label: ""
 			values: [
@@ -228,6 +238,7 @@ Section
 		{
 			name: "designPriorMean"
 			id:   designPriorMean
+			info: qsTr("Location or mean of the H\u2081 design prior.")
 			defaultValue: 0.5
 			negativeValues: true
 		}
@@ -246,6 +257,7 @@ Section
 		{
 			name: "designPriorStandardDeviation"
 			id:   designPriorSd
+			info: qsTr("Standard deviation of the normal H\u2081 design prior.")
 			min: 0
 			defaultValue: 0.1
 			inclusive: JASP.None
@@ -264,6 +276,7 @@ Section
 		{
 			name: "binomialDesignPriorDistribution"
 			id:   binomialDesignPrior
+			info: qsTr("Design prior under H\u2081 used to evaluate binomial study outcomes when the alternative hypothesis is true.")
 			indexDefaultValue: 0
 			label: ""
 			values: [
@@ -286,6 +299,7 @@ Section
 		{
 			name: "designProportion"
 			id:   designProportion
+			info: qsTr("Point proportion assumed under the H\u2081 design prior.")
 			min: 0
 			max: 1
 			defaultValue: 0.6
@@ -307,6 +321,7 @@ Section
 		{
 			name: "designPriorSuccesses"
 			id:   designPriorSuccesses
+			info: qsTr("Success parameter of the beta H\u2081 design prior.")
 			min: 0
 			defaultValue: 1
 			inclusive: JASP.None
@@ -327,6 +342,7 @@ Section
 		{
 			name: "designPriorFailures"
 			id:   designPriorFailures
+			info: qsTr("Failure parameter of the beta H\u2081 design prior.")
 			min: 0
 			defaultValue: 1
 			inclusive: JASP.None
@@ -347,6 +363,7 @@ Section
 		{
 			name: "designPriorLowerTruncation"
 			id:   designPriorLower
+			info: qsTr("Lower truncation point for the beta H\u2081 design prior.")
 			min: 0
 			max: 1
 			defaultValue: 0
@@ -368,6 +385,7 @@ Section
 		{
 			name: "designPriorUpperTruncation"
 			id:   designPriorUpper
+			info: qsTr("Upper truncation point for the beta H\u2081 design prior.")
 			min: 0
 			max: 1
 			defaultValue: 1

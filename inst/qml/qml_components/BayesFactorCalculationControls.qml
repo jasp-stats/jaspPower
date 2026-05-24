@@ -48,6 +48,7 @@ Group
 		{
 			name: "calculationTarget"
 			id:   calc
+			info: qsTr("Choose whether to find the sample size needed for a target probability of conclusive evidence, or to evaluate that probability at a selected sample size.")
 			indexDefaultValue: 0
 			label: ""
 			values: [
@@ -68,6 +69,7 @@ Group
 		{
 			name: "conclusiveEvidenceThresholdH1"
 			id:   bf10Threshold
+			info: qsTr("Bayes factor threshold that defines conclusive evidence for H\u2081.")
 			min: 1
 			defaultValue: 10
 			inclusive: JASP.None
@@ -79,6 +81,7 @@ Group
 		{
 			name: "conclusiveEvidenceThresholdH0"
 			id:   bf01Threshold
+			info: qsTr("Bayes factor threshold that defines conclusive evidence for H\u2080.")
 			min: 1
 			defaultValue: 10
 			inclusive: JASP.None
@@ -90,6 +93,7 @@ Group
 		{
 			name: "probabilityOfConclusiveEvidenceUnderH1"
 			id:   targetPowerH1
+			info: qsTr("Target probability of obtaining conclusive evidence for H\u2081 when data are generated under the H\u2081 design prior.")
 			min: 0
 			max: 1
 			defaultValue: 0.8
@@ -103,6 +107,7 @@ Group
 		{
 			name: "probabilityOfConclusiveEvidenceUnderH0"
 			id:   targetPowerH0
+			info: qsTr("Target probability of obtaining conclusive evidence for H\u2080 when data are generated under the H\u2080 design prior.")
 			min: 0
 			max: 1
 			defaultValue: 0.8
@@ -153,6 +158,7 @@ Group
 		{
 			name: "knownStandardDeviation"
 			id:   standardDeviation
+			info: qsTr("Known population standard deviation used for z-test sample size planning.")
 			min: 0
 			defaultValue: 1
 			inclusive: JASP.None
@@ -168,6 +174,7 @@ Group
 		{
 			name: "generalZParameterization"
 			id:   generalZParameterization
+			info: qsTr("Scale used for the general z-test approximation, such as standardized mean difference, Fisher's z, or a log effect measure.")
 			indexDefaultValue: 0
 			Layout.columnSpan: 2
 			visible: root.isGeneralZ
@@ -207,6 +214,7 @@ Group
 		{
 			name: "unitInformationSd"
 			id:   unitInformationSd
+			info: qsTr("Standard deviation of the estimator at one unit of information for the general z-test approximation.")
 			min: 0
 			defaultValue: 1
 			inclusive: JASP.None

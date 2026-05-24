@@ -38,9 +38,6 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
     )
   }
 
-  if (options[["explanatoryText"]])
-    .bfsdText(jaspResults, settings, result)
-
   if (options[["generateReport"]])
     .bfsdReport(jaspResults, settings, result)
 
@@ -77,29 +74,28 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
   "tSearchRangeUpper"
 )
 
-.bfsdTextDependencies   <- c(.bfsdComputationDependencies, "explanatoryText")
 .bfsdReportDependencies <- c(.bfsdComputationDependencies, "generateReport", "generateReportLatexFormattedOutput")
 .bfsdRCodeDependencies  <- c(.bfsdComputationDependencies, "generateRCode")
-.bfsdSummaryDesignDependencies                 <- c(.bfsdComputationDependencies, "designSummary")
-.bfsdSummarySampleSizeDependencies             <- c(.bfsdComputationDependencies, "sampleSizeSummary")
-.bfsdSummaryEvidenceDependencies               <- c(.bfsdComputationDependencies, "decisionProbabilities")
-.bfsdSummarySpecificationDependencies          <- c(.bfsdComputationDependencies, "designSpecification")
-.bfsdStagewiseEvidenceDependencies             <- c(.bfsdComputationDependencies, "cumulativeDecisionProbabilities")
-.bfsdStagewiseIncrementalEvidenceDependencies  <- c(.bfsdComputationDependencies, "incrementalDecisionProbabilities")
-.bfsdStagewiseStoppingBoundariesDependencies   <- c(.bfsdComputationDependencies, "stoppingBoundariesTable")
+.bfsdSummaryDesignDependencies                 <- c(.bfsdComputationDependencies, "designSummary", "explanatoryText")
+.bfsdSummarySampleSizeDependencies             <- c(.bfsdComputationDependencies, "sampleSizeSummary", "explanatoryText")
+.bfsdSummaryEvidenceDependencies               <- c(.bfsdComputationDependencies, "decisionProbabilities", "explanatoryText")
+.bfsdSummarySpecificationDependencies          <- c(.bfsdComputationDependencies, "designSpecification", "explanatoryText")
+.bfsdStagewiseEvidenceDependencies             <- c(.bfsdComputationDependencies, "cumulativeDecisionProbabilities", "explanatoryText")
+.bfsdStagewiseIncrementalEvidenceDependencies  <- c(.bfsdComputationDependencies, "incrementalDecisionProbabilities", "explanatoryText")
+.bfsdStagewiseStoppingBoundariesDependencies   <- c(.bfsdComputationDependencies, "stoppingBoundariesTable", "explanatoryText")
 
 .bfsdStoppingProbabilitiesPlotDependencies <- c(
   .bfsdComputationDependencies, "cumulativeDecisionProbabilitiesPlot",
-  "combineH1H0Figures", "legendPosition", "colorPalette"
+  "combineH1H0Figures", "legendPosition", "colorPalette", "explanatoryText"
 )
 .bfsdStoppingProbabilitiesPlotDataDependencies <- .bfsdComputationDependencies
 .bfsdStoppingBoundariesPlotDependencies <- c(
-  .bfsdComputationDependencies, "stoppingBoundariesPlot", "legendPosition", "colorPalette"
+  .bfsdComputationDependencies, "stoppingBoundariesPlot", "legendPosition", "colorPalette", "explanatoryText"
 )
 .bfsdStoppingBoundariesPlotDataDependencies <- .bfsdComputationDependencies
 .bfsdPriorPlotDependencies <- c(
   .bfsdComputationDependencies, "designPriorDistributionFigure", "analysisPriorDistributionFigure", "combineDesignAnalysisPriorFigures",
-  "curvePoints", "legendPosition", "colorPalette"
+  "curvePoints", "legendPosition", "colorPalette", "explanatoryText"
 )
 .bfsdPriorPlotDataDependencies <- c(
   "statisticalTest", "analysisPriorDirection", "nullPriorDistribution", "nullValue",
@@ -112,7 +108,7 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
 .bfsdDisplaySettingNames <- c(
   "plotPoints", "mergeH1H0Figures",
   "priorPlotDesign", "priorPlotAnalysis", "priorPlotMerge",
-  "reportLatex", "legendPosition", "colorPalette"
+  "reportLatex", "legendPosition", "colorPalette", "explanatoryText"
 )
 
 .bfsdCachedComputation <- function(jaspResults, settings) {
@@ -187,7 +183,8 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
     priorPlotMerge       = options[["combineDesignAnalysisPriorFigures"]],
     reportLatex          = options[["generateReportLatexFormattedOutput"]],
     legendPosition       = options[["legendPosition"]],
-    colorPalette         = options[["colorPalette"]]
+    colorPalette         = options[["colorPalette"]],
+    explanatoryText      = options[["explanatoryText"]]
   )
 
   settings <- .bfsdAddContinuousSettings(settings, options)
@@ -1095,6 +1092,8 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
 
   if (.bfsdUsesStandardErrorOnly(settings))
     table$addFootnote(gettext("This design uses the supplied standard error schedule, so sample-size summaries are omitted."))
+
+  .bfdAddExplanationFootnotes(table, settings, .bfsdResultsTableExplanation(settings))
 }
 
 .bfsdAddResultsColumns <- function(table, settings) {
@@ -1164,6 +1163,48 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
   return(row)
 }
 
+.bfsdResultsTableExplanation <- function(settings) {
+  if (.bfsdUsesSampleSizeSearch(settings)) {
+    return(gettext(
+      "This table reports the maximum sample size schedule needed to reach the target probability of conclusive evidence at the planned looks. To plan one sequential study that satisfies both design priors, use a final look large enough for the relevant rows."
+    ))
+  }
+
+  gettext(
+    "This table evaluates the selected sequential design through the final look. Achieved probabilities are cumulative stopping probabilities for conclusive evidence under the corresponding design prior."
+  )
+}
+
+.bfsdSampleSizeSummaryExplanation <- function() {
+  gettext(
+    "Mean sample size and SD describe how much data the sequential design is expected to use under each design prior. They are averages over hypothetical repetitions of the planned study."
+  )
+}
+
+.bfsdDesignOutcomeTableExplanation <- function() {
+  gettext(
+    "Rows condition on the design prior used to generate hypothetical sequential studies. Diagonal cells are conclusive evidence for the true hypothesis, off-diagonal cells are misleading evidence, and the middle column is the chance of reaching the final look without a conclusion."
+  )
+}
+
+.bfsdStagewiseTotalExplanation <- function() {
+  gettext(
+    "Cumulative probabilities show the chance that the study has stopped by each look. The inconclusive column is the chance that no stopping rule has been crossed yet."
+  )
+}
+
+.bfsdStagewiseIncrementalExplanation <- function() {
+  gettext(
+    "New stop probabilities isolate decisions first made at a given look. Summing them over looks gives the cumulative stopping probability for the corresponding decision."
+  )
+}
+
+.bfsdBoundariesTableExplanation <- function() {
+  gettext(
+    "Stopping boundaries are the test-statistic values that correspond to the selected Bayes factor thresholds at each look. Crossing a boundary triggers stopping for H\u2081 or H\u2080."
+  )
+}
+
 .bfsdSampleSizeSummaryTable <- function(jaspResults, settings, result) {
   if (.bfsdUsesStandardErrorOnly(settings))
     return()
@@ -1213,6 +1254,8 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
   unreachedTargetsFootnote <- .bfsdUnreachedTargetsFootnote(result)
   if (!is.null(unreachedTargetsFootnote))
     table$addFootnote(unreachedTargetsFootnote)
+
+  .bfdAddExplanationFootnotes(table, settings, .bfsdSampleSizeSummaryExplanation())
 }
 
 .bfsdSampleSizeSummaryRows <- function(settings, result) {
@@ -1425,6 +1468,7 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
 
   table$setData(rows)
   table$addFootnote(.bfsdDesignOutcomeSampleSizeFootnote(settings, result))
+  .bfdAddExplanationFootnotes(table, settings, .bfsdDesignOutcomeTableExplanation())
 }
 
 .bfsdDesignOutcomeRows <- function(settings, result) {
@@ -1523,6 +1567,7 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
 
   .bfsdAddStagewiseTotalColumns(table, settings, result)
   table$setData(.bfsdStagewiseTotalRows(settings, result))
+  .bfdAddExplanationFootnotes(table, settings, .bfsdStagewiseTotalExplanation())
 }
 
 .bfsdStagewiseIncrementalTable <- function(jaspResults, settings, result) {
@@ -1544,6 +1589,7 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
 
   .bfsdAddStagewiseIncrementalColumns(table, settings, result)
   table$setData(.bfsdStagewiseIncrementalRows(settings, result))
+  .bfdAddExplanationFootnotes(table, settings, .bfsdStagewiseIncrementalExplanation())
 }
 
 .bfsdDesignPriorOvertitle <- function(under) {
@@ -1833,6 +1879,7 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
   table$setData(rows)
 
   table$addFootnote(gettext("Boundaries are shown on the test-statistic scale. Empty cells mean no finite statistic reaches the decision rule at that look."))
+  .bfdAddExplanationFootnotes(table, settings, .bfsdBoundariesTableExplanation())
 }
 
 .bfsdBoundaryDecisionRuleOvertitle <- function(settings, target) {
@@ -1889,59 +1936,8 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
 
   if (!identical(settings[["nullValue"]], 0))
     table$addFootnote(gettext("Sequential bfpwr calculations are performed on the parameter scale centered at the null value."))
-}
 
-.bfsdText <- function(jaspResults, settings, result) {
-  html <- .bfdCreateHtml(
-    parent       = jaspResults,
-    key          = "sequentialEvidenceText",
-    title        = gettext("Explanation"),
-    position     = 9,
-    dependencies = .bfsdTextDependencies
-  )
-  if (is.null(html))
-    return()
-
-  if (jaspBase::isTryError(result)) {
-    html[["text"]] <- gettext("The requested Bayes factor sequential design could not be completed with the current settings.")
-    return()
-  }
-
-  outcome <- .bfsdFinalOutcome(.bfsdBasisDesignForUnder(settings, result, "h1"))
-  firstSentence <- if (.bfsdUsesSampleSizeSearch(settings)) {
-    if (isTRUE(result[["solver"]][["limitReached"]])) {
-      gettextf(
-        "This group-sequential design is evaluated at the selected maximum sample size for %1$s at %2$s planned looks.",
-        .bfdPlanningTargetText(settings),
-        length(settings[["n1Seq"]])
-      )
-    } else {
-      gettextf(
-        "This group-sequential design finds separate maximum sample sizes for %1$s at %2$s planned looks.",
-        .bfdPlanningTargetText(settings),
-        length(settings[["n1Seq"]])
-      )
-    }
-  } else {
-    gettextf(
-      "This group-sequential design computes cumulative stopping probabilities for %1$s at %2$s planned looks.",
-      settings[["testLabel"]],
-      length(settings[["n1Seq"]])
-    )
-  }
-
-  html[["text"]] <- paste0(
-    "<p>",
-    firstSentence,
-    "</p><p>",
-    gettextf(
-      "At the final look under the H\u2081 design prior, the conclusive evidence probability for H\u2081 is %1$s, the conclusive evidence probability for H\u2080 is %2$s, and the probability of remaining inconclusive is %3$s.",
-      .bfdFormatNumber(outcome[["alternative"]]),
-      .bfdFormatNumber(outcome[["null"]]),
-      .bfdFormatNumber(outcome[["undecided"]])
-    ),
-    "</p>"
-  )
+  .bfdAddExplanationFootnotes(table, settings, .bfdPriorsTableExplanation())
 }
 
 .bfsdReport <- function(jaspResults, settings, result) {
@@ -2301,6 +2297,14 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
   }
 
   plot$plotObject <- plotResult
+  .bfdAddExplanationHtml(
+    parent       = jaspResults,
+    key          = paste0(key, "Note"),
+    settings     = settings,
+    position     = position + 0.1,
+    dependencies = .bfsdStoppingProbabilitiesPlotDependencies,
+    text         = .bfsdStoppingProbabilitiesPlotExplanation()
+  )
 }
 
 .bfsdUnderPlotSpecs <- function(settings, keyPrefix, title, position) {
@@ -2407,6 +2411,12 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
   )
 }
 
+.bfsdStoppingProbabilitiesPlotExplanation <- function() {
+  gettext(
+    "The curves accumulate over planned looks: conclusive and misleading curves increase as studies stop for those outcomes, while the inconclusive curve decreases as decisions are made."
+  )
+}
+
 .bfsdStoppingBoundariesPlot <- function(jaspResults, settings, result) {
   .bfsdClearSplitStoppingBoundaryPlots(jaspResults)
 
@@ -2464,6 +2474,14 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
   }
 
   plot$plotObject <- plotResult
+  .bfdAddExplanationHtml(
+    parent       = jaspResults,
+    key          = paste0(key, "Note"),
+    settings     = settings,
+    position     = position + 0.1,
+    dependencies = .bfsdStoppingBoundariesPlotDependencies,
+    text         = .bfsdStoppingBoundariesPlotExplanation()
+  )
 }
 
 .bfsdBuildStoppingBoundariesPlot <- function(settings, result, plotData = NULL) {
@@ -2485,6 +2503,12 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
     ggplot2::geom_hline(yintercept = 0, linetype = "dotted", color = "#666666")
 
   return(.bfdApplyPlotTheme(plot, settings))
+}
+
+.bfsdStoppingBoundariesPlotExplanation <- function() {
+  gettext(
+    "Each curve gives the critical test-statistic value that corresponds to a Bayes factor stopping threshold at a look. Crossing a boundary triggers stopping for H\u2081 or H\u2080."
+  )
 }
 
 .bfsdBoundaryPlotData <- function(settings, design) {

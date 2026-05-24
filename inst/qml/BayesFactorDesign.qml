@@ -33,6 +33,7 @@ Form
 			id:   test
 			indexDefaultValue: 0
 			label: qsTr("Statistical test:")
+			info: qsTr("Select the statistical test for which the Bayes factor design is planned.")
 			values: [
 				{ label: qsTr("Independent Samples T-Test"), value: "independentSamplesTTest" },
 				{ label: qsTr("Paired Samples T-Test"),      value: "pairedSamplesTTest"      },
@@ -47,7 +48,8 @@ Form
 
 		CheckBox
 		{
-			label: qsTr("Explanatory text")
+			label: qsTr("Explanatory notes")
+			info:  qsTr("Append brief interpretation notes to each displayed Bayesian result.")
 			id:    text
 			name:  "explanatoryText"
 			checked: true
@@ -56,6 +58,7 @@ Form
 		CheckBox
 		{
 			label: qsTr("Generate report")
+			info:  qsTr("Generate a short report describing the design, priors, thresholds, and achieved probabilities.")
 			id:    generateReport
 			name:  "generateReport"
 			checked: false
@@ -63,6 +66,7 @@ Form
 			CheckBox
 			{
 				label: qsTr("LaTeX formatted output")
+				info:  qsTr("Format the generated report with LaTeX notation for use in manuscripts and preregistrations.")
 				id:    generateReportLatex
 				name:  "generateReportLatexFormattedOutput"
 				checked: false
@@ -102,6 +106,7 @@ Form
 			{
 				name: "sampleSize"
 				id:   sampleSize
+				info: qsTr("Fixed sample size at which the probability of conclusive, misleading, and inconclusive evidence is evaluated.")
 				min: 2
 				defaultValue: 100
 				enabled: calculationControls.calculationValue !== "sampleSize"
@@ -121,6 +126,7 @@ Form
 			{
 				name: "sampleSizeAllocationRatio"
 				id:   sampleSizeRatio
+				info: qsTr("Ratio of the sample size in group 2 to the sample size in group 1.")
 				min: 0
 				defaultValue: 1
 				inclusive: JASP.None
@@ -154,6 +160,7 @@ Form
 			{
 				name: "designSummary"
 				label: qsTr("Design summary")
+				info:  qsTr("Show the main fixed-design result: the required sample size or the achieved probability of conclusive evidence.")
 				checked: true
 			}
 
@@ -161,6 +168,7 @@ Form
 			{
 				name: "decisionProbabilities"
 				label: qsTr("Decision probabilities")
+				info:  qsTr("Show probabilities of evidence for H\u2081, evidence for H\u2080, and inconclusive evidence under each design prior.")
 				checked: true
 			}
 
@@ -168,6 +176,7 @@ Form
 			{
 				name: "designSpecification"
 				label: qsTr("Design specification")
+				info:  qsTr("Show the analysis and design priors used for computing and evaluating the Bayes factor design.")
 				checked: true
 			}
 		}
@@ -185,6 +194,7 @@ Form
 			CheckBox
 			{
 				label:  qsTr("Decision probabilities by effect size")
+				info:   qsTr("Plot how conclusive, misleading, and inconclusive evidence probabilities change across design-prior effect sizes.")
 				id:     decisionProbabilitiesByEffectSize
 				name:   "decisionProbabilitiesByEffectSize"
 				checked: false
@@ -193,6 +203,7 @@ Form
 			CheckBox
 			{
 				label: qsTr("Decision probabilities by sample size")
+				info:  qsTr("Plot how conclusive, misleading, and inconclusive evidence probabilities change as the fixed sample size increases.")
 				id:    decisionProbabilitiesBySampleSize
 				name:  "decisionProbabilitiesBySampleSize"
 				checked: false
@@ -200,6 +211,7 @@ Form
 				CheckBox
 				{
 					label: qsTr("Log sample-size axis")
+					info:  qsTr("Use a logarithmic x-axis to inspect changes across small and large sample sizes.")
 					name:  "logSampleSizeAxis"
 					checked: true
 				}
@@ -209,6 +221,7 @@ Form
 			{
 				name: "combineH1H0Figures"
 				label: qsTr("Combine H\u2081 and H\u2080")
+				info:  qsTr("Display curves for the H\u2081 and H\u2080 design priors in one figure instead of separate figures.")
 				checked: false
 			}
 		}
@@ -239,6 +252,7 @@ Form
 				name: "generateRCode"
 				id:   generateRCode
 				label: qsTr("Generate R Code")
+				info:  qsTr("Generate R code that reproduces the Bayes factor design calculation.")
 				checked: false
 			}
 
@@ -256,6 +270,7 @@ Form
 			{
 				name: "minimumSampleSize"
 				id:   sampleSizeRangeMin
+				info: qsTr("Smallest sample size considered when searching for the target probability of conclusive evidence.")
 				min: 1
 				defaultValue: 10
 				visible: calculationControls.calculationValue === "sampleSize"
@@ -275,6 +290,7 @@ Form
 			{
 				name: "maximumSampleSize"
 				id:   sampleSizeRangeMax
+				info: qsTr("Largest sample size considered when searching for the target probability of conclusive evidence.")
 				min: 2
 				defaultValue: 10000
 				visible: calculationControls.calculationValue === "sampleSize"
@@ -294,6 +310,7 @@ Form
 			{
 				name: "tSearchRangeMode"
 				id:   drangeMode
+				info: qsTr("Choose whether the integration range for t-test calculations is selected automatically or supplied manually.")
 				indexDefaultValue: 0
 				visible: test.currentValue.indexOf("TTest") !== -1
 				values: [
@@ -316,6 +333,7 @@ Form
 			{
 				name: "tSearchRangeLower"
 				id:   drangeLower
+				info: qsTr("Lower bound of the custom integration range for t-test calculations.")
 				defaultValue: -5
 				negativeValues: true
 				visible: test.currentValue.indexOf("TTest") !== -1 && drangeMode.currentValue === "custom"
@@ -335,6 +353,7 @@ Form
 			{
 				name: "tSearchRangeUpper"
 				id:   drangeUpper
+				info: qsTr("Upper bound of the custom integration range for t-test calculations.")
 				defaultValue: 5
 				negativeValues: true
 				visible: test.currentValue.indexOf("TTest") !== -1 && drangeMode.currentValue === "custom"
@@ -346,6 +365,7 @@ Form
 			{
 				name: "curvePoints"
 				id:   plotPoints
+				info: qsTr("Number of points used to draw probability and prior curves.")
 				min: 10
 				defaultValue: 100
 			}

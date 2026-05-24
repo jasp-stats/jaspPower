@@ -32,6 +32,7 @@ Form
 			id:   test
 			indexDefaultValue: 0
 			label: qsTr("Statistical test:")
+			info: qsTr("Select the statistical test for which the Bayes factor sequential design is planned.")
 			values: [
 				{ label: qsTr("Independent Samples T-Test"), value: "independentSamplesTTest" },
 				{ label: qsTr("Paired Samples T-Test"),      value: "pairedSamplesTTest"      },
@@ -45,7 +46,8 @@ Form
 
 		CheckBox
 		{
-			label: qsTr("Explanatory text")
+			label: qsTr("Explanatory notes")
+			info:  qsTr("Append brief interpretation notes to each displayed Bayesian result.")
 			id:    text
 			name:  "explanatoryText"
 			checked: true
@@ -54,6 +56,7 @@ Form
 		CheckBox
 		{
 			label: qsTr("Generate report")
+			info:  qsTr("Generate a short report describing the sequential design, priors, thresholds, and achieved probabilities.")
 			id:    generateReport
 			name:  "generateReport"
 			checked: false
@@ -61,6 +64,7 @@ Form
 			CheckBox
 			{
 				label: qsTr("LaTeX formatted output")
+				info:  qsTr("Format the generated report with LaTeX notation for use in manuscripts and preregistrations.")
 				id:    generateReportLatex
 				name:  "generateReportLatexFormattedOutput"
 				checked: false
@@ -105,6 +109,7 @@ Form
 			{
 				name: "designSummary"
 				label: qsTr("Design summary")
+				info:  qsTr("Show the main sequential-design result: the maximum sample size or the achieved probability of conclusive evidence.")
 				checked: true
 			}
 
@@ -112,6 +117,7 @@ Form
 			{
 				name: "sampleSizeSummary"
 				label: qsTr("Sample size summary")
+				info:  qsTr("Show the expected sample size and its variability under each design prior.")
 				checked: true
 			}
 
@@ -119,6 +125,7 @@ Form
 			{
 				name: "decisionProbabilities"
 				label: qsTr("Decision probabilities")
+				info:  qsTr("Show final probabilities of evidence for H\u2081, evidence for H\u2080, and inconclusive evidence under each design prior.")
 				checked: true
 			}
 
@@ -126,6 +133,7 @@ Form
 			{
 				name: "designSpecification"
 				label: qsTr("Design specification")
+				info:  qsTr("Show the analysis and design priors used for computing and evaluating the Bayes factor sequential design.")
 				checked: true
 			}
 		}
@@ -138,6 +146,7 @@ Form
 			{
 				name: "cumulativeDecisionProbabilities"
 				label: qsTr("Cumulative decision probabilities")
+				info:  qsTr("Show the probability that the study has stopped for each decision by each planned look.")
 				checked: false
 			}
 
@@ -145,6 +154,7 @@ Form
 			{
 				name: "incrementalDecisionProbabilities"
 				label: qsTr("Incremental decision probabilities")
+				info:  qsTr("Show the probability that each decision is first reached at a given look.")
 				checked: false
 			}
 
@@ -152,6 +162,7 @@ Form
 			{
 				name: "stoppingBoundariesTable"
 				label: qsTr("Stopping boundaries")
+				info:  qsTr("Show the test-statistic values corresponding to the Bayes factor stopping thresholds at each look.")
 				checked: false
 			}
 		}
@@ -169,6 +180,7 @@ Form
 			CheckBox
 			{
 				label: qsTr("Cumulative decision probabilities")
+				info:  qsTr("Plot how stopping probabilities for conclusive, misleading, and inconclusive evidence accumulate across looks.")
 				name:  "cumulativeDecisionProbabilitiesPlot"
 				checked: false
 			}
@@ -176,6 +188,7 @@ Form
 			CheckBox
 			{
 				label: qsTr("Stopping boundaries")
+				info:  qsTr("Plot the test-statistic boundaries that trigger stopping for H\u2081 or H\u2080 at each look.")
 				name:  "stoppingBoundariesPlot"
 				checked: false
 			}
@@ -184,6 +197,7 @@ Form
 			{
 				name: "combineH1H0Figures"
 				label: qsTr("Combine H\u2081 and H\u2080")
+				info:  qsTr("Display curves for the H\u2081 and H\u2080 design priors in one figure instead of separate figures.")
 				checked: false
 			}
 		}
@@ -223,6 +237,7 @@ Form
 				name: "generateRCode"
 				id:   generateRCode
 				label: qsTr("Generate R Code")
+				info:  qsTr("Generate R code that reproduces the Bayes factor sequential-design calculation.")
 				checked: false
 			}
 
@@ -232,6 +247,7 @@ Form
 				name: "exactIntegrationOverAllRegions"
 				id:   strictIntegration
 				label: ""
+				info:  qsTr("Use exact integration over all decision regions when computing sequential design characteristics.")
 				checked: true
 			}
 
@@ -241,6 +257,7 @@ Form
 			{
 				name: "integrationMethod"
 				id:   integrationMethod
+				info: qsTr("Numerical method used for multivariate normal probabilities in sequential calculations.")
 				indexDefaultValue: 0
 				values: [
 					{ label: qsTr("Log-scale MVN"), value: "lpmvnorm" },
@@ -262,6 +279,7 @@ Form
 			{
 				name: "integrationAbsoluteTolerance"
 				id:   integrationAbsEps
+				info: qsTr("Absolute error tolerance for numerical integration.")
 				min: 0
 				defaultValue: 0.000001
 				inclusive: JASP.None
@@ -282,6 +300,7 @@ Form
 			{
 				name: "integrationRelativeTolerance"
 				id:   integrationRelEps
+				info: qsTr("Relative error tolerance for numerical integration.")
 				min: 0
 				defaultValue: 0
 				inclusive: JASP.MinOnly
@@ -302,6 +321,7 @@ Form
 			{
 				name: "integrationMaximumPoints"
 				id:   integrationMaxPts
+				info: qsTr("Maximum number of integration points used by the numerical routine.")
 				min: 1000
 				defaultValue: 25000
 				visible: integrationMethod.currentValue === "pmvnorm"
@@ -321,6 +341,7 @@ Form
 			{
 				name: "tSearchRangeMode"
 				id:   drangeMode
+				info: qsTr("Choose whether the integration range for t-test calculations is selected automatically or supplied manually.")
 				indexDefaultValue: 0
 				visible: test.currentValue.indexOf("TTest") !== -1
 				values: [
@@ -343,6 +364,7 @@ Form
 			{
 				name: "tSearchRangeLower"
 				id:   drangeLower
+				info: qsTr("Lower bound of the custom integration range for t-test calculations.")
 				defaultValue: -5
 				negativeValues: true
 				visible: test.currentValue.indexOf("TTest") !== -1 && drangeMode.currentValue === "custom"
@@ -362,6 +384,7 @@ Form
 			{
 				name: "tSearchRangeUpper"
 				id:   drangeUpper
+				info: qsTr("Upper bound of the custom integration range for t-test calculations.")
 				defaultValue: 5
 				negativeValues: true
 				visible: test.currentValue.indexOf("TTest") !== -1 && drangeMode.currentValue === "custom"
@@ -373,6 +396,7 @@ Form
 			{
 				name: "curvePoints"
 				id:   plotPoints
+				info: qsTr("Number of points used to draw probability and prior curves.")
 				min: 10
 				defaultValue: 100
 			}

@@ -35,6 +35,7 @@ Section
 		id:                     observedAnalysisInput
 		radioButtonsOnSameRow:	true
 		title:                  qsTr("Input")
+		info:                   qsTr("Choose whether to enter observed data as summary statistics or select variables from the dataset.")
 
 		RadioButton
 		{
@@ -60,6 +61,7 @@ Section
 		{
 			name: "observedSuccesses"
 			label: qsTr("Successes")
+			info:  qsTr("Number of observed successes used to compute the observed Bayes factor.")
 			min: 0
 			defaultValue: 0
 			visible: testValue === "oneSampleProportion"
@@ -69,6 +71,7 @@ Section
 		{
 			name: "observedFailures"
 			label: qsTr("Failures")
+			info:  qsTr("Number of observed failures used to compute the observed Bayes factor.")
 			min: 0
 			defaultValue: 0
 			visible: testValue === "oneSampleProportion"
@@ -78,6 +81,7 @@ Section
 		{
 			name: "observedEffectSize"
 			label: qsTr("Effect size")
+			info:  qsTr("Observed effect estimate on the scale selected for the general z-test approximation.")
 			defaultValue: 0
 			negativeValues: true
 			visible: testValue === "generalZApproximation"
@@ -87,6 +91,7 @@ Section
 		{
 			name: "observedStandardError"
 			label: qsTr("SE")
+			info:  qsTr("Standard error of the observed effect estimate.")
 			min: 0
 			defaultValue: 0
 			inclusive: JASP.MinOnly
@@ -97,6 +102,7 @@ Section
 		{
 			name: "observedT"
 			label: qsTr("t")
+			info:  qsTr("Observed t statistic used to compute the observed Bayes factor.")
 			defaultValue: 0
 			negativeValues: true
 			visible: testValue.indexOf("TTest") !== -1 && observedInputType.value === "tAndN"
@@ -106,6 +112,7 @@ Section
 		{
 			name: "observedCohensD"
 			label: qsTr("Cohen's d")
+			info:  qsTr("Observed standardized mean difference used to compute the observed Bayes factor.")
 			defaultValue: 0
 			negativeValues: true
 			visible: testValue.indexOf("TTest") !== -1 && observedInputType.value === "cohensD"
@@ -120,6 +127,7 @@ Section
 			{
 				name: "observedMean1"
 				label: qsTr("Mean 1")
+				info:  qsTr("Observed mean in group 1.")
 				defaultValue: 0
 				negativeValues: true
 			}
@@ -128,6 +136,7 @@ Section
 			{
 				name: "observedSd1"
 				label: qsTr("SD 1")
+				info:  qsTr("Observed standard deviation in group 1.")
 				min: 0
 				defaultValue: 1
 				inclusive: JASP.None
@@ -144,6 +153,7 @@ Section
 			{
 				name: "observedMean2"
 				label: qsTr("Mean 2")
+				info:  qsTr("Observed mean in group 2.")
 				defaultValue: 0
 				negativeValues: true
 			}
@@ -152,6 +162,7 @@ Section
 			{
 				name: "observedSd2"
 				label: qsTr("SD 2")
+				info:  qsTr("Observed standard deviation in group 2.")
 				min: 0
 				defaultValue: 1
 				inclusive: JASP.None
@@ -168,6 +179,7 @@ Section
 			{
 				name: "observedMean"
 				label: qsTr("Mean")
+				info:  qsTr("Observed mean used to compute the observed Bayes factor.")
 				defaultValue: 0
 				negativeValues: true
 				visible: testValue === "oneSampleZTest" || (testValue === "oneSampleTTest" && observedInputType.value === "meanAndSD")
@@ -177,6 +189,7 @@ Section
 			{
 				name: "observedMeanDifference"
 				label: qsTr("Mean difference")
+				info:  qsTr("Observed paired mean difference used to compute the observed Bayes factor.")
 				defaultValue: 0
 				negativeValues: true
 				visible: testValue === "pairedSamplesZTest" || (testValue === "pairedSamplesTTest" && observedInputType.value === "meanDiffAndSD")
@@ -186,6 +199,7 @@ Section
 			{
 				name: "observedSd"
 				label: qsTr("SD")
+				info:  qsTr("Observed standard deviation used to compute the observed Bayes factor.")
 				min: 0
 				defaultValue: 1
 				inclusive: JASP.None
@@ -196,6 +210,7 @@ Section
 			{
 				name: "observedSdDifference"
 				label: qsTr("SD")
+				info:  qsTr("Observed standard deviation of paired differences.")
 				min: 0
 				defaultValue: 1
 				inclusive: JASP.None
@@ -206,6 +221,7 @@ Section
 			{
 				name: "observedSampleSize"
 				label: qsTr("Sample size")
+				info:  qsTr("Observed sample size used to compute the observed Bayes factor.")
 				min: 0
 				defaultValue: 0
 			}
@@ -215,6 +231,7 @@ Section
 		{
 			name: "observedSampleSizeGroup1"
 			label: testValue === "independentSamplesTTest" ? qsTr("Sample size group 1") : qsTr("N\u2081")
+			info:  qsTr("Observed sample size in group 1.")
 			min: 0
 			defaultValue: 0
 			visible: testValue.indexOf("independentSamples") !== -1
@@ -224,6 +241,7 @@ Section
 		{
 			name: "observedSampleSizeGroup2"
 			label: testValue === "independentSamplesTTest" ? qsTr("Sample size group 2") : qsTr("N\u2082")
+			info:  qsTr("Observed sample size in group 2.")
 			min: 0
 			defaultValue: 0
 			visible: testValue.indexOf("independentSamples") !== -1
@@ -235,6 +253,7 @@ Section
 		name:    "observedInputType"
 		id:      observedInputType
 		title:   qsTr("Input Type")
+		info:    qsTr("Choose which summary statistics are available for the observed t-test result.")
 		visible: observedAnalysisInput.value === "summaryStatistics" && testValue.indexOf("TTest") !== -1
 
 		RadioButton
@@ -280,12 +299,14 @@ Section
 		AvailableVariablesList
 		{
 			name: "observedAvailableVariables"
+			info: qsTr("Dataset columns available for the observed-data Bayes factor analysis.")
 		}
 
 		AssignedVariablesList
 		{
 			name: "observedVariable"
 			label: qsTr("Variable")
+			info:  qsTr("Observed scale variable for the one-sample or general z-test analysis.")
 			allowedColumns: ["scale"]
 			singleVariable: true
 			visible: (testValue.indexOf("oneSample") !== -1 && testValue !== "oneSampleProportion") || testValue === "generalZApproximation"
@@ -295,6 +316,7 @@ Section
 		{
 			name: "observedVariablePairs"
 			title: qsTr("Variable Pairs")
+			info:  qsTr("Observed paired variables used to compute the paired-samples Bayes factor.")
 			allowedColumns: ["scale"]
 			minNumericLevels: 2
 			maxRows: 1
@@ -305,6 +327,7 @@ Section
 		{
 			name: "observedDependentVariable"
 			label: qsTr("Dependent Variable")
+			info:  qsTr("Observed outcome variable for the independent-samples Bayes factor.")
 			allowedColumns: ["scale"]
 			singleVariable: true
 			visible: testValue.indexOf("independentSamples") !== -1
@@ -314,6 +337,7 @@ Section
 		{
 			name: "observedGroupingVariable"
 			label: qsTr("Grouping Variable")
+			info:  qsTr("Grouping variable that defines the two independent samples.")
 			allowedColumns: ["nominal", "ordinal", "scale"]
 			singleVariable: true
 			visible: testValue.indexOf("independentSamples") !== -1
@@ -323,6 +347,7 @@ Section
 		{
 			name: "observedProportionVariable"
 			label: qsTr("Variable")
+			info:  qsTr("Observed variable containing success and failure values for the binomial test.")
 			allowedColumns: ["nominal", "ordinal", "scale"]
 			singleVariable: true
 			visible: testValue === "oneSampleProportion"
@@ -334,6 +359,7 @@ Section
 		Layout.columnSpan: 2
 		name: "observedSuccessValue"
 		label: qsTr("Success value")
+		info:  qsTr("Value in the selected variable that is counted as a success.")
 		defaultValue: "1"
 		visible: observedAnalysisInput.value === "columns" && testValue === "oneSampleProportion"
 	}

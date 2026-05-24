@@ -45,6 +45,7 @@ Section
 		{
 			name: "nullPriorDistribution"
 			id:   nullPriorDistribution
+			info: qsTr("Prior specification for H\u2080 used to compute the Bayes factor from the observed data.")
 			indexDefaultValue: 0
 			label: ""
 			enabled: isBinomial
@@ -76,6 +77,7 @@ Section
 		{
 			name: "nullValue"
 			id:   nullValue
+			info: qsTr("Parameter value specified by the null hypothesis.")
 			defaultValue: 0
 			negativeValues: true
 			visible: !isBinomial
@@ -95,6 +97,7 @@ Section
 		{
 			name: "nullProportion"
 			id:   nullProportion
+			info: qsTr("Proportion specified by the null hypothesis for the binomial test.")
 			min: 0
 			max: 1
 			defaultValue: 0.5
@@ -113,6 +116,7 @@ Section
 		{
 			name: "analysisPriorDistribution"
 			id:   analysisPriorDistribution
+			info: qsTr("Prior distribution under H\u2081 used to compute the Bayes factor from the data.")
 			indexDefaultValue: 0
 			label: ""
 			values: isBinomial ?
@@ -150,6 +154,7 @@ Section
 		{
 			name: "analysisPriorDirection"
 			id:   alternative
+			info: qsTr("Direction of the analysis prior under H\u2081.")
 			indexDefaultValue: 0
 			visible: usesPriorDirection
 			values: [
@@ -173,6 +178,7 @@ Section
 		{
 			name: "analysisPriorLocation"
 			id:   analysisPriorPoint
+			info: qsTr("Point location of the H\u2081 analysis prior.")
 			defaultValue: 0.5
 			negativeValues: true
 			visible: isContinuousZ && analysisPriorDistribution.currentValue === "point"
@@ -192,6 +198,7 @@ Section
 		{
 			name: "analysisPriorMean"
 			id:   analysisPriorMean
+			info: qsTr("Mean of the normal H\u2081 analysis prior.")
 			defaultValue: 0
 			negativeValues: true
 			visible: isContinuousZ && analysisPriorDistribution.currentValue === "normal"
@@ -211,6 +218,7 @@ Section
 		{
 			name: "analysisPriorScale"
 			id:   analysisPriorSd
+			info: qsTr("Scale of the normal H\u2081 analysis prior.")
 			min: 0
 			defaultValue: 0.707
 			inclusive: JASP.None
@@ -231,6 +239,7 @@ Section
 		{
 			name: "analysisPriorSpread"
 			id:   momentPriorSpread
+			info: qsTr("Spread parameter of the non-local moment prior under H\u2081.")
 			min: 0
 			defaultValue: 0.707
 			inclusive: JASP.None
@@ -251,6 +260,7 @@ Section
 		{
 			name: "analysisPriorMode"
 			id:   momentPriorMode
+			info: qsTr("Mode of the non-local moment prior under H\u2081.")
 			min: 0
 			defaultValue: 1
 			inclusive: JASP.None
@@ -295,6 +305,7 @@ Section
 		{
 			name: "tPriorLocation"
 			id:   tPriorLocation
+			info: qsTr("Location of the Cauchy or Student-t analysis prior under H\u2081.")
 			defaultValue: 0
 			negativeValues: true
 			visible: isTTest
@@ -314,6 +325,7 @@ Section
 		{
 			name: "tPriorScale"
 			id:   tPriorScale
+			info: qsTr("Scale of the Cauchy or Student-t analysis prior under H\u2081.")
 			min: 0
 			defaultValue: 0.707
 			inclusive: JASP.None
@@ -334,6 +346,7 @@ Section
 		{
 			name: "tPriorDegreesOfFreedom"
 			id:   tPriorDf
+			info: qsTr("Degrees of freedom of the Student-t analysis prior under H\u2081.")
 			min: 0
 			defaultValue: 1
 			inclusive: JASP.None
@@ -354,6 +367,7 @@ Section
 		{
 			name: "analysisPriorSuccesses"
 			id:   analysisPriorSuccesses
+			info: qsTr("Success parameter of the beta analysis prior under H\u2081.")
 			min: 0
 			defaultValue: 1
 			inclusive: JASP.None
@@ -374,6 +388,7 @@ Section
 		{
 			name: "analysisPriorFailures"
 			id:   analysisPriorFailures
+			info: qsTr("Failure parameter of the beta analysis prior under H\u2081.")
 			min: 0
 			defaultValue: 1
 			inclusive: JASP.None

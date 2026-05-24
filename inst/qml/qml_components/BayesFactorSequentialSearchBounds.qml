@@ -58,6 +58,7 @@ Group
 	{
 		name: "lowerSearchBoundForMaximumSampleSize"
 		id:   sampleSizeRangeMin
+		info: qsTr("Smallest maximum sample size considered when searching for the target probability of conclusive evidence.")
 		min: 2
 		defaultValue: 20
 		enabled: !linkLowerBoundToStartingPoint
@@ -76,6 +77,7 @@ Group
 	{
 		name: "upperSearchBoundForMaximumSampleSize"
 		id:   sampleSizeRangeMax
+		info: qsTr("Largest maximum sample size considered when searching for the target probability of conclusive evidence.")
 		min: sampleSizeRangeMin.value + 1
 		defaultValue: 10000
 	}

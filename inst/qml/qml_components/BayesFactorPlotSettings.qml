@@ -28,6 +28,7 @@ Group
 	{
 		name:       "legendPosition"
 		label:      qsTr("Legend position")
+		info:       qsTr("Choose where the plot legend is shown.")
 		startValue: "right"
 		values:
 		[
@@ -45,6 +46,6 @@ Group
 		name:      "colorPalette"
 		label:     qsTr("Color palette")
 		infoLabel: qsTr("Color palette")
-		info:      qsTr("Customize the color palette used in the plots.")
+		info:      qsTr("Choose the color palette used for evidence outcomes and design priors in plots.")
 	}
 }

@@ -55,6 +55,7 @@ Group
 		{
 			name: "standardErrorSchedule"
 			id:   standardErrorSchedule
+			info: qsTr("Comma-separated standard errors for the planned looks in a sequential general z-test.")
 			defaultValue: "0.224, 0.158, 0.129, 0.112, 0.100"
 			fieldWidth: 140
 		}
@@ -78,6 +79,7 @@ Group
 		{
 			name: "lookScheduleType"
 			id:   lookScheduleMode
+			info: qsTr("Defines how the planned interim looks are spaced across the sequential design.")
 			indexDefaultValue: 0
 			values: root.usesSampleSizeSearch ?
 			[
@@ -106,6 +108,7 @@ Group
 		{
 			name: "numberOfLooks"
 			id:   numberOfLooks
+			info: qsTr("Number of planned analyses, including the final look.")
 			min: 1
 			defaultValue: 5
 			visible: lookScheduleMode.currentValue === "even"
@@ -125,6 +128,7 @@ Group
 		{
 			name: "firstInformationFraction"
 			id:   informationFractionFirstLook
+			info: qsTr("Information fraction at the first planned look relative to the maximum information.")
 			min: 0
 			max: 1
 			defaultValue: 0.2
@@ -146,6 +150,7 @@ Group
 		{
 			name: "initialSampleSize"
 			id:   sampleSizeFirstLook
+			info: qsTr("Sample size at the first planned look.")
 			min: 2
 			defaultValue: 20
 			visible: lookScheduleMode.currentValue === "increase" || (root.usesEvidenceProbability && lookScheduleMode.currentValue === "even")
@@ -165,6 +170,7 @@ Group
 		{
 			name: "sampleSizeIncreasePerLook"
 			id:   sampleSizeIncrease
+			info: qsTr("Number of observations added between successive looks.")
 			min: 1
 			defaultValue: 20
 			visible: lookScheduleMode.currentValue === "increase"
@@ -184,6 +190,7 @@ Group
 		{
 			name: "maximumSampleSize"
 			id:   sampleSize
+			info: qsTr("Maximum sample size reached at the final look if the study has not stopped earlier.")
 			min: 2
 			defaultValue: 100
 			visible: root.usesEvidenceProbability && (lookScheduleMode.currentValue === "even" || lookScheduleMode.currentValue === "increase")
@@ -203,6 +210,7 @@ Group
 		{
 			name: "sampleSizeSchedule"
 			id:   sampleSizeSchedule
+			info: qsTr("Comma-separated sample sizes for the planned looks.")
 			defaultValue: "20, 40, 60, 80, 100"
 			fieldWidth: 140
 			visible: root.usesEvidenceProbability && lookScheduleMode.currentValue === "custom"
@@ -222,6 +230,7 @@ Group
 		{
 			name: "sampleSizeScheduleGroup2"
 			id:   sampleSizeSecondGroupSchedule
+			info: qsTr("Comma-separated group 2 sample sizes for the planned looks.")
 			defaultValue: "20, 40, 60, 80, 100"
 			fieldWidth: 140
 			visible: root.isIndependentSamples && root.usesEvidenceProbability && lookScheduleMode.currentValue === "custom"
@@ -241,6 +250,7 @@ Group
 		{
 			name: "informationFractionSchedule"
 			id:   informationFractionSchedule
+			info: qsTr("Comma-separated information fractions for the planned looks, ending at 1.")
 			defaultValue: "0.2, 0.4, 0.6, 0.8, 1"
 			fieldWidth: 140
 			visible: root.usesSampleSizeSearch && lookScheduleMode.currentValue === "custom"
@@ -260,6 +270,7 @@ Group
 		{
 			name: "sampleSizeAllocationRatio"
 			id:   sampleSizeRatio
+			info: qsTr("Ratio of the sample size in group 2 to the sample size in group 1.")
 			min: 0
 			defaultValue: 1
 			inclusive: JASP.None

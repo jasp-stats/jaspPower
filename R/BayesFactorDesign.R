@@ -17,9 +17,6 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
   if (.bfdObservedAnalysisReady(dataset, options, settings))
     .bfdObservedAnalysisTable(jaspResults, dataset, options, settings, key = "evidenceObservedAnalysis", position = 16)
 
-  if (options[["explanatoryText"]])
-    .bfdText(jaspResults, settings, result)
-
   if (options[["generateReport"]])
     .bfdReport(jaspResults, settings, result)
 
@@ -58,24 +55,23 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
 
 .bfdReportDependencies <- c(.bfdDesignDependencies, "generateReport", "generateReportLatexFormattedOutput")
 .bfdRCodeDependencies  <- c(.bfdDesignDependencies, "generateRCode")
-.bfdTextDependencies   <- c(.bfdDesignDependencies, "explanatoryText")
-.bfdSummaryDesignDependencies        <- c(.bfdDesignDependencies, "designSummary")
-.bfdSummaryEvidenceDependencies      <- c(.bfdDesignDependencies, "decisionProbabilities")
-.bfdSummarySpecificationDependencies <- c(.bfdDesignDependencies, "designSpecification")
+.bfdSummaryDesignDependencies        <- c(.bfdDesignDependencies, "designSummary", "explanatoryText")
+.bfdSummaryEvidenceDependencies      <- c(.bfdDesignDependencies, "decisionProbabilities", "explanatoryText")
+.bfdSummarySpecificationDependencies <- c(.bfdDesignDependencies, "designSpecification", "explanatoryText")
 
 .bfdSampleSizePlotDependencies <- c(
   .bfdDesignDependencies, "decisionProbabilitiesBySampleSize", "combineH1H0Figures",
-  "curvePoints", "logSampleSizeAxis", "legendPosition", "colorPalette"
+  "curvePoints", "logSampleSizeAxis", "legendPosition", "colorPalette", "explanatoryText"
 )
 .bfdSampleSizePlotDataDependencies <- c(.bfdDesignDependencies, "curvePoints", "logSampleSizeAxis")
 .bfdEffectSizePlotDependencies <- c(
   .bfdDesignDependencies, "decisionProbabilitiesByEffectSize", "combineH1H0Figures",
-  "curvePoints", "legendPosition", "colorPalette"
+  "curvePoints", "legendPosition", "colorPalette", "explanatoryText"
 )
 .bfdEffectSizePlotDataDependencies <- c(.bfdDesignDependencies, "curvePoints")
 .bfdPriorPlotDependencies <- c(
   .bfdDesignDependencies, "designPriorDistributionFigure", "analysisPriorDistributionFigure", "combineDesignAnalysisPriorFigures",
-  "curvePoints", "legendPosition", "colorPalette"
+  "curvePoints", "legendPosition", "colorPalette", "explanatoryText"
 )
 .bfdPriorPlotDataDependencies <- c(
   "statisticalTest", "analysisPriorDirection", "nullPriorDistribution", "nullValue", "nullProportion",
@@ -125,7 +121,7 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
 .bfdDisplaySettingNames <- c(
   "plotPoints", "logSampleSize", "legendPosition", "colorPalette",
   "mergeH1H0Figures", "priorPlotDesign", "priorPlotAnalysis",
-  "priorPlotMerge", "reportLatex"
+  "priorPlotMerge", "reportLatex", "explanatoryText"
 )
 
 .bfdPrepareSettings <- function(options) {
@@ -159,7 +155,8 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
     priorPlotDesign      = options[["designPriorDistributionFigure"]],
     priorPlotAnalysis    = options[["analysisPriorDistributionFigure"]],
     priorPlotMerge       = options[["combineDesignAnalysisPriorFigures"]],
-    reportLatex          = options[["generateReportLatexFormattedOutput"]]
+    reportLatex          = options[["generateReportLatexFormattedOutput"]],
+    explanatoryText      = options[["explanatoryText"]]
   )
 
   if (settings[["isBinomial"]]) {
@@ -584,6 +581,8 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
 
   if (settings[["isIndependentSamples"]])
     table$addFootnote(gettext("For independent samples, N\u2081 is the sample size in group 1 and N\u2082 is rounded up from the requested N\u2082/N\u2081 sample-size ratio."))
+
+  .bfdAddExplanationFootnotes(table, settings, .bfdResultsTableExplanation(settings))
 }
 
 .bfdAddResultsTableColumns <- function(table, settings) {
@@ -702,6 +701,7 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
   table$setData(rows)
   .bfdAddDesignPriorErrorFootnotes(table, attr(rows, "errors", exact = TRUE))
   table$addFootnote(.bfdDesignOutcomeSampleSizeFootnote(settings, result))
+  .bfdAddExplanationFootnotes(table, settings, .bfdDesignOutcomeTableExplanation())
 }
 
 .bfdDesignOutcomeRows <- function(settings, result) {
@@ -931,6 +931,47 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
   }
 
   table$setData(.bfdPriorsRows(settings))
+  .bfdAddExplanationFootnotes(table, settings, .bfdPriorsTableExplanation())
+}
+
+.bfdResultsTableExplanation <- function(settings) {
+  if (settings[["calculation"]] == "sampleSize") {
+    return(gettext(
+      "This table reports the smallest fixed-design sample size that reaches the target probability of conclusive evidence for each design prior. To plan one study that satisfies both design priors, use the larger reported sample size."
+    ))
+  }
+
+  return(gettext(
+    "This table evaluates the selected fixed sample size. Achieved probabilities are the chances that the planned study produces conclusive evidence in the requested direction when data are generated from the corresponding design prior."
+  ))
+}
+
+.bfdDesignOutcomeTableExplanation <- function() {
+  gettext(
+    "Rows condition on the design prior used to generate hypothetical data. Diagonal cells are conclusive evidence for the true hypothesis, off-diagonal cells are misleading evidence, and the middle column is the chance of remaining inconclusive."
+  )
+}
+
+.bfdPriorsTableExplanation <- function() {
+  gettext(
+    "The analysis prior is used to compute the Bayes factor from the data. The design prior describes the effect sizes assumed during planning; it can differ from the analysis prior."
+  )
+}
+
+.bfdObservedSummaryExplanation <- function() {
+  gettext("Summary statistics are the data summaries used to compute the observed Bayes factor.")
+}
+
+.bfdObservedAnalysisExplanation <- function(sequential = FALSE) {
+  if (isTRUE(sequential)) {
+    return(gettext(
+      "The observed-data analysis applies the planned sequential decision rule to the current data. It is an interim or final decision for the observed study, not an operating characteristic of the design."
+    ))
+  }
+
+  return(gettext(
+    "The observed-data analysis applies the planned fixed-design Bayes factor rule to the current data. It is the decision for this observed study, not an operating characteristic of the design."
+  ))
 }
 
 .bfdObservedAnalysisTable <- function(jaspResults, dataset, options, settings, key, position, sequential = FALSE,
@@ -941,7 +982,7 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
   showSummaryTable <- options[["observedDataAnalysisInput"]] == "columns"
 
   container <- createJaspContainer(title = gettext("Observed Data Analysis"))
-  container$dependOn(c(dependencies, .bfdObservedDependencies))
+  container$dependOn(c(dependencies, .bfdObservedDependencies, "explanatoryText"))
   container$position <- position
   jaspResults[[key]] <- container
 
@@ -970,6 +1011,9 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
   if (showSummaryTable)
     .bfdObservedFillSummaryTable(summaryTable, settings, summary)
 
+  if (showSummaryTable)
+    .bfdAddExplanationFootnotes(summaryTable, settings, .bfdObservedSummaryExplanation())
+
   bayesFactor <- try(.bfdObservedBayesFactor(settings, summary), silent = TRUE)
   if (jaspBase::isTryError(bayesFactor)) {
     resultTable$setError(gettextf("Unable to compute observed Bayes factor: %1$s", .bfdCleanError(bayesFactor)))
@@ -983,6 +1027,8 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
 
   if (isTRUE(sequential))
     resultTable$addFootnote(gettext("Sequential decisions use the configured BF thresholds for the current observed data."))
+
+  .bfdAddExplanationFootnotes(resultTable, settings, .bfdObservedAnalysisExplanation(sequential))
 }
 
 .bfdObservedAddResultColumns <- function(table, settings) {
@@ -1878,76 +1924,6 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
   return(decoded)
 }
 
-.bfdText <- function(jaspResults, settings, result) {
-  html <- .bfdCreateHtml(
-    parent       = jaspResults,
-    key          = "evidenceText",
-    title        = gettext("Explanation"),
-    position     = 4,
-    dependencies = .bfdTextDependencies
-  )
-  if (is.null(html))
-    return()
-
-  if (jaspBase::isTryError(result)) {
-    html[["text"]] <- gettext("The requested Bayes factor design could not be completed with the current settings.")
-    return()
-  }
-
-  if (.bfdHasTargetErrors(result)) {
-    html[["text"]] <- gettext("The Bayes factor design could not be completed for all design priors. See the table footnotes for details.")
-    return()
-  }
-
-  if (settings[["calculation"]] == "sampleSize") {
-    sampleText <- gettextf("The smallest sample size satisfying the selected planning targets is %1$s.", .bfdSampleSizeText(settings, result[["n1"]]))
-    calculationText <- gettextf(
-      "%1$s The corresponding conclusive evidence probabilities are %2$s.",
-      sampleText,
-      .bfdTargetProbabilityText(result)
-    )
-  } else {
-    h1Result <- .bfdTargetResult(result, "h1")
-    h0Result <- .bfdTargetResult(result, "h0")
-    sampleText <- gettextf("With %1$s", .bfdSampleSizeText(settings, result[["n1"]]))
-    calculationText <- gettextf(
-      "%1$s, Pr(Conclusive Evidence) is %2$s for H\u2081 and %3$s for H\u2080.",
-      sampleText,
-      .bfdFormatNumber(h1Result[["probability"]]),
-      .bfdFormatNumber(h0Result[["probability"]])
-    )
-  }
-
-  html[["text"]] <- paste0(
-    "<p>",
-    gettextf(
-      "This Bayes factor design computes the probability of reaching the selected BF\u2081\u2080 or BF\u2080\u2081 thresholds for %1$s, averaging over the corresponding design prior.",
-      settings[["testLabel"]]
-    ),
-    "</p><p>",
-    calculationText,
-    "</p>"
-  )
-}
-
-.bfdTargetProbabilityText <- function(result) {
-  rows <- result[["targetResults"]]
-  parts <- vapply(seq_len(nrow(rows)), function(i) {
-    gettextf("%1$s for %2$s", .bfdFormatNumber(rows[["probability"]][i]), .bfdTargetLabel(rows[["target"]][i]))
-  }, character(1))
-
-  return(paste(parts, collapse = ", "))
-}
-
-.bfdTargetResult <- function(result, target) {
-  rows <- result[["targetResults"]]
-  index <- which(rows[["target"]] == target)
-  if (length(index) == 0)
-    return(rows[1, , drop = FALSE])
-
-  return(rows[index[1], , drop = FALSE])
-}
-
 .bfdSampleSizeText <- function(settings, n1) {
   if (settings[["isIndependentSamples"]]) {
     return(gettextf(
@@ -2665,6 +2641,14 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
   }
 
   plot$plotObject <- plotResult
+  .bfdAddExplanationHtml(
+    parent       = jaspResults,
+    key          = paste0(key, "Note"),
+    settings     = settings,
+    position     = position + 0.1,
+    dependencies = .bfdSampleSizePlotDependencies,
+    text         = .bfdSampleSizePlotExplanation()
+  )
 }
 
 .bfdUnderPlotSpecs <- function(settings, keyPrefix, title, position) {
@@ -2814,6 +2798,14 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
   }
 
   plot$plotObject <- plotResult
+  .bfdAddExplanationHtml(
+    parent       = jaspResults,
+    key          = paste0(key, "Note"),
+    settings     = settings,
+    position     = position + 0.1,
+    dependencies = .bfdEffectSizePlotDependencies,
+    text         = .bfdEffectSizePlotExplanation(settings)
+  )
 }
 
 .bfdEffectSizePlotTitle <- function(settings) {
@@ -2821,6 +2813,24 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
     return(gettext("Decision Probabilities by Proportion"))
 
   return(gettext("Decision Probabilities by Effect Size"))
+}
+
+.bfdSampleSizePlotExplanation <- function() {
+  gettext(
+    "This plot shows how the probabilities of conclusive and misleading evidence change with sample size while priors and thresholds are held fixed. Use it to see how quickly the planned design becomes informative."
+  )
+}
+
+.bfdEffectSizePlotExplanation <- function(settings) {
+  if (settings[["isBinomial"]]) {
+    return(gettext(
+      "This plot shows how the probabilities of conclusive and misleading evidence change across possible design proportions. Use it as a sensitivity check for the assumed proportion under the design prior."
+    ))
+  }
+
+  gettext(
+    "This plot shows how the probabilities of conclusive and misleading evidence change across possible design-prior effect sizes. Use it as a sensitivity check for the assumed effect size."
+  )
 }
 
 .bfdEffectSizePlotData <- function(settings, result) {
@@ -2982,7 +2992,21 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
     }
 
     plot$plotObject <- plotResult
+    .bfdAddExplanationHtml(
+      parent       = container,
+      key          = paste0(spec[["key"]], "Note"),
+      settings     = settings,
+      position     = i + 0.1,
+      dependencies = "explanatoryText",
+      text         = .bfdPriorPlotExplanation()
+    )
   }
+}
+
+.bfdPriorPlotExplanation <- function() {
+  gettext(
+    "Analysis priors determine how the Bayes factor is computed from the data. Design priors describe the data-generating assumptions used to evaluate the design, so comparing them helps assess whether the planning assumptions match the intended analysis."
+  )
 }
 
 .bfdPriorPlotSpecs <- function(settings) {

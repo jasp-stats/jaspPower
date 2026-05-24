@@ -28,6 +28,7 @@ Group
 	CheckBox
 	{
 		label: qsTr("Design prior distribution")
+		info:  qsTr("Plot the design prior used to evaluate hypothetical study outcomes.")
 		name:  "designPriorDistributionFigure"
 		checked: true
 	}
@@ -35,6 +36,7 @@ Group
 	CheckBox
 	{
 		label: qsTr("Analysis prior distribution")
+		info:  qsTr("Plot the analysis prior used to compute the Bayes factor from the data.")
 		name:  "analysisPriorDistributionFigure"
 		checked: true
 	}
@@ -42,6 +44,7 @@ Group
 	CheckBox
 	{
 		label: qsTr("Combine design and analysis")
+		info:  qsTr("Display design and analysis prior distributions in the same figure for comparison.")
 		name:  "combineDesignAnalysisPriorFigures"
 		checked: false
 	}
