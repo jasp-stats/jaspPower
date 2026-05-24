@@ -364,24 +364,31 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
 }
 
 .bfdEvidenceProbabilityT <- function(settings, n1, k, lowerTail, designPriorMean, designPriorSd) {
-  n2 <- .bfdSampleSizeSecondGroup(settings, n1)
+  args <- c(
+    list(
+      k           = k,
+      null        = settings[["nullValue"]],
+      plocation   = settings[["tPriorLocationRelative"]],
+      pscale      = settings[["tPriorScale"]],
+      pdf         = settings[["tPriorDf"]],
+      dpm         = designPriorMean,
+      dpsd        = designPriorSd,
+      type        = settings[["testType"]],
+      alternative = settings[["alternative"]],
+      lower.tail  = lowerTail,
+      drange      = .bfdTSearchRange(settings, n1, k)
+    ),
+    .bfdTTestSampleSizeArguments(settings, n1)
+  )
 
-  return(bfpwr::ptbf01(
-    k           = k,
-    n           = n1,
-    n1          = n1,
-    n2          = n2,
-    null        = settings[["nullValue"]],
-    plocation   = settings[["tPriorLocationRelative"]],
-    pscale      = settings[["tPriorScale"]],
-    pdf         = settings[["tPriorDf"]],
-    dpm         = designPriorMean,
-    dpsd        = designPriorSd,
-    type        = settings[["testType"]],
-    alternative = settings[["alternative"]],
-    lower.tail  = lowerTail,
-    drange      = .bfdTSearchRange(settings, n1, k)
-  ))
+  return(do.call(bfpwr::ptbf01, args))
+}
+
+.bfdTTestSampleSizeArguments <- function(settings, n1, n2 = .bfdSampleSizeSecondGroup(settings, n1)) {
+  if (settings[["isIndependentSamples"]])
+    return(list(n1 = n1, n2 = n2))
+
+  return(list(n = n1))
 }
 
 .bfdEvidenceProbabilityBinomial <- function(settings, n, k, lowerTail, designArguments = NULL) {
@@ -1793,17 +1800,19 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
   n1 <- if (settings[["isIndependentSamples"]]) summary[["n1"]] else summary[["n"]]
   n2 <- if (settings[["isIndependentSamples"]]) summary[["n2"]] else summary[["n"]]
 
-  return(bfpwr::tbf01(
-    t           = summary[["testStatistic"]],
-    n           = n1,
-    n1          = n1,
-    n2          = n2,
-    plocation   = settings[["tPriorLocationRelative"]],
-    pscale      = settings[["tPriorScale"]],
-    pdf         = settings[["tPriorDf"]],
-    type        = settings[["testType"]],
-    alternative = settings[["alternative"]]
-  ))
+  args <- c(
+    list(
+      t           = summary[["testStatistic"]],
+      plocation   = settings[["tPriorLocationRelative"]],
+      pscale      = settings[["tPriorScale"]],
+      pdf         = settings[["tPriorDf"]],
+      type        = settings[["testType"]],
+      alternative = settings[["alternative"]]
+    ),
+    .bfdTTestSampleSizeArguments(settings, n1, n2)
+  )
+
+  return(do.call(bfpwr::tbf01, args))
 }
 
 .bfdObservedBinomialBayesFactor <- function(settings, summary) {
@@ -2570,21 +2579,23 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
   n2        <- .bfdSampleSizeSecondGroup(settings, n1)
   k         <- if (settings[["evidenceTarget"]] == "h1") 1 / settings[["bfThreshold"]] else settings[["bfThreshold"]]
   lowerTail <- settings[["evidenceTarget"]] == "h1"
-  args <- list(
-    k           = k,
-    n           = n1,
-    n1          = n1,
-    n2          = n2,
-    null        = settings[["nullValue"]],
-    plocation   = settings[["tPriorLocationRelative"]],
-    pscale      = settings[["tPriorScale"]],
-    pdf         = settings[["tPriorDf"]],
-    dpm         = settings[["designPriorMean"]],
-    dpsd        = settings[["designPriorSd"]],
-    type        = settings[["testType"]],
-    alternative = settings[["alternative"]],
-    lower.tail  = lowerTail,
-    drange      = .bfdTSearchRange(settings, n1, k)
+  args <- c(
+    list(
+      k = k
+    ),
+    .bfdTTestSampleSizeArguments(settings, n1, n2),
+    list(
+      null        = settings[["nullValue"]],
+      plocation   = settings[["tPriorLocationRelative"]],
+      pscale      = settings[["tPriorScale"]],
+      pdf         = settings[["tPriorDf"]],
+      dpm         = settings[["designPriorMean"]],
+      dpsd        = settings[["designPriorSd"]],
+      type        = settings[["testType"]],
+      alternative = settings[["alternative"]],
+      lower.tail  = lowerTail,
+      drange      = .bfdTSearchRange(settings, n1, k)
+    )
   )
 
   return(.bfdFormatRCall("bfpwr::ptbf01", args))

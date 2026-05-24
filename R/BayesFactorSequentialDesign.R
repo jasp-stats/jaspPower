@@ -936,9 +936,6 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
       list(
         k1          = settings[["k1"]],
         k0          = settings[["k0"]],
-        n           = settings[["n1Seq"]],
-        n1          = settings[["n1Seq"]],
-        n2          = settings[["n2Seq"]],
         plocation   = settings[["tPriorLocationRelative"]],
         pscale      = settings[["tPriorScale"]],
         pdf         = settings[["tPriorDf"]],
@@ -949,6 +946,7 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
         strict      = settings[["strictIntegration"]],
         drange      = .bfsdDrange(settings)
       ),
+      .bfdTTestSampleSizeArguments(settings, settings[["n1Seq"]], settings[["n2Seq"]]),
       .bfsdIntegrationArguments(settings)
     )
   )
@@ -2226,10 +2224,10 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
   args <- c(
     list(
       k1          = settings[["k1"]],
-      k0          = settings[["k0"]],
-      n           = settings[["n1Seq"]],
-      n1          = settings[["n1Seq"]],
-      n2          = settings[["n2Seq"]],
+      k0          = settings[["k0"]]
+    ),
+    .bfdTTestSampleSizeArguments(settings, settings[["n1Seq"]], settings[["n2Seq"]]),
+    list(
       plocation   = settings[["tPriorLocationRelative"]],
       pscale      = settings[["tPriorScale"]],
       pdf         = settings[["tPriorDf"]],

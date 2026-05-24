@@ -251,7 +251,7 @@ Form
 				Layout.columnSpan: 3
 				name: "generateRCode"
 				id:   generateRCode
-				label: qsTr("Generate R Code")
+				label: qsTr("Generate R code")
 				info:  qsTr("Generate R code that reproduces the Bayes factor design calculation.")
 				checked: false
 			}
