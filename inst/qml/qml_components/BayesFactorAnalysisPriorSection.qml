@@ -24,7 +24,7 @@ Section
 {
 	expanded: true
 	title: qsTr("Analysis Prior")
-	columns: 1
+	columns: 2
 
 	property string testValue: ""
 	property bool supportsBinomial: false

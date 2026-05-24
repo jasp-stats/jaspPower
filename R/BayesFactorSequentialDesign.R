@@ -4,25 +4,25 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
   settings    <- computation[["settings"]]
   result      <- computation[["result"]]
 
-  if (options[["summaryDesign"]])
+  if (options[["designSummary"]])
     .bfsdResultsTable(jaspResults, settings, result)
 
-  if (options[["summarySampleSize"]])
+  if (options[["sampleSizeSummary"]])
     .bfsdSampleSizeSummaryTable(jaspResults, settings, result)
 
-  if (options[["summaryEvidence"]])
+  if (options[["decisionProbabilities"]])
     .bfsdDesignOutcomeTable(jaspResults, settings, result)
 
-  if (options[["stagewiseEvidence"]])
+  if (options[["cumulativeDecisionProbabilities"]])
     .bfsdStagewiseTotalTable(jaspResults, settings, result)
 
-  if (options[["stagewiseIncrementalEvidence"]])
+  if (options[["incrementalDecisionProbabilities"]])
     .bfsdStagewiseIncrementalTable(jaspResults, settings, result)
 
-  if (options[["stagewiseStoppingBoundaries"]])
+  if (options[["stoppingBoundariesTable"]])
     .bfsdBoundariesTable(jaspResults, settings, result)
 
-  if (options[["summarySpecification"]])
+  if (options[["designSpecification"]])
     .bfsdPriorsTable(jaspResults, settings)
 
   if (.bfdObservedAnalysisReady(dataset, options, settings)) {
@@ -32,7 +32,7 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
       options      = options,
       settings     = settings,
       key          = "sequentialEvidenceObservedAnalysis",
-      position     = 8,
+      position     = 16,
       sequential   = TRUE,
       dependencies = .bfsdComputationDependencies
     )
@@ -47,10 +47,10 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
   if (options[["generateRCode"]])
     .bfsdRCode(jaspResults, settings, result)
 
-  if (options[["stoppingProbabilities"]])
+  if (options[["cumulativeDecisionProbabilitiesPlot"]])
     .bfsdStoppingProbabilitiesPlot(jaspResults, settings, result)
 
-  if (options[["stoppingBoundaries"]])
+  if (options[["stoppingBoundariesPlot"]])
     .bfsdStoppingBoundariesPlot(jaspResults, settings, result)
 
   if (.bfdPriorPlotRequested(options))
@@ -61,7 +61,7 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
 
 .bfsdComputationDependencies <- c(
   "statisticalTest", "calculationTarget", "conclusiveEvidenceThresholdH1", "conclusiveEvidenceThresholdH0",
-  "probabilityOfConclusiveEvidenceUnderH1", "probabilityOfConclusiveEvidenceUnderH0", "analysisPriorDirection", "lookScheduleType",
+  "probabilityOfConclusiveEvidenceUnderH1", "probabilityOfConclusiveEvidenceUnderH0", "designSampleSizeBasis", "analysisPriorDirection", "lookScheduleType",
   "numberOfLooks", "initialSampleSize", "sampleSizeIncreasePerLook", "maximumSampleSize", "sampleSizeSchedule",
   "sampleSizeScheduleGroup2", "sampleSizeAllocationRatio", "firstInformationFraction",
   "informationFractionSchedule", "lowerSearchBoundForMaximumSampleSize", "upperSearchBoundForMaximumSampleSize",
@@ -80,25 +80,25 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
 .bfsdTextDependencies   <- c(.bfsdComputationDependencies, "explanatoryText")
 .bfsdReportDependencies <- c(.bfsdComputationDependencies, "generateReport", "generateReportLatexFormattedOutput")
 .bfsdRCodeDependencies  <- c(.bfsdComputationDependencies, "generateRCode")
-.bfsdSummaryDesignDependencies                 <- c(.bfsdComputationDependencies, "summaryDesign")
-.bfsdSummarySampleSizeDependencies             <- c(.bfsdComputationDependencies, "summarySampleSize")
-.bfsdSummaryEvidenceDependencies               <- c(.bfsdComputationDependencies, "summaryEvidence")
-.bfsdSummarySpecificationDependencies          <- c(.bfsdComputationDependencies, "summarySpecification")
-.bfsdStagewiseEvidenceDependencies             <- c(.bfsdComputationDependencies, "stagewiseEvidence")
-.bfsdStagewiseIncrementalEvidenceDependencies  <- c(.bfsdComputationDependencies, "stagewiseIncrementalEvidence")
-.bfsdStagewiseStoppingBoundariesDependencies   <- c(.bfsdComputationDependencies, "stagewiseStoppingBoundaries")
+.bfsdSummaryDesignDependencies                 <- c(.bfsdComputationDependencies, "designSummary")
+.bfsdSummarySampleSizeDependencies             <- c(.bfsdComputationDependencies, "sampleSizeSummary")
+.bfsdSummaryEvidenceDependencies               <- c(.bfsdComputationDependencies, "decisionProbabilities")
+.bfsdSummarySpecificationDependencies          <- c(.bfsdComputationDependencies, "designSpecification")
+.bfsdStagewiseEvidenceDependencies             <- c(.bfsdComputationDependencies, "cumulativeDecisionProbabilities")
+.bfsdStagewiseIncrementalEvidenceDependencies  <- c(.bfsdComputationDependencies, "incrementalDecisionProbabilities")
+.bfsdStagewiseStoppingBoundariesDependencies   <- c(.bfsdComputationDependencies, "stoppingBoundariesTable")
 
 .bfsdStoppingProbabilitiesPlotDependencies <- c(
-  .bfsdComputationDependencies, "stoppingProbabilities",
-  "mergeH1AndH0Figures"
+  .bfsdComputationDependencies, "cumulativeDecisionProbabilitiesPlot",
+  "combineH1H0Figures", "legendPosition", "colorPalette"
 )
 .bfsdStoppingProbabilitiesPlotDataDependencies <- .bfsdComputationDependencies
 .bfsdStoppingBoundariesPlotDependencies <- c(
-  .bfsdComputationDependencies, "stoppingBoundaries"
+  .bfsdComputationDependencies, "stoppingBoundariesPlot", "legendPosition", "colorPalette"
 )
 .bfsdStoppingBoundariesPlotDataDependencies <- .bfsdComputationDependencies
 .bfsdPriorPlotDependencies <- c(
-  .bfsdComputationDependencies, "priorDistributionDesign", "priorDistributionAnalysis", "priorDistributionMergeFigures",
+  .bfsdComputationDependencies, "designPriorDistributionFigure", "analysisPriorDistributionFigure", "combineDesignAnalysisPriorFigures",
   "curvePoints", "legendPosition", "colorPalette"
 )
 .bfsdPriorPlotDataDependencies <- c(
@@ -154,6 +154,7 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
     bf01Threshold        = options[["conclusiveEvidenceThresholdH0"]],
     targetPowerH1        = options[["probabilityOfConclusiveEvidenceUnderH1"]],
     targetPowerH0        = options[["probabilityOfConclusiveEvidenceUnderH0"]],
+    designSampleSizeBasis = options[["designSampleSizeBasis"]],
     planningTargets      = .bfdPlanningTargets(),
     k1                   = 1 / options[["conclusiveEvidenceThresholdH1"]],
     k0                   = options[["conclusiveEvidenceThresholdH0"]],
@@ -180,10 +181,10 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
     drangeLower          = options[["tSearchRangeLower"]],
     drangeUpper          = options[["tSearchRangeUpper"]],
     plotPoints           = options[["curvePoints"]],
-    mergeH1H0Figures     = options[["mergeH1AndH0Figures"]],
-    priorPlotDesign      = options[["priorDistributionDesign"]],
-    priorPlotAnalysis    = options[["priorDistributionAnalysis"]],
-    priorPlotMerge       = options[["priorDistributionMergeFigures"]],
+    mergeH1H0Figures     = options[["combineH1H0Figures"]],
+    priorPlotDesign      = options[["designPriorDistributionFigure"]],
+    priorPlotAnalysis    = options[["analysisPriorDistributionFigure"]],
+    priorPlotMerge       = options[["combineDesignAnalysisPriorFigures"]],
     reportLatex          = options[["generateReportLatexFormattedOutput"]],
     legendPosition       = options[["legendPosition"]],
     colorPalette         = options[["colorPalette"]]
@@ -470,17 +471,93 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
   if (is.finite(lower[["criterion"]]) && lower[["criterion"]] >= 0)
     return(.bfsdSolvedTargetMaximumSampleSize(settings, target, minimumN, cache))
 
-  upper <- .bfsdEvaluateTargetMaximumN(settings, target, maximumN, cache)
-  if (!is.finite(upper[["criterion"]])) {
+  bracket <- .bfsdFindTargetMaximumNSearchBracket(settings, target, minimumN, maximumN, lower, cache)
+  if (!is.null(bracket[["upperN"]]))
+    return(.bfsdSearchTargetMaximumSampleSize(settings, target, minimumN, bracket[["upperN"]], cache))
+
+  if (!is.null(bracket[["limit"]]))
+    return(.bfsdTargetMaximumSampleSizeLimit(bracket[["limit"]]))
+
+  if (!is.null(bracket[["error"]])) {
     stop(gettextf(
-      "The upper search bound does not produce a valid sequential design: %1$s",
-      upper[["error"]]
+      "No valid sequential design could be computed within the selected search bounds: %1$s",
+      bracket[["error"]]
     ))
   }
 
-  if (upper[["criterion"]] < 0)
-    return(.bfsdTargetMaximumSampleSizeLimit(upper))
+  stop(gettext("No valid sequential design could be computed within the selected search bounds."))
+}
 
+.bfsdFindTargetMaximumNSearchBracket <- function(settings, target, minimumN, maximumN, lower, cache) {
+  lastFinite <- if (is.finite(lower[["criterion"]])) lower else NULL
+  currentN   <- minimumN
+
+  while (currentN < maximumN) {
+    candidateN <- .bfsdNextSearchCandidate(currentN, maximumN)
+    candidate  <- .bfsdEvaluateTargetMaximumN(settings, target, candidateN, cache)
+
+    if (is.finite(candidate[["criterion"]])) {
+      lastFinite <- candidate
+
+      if (candidate[["criterion"]] >= 0)
+        return(list(upperN = candidateN))
+
+      if (candidateN == maximumN)
+        return(list(limit = candidate))
+
+      currentN <- candidateN
+      next
+    }
+
+    boundary <- .bfsdSearchBeforeInvalidMaximumN(settings, target, currentN, candidateN, cache)
+    if (!is.null(boundary[["upperN"]]) || !is.null(boundary[["limit"]]))
+      return(boundary)
+
+    if (!is.null(lastFinite))
+      return(list(limit = lastFinite))
+
+    return(list(error = candidate[["error"]]))
+  }
+
+  if (!is.null(lastFinite))
+    return(list(limit = lastFinite))
+
+  return(list(error = lower[["error"]]))
+}
+
+.bfsdNextSearchCandidate <- function(currentN, maximumN) {
+  return(min(maximumN, max(currentN + 1L, as.integer(ceiling(2 * currentN)))))
+}
+
+.bfsdSearchBeforeInvalidMaximumN <- function(settings, target, validN, invalidN, cache) {
+  lastFinite <- .bfsdEvaluateTargetMaximumN(settings, target, validN, cache)
+  solvedN    <- if (is.finite(lastFinite[["criterion"]]) && lastFinite[["criterion"]] >= 0) validN else NULL
+
+  while ((invalidN - validN) > 1) {
+    midpoint <- floor((validN + invalidN) / 2)
+    current  <- .bfsdEvaluateTargetMaximumN(settings, target, midpoint, cache)
+
+    if (is.finite(current[["criterion"]])) {
+      validN     <- midpoint
+      lastFinite <- current
+
+      if (current[["criterion"]] >= 0)
+        solvedN <- midpoint
+    } else {
+      invalidN <- midpoint
+    }
+  }
+
+  if (!is.null(solvedN))
+    return(list(upperN = solvedN))
+
+  if (is.finite(lastFinite[["criterion"]]))
+    return(list(limit = lastFinite))
+
+  return(list())
+}
+
+.bfsdSearchTargetMaximumSampleSize <- function(settings, target, minimumN, maximumN, cache) {
   lowerN <- minimumN
   upperN <- maximumN
 
@@ -624,6 +701,99 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
   ))
 }
 
+.bfsdSampleSizeBasisTarget <- function(settings, under) {
+  if (!.bfsdUsesSampleSizeSearch(settings))
+    return(NULL)
+
+  switch(settings[["designSampleSizeBasis"]],
+    eachDesignHypothesis = under,
+    bothDesignHypotheses = NULL,
+    alternativeHypothesis = "h1",
+    nullHypothesis        = "h0",
+    under
+  )
+}
+
+.bfsdBasisSettings <- function(settings, result, under) {
+  target <- .bfsdSampleSizeBasisTarget(settings, under)
+  if (is.null(target))
+    return(settings)
+
+  return(.bfsdTargetSettings(settings, result, target))
+}
+
+.bfsdBasisDesignResult <- function(result, target) {
+  if (is.null(target))
+    return(result)
+
+  return(.bfsdTargetDesignResult(result, target))
+}
+
+.bfsdBasisDesignForUnder <- function(settings, result, under) {
+  target       <- .bfsdSampleSizeBasisTarget(settings, under)
+  designResult <- .bfsdBasisDesignResult(result, target)
+
+  if (under == "h0")
+    return(designResult[["null"]])
+
+  return(designResult[["design"]])
+}
+
+.bfsdBasisSampleSizeSchedule <- function(settings, result, under) {
+  basisSettings <- .bfsdBasisSettings(settings, result, under)
+
+  return(list(
+    n1Seq = basisSettings[["n1Seq"]],
+    n2Seq = basisSettings[["n2Seq"]]
+  ))
+}
+
+.bfsdCommonSampleSizeBasisTarget <- function(settings) {
+  if (!.bfsdUsesSampleSizeSearch(settings))
+    return(NULL)
+
+  switch(settings[["designSampleSizeBasis"]],
+    alternativeHypothesis = "h1",
+    nullHypothesis        = "h0",
+    NULL
+  )
+}
+
+.bfsdCommonBasisSettings <- function(settings, result) {
+  target <- .bfsdCommonSampleSizeBasisTarget(settings)
+  if (is.null(target))
+    return(settings)
+
+  return(.bfsdTargetSettings(settings, result, target))
+}
+
+.bfsdCommonBasisDesignResult <- function(result, settings) {
+  target <- .bfsdCommonSampleSizeBasisTarget(settings)
+  if (is.null(target))
+    return(result)
+
+  return(.bfsdTargetDesignResult(result, target))
+}
+
+.bfsdBasisTargetReached <- function(settings, result, under) {
+  if (!.bfsdUsesSampleSizeSearch(settings))
+    return(TRUE)
+
+  target <- .bfsdSampleSizeBasisTarget(settings, under)
+  if (is.null(target))
+    target <- under
+
+  targetRows <- result[["solver"]][["targetResults"]]
+  if (is.null(targetRows) || is.null(targetRows[["target"]]) || is.null(targetRows[["reached"]]))
+    return(TRUE)
+
+  index <- which(targetRows[["target"]] == target)
+  if (length(index) == 0)
+    return(FALSE)
+
+  return(isTRUE(targetRows[["reached"]][index[1]]))
+}
+
 .bfsdTargetResults <- function(settings, result, targets = settings[["planningTargets"]]) {
   rows <- lapply(targets, function(target) {
     design <- if (target == "h0") result[["null"]] else result[["design"]]
@@ -641,7 +811,10 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
   return(do.call(rbind, rows))
 }
 
-.bfsdDisplayMaximumFootnote <- function(result) {
+.bfsdDisplayMaximumFootnote <- function(settings, result) {
+  if (.bfsdUsesSeparateLookSchedules(settings, result))
+    return(NULL)
+
   targetRows <- result[["solver"]][["targetResults"]]
   if (is.null(targetRows) || is.null(targetRows[["maximumN"]]))
     return(NULL)
@@ -906,7 +1079,7 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
   if (!is.null(combinedSampleSizeFootnote))
     table$addFootnote(combinedSampleSizeFootnote)
 
-  displayMaximumFootnote <- .bfsdDisplayMaximumFootnote(result)
+  displayMaximumFootnote <- .bfsdDisplayMaximumFootnote(settings, result)
   if (!is.null(displayMaximumFootnote))
     table$addFootnote(displayMaximumFootnote)
 
@@ -975,7 +1148,7 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
   }
 
   if (.bfsdUsesSampleSizeSearch(settings))
-    row <- .bfsdBlankUnreachedRows(row, result[["solver"]][["targetResults"]])
+    row <- .bfsdBlankUnreachedRows(row, targetRows)
 
   columnOrder <- c(
     "designPrior", "decisionRule",
@@ -1033,7 +1206,7 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
 
   table$setData(.bfsdSampleSizeSummaryRows(settings, result))
 
-  displayMaximumFootnote <- .bfsdDisplayMaximumFootnote(result)
+  displayMaximumFootnote <- .bfsdDisplayMaximumFootnote(settings, result)
   if (!is.null(displayMaximumFootnote))
     table$addFootnote(displayMaximumFootnote)
 
@@ -1048,13 +1221,13 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
     rows <- data.frame(
       designPrior  = vapply(targetRows[["target"]], .bfdUnderLabel, character(1)),
       decisionRule = vapply(targetRows[["target"]], function(target) .bfdDecisionRuleLabel(settings, target), character(1)),
-      looks        = length(settings[["n1Seq"]]),
+      looks        = NA_integer_,
       stringsAsFactors = FALSE
     )
   } else {
     rows <- data.frame(
       designPrior = vapply(targetRows[["target"]], .bfdUnderLabel, character(1)),
-      looks       = length(settings[["n1Seq"]]),
+      looks       = NA_integer_,
       stringsAsFactors = FALSE
     )
   }
@@ -1062,7 +1235,8 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
   for (i in seq_len(nrow(targetRows))) {
     target   <- targetRows[["target"]][i]
     expected <- .bfsdExpectedSampleSizes(settings, result, target)
-    schedule <- .bfsdTargetSampleSizeSchedule(settings, result, target)
+    schedule <- .bfsdBasisSampleSizeSchedule(settings, result, target)
+    rows[["looks"]][i] <- length(schedule[["n1Seq"]])
     if (settings[["isIndependentSamples"]]) {
       rows[["firstN1"]][i]   <- schedule[["n1Seq"]][1]
       rows[["firstN2"]][i]   <- schedule[["n2Seq"]][1]
@@ -1081,7 +1255,7 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
   }
 
   if (.bfsdUsesSampleSizeSearch(settings))
-    rows <- .bfsdBlankUnreachedRows(rows, result[["solver"]][["targetResults"]])
+    rows <- .bfsdBlankUnreachedRows(rows, targetRows)
 
   row.names(rows) <- NULL
 
@@ -1089,22 +1263,40 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
 }
 
 .bfsdMainTargetRows <- function(settings, result) {
-  if (.bfsdUsesSampleSizeSearch(settings))
-    return(result[["solver"]][["targetResults"]])
+  targets <- c("h1", "h0")
+  rows <- data.frame(
+    target            = targets,
+    actualProbability = vapply(targets, function(target) {
+      if (!.bfsdBasisRowAvailable(settings, result, target))
+        return(NA_real_)
 
-  data.frame(
-    target            = c("h1", "h0"),
-    actualProbability = c(
-      .bfsdFinalTargetProbability(result[["design"]], "h1"),
-      .bfsdFinalTargetProbability(result[["null"]], "h0")
-    ),
+      .bfsdFinalTargetProbability(.bfsdBasisDesignForUnder(settings, result, target), target)
+    }, numeric(1)),
     stringsAsFactors = FALSE
   )
+
+  if (.bfsdUsesSampleSizeSearch(settings)) {
+    rows[["targetProbability"]] <- vapply(targets, function(target) .bfdTargetPower(settings, target), numeric(1))
+    rows[["reached"]]           <- vapply(targets, function(target) .bfsdBasisRowAvailable(settings, result, target), logical(1))
+  }
+
+  return(rows)
+}
+
+.bfsdBasisRowAvailable <- function(settings, result, under) {
+  if (!.bfsdUsesSampleSizeSearch(settings))
+    return(TRUE)
+
+  basisTarget <- .bfsdSampleSizeBasisTarget(settings, under)
+  if (!is.null(basisTarget) && basisTarget != under)
+    return(.bfsdBasisTargetReached(settings, result, basisTarget))
+
+  return(.bfsdBasisTargetReached(settings, result, under))
 }
 
 .bfsdExpectedSampleSizes <- function(settings, result, target) {
-  schedule <- .bfsdTargetSampleSizeSchedule(settings, result, target)
-  design   <- .bfsdTargetDesign(result, target)
+  schedule <- .bfsdBasisSampleSizeSchedule(settings, result, target)
+  design   <- .bfsdBasisDesignForUnder(settings, result, target)
 
   return(list(
     n1 = .bfsdExpectedSampleSize(design, schedule[["n1Seq"]]),
@@ -1113,7 +1305,7 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
 }
 
 .bfsdMaximumSampleSizes <- function(settings, result, target) {
-  schedule <- .bfsdTargetSampleSizeSchedule(settings, result, target)
+  schedule <- .bfsdBasisSampleSizeSchedule(settings, result, target)
 
   return(list(
     n1 = max(schedule[["n1Seq"]], na.rm = TRUE),
@@ -1142,7 +1334,12 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
 }
 
 .bfsdBlankUnreachedRows <- function(row, targetRows) {
-  if (is.null(targetRows[["reached"]]) || all(targetRows[["reached"]]))
+  reached <- targetRows[["reached"]]
+  if (is.null(reached))
+    return(row)
+
+  reached <- !is.na(reached) & reached
+  if (all(reached))
     return(row)
 
   blankColumns <- intersect(
@@ -1155,7 +1352,7 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
     names(row)
   )
 
-  row[!targetRows[["reached"]], blankColumns] <- NA
+  row[!reached, blankColumns] <- NA
   return(row)
 }
 
@@ -1220,19 +1417,19 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
     return()
   }
 
-  rows <- try(.bfsdDesignOutcomeRows(result), silent = TRUE)
+  rows <- try(.bfsdDesignOutcomeRows(settings, result), silent = TRUE)
   if (jaspBase::isTryError(rows)) {
     table$setError(gettextf("Unable to compute Bayes factor decision probabilities: %1$s", .bfdCleanError(rows)))
     return()
   }
 
   table$setData(rows)
-  table$addFootnote(.bfsdDesignOutcomeSampleSizeFootnote(settings))
+  table$addFootnote(.bfsdDesignOutcomeSampleSizeFootnote(settings, result))
 }
 
-.bfsdDesignOutcomeRows <- function(result) {
-  h1Outcome <- .bfsdFinalOutcome(result[["design"]])
-  h0Outcome <- .bfsdFinalOutcome(result[["null"]])
+.bfsdDesignOutcomeRows <- function(settings, result) {
+  h1Outcome <- .bfsdFinalOutcome(.bfsdBasisDesignForUnder(settings, result, "h1"))
+  h0Outcome <- .bfsdFinalOutcome(.bfsdBasisDesignForUnder(settings, result, "h0"))
 
   return(.bfdDesignOutcomeRowsFromOutcomes(
     h1Outcome,
@@ -1249,7 +1446,7 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
   ))
 }
 
-.bfsdDesignOutcomeSampleSizeFootnote <- function(settings) {
+.bfsdDesignOutcomeSampleSizeFootnote <- function(settings, result) {
   if (.bfsdUsesStandardErrorOnly(settings)) {
     finalSE <- utils::tail(.bfsdStandardErrors(settings), 1)
     return(gettextf(
@@ -1258,12 +1455,38 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
     ))
   }
 
-  n1 <- max(settings[["n1Seq"]], na.rm = TRUE)
+  if (.bfsdUsesSampleSizeSearch(settings) && identical(settings[["designSampleSizeBasis"]], "eachDesignHypothesis")) {
+    h1Schedule <- .bfsdBasisSampleSizeSchedule(settings, result, "h1")
+    h0Schedule <- .bfsdBasisSampleSizeSchedule(settings, result, "h0")
+    h1N1       <- max(h1Schedule[["n1Seq"]], na.rm = TRUE)
+    h0N1       <- max(h0Schedule[["n1Seq"]], na.rm = TRUE)
+
+    if (settings[["isIndependentSamples"]]) {
+      h1N2 <- max(h1Schedule[["n2Seq"]], na.rm = TRUE)
+      h0N2 <- max(h0Schedule[["n2Seq"]], na.rm = TRUE)
+      return(gettextf(
+        "Probabilities are cumulative through the final look required for each design prior: under H\u2081, N\u2081 = %1$s and N\u2082 = %2$s; under H\u2080, N\u2081 = %3$s and N\u2082 = %4$s.",
+        h1N1,
+        h1N2,
+        h0N1,
+        h0N2
+      ))
+    }
+
+    return(gettextf(
+      "Probabilities are cumulative through the final look required for each design prior: under H\u2081, N = %1$s; under H\u2080, N = %2$s.",
+      h1N1,
+      h0N1
+    ))
+  }
+
+  basisSettings <- .bfsdBasisSettings(settings, result, "h1")
+  n1 <- max(basisSettings[["n1Seq"]], na.rm = TRUE)
   if (length(n1) != 1 || !is.finite(n1))
     return(gettext("Probabilities are cumulative through the selected final look. Rows use the corresponding design prior under H\u2081 or H\u2080."))
 
   if (settings[["isIndependentSamples"]]) {
-    n2 <- max(settings[["n2Seq"]], na.rm = TRUE)
+    n2 <- max(basisSettings[["n2Seq"]], na.rm = TRUE)
     if (length(n2) != 1 || !is.finite(n2))
       return(gettext("Probabilities are cumulative through the selected final look. Rows use the corresponding design prior under H\u2081 or H\u2080."))
 
@@ -1292,22 +1515,13 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
   if (is.null(table))
     return()
 
-  .bfsdAddLookColumns(table, settings)
-
-  h1Overtitle <- .bfsdDesignPriorOvertitle("h1")
-  h0Overtitle <- .bfsdDesignPriorOvertitle("h0")
-  table$addColumnInfo(name = "h1Alternative", title = gettext("Evidence for H\u2081"), type = "number", overtitle = h1Overtitle)
-  table$addColumnInfo(name = "h1Undecided",   title = gettext("Inconclusive"),    type = "number", overtitle = h1Overtitle)
-  table$addColumnInfo(name = "h1Null",        title = gettext("Evidence for H\u2080"), type = "number", overtitle = h1Overtitle)
-  table$addColumnInfo(name = "h0Alternative", title = gettext("Evidence for H\u2081"), type = "number", overtitle = h0Overtitle)
-  table$addColumnInfo(name = "h0Undecided",   title = gettext("Inconclusive"),    type = "number", overtitle = h0Overtitle)
-  table$addColumnInfo(name = "h0Null",        title = gettext("Evidence for H\u2080"), type = "number", overtitle = h0Overtitle)
-
   if (jaspBase::isTryError(result)) {
+    .bfsdAddStagewiseTotalColumns(table, settings)
     table$setError(gettextf("Unable to compute cumulative decision probabilities: %1$s", .bfdCleanError(result)))
     return()
   }
 
+  .bfsdAddStagewiseTotalColumns(table, settings, result)
   table$setData(.bfsdStagewiseTotalRows(settings, result))
 }
 
@@ -1322,22 +1536,13 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
   if (is.null(table))
     return()
 
-  .bfsdAddLookColumns(table, settings)
-
-  h1Overtitle <- .bfsdDesignPriorOvertitle("h1")
-  h0Overtitle <- .bfsdDesignPriorOvertitle("h0")
-  table$addColumnInfo(name = "h1AlternativeStop", title = gettext("Stop for H\u2081"), type = "number", overtitle = h1Overtitle)
-  table$addColumnInfo(name = "h1NullStop",        title = gettext("Stop for H\u2080"), type = "number", overtitle = h1Overtitle)
-  table$addColumnInfo(name = "h1AnyStop",         title = gettext("Any Stop"),    type = "number", overtitle = h1Overtitle)
-  table$addColumnInfo(name = "h0AlternativeStop", title = gettext("Stop for H\u2081"), type = "number", overtitle = h0Overtitle)
-  table$addColumnInfo(name = "h0NullStop",        title = gettext("Stop for H\u2080"), type = "number", overtitle = h0Overtitle)
-  table$addColumnInfo(name = "h0AnyStop",         title = gettext("Any Stop"),    type = "number", overtitle = h0Overtitle)
-
   if (jaspBase::isTryError(result)) {
+    .bfsdAddStagewiseIncrementalColumns(table, settings)
     table$setError(gettextf("Unable to compute incremental stagewise stops: %1$s", .bfdCleanError(result)))
     return()
   }
 
+  .bfsdAddStagewiseIncrementalColumns(table, settings, result)
   table$setData(.bfsdStagewiseIncrementalRows(settings, result))
 }
 
@@ -1345,11 +1550,23 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
   gettextf("Design Prior: %1$s", .bfdUnderLabel(under))
 }
 
-.bfsdAddLookColumns <- function(table, settings) {
+.bfsdAddLookColumns <- function(table, settings, separate = TRUE) {
   table$addColumnInfo(name = "look", title = gettext("Look"), type = "integer")
 
   if (.bfsdUsesStandardErrorOnly(settings)) {
     table$addColumnInfo(name = "standardError", title = gettext("SE"), type = "number")
+  } else if (isTRUE(separate) && .bfsdUsesSeparateLookSchedules(settings)) {
+    h1Overtitle <- .bfsdDesignPriorOvertitle("h1")
+    h0Overtitle <- .bfsdDesignPriorOvertitle("h0")
+    if (settings[["isIndependentSamples"]]) {
+      table$addColumnInfo(name = "h1N1", title = "N\u2081", type = "integer", overtitle = h1Overtitle)
+      table$addColumnInfo(name = "h1N2", title = "N\u2082", type = "integer", overtitle = h1Overtitle)
+      table$addColumnInfo(name = "h0N1", title = "N\u2081", type = "integer", overtitle = h0Overtitle)
+      table$addColumnInfo(name = "h0N2", title = "N\u2082", type = "integer", overtitle = h0Overtitle)
+    } else {
+      table$addColumnInfo(name = "h1N", title = "N", type = "integer", overtitle = h1Overtitle)
+      table$addColumnInfo(name = "h0N", title = "N", type = "integer", overtitle = h0Overtitle)
+    }
   } else if (settings[["isIndependentSamples"]]) {
     table$addColumnInfo(name = "n1", title = "N\u2081", type = "integer")
     table$addColumnInfo(name = "n2", title = "N\u2082", type = "integer")
@@ -1358,33 +1575,213 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
   }
 }
 
+.bfsdAddStagewiseTotalColumns <- function(table, settings, result = NULL) {
+  separateSchedules <- .bfsdUsesSeparateLookSchedules(settings, result)
+
+  table$addColumnInfo(name = "look", title = gettext("Look"), type = "integer")
+  if (separateSchedules) {
+    .bfsdAddStagewiseSampleSizeColumns(table, settings, "h1")
+    .bfsdAddStagewiseTotalEvidenceColumns(table, "h1")
+    .bfsdAddStagewiseSampleSizeColumns(table, settings, "h0")
+    .bfsdAddStagewiseTotalEvidenceColumns(table, "h0")
+  } else {
+    .bfsdAddStagewiseSampleSizeColumns(table, settings)
+    .bfsdAddStagewiseTotalEvidenceColumns(table, "h1")
+    .bfsdAddStagewiseTotalEvidenceColumns(table, "h0")
+  }
+}
+
+.bfsdAddStagewiseIncrementalColumns <- function(table, settings, result = NULL) {
+  separateSchedules <- .bfsdUsesSeparateLookSchedules(settings, result)
+
+  table$addColumnInfo(name = "look", title = gettext("Look"), type = "integer")
+  if (separateSchedules) {
+    .bfsdAddStagewiseSampleSizeColumns(table, settings, "h1")
+    .bfsdAddStagewiseIncrementalEvidenceColumns(table, "h1")
+    .bfsdAddStagewiseSampleSizeColumns(table, settings, "h0")
+    .bfsdAddStagewiseIncrementalEvidenceColumns(table, "h0")
+  } else {
+    .bfsdAddStagewiseSampleSizeColumns(table, settings)
+    .bfsdAddStagewiseIncrementalEvidenceColumns(table, "h1")
+    .bfsdAddStagewiseIncrementalEvidenceColumns(table, "h0")
+  }
+}
+
+.bfsdAddStagewiseSampleSizeColumns <- function(table, settings, under = NULL) {
+  overtitle <- if (is.null(under)) NULL else .bfsdDesignPriorOvertitle(under)
+  prefix    <- if (is.null(under)) "n" else under
+
+  if (.bfsdUsesStandardErrorOnly(settings)) {
+    .bfsdAddColumnInfo(table, name = "standardError", title = gettext("SE"), type = "number", overtitle = overtitle)
+  } else if (settings[["isIndependentSamples"]]) {
+    .bfsdAddColumnInfo(table, name = paste0(prefix, if (is.null(under)) "1" else "N1"), title = "N\u2081", type = "integer", overtitle = overtitle)
+    .bfsdAddColumnInfo(table, name = paste0(prefix, if (is.null(under)) "2" else "N2"), title = "N\u2082", type = "integer", overtitle = overtitle)
+  } else {
+    .bfsdAddColumnInfo(table, name = if (is.null(under)) "n" else paste0(prefix, "N"), title = "N", type = "integer", overtitle = overtitle)
+  }
+}
+
+.bfsdAddColumnInfo <- function(table, name, title, type, overtitle = NULL) {
+  if (is.null(overtitle)) {
+    table$addColumnInfo(name = name, title = title, type = type)
+  } else {
+    table$addColumnInfo(name = name, title = title, type = type, overtitle = overtitle)
+  }
+}
+
+.bfsdAddStagewiseTotalEvidenceColumns <- function(table, under) {
+  overtitle <- .bfsdDesignPriorOvertitle(under)
+  prefix    <- under
+
+  table$addColumnInfo(name = paste0(prefix, "Alternative"), title = gettext("Evidence for H\u2081"), type = "number", overtitle = overtitle)
+  table$addColumnInfo(name = paste0(prefix, "Undecided"),   title = gettext("Inconclusive"),     type = "number", overtitle = overtitle)
+  table$addColumnInfo(name = paste0(prefix, "Null"),        title = gettext("Evidence for H\u2080"), type = "number", overtitle = overtitle)
+}
+
+.bfsdAddStagewiseIncrementalEvidenceColumns <- function(table, under) {
+  overtitle <- .bfsdDesignPriorOvertitle(under)
+  prefix    <- under
+
+  table$addColumnInfo(name = paste0(prefix, "AlternativeStop"), title = gettext("Stop for H\u2081"), type = "number", overtitle = overtitle)
+  table$addColumnInfo(name = paste0(prefix, "NullStop"),        title = gettext("Stop for H\u2080"), type = "number", overtitle = overtitle)
+  table$addColumnInfo(name = paste0(prefix, "AnyStop"),         title = gettext("Any Stop"),      type = "number", overtitle = overtitle)
+}
+
+.bfsdUsesSeparateLookSchedules <- function(settings, result = NULL) {
+  if (!.bfsdUsesSampleSizeSearch(settings) || !identical(settings[["designSampleSizeBasis"]], "eachDesignHypothesis"))
+    return(FALSE)
+
+  if (is.null(result) || jaspBase::isTryError(result))
+    return(TRUE)
+
+  return(!.bfsdLookSchedulesEqual(settings, result))
+}
+
+.bfsdLookSchedulesEqual <- function(settings, result) {
+  h1Schedule <- .bfsdBasisSampleSizeSchedule(settings, result, "h1")
+  h0Schedule <- .bfsdBasisSampleSizeSchedule(settings, result, "h0")
+
+  identical(as.integer(h1Schedule[["n1Seq"]]), as.integer(h0Schedule[["n1Seq"]])) &&
+    identical(as.integer(h1Schedule[["n2Seq"]]), as.integer(h0Schedule[["n2Seq"]]))
+}
+
 .bfsdStagewiseTotalRows <- function(settings, result) {
-  rows <- .bfsdLookRows(settings)
-  rows[["h1Alternative"]] <- result[["design"]][["cumpH1"]]
-  rows[["h1Undecided"]]   <- result[["design"]][["cumpInc"]]
-  rows[["h1Null"]]        <- result[["design"]][["cumpH0"]]
-  rows[["h0Alternative"]] <- result[["null"]][["cumpH1"]]
-  rows[["h0Undecided"]]   <- result[["null"]][["cumpInc"]]
-  rows[["h0Null"]]        <- result[["null"]][["cumpH0"]]
+  if (.bfsdUsesSeparateLookSchedules(settings, result)) {
+    rows     <- .bfsdSeparateLookRows(settings, result)
+    h1Design <- .bfsdBasisDesignForUnder(settings, result, "h1")
+    h0Design <- .bfsdBasisDesignForUnder(settings, result, "h0")
+    rows[["h1Alternative"]] <- .bfsdPadByLooks(h1Design[["cumpH1"]], nrow(rows))
+    rows[["h1Undecided"]]   <- .bfsdPadByLooks(h1Design[["cumpInc"]], nrow(rows))
+    rows[["h1Null"]]        <- .bfsdPadByLooks(h1Design[["cumpH0"]], nrow(rows))
+    rows[["h0Alternative"]] <- .bfsdPadByLooks(h0Design[["cumpH1"]], nrow(rows))
+    rows[["h0Undecided"]]   <- .bfsdPadByLooks(h0Design[["cumpInc"]], nrow(rows))
+    rows[["h0Null"]]        <- .bfsdPadByLooks(h0Design[["cumpH0"]], nrow(rows))
+
+    return(.bfsdOrderStagewiseRows(rows, settings, result, "total"))
+  }
+
+  basisSettings <- .bfsdBasisSettings(settings, result, "h1")
+  rows          <- .bfsdLookRows(basisSettings)
+  h1Design      <- .bfsdBasisDesignForUnder(settings, result, "h1")
+  h0Design      <- .bfsdBasisDesignForUnder(settings, result, "h0")
+  rows[["h1Alternative"]] <- h1Design[["cumpH1"]]
+  rows[["h1Undecided"]]   <- h1Design[["cumpInc"]]
+  rows[["h1Null"]]        <- h1Design[["cumpH0"]]
+  rows[["h0Alternative"]] <- h0Design[["cumpH1"]]
+  rows[["h0Undecided"]]   <- h0Design[["cumpInc"]]
+  rows[["h0Null"]]        <- h0Design[["cumpH0"]]
+
+  return(.bfsdOrderStagewiseRows(rows, settings, result, "total"))
+}
+
+.bfsdStagewiseIncrementalRows <- function(settings, result) {
+  h1Design <- .bfsdBasisDesignForUnder(settings, result, "h1")
+  h0Design <- .bfsdBasisDesignForUnder(settings, result, "h0")
+
+  h1AlternativeStop <- diff(c(0, h1Design[["cumpH1"]]))
+  h1NullStop        <- diff(c(0, h1Design[["cumpH0"]]))
+  h0AlternativeStop <- diff(c(0, h0Design[["cumpH1"]]))
+  h0NullStop        <- diff(c(0, h0Design[["cumpH0"]]))
+
+  rows <- if (.bfsdUsesSeparateLookSchedules(settings, result)) .bfsdSeparateLookRows(settings, result) else .bfsdLookRows(.bfsdBasisSettings(settings, result, "h1"))
+  rows[["h1AlternativeStop"]] <- .bfsdPadByLooks(h1AlternativeStop, nrow(rows))
+  rows[["h1NullStop"]]        <- .bfsdPadByLooks(h1NullStop, nrow(rows))
+  rows[["h1AnyStop"]]         <- .bfsdPadByLooks(h1AlternativeStop + h1NullStop, nrow(rows))
+  rows[["h0AlternativeStop"]] <- .bfsdPadByLooks(h0AlternativeStop, nrow(rows))
+  rows[["h0NullStop"]]        <- .bfsdPadByLooks(h0NullStop, nrow(rows))
+  rows[["h0AnyStop"]]         <- .bfsdPadByLooks(h0AlternativeStop + h0NullStop, nrow(rows))
+
+  return(.bfsdOrderStagewiseRows(rows, settings, result, "incremental"))
+}
+
+.bfsdOrderStagewiseRows <- function(rows, settings, result, type) {
+  if (.bfsdUsesSeparateLookSchedules(settings, result)) {
+    columnNames <- c(
+      "look",
+      .bfsdStagewiseSampleSizeColumnNames(settings, "h1"),
+      .bfsdStagewiseEvidenceColumnNames("h1", type),
+      .bfsdStagewiseSampleSizeColumnNames(settings, "h0"),
+      .bfsdStagewiseEvidenceColumnNames("h0", type)
+    )
+  } else {
+    columnNames <- c(
+      "look",
+      .bfsdStagewiseSampleSizeColumnNames(settings),
+      .bfsdStagewiseEvidenceColumnNames("h1", type),
+      .bfsdStagewiseEvidenceColumnNames("h0", type)
+    )
+  }
+
+  return(rows[intersect(columnNames, names(rows))])
+}
+
+.bfsdStagewiseSampleSizeColumnNames <- function(settings, under = NULL) {
+  if (.bfsdUsesStandardErrorOnly(settings))
+    return("standardError")
+
+  if (settings[["isIndependentSamples"]]) {
+    if (is.null(under))
+      return(c("n1", "n2"))
+
+    return(paste0(under, c("N1", "N2")))
+  }
+
+  if (is.null(under))
+    return("n")
+
+  return(paste0(under, "N"))
+}
+
+.bfsdStagewiseEvidenceColumnNames <- function(under, type) {
+  if (type == "incremental")
+    return(paste0(under, c("AlternativeStop", "NullStop", "AnyStop")))
+
+  return(paste0(under, c("Alternative", "Undecided", "Null")))
+}
+
+.bfsdSeparateLookRows <- function(settings, result) {
+  h1Settings <- .bfsdBasisSettings(settings, result, "h1")
+  h0Settings <- .bfsdBasisSettings(settings, result, "h0")
+  looks      <- max(length(h1Settings[["n1Seq"]]), length(h0Settings[["n1Seq"]]))
+  rows       <- data.frame(look = seq_len(looks), stringsAsFactors = FALSE)
+
+  if (settings[["isIndependentSamples"]]) {
+    rows[["h1N1"]] <- .bfsdPadByLooks(h1Settings[["n1Seq"]], looks)
+    rows[["h1N2"]] <- .bfsdPadByLooks(h1Settings[["n2Seq"]], looks)
+    rows[["h0N1"]] <- .bfsdPadByLooks(h0Settings[["n1Seq"]], looks)
+    rows[["h0N2"]] <- .bfsdPadByLooks(h0Settings[["n2Seq"]], looks)
+  } else {
+    rows[["h1N"]] <- .bfsdPadByLooks(h1Settings[["n1Seq"]], looks)
+    rows[["h0N"]] <- .bfsdPadByLooks(h0Settings[["n1Seq"]], looks)
+  }
 
   return(rows)
 }
 
-.bfsdStagewiseIncrementalRows <- function(settings, result) {
-  h1AlternativeStop <- diff(c(0, result[["design"]][["cumpH1"]]))
-  h1NullStop        <- diff(c(0, result[["design"]][["cumpH0"]]))
-  h0AlternativeStop <- diff(c(0, result[["null"]][["cumpH1"]]))
-  h0NullStop        <- diff(c(0, result[["null"]][["cumpH0"]]))
-
-  rows <- .bfsdLookRows(settings)
-  rows[["h1AlternativeStop"]] <- h1AlternativeStop
-  rows[["h1NullStop"]]        <- h1NullStop
-  rows[["h1AnyStop"]]         <- h1AlternativeStop + h1NullStop
-  rows[["h0AlternativeStop"]] <- h0AlternativeStop
-  rows[["h0NullStop"]]        <- h0NullStop
-  rows[["h0AnyStop"]]         <- h0AlternativeStop + h0NullStop
-
-  return(rows)
+.bfsdPadByLooks <- function(x, lengthOut) {
+  out <- rep(NA_real_, lengthOut)
+  out[seq_along(x)] <- x
+  return(out)
 }
 
 .bfsdLookRows <- function(settings) {
@@ -1416,7 +1813,7 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
   if (is.null(table))
     return()
 
-  .bfsdAddLookColumns(table, settings)
+  .bfsdAddLookColumns(table, settings, separate = FALSE)
 
   h1Overtitle <- .bfsdBoundaryDecisionRuleOvertitle(settings, "h1")
   h0Overtitle <- .bfsdBoundaryDecisionRuleOvertitle(settings, "h0")
@@ -1430,7 +1827,9 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
     return()
   }
 
-  rows <- .bfsdBoundaryRows(settings, result[["design"]])
+  boundarySettings <- .bfsdCommonBasisSettings(settings, result)
+  boundaryResult   <- .bfsdCommonBasisDesignResult(result, settings)
+  rows <- .bfsdBoundaryRows(boundarySettings, boundaryResult[["design"]])
   table$setData(rows)
 
   table$addFootnote(gettext("Boundaries are shown on the test-statistic scale. Empty cells mean no finite statistic reaches the decision rule at that look."))
@@ -1508,7 +1907,7 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
     return()
   }
 
-  outcome <- .bfsdFinalOutcome(result[["design"]])
+  outcome <- .bfsdFinalOutcome(.bfsdBasisDesignForUnder(settings, result, "h1"))
   firstSentence <- if (.bfsdUsesSampleSizeSearch(settings)) {
     if (isTRUE(result[["solver"]][["limitReached"]])) {
       gettextf(
@@ -1550,7 +1949,7 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
     parent       = jaspResults,
     key          = "sequentialEvidenceReport",
     title        = gettext("Report"),
-    position     = 13,
+    position     = 0,
     dependencies = .bfsdReportDependencies
   )
   if (is.null(html))
@@ -1569,8 +1968,8 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
       .bfdReportPriorSentence(settings),
       .bfdReportProbabilitySentence(
         settings,
-        h1Outcome = .bfsdFinalOutcome(result[["design"]]),
-        h0Outcome = .bfsdFinalOutcome(result[["null"]])
+        h1Outcome = .bfsdFinalOutcome(.bfsdBasisDesignForUnder(settings, result, "h1")),
+        h0Outcome = .bfsdFinalOutcome(.bfsdBasisDesignForUnder(settings, result, "h0"))
       ),
       .bfdReportSoftwareSentence()
     ),
@@ -1852,7 +2251,7 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
 }
 
 .bfsdStoppingProbabilitiesPlot <- function(jaspResults, settings, result) {
-  for (spec in .bfsdUnderPlotSpecs(settings, "sequentialEvidenceStoppingProbabilities", gettext("Stopping Probabilities"), 10)) {
+  for (spec in .bfsdUnderPlotSpecs(settings, "sequentialEvidenceStoppingProbabilities", gettext("Cumulative Decision Probabilities by Look"), 10)) {
     .bfsdStoppingProbabilitiesOutcomePlot(
       jaspResults = jaspResults,
       settings    = settings,
@@ -1872,7 +2271,7 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
     title        = title,
     position     = position,
     dependencies = .bfsdStoppingProbabilitiesPlotDependencies,
-    width        = 735,
+    width        = .bfdPlotWidth(settings),
     height       = 350
   )
   if (is.null(plot))
@@ -1955,14 +2354,13 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
       ggplot2::geom_line(linewidth = 1.1) +
       ggplot2::geom_point(size = 2) +
       .bfdProbabilityYScale() +
-      ggplot2::scale_linetype_discrete(labels = .bfdPlotmathLabels) +
-      ggplot2::labs(x = xLabel, y = gettext("Cumulative probability"), color = gettext("Evidence"), linetype = gettext("Design Prior"))
+      ggplot2::labs(x = xLabel, y = gettext("Cumulative probability"), color = gettext("Outcome"), linetype = gettext("Design Prior"))
   } else {
     plot <- ggplot2::ggplot(data, ggplot2::aes(x = n, y = probability, color = outcome)) +
       ggplot2::geom_line(linewidth = 1.1) +
       ggplot2::geom_point(size = 2) +
       .bfdProbabilityYScale() +
-      ggplot2::labs(x = xLabel, y = gettext("Cumulative probability"), color = gettext("Evidence"))
+      ggplot2::labs(x = xLabel, y = gettext("Cumulative probability"), color = gettext("Outcome"))
   }
 
   if (.bfsdUsesSampleSizeSearch(settings)) {
@@ -1972,7 +2370,8 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
     }
   }
 
-  return(.pwrApplyPlotTheme(plot))
+  linetypeValues <- if (showUnder) .bfdUnderLinetypeValues() else NULL
+  return(.bfdApplyPlotTheme(plot, settings, linetypeValues = linetypeValues))
 }
 
 .bfsdPlotTargets <- function(settings, under = NULL) {
@@ -1985,7 +2384,11 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
 .bfsdStoppingProbabilityPlotData <- function(settings, result, under = NULL) {
   unders <- .bfsdPlotUnders(settings, under)
   rows   <- lapply(unders, function(under) {
-    .bfsdStoppingProbabilityRows(settings, .bfsdDesignForUnder(result, under), under)
+    .bfsdStoppingProbabilityRows(
+      settings = .bfsdBasisSettings(settings, result, under),
+      design   = .bfsdBasisDesignForUnder(settings, result, under),
+      under    = under
+    )
   })
 
   return(do.call(rbind, rows))
@@ -2031,7 +2434,7 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
     title        = title,
     position     = position,
     dependencies = .bfsdStoppingBoundariesPlotDependencies,
-    width        = 735,
+    width        = .bfdPlotWidth(settings),
     height       = 350
   )
   if (is.null(plot))
@@ -2047,7 +2450,7 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
     stateKey     = "sequentialEvidenceStoppingBoundariesPlotData",
     dependencies = .bfsdStoppingBoundariesPlotDataDependencies,
     dataKey      = "data",
-    compute      = function() list(data = .bfsdBoundaryPlotData(settings, result[["design"]]))
+    compute      = function() list(data = .bfsdBoundaryPlotData(.bfsdCommonBasisSettings(settings, result), .bfsdCommonBasisDesignResult(result, settings)[["design"]]))
   )
   if (jaspBase::isTryError(plotData)) {
     plot$setError(gettextf("Unable to compute stopping boundaries: %1$s", .bfdCleanError(plotData)))
@@ -2064,7 +2467,11 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
 }
 
 .bfsdBuildStoppingBoundariesPlot <- function(settings, result, plotData = NULL) {
-  data <- if (is.null(plotData)) .bfsdBoundaryPlotData(settings, result[["design"]]) else plotData[["data"]]
+  data <- if (is.null(plotData)) {
+    .bfsdBoundaryPlotData(.bfsdCommonBasisSettings(settings, result), .bfsdCommonBasisDesignResult(result, settings)[["design"]])
+  } else {
+    plotData[["data"]]
+  }
 
   if (nrow(data) == 0)
     stop(gettext("No finite stopping boundaries are available for the current settings."))
@@ -2074,11 +2481,10 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
   plot <- ggplot2::ggplot(data, ggplot2::aes(x = n, y = criticalValue, color = target, linetype = boundary)) +
     ggplot2::geom_line(linewidth = 1.1) +
     ggplot2::geom_point(size = 2) +
-    ggplot2::scale_color_discrete(labels = .bfdPlotmathLabels) +
     ggplot2::labs(x = xLabel, y = gettext("Critical value"), color = gettext("Target"), linetype = gettext("Boundary")) +
     ggplot2::geom_hline(yintercept = 0, linetype = "dotted", color = "#666666")
 
-  return(.pwrApplyPlotTheme(plot))
+  return(.bfdApplyPlotTheme(plot, settings))
 }
 
 .bfsdBoundaryPlotData <- function(settings, design) {

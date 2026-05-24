@@ -144,28 +144,30 @@ Form
 	Section
 	{
 		expanded: true
-		title: qsTr("Summary")
+		title: qsTr("Tables")
 
 		Group
 		{
+			title: qsTr("Design Results")
+
 			CheckBox
 			{
-				name: "summaryDesign"
-				label: qsTr("Design")
+				name: "designSummary"
+				label: qsTr("Design summary")
 				checked: true
 			}
 
 			CheckBox
 			{
-				name: "summaryEvidence"
-				label: qsTr("Evidence")
+				name: "decisionProbabilities"
+				label: qsTr("Decision probabilities")
 				checked: true
 			}
 
 			CheckBox
 			{
-				name: "summarySpecification"
-				label: qsTr("Specification")
+				name: "designSpecification"
+				label: qsTr("Design Specification")
 				checked: true
 			}
 		}
@@ -178,35 +180,35 @@ Form
 
 		Group
 		{
-			title: qsTr("Evidence")
+			title: qsTr("Decision Probability")
 
 			CheckBox
 			{
-				label:  qsTr("Evidence by effect size")
-				id:     evidenceByEffectSize
-				name:   "evidenceByEffectSize"
+				label:  qsTr("Decision probabilities by effect size")
+				id:     decisionProbabilitiesByEffectSize
+				name:   "decisionProbabilitiesByEffectSize"
 				checked: false
 			}
 
 			CheckBox
 			{
-				label: qsTr("Evidence by sample size")
-				id:    evidenceBySampleSize
-				name:  "evidenceBySampleSize"
+				label: qsTr("Decision probabilities by sample size")
+				id:    decisionProbabilitiesBySampleSize
+				name:  "decisionProbabilitiesBySampleSize"
 				checked: false
 
 				CheckBox
 				{
-					label: qsTr("Log sample size")
-					name:  "logSampleSize"
+					label: qsTr("Log sample-size axis")
+					name:  "logSampleSizeAxis"
 					checked: true
 				}
 			}
 
 			CheckBox
 			{
-				name: "mergeH1AndH0Figures"
-				label: qsTr("Merge H\u2081 and H\u2080 figures")
+				name: "combineH1H0Figures"
+				label: qsTr("Combine H\u2081 and H\u2080")
 				checked: false
 			}
 		}

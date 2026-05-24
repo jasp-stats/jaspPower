@@ -9,8 +9,8 @@
 
 .bfdPriorPlotRequested <- function(options) {
   return(
-    options[["priorDistributionDesign"]] ||
-      options[["priorDistributionAnalysis"]]
+    options[["designPriorDistributionFigure"]] ||
+      options[["analysisPriorDistributionFigure"]]
   )
 }
 

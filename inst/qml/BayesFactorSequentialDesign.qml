@@ -95,60 +95,62 @@ Form
 	Section
 	{
 		expanded: true
-		title: qsTr("Summary")
+		title: qsTr("Tables")
 
 		Group
 		{
+			title: qsTr("Design Results")
+
 			CheckBox
 			{
-				name: "summaryDesign"
-				label: qsTr("Design")
+				name: "designSummary"
+				label: qsTr("Design summary")
 				checked: true
 			}
 
 			CheckBox
 			{
-				name: "summarySampleSize"
-				label: qsTr("Sample size")
+				name: "sampleSizeSummary"
+				label: qsTr("Sample size summary")
 				checked: true
 			}
 
 			CheckBox
 			{
-				name: "summaryEvidence"
-				label: qsTr("Evidence")
+				name: "decisionProbabilities"
+				label: qsTr("Decision probabilities")
 				checked: true
 			}
 
 			CheckBox
 			{
-				name: "summarySpecification"
-				label: qsTr("Specification")
+				name: "designSpecification"
+				label: qsTr("Design specification")
 				checked: true
 			}
 		}
 
 		Group
 		{
-			title: qsTr("Stagewise")
+			title: qsTr("Look-by-Look Results")
 
 			CheckBox
 			{
-				name: "stagewiseEvidence"
-				label: qsTr("Evidence")
+				name: "cumulativeDecisionProbabilities"
+				label: qsTr("Cumulative decision probabilities")
 				checked: false
 			}
 
 			CheckBox
 			{
-				name: "stagewiseIncrementalEvidence"
-				label: qsTr("Incremental evidence")
+				name: "incrementalDecisionProbabilities"
+				label: qsTr("Incremental decision probabilities")
 				checked: false
 			}
 
 			CheckBox
 			{
-				name: "stagewiseStoppingBoundaries"
+				name: "stoppingBoundariesTable"
 				label: qsTr("Stopping boundaries")
 				checked: false
 			}
@@ -162,28 +164,26 @@ Form
 
 		Group
 		{
-			title: qsTr("Evidence")
+			title: qsTr("Decision Probability")
 
 			CheckBox
 			{
-				label: qsTr("Stopping probabilities")
-				id:    stoppingProbabilitiesPlot
-				name:  "stoppingProbabilities"
+				label: qsTr("Cumulative decision probabilities")
+				name:  "cumulativeDecisionProbabilitiesPlot"
 				checked: false
 			}
 
 			CheckBox
 			{
 				label: qsTr("Stopping boundaries")
-				id:    stoppingBoundariesPlot
-				name:  "stoppingBoundaries"
+				name:  "stoppingBoundariesPlot"
 				checked: false
 			}
 
 			CheckBox
 			{
-				name: "mergeH1AndH0Figures"
-				label: qsTr("Merge H\u2081 and H\u2080 figures")
+				name: "combineH1H0Figures"
+				label: qsTr("Combine H\u2081 and H\u2080")
 				checked: false
 			}
 		}

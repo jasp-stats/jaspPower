@@ -113,6 +113,28 @@ Group
 
 	Group
 	{
+		title: qsTr("Design Sample Size")
+		columns: 1
+		visible: root.usesSampleSizeSearch
+
+		DropDown
+		{
+			name: "designSampleSizeBasis"
+			label: root.isSequentialDesign ? qsTr("Maximum sample size based on:") : qsTr("Design sample size based on:")
+			indexDefaultValue: 0
+			info: qsTr("Controls whether output is evaluated at the sample size required for each design hypothesis, for both design hypotheses, or for one selected design hypothesis.")
+			values:
+			[
+				{ label: qsTr("Each design hypothesis"), value: "eachDesignHypothesis" },
+				{ label: qsTr("Both design hypotheses"), value: "bothDesignHypotheses" },
+				{ label: qsTr("Alternative hypothesis"), value: "alternativeHypothesis" },
+				{ label: qsTr("Null hypothesis"),        value: "nullHypothesis" }
+			]
+		}
+	}
+
+	Group
+	{
 		title: qsTr("Test Parameters")
 		columns: 3
 		visible: root.isZTest || root.isGeneralZ

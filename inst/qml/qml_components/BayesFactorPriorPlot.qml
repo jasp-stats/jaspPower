@@ -22,27 +22,27 @@ import JASP.Controls
 
 Group
 {
-	title:   qsTr("Prior distribution")
+	title:   qsTr("Prior Distribution")
 	columns: 1
 
 	CheckBox
 	{
-		label: qsTr("Design")
-		name:  "priorDistributionDesign"
+		label: qsTr("Design prior distribution")
+		name:  "designPriorDistributionFigure"
 		checked: true
 	}
 
 	CheckBox
 	{
-		label: qsTr("Analysis")
-		name:  "priorDistributionAnalysis"
+		label: qsTr("Analysis prior distribution")
+		name:  "analysisPriorDistributionFigure"
 		checked: true
 	}
 
 	CheckBox
 	{
-		label: qsTr("Merge figures")
-		name:  "priorDistributionMergeFigures"
+		label: qsTr("Combine design and analysis")
+		name:  "combineDesignAnalysisPriorFigures"
 		checked: false
 	}
 }

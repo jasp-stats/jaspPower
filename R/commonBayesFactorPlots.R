@@ -43,13 +43,18 @@
   )
 }
 
-.bfdApplyPlotTheme <- function(plot, settings) {
+.bfdApplyPlotTheme <- function(plot, settings, linetypeValues = NULL) {
   palette        <- settings[["colorPalette"]]
   legendPosition <- settings[["legendPosition"]]
 
   plot <- .pwrApplyPlotTheme(plot, legendPosition = .bfdLegendPosition(legendPosition)) +
-    jaspGraphs::scale_JASPcolor_discrete(palette, labels = .bfdPlotmathLabels) +
-    ggplot2::scale_linetype_discrete(labels = .bfdPlotmathLabels)
+    jaspGraphs::scale_JASPcolor_discrete(palette, labels = .bfdPlotmathLabels)
+
+  if (is.null(linetypeValues)) {
+    plot <- plot + ggplot2::scale_linetype_discrete(labels = .bfdPlotmathLabels)
+  } else {
+    plot <- plot + ggplot2::scale_linetype_manual(values = linetypeValues, labels = .bfdPlotmathLabels)
+  }
 
   if (legendPosition == "rightInside") {
     plot <- plot +
@@ -60,6 +65,14 @@
   }
 
   return(plot)
+}
+
+.bfdUnderLinetypeValues <- function() {
+  setNames(c("solid", "dashed"), c(.bfdUnderLabel("h1"), .bfdUnderLabel("h0")))
+}
+
+.bfdPriorTypeLinetypeValues <- function() {
+  setNames(c("solid", "dashed"), c(gettext("Analysis Prior"), gettext("Design Prior")))
 }
 
 .bfdLegendPosition <- function(legendPosition) {

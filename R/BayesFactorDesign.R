@@ -5,17 +5,17 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
   validation  <- computation[["validation"]]
   result      <- computation[["result"]]
 
-  if (options[["summaryDesign"]])
+  if (options[["designSummary"]])
     .bfdResultsTable(jaspResults, settings, result)
 
-  if (options[["summaryEvidence"]])
+  if (options[["decisionProbabilities"]])
     .bfdDesignOutcomeTable(jaspResults, settings, result)
 
-  if (options[["summarySpecification"]])
+  if (options[["designSpecification"]])
     .bfdPriorsTable(jaspResults, settings, validation)
 
   if (.bfdObservedAnalysisReady(dataset, options, settings))
-    .bfdObservedAnalysisTable(jaspResults, dataset, options, settings, key = "evidenceObservedAnalysis", position = 4)
+    .bfdObservedAnalysisTable(jaspResults, dataset, options, settings, key = "evidenceObservedAnalysis", position = 16)
 
   if (options[["explanatoryText"]])
     .bfdText(jaspResults, settings, result)
@@ -26,10 +26,10 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
   if (options[["generateRCode"]])
     .bfdRCode(jaspResults, settings, result, validation)
 
-  if (options[["evidenceByEffectSize"]])
+  if (options[["decisionProbabilitiesByEffectSize"]])
     .bfdEffectSizePlot(jaspResults, settings, result)
 
-  if (options[["evidenceBySampleSize"]])
+  if (options[["decisionProbabilitiesBySampleSize"]])
     .bfdSampleSizePlot(jaspResults, settings, result)
 
   if (.bfdPriorPlotRequested(options))
@@ -41,7 +41,7 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
 .bfdDesignDependencies <- c(
   "statisticalTest", "calculationTarget", "conclusiveEvidenceThresholdH1", "conclusiveEvidenceThresholdH0",
   "probabilityOfConclusiveEvidenceUnderH1", "probabilityOfConclusiveEvidenceUnderH0",
-  "sampleSize", "sampleSizeAllocationRatio", "knownStandardDeviation",
+  "designSampleSizeBasis", "sampleSize", "sampleSizeAllocationRatio", "knownStandardDeviation",
   "generalZParameterization", "unitInformationSd",
   "analysisPriorDirection", "nullPriorDistribution", "nullValue", "nullProportion",
   "analysisPriorDistribution", "analysisPriorLocation", "analysisPriorMean",
@@ -59,22 +59,22 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
 .bfdReportDependencies <- c(.bfdDesignDependencies, "generateReport", "generateReportLatexFormattedOutput")
 .bfdRCodeDependencies  <- c(.bfdDesignDependencies, "generateRCode")
 .bfdTextDependencies   <- c(.bfdDesignDependencies, "explanatoryText")
-.bfdSummaryDesignDependencies        <- c(.bfdDesignDependencies, "summaryDesign")
-.bfdSummaryEvidenceDependencies      <- c(.bfdDesignDependencies, "summaryEvidence")
-.bfdSummarySpecificationDependencies <- c(.bfdDesignDependencies, "summarySpecification")
+.bfdSummaryDesignDependencies        <- c(.bfdDesignDependencies, "designSummary")
+.bfdSummaryEvidenceDependencies      <- c(.bfdDesignDependencies, "decisionProbabilities")
+.bfdSummarySpecificationDependencies <- c(.bfdDesignDependencies, "designSpecification")
 
 .bfdSampleSizePlotDependencies <- c(
-  .bfdDesignDependencies, "evidenceBySampleSize", "mergeH1AndH0Figures",
-  "curvePoints", "logSampleSize", "legendPosition", "colorPalette"
+  .bfdDesignDependencies, "decisionProbabilitiesBySampleSize", "combineH1H0Figures",
+  "curvePoints", "logSampleSizeAxis", "legendPosition", "colorPalette"
 )
-.bfdSampleSizePlotDataDependencies <- c(.bfdDesignDependencies, "curvePoints", "logSampleSize")
+.bfdSampleSizePlotDataDependencies <- c(.bfdDesignDependencies, "curvePoints", "logSampleSizeAxis")
 .bfdEffectSizePlotDependencies <- c(
-  .bfdDesignDependencies, "evidenceByEffectSize", "mergeH1AndH0Figures",
+  .bfdDesignDependencies, "decisionProbabilitiesByEffectSize", "combineH1H0Figures",
   "curvePoints", "legendPosition", "colorPalette"
 )
 .bfdEffectSizePlotDataDependencies <- c(.bfdDesignDependencies, "curvePoints")
 .bfdPriorPlotDependencies <- c(
-  .bfdDesignDependencies, "priorDistributionDesign", "priorDistributionAnalysis", "priorDistributionMergeFigures",
+  .bfdDesignDependencies, "designPriorDistributionFigure", "analysisPriorDistributionFigure", "combineDesignAnalysisPriorFigures",
   "curvePoints", "legendPosition", "colorPalette"
 )
 .bfdPriorPlotDataDependencies <- c(
@@ -145,19 +145,20 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
     bf01Threshold        = options[["conclusiveEvidenceThresholdH0"]],
     targetPowerH1        = options[["probabilityOfConclusiveEvidenceUnderH1"]],
     targetPowerH0        = options[["probabilityOfConclusiveEvidenceUnderH0"]],
+    designSampleSizeBasis = options[["designSampleSizeBasis"]],
     planningTargets      = .bfdPlanningTargets(),
     sampleSize           = options[["sampleSize"]],
     sampleSizeRatio      = options[["sampleSizeAllocationRatio"]],
     rangeMin             = options[["minimumSampleSize"]],
     rangeMax             = options[["maximumSampleSize"]],
     plotPoints           = options[["curvePoints"]],
-    logSampleSize        = options[["logSampleSize"]],
+    logSampleSize        = options[["logSampleSizeAxis"]],
     legendPosition       = options[["legendPosition"]],
     colorPalette         = options[["colorPalette"]],
-    mergeH1H0Figures     = options[["mergeH1AndH0Figures"]],
-    priorPlotDesign      = options[["priorDistributionDesign"]],
-    priorPlotAnalysis    = options[["priorDistributionAnalysis"]],
-    priorPlotMerge       = options[["priorDistributionMergeFigures"]],
+    mergeH1H0Figures     = options[["combineH1H0Figures"]],
+    priorPlotDesign      = options[["designPriorDistributionFigure"]],
+    priorPlotAnalysis    = options[["analysisPriorDistributionFigure"]],
+    priorPlotMerge       = options[["combineDesignAnalysisPriorFigures"]],
     reportLatex          = options[["generateReportLatexFormattedOutput"]]
   )
 
@@ -615,19 +616,30 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
 
 .bfdResultsRows <- function(settings, result) {
   rows <- result[["targetResults"]]
+  n1   <- if (identical(settings[["calculation"]], "sampleSize")) {
+    vapply(rows[["under"]], function(under) .bfdResultN1ForBasis(settings, result, under), numeric(1))
+  } else {
+    rows[["n1"]]
+  }
+
   out <- data.frame(
     under             = vapply(rows[["under"]], .bfdUnderLabel, character(1)),
     decisionRule      = vapply(rows[["target"]], function(target) .bfdDecisionRuleLabel(settings, target), character(1)),
-    probability       = rows[["probability"]],
+    probability       = mapply(
+      function(target, under, n) .bfdResultProbabilityAtN(settings, target, under, n),
+      rows[["target"]],
+      rows[["under"]],
+      n1
+    ),
     targetProbability = vapply(rows[["target"]], function(target) .bfdTargetPower(settings, target), numeric(1)),
     stringsAsFactors  = FALSE
   )
 
   if (settings[["isIndependentSamples"]]) {
-    out[["n1"]] <- rows[["n1"]]
-    out[["n2"]] <- rows[["n2"]]
+    out[["n1"]] <- n1
+    out[["n2"]] <- .bfdSampleSizeSecondGroup(settings, n1)
   } else {
-    out[["n"]] <- rows[["n1"]]
+    out[["n"]] <- n1
   }
 
   if (settings[["calculation"]] != "sampleSize")
@@ -644,6 +656,17 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
   row.names(out) <- NULL
 
   return(out)
+}
+
+.bfdResultProbabilityAtN <- function(settings, target, under, n1) {
+  if (length(n1) != 1 || !is.finite(n1))
+    return(NA_real_)
+
+  probability <- try(.bfdEvidenceProbability(settings, n1 = n1, target = target, under = under), silent = TRUE)
+  if (jaspBase::isTryError(probability))
+    return(NA_real_)
+
+  return(probability)
 }
 
 .bfdDesignOutcomeTable <- function(jaspResults, settings, result) {
@@ -721,12 +744,44 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
 }
 
 .bfdDesignOutcomeSampleSizeFootnote <- function(settings, result) {
-  n1 <- result[["n1"]]
+  if (!identical(settings[["calculation"]], "sampleSize"))
+    return(.bfdDesignOutcomeSampleSizeFootnoteForN(settings, result[["n1"]]))
+
+  if (identical(settings[["designSampleSizeBasis"]], "eachDesignHypothesis")) {
+    h1N <- .bfdResultN1ForUnder(result, "h1")
+    h0N <- .bfdResultN1ForUnder(result, "h0")
+    if (!is.finite(h1N) || !is.finite(h0N))
+      return(gettext("Probabilities are evaluated at the fixed-design sample size required for the corresponding design prior under H\u2081 or H\u2080."))
+
+    if (settings[["isIndependentSamples"]]) {
+      h1N2 <- .bfdSampleSizeSecondGroup(settings, h1N)
+      h0N2 <- .bfdSampleSizeSecondGroup(settings, h0N)
+      return(gettextf(
+        "Probabilities are evaluated at the fixed-design sample size required for each design prior: under H\u2081, N\u2081 = %1$s and N\u2082 = %2$s; under H\u2080, N\u2081 = %3$s and N\u2082 = %4$s.",
+        h1N,
+        h1N2,
+        h0N,
+        h0N2
+      ))
+    }
+
+    return(gettextf(
+      "Probabilities are evaluated at the fixed-design sample size required for each design prior: under H\u2081, N = %1$s; under H\u2080, N = %2$s.",
+      h1N,
+      h0N
+    ))
+  }
+
+  n1 <- .bfdResultN1ForBasis(settings, result, "h1")
+  return(.bfdDesignOutcomeSampleSizeFootnoteForN(settings, n1))
+}
+
+.bfdDesignOutcomeSampleSizeFootnoteForN <- function(settings, n1) {
   if (length(n1) != 1 || !is.finite(n1))
     return(gettext("Probabilities are evaluated at the selected fixed-design sample size. Rows use the corresponding design prior under H\u2081 or H\u2080."))
 
   if (settings[["isIndependentSamples"]]) {
-    n2 <- result[["n2"]]
+    n2 <- .bfdSampleSizeSecondGroup(settings, n1)
     if (length(n2) != 1 || !is.finite(n2))
       return(gettext("Probabilities are evaluated at the selected fixed-design sample sizes. Rows use the corresponding design prior under H\u2081 or H\u2080."))
 
@@ -745,11 +800,16 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
 }
 
 .bfdDesignOutcomeForUnder <- function(settings, result, under) {
-  targetError <- .bfdTargetError(result, under)
+  basisTarget <- .bfdDesignSampleSizeBasisTarget(settings, under)
+  if (!is.null(basisTarget)) {
+    targetError <- .bfdTargetError(result, basisTarget)
+  } else {
+    targetError <- .bfdTargetError(result, under)
+  }
   if (!is.null(targetError))
     return(.bfdDesignOutcomeErrorResult(targetError))
 
-  n1 <- result[["n1"]]
+  n1 <- .bfdResultN1ForBasis(settings, result, under)
   if (length(n1) == 0 || !is.finite(n1))
     return(.bfdDesignOutcomeErrorResult(gettext("Sample size is not available.")))
 
@@ -812,6 +872,30 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
   return(rows[["n1"]][index[1]])
 }
 
+.bfdDesignSampleSizeBasisTarget <- function(settings, under) {
+  if (!identical(settings[["calculation"]], "sampleSize"))
+    return(NULL)
+
+  switch(settings[["designSampleSizeBasis"]],
+    eachDesignHypothesis = under,
+    bothDesignHypotheses = NULL,
+    alternativeHypothesis = "h1",
+    nullHypothesis        = "h0",
+    under
+  )
+}
+
+.bfdResultN1ForBasis <- function(settings, result, under) {
+  if (!identical(settings[["calculation"]], "sampleSize"))
+    return(result[["n1"]])
+
+  basisTarget <- .bfdDesignSampleSizeBasisTarget(settings, under)
+  if (is.null(basisTarget))
+    return(result[["n1"]])
+
+  return(.bfdResultN1ForUnder(result, basisTarget))
+}
+
 .bfdDesignOutcomeProbabilities <- function(settings, n1, under) {
   alternative <- .bfdDesignOutcomeEvidenceProbability(settings, n1, target = "h1", under = under)
   null        <- .bfdDesignOutcomeEvidenceProbability(settings, n1, target = "h0", under = under)
@@ -854,31 +938,37 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
   if (!is.null(jaspResults[[key]]))
     return()
 
-  container <- createJaspContainer(title = gettext("Analysis"))
+  showSummaryTable <- options[["observedDataAnalysisInput"]] == "columns"
+
+  container <- createJaspContainer(title = gettext("Observed Data Analysis"))
   container$dependOn(c(dependencies, .bfdObservedDependencies))
   container$position <- position
   jaspResults[[key]] <- container
 
-  resultTable <- createJaspTable(title = gettext("Bayes Factor"))
+  resultTable <- createJaspTable(title = gettext("Analysis Result"))
   resultTable$position <- 1
   resultTable$showSpecifiedColumnsOnly <- TRUE
   container[["result"]] <- resultTable
   .bfdObservedAddResultColumns(resultTable, settings)
 
-  summaryTable <- createJaspTable(title = gettext("Summary Statistics"))
-  summaryTable$position <- 2
-  summaryTable$showSpecifiedColumnsOnly <- TRUE
-  container[["summaryStatistics"]] <- summaryTable
+  if (showSummaryTable) {
+    summaryTable <- createJaspTable(title = gettext("Summary Statistics"))
+    summaryTable$position <- 2
+    summaryTable$showSpecifiedColumnsOnly <- TRUE
+    container[["summaryStatistics"]] <- summaryTable
+  }
 
   summary <- try(.bfdObservedSummary(dataset, options, settings), silent = TRUE)
   if (jaspBase::isTryError(summary)) {
     message <- gettextf("Unable to summarize observed data: %1$s", .bfdCleanError(summary))
     resultTable$setError(message)
-    summaryTable$setError(message)
+    if (showSummaryTable)
+      summaryTable$setError(message)
     return()
   }
 
-  .bfdObservedFillSummaryTable(summaryTable, settings, summary)
+  if (showSummaryTable)
+    .bfdObservedFillSummaryTable(summaryTable, settings, summary)
 
   bayesFactor <- try(.bfdObservedBayesFactor(settings, summary), silent = TRUE)
   if (jaspBase::isTryError(bayesFactor)) {
@@ -1875,7 +1965,7 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
     parent       = jaspResults,
     key          = "evidenceReport",
     title        = gettext("Report"),
-    position     = 15,
+    position     = 0,
     dependencies = .bfdReportDependencies
   )
   if (is.null(html))
@@ -1899,8 +1989,8 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
       .bfdReportPriorSentence(settings),
       .bfdReportProbabilitySentence(
         settings,
-        h1Outcome = .bfdDesignOutcomeProbabilities(settings, .bfdResultN1ForUnder(result, "h1"), under = "h1"),
-        h0Outcome = .bfdDesignOutcomeProbabilities(settings, .bfdResultN1ForUnder(result, "h0"), under = "h0")
+        h1Outcome = .bfdDesignOutcomeProbabilities(settings, .bfdResultN1ForBasis(settings, result, "h1"), under = "h1"),
+        h0Outcome = .bfdDesignOutcomeProbabilities(settings, .bfdResultN1ForBasis(settings, result, "h0"), under = "h0")
       ),
       .bfdReportSoftwareSentence()
     ),
@@ -2525,7 +2615,7 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
 }
 
 .bfdSampleSizePlot <- function(jaspResults, settings, result) {
-  for (spec in .bfdUnderPlotSpecs(settings, "evidenceBySampleSize", gettext("Conclusive Evidence and Misleading Evidence by N"), 9)) {
+  for (spec in .bfdUnderPlotSpecs(settings, "evidenceBySampleSize", gettext("Decision Probabilities by Sample Size"), 9)) {
     .bfdSampleSizeOutcomePlot(
       jaspResults = jaspResults,
       settings    = settings,
@@ -2609,7 +2699,7 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
 }
 
 .bfdPlotTitleUnder <- function(title, under) {
-  gettextf("%1$s: %2$s", title, .bfdUnderLabel(under))
+  gettextf("%1$s: %2$s", title, .bfdDesignPriorUnderLabel(under))
 }
 
 .bfdSetOutcomePlotError <- function(plot, error) {
@@ -2655,13 +2745,13 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
       ggplot2::geom_line(linewidth = 1.2) +
       xScale +
       .bfdProbabilityYScale() +
-      ggplot2::labs(x = xLabel, y = gettext("Probability"), color = gettext("Evidence"), linetype = gettext("Design Prior"))
+      ggplot2::labs(x = xLabel, y = gettext("Probability"), color = gettext("Outcome"), linetype = gettext("Design Prior"))
   } else {
     plot <- ggplot2::ggplot(data, ggplot2::aes(x = n, y = probability, color = outcome)) +
       ggplot2::geom_line(linewidth = 1.2) +
       xScale +
       .bfdProbabilityYScale() +
-      ggplot2::labs(x = xLabel, y = gettext("Probability"), color = gettext("Evidence"))
+      ggplot2::labs(x = xLabel, y = gettext("Probability"), color = gettext("Outcome"))
   }
 
   if (settings[["calculation"]] == "sampleSize") {
@@ -2669,7 +2759,8 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
       .bfdTargetPowerLine(settings, unders)
   }
 
-  return(.bfdApplyPlotTheme(plot, settings))
+  linetypeValues <- if (showUnder) .bfdUnderLinetypeValues() else NULL
+  return(.bfdApplyPlotTheme(plot, settings, linetypeValues = linetypeValues))
 }
 
 .bfdEffectSizePlot <- function(jaspResults, settings, result) {
@@ -2727,9 +2818,9 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
 
 .bfdEffectSizePlotTitle <- function(settings) {
   if (settings[["isBinomial"]])
-    return(gettext("Conclusive Evidence and Misleading Evidence by Proportion"))
+    return(gettext("Decision Probabilities by Proportion"))
 
-  return(gettext("Conclusive Evidence and Misleading Evidence by Effect Size"))
+  return(gettext("Decision Probabilities by Effect Size"))
 }
 
 .bfdEffectSizePlotData <- function(settings, result) {
@@ -2740,7 +2831,7 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
   effect      <- seq(effectRange[1], effectRange[2], length.out = settings[["plotPoints"]])
 
   return(list(
-    data   = .bfdCurveByEffectSize(settings, effect, .bfdCurveUnders(settings), result[["n1"]]),
+    data   = .bfdCurveByEffectSize(settings, effect, .bfdCurveUnders(settings), function(under) .bfdResultN1ForBasis(settings, result, under)),
     xLabel = .bfdDesignPriorEffectAxisLabel(settings)
   ))
 }
@@ -2761,12 +2852,12 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
     plot <- ggplot2::ggplot(data, ggplot2::aes(x = effect, y = probability, color = outcome, linetype = under)) +
       ggplot2::geom_line(linewidth = 1.2) +
       .bfdProbabilityYScale() +
-      ggplot2::labs(x = xLabel, y = gettext("Probability"), color = gettext("Evidence"), linetype = gettext("Design Prior"))
+      ggplot2::labs(x = xLabel, y = gettext("Probability"), color = gettext("Outcome"), linetype = gettext("Design Prior"))
   } else {
     plot <- ggplot2::ggplot(data, ggplot2::aes(x = effect, y = probability, color = outcome)) +
       ggplot2::geom_line(linewidth = 1.2) +
       .bfdProbabilityYScale() +
-      ggplot2::labs(x = xLabel, y = gettext("Probability"), color = gettext("Evidence"))
+      ggplot2::labs(x = xLabel, y = gettext("Probability"), color = gettext("Outcome"))
   }
 
   if (settings[["calculation"]] == "sampleSize") {
@@ -2774,7 +2865,8 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
       .bfdTargetPowerLine(settings, unders)
   }
 
-  return(.bfdApplyPlotTheme(plot, settings))
+  linetypeValues <- if (showUnder) .bfdUnderLinetypeValues() else NULL
+  return(.bfdApplyPlotTheme(plot, settings, linetypeValues = linetypeValues))
 }
 
 .bfdDesignPriorEffectAxisLabel <- function(settings) {
@@ -2791,7 +2883,7 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
   proportion     <- seq(xRange[1], xRange[2], length.out = settings[["plotPoints"]])
 
   return(list(
-    data           = .bfdCurveByProportion(settings, proportion, .bfdCurveUnders(settings), result[["n1"]]),
+    data           = .bfdCurveByProportion(settings, proportion, .bfdCurveUnders(settings), function(under) .bfdResultN1ForBasis(settings, result, under)),
     proportionAxis = proportionAxis
   ))
 }
@@ -2814,7 +2906,7 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
         breaks = proportionAxis[["breaks"]],
         limits = proportionAxis[["range"]]
       ) +
-      ggplot2::labs(y = gettext("Probability"), color = gettext("Evidence"), linetype = gettext("Design Prior"))
+      ggplot2::labs(y = gettext("Probability"), color = gettext("Outcome"), linetype = gettext("Design Prior"))
   } else {
     plot <- ggplot2::ggplot(data, ggplot2::aes(x = proportion, y = probability, color = outcome)) +
       ggplot2::geom_line(linewidth = 1.2) +
@@ -2824,7 +2916,7 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
         breaks = proportionAxis[["breaks"]],
         limits = proportionAxis[["range"]]
       ) +
-      ggplot2::labs(y = gettext("Probability"), color = gettext("Evidence"))
+      ggplot2::labs(y = gettext("Probability"), color = gettext("Outcome"))
   }
 
   if (settings[["calculation"]] == "sampleSize") {
@@ -2832,7 +2924,8 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
       .bfdTargetPowerLine(settings, unders)
   }
 
-  return(.bfdApplyPlotTheme(plot, settings))
+  linetypeValues <- if (showUnder) .bfdUnderLinetypeValues() else NULL
+  return(.bfdApplyPlotTheme(plot, settings, linetypeValues = linetypeValues))
 }
 
 .bfdPriorPlot <- function(jaspResults, settings, validation) {
@@ -2967,6 +3060,43 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
   return(data)
 }
 
+.bfdPriorAestheticData <- function(data) {
+  if (!"prior" %in% names(data)) {
+    data[["hypothesis"]] <- character(nrow(data))
+    data[["priorType"]]  <- character(nrow(data))
+    return(data)
+  }
+
+  data[["hypothesis"]] <- vapply(data[["prior"]], .bfdPriorHypothesisAestheticLabel, character(1))
+  data[["priorType"]]  <- vapply(data[["prior"]], .bfdPriorTypeAestheticLabel, character(1))
+
+  return(data)
+}
+
+.bfdPriorHypothesisAestheticLabel <- function(priorLabel) {
+  if (priorLabel %in% c(.bfdAnalysisPriorPlotLabel("h1"), .bfdDesignPriorPlotLabel("h1"), .bfdUnderLabel("h1")))
+    return(gettext("H\u2081"))
+
+  if (priorLabel %in% c(.bfdAnalysisPriorPlotLabel("h0"), .bfdDesignPriorPlotLabel("h0"), .bfdUnderLabel("h0")))
+    return(gettext("H\u2080"))
+
+  return(priorLabel)
+}
+
+.bfdPriorTypeAestheticLabel <- function(priorLabel) {
+  if (priorLabel %in% c(.bfdAnalysisPriorPlotLabel("h1"), .bfdAnalysisPriorPlotLabel("h0")))
+    return(gettext("Analysis Prior"))
+
+  if (priorLabel %in% c(.bfdDesignPriorPlotLabel("h1"), .bfdDesignPriorPlotLabel("h0")))
+    return(gettext("Design Prior"))
+
+  return(priorLabel)
+}
+
+.bfdPriorUsesMergedAesthetics <- function(priorSet) {
+  .bfdPriorSetIncludes(priorSet, "analysis") && .bfdPriorSetIncludes(priorSet, "design")
+}
+
 .bfdPriorLegendLabels <- function(labels, priorSet) {
   if (identical(priorSet, "analysis")) {
     labels[labels == .bfdAnalysisPriorPlotLabel("h0")] <- .bfdUnderLabel("h0")
@@ -3052,12 +3182,13 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
 
 .bfdCurveByEffectSize <- function(settings, effect, unders, n1) {
   rows <- lapply(unders, function(under) {
+    n1Under <- .bfdCurveN1ForUnder(n1, under)
     lapply(.bfdCurveOutcomes(), function(outcome) {
       target          <- .bfdCurveTarget(under, outcome)
       designPriorMean <- effect
       data.frame(
         effect      = effect,
-        probability = .bfdEvidenceProbability(settings, n1 = n1, target = target, under = under, designPriorMean = designPriorMean),
+        probability = .bfdEvidenceProbability(settings, n1 = n1Under, target = target, under = under, designPriorMean = designPriorMean),
         under       = .bfdUnderLabel(under),
         outcome     = .bfdOutcomeLabel(outcome),
         curve       = .bfdCurveLabel(outcome, under, length(unders)),
@@ -3071,12 +3202,13 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
 
 .bfdCurveByProportion <- function(settings, proportion, unders, n1) {
   rows <- lapply(unders, function(under) {
+    n1Under <- .bfdCurveN1ForUnder(n1, under)
     lapply(.bfdCurveOutcomes(), function(outcome) {
       target          <- .bfdCurveTarget(under, outcome)
       designPriorMean <- proportion
       data.frame(
         proportion  = proportion,
-        probability = .bfdEvidenceProbability(settings, n1 = n1, target = target, under = under, designPriorMean = designPriorMean),
+        probability = .bfdEvidenceProbability(settings, n1 = n1Under, target = target, under = under, designPriorMean = designPriorMean),
         under       = .bfdUnderLabel(under),
         outcome     = .bfdOutcomeLabel(outcome),
         curve       = .bfdCurveLabel(outcome, under, length(unders)),
@@ -3086,6 +3218,13 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
   })
 
   return(do.call(rbind, unlist(rows, recursive = FALSE)))
+}
+
+.bfdCurveN1ForUnder <- function(n1, under) {
+  if (is.function(n1))
+    return(n1(under))
+
+  return(n1)
 }
 
 .bfdCurveTarget <- function(under, outcome) {
@@ -3112,6 +3251,8 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
 
   densityData <- .bfdPriorRelabelData(densityData, priorSet)
   spikeData   <- .bfdPriorRelabelData(spikeData, priorSet)
+  densityData <- .bfdPriorAestheticData(densityData)
+  spikeData   <- .bfdPriorAestheticData(spikeData)
 
   return(list(
     priorAxis   = priorAxis,
@@ -3131,6 +3272,7 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
   spikeData   <- plotData[["spikeData"]]
   yAxis       <- plotData[["yAxis"]]
   legendTitle <- plotData[["legendTitle"]]
+  mergedAesthetics <- .bfdPriorUsesMergedAesthetics(priorSet)
 
   plot <- ggplot2::ggplot() +
     jaspGraphs::scale_x_continuous(
@@ -3140,21 +3282,39 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
     )
 
   if (nrow(densityData) > 0) {
-    plot <- plot + ggplot2::geom_line(
-      data = densityData,
-      ggplot2::aes(x = x, y = density, color = prior),
-      linewidth = 1.1
-    )
+    plot <- if (mergedAesthetics) {
+      plot + ggplot2::geom_line(
+        data = densityData,
+        ggplot2::aes(x = x, y = density, color = hypothesis, linetype = priorType),
+        linewidth = 1.1
+      )
+    } else {
+      plot + ggplot2::geom_line(
+        data = densityData,
+        ggplot2::aes(x = x, y = density, color = prior),
+        linewidth = 1.1
+      )
+    }
   }
 
   if (nrow(spikeData) > 0) {
-    plot <- plot + ggplot2::geom_segment(
-      data = spikeData,
-      ggplot2::aes(x = x, xend = x, y = 0, yend = height, color = prior),
-      arrow       = grid::arrow(length = grid::unit(0.08, "inches"), type = "closed"),
-      linewidth   = 1.1,
-      inherit.aes = FALSE
-    )
+    plot <- if (mergedAesthetics) {
+      plot + ggplot2::geom_segment(
+        data = spikeData,
+        ggplot2::aes(x = x, xend = x, y = 0, yend = height, color = hypothesis, linetype = priorType),
+        arrow       = grid::arrow(length = grid::unit(0.08, "inches"), type = "closed"),
+        linewidth   = 1.1,
+        inherit.aes = FALSE
+      )
+    } else {
+      plot + ggplot2::geom_segment(
+        data = spikeData,
+        ggplot2::aes(x = x, xend = x, y = 0, yend = height, color = prior),
+        arrow       = grid::arrow(length = grid::unit(0.08, "inches"), type = "closed"),
+        linewidth   = 1.1,
+        inherit.aes = FALSE
+      )
+    }
   }
 
   plot <- plot +
@@ -3164,9 +3324,14 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
       limits = yAxis[["range"]],
       expand = .bfdPriorYAxisExpansion()
     ) +
-    ggplot2::labs(y = gettext("Density"), color = legendTitle)
+    ggplot2::labs(
+      y        = gettext("Density"),
+      color    = if (mergedAesthetics) gettext("Hypothesis") else legendTitle,
+      linetype = if (mergedAesthetics) gettext("Prior") else NULL
+    )
 
-  return(.bfdApplyPlotTheme(plot, settings))
+  linetypeValues <- if (mergedAesthetics) .bfdPriorTypeLinetypeValues() else NULL
+  return(.bfdApplyPlotTheme(plot, settings, linetypeValues = linetypeValues))
 }
 
 .bfdContinuousPriorDensityData <- function(settings, x, priorSet) {
@@ -3342,6 +3507,8 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
 
   densityData <- .bfdPriorRelabelData(densityData, priorSet)
   spikeData   <- .bfdPriorRelabelData(spikeData, priorSet)
+  densityData <- .bfdPriorAestheticData(densityData)
+  spikeData   <- .bfdPriorAestheticData(spikeData)
 
   return(list(
     priorAxis   = priorAxis,
@@ -3361,6 +3528,7 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
   spikeData   <- plotData[["spikeData"]]
   yAxis       <- plotData[["yAxis"]]
   legendTitle <- plotData[["legendTitle"]]
+  mergedAesthetics <- .bfdPriorUsesMergedAesthetics(priorSet)
 
   plot <- ggplot2::ggplot() +
     jaspGraphs::scale_x_continuous(
@@ -3370,21 +3538,39 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
     )
 
   if (nrow(densityData) > 0) {
-    plot <- plot + ggplot2::geom_line(
-      data = densityData,
-      ggplot2::aes(x = x, y = density, color = prior),
-      linewidth = 1.1
-    )
+    plot <- if (mergedAesthetics) {
+      plot + ggplot2::geom_line(
+        data = densityData,
+        ggplot2::aes(x = x, y = density, color = hypothesis, linetype = priorType),
+        linewidth = 1.1
+      )
+    } else {
+      plot + ggplot2::geom_line(
+        data = densityData,
+        ggplot2::aes(x = x, y = density, color = prior),
+        linewidth = 1.1
+      )
+    }
   }
 
   if (nrow(spikeData) > 0) {
-    plot <- plot + ggplot2::geom_segment(
-      data = spikeData,
-      ggplot2::aes(x = x, xend = x, y = 0, yend = height, color = prior),
-      arrow       = grid::arrow(length = grid::unit(0.08, "inches"), type = "closed"),
-      linewidth   = 1.1,
-      inherit.aes = FALSE
-    )
+    plot <- if (mergedAesthetics) {
+      plot + ggplot2::geom_segment(
+        data = spikeData,
+        ggplot2::aes(x = x, xend = x, y = 0, yend = height, color = hypothesis, linetype = priorType),
+        arrow       = grid::arrow(length = grid::unit(0.08, "inches"), type = "closed"),
+        linewidth   = 1.1,
+        inherit.aes = FALSE
+      )
+    } else {
+      plot + ggplot2::geom_segment(
+        data = spikeData,
+        ggplot2::aes(x = x, xend = x, y = 0, yend = height, color = prior),
+        arrow       = grid::arrow(length = grid::unit(0.08, "inches"), type = "closed"),
+        linewidth   = 1.1,
+        inherit.aes = FALSE
+      )
+    }
   }
 
   plot <- plot +
@@ -3394,9 +3580,14 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
       limits = yAxis[["range"]],
       expand = .bfdPriorYAxisExpansion()
     ) +
-    ggplot2::labs(y = gettext("Density"), color = legendTitle)
+    ggplot2::labs(
+      y        = gettext("Density"),
+      color    = if (mergedAesthetics) gettext("Hypothesis") else legendTitle,
+      linetype = if (mergedAesthetics) gettext("Prior") else NULL
+    )
 
-  return(.bfdApplyPlotTheme(plot, settings))
+  linetypeValues <- if (mergedAesthetics) .bfdPriorTypeLinetypeValues() else NULL
+  return(.bfdApplyPlotTheme(plot, settings, linetypeValues = linetypeValues))
 }
 
 .bfdBinomialPriorDensityData <- function(settings, x, priorSet) {
@@ -4045,6 +4236,13 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
   return(gettext("Under H\u2080"))
 }
 
+.bfdDesignPriorUnderLabel <- function(under) {
+  if (under == "h1")
+    return(gettext("Design Prior Under H\u2081"))
+
+  return(gettext("Design Prior Under H\u2080"))
+}
+
 .bfdProbabilityColumnTitle <- function(settings) {
   if (settings[["evidenceTarget"]] == "h1")
     return("Pr(BF\u2081\u2080 \u2265 k)")
@@ -4227,10 +4425,7 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
 }
 
 .bfdDesignPriorPlotLabel <- function(under) {
-  if (under == "h0")
-    return(gettext("Design Prior Under H\u2080"))
-
-  return(gettext("Design Prior Under H\u2081"))
+  return(.bfdDesignPriorUnderLabel(under))
 }
 
 .bfdAnalysisPriorPlotLabel <- function(under) {
