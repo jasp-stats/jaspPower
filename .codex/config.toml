@@ -9,7 +9,7 @@ approval_policy = "on-request"
 project_doc_max_bytes = 65536
 
 # Reasoning: use high effort for complex module-fixing tasks
-model_reasoning_effort = "high"
+model_reasoning_effort = "xhigh"
 model_reasoning_summary = "concise"
 
 [mcp_servers.r-mcptools]

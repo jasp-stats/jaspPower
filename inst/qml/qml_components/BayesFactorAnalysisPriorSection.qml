@@ -34,7 +34,6 @@ Section
 	property bool isTTest: testValue.indexOf("TTest") !== -1
 	property bool usesDirectionalZ: supportsDirectionalZ && isContinuousZ && alternative.currentValue !== "twoSided"
 	property bool usesPriorDirection: !isBinomial && (isTTest || supportsDirectionalZ)
-	property int priorFieldWidth: 105
 
 	Group
 	{
@@ -77,7 +76,6 @@ Section
 		{
 			name: "nullValue"
 			id:   nullValue
-			fieldWidth: priorFieldWidth
 			defaultValue: 0
 			negativeValues: true
 			visible: !isBinomial
@@ -97,7 +95,6 @@ Section
 		{
 			name: "nullProportion"
 			id:   nullProportion
-			fieldWidth: priorFieldWidth
 			min: 0
 			max: 1
 			defaultValue: 0.5
@@ -176,7 +173,6 @@ Section
 		{
 			name: "analysisPriorLocation"
 			id:   analysisPriorPoint
-			fieldWidth: priorFieldWidth
 			defaultValue: 0.5
 			negativeValues: true
 			visible: isContinuousZ && analysisPriorDistribution.currentValue === "point"
@@ -196,7 +192,6 @@ Section
 		{
 			name: "analysisPriorMean"
 			id:   analysisPriorMean
-			fieldWidth: priorFieldWidth
 			defaultValue: 0
 			negativeValues: true
 			visible: isContinuousZ && analysisPriorDistribution.currentValue === "normal"
@@ -216,7 +211,6 @@ Section
 		{
 			name: "analysisPriorScale"
 			id:   analysisPriorSd
-			fieldWidth: priorFieldWidth
 			min: 0
 			defaultValue: 0.707
 			inclusive: JASP.None
@@ -237,7 +231,6 @@ Section
 		{
 			name: "analysisPriorSpread"
 			id:   momentPriorSpread
-			fieldWidth: priorFieldWidth
 			min: 0
 			defaultValue: 0.707
 			inclusive: JASP.None
@@ -258,7 +251,6 @@ Section
 		{
 			name: "analysisPriorMode"
 			id:   momentPriorMode
-			fieldWidth: priorFieldWidth
 			min: 0
 			defaultValue: 1
 			inclusive: JASP.None
@@ -303,7 +295,6 @@ Section
 		{
 			name: "tPriorLocation"
 			id:   tPriorLocation
-			fieldWidth: priorFieldWidth
 			defaultValue: 0
 			negativeValues: true
 			visible: isTTest
@@ -323,7 +314,6 @@ Section
 		{
 			name: "tPriorScale"
 			id:   tPriorScale
-			fieldWidth: priorFieldWidth
 			min: 0
 			defaultValue: 0.707
 			inclusive: JASP.None
@@ -344,7 +334,6 @@ Section
 		{
 			name: "tPriorDegreesOfFreedom"
 			id:   tPriorDf
-			fieldWidth: priorFieldWidth
 			min: 0
 			defaultValue: 1
 			inclusive: JASP.None
@@ -365,7 +354,6 @@ Section
 		{
 			name: "analysisPriorSuccesses"
 			id:   analysisPriorSuccesses
-			fieldWidth: priorFieldWidth
 			min: 0
 			defaultValue: 1
 			inclusive: JASP.None
@@ -386,7 +374,6 @@ Section
 		{
 			name: "analysisPriorFailures"
 			id:   analysisPriorFailures
-			fieldWidth: priorFieldWidth
 			min: 0
 			defaultValue: 1
 			inclusive: JASP.None

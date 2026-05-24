@@ -577,47 +577,49 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
   if (settings[["calculation"]] == "sampleSize")
     table$addFootnote(gettext("Due to rounding of the sample size, Pr(Conclusive Evidence) can deviate from the target probability."))
 
+  combinedSampleSizeFootnote <- .bfdCombinedSampleSizeFootnote(settings, result)
+  if (!is.null(combinedSampleSizeFootnote))
+    table$addFootnote(combinedSampleSizeFootnote)
+
   if (settings[["isIndependentSamples"]])
     table$addFootnote(gettext("For independent samples, N\u2081 is the sample size in group 1 and N\u2082 is rounded up from the requested N\u2082/N\u2081 sample-size ratio."))
 }
 
 .bfdAddResultsTableColumns <- function(table, settings) {
-  computed <- gettext("Computed")
+  computed    <- gettext("Computed")
   userDefined <- gettext("User Defined")
 
   table$addColumnInfo(name = "under", title = gettext("Design Prior"), type = "string")
-  table$addColumnInfo(name = "target", title = gettext("Planned Target"), type = "string")
+  table$addColumnInfo(name = "decisionRule", title = gettext("Decision Rule"), type = "string", overtitle = userDefined)
 
   if (settings[["calculation"]] == "sampleSize") {
+    table$addColumnInfo(name = "targetProbability", title = gettext("Target Probability"), type = "number", overtitle = userDefined)
+
     if (settings[["isIndependentSamples"]]) {
       table$addColumnInfo(name = "n1", title = "N\u2081", type = "integer", overtitle = computed)
       table$addColumnInfo(name = "n2", title = "N\u2082", type = "integer", overtitle = computed)
     } else {
       table$addColumnInfo(name = "n", title = "N", type = "integer", overtitle = computed)
     }
-    table$addColumnInfo(name = "probability", title = gettext("Pr(Conclusive Evidence)"), type = "number", overtitle = computed)
-    table$addColumnInfo(name = "targetProbability", title = gettext("Target Pr(Conclusive Evidence)"), type = "number", overtitle = userDefined)
+    table$addColumnInfo(name = "probability", title = gettext("Achieved Probability"), type = "number", overtitle = computed)
   } else {
-    table$addColumnInfo(name = "probability", title = gettext("Pr(Conclusive Evidence)"), type = "number", overtitle = computed)
     if (settings[["isIndependentSamples"]]) {
       table$addColumnInfo(name = "n1", title = "N\u2081", type = "integer", overtitle = userDefined)
       table$addColumnInfo(name = "n2", title = "N\u2082", type = "integer", overtitle = userDefined)
     } else {
       table$addColumnInfo(name = "n", title = "N", type = "integer", overtitle = userDefined)
     }
+    table$addColumnInfo(name = "probability", title = gettext("Achieved Probability"), type = "number", overtitle = computed)
   }
-
-  table$addColumnInfo(name = "threshold", title = gettext("Bayes factor threshold"), type = "number", overtitle = userDefined)
 }
 
 .bfdResultsRows <- function(settings, result) {
   rows <- result[["targetResults"]]
   out <- data.frame(
     under             = vapply(rows[["under"]], .bfdUnderLabel, character(1)),
-    target            = vapply(rows[["target"]], .bfdTargetLabel, character(1)),
+    decisionRule      = vapply(rows[["target"]], function(target) .bfdDecisionRuleLabel(settings, target), character(1)),
     probability       = rows[["probability"]],
     targetProbability = vapply(rows[["target"]], function(target) .bfdTargetPower(settings, target), numeric(1)),
-    threshold         = vapply(rows[["target"]], function(target) .bfdThreshold(settings, target), numeric(1)),
     stringsAsFactors  = FALSE
   )
 
@@ -631,6 +633,16 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
   if (settings[["calculation"]] != "sampleSize")
     out[["targetProbability"]] <- NULL
 
+  columnOrder <- c(
+    "under",
+    "decisionRule",
+    if (settings[["calculation"]] == "sampleSize") "targetProbability",
+    if (settings[["isIndependentSamples"]]) c("n1", "n2") else "n",
+    "probability"
+  )
+  out <- out[, columnOrder, drop = FALSE]
+  row.names(out) <- NULL
+
   return(out)
 }
 
@@ -638,29 +650,35 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
   table <- .bfdCreateTable(
     parent       = jaspResults,
     key          = "evidenceDesignOutcome",
-    title        = gettext("Design Evidence"),
+    title        = gettext("Bayes Factor Decision Probabilities"),
     position     = 2,
     dependencies = .bfdSummaryEvidenceDependencies
   )
   if (is.null(table))
     return()
 
-  .bfdAddDesignOutcomeColumns(table)
+  .bfdAddDesignOutcomeColumns(
+    table,
+    underTitle       = gettext("Design Prior"),
+    overtitle        = gettext("Bayes Factor Decision"),
+    nullTitle        = gettext("Evidence for H\u2080"),
+    alternativeTitle = gettext("Evidence for H\u2081")
+  )
 
   if (jaspBase::isTryError(result)) {
-    table$setError(gettextf("Unable to compute design evidence: %1$s", .bfdCleanError(result)))
+    table$setError(gettextf("Unable to compute Bayes factor decision probabilities: %1$s", .bfdCleanError(result)))
     return()
   }
 
   rows <- try(.bfdDesignOutcomeRows(settings, result), silent = TRUE)
   if (jaspBase::isTryError(rows)) {
-    table$setError(gettextf("Unable to compute design evidence: %1$s", .bfdCleanError(rows)))
+    table$setError(gettextf("Unable to compute Bayes factor decision probabilities: %1$s", .bfdCleanError(rows)))
     return()
   }
 
   table$setData(rows)
   .bfdAddDesignPriorErrorFootnotes(table, attr(rows, "errors", exact = TRUE))
-  table$addFootnote(gettext("Probabilities are evaluated at the sample sizes in the Bayes Factor Design table. Rows use the corresponding design prior under H\u2081 or H\u2080."))
+  table$addFootnote(.bfdDesignOutcomeSampleSizeFootnote(settings, result))
 }
 
 .bfdDesignOutcomeRows <- function(settings, result) {
@@ -669,7 +687,8 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
 
   rows <- .bfdDesignOutcomeRowsFromOutcomes(
     .bfdDesignOutcomeValues(h1Outcome),
-    .bfdDesignOutcomeValues(h0Outcome)
+    .bfdDesignOutcomeValues(h0Outcome),
+    underLabels = c(.bfdUnderLabel("h1"), .bfdUnderLabel("h0"))
   )
   errors <- c(h1 = .bfdDesignOutcomeError(h1Outcome), h0 = .bfdDesignOutcomeError(h0Outcome))
   attr(rows, "errors") <- errors[nzchar(errors)]
@@ -677,12 +696,60 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
   return(rows)
 }
 
+.bfdCombinedSampleSizeFootnote <- function(settings, result) {
+  if (!identical(settings[["calculation"]], "sampleSize"))
+    return(NULL)
+
+  n1 <- result[["n1"]]
+  if (length(n1) != 1 || !is.finite(n1))
+    return(NULL)
+
+  if (settings[["isIndependentSamples"]]) {
+    n2 <- result[["n2"]]
+    if (length(n2) != 1 || !is.finite(n2))
+      return(NULL)
+
+    return(gettextf(
+      "To satisfy both design priors in a single fixed design, use N\u2081 = %1$s and N\u2082 = %2$s (total N = %3$s).",
+      n1,
+      n2,
+      n1 + n2
+    ))
+  }
+
+  return(gettextf("To satisfy both design priors in a single fixed design, use N = %1$s.", n1))
+}
+
+.bfdDesignOutcomeSampleSizeFootnote <- function(settings, result) {
+  n1 <- result[["n1"]]
+  if (length(n1) != 1 || !is.finite(n1))
+    return(gettext("Probabilities are evaluated at the selected fixed-design sample size. Rows use the corresponding design prior under H\u2081 or H\u2080."))
+
+  if (settings[["isIndependentSamples"]]) {
+    n2 <- result[["n2"]]
+    if (length(n2) != 1 || !is.finite(n2))
+      return(gettext("Probabilities are evaluated at the selected fixed-design sample sizes. Rows use the corresponding design prior under H\u2081 or H\u2080."))
+
+    return(gettextf(
+      "Probabilities are evaluated at the selected fixed-design sample sizes: N\u2081 = %1$s and N\u2082 = %2$s (total N = %3$s). Rows use the corresponding design prior under H\u2081 or H\u2080.",
+      n1,
+      n2,
+      n1 + n2
+    ))
+  }
+
+  return(gettextf(
+    "Probabilities are evaluated at the selected fixed-design sample size: N = %1$s. Rows use the corresponding design prior under H\u2081 or H\u2080.",
+    n1
+  ))
+}
+
 .bfdDesignOutcomeForUnder <- function(settings, result, under) {
   targetError <- .bfdTargetError(result, under)
   if (!is.null(targetError))
     return(.bfdDesignOutcomeErrorResult(targetError))
 
-  n1 <- .bfdResultN1ForUnder(result, under)
+  n1 <- result[["n1"]]
   if (length(n1) == 0 || !is.finite(n1))
     return(.bfdDesignOutcomeErrorResult(gettext("Sample size is not available.")))
 
@@ -836,6 +903,7 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
     type  = if (settings[["isBinomial"]]) "integer" else "number"
   )
   table$addColumnInfo(name = "bf10", title = "BF\u2081\u2080", type = "number")
+  table$addColumnInfo(name = "bf01", title = "BF\u2080\u2081", type = "number")
   table$addColumnInfo(name = "decision", title = gettext("Decision"), type = "string")
 }
 
@@ -844,6 +912,7 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
     test      = .bfdObservedTestLabel(settings),
     statistic = .bfdObservedStatisticValue(settings, summary),
     bf10      = bayesFactor[["bf10"]],
+    bf01      = bayesFactor[["bf01"]],
     decision  = .bfdObservedDecision(settings, bayesFactor, sequential),
     stringsAsFactors = FALSE
   ))

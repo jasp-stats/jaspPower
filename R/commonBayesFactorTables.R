@@ -1,13 +1,15 @@
-.bfdAddDesignOutcomeColumns <- function(table) {
-  table$addColumnInfo(name = "under",       title = gettext("Under"),       type = "string")
-  table$addColumnInfo(name = "null",        title = gettext("Null"),         type = "number", overtitle = gettext("Bayes Factor Evidence"))
-  table$addColumnInfo(name = "undecided",   title = gettext("Inconclusive"), type = "number", overtitle = gettext("Bayes Factor Evidence"))
-  table$addColumnInfo(name = "alternative", title = gettext("Alternative"),  type = "number", overtitle = gettext("Bayes Factor Evidence"))
+.bfdAddDesignOutcomeColumns <- function(table, underTitle = gettext("Under"), overtitle = gettext("Bayes Factor Evidence"),
+                                       nullTitle = gettext("Null"), undecidedTitle = gettext("Inconclusive"),
+                                       alternativeTitle = gettext("Alternative")) {
+  table$addColumnInfo(name = "under",       title = underTitle,              type = "string")
+  table$addColumnInfo(name = "null",        title = nullTitle,               type = "number", overtitle = overtitle)
+  table$addColumnInfo(name = "undecided",   title = undecidedTitle,          type = "number", overtitle = overtitle)
+  table$addColumnInfo(name = "alternative", title = alternativeTitle,        type = "number", overtitle = overtitle)
 }
 
-.bfdDesignOutcomeRowsFromOutcomes <- function(h1Outcome, h0Outcome) {
+.bfdDesignOutcomeRowsFromOutcomes <- function(h1Outcome, h0Outcome, underLabels = c(gettext("H\u2081"), gettext("H\u2080"))) {
   data.frame(
-    under       = c(gettext("H\u2081"), gettext("H\u2080")),
+    under       = underLabels,
     null        = c(h1Outcome[["null"]],        h0Outcome[["null"]]),
     undecided   = c(h1Outcome[["undecided"]],   h0Outcome[["undecided"]]),
     alternative = c(h1Outcome[["alternative"]], h0Outcome[["alternative"]]),

@@ -29,7 +29,6 @@ Section
 	property string testValue: ""
 	property bool supportsBinomial: false
 	property bool isBinomial: supportsBinomial && testValue === "oneSampleProportion"
-	property int priorFieldWidth: 105
 
 	Group
 	{
@@ -56,7 +55,6 @@ Section
 		{
 			name: "designNullPriorMean"
 			id:   designNullPriorMean
-			fieldWidth: priorFieldWidth
 			defaultValue: 0
 			negativeValues: true
 		}
@@ -75,7 +73,6 @@ Section
 		{
 			name: "designNullPriorStandardDeviation"
 			id:   designNullPriorSd
-			fieldWidth: priorFieldWidth
 			min: 0
 			defaultValue: 0.1
 			inclusive: JASP.None
@@ -116,7 +113,6 @@ Section
 		{
 			name: "designNullProportion"
 			id:   designNullProportion
-			fieldWidth: priorFieldWidth
 			min: 0
 			max: 1
 			defaultValue: 0.5
@@ -138,7 +134,6 @@ Section
 		{
 			name: "designNullPriorSuccesses"
 			id:   designNullPriorSuccesses
-			fieldWidth: priorFieldWidth
 			min: 0
 			defaultValue: 1
 			inclusive: JASP.None
@@ -159,7 +154,6 @@ Section
 		{
 			name: "designNullPriorFailures"
 			id:   designNullPriorFailures
-			fieldWidth: priorFieldWidth
 			min: 0
 			defaultValue: 1
 			inclusive: JASP.None
@@ -180,7 +174,6 @@ Section
 		{
 			name: "designNullPriorLowerTruncation"
 			id:   designNullPriorLower
-			fieldWidth: priorFieldWidth
 			min: 0
 			max: 1
 			defaultValue: 0
@@ -202,7 +195,6 @@ Section
 		{
 			name: "designNullPriorUpperTruncation"
 			id:   designNullPriorUpper
-			fieldWidth: priorFieldWidth
 			min: 0
 			max: 1
 			defaultValue: 0.5
@@ -236,7 +228,6 @@ Section
 		{
 			name: "designPriorMean"
 			id:   designPriorMean
-			fieldWidth: priorFieldWidth
 			defaultValue: 0.5
 			negativeValues: true
 		}
@@ -255,7 +246,6 @@ Section
 		{
 			name: "designPriorStandardDeviation"
 			id:   designPriorSd
-			fieldWidth: priorFieldWidth
 			min: 0
 			defaultValue: 0.1
 			inclusive: JASP.None
@@ -296,7 +286,6 @@ Section
 		{
 			name: "designProportion"
 			id:   designProportion
-			fieldWidth: priorFieldWidth
 			min: 0
 			max: 1
 			defaultValue: 0.6
@@ -318,7 +307,6 @@ Section
 		{
 			name: "designPriorSuccesses"
 			id:   designPriorSuccesses
-			fieldWidth: priorFieldWidth
 			min: 0
 			defaultValue: 1
 			inclusive: JASP.None
@@ -339,7 +327,6 @@ Section
 		{
 			name: "designPriorFailures"
 			id:   designPriorFailures
-			fieldWidth: priorFieldWidth
 			min: 0
 			defaultValue: 1
 			inclusive: JASP.None
@@ -360,7 +347,6 @@ Section
 		{
 			name: "designPriorLowerTruncation"
 			id:   designPriorLower
-			fieldWidth: priorFieldWidth
 			min: 0
 			max: 1
 			defaultValue: 0
@@ -382,7 +368,6 @@ Section
 		{
 			name: "designPriorUpperTruncation"
 			id:   designPriorUpper
-			fieldWidth: priorFieldWidth
 			min: 0
 			max: 1
 			defaultValue: 1

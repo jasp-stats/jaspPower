@@ -902,6 +902,10 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
   if (.bfsdUsesSampleSizeSearch(settings))
     table$addFootnote(gettext("Due to integer sample-size schedules, Pr(Conclusive Evidence) can exceed the target probability."))
 
+  combinedSampleSizeFootnote <- .bfsdCombinedMaximumSampleSizeFootnote(settings, result)
+  if (!is.null(combinedSampleSizeFootnote))
+    table$addFootnote(combinedSampleSizeFootnote)
+
   displayMaximumFootnote <- .bfsdDisplayMaximumFootnote(result)
   if (!is.null(displayMaximumFootnote))
     table$addFootnote(displayMaximumFootnote)
@@ -921,37 +925,35 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
 }
 
 .bfsdAddResultsColumns <- function(table, settings) {
-  computed <- gettext("Computed")
+  computed    <- gettext("Computed")
   userDefined <- gettext("User Defined")
 
   table$addColumnInfo(name = "designPrior", title = gettext("Design Prior"), type = "string")
-  table$addColumnInfo(name = "target", title = gettext("Planned Target"), type = "string")
+  table$addColumnInfo(name = "decisionRule", title = gettext("Decision Rule"), type = "string", overtitle = userDefined)
 
   if (.bfsdUsesSampleSizeSearch(settings)) {
-    table$addColumnInfo(name = "targetProbability", title = gettext("Target Pr(Conclusive Evidence)"), type = "number", overtitle = userDefined)
+    table$addColumnInfo(name = "targetProbability", title = gettext("Target Probability"), type = "number", overtitle = userDefined)
   }
 
-  table$addColumnInfo(name = "actualProbability", title = gettext("Pr(Conclusive Evidence)"), type = "number", overtitle = computed)
+  table$addColumnInfo(name = "actualProbability", title = gettext("Achieved Probability"), type = "number", overtitle = computed)
 
   if (.bfsdUsesStandardErrorOnly(settings)) {
     table$addColumnInfo(name = "finalSE", title = gettext("Final SE"), type = "number", overtitle = computed)
   } else if (settings[["isIndependentSamples"]]) {
-    table$addColumnInfo(name = "expectedN1", title = "N\u2081", type = "number", overtitle = gettext("Expected Sample Size"))
-    table$addColumnInfo(name = "expectedN2", title = "N\u2082", type = "number", overtitle = gettext("Expected Sample Size"))
+    table$addColumnInfo(name = "maximumN1", title = gettext("Maximum N\u2081"), type = "integer", overtitle = computed)
+    table$addColumnInfo(name = "maximumN2", title = gettext("Maximum N\u2082"), type = "integer", overtitle = computed)
   } else {
-    table$addColumnInfo(name = "expectedN", title = "N", type = "number", overtitle = gettext("Expected Sample Size"))
+    table$addColumnInfo(name = "maximumN", title = gettext("Maximum N"), type = "integer", overtitle = computed)
   }
 
-  table$addColumnInfo(name = "threshold", title = gettext("BF threshold"), type = "number", overtitle = userDefined)
 }
 
 .bfsdResultsRow <- function(settings, result) {
   targetRows <- .bfsdMainTargetRows(settings, result)
   row <- data.frame(
-    designPrior      = vapply(targetRows[["target"]], .bfsdTargetDesignPriorLabel, character(1)),
-    target           = vapply(targetRows[["target"]], .bfdTargetLabel, character(1)),
+    designPrior       = vapply(targetRows[["target"]], .bfdUnderLabel, character(1)),
+    decisionRule      = vapply(targetRows[["target"]], function(target) .bfdDecisionRuleLabel(settings, target), character(1)),
     actualProbability = targetRows[["actualProbability"]],
-    threshold        = vapply(targetRows[["target"]], function(target) .bfdThreshold(settings, target), numeric(1)),
     stringsAsFactors = FALSE
   )
 
@@ -962,12 +964,12 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
     row[["finalSE"]] <- utils::tail(.bfsdStandardErrors(settings), 1)
   } else {
     for (i in seq_len(nrow(targetRows))) {
-      expected <- .bfsdExpectedSampleSizes(settings, result, targetRows[["target"]][i])
+      maximum <- .bfsdMaximumSampleSizes(settings, result, targetRows[["target"]][i])
       if (settings[["isIndependentSamples"]]) {
-        row[["expectedN1"]][i] <- expected[["n1"]][["mean"]]
-        row[["expectedN2"]][i] <- expected[["n2"]][["mean"]]
+        row[["maximumN1"]][i] <- maximum[["n1"]]
+        row[["maximumN2"]][i] <- maximum[["n2"]]
       } else {
-        row[["expectedN"]][i] <- expected[["n1"]][["mean"]]
+        row[["maximumN"]][i] <- maximum[["n1"]]
       }
     }
   }
@@ -976,13 +978,12 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
     row <- .bfsdBlankUnreachedRows(row, result[["solver"]][["targetResults"]])
 
   columnOrder <- c(
-    "designPrior", "target",
+    "designPrior", "decisionRule",
     if (.bfsdUsesSampleSizeSearch(settings)) "targetProbability",
     "actualProbability",
     if (.bfsdUsesStandardErrorOnly(settings)) "finalSE",
-    if (!.bfsdUsesStandardErrorOnly(settings) && settings[["isIndependentSamples"]]) c("expectedN1", "expectedN2"),
-    if (!.bfsdUsesStandardErrorOnly(settings) && !settings[["isIndependentSamples"]]) "expectedN",
-    "threshold"
+    if (!.bfsdUsesStandardErrorOnly(settings) && settings[["isIndependentSamples"]]) c("maximumN1", "maximumN2"),
+    if (!.bfsdUsesStandardErrorOnly(settings) && !settings[["isIndependentSamples"]]) "maximumN"
   )
   row <- row[, columnOrder, drop = FALSE]
   row.names(row) <- NULL
@@ -997,7 +998,7 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
   table <- .bfdCreateTable(
     parent       = jaspResults,
     key          = "sequentialEvidenceSampleSizeSummary",
-    title        = gettext("Sample Size Summary"),
+    title        = gettext("Sample Size Operating Characteristics"),
     position     = 2,
     dependencies = .bfsdSummarySampleSizeDependencies
   )
@@ -1006,7 +1007,7 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
 
   table$addColumnInfo(name = "designPrior", title = gettext("Design Prior"), type = "string")
   if (.bfsdUsesSampleSizeSearch(settings))
-    table$addColumnInfo(name = "target", title = gettext("Planned Target"), type = "string")
+    table$addColumnInfo(name = "decisionRule", title = gettext("Decision Rule"), type = "string", overtitle = gettext("User Defined"))
   table$addColumnInfo(name = "looks", title = gettext("Looks"), type = "integer")
 
   if (settings[["isIndependentSamples"]]) {
@@ -1045,14 +1046,14 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
   targetRows <- .bfsdMainTargetRows(settings, result)
   if (.bfsdUsesSampleSizeSearch(settings)) {
     rows <- data.frame(
-      designPrior = vapply(targetRows[["target"]], .bfsdTargetDesignPriorLabel, character(1)),
-      target      = vapply(targetRows[["target"]], .bfdTargetLabel, character(1)),
-      looks       = length(settings[["n1Seq"]]),
+      designPrior  = vapply(targetRows[["target"]], .bfdUnderLabel, character(1)),
+      decisionRule = vapply(targetRows[["target"]], function(target) .bfdDecisionRuleLabel(settings, target), character(1)),
+      looks        = length(settings[["n1Seq"]]),
       stringsAsFactors = FALSE
     )
   } else {
     rows <- data.frame(
-      designPrior = vapply(targetRows[["target"]], .bfsdTargetDesignPriorLabel, character(1)),
+      designPrior = vapply(targetRows[["target"]], .bfdUnderLabel, character(1)),
       looks       = length(settings[["n1Seq"]]),
       stringsAsFactors = FALSE
     )
@@ -1111,11 +1112,13 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
   ))
 }
 
-.bfsdTargetDesignPriorLabel <- function(target) {
-  if (target == "h1")
-    return(gettext("Under H\u2081 Design Prior"))
+.bfsdMaximumSampleSizes <- function(settings, result, target) {
+  schedule <- .bfsdTargetSampleSizeSchedule(settings, result, target)
 
-  return(gettext("Under H\u2080 Design Prior"))
+  return(list(
+    n1 = max(schedule[["n1Seq"]], na.rm = TRUE),
+    n2 = max(schedule[["n2Seq"]], na.rm = TRUE)
+  ))
 }
 
 .bfsdUnreachedTargetLabels <- function(result) {
@@ -1165,39 +1168,77 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
   return(c(mean = expected, sd = sqrt(variance)))
 }
 
+.bfsdCombinedMaximumSampleSizeFootnote <- function(settings, result) {
+  if (!.bfsdUsesSampleSizeSearch(settings) || jaspBase::isTryError(result))
+    return(NULL)
+
+  targetRows <- result[["solver"]][["targetResults"]]
+  if (is.null(targetRows) || is.null(targetRows[["reached"]]) || !all(targetRows[["reached"]]))
+    return(NULL)
+
+  n1 <- max(settings[["n1Seq"]], na.rm = TRUE)
+  if (length(n1) != 1 || !is.finite(n1))
+    return(NULL)
+
+  if (settings[["isIndependentSamples"]]) {
+    n2 <- max(settings[["n2Seq"]], na.rm = TRUE)
+    if (length(n2) != 1 || !is.finite(n2))
+      return(NULL)
+
+    return(gettextf(
+      "To satisfy both design priors in a single sequential design, use a final look of N\u2081 = %1$s and N\u2082 = %2$s (total N = %3$s).",
+      n1,
+      n2,
+      n1 + n2
+    ))
+  }
+
+  return(gettextf("To satisfy both design priors in a single sequential design, use a final look of N = %1$s.", n1))
+}
+
 .bfsdDesignOutcomeTable <- function(jaspResults, settings, result) {
   table <- .bfdCreateTable(
     parent       = jaspResults,
     key          = "sequentialEvidenceDesignOutcome",
-    title        = gettext("Design Evidence"),
+    title        = gettext("Bayes Factor Decision Probabilities"),
     position     = 3,
     dependencies = .bfsdSummaryEvidenceDependencies
   )
   if (is.null(table))
     return()
 
-  .bfdAddDesignOutcomeColumns(table)
+  .bfdAddDesignOutcomeColumns(
+    table,
+    underTitle       = gettext("Design Prior"),
+    overtitle        = gettext("Bayes Factor Decision"),
+    nullTitle        = gettext("Evidence for H\u2080"),
+    alternativeTitle = gettext("Evidence for H\u2081")
+  )
 
   if (jaspBase::isTryError(result)) {
-    table$setError(gettextf("Unable to compute design evidence: %1$s", .bfdCleanError(result)))
+    table$setError(gettextf("Unable to compute Bayes factor decision probabilities: %1$s", .bfdCleanError(result)))
     return()
   }
 
   rows <- try(.bfsdDesignOutcomeRows(result), silent = TRUE)
   if (jaspBase::isTryError(rows)) {
-    table$setError(gettextf("Unable to compute design evidence: %1$s", .bfdCleanError(rows)))
+    table$setError(gettextf("Unable to compute Bayes factor decision probabilities: %1$s", .bfdCleanError(rows)))
     return()
   }
 
   table$setData(rows)
-  table$addFootnote(gettext("Probabilities are cumulative through the final look. Rows use the corresponding design prior under H\u2081 or H\u2080."))
+  table$addFootnote(.bfsdDesignOutcomeSampleSizeFootnote(settings))
 }
 
 .bfsdDesignOutcomeRows <- function(result) {
   h1Outcome <- .bfsdFinalOutcome(result[["design"]])
   h0Outcome <- .bfsdFinalOutcome(result[["null"]])
 
-  return(.bfdDesignOutcomeRowsFromOutcomes(h1Outcome, h0Outcome))
+  return(.bfdDesignOutcomeRowsFromOutcomes(
+    h1Outcome,
+    h0Outcome,
+    underLabels = c(.bfdUnderLabel("h1"), .bfdUnderLabel("h0"))
+  ))
 }
 
 .bfsdFinalOutcome <- function(design) {
@@ -1208,11 +1249,43 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
   ))
 }
 
+.bfsdDesignOutcomeSampleSizeFootnote <- function(settings) {
+  if (.bfsdUsesStandardErrorOnly(settings)) {
+    finalSE <- utils::tail(.bfsdStandardErrors(settings), 1)
+    return(gettextf(
+      "Probabilities are cumulative through the selected final look: SE = %1$s. Rows use the corresponding design prior under H\u2081 or H\u2080.",
+      .bfdFormatNumber(finalSE)
+    ))
+  }
+
+  n1 <- max(settings[["n1Seq"]], na.rm = TRUE)
+  if (length(n1) != 1 || !is.finite(n1))
+    return(gettext("Probabilities are cumulative through the selected final look. Rows use the corresponding design prior under H\u2081 or H\u2080."))
+
+  if (settings[["isIndependentSamples"]]) {
+    n2 <- max(settings[["n2Seq"]], na.rm = TRUE)
+    if (length(n2) != 1 || !is.finite(n2))
+      return(gettext("Probabilities are cumulative through the selected final look. Rows use the corresponding design prior under H\u2081 or H\u2080."))
+
+    return(gettextf(
+      "Probabilities are cumulative through the selected final look: N\u2081 = %1$s and N\u2082 = %2$s (total N = %3$s). Rows use the corresponding design prior under H\u2081 or H\u2080.",
+      n1,
+      n2,
+      n1 + n2
+    ))
+  }
+
+  return(gettextf(
+    "Probabilities are cumulative through the selected final look: N = %1$s. Rows use the corresponding design prior under H\u2081 or H\u2080.",
+    n1
+  ))
+}
+
 .bfsdStagewiseTotalTable <- function(jaspResults, settings, result) {
   table <- .bfdCreateTable(
     parent       = jaspResults,
     key          = "sequentialEvidenceStagewiseTotal",
-    title        = gettext("Total Stagewise Evidence"),
+    title        = gettext("Cumulative Decision Probabilities by Look"),
     position     = 4,
     dependencies = .bfsdStagewiseEvidenceDependencies
   )
@@ -1221,17 +1294,17 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
 
   .bfsdAddLookColumns(table, settings)
 
-  h1Overtitle <- gettext("Under H\u2081 Design Prior")
-  h0Overtitle <- gettext("Under H\u2080 Design Prior")
-  table$addColumnInfo(name = "h1Alternative", title = gettext("Alternative"), type = "number", overtitle = h1Overtitle)
-  table$addColumnInfo(name = "h1Undecided",   title = gettext("Inconclusive"), type = "number", overtitle = h1Overtitle)
-  table$addColumnInfo(name = "h1Null",        title = gettext("Null"),        type = "number", overtitle = h1Overtitle)
-  table$addColumnInfo(name = "h0Alternative", title = gettext("Alternative"), type = "number", overtitle = h0Overtitle)
-  table$addColumnInfo(name = "h0Undecided",   title = gettext("Inconclusive"), type = "number", overtitle = h0Overtitle)
-  table$addColumnInfo(name = "h0Null",        title = gettext("Null"),        type = "number", overtitle = h0Overtitle)
+  h1Overtitle <- .bfsdDesignPriorOvertitle("h1")
+  h0Overtitle <- .bfsdDesignPriorOvertitle("h0")
+  table$addColumnInfo(name = "h1Alternative", title = gettext("Evidence for H\u2081"), type = "number", overtitle = h1Overtitle)
+  table$addColumnInfo(name = "h1Undecided",   title = gettext("Inconclusive"),    type = "number", overtitle = h1Overtitle)
+  table$addColumnInfo(name = "h1Null",        title = gettext("Evidence for H\u2080"), type = "number", overtitle = h1Overtitle)
+  table$addColumnInfo(name = "h0Alternative", title = gettext("Evidence for H\u2081"), type = "number", overtitle = h0Overtitle)
+  table$addColumnInfo(name = "h0Undecided",   title = gettext("Inconclusive"),    type = "number", overtitle = h0Overtitle)
+  table$addColumnInfo(name = "h0Null",        title = gettext("Evidence for H\u2080"), type = "number", overtitle = h0Overtitle)
 
   if (jaspBase::isTryError(result)) {
-    table$setError(gettextf("Unable to compute total stagewise evidence: %1$s", .bfdCleanError(result)))
+    table$setError(gettextf("Unable to compute cumulative decision probabilities: %1$s", .bfdCleanError(result)))
     return()
   }
 
@@ -1242,7 +1315,7 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
   table <- .bfdCreateTable(
     parent       = jaspResults,
     key          = "sequentialEvidenceStagewiseIncremental",
-    title        = gettext("Incremental Stagewise Stops"),
+    title        = gettext("New Stop Probabilities by Look"),
     position     = 5,
     dependencies = .bfsdStagewiseIncrementalEvidenceDependencies
   )
@@ -1251,14 +1324,14 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
 
   .bfsdAddLookColumns(table, settings)
 
-  h1Overtitle <- gettext("Under H\u2081 Design Prior")
-  h0Overtitle <- gettext("Under H\u2080 Design Prior")
-  table$addColumnInfo(name = "h1AlternativeStop", title = gettext("Alternative"), type = "number", overtitle = h1Overtitle)
-  table$addColumnInfo(name = "h1NullStop",        title = gettext("Null"),        type = "number", overtitle = h1Overtitle)
-  table$addColumnInfo(name = "h1AnyStop",         title = gettext("Any"),         type = "number", overtitle = h1Overtitle)
-  table$addColumnInfo(name = "h0AlternativeStop", title = gettext("Alternative"), type = "number", overtitle = h0Overtitle)
-  table$addColumnInfo(name = "h0NullStop",        title = gettext("Null"),        type = "number", overtitle = h0Overtitle)
-  table$addColumnInfo(name = "h0AnyStop",         title = gettext("Any"),         type = "number", overtitle = h0Overtitle)
+  h1Overtitle <- .bfsdDesignPriorOvertitle("h1")
+  h0Overtitle <- .bfsdDesignPriorOvertitle("h0")
+  table$addColumnInfo(name = "h1AlternativeStop", title = gettext("Stop for H\u2081"), type = "number", overtitle = h1Overtitle)
+  table$addColumnInfo(name = "h1NullStop",        title = gettext("Stop for H\u2080"), type = "number", overtitle = h1Overtitle)
+  table$addColumnInfo(name = "h1AnyStop",         title = gettext("Any Stop"),    type = "number", overtitle = h1Overtitle)
+  table$addColumnInfo(name = "h0AlternativeStop", title = gettext("Stop for H\u2081"), type = "number", overtitle = h0Overtitle)
+  table$addColumnInfo(name = "h0NullStop",        title = gettext("Stop for H\u2080"), type = "number", overtitle = h0Overtitle)
+  table$addColumnInfo(name = "h0AnyStop",         title = gettext("Any Stop"),    type = "number", overtitle = h0Overtitle)
 
   if (jaspBase::isTryError(result)) {
     table$setError(gettextf("Unable to compute incremental stagewise stops: %1$s", .bfdCleanError(result)))
@@ -1266,6 +1339,10 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
   }
 
   table$setData(.bfsdStagewiseIncrementalRows(settings, result))
+}
+
+.bfsdDesignPriorOvertitle <- function(under) {
+  gettextf("Design Prior: %1$s", .bfdUnderLabel(under))
 }
 
 .bfsdAddLookColumns <- function(table, settings) {
@@ -1341,10 +1418,12 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
 
   .bfsdAddLookColumns(table, settings)
 
-  table$addColumnInfo(name = "h1Lower", title = gettext("Lower"), type = "number", overtitle = gettext("BF\u2081\u2080 target"))
-  table$addColumnInfo(name = "h1Upper", title = gettext("Upper"), type = "number", overtitle = gettext("BF\u2081\u2080 target"))
-  table$addColumnInfo(name = "h0Lower", title = gettext("Lower"), type = "number", overtitle = gettext("BF\u2080\u2081 target"))
-  table$addColumnInfo(name = "h0Upper", title = gettext("Upper"), type = "number", overtitle = gettext("BF\u2080\u2081 target"))
+  h1Overtitle <- .bfsdBoundaryDecisionRuleOvertitle(settings, "h1")
+  h0Overtitle <- .bfsdBoundaryDecisionRuleOvertitle(settings, "h0")
+  table$addColumnInfo(name = "h1Lower", title = gettext("Lower Statistic"), type = "number", overtitle = h1Overtitle)
+  table$addColumnInfo(name = "h1Upper", title = gettext("Upper Statistic"), type = "number", overtitle = h1Overtitle)
+  table$addColumnInfo(name = "h0Lower", title = gettext("Lower Statistic"), type = "number", overtitle = h0Overtitle)
+  table$addColumnInfo(name = "h0Upper", title = gettext("Upper Statistic"), type = "number", overtitle = h0Overtitle)
 
   if (jaspBase::isTryError(result)) {
     table$setError(gettextf("Unable to compute stopping boundaries: %1$s", .bfdCleanError(result)))
@@ -1354,8 +1433,14 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
   rows <- .bfsdBoundaryRows(settings, result[["design"]])
   table$setData(rows)
 
-  if (.bfsdHasEmptyBoundaryCells(rows))
-    table$addFootnote(gettext("Empty boundary cells indicate that no finite test statistic value reaches the corresponding BF target for that look and tail under the current design settings."))
+  table$addFootnote(gettext("Boundaries are shown on the test-statistic scale. Empty cells mean no finite statistic reaches the decision rule at that look."))
+}
+
+.bfsdBoundaryDecisionRuleOvertitle <- function(settings, target) {
+  if (target == "h1")
+    return(gettextf("Stop for H\u2081: %1$s", .bfdDecisionRuleLabel(settings, target)))
+
+  return(gettextf("Stop for H\u2080: %1$s", .bfdDecisionRuleLabel(settings, target)))
 }
 
 .bfsdBoundaryRows <- function(settings, design) {
@@ -1369,14 +1454,6 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
   rows[["h0Upper"]] <- h0[2, ]
 
   return(rows)
-}
-
-.bfsdHasEmptyBoundaryCells <- function(rows) {
-  boundaryColumns <- intersect(c("h1Lower", "h1Upper", "h0Lower", "h0Upper"), names(rows))
-  if (length(boundaryColumns) == 0)
-    return(FALSE)
-
-  return(any(is.na(rows[, boundaryColumns, drop = FALSE])))
 }
 
 .bfsdBoundaryMatrix <- function(boundary, otherBoundary) {
