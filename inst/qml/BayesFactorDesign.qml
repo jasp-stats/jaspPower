@@ -167,7 +167,7 @@ Form
 			CheckBox
 			{
 				name: "designSpecification"
-				label: qsTr("Design Specification")
+				label: qsTr("Design specification")
 				checked: true
 			}
 		}

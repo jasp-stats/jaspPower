@@ -1509,7 +1509,7 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
     parent       = jaspResults,
     key          = "sequentialEvidenceStagewiseTotal",
     title        = gettext("Cumulative Decision Probabilities by Look"),
-    position     = 4,
+    position     = 5,
     dependencies = .bfsdStagewiseEvidenceDependencies
   )
   if (is.null(table))
@@ -1530,7 +1530,7 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
     parent       = jaspResults,
     key          = "sequentialEvidenceStagewiseIncremental",
     title        = gettext("New Stop Probabilities by Look"),
-    position     = 5,
+    position     = 6,
     dependencies = .bfsdStagewiseIncrementalEvidenceDependencies
   )
   if (is.null(table))
@@ -1807,7 +1807,7 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
     parent       = jaspResults,
     key          = "sequentialEvidenceBoundaries",
     title        = gettext("Stopping Boundaries"),
-    position     = 6,
+    position     = 7,
     dependencies = .bfsdStagewiseStoppingBoundariesDependencies
   )
   if (is.null(table))
@@ -1878,7 +1878,7 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
     parent       = jaspResults,
     key          = "sequentialEvidencePriors",
     title        = gettext("Design Specification"),
-    position     = 7,
+    position     = 4,
     dependencies = .bfsdSummarySpecificationDependencies
   )
   if (is.null(table))

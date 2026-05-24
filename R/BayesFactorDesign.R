@@ -3006,18 +3006,18 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
   }
 
   specs <- list()
-  if ("analysis" %in% priorSets) {
-    specs[[length(specs) + 1]] <- list(
-      key      = "analysis",
-      title    = gettext("Analysis Prior"),
-      priorSet = "analysis"
-    )
-  }
   if ("design" %in% priorSets) {
     specs[[length(specs) + 1]] <- list(
       key      = "design",
       title    = gettext("Design Prior"),
       priorSet = "design"
+    )
+  }
+  if ("analysis" %in% priorSets) {
+    specs[[length(specs) + 1]] <- list(
+      key      = "analysis",
+      title    = gettext("Analysis Prior"),
+      priorSet = "analysis"
     )
   }
 
@@ -3026,10 +3026,10 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
 
 .bfdSelectedPriorSets <- function(settings) {
   priorSets <- character(0)
-  if (isTRUE(settings[["priorPlotAnalysis"]]))
-    priorSets <- c(priorSets, "analysis")
   if (isTRUE(settings[["priorPlotDesign"]]))
     priorSets <- c(priorSets, "design")
+  if (isTRUE(settings[["priorPlotAnalysis"]]))
+    priorSets <- c(priorSets, "analysis")
 
   return(priorSets)
 }
