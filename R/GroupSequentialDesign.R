@@ -10,16 +10,16 @@ GroupSequentialDesign <- function(jaspResults, dataset, options) {
   .csdBoundariesTable(jaspResults, settings, result)
   .csdCrossingProbabilitiesTable(jaspResults, settings, result)
 
-  if (isTRUE(options[["text"]]))
+  if (options[["text"]])
     .csdText(jaspResults, settings, result)
 
-  if (isTRUE(options[["generateRCode"]]))
+  if (options[["generateRCode"]])
     .csdRCode(jaspResults, settings, result)
 
-  if (isTRUE(options[["boundariesPlot"]]))
+  if (options[["boundariesPlot"]])
     .csdBoundariesPlot(jaspResults, settings, result)
 
-  if (isTRUE(options[["crossingProbabilitiesPlot"]]))
+  if (options[["crossingProbabilitiesPlot"]])
     .csdCrossingProbabilitiesPlot(jaspResults, settings, result)
 
   return()
