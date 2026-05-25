@@ -14,6 +14,84 @@
   )
 }
 
+.bfdKnownAnalysisPriorDirections <- c("twoSided", "less", "greater")
+.bfdKnownDesignSampleSizeBases <- c("eachDesignHypothesis", "bothDesignHypotheses", "alternativeHypothesis", "nullHypothesis")
+.bfdKnownGeneralZParameterizations <- c(
+  "standardizedMeanDifference",
+  "fisherZCorrelation",
+  "logRiskRatio",
+  "logOddsRatio",
+  "logHazardRatio",
+  "logIncidenceRateRatio",
+  "unitInformationSd",
+  "standardErrorSchedule",
+  "effectSize"
+)
+.bfdKnownTests <- c(
+  "independentSamplesTTest",
+  "pairedSamplesTTest",
+  "oneSampleTTest",
+  "independentSamplesZTest",
+  "pairedSamplesZTest",
+  "oneSampleZTest",
+  "oneSampleProportion",
+  "generalZApproximation"
+)
+
+.bfdOptionValueLabel <- function(value) {
+  if (is.null(value) || length(value) == 0)
+    return(gettext("<missing>"))
+
+  if (length(value) != 1 || is.na(value) || value == "")
+    return(gettext("<invalid>"))
+
+  return(as.character(value))
+}
+
+.bfdUnknownOptionError <- function(optionName, value) {
+  stop(gettextf("Unknown %1$s option: %2$s.", optionName, .bfdOptionValueLabel(value)))
+}
+
+.bfdRequireKnownOption <- function(optionName, value, choices) {
+  if (is.null(value) || length(value) != 1 || is.na(value) || value == "" || !value %in% choices)
+    .bfdUnknownOptionError(optionName, value)
+}
+
+.bfdAnalysisPriorAlternative <- function(direction) {
+  .bfdRequireKnownOption(gettext("analysis-prior direction"), direction, .bfdKnownAnalysisPriorDirections)
+
+  switch(direction,
+    twoSided = "two.sided",
+    less     = "less",
+    greater  = "greater",
+    .bfdUnknownOptionError(gettext("analysis-prior direction"), direction)
+  )
+}
+
+.bfdSampleSizeBasisTarget <- function(basis, under) {
+  .bfdRequireKnownOption(gettext("design sample-size basis"), basis, .bfdKnownDesignSampleSizeBases)
+
+  switch(basis,
+    eachDesignHypothesis = under,
+    bothDesignHypotheses = NULL,
+    alternativeHypothesis = "h1",
+    nullHypothesis        = "h0",
+    .bfdUnknownOptionError(gettext("design sample-size basis"), basis)
+  )
+}
+
+.bfdCommonSampleSizeBasisTarget <- function(basis) {
+  .bfdRequireKnownOption(gettext("design sample-size basis"), basis, .bfdKnownDesignSampleSizeBases)
+
+  switch(basis,
+    eachDesignHypothesis = NULL,
+    bothDesignHypotheses = NULL,
+    alternativeHypothesis = "h1",
+    nullHypothesis        = "h0",
+    .bfdUnknownOptionError(gettext("design sample-size basis"), basis)
+  )
+}
+
 .bfdThreshold <- function(settings, target) {
   switch(
     target,

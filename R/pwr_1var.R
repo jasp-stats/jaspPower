@@ -449,10 +449,7 @@
     table$addColumns(row)
   } else {
     row <- list()
-    row[[calc]] <- r[[switch(calc,
-      "sampleSize" = "n",
-      calc
-    )]]
+    row[[calc]] <- r[[.pwrCalculationResultName(calc)]]
     table$addColumns(row)
   }
   if (calc == "sampleSize") {
@@ -1067,11 +1064,7 @@
   }
 
   powerTable[["es"]] <- d
-  powerTable[["alt"]] <- switch(alt,
-    "two.sided" = "Two-sided",
-    "less" = "Less (One-sided)",
-    "greater" = "Greater (One-sided)"
-  )
+  powerTable[["alt"]] <- .pwrAlternativeLabel(alt)
   powerTable[["power"]] <- power
   powerTable[["alpha"]] <- alpha
 

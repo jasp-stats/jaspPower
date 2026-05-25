@@ -197,7 +197,7 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
   settings[["generalZParameterization"]] <- options[["generalZParameterization"]]
   settings[["unitInformationSd"]]        <- options[["unitInformationSd"]]
   settings[["standardErrorSchedule"]]    <- options[["standardErrorSchedule"]]
-  settings[["alternative"]]       <- switch(options[["analysisPriorDirection"]], twoSided = "two.sided", options[["analysisPriorDirection"]])
+  settings[["alternative"]]       <- .bfdAnalysisPriorAlternative(options[["analysisPriorDirection"]])
 
   if (settings[["isZTest"]] && settings[["alternative"]] != "two.sided" &&
       options[["analysisPriorDistribution"]] != "normal") {
@@ -702,13 +702,7 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
   if (!.bfsdUsesSampleSizeSearch(settings))
     return(NULL)
 
-  switch(settings[["designSampleSizeBasis"]],
-    eachDesignHypothesis = under,
-    bothDesignHypotheses = NULL,
-    alternativeHypothesis = "h1",
-    nullHypothesis        = "h0",
-    under
-  )
+  return(.bfdSampleSizeBasisTarget(settings[["designSampleSizeBasis"]], under))
 }
 
 .bfsdBasisSettings <- function(settings, result, under) {
@@ -749,11 +743,7 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
   if (!.bfsdUsesSampleSizeSearch(settings))
     return(NULL)
 
-  switch(settings[["designSampleSizeBasis"]],
-    alternativeHypothesis = "h1",
-    nullHypothesis        = "h0",
-    NULL
-  )
+  return(.bfdCommonSampleSizeBasisTarget(settings[["designSampleSizeBasis"]]))
 }
 
 .bfsdCommonBasisSettings <- function(settings, result) {
@@ -2355,12 +2345,14 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
     plot <- ggplot2::ggplot(data, ggplot2::aes(x = n, y = probability, color = outcome, linetype = under)) +
       ggplot2::geom_line(linewidth = 1.1) +
       ggplot2::geom_point(size = 2) +
+      .bfsdLookXAxisScale(settings, data[["n"]]) +
       .bfdProbabilityYScale() +
       ggplot2::labs(x = xLabel, y = gettext("Cumulative probability"), color = gettext("Outcome"), linetype = gettext("Design Prior"))
   } else {
     plot <- ggplot2::ggplot(data, ggplot2::aes(x = n, y = probability, color = outcome)) +
       ggplot2::geom_line(linewidth = 1.1) +
       ggplot2::geom_point(size = 2) +
+      .bfsdLookXAxisScale(settings, data[["n"]]) +
       .bfdProbabilityYScale() +
       ggplot2::labs(x = xLabel, y = gettext("Cumulative probability"), color = gettext("Outcome"))
   }
@@ -2497,10 +2489,16 @@ BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
   plot <- ggplot2::ggplot(data, ggplot2::aes(x = n, y = criticalValue, color = target, linetype = boundary)) +
     ggplot2::geom_line(linewidth = 1.1) +
     ggplot2::geom_point(size = 2) +
+    .bfsdLookXAxisScale(settings, data[["n"]]) +
+    .pwrPrettyYAxisScale(c(0, data[["criticalValue"]])) +
     ggplot2::labs(x = xLabel, y = gettext("Critical value"), color = gettext("Target"), linetype = gettext("Boundary")) +
     ggplot2::geom_hline(yintercept = 0, linetype = "dotted", color = "#666666")
 
   return(.bfdApplyPlotTheme(plot, settings))
+}
+
+.bfsdLookXAxisScale <- function(settings, x) {
+  return(.pwrPrettyIntegerXAxisScale(x))
 }
 
 .bfsdStoppingBoundariesPlotExplanation <- function() {

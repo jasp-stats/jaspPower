@@ -299,10 +299,7 @@
     ))
   } else {
     row <- list()
-    row[[calc]] <- r[[switch(calc,
-      "effectSize" = "es",
-      calc
-    )]]
+    row[[calc]] <- r[[.pwrCalculationResultName(calc)]]
     table$addColumns(row)
   }
 }
@@ -1013,11 +1010,7 @@
   }
 
   powerTable[["es"]] <- d
-  powerTable[["alt"]] <- switch(alt,
-    "two.sided" = "Two-sided",
-    "less" = "Less (One-sided)",
-    "greater" = "Greater (One-sided)"
-  )
+  powerTable[["alt"]] <- .pwrAlternativeLabel(alt)
   powerTable[["power"]] <- power
   powerTable[["alpha"]] <- alpha
 

@@ -19,159 +19,47 @@ import QtQuick
 import QtQuick.Layouts
 import JASP
 import JASP.Controls
+import "./qml_components" as PowerComponents
 
 Form
 {
+	id: root
+	property int defaultGridPoints: 18
+
+	Group
+	{
+		DropDown
+		{
+			name: "designType"
+			id:   designType
+			indexDefaultValue: 0
+			label: qsTr("Design type:")
+			values: [
+				{ label: qsTr("One-sided"),                                               value: "oneSided"                       },
+				{ label: qsTr("Two-sided symmetric"),                                     value: "twoSidedSymmetric"              },
+				{ label: qsTr("Two-sided asymmetric \u03B2-spending (binding)"),          value: "twoSidedAsymmetricBinding"      },
+				{ label: qsTr("Two-sided asymmetric \u03B2-spending (non-binding)"),      value: "twoSidedAsymmetricNonBinding"   }
+			]
+			info: qsTr("Selects one-sided, symmetric two-sided, or asymmetric two-sided \u03B2-spending designs. Binding or non-binding controls Type I error computation after a lower-bound crossing.")
+		}
+
+		CheckBox
+		{
+			name:    "text"
+			id:      explanatoryText
+			label:   qsTr("Explanatory text")
+			checked: true
+			info:    qsTr("Display a short explanation of the design.")
+		}
+	}
+
 	Section
 	{
 		expanded: true
-		title:    qsTr("Design")
+		title:    qsTr("Parameters")
 		columns:  1
 
-		Group
-		{
-			columns: 3
-
-			Text { Layout.columnSpan: 2; text: qsTr("Design type:") }
-			DropDown
-			{
-				name: "designType"
-				id:   designType
-				indexDefaultValue: 0
-				values: [
-					{ label: qsTr("One-sided"),                                  value: "oneSided" },
-					{ label: qsTr("Two-sided symmetric"),                        value: "twoSidedSymmetric" },
-					{ label: qsTr("Two-sided asymmetric, binding futility"),     value: "twoSidedAsymmetricBinding" },
-					{ label: qsTr("Two-sided asymmetric, non-binding futility"), value: "twoSidedAsymmetricNonBinding" }
-				]
-				info: qsTr("Selects the classical group sequential design type.")
-			}
-
-			Text { text: qsTr("Number of looks:") }
-			Text { text: "K" }
-			IntegerField
-			{
-				name:         "numberOfLooks"
-				id:           numberOfLooks
-				min:          2
-				max:          30
-				defaultValue: 3
-				info:         qsTr("Number of planned analyses, including the final analysis.")
-			}
-
-			Text { text: qsTr("Type I error rate:") }
-			Text { text: qsTr("One-sided alpha") }
-			DoubleField
-			{
-				name:         "alpha"
-				id:           alpha
-				min:          0
-				max:          1
-				defaultValue: 0.025
-				decimals:     4
-				inclusive:    JASP.None
-				info:         qsTr("One-sided Type I error rate.")
-			}
-
-			Text { text: qsTr("Power:") }
-			Text { text: qsTr("1 - beta") }
-			DoubleField
-			{
-				name:         "power"
-				id:           power
-				min:          0
-				max:          1
-				defaultValue: 0.9
-				decimals:     4
-				inclusive:    JASP.None
-				info:         qsTr("Target power under the alternative hypothesis.")
-			}
-
-			Text { Layout.columnSpan: 2; text: qsTr("Sample size input:") }
-			DropDown
-			{
-				name: "sampleSizeMode"
-				id:   sampleSizeMode
-				indexDefaultValue: 0
-				values: [
-					{ label: qsTr("Generic information ratio"), value: "generic" },
-					{ label: qsTr("Fixed design sample size"), value: "fixedDesign" },
-					{ label: qsTr("Standardized effect size"), value: "effectSize" }
-				]
-				info: qsTr("Choose whether the design reports information ratios, is scaled from a fixed design sample size, or is derived from an effect size.")
-			}
-
-			Text
-			{
-				text:    qsTr("Fixed design sample size:")
-				visible: sampleSizeMode.currentValue === "fixedDesign"
-			}
-			Text
-			{
-				text:    "N"
-				visible: sampleSizeMode.currentValue === "fixedDesign"
-			}
-			IntegerField
-			{
-				name:         "fixedSampleSize"
-				id:           fixedSampleSize
-				min:          2
-				defaultValue: 100
-				visible:      sampleSizeMode.currentValue === "fixedDesign"
-				info:         qsTr("Sample size for the corresponding fixed design.")
-			}
-
-			Text
-			{
-				text:    qsTr("Standardized effect size:")
-				visible: sampleSizeMode.currentValue === "effectSize"
-			}
-			Text
-			{
-				text:    qsTr("Delta")
-				visible: sampleSizeMode.currentValue === "effectSize"
-			}
-			DoubleField
-			{
-				name:         "effectSize"
-				id:           effectSize
-				min:          0
-				defaultValue: 0.5
-				decimals:     4
-				inclusive:    JASP.None
-				visible:      sampleSizeMode.currentValue === "effectSize"
-				info:         qsTr("Positive standardized effect size under the alternative hypothesis.")
-			}
-
-			Text { Layout.columnSpan: 2; text: qsTr("Look schedule:") }
-			DropDown
-			{
-				name: "timingMode"
-				id:   timingMode
-				indexDefaultValue: 0
-				values: [
-					{ label: qsTr("Equally spaced information"), value: "even" },
-					{ label: qsTr("Custom information fractions"), value: "custom" }
-				]
-				info: qsTr("Controls the information fraction at each look.")
-			}
-
-			Text
-			{
-				Layout.columnSpan: 2
-				text:    qsTr("Information fractions:")
-				visible: timingMode.currentValue === "custom"
-			}
-			TextField
-			{
-				name:         "timing"
-				id:           timing
-				defaultValue: "0.33, 0.67, 1"
-				fieldWidth:   140
-				visible:      timingMode.currentValue === "custom"
-				info:         qsTr("Increasing information fractions. Supply K values ending in 1, or K - 1 interim values.")
-			}
-		}
+		PowerComponents.GroupSequentialParameterControls {}
 	}
 
 	Section
@@ -180,88 +68,56 @@ Form
 		title:    qsTr("Boundaries")
 		columns:  1
 
+		PowerComponents.GroupSequentialBoundaryControls
+		{
+			designTypeValue: designType.currentValue
+		}
+	}
+
+	Section
+	{
+		expanded: true
+		title:    qsTr("Tables")
+
 		Group
 		{
-			columns: 3
+			title: qsTr("Design Results")
 
-			Text { Layout.columnSpan: 2; text: qsTr("Upper boundary:") }
-			DropDown
+			CheckBox
 			{
-				name: "upperBoundary"
-				id:   upperBoundary
-				indexDefaultValue: 0
-				values: [
-					{ label: qsTr("O'Brien-Fleming"),       value: "obrienFleming" },
-					{ label: qsTr("Pocock"),                value: "pocock" },
-					{ label: qsTr("Wang-Tsiatis"),          value: "wangTsiatis" },
-					{ label: qsTr("Hwang-Shih-DeCani"),     value: "hwangShihDeCani" },
-					{ label: qsTr("Kim-DeMets power"),      value: "kimDeMetsPower" }
-				]
-				info: qsTr("Efficacy boundary family. For asymmetric designs, O'Brien-Fleming and Pocock are implemented as spending functions.")
+				name:    "designSummary"
+				label:   qsTr("Design summary")
+				checked: true
+				info:    qsTr("Display the main design summary and effect scale conversions when applicable.")
 			}
 
-			Text
+			CheckBox
 			{
-				text:    qsTr("Upper boundary parameter:")
-				enabled: upperBoundary.currentValue !== "obrienFleming" && upperBoundary.currentValue !== "pocock"
+				name:    "sampleSizeSummary"
+				label:   qsTr("Sample size / event details")
+				checked: true
+				info:    qsTr("Display endpoint-specific allocation, subject, and analysis-time details when available.")
 			}
-			Text
+		}
+
+		Group
+		{
+			title: qsTr("Look-by-Look Results")
+
+			CheckBox
 			{
-				text:    upperBoundary.currentValue === "wangTsiatis" ? qsTr("Delta") : qsTr("Parameter")
-				enabled: upperBoundary.currentValue !== "obrienFleming" && upperBoundary.currentValue !== "pocock"
-			}
-			DoubleField
-			{
-				name:         "upperBoundaryParameter"
-				id:           upperBoundaryParameter
-				defaultValue: 0.25
-				decimals:     4
-				enabled:      upperBoundary.currentValue !== "obrienFleming" && upperBoundary.currentValue !== "pocock"
-				info:         qsTr("Parameter for Wang-Tsiatis or spending-function boundaries.")
+				name:    "stoppingBoundariesTable"
+				label:   qsTr("Look schedule and stopping boundaries")
+				checked: true
+				info:    qsTr("Display the information schedule, Z-boundaries, and nominal p-values by look.")
 			}
 
-			Text
+			CheckBox
 			{
-				Layout.columnSpan: 2
-				text:    qsTr("Lower boundary:")
-				visible: designType.currentValue === "twoSidedAsymmetricBinding" || designType.currentValue === "twoSidedAsymmetricNonBinding"
-			}
-			DropDown
-			{
-				name: "lowerBoundary"
-				id:   lowerBoundary
-				indexDefaultValue: 2
-				visible: designType.currentValue === "twoSidedAsymmetricBinding" || designType.currentValue === "twoSidedAsymmetricNonBinding"
-				values: [
-					{ label: qsTr("O'Brien-Fleming spending"), value: "obrienFleming" },
-					{ label: qsTr("Pocock spending"),          value: "pocock" },
-					{ label: qsTr("Hwang-Shih-DeCani"),     value: "hwangShihDeCani" },
-					{ label: qsTr("Kim-DeMets power"),      value: "kimDeMetsPower" }
-				]
-				info: qsTr("Futility boundary family for asymmetric two-sided designs.")
-			}
-
-			Text
-			{
-				text:    qsTr("Lower boundary parameter:")
-				visible: designType.currentValue === "twoSidedAsymmetricBinding" || designType.currentValue === "twoSidedAsymmetricNonBinding"
-				enabled: lowerBoundary.currentValue !== "obrienFleming" && lowerBoundary.currentValue !== "pocock"
-			}
-			Text
-			{
-				text:    qsTr("Parameter")
-				visible: designType.currentValue === "twoSidedAsymmetricBinding" || designType.currentValue === "twoSidedAsymmetricNonBinding"
-				enabled: lowerBoundary.currentValue !== "obrienFleming" && lowerBoundary.currentValue !== "pocock"
-			}
-			DoubleField
-			{
-				name:         "lowerBoundaryParameter"
-				id:           lowerBoundaryParameter
-				defaultValue: 0.25
-				decimals:     4
-				visible:      designType.currentValue === "twoSidedAsymmetricBinding" || designType.currentValue === "twoSidedAsymmetricNonBinding"
-				enabled:      lowerBoundary.currentValue !== "obrienFleming" && lowerBoundary.currentValue !== "pocock"
-				info:         qsTr("Parameter for the lower spending function.")
+				name:    "crossingProbabilitiesTable"
+				label:   qsTr("Boundary crossing probabilities")
+				checked: false
+				info:    qsTr("Display final, cumulative, and stagewise boundary crossing probabilities under H\u2080 and H\u2081.")
 			}
 		}
 	}
@@ -271,31 +127,32 @@ Form
 		expanded: true
 		title:    qsTr("Plots")
 
-		CheckBox
+		Group
 		{
-			label:   qsTr("Stopping boundaries")
-			id:      boundariesPlot
-			name:    "boundariesPlot"
-			checked: true
-			info:    qsTr("Display stopping boundaries across analyses.")
+			title: qsTr("Design Figures")
+
+			CheckBox
+			{
+				name:    "boundariesPlot"
+				id:      boundariesPlot
+				label:   qsTr("Stopping boundaries")
+				checked: true
+				info:    qsTr("Display stopping boundaries across analyses.")
+			}
+
+			CheckBox
+			{
+				name:    "crossingProbabilitiesPlot"
+				id:      crossingProbabilitiesPlot
+				label:   qsTr("Boundary crossing probabilities")
+				checked: false
+				info:    qsTr("Display cumulative boundary crossing probabilities under H\u2080 and H\u2081.")
+			}
 		}
 
-		CheckBox
+		PowerComponents.BayesFactorPlotSettings
 		{
-			label:   qsTr("Boundary crossing probabilities")
-			id:      crossingProbabilitiesPlot
-			name:    "crossingProbabilitiesPlot"
-			checked: true
-			info:    qsTr("Display cumulative boundary crossing probabilities under H0 and H1.")
-		}
-
-		CheckBox
-		{
-			label:   qsTr("Explanatory text")
-			id:      text
-			name:    "text"
-			checked: true
-			info:    qsTr("Display a short explanation of the design.")
+			colorPaletteInfo: qsTr("Choose the color palette used for boundaries in plots.")
 		}
 	}
 
@@ -309,6 +166,16 @@ Form
 		{
 			columns: 3
 
+			CheckBox
+			{
+				Layout.columnSpan: 3
+				name:    "generateRCode"
+				id:      generateRCode
+				label:   qsTr("Generate R code")
+				checked: false
+				info:    qsTr("Display copyable R code for the current settings.")
+			}
+
 			Text { Layout.columnSpan: 2; text: qsTr("Integration grid points:") }
 			IntegerField
 			{
@@ -316,18 +183,8 @@ Form
 				id:           gridPoints
 				min:          1
 				max:          80
-				defaultValue: 18
-				info:         qsTr("Controls the numerical integration grid used by gsDesign.")
-			}
-
-			Text { Layout.columnSpan: 2; text: qsTr("Generate R Code:") }
-			CheckBox
-			{
-				name:    "generateRCode"
-				id:      generateRCode
-				label:   ""
-				checked: false
-				info:    qsTr("Display the gsDesign R call for the current settings.")
+				defaultValue: root.defaultGridPoints
+				info:         qsTr("Integer from 1 to 80 controlling the numerical integration grid. Default is %1; larger values can improve accuracy but slow computation.").arg(root.defaultGridPoints)
 			}
 		}
 	}

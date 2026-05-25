@@ -24,6 +24,8 @@ Group
 {
 	title: qsTr("Settings")
 
+	property string colorPaletteInfo: qsTr("Choose the color palette used for evidence outcomes and design priors in plots.")
+
 	DropDown
 	{
 		name:       "legendPosition"
@@ -46,6 +48,6 @@ Group
 		name:      "colorPalette"
 		label:     qsTr("Color palette")
 		infoLabel: qsTr("Color palette")
-		info:      qsTr("Choose the color palette used for evidence outcomes and design priors in plots.")
+		info:      colorPaletteInfo
 	}
 }

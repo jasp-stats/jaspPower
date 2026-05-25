@@ -185,13 +185,11 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
 }
 
 .bfdAddContinuousSettings <- function(settings, options) {
-  alternative <- options[["analysisPriorDirection"]]
-
   settings[["nullValue"]]         <- options[["nullValue"]]
   settings[["standardDeviation"]] <- options[["knownStandardDeviation"]]
   settings[["generalZParameterization"]] <- options[["generalZParameterization"]]
   settings[["unitInformationSd"]]        <- options[["unitInformationSd"]]
-  settings[["alternative"]]       <- switch(alternative, twoSided = "two.sided", alternative)
+  settings[["alternative"]]       <- .bfdAnalysisPriorAlternative(options[["analysisPriorDirection"]])
   settings[["n1"]]                <- options[["sampleSize"]]
   settings[["n2"]]                <- if (settings[["isIndependentSamples"]]) {
     ceiling(options[["sampleSize"]] * options[["sampleSizeAllocationRatio"]])
@@ -883,13 +881,7 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
   if (!identical(settings[["calculation"]], "sampleSize"))
     return(NULL)
 
-  switch(settings[["designSampleSizeBasis"]],
-    eachDesignHypothesis = under,
-    bothDesignHypotheses = NULL,
-    alternativeHypothesis = "h1",
-    nullHypothesis        = "h0",
-    under
-  )
+  return(.bfdSampleSizeBasisTarget(settings[["designSampleSizeBasis"]], under))
 }
 
 .bfdResultN1ForBasis <- function(settings, result, under) {
@@ -1062,6 +1054,8 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
 }
 
 .bfdObservedTestLabel <- function(settings) {
+  .bfdRequireKnownOption(gettext("test"), settings[["test"]], .bfdKnownTests)
+
   switch(
     settings[["test"]],
     independentSamplesTTest = gettext("Independent Samples T-Test"),
@@ -1072,7 +1066,7 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
     oneSampleZTest          = gettext("One Sample Z-Test"),
     oneSampleProportion     = gettext("One Sample Proportion Test"),
     generalZApproximation   = gettext("General (z-approximation)"),
-    settings[["testLabel"]]
+    .bfdUnknownOptionError(gettext("test"), settings[["test"]])
   )
 }
 
@@ -2026,6 +2020,8 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
 }
 
 .bfdReportTestLabel <- function(settings) {
+  .bfdRequireKnownOption(gettext("test"), settings[["test"]], .bfdKnownTests)
+
   switch(settings[["test"]],
     independentSamplesTTest = gettext("independent-samples t test"),
     pairedSamplesTTest      = gettext("paired-samples t test"),
@@ -2035,7 +2031,7 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
     oneSampleZTest          = gettext("one-sample z test"),
     oneSampleProportion     = gettext("one-sample proportion test"),
     generalZApproximation   = gettext("general z-approximation"),
-    settings[["testLabel"]]
+    .bfdUnknownOptionError(gettext("test"), settings[["test"]])
   )
 }
 
@@ -2728,11 +2724,7 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
   data   <- .bfdFilterCurveData(plotData[["data"]], under)
   xLabel <- plotData[["xLabel"]]
 
-  xScale <- if (isTRUE(settings[["logSampleSize"]])) {
-    ggplot2::scale_x_log10()
-  } else {
-    ggplot2::scale_x_continuous()
-  }
+  xScale <- .pwrPrettyIntegerXAxisScale(data[["n"]], log10 = settings[["logSampleSize"]])
 
   showUnder <- length(unique(data[["under"]])) > 1
   if (showUnder) {
@@ -3889,6 +3881,7 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
 
 .bfdGeneralZUnitInformationSd <- function(settings) {
   parameterization <- settings[["generalZParameterization"]]
+  .bfdRequireKnownOption(gettext("general z parameterization"), parameterization, .bfdKnownGeneralZParameterizations)
 
   if (parameterization == "unitInformationSd")
     return(settings[["unitInformationSd"]])
@@ -3902,7 +3895,8 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
     logHazardRatio            = sqrt(4),
     logIncidenceRateRatio     = sqrt(4),
     effectSize                = 1,
-    1
+    standardErrorSchedule     = stop(gettext("Standard error schedule does not have a single unit information SD.")),
+    .bfdUnknownOptionError(gettext("general z parameterization"), parameterization)
   )
 }
 
@@ -3933,6 +3927,8 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
 }
 
 .bfdGeneralZParameterizationLabel <- function(parameterization) {
+  .bfdRequireKnownOption(gettext("general z parameterization"), parameterization, .bfdKnownGeneralZParameterizations)
+
   switch(
     parameterization,
     standardizedMeanDifference = gettext("SMD"),
@@ -3941,8 +3937,10 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
     logOddsRatio              = gettext("logOR"),
     logHazardRatio            = gettext("logHR"),
     logIncidenceRateRatio     = gettext("logIRR"),
+    unitInformationSd         = gettext("specified UISD"),
+    standardErrorSchedule     = gettext("standard error schedule"),
     effectSize                = gettext("effect size"),
-    gettext("effect size")
+    .bfdUnknownOptionError(gettext("general z parameterization"), parameterization)
   )
 }
 
@@ -4232,6 +4230,8 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
 }
 
 .bfdTestType <- function(test) {
+  .bfdRequireKnownOption(gettext("test"), test, .bfdKnownTests)
+
   switch(test,
     independentSamplesTTest = "two.sample",
     independentSamplesZTest = "two.sample",
@@ -4240,11 +4240,14 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
     oneSampleTTest          = "one.sample",
     oneSampleZTest          = "one.sample",
     oneSampleProportion     = "binomial",
-    generalZApproximation   = "general"
+    generalZApproximation   = "general",
+    .bfdUnknownOptionError(gettext("test"), test)
   )
 }
 
 .bfdTestLabel <- function(test) {
+  .bfdRequireKnownOption(gettext("test"), test, .bfdKnownTests)
+
   switch(test,
     independentSamplesTTest = gettext("independent samples t-test"),
     pairedSamplesTTest      = gettext("paired samples t-test"),
@@ -4253,7 +4256,8 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
     pairedSamplesZTest      = gettext("paired samples z-test"),
     oneSampleZTest          = gettext("one sample z-test"),
     oneSampleProportion     = gettext("one sample proportion test"),
-    generalZApproximation   = gettext("general z-approximation")
+    generalZApproximation   = gettext("general z-approximation"),
+    .bfdUnknownOptionError(gettext("test"), test)
   )
 }
 
