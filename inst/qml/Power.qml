@@ -62,9 +62,9 @@ Form
 				indexDefaultValue: 0
 				label: ""
 				values: [
-					{ label: "Sample Size N", value: "sampleSize"},
-					{ label: "Power",  value: "power" },
-					{ label: "Effect size",  value: "effectSize"}
+					{ label: "Sample size",		value: "sampleSize"},
+					{ label: "Power",  			value: "power" },
+					{ label: "Effect size",  	value: "effectSize"}
 				]
 			}
 
@@ -310,6 +310,13 @@ Form
 			id: powerCurveN
 			name: "powerBySampleSize"
 			checked: false
+
+			CheckBox
+			{
+				label: qsTr("Log sample size")
+				name:  "logSampleSize"
+				checked: true
+			}
 		}
 
 		CheckBox {

@@ -7,13 +7,17 @@ Author: JASP Team
 Website: jasp-stats.org
 Maintainer: JASP Team <info@jasp-stats.org>
 Description: This module offers analyses.
-License: GPL (>= 2)
+License: GPL (>= 3)
 Encoding: UTF-8
 Imports:
+  bfpwr,
+  ggplot2,
+  gsDesign,
   pwr,
   viridis,
   jaspBase,
   jaspGraphs
 Remotes:
   jasp-stats/jaspBase,
-  jasp-stats/jaspGraphs
+  jasp-stats/jaspGraphs,
+  SamCH93/bfpwr/package@378aca072cbe395d755588800f0388ca78cfcafd

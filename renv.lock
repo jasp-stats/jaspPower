@@ -68,6 +68,38 @@
         "R"
       ]
     },
+    "bfpwr": {
+      "Package": "bfpwr",
+      "Version": "0.3",
+      "Source": "GitHub",
+      "Requirements": [
+        "lamW",
+        "mvtnorm",
+        "qrng",
+        "withr"
+      ],
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "SamCH93",
+      "RemoteRepo": "bfpwr",
+      "RemoteSubdir": "package",
+      "RemoteRef": "378aca072cbe395d755588800f0388ca78cfcafd",
+      "RemoteSha": "378aca072cbe395d755588800f0388ca78cfcafd"
+    },
+    "bigD": {
+      "Package": "bigD",
+      "Version": "0.3.1",
+      "Source": "Repository",
+      "Requirements": [
+        "R"
+      ]
+    },
+    "bitops": {
+      "Package": "bitops",
+      "Version": "1.0-9",
+      "Source": "Repository",
+      "Requirements": []
+    },
     "bslib": {
       "Package": "bslib",
       "Version": "0.9.0",
@@ -124,6 +156,12 @@
       "Requirements": [
         "R"
       ]
+    },
+    "commonmark": {
+      "Package": "commonmark",
+      "Version": "2.0.0",
+      "Source": "Repository",
+      "Requirements": []
     },
     "cpp11": {
       "Package": "cpp11",
@@ -340,6 +378,54 @@
         "grid"
       ]
     },
+    "gsDesign": {
+      "Package": "gsDesign",
+      "Version": "3.9.0",
+      "Source": "Repository",
+      "Requirements": [
+        "R",
+        "dplyr",
+        "ggplot2",
+        "graphics",
+        "gt",
+        "methods",
+        "r2rtf",
+        "rlang",
+        "stats",
+        "tibble",
+        "tidyr",
+        "tools",
+        "xtable"
+      ]
+    },
+    "gt": {
+      "Package": "gt",
+      "Version": "1.3.0",
+      "Source": "Repository",
+      "Requirements": [
+        "R",
+        "base64enc",
+        "bigD",
+        "bitops",
+        "cli",
+        "commonmark",
+        "dplyr",
+        "fs",
+        "glue",
+        "htmltools",
+        "htmlwidgets",
+        "juicyjuice",
+        "magrittr",
+        "markdown",
+        "reactable",
+        "rlang",
+        "sass",
+        "scales",
+        "tidyselect",
+        "vctrs",
+        "xml2"
+      ]
+    },
     "gtable": {
       "Package": "gtable",
       "Version": "0.3.6",
@@ -487,6 +573,14 @@
         "methods"
       ]
     },
+    "juicyjuice": {
+      "Package": "juicyjuice",
+      "Version": "0.1.0",
+      "Source": "Repository",
+      "Requirements": [
+        "V8"
+      ]
+    },
     "knitr": {
       "Package": "knitr",
       "Version": "1.51",
@@ -508,6 +602,15 @@
       "Requirements": [
         "graphics",
         "stats"
+      ]
+    },
+    "lamW": {
+      "Package": "lamW",
+      "Version": "2.2.7",
+      "Source": "Repository",
+      "Requirements": [
+        "Rcpp",
+        "RcppParallel"
       ]
     },
     "later": {
@@ -538,12 +641,34 @@
         "rlang"
       ]
     },
+    "litedown": {
+      "Package": "litedown",
+      "Version": "0.9",
+      "Source": "Repository",
+      "Requirements": [
+        "R",
+        "commonmark",
+        "utils",
+        "xfun"
+      ]
+    },
     "magrittr": {
       "Package": "magrittr",
       "Version": "2.0.4",
       "Source": "Repository",
       "Requirements": [
         "R"
+      ]
+    },
+    "markdown": {
+      "Package": "markdown",
+      "Version": "2.0",
+      "Source": "Repository",
+      "Requirements": [
+        "R",
+        "litedown",
+        "utils",
+        "xfun"
       ]
     },
     "memoise": {
@@ -561,6 +686,15 @@
       "Source": "Repository",
       "Requirements": [
         "tools"
+      ]
+    },
+    "mvtnorm": {
+      "Package": "mvtnorm",
+      "Version": "1.3-7",
+      "Source": "Repository",
+      "Requirements": [
+        "R",
+        "stats"
       ]
     },
     "officer": {
@@ -730,6 +864,33 @@
         "stats"
       ]
     },
+    "qrng": {
+      "Package": "qrng",
+      "Version": "0.0-11",
+      "Source": "Repository",
+      "Requirements": [
+        "R",
+        "utils"
+      ]
+    },
+    "r2rtf": {
+      "Package": "r2rtf",
+      "Version": "1.3.0",
+      "Source": "Repository",
+      "Requirements": [
+        "R",
+        "grDevices",
+        "tools"
+      ]
+    },
+    "RcppParallel": {
+      "Package": "RcppParallel",
+      "Version": "5.1.11-2",
+      "Source": "Repository",
+      "Requirements": [
+        "R"
+      ]
+    },
     "ragg": {
       "Package": "ragg",
       "Version": "1.5.2",
@@ -745,6 +906,27 @@
       "Source": "Repository",
       "Requirements": [
         "R"
+      ]
+    },
+    "reactable": {
+      "Package": "reactable",
+      "Version": "0.4.5",
+      "Source": "Repository",
+      "Requirements": [
+        "R",
+        "digest",
+        "htmltools",
+        "htmlwidgets",
+        "jsonlite",
+        "reactR"
+      ]
+    },
+    "reactR": {
+      "Package": "reactR",
+      "Version": "0.6.1",
+      "Source": "Repository",
+      "Requirements": [
+        "htmltools"
       ]
     },
     "rlang": {
@@ -775,6 +957,17 @@
         "utils",
         "xfun",
         "yaml"
+      ]
+    },
+    "V8": {
+      "Package": "V8",
+      "Version": "8.2.0",
+      "Source": "Repository",
+      "Requirements": [
+        "Rcpp",
+        "curl",
+        "jsonlite",
+        "utils"
       ]
     },
     "rvg": {
@@ -1034,6 +1227,17 @@
         "methods",
         "R",
         "rlang"
+      ]
+    },
+    "xtable": {
+      "Package": "xtable",
+      "Version": "1.8-8",
+      "Source": "Repository",
+      "Requirements": [
+        "R",
+        "methods",
+        "stats",
+        "utils"
       ]
     },
     "yaml": {
