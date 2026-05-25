@@ -9,6 +9,9 @@ on:
     types: [opened, synchronize, reopened, ready_for_review]
     paths: ['**.R', 'tests/**', '**.c', '**.cpp', '**.h', '**.hpp', 'DESCRIPTION', 'NAMESPACE', 'MAKEVARS', 'MAKEVARS.win']
 
+permissions:
+  contents: read
+
 jobs:
   coverage:
     # Run if it is a push (merge) OR if the PR is NOT a draft
