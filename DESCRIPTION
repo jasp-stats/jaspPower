@@ -10,7 +10,7 @@ Description: This module offers analyses.
 License: GPL (>= 3)
 Encoding: UTF-8
 Imports:
-  bfpwr,
+  bfpwr (>= 0.3),
   ggplot2,
   gsDesign,
   pwr,
