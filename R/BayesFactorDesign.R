@@ -1,18 +1,15 @@
 BayesFactorDesign <- function(jaspResults, dataset, options) {
   settings    <- .bfdPrepareSettings(options)
+  tables      <- .bfdInitializeOutputTables(jaspResults, options, settings)
+  if (.bfdPriorPlotRequested(options))
+    .bfdPriorPlot(jaspResults, settings)
+
   computation <- .bfdCachedComputation(jaspResults, settings)
   settings    <- computation[["settings"]]
   validation  <- computation[["validation"]]
   result      <- computation[["result"]]
 
-  if (options[["designSummary"]])
-    .bfdResultsTable(jaspResults, settings, result)
-
-  if (options[["decisionProbabilities"]])
-    .bfdDesignOutcomeTable(jaspResults, settings, result)
-
-  if (options[["designSpecification"]])
-    .bfdPriorsTable(jaspResults, settings, validation)
+  .bfdPopulateInitializedOutputTables(tables, settings, result)
 
   if (.bfdObservedAnalysisReady(dataset, options, settings))
     .bfdObservedAnalysisTable(jaspResults, dataset, options, settings, key = "evidenceObservedAnalysis", position = 16)
@@ -28,9 +25,6 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
 
   if (options[["decisionProbabilitiesBySampleSize"]])
     .bfdSampleSizePlot(jaspResults, settings, result)
-
-  if (.bfdPriorPlotRequested(options))
-    .bfdPriorPlot(jaspResults, settings, validation)
 
   return()
 }
@@ -123,6 +117,59 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
   "mergeH1H0Figures", "priorPlotDesign", "priorPlotAnalysis",
   "priorPlotMerge", "reportLatex", "explanatoryText"
 )
+
+.bfdInitializeOutputTables <- function(jaspResults, options, settings) {
+  tables <- list(
+    results = if (options[["designSummary"]]) {
+      .bfdCreateTable(
+        parent       = jaspResults,
+        key          = "evidenceResults",
+        title        = gettext("Bayes Factor Design"),
+        position     = 1,
+        dependencies = .bfdSummaryDesignDependencies
+      )
+    },
+    designOutcome = if (options[["decisionProbabilities"]]) {
+      .bfdCreateTable(
+        parent       = jaspResults,
+        key          = "evidenceDesignOutcome",
+        title        = gettext("Bayes Factor Decision Probabilities"),
+        position     = 2,
+        dependencies = .bfdSummaryEvidenceDependencies
+      )
+    },
+    priors = if (options[["designSpecification"]]) {
+      .bfdCreateTable(
+        parent       = jaspResults,
+        key          = "evidencePriors",
+        title        = gettext("Design Specification"),
+        position     = 3,
+        dependencies = .bfdSummarySpecificationDependencies
+      )
+    }
+  )
+
+  if (!is.null(tables[["results"]]))
+    .bfdInitializeResultsTable(tables[["results"]], settings)
+
+  if (!is.null(tables[["designOutcome"]]))
+    .bfdInitializeDesignOutcomeTable(tables[["designOutcome"]], settings)
+
+  if (!is.null(tables[["priors"]]))
+    .bfdPopulatePriorsTable(tables[["priors"]], settings)
+
+  return(tables)
+}
+
+.bfdPopulateInitializedOutputTables <- function(tables, settings, result) {
+  if (!is.null(tables[["results"]]))
+    .bfdPopulateResultsTable(tables[["results"]], settings, result, columnsReady = TRUE)
+
+  if (!is.null(tables[["designOutcome"]]))
+    .bfdPopulateDesignOutcomeTable(tables[["designOutcome"]], settings, result, columnsReady = TRUE)
+
+  return(invisible(TRUE))
+}
 
 .bfdPrepareSettings <- function(options) {
   test <- options[["statisticalTest"]]
@@ -563,7 +610,19 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
   if (is.null(table))
     return()
 
+  .bfdPopulateResultsTable(table, settings, result)
+}
+
+.bfdInitializeResultsTable <- function(table, settings) {
   .bfdAddResultsTableColumns(table, settings)
+  table$setData(.bfdEmptyResultsRow(settings))
+
+  return(invisible(TRUE))
+}
+
+.bfdPopulateResultsTable <- function(table, settings, result, columnsReady = FALSE) {
+  if (!isTRUE(columnsReady))
+    .bfdAddResultsTableColumns(table, settings)
 
   if (jaspBase::isTryError(result)) {
     table$setError(gettextf("Unable to compute Bayes factor design: %1$s", .bfdCleanError(result)))
@@ -616,6 +675,22 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
     }
     table$addColumnInfo(name = "probability", title = gettext("Achieved Probability"), type = "number", overtitle = computed)
   }
+}
+
+.bfdEmptyResultsRow <- function(settings) {
+  columns <- c(
+    "under",
+    "decisionRule",
+    if (settings[["calculation"]] == "sampleSize") "targetProbability",
+    if (settings[["isIndependentSamples"]]) c("n1", "n2") else "n",
+    "probability"
+  )
+
+  return(.bfdEmptyTableRow(
+    columns        = columns,
+    stringColumns  = c("under", "decisionRule"),
+    integerColumns = if (settings[["isIndependentSamples"]]) c("n1", "n2") else "n"
+  ))
 }
 
 .bfdResultsRows <- function(settings, result) {
@@ -684,6 +759,10 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
   if (is.null(table))
     return()
 
+  .bfdPopulateDesignOutcomeTable(table, settings, result)
+}
+
+.bfdInitializeDesignOutcomeTable <- function(table, settings) {
   .bfdAddDesignOutcomeColumns(
     table,
     underTitle       = gettext("Design Prior"),
@@ -691,6 +770,21 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
     nullTitle        = gettext("Evidence for H\u2080"),
     alternativeTitle = gettext("Evidence for H\u2081")
   )
+  table$setData(.bfdEmptyDesignOutcomeRow())
+
+  return(invisible(TRUE))
+}
+
+.bfdPopulateDesignOutcomeTable <- function(table, settings, result, columnsReady = FALSE) {
+  if (!isTRUE(columnsReady)) {
+    .bfdAddDesignOutcomeColumns(
+      table,
+      underTitle       = gettext("Design Prior"),
+      overtitle        = gettext("Bayes Factor Decision"),
+      nullTitle        = gettext("Evidence for H\u2080"),
+      alternativeTitle = gettext("Evidence for H\u2081")
+    )
+  }
 
   if (jaspBase::isTryError(result)) {
     table$setError(gettextf("Unable to compute Bayes factor decision probabilities: %1$s", .bfdCleanError(result)))
@@ -922,6 +1016,10 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
   if (is.null(table))
     return()
 
+  .bfdPopulatePriorsTable(table, settings, validation)
+}
+
+.bfdPopulatePriorsTable <- function(table, settings, validation = NULL) {
   .bfdAddPriorsTableColumns(table)
 
   if (jaspBase::isTryError(validation)) {
@@ -936,7 +1034,7 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
 .bfdResultsTableExplanation <- function(settings) {
   if (settings[["calculation"]] == "sampleSize") {
     return(gettext(
-      "This table reports the smallest fixed-design sample size that reaches the target probability of conclusive evidence for each design prior. To plan one study that satisfies both design priors, use the larger reported sample size."
+      "This table reports the smallest fixed-design sample size that reaches the target probability of conclusive evidence for each design prior."
     ))
   }
 
@@ -2941,7 +3039,7 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
   return(.bfdApplyPlotTheme(plot, settings, linetypeValues = linetypeValues))
 }
 
-.bfdPriorPlot <- function(jaspResults, settings, validation) {
+.bfdPriorPlot <- function(jaspResults, settings, validation = NULL) {
   .bfdPriorPlotContainer(
     jaspResults  = jaspResults,
     settings     = settings,

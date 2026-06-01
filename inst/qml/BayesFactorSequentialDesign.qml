@@ -254,6 +254,32 @@ Form
 				checked: false
 			}
 
+			Text
+			{
+				text: qsTr("Sample-size search:")
+				visible: sequentialParameters.usesSampleSizeSearch
+				enabled: sequentialParameters.usesSampleSizeSearchStrategy
+			}
+			Text
+			{
+				text: qsTr("Strategy")
+				visible: sequentialParameters.usesSampleSizeSearch
+				enabled: sequentialParameters.usesSampleSizeSearchStrategy
+			}
+			DropDown
+			{
+				name: "sampleSizeSearchStrategy"
+				id:   sampleSizeSearchStrategy
+				info: qsTr("Choose whether maximum sample-size search uses a faster adaptive search or an exhaustive search that certifies the smallest maximum sample size.")
+				indexDefaultValue: 0
+				visible: sequentialParameters.usesSampleSizeSearch
+				enabled: sequentialParameters.usesSampleSizeSearchStrategy
+				values: [
+					{ label: qsTr("Adaptive"),   value: "adaptive"   },
+					{ label: qsTr("Exhaustive"), value: "exhaustive" }
+				]
+			}
+
 			Text { Layout.columnSpan: 2; text: qsTr("Exact integration over all regions:") }
 			CheckBox
 			{
@@ -261,7 +287,7 @@ Form
 				id:   strictIntegration
 				label: ""
 				info:  qsTr("Use exact integration over all decision regions when computing sequential design characteristics.")
-				checked: true
+				checked: false
 			}
 
 			Text { text: qsTr("Integration method:") }

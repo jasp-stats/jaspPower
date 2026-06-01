@@ -155,7 +155,7 @@ Section
 			name: "analysisPriorDirection"
 			id:   alternative
 			info: qsTr("Direction of the analysis prior under H\u2081.")
-			indexDefaultValue: 0
+			indexDefaultValue: 2
 			visible: usesPriorDirection
 			values: [
 				{ label: qsTr("Two-sided"),     value: "twoSided" },

@@ -29,6 +29,7 @@ Group
 	property alias calculationValue: calculationControls.calculationValue
 	property bool isIndependentSamples: testValue.indexOf("independentSamples") !== -1
 	property bool usesSampleSizeSearch: calculationControls.usesSampleSizeSearch
+	property bool usesSampleSizeSearchStrategy: usesSampleSizeSearch && lookScheduleMode.currentValue !== "increase"
 	property bool usesEvidenceProbability: calculationControls.calculationValue === "evidenceProbability"
 	property bool usesStandardErrorSchedule: calculationControls.usesStandardErrorSchedule
 	property bool usesGeneralZStandardErrorParameterization: calculationControls.usesGeneralZStandardErrorParameterization

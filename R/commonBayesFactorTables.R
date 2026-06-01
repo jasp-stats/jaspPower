@@ -32,6 +32,28 @@
   )
 }
 
+.bfdEmptyTableRow <- function(columns, stringColumns = character(), integerColumns = character()) {
+  values <- lapply(columns, function(column) {
+    if (column %in% stringColumns)
+      return("")
+
+    if (column %in% integerColumns)
+      return(NA_integer_)
+
+    return(NA_real_)
+  })
+  names(values) <- columns
+
+  data.frame(values, stringsAsFactors = FALSE, check.names = FALSE)
+}
+
+.bfdEmptyDesignOutcomeRow <- function() {
+  return(.bfdEmptyTableRow(
+    columns       = c("under", "null", "undecided", "alternative"),
+    stringColumns = "under"
+  ))
+}
+
 .bfdCreateTable <- function(parent, key, title, position, dependencies, showSpecifiedColumnsOnly = FALSE) {
   if (!is.null(parent[[key]]))
     return(NULL)
