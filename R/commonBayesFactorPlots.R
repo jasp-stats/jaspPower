@@ -153,12 +153,3 @@
   text <- gsub("\"", "\\\"", text, fixed = TRUE)
   paste0("\"", text, "\"")
 }
-
-.bfdSegment <- function(...) {
-  ggplot2::annotate(
-    geom     = "segment",
-    linetype = "dashed",
-    color    = "#333333",
-    ...
-  )
-}

@@ -226,11 +226,6 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
   return(c("h1", "h0"))
 }
 
-.bfdPlanningTargetText <- function(settings) {
-  labels <- vapply(settings[["planningTargets"]], .bfdTargetLabel, character(1))
-  return(paste(labels, collapse = ", "))
-}
-
 .bfdAddContinuousSettings <- function(settings, options) {
   settings[["nullValue"]]         <- options[["nullValue"]]
   settings[["standardDeviation"]] <- options[["knownStandardDeviation"]]
@@ -599,20 +594,6 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
   return(n)
 }
 
-.bfdResultsTable <- function(jaspResults, settings, result) {
-  table <- .bfdCreateTable(
-    parent       = jaspResults,
-    key          = "evidenceResults",
-    title        = gettext("Bayes Factor Design"),
-    position     = 1,
-    dependencies = .bfdSummaryDesignDependencies
-  )
-  if (is.null(table))
-    return()
-
-  .bfdPopulateResultsTable(table, settings, result)
-}
-
 .bfdInitializeResultsTable <- function(table, settings) {
   .bfdAddResultsTableColumns(table, settings)
   table$setData(.bfdEmptyResultsRow(settings))
@@ -746,20 +727,6 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
     return(NA_real_)
 
   return(probability)
-}
-
-.bfdDesignOutcomeTable <- function(jaspResults, settings, result) {
-  table <- .bfdCreateTable(
-    parent       = jaspResults,
-    key          = "evidenceDesignOutcome",
-    title        = gettext("Bayes Factor Decision Probabilities"),
-    position     = 2,
-    dependencies = .bfdSummaryEvidenceDependencies
-  )
-  if (is.null(table))
-    return()
-
-  .bfdPopulateDesignOutcomeTable(table, settings, result)
 }
 
 .bfdInitializeDesignOutcomeTable <- function(table, settings) {
@@ -1003,20 +970,6 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
 
 .bfdDesignOutcomeEvidenceProbability <- function(settings, n1, target, under) {
   return(.bfdEvidenceProbability(settings, n1 = n1, target = target, under = under))
-}
-
-.bfdPriorsTable <- function(jaspResults, settings, validation) {
-  table <- .bfdCreateTable(
-    parent       = jaspResults,
-    key          = "evidencePriors",
-    title        = gettext("Design Specification"),
-    position     = 3,
-    dependencies = .bfdSummarySpecificationDependencies
-  )
-  if (is.null(table))
-    return()
-
-  .bfdPopulatePriorsTable(table, settings, validation)
 }
 
 .bfdPopulatePriorsTable <- function(table, settings, validation = NULL) {
@@ -4086,20 +4039,6 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
   ))
 }
 
-.bfdBinomialNullDesignArguments <- function(settings) {
-  if (settings[["nullPriorDistribution"]] == "direction") {
-    return(list(
-      dp = NA_real_,
-      da = settings[["analysisPriorSuccesses"]],
-      db = settings[["analysisPriorFailures"]],
-      dl = 0,
-      du = settings[["nullProportion"]]
-    ))
-  }
-
-  return(list(dp = settings[["nullProportion"]]))
-}
-
 .bfdValidateSettings <- function(settings) {
   .bfdValidateTargetPowers(settings)
 
@@ -4378,27 +4317,6 @@ BayesFactorDesign <- function(jaspResults, dataset, options) {
     return(gettext("Design Prior Under H\u2081"))
 
   return(gettext("Design Prior Under H\u2080"))
-}
-
-.bfdProbabilityColumnTitle <- function(settings) {
-  if (settings[["evidenceTarget"]] == "h1")
-    return("Pr(BF\u2081\u2080 \u2265 k)")
-
-  return("Pr(BF\u2080\u2081 \u2265 k)")
-}
-
-.bfdThresholdColumnTitle <- function(settings) {
-  if (settings[["evidenceTarget"]] == "h1")
-    return("BF\u2081\u2080")
-
-  return("BF\u2080\u2081")
-}
-
-.bfdThresholdText <- function(settings) {
-  if (settings[["evidenceTarget"]] == "h1")
-    return(gettextf("BF\u2081\u2080 \u2265 %1$s", .bfdFormatNumber(settings[["bfThreshold"]])))
-
-  return(gettextf("BF\u2080\u2081 \u2265 %1$s", .bfdFormatNumber(settings[["bfThreshold"]])))
 }
 
 .bfdNullPriorLabel <- function(settings) {
