@@ -23,10 +23,10 @@ import "./qml_components" as PowerComponents
 
 Form
 {
-	info: qsTr("Bayes Factor design allows you to design fixed sample size experiments for conclusive evidence.\n\n" + 
-	"See [this tutorial](TODO) for a detailed introduction to the module.")
+	info: qsTr("Bayes Factor design allows you to design fixed sample size experiments for conclusive evidence.")
+	// Manuscript reference to restore once the preprint is available:
+	// Bartoš F, Pawel S (2026). “Bayes Factor Power and Sample Size Calculations in JASP: A Tutorial for Fixed and Sequential Designs.” _PsyArXiv Preprint_
 	infoBottom: "## " + qsTr("References") + "\n" +
-	"- Bartoš F, Pawel S (2026). “Bayes Factor Power and Sample Size Calculations in JASP: A Tutorial for Fixed and Sequential Designs.” _PsyArXiv Preprint_\n" + 
 	"- Gelfand, A. E. and Wang, F. (2002). “A simulation-based approach to Bayesian sample size determination for performance under a given model and for separating models.” _Statistical Science, 17_(2), 193--208. https://doi.org/10.1214/ss/1030550861\n" +
     "- Pawel, S. and Held, L. (2025). “Closed-form power and sample size calculations for Bayes factors.” _The American Statistician, 79_(3), 330--344. 10.1080/00031305.2025.2467919\n" +
     "- Pawel, S. and Held, L. (2026). “Bayes factor group sequential designs.” _arXiv Preprint_ https://doi.org/10.48550/ARXIV.2601.02851\n" +
@@ -259,6 +259,14 @@ Form
 		{
 			columns: 3
 
+			function syncSampleSizeRange()
+			{
+				if (sampleSizeRangeMax.value <= sampleSizeRangeMin.value)
+					sampleSizeRangeMax.value = sampleSizeRangeMin.value + 1
+			}
+
+			Component.onCompleted: syncSampleSizeRange()
+
 			CheckBox
 			{
 				Layout.columnSpan: 3
@@ -287,6 +295,7 @@ Form
 				min: 1
 				defaultValue: 10
 				visible: calculationControls.calculationValue === "sampleSize"
+				onValueChanged: syncSampleSizeRange()
 			}
 
 			Text
@@ -304,72 +313,14 @@ Form
 				name: "maximumSampleSize"
 				id:   sampleSizeRangeMax
 				info: qsTr("Largest sample size considered when searching for the target probability of conclusive evidence.")
-				min: 2
+				min: sampleSizeRangeMin.value + 1
 				defaultValue: 10000
 				visible: calculationControls.calculationValue === "sampleSize"
 			}
 
-			Text
+			PowerComponents.BayesFactorTSearchRangeControls
 			{
-				text: qsTr("t search range:")
-				visible: test.currentValue.indexOf("TTest") !== -1
-			}
-			Text
-			{
-				text: qsTr("Range")
-				visible: test.currentValue.indexOf("TTest") !== -1
-			}
-			DropDown
-			{
-				name: "tSearchRangeMode"
-				id:   drangeMode
-				info: qsTr("Choose whether the integration range for t-test calculations is selected automatically or supplied manually.")
-				indexDefaultValue: 0
-				visible: test.currentValue.indexOf("TTest") !== -1
-				values: [
-					{ label: qsTr("Adaptive"), value: "adaptive" },
-					{ label: qsTr("Custom"),   value: "custom"   }
-				]
-			}
-
-			Text
-			{
-				text: qsTr("Lower:")
-				visible: test.currentValue.indexOf("TTest") !== -1 && drangeMode.currentValue === "custom"
-			}
-			Text
-			{
-				text: qsTr("min")
-				visible: test.currentValue.indexOf("TTest") !== -1 && drangeMode.currentValue === "custom"
-			}
-			DoubleField
-			{
-				name: "tSearchRangeLower"
-				id:   drangeLower
-				info: qsTr("Lower bound of the custom integration range for t-test calculations.")
-				defaultValue: -5
-				negativeValues: true
-				visible: test.currentValue.indexOf("TTest") !== -1 && drangeMode.currentValue === "custom"
-			}
-
-			Text
-			{
-				text: qsTr("Upper:")
-				visible: test.currentValue.indexOf("TTest") !== -1 && drangeMode.currentValue === "custom"
-			}
-			Text
-			{
-				text: qsTr("max")
-				visible: test.currentValue.indexOf("TTest") !== -1 && drangeMode.currentValue === "custom"
-			}
-			DoubleField
-			{
-				name: "tSearchRangeUpper"
-				id:   drangeUpper
-				info: qsTr("Upper bound of the custom integration range for t-test calculations.")
-				defaultValue: 5
-				negativeValues: true
-				visible: test.currentValue.indexOf("TTest") !== -1 && drangeMode.currentValue === "custom"
+				testValue: test.currentValue
 			}
 
 			Text { text: qsTr("Curve points:") }

@@ -16,7 +16,6 @@
 // <http://www.gnu.org/licenses/>.
 //
 import QtQuick
-import QtQuick.Layouts
 import JASP
 import JASP.Controls
 
@@ -30,367 +29,69 @@ Section
 	property bool supportsBinomial: false
 	property bool isBinomial: supportsBinomial && testValue === "oneSampleProportion"
 
-	Group
+	BayesFactorContinuousDesignPriorGroup
 	{
-		title: qsTr("Prior Under H\u2080")
-		columns: 3
+		groupTitle: qsTr("Prior Under H\u2080")
 		visible: !isBinomial
-
-		Text { Layout.columnSpan: 2; text: qsTr("Distribution:") }
-		DropDown
-		{
-			name: "designNullPriorDistribution"
-			id:   designNullPrior
-			info: qsTr("Design prior under H\u2080 used to evaluate study outcomes when the null hypothesis is true.")
-			indexDefaultValue: 0
-			label: ""
-			values: [
-				{ label: qsTr("Point"),  value: "point"  },
-				{ label: qsTr("Normal"), value: "normal" }
-			]
-		}
-
-		Text { text: designNullPrior.currentValue === "point" ? qsTr("Location:") : qsTr("Mean:") }
-		Text { text: "\u03BC" }
-		DoubleField
-		{
-			name: "designNullPriorMean"
-			id:   designNullPriorMean
-			info: qsTr("Location or mean of the H\u2080 design prior.")
-			defaultValue: 0
-			negativeValues: true
-		}
-
-		Text
-		{
-			text: qsTr("Standard deviation:")
-			visible: designNullPrior.currentValue === "normal"
-		}
-		Text
-		{
-			text: "\u03C3"
-			visible: designNullPrior.currentValue === "normal"
-		}
-		DoubleField
-		{
-			name: "designNullPriorStandardDeviation"
-			id:   designNullPriorSd
-			info: qsTr("Standard deviation of the normal H\u2080 design prior.")
-			min: 0
-			defaultValue: 0.1
-			inclusive: JASP.None
-			visible: designNullPrior.currentValue === "normal"
-		}
+		distributionName: "designNullPriorDistribution"
+		meanName: "designNullPriorMean"
+		sdName: "designNullPriorStandardDeviation"
+		distributionInfo: qsTr("Design prior under H\u2080 used to evaluate study outcomes when the null hypothesis is true.")
+		meanInfo: qsTr("Location or mean of the H\u2080 design prior.")
+		sdInfo: qsTr("Standard deviation of the normal H\u2080 design prior.")
+		meanDefault: 0
 	}
 
-	Group
+	BayesFactorBinomialDesignPriorGroup
 	{
-		title: qsTr("Prior Under H\u2080")
-		columns: 3
+		groupTitle: qsTr("Prior Under H\u2080")
 		visible: isBinomial
-
-		Text { Layout.columnSpan: 2; text: qsTr("Distribution:") }
-		DropDown
-		{
-			name: "binomialDesignNullPriorDistribution"
-			id:   binomialDesignNullPrior
-			info: qsTr("Design prior under H\u2080 used to evaluate binomial study outcomes when the null hypothesis is true.")
-			indexDefaultValue: 0
-			label: ""
-			values: [
-				{ label: qsTr("Point proportion"), value: "point" },
-				{ label: qsTr("Beta prior"),       value: "beta"  }
-			]
-		}
-
-		Text
-		{
-			text: qsTr("Design proportion:")
-			visible: binomialDesignNullPrior.currentValue === "point"
-		}
-		Text
-		{
-			text: "p"
-			visible: binomialDesignNullPrior.currentValue === "point"
-		}
-		DoubleField
-		{
-			name: "designNullProportion"
-			id:   designNullProportion
-			info: qsTr("Point proportion assumed under the H\u2080 design prior.")
-			min: 0
-			max: 1
-			defaultValue: 0.5
-			inclusive: JASP.None
-			visible: binomialDesignNullPrior.currentValue === "point"
-		}
-
-		Text
-		{
-			text: qsTr("Beta prior successes:")
-			visible: binomialDesignNullPrior.currentValue === "beta"
-		}
-		Text
-		{
-			text: "a"
-			visible: binomialDesignNullPrior.currentValue === "beta"
-		}
-		DoubleField
-		{
-			name: "designNullPriorSuccesses"
-			id:   designNullPriorSuccesses
-			info: qsTr("Success parameter of the beta H\u2080 design prior.")
-			min: 0
-			defaultValue: 1
-			inclusive: JASP.None
-			visible: binomialDesignNullPrior.currentValue === "beta"
-		}
-
-		Text
-		{
-			text: qsTr("Beta prior failures:")
-			visible: binomialDesignNullPrior.currentValue === "beta"
-		}
-		Text
-		{
-			text: "b"
-			visible: binomialDesignNullPrior.currentValue === "beta"
-		}
-		DoubleField
-		{
-			name: "designNullPriorFailures"
-			id:   designNullPriorFailures
-			info: qsTr("Failure parameter of the beta H\u2080 design prior.")
-			min: 0
-			defaultValue: 1
-			inclusive: JASP.None
-			visible: binomialDesignNullPrior.currentValue === "beta"
-		}
-
-		Text
-		{
-			text: qsTr("Lower truncation:")
-			visible: binomialDesignNullPrior.currentValue === "beta"
-		}
-		Text
-		{
-			text: "l"
-			visible: binomialDesignNullPrior.currentValue === "beta"
-		}
-		DoubleField
-		{
-			name: "designNullPriorLowerTruncation"
-			id:   designNullPriorLower
-			info: qsTr("Lower truncation point for the beta H\u2080 design prior.")
-			min: 0
-			max: 1
-			defaultValue: 0
-			inclusive: JASP.MinOnly
-			visible: binomialDesignNullPrior.currentValue === "beta"
-		}
-
-		Text
-		{
-			text: qsTr("Upper truncation:")
-			visible: binomialDesignNullPrior.currentValue === "beta"
-		}
-		Text
-		{
-			text: "u"
-			visible: binomialDesignNullPrior.currentValue === "beta"
-		}
-		DoubleField
-		{
-			name: "designNullPriorUpperTruncation"
-			id:   designNullPriorUpper
-			info: qsTr("Upper truncation point for the beta H\u2080 design prior.")
-			min: 0
-			max: 1
-			defaultValue: 0.5
-			inclusive: JASP.MaxOnly
-			visible: binomialDesignNullPrior.currentValue === "beta"
-		}
+		distributionName: "binomialDesignNullPriorDistribution"
+		pointName: "designNullProportion"
+		successesName: "designNullPriorSuccesses"
+		failuresName: "designNullPriorFailures"
+		lowerName: "designNullPriorLowerTruncation"
+		upperName: "designNullPriorUpperTruncation"
+		distributionInfo: qsTr("Design prior under H\u2080 used to evaluate binomial study outcomes when the null hypothesis is true.")
+		pointInfo: qsTr("Point proportion assumed under the H\u2080 design prior.")
+		successesInfo: qsTr("Success parameter of the beta H\u2080 design prior.")
+		failuresInfo: qsTr("Failure parameter of the beta H\u2080 design prior.")
+		lowerInfo: qsTr("Lower truncation point for the beta H\u2080 design prior.")
+		upperInfo: qsTr("Upper truncation point for the beta H\u2080 design prior.")
+		pointDefault: 0.5
+		upperDefault: 0.5
 	}
 
-	Group
+	BayesFactorContinuousDesignPriorGroup
 	{
-		title: qsTr("Prior Under H\u2081")
-		columns: 3
+		groupTitle: qsTr("Prior Under H\u2081")
 		visible: !isBinomial
-
-		Text { Layout.columnSpan: 2; text: qsTr("Distribution:") }
-		DropDown
-		{
-			name: "designPriorDistribution"
-			id:   designPrior
-			info: qsTr("Design prior under H\u2081 used to evaluate study outcomes when the alternative hypothesis is true.")
-			indexDefaultValue: 0
-			label: ""
-			values: [
-				{ label: qsTr("Point"),  value: "point"  },
-				{ label: qsTr("Normal"), value: "normal" }
-			]
-		}
-
-		Text { text: designPrior.currentValue === "point" ? qsTr("Location:") : qsTr("Mean:") }
-		Text { text: "\u03BC" }
-		DoubleField
-		{
-			name: "designPriorMean"
-			id:   designPriorMean
-			info: qsTr("Location or mean of the H\u2081 design prior.")
-			defaultValue: 0.5
-			negativeValues: true
-		}
-
-		Text
-		{
-			text: qsTr("Standard deviation:")
-			visible: designPrior.currentValue === "normal"
-		}
-		Text
-		{
-			text: "\u03C3"
-			visible: designPrior.currentValue === "normal"
-		}
-		DoubleField
-		{
-			name: "designPriorStandardDeviation"
-			id:   designPriorSd
-			info: qsTr("Standard deviation of the normal H\u2081 design prior.")
-			min: 0
-			defaultValue: 0.1
-			inclusive: JASP.None
-			visible: designPrior.currentValue === "normal"
-		}
+		distributionName: "designPriorDistribution"
+		meanName: "designPriorMean"
+		sdName: "designPriorStandardDeviation"
+		distributionInfo: qsTr("Design prior under H\u2081 used to evaluate study outcomes when the alternative hypothesis is true.")
+		meanInfo: qsTr("Location or mean of the H\u2081 design prior.")
+		sdInfo: qsTr("Standard deviation of the normal H\u2081 design prior.")
+		meanDefault: 0.5
 	}
 
-	Group
+	BayesFactorBinomialDesignPriorGroup
 	{
-		title: qsTr("Prior Under H\u2081")
-		columns: 3
+		groupTitle: qsTr("Prior Under H\u2081")
 		visible: isBinomial
-
-		Text { Layout.columnSpan: 2; text: qsTr("Distribution:") }
-		DropDown
-		{
-			name: "binomialDesignPriorDistribution"
-			id:   binomialDesignPrior
-			info: qsTr("Design prior under H\u2081 used to evaluate binomial study outcomes when the alternative hypothesis is true.")
-			indexDefaultValue: 0
-			label: ""
-			values: [
-				{ label: qsTr("Point proportion"), value: "point" },
-				{ label: qsTr("Beta prior"),       value: "beta"  }
-			]
-		}
-
-		Text
-		{
-			text: qsTr("Design proportion:")
-			visible: binomialDesignPrior.currentValue === "point"
-		}
-		Text
-		{
-			text: "p"
-			visible: binomialDesignPrior.currentValue === "point"
-		}
-		DoubleField
-		{
-			name: "designProportion"
-			id:   designProportion
-			info: qsTr("Point proportion assumed under the H\u2081 design prior.")
-			min: 0
-			max: 1
-			defaultValue: 0.6
-			inclusive: JASP.None
-			visible: binomialDesignPrior.currentValue === "point"
-		}
-
-		Text
-		{
-			text: qsTr("Beta prior successes:")
-			visible: binomialDesignPrior.currentValue === "beta"
-		}
-		Text
-		{
-			text: "a"
-			visible: binomialDesignPrior.currentValue === "beta"
-		}
-		DoubleField
-		{
-			name: "designPriorSuccesses"
-			id:   designPriorSuccesses
-			info: qsTr("Success parameter of the beta H\u2081 design prior.")
-			min: 0
-			defaultValue: 1
-			inclusive: JASP.None
-			visible: binomialDesignPrior.currentValue === "beta"
-		}
-
-		Text
-		{
-			text: qsTr("Beta prior failures:")
-			visible: binomialDesignPrior.currentValue === "beta"
-		}
-		Text
-		{
-			text: "b"
-			visible: binomialDesignPrior.currentValue === "beta"
-		}
-		DoubleField
-		{
-			name: "designPriorFailures"
-			id:   designPriorFailures
-			info: qsTr("Failure parameter of the beta H\u2081 design prior.")
-			min: 0
-			defaultValue: 1
-			inclusive: JASP.None
-			visible: binomialDesignPrior.currentValue === "beta"
-		}
-
-		Text
-		{
-			text: qsTr("Lower truncation:")
-			visible: binomialDesignPrior.currentValue === "beta"
-		}
-		Text
-		{
-			text: "l"
-			visible: binomialDesignPrior.currentValue === "beta"
-		}
-		DoubleField
-		{
-			name: "designPriorLowerTruncation"
-			id:   designPriorLower
-			info: qsTr("Lower truncation point for the beta H\u2081 design prior.")
-			min: 0
-			max: 1
-			defaultValue: 0
-			inclusive: JASP.MinOnly
-			visible: binomialDesignPrior.currentValue === "beta"
-		}
-
-		Text
-		{
-			text: qsTr("Upper truncation:")
-			visible: binomialDesignPrior.currentValue === "beta"
-		}
-		Text
-		{
-			text: "u"
-			visible: binomialDesignPrior.currentValue === "beta"
-		}
-		DoubleField
-		{
-			name: "designPriorUpperTruncation"
-			id:   designPriorUpper
-			info: qsTr("Upper truncation point for the beta H\u2081 design prior.")
-			min: 0
-			max: 1
-			defaultValue: 1
-			inclusive: JASP.MaxOnly
-			visible: binomialDesignPrior.currentValue === "beta"
-		}
+		distributionName: "binomialDesignPriorDistribution"
+		pointName: "designProportion"
+		successesName: "designPriorSuccesses"
+		failuresName: "designPriorFailures"
+		lowerName: "designPriorLowerTruncation"
+		upperName: "designPriorUpperTruncation"
+		distributionInfo: qsTr("Design prior under H\u2081 used to evaluate binomial study outcomes when the alternative hypothesis is true.")
+		pointInfo: qsTr("Point proportion assumed under the H\u2081 design prior.")
+		successesInfo: qsTr("Success parameter of the beta H\u2081 design prior.")
+		failuresInfo: qsTr("Failure parameter of the beta H\u2081 design prior.")
+		lowerInfo: qsTr("Lower truncation point for the beta H\u2081 design prior.")
+		upperInfo: qsTr("Upper truncation point for the beta H\u2081 design prior.")
+		pointDefault: 0.6
+		upperDefault: 1
 	}
 }

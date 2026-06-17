@@ -26,8 +26,14 @@
 .bfdPriorsRows <- function(settings) {
   data.frame(
     hypothesis    = c(gettext("H\u2081"), gettext("H\u2080")),
-    designPrior   = c(.bfdDesignPriorString(settings, "h1"), .bfdDesignPriorString(settings, "h0")),
-    analysisPrior = c(.bfdAnalysisPriorString(settings), .bfdNullPriorString(settings)),
+    designPrior   = c(
+      .bfdPriorString(.bfdDesignPriorLabel(settings, "h1"), .bfdDesignPriorParameters(settings, "h1")),
+      .bfdPriorString(.bfdDesignPriorLabel(settings, "h0"), .bfdDesignPriorParameters(settings, "h0"))
+    ),
+    analysisPrior = c(
+      .bfdPriorString(.bfdAnalysisPriorTableLabel(settings), .bfdAnalysisPriorParameters(settings)),
+      .bfdNullPriorString(settings)
+    ),
     stringsAsFactors = FALSE
   )
 }
@@ -52,31 +58,6 @@
     columns       = c("under", "null", "undecided", "alternative"),
     stringColumns = "under"
   ))
-}
-
-.bfdCreateTable <- function(parent, key, title, position, dependencies, showSpecifiedColumnsOnly = FALSE) {
-  if (!is.null(parent[[key]]))
-    return(NULL)
-
-  table <- createJaspTable(title = title)
-  table$dependOn(dependencies)
-  table$position <- position
-  table$showSpecifiedColumnsOnly <- showSpecifiedColumnsOnly
-  parent[[key]] <- table
-
-  return(table)
-}
-
-.bfdCreateHtml <- function(parent, key, title, position, dependencies) {
-  if (!is.null(parent[[key]]))
-    return(NULL)
-
-  html <- createJaspHtml(title = title)
-  html$dependOn(dependencies)
-  html$position <- position
-  parent[[key]] <- html
-
-  return(html)
 }
 
 .bfdExplanatoryTextEnabled <- function(settings) {
@@ -112,15 +93,13 @@
     return(invisible(FALSE))
   }
 
-  html <- .bfdCreateHtml(
-    parent       = parent,
-    key          = key,
-    title        = title,
-    position     = position,
-    dependencies = dependencies
-  )
-  if (is.null(html))
+  if (!is.null(parent[[key]]))
     return(invisible(FALSE))
+
+  html <- createJaspHtml(title = title)
+  html$dependOn(dependencies)
+  html$position <- position
+  parent[[key]] <- html
 
   html[["text"]] <- paste0("<p>", paste(text, collapse = "</p><p>"), "</p>")
   return(invisible(TRUE))

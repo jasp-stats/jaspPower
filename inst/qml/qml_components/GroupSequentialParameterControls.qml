@@ -150,6 +150,8 @@ Group
 	{
 		var method = survivalInformationMethod.currentValue
 		var previousMethod = previousSurvivalInformationMethod
+		if (method === "nSurvival")
+			nullHazardRatio.value = root.defaultNullRatio
 
 		root.syncPositiveDefault(
 			hazardRatio,
@@ -593,8 +595,8 @@ Group
 			info:         qsTr("Experimental/control hazard ratio under the alternative hypothesis. The default example effect is 1.3.")
 		}
 
-		Text { text: qsTr("Null hazard ratio:"); visible: root.usesSurvivalEndpoint }
-		Text { text: qsTr("HR\u2080"); visible: root.usesSurvivalEndpoint }
+		Text { text: qsTr("Null hazard ratio:"); visible: root.usesSurvivalEndpoint; enabled: !root.usesNSurvivalAccrual }
+		Text { text: qsTr("HR\u2080"); visible: root.usesSurvivalEndpoint; enabled: !root.usesNSurvivalAccrual }
 		DoubleField
 		{
 			name:         "nullHazardRatio"
@@ -604,6 +606,7 @@ Group
 			decimals:     4
 			inclusive:    JASP.None
 			visible:      root.usesSurvivalEndpoint
+			enabled:      !root.usesNSurvivalAccrual
 			info:         root.usesNSurvivalAccrual ? qsTr("The subjects + events survival calculation supports only HR0 = 1. Use events only or group sequential accrual for a non-null hazard-ratio margin.") : qsTr("Hazard ratio specified by the null hypothesis.")
 		}
 

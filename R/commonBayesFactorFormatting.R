@@ -19,8 +19,11 @@
 }
 
 .bfdFormatRCall <- function(functionName, args) {
-  argNames <- names(args)
-  values   <- vapply(args, .bfdFormatRValue, character(1))
+  return(.bfdFormatRCallValues(functionName, vapply(args, .bfdFormatRValue, character(1))))
+}
+
+.bfdFormatRCallValues <- function(functionName, values) {
+  argNames <- names(values)
   width    <- max(nchar(argNames))
   lines    <- paste0("  ", sprintf(paste0("%-", width, "s"), argNames), " = ", values)
 
@@ -70,7 +73,7 @@
 
 .bfdDecisionRuleLabel <- function(settings, target) {
   if (target == "h1")
-    return(gettextf("BF\u2081\u2080 \u2265 %1$s", .bfdFormatNumber(settings[["bf10Threshold"]])))
+    return(gettextf("BF\u2081\u2080 \u2265 %1$s", .bfdFormatNumber(settings[["conclusiveEvidenceThresholdH1"]])))
 
-  return(gettextf("BF\u2080\u2081 \u2265 %1$s", .bfdFormatNumber(settings[["bf01Threshold"]])))
+  return(gettextf("BF\u2080\u2081 \u2265 %1$s", .bfdFormatNumber(settings[["conclusiveEvidenceThresholdH0"]])))
 }

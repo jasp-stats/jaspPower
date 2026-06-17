@@ -62,73 +62,10 @@ GroupSequentialDesign <- function(jaspResults, dataset, options) {
 .csdBoundariesPlotDependencies <- c(.csdDependencies, "boundariesPlot", "legendPosition", "colorPalette")
 .csdCrossingProbabilitiesPlotDependencies <- c(.csdDependencies, "crossingProbabilitiesPlot", "legendPosition", "colorPalette")
 
-.csdKnownDesignTypes <- c("oneSided", "twoSidedSymmetric", "twoSidedAsymmetricBinding", "twoSidedAsymmetricNonBinding")
-.csdKnownSampleSizeModes <- c("generic", "fixedDesign", "effectSize")
-.csdKnownEffectScales <- c(
-  "canonicalDelta", "oneSamplePairedSmd", "independentSamplesSmd",
-  "meanDifferenceOneSamplePaired", "meanDifferenceIndependentSamples",
-  "twoSampleBinary", "survivalHazardRatio"
-)
-.csdKnownBinaryInputModes <- c("baselineEffect", "eventRates")
-.csdKnownBinaryEffectScales <- c("riskDifference", "riskRatio", "oddsRatio")
-.csdKnownSurvivalInformationMethods <- c("events", "nSurvival", "gsSurv")
-.csdKnownSurvivalEntries <- c("unif", "expo")
-.csdKnownBoundaries <- c("obrienFleming", "pocock", "wangTsiatis", "hwangShihDeCani", "kimDeMetsPower")
-
 .csdPrepareSettings <- function(options) {
-  testType <- .csdTestType(options[["designType"]])
-
-  settings <- list(
-    designType             = options[["designType"]],
-    testType               = testType,
-    designTypeLabel        = .csdDesignTypeLabel(options[["designType"]]),
-    numberOfLooks          = options[["numberOfLooks"]],
-    timingMode             = options[["timingMode"]],
-    alpha                  = options[["alpha"]],
-    power                  = options[["power"]],
-    beta                   = 1 - options[["power"]],
-    sampleSizeMode         = options[["sampleSizeMode"]],
-    fixedSampleSize        = options[["fixedSampleSize"]],
-    effectScale            = options[["effectScale"]],
-    effectScaleLabel       = .csdEffectScaleLabel(options[["effectScale"]]),
-    effectSize             = abs(options[["effectSize"]]),
-    naturalEffectSize      = abs(options[["naturalEffectSize"]]),
-    effectStandardDeviation = options[["effectStandardDeviation"]],
-    sampleSizeAllocationRatio = options[["sampleSizeAllocationRatio"]],
-    binaryInputMode       = options[["binaryInputMode"]],
-    binaryEventRateGroup1 = options[["binaryEventRateGroup1"]],
-    binaryEventRateGroup2 = options[["binaryEventRateGroup2"]],
-    binaryBaselineEventRate = options[["binaryBaselineEventRate"]],
-    binaryAlternativeEffect = options[["binaryAlternativeEffect"]],
-    binaryEffectScale      = options[["binaryEffectScale"]],
-    binaryNullRiskDifference = options[["binaryNullRiskDifference"]],
-    binaryNullRiskRatio    = options[["binaryNullRiskRatio"]],
-    binaryNullOddsRatio    = options[["binaryNullOddsRatio"]],
-    hazardRatio            = options[["hazardRatio"]],
-    nullHazardRatio        = options[["nullHazardRatio"]],
-    survivalInformationMethod = options[["survivalInformationMethod"]],
-    survivalControlHazard  = options[["survivalControlHazard"]],
-    survivalDropoutHazard  = options[["survivalDropoutHazard"]],
-    survivalAccrualDuration = options[["survivalAccrualDuration"]],
-    survivalStudyDuration  = options[["survivalStudyDuration"]],
-    survivalEntry          = options[["survivalEntry"]],
-    survivalEntryGamma     = options[["survivalEntryGamma"]],
-    survivalAccrualRate    = options[["survivalAccrualRate"]],
-    survivalMinimumFollowup = options[["survivalMinimumFollowup"]],
-    survivalGsSurvMethod   = options[["survivalGsSurvMethod"]],
-    upperBoundary          = options[["upperBoundary"]],
-    upperBoundaryLabel     = .csdBoundaryLabel(options[["upperBoundary"]], testType),
-    upperBoundaryParameter = options[["upperBoundaryParameter"]],
-    lowerBoundary          = options[["lowerBoundary"]],
-    lowerBoundaryLabel     = .csdBoundaryLabel(options[["lowerBoundary"]], testType),
-    lowerBoundaryParameter = options[["lowerBoundaryParameter"]],
-    gridPoints             = options[["gridPoints"]],
-    legendPosition         = options[["legendPosition"]],
-    colorPalette           = options[["colorPalette"]]
-  )
-
-  settings[["timing"]] <- .csdTiming(settings, options[["timing"]])
-  .csdValidateSettings(settings)
+  settings <- as.list(options)
+  settings[["testType"]] <- .csdTestType(settings[["designType"]])
+  settings[["timing"]] <- .csdTiming(settings, settings[["timing"]])
 
   settings <- .csdResolveInformationScale(settings)
 
@@ -136,117 +73,107 @@ GroupSequentialDesign <- function(jaspResults, dataset, options) {
 }
 
 .csdResolveInformationScale <- function(settings) {
-  .csdRequireKnownOption(gettext("sample-size mode"), settings[["sampleSizeMode"]], .csdKnownSampleSizeModes)
-
   if (settings[["sampleSizeMode"]] == "effectSize") {
     return(.csdResolveEffectScale(settings))
   } else if (settings[["sampleSizeMode"]] == "generic") {
     settings[["delta"]] <- 0
     settings[["nFix"]]  <- 1
-    settings[["informationScaleLabel"]] <- gettext("Information ratio")
   } else if (settings[["sampleSizeMode"]] == "fixedDesign") {
     settings[["delta"]] <- 0
     settings[["nFix"]]  <- settings[["fixedSampleSize"]]
-    settings[["informationScaleLabel"]] <- gettext("Fixed design value")
-  } else {
-    .csdUnknownOptionError(gettext("sample-size mode"), settings[["sampleSizeMode"]])
   }
 
   return(settings)
 }
 
 .csdResolveEffectScale <- function(settings) {
-  settings[["informationScaleLabel"]] <- settings[["effectScaleLabel"]]
-
   if (settings[["effectScale"]] %in% c("independentSamplesSmd", "meanDifferenceIndependentSamples")) {
     settings[["delta"]] <- 0
-    settings[["nFix"]]  <- .csdNormalFixedInformation(settings)
+    settings[["nFix"]]  <- do.call(gsDesign::nNormal, .csdNormalFixedInformationArgs(settings))
     return(settings)
   }
 
   if (settings[["effectScale"]] == "twoSampleBinary") {
     settings[["delta"]] <- 0
-    settings[["nFix"]]  <- .csdBinomialFixedInformation(settings)
+    settings[["nFix"]]  <- do.call(gsDesign::nBinomial, .csdBinomialFixedInformationArgs(settings))
     return(settings)
   }
 
   if (settings[["effectScale"]] == "survivalHazardRatio") {
-    return(.csdResolveSurvivalInformation(settings))
-  }
+    settings[["delta"]] <- 0
 
-  if (!(settings[["effectScale"]] %in% c("canonicalDelta", "oneSamplePairedSmd", "meanDifferenceOneSamplePaired")))
-    .csdUnknownOptionError(gettext("effect scale"), settings[["effectScale"]])
+    if (settings[["survivalInformationMethod"]] == "gsSurv") {
+      settings[["nFix"]]      <- 1
+      settings[["usesGsSurv"]] <- TRUE
+      return(settings)
+    }
 
-  settings[["delta"]] <- .csdEffectScaleDelta(settings)
-  settings[["nFix"]]  <- 1
+    if (settings[["survivalInformationMethod"]] == "nSurvival") {
+      fixed <- do.call(gsDesign::nSurvival, .csdNSurvivalFixedInformationArgs(settings))
+      settings[["nFix"]]     <- fixed[["nEvents"]]
+      settings[["nFixSurv"]] <- fixed[["n"]]
+      return(settings)
+    }
 
-  return(settings)
-}
-
-.csdResolveSurvivalInformation <- function(settings) {
-  settings[["delta"]] <- 0
-  .csdRequireKnownOption(
-    gettext("survival information method"),
-    settings[["survivalInformationMethod"]],
-    .csdKnownSurvivalInformationMethods
-  )
-
-  if (settings[["survivalInformationMethod"]] == "gsSurv") {
-    settings[["nFix"]]      <- 1
-    settings[["usesGsSurv"]] <- TRUE
+    settings[["nFix"]] <- do.call(gsDesign::nEvents, .csdNEventsFixedInformationArgs(settings))
     return(settings)
   }
 
-  fixed <- .csdSurvivalFixedInformation(settings)
-  settings[["nFix"]] <- fixed[["events"]]
+  if (!(settings[["effectScale"]] %in% c("canonicalDelta", "oneSamplePairedSmd", "meanDifferenceOneSamplePaired")))
+    return(settings)
 
-  if (!is.null(fixed[["subjects"]]))
-    settings[["nFixSurv"]] <- fixed[["subjects"]]
+  settings[["delta"]] <- if (settings[["effectScale"]] == "meanDifferenceOneSamplePaired") {
+    settings[["naturalEffectSize"]] / settings[["effectStandardDeviation"]]
+  } else {
+    settings[["effectSize"]]
+  }
+  settings[["nFix"]] <- 1
 
   return(settings)
 }
 
-.csdEffectScaleDelta <- function(settings) {
-  if (settings[["effectScale"]] == "meanDifferenceOneSamplePaired")
-    return(settings[["naturalEffectSize"]] / settings[["effectStandardDeviation"]])
-
-  return(settings[["effectSize"]])
-}
-
-.csdNormalFixedInformation <- function(settings) {
+.csdNormalFixedInformationArgs <- function(settings) {
   helper <- .csdFixedDesignHelperSettings(settings)
   delta1 <- if (settings[["effectScale"]] == "independentSamplesSmd") settings[["effectSize"]] else settings[["naturalEffectSize"]]
   sd     <- if (settings[["effectScale"]] == "independentSamplesSmd") 1 else settings[["effectStandardDeviation"]]
 
-  gsDesign::nNormal(
+  list(
     delta1 = delta1,
     sd     = sd,
     alpha  = helper[["alpha"]],
-    beta   = settings[["beta"]],
+    beta   = 1 - settings[["power"]],
     ratio  = settings[["sampleSizeAllocationRatio"]],
     sided  = helper[["sided"]]
   )
 }
 
-.csdBinomialFixedInformation <- function(settings) {
+.csdBinomialFixedInformationArgs <- function(settings) {
   helper <- .csdFixedDesignHelperSettings(settings)
   rates  <- .csdBinomialEventRates(settings)
 
-  gsDesign::nBinomial(
+  list(
     p1     = rates[["p1"]],
     p2     = rates[["p2"]],
     alpha  = helper[["alpha"]],
-    beta   = settings[["beta"]],
-    delta0 = .csdBinomialNullEffect(settings),
+    beta   = 1 - settings[["power"]],
+    delta0 = switch(
+      settings[["binaryEffectScale"]],
+      riskDifference = settings[["binaryNullRiskDifference"]],
+      riskRatio      = log(settings[["binaryNullRiskRatio"]]),
+      oddsRatio      = log(settings[["binaryNullOddsRatio"]])
+    ),
     ratio  = settings[["sampleSizeAllocationRatio"]],
     sided  = helper[["sided"]],
-    scale  = .csdBinomialScale(settings[["binaryEffectScale"]])
+    scale  = switch(
+      settings[["binaryEffectScale"]],
+      riskDifference = "Difference",
+      riskRatio      = "RR",
+      oddsRatio      = "OR"
+    )
   )
 }
 
 .csdBinomialEventRates <- function(settings) {
-  .csdRequireKnownOption(gettext("binary input mode"), settings[["binaryInputMode"]], .csdKnownBinaryInputModes)
-
   if (settings[["binaryInputMode"]] == "eventRates") {
     p1 <- settings[["binaryEventRateGroup1"]]
     p2 <- settings[["binaryEventRateGroup2"]]
@@ -265,8 +192,6 @@ GroupSequentialDesign <- function(jaspResults, dataset, options) {
   if (!is.finite(effect))
     stop(gettext("The alternative binary effect must be finite."))
 
-  .csdRequireKnownOption(gettext("binary effect scale"), settings[["binaryEffectScale"]], .csdKnownBinaryEffectScales)
-
   if (settings[["binaryEffectScale"]] %in% c("riskRatio", "oddsRatio") && effect <= 0)
     stop(gettext("Alternative risk ratios and odds ratios must be greater than 0."))
 
@@ -277,8 +202,7 @@ GroupSequentialDesign <- function(jaspResults, dataset, options) {
     oddsRatio      = {
       odds2 <- (p1 / (1 - p1)) / effect
       odds2 / (1 + odds2)
-    },
-    .csdUnknownOptionError(gettext("binary effect scale"), settings[["binaryEffectScale"]])
+    }
   )
 
   if (!is.finite(p2) || p2 <= 0 || p2 >= 1)
@@ -292,40 +216,24 @@ GroupSequentialDesign <- function(jaspResults, dataset, options) {
     stop(gettextf("The %1$s must be greater than 0 and less than 1.", label))
 }
 
-.csdSurvivalFixedInformation <- function(settings) {
-  if (settings[["survivalInformationMethod"]] == "nSurvival")
-    return(.csdNSurvivalFixedInformation(settings))
-
-  if (settings[["survivalInformationMethod"]] == "events")
-    return(.csdNEventsFixedInformation(settings))
-
-  .csdUnknownOptionError(gettext("survival information method"), settings[["survivalInformationMethod"]])
-}
-
-.csdNEventsFixedInformation <- function(settings) {
+.csdNEventsFixedInformationArgs <- function(settings) {
   helper <- .csdFixedDesignHelperSettings(settings)
 
-  events <- gsDesign::nEvents(
+  list(
     hr    = settings[["hazardRatio"]],
     alpha = helper[["alpha"]],
-    beta  = settings[["beta"]],
+    beta  = 1 - settings[["power"]],
     ratio = settings[["sampleSizeAllocationRatio"]],
     sided = helper[["sided"]],
     hr0   = settings[["nullHazardRatio"]]
   )
-
-  return(list(events = events))
 }
 
-.csdNSurvivalFixedInformation <- function(settings) {
-  if (!isTRUE(all.equal(settings[["nullHazardRatio"]], 1)))
-    stop(gettext("The subjects + events survival mode supports a null hazard ratio of 1 only. Use events-only or group sequential accrual mode for a non-null hazard ratio."))
-
-  .csdRequireKnownOption(gettext("survival entry distribution"), settings[["survivalEntry"]], .csdKnownSurvivalEntries)
-
+.csdNSurvivalFixedInformationArgs <- function(settings) {
   helper <- .csdFixedDesignHelperSettings(settings)
   gamma  <- if (settings[["survivalEntry"]] == "expo") settings[["survivalEntryGamma"]] else NA_real_
-  ss     <- gsDesign::nSurvival(
+
+  list(
     lambda1 = settings[["survivalControlHazard"]],
     lambda2 = settings[["survivalControlHazard"]] * settings[["hazardRatio"]],
     Ts      = settings[["survivalStudyDuration"]],
@@ -333,15 +241,13 @@ GroupSequentialDesign <- function(jaspResults, dataset, options) {
     eta     = settings[["survivalDropoutHazard"]],
     ratio   = settings[["sampleSizeAllocationRatio"]],
     alpha   = helper[["alpha"]],
-    beta    = settings[["beta"]],
+    beta    = 1 - settings[["power"]],
     sided   = helper[["sided"]],
     approx  = FALSE,
     type    = "rr",
     entry   = settings[["survivalEntry"]],
     gamma   = gamma
   )
-
-  return(list(events = ss[["nEvents"]], subjects = ss[["n"]]))
 }
 
 .csdFixedDesignHelperSettings <- function(settings) {
@@ -351,115 +257,27 @@ GroupSequentialDesign <- function(jaspResults, dataset, options) {
   return(list(alpha = settings[["alpha"]], sided = 1L))
 }
 
-.csdBinomialScale <- function(binaryEffectScale) {
-  .csdRequireKnownOption(gettext("binary effect scale"), binaryEffectScale, .csdKnownBinaryEffectScales)
-
-  switch(
-    binaryEffectScale,
-    riskDifference = "Difference",
-    riskRatio      = "RR",
-    oddsRatio      = "OR",
-    .csdUnknownOptionError(gettext("binary effect scale"), binaryEffectScale)
-  )
-}
-
-.csdBinomialNullEffect <- function(settings) {
-  .csdRequireKnownOption(gettext("binary effect scale"), settings[["binaryEffectScale"]], .csdKnownBinaryEffectScales)
-
-  switch(
-    settings[["binaryEffectScale"]],
-    riskDifference = settings[["binaryNullRiskDifference"]],
-    riskRatio      = log(settings[["binaryNullRiskRatio"]]),
-    oddsRatio      = log(settings[["binaryNullOddsRatio"]]),
-    .csdUnknownOptionError(gettext("binary effect scale"), settings[["binaryEffectScale"]])
-  )
-}
-
-.csdValidateSettings <- function(settings) {
-  if (settings[["numberOfLooks"]] < 2)
-    stop(gettext("The number of looks must be at least 2."))
-
-  if (settings[["testType"]] %in% c(3, 4) && settings[["upperBoundary"]] == "wangTsiatis")
-    stop(gettext("Wang-Tsiatis boundaries are not available for asymmetric designs."))
-
-  .csdValidateBoundaryParameter(settings[["upperBoundary"]], settings[["upperBoundaryParameter"]])
-
-  if (settings[["testType"]] %in% c(3, 4))
-    .csdValidateBoundaryParameter(settings[["lowerBoundary"]], settings[["lowerBoundaryParameter"]])
-}
-
-.csdValidateBoundaryParameter <- function(boundary, parameter) {
-  if (!.csdBoundaryUsesParameter(boundary))
-    return()
-
-  if (!is.finite(parameter))
-    stop(gettext("Boundary parameters must be finite."))
-
-  if (boundary == "hwangShihDeCani" && (parameter < -40 || parameter > 40))
-    stop(gettext("Hwang-Shih-DeCani parameters must be between -40 and 40."))
-
-  if (boundary == "kimDeMetsPower" && (parameter <= 0 || parameter > 50))
-    stop(gettext("Kim-DeMets power parameters must be greater than 0 and no larger than 50."))
-}
-
 .csdTestType <- function(designType) {
-  .csdRequireKnownOption(gettext("design type"), designType, .csdKnownDesignTypes)
-
   switch(
     designType,
     oneSided                    = 1,
     twoSidedSymmetric           = 2,
     twoSidedAsymmetricBinding   = 3,
-    twoSidedAsymmetricNonBinding = 4,
-    .csdUnknownOptionError(gettext("design type"), designType)
+    twoSidedAsymmetricNonBinding = 4
   )
 }
 
 .csdDesignTypeLabel <- function(designType) {
-  .csdRequireKnownOption(gettext("design type"), designType, .csdKnownDesignTypes)
-
   switch(
     designType,
     oneSided                    = gettext("One-sided"),
     twoSidedSymmetric           = gettext("Two-sided symmetric"),
     twoSidedAsymmetricBinding   = gettext("Two-sided asymmetric \u03B2-spending (binding futility)"),
-    twoSidedAsymmetricNonBinding = gettext("Two-sided asymmetric \u03B2-spending (non-binding futility)"),
-    .csdUnknownOptionError(gettext("design type"), designType)
+    twoSidedAsymmetricNonBinding = gettext("Two-sided asymmetric \u03B2-spending (non-binding futility)")
   )
 }
 
-.csdRequireKnownBoundary <- function(boundary) {
-  .csdRequireKnownOption(gettext("boundary"), boundary, .csdKnownBoundaries)
-}
-
-.csdRequireKnownOption <- function(optionName, value, choices) {
-  if (length(value) == 1 && !is.na(value) && value %in% choices)
-    return(invisible(TRUE))
-
-  .csdUnknownOptionError(optionName, value)
-}
-
-.csdUnknownBoundaryError <- function(boundary) {
-  .csdUnknownOptionError(gettext("boundary"), boundary)
-}
-
-.csdUnknownOptionError <- function(optionName, value) {
-  stop(gettextf("Unknown %1$s option: %2$s.", optionName, .csdOptionValueLabel(value)))
-}
-
-.csdOptionValueLabel <- function(value) {
-  if (length(value) == 0)
-    return(gettext("missing"))
-
-  value <- as.character(value)
-  value[is.na(value)] <- "NA"
-
-  paste(value, collapse = ", ")
-}
-
 .csdEffectScaleLabel <- function(effectScale) {
-  .csdRequireKnownOption(gettext("effect scale"), effectScale, .csdKnownEffectScales)
-
   switch(
     effectScale,
     canonicalDelta                    = gettext("Canonical effect (\u03B4)"),
@@ -468,23 +286,29 @@ GroupSequentialDesign <- function(jaspResults, dataset, options) {
     meanDifferenceOneSamplePaired     = gettext("Mean difference (one sample / paired)"),
     meanDifferenceIndependentSamples  = gettext("Mean difference (independent samples)"),
     twoSampleBinary                   = gettext("Two-sample binary endpoint"),
-    survivalHazardRatio               = gettext("Survival hazard ratio"),
-    .csdUnknownOptionError(gettext("effect scale"), effectScale)
+    survivalHazardRatio               = gettext("Survival hazard ratio")
   )
 }
 
-.csdBoundaryLabel <- function(boundary, testType = 1) {
-  .csdRequireKnownBoundary(boundary)
+.csdPlanningMetricLabel <- function(settings) {
+  if (settings[["sampleSizeMode"]] == "generic")
+    return(gettext("Information ratio"))
 
+  if (settings[["sampleSizeMode"]] == "fixedDesign")
+    return(gettext("Fixed design value"))
+
+  if (settings[["sampleSizeMode"]] == "effectSize")
+    return(.csdEffectScaleLabel(settings[["effectScale"]]))
+}
+
+.csdBoundaryLabel <- function(boundary, testType = 1) {
   if (testType %in% c(3, 4)) {
     return(switch(
       boundary,
       obrienFleming     = gettext("O'Brien-Fleming spending"),
       pocock            = gettext("Pocock spending"),
-      wangTsiatis       = gettext("Wang-Tsiatis"),
       hwangShihDeCani   = gettext("Hwang-Shih-DeCani"),
-      kimDeMetsPower    = gettext("Kim-DeMets power"),
-      .csdUnknownBoundaryError(boundary)
+      kimDeMetsPower    = gettext("Kim-DeMets power")
     ))
   }
 
@@ -494,8 +318,7 @@ GroupSequentialDesign <- function(jaspResults, dataset, options) {
     pocock            = gettext("Pocock"),
     wangTsiatis       = gettext("Wang-Tsiatis"),
     hwangShihDeCani   = gettext("Hwang-Shih-DeCani"),
-    kimDeMetsPower    = gettext("Kim-DeMets power"),
-    .csdUnknownBoundaryError(boundary)
+    kimDeMetsPower    = gettext("Kim-DeMets power")
   )
 }
 
@@ -536,9 +359,6 @@ GroupSequentialDesign <- function(jaspResults, dataset, options) {
 }
 
 .csdComputeResult <- function(settings) {
-  if (!requireNamespace("gsDesign", quietly = TRUE))
-    stop(gettext("The gsDesign package is required for this analysis."))
-
   design <- if (.csdUsesGsSurv(settings)) {
     do.call(gsDesign::gsSurv, .csdGsSurvArgs(settings))
   } else {
@@ -555,7 +375,7 @@ GroupSequentialDesign <- function(jaspResults, dataset, options) {
     k         = settings[["numberOfLooks"]],
     test.type = settings[["testType"]],
     alpha     = settings[["alpha"]],
-    beta      = settings[["beta"]],
+    beta      = 1 - settings[["power"]],
     delta     = settings[["delta"]],
     n.fix     = settings[["nFix"]],
     timing    = settings[["timing"]],
@@ -592,7 +412,7 @@ GroupSequentialDesign <- function(jaspResults, dataset, options) {
     test.type = settings[["testType"]],
     alpha     = helper[["alpha"]],
     sided     = helper[["sided"]],
-    beta      = settings[["beta"]],
+    beta      = 1 - settings[["power"]],
     timing    = settings[["timing"]],
     sfu       = .csdSpendingFunction(settings[["upperBoundary"]], settings[["testType"]]),
     r         = settings[["gridPoints"]],
@@ -641,17 +461,13 @@ GroupSequentialDesign <- function(jaspResults, dataset, options) {
 }
 
 .csdSpendingFunction <- function(boundary, testType) {
-  .csdRequireKnownBoundary(boundary)
-
   if (testType %in% c(3, 4)) {
     return(switch(
       boundary,
       obrienFleming   = gsDesign::sfLDOF,
       pocock          = gsDesign::sfLDPocock,
-      wangTsiatis     = stop(gettext("Wang-Tsiatis boundaries are not available for asymmetric designs.")),
       hwangShihDeCani = gsDesign::sfHSD,
-      kimDeMetsPower  = gsDesign::sfPower,
-      .csdUnknownBoundaryError(boundary)
+      kimDeMetsPower  = gsDesign::sfPower
     ))
   }
 
@@ -661,8 +477,28 @@ GroupSequentialDesign <- function(jaspResults, dataset, options) {
     pocock          = "Pocock",
     wangTsiatis     = "WT",
     hwangShihDeCani = gsDesign::sfHSD,
-    kimDeMetsPower  = gsDesign::sfPower,
-    .csdUnknownBoundaryError(boundary)
+    kimDeMetsPower  = gsDesign::sfPower
+  )
+}
+
+.csdSpendingFunctionRValue <- function(boundary, testType) {
+  if (testType %in% c(3, 4)) {
+    return(switch(
+      boundary,
+      obrienFleming   = "gsDesign::sfLDOF",
+      pocock          = "gsDesign::sfLDPocock",
+      hwangShihDeCani = "gsDesign::sfHSD",
+      kimDeMetsPower  = "gsDesign::sfPower"
+    ))
+  }
+
+  switch(
+    boundary,
+    obrienFleming   = "\"OF\"",
+    pocock          = "\"Pocock\"",
+    wangTsiatis     = "\"WT\"",
+    hwangShihDeCani = "gsDesign::sfHSD",
+    kimDeMetsPower  = "gsDesign::sfPower"
   )
 }
 
@@ -683,7 +519,7 @@ GroupSequentialDesign <- function(jaspResults, dataset, options) {
   table$addColumnInfo(name = "planningMetric", title = gettext("Planning Metric"), type = "string")
 
   if (jaspBase::isTryError(result)) {
-    table$setError(gettextf("Unable to compute classical group sequential design: %1$s", .csdCleanError(result)))
+    table$setError(gettextf("Unable to compute classical group sequential design: %1$s", .bfdCleanError(result)))
     return()
   }
 
@@ -705,11 +541,11 @@ GroupSequentialDesign <- function(jaspResults, dataset, options) {
   fixedN   <- design[["n.fix"]]
 
   data.frame(
-    design         = settings[["designTypeLabel"]],
+    design         = .csdDesignTypeLabel(settings[["designType"]]),
     looks          = design[["k"]],
     alpha          = settings[["alpha"]],
-    power          = 1 - settings[["beta"]],
-    planningMetric = settings[["informationScaleLabel"]],
+    power          = settings[["power"]],
+    planningMetric = .csdPlanningMetricLabel(settings),
     fixedN         = fixedN,
     maximumN       = maximumN,
     expectedH0      = .csdExpectedN(design, 0),
@@ -749,7 +585,7 @@ GroupSequentialDesign <- function(jaspResults, dataset, options) {
   }
 
   if (jaspBase::isTryError(result)) {
-    table$setError(gettextf("Unable to compute sample size / event details: %1$s", .csdCleanError(result)))
+    table$setError(gettextf("Unable to compute sample size / event details: %1$s", .bfdCleanError(result)))
     return()
   }
 
@@ -877,7 +713,7 @@ GroupSequentialDesign <- function(jaspResults, dataset, options) {
     minfup  = settings[["survivalMinimumFollowup"]],
     ratio   = settings[["sampleSizeAllocationRatio"]],
     alpha   = helper[["alpha"]],
-    beta    = settings[["beta"]],
+    beta    = 1 - settings[["power"]],
     sided   = helper[["sided"]],
     method  = settings[["survivalGsSurvMethod"]]
   ), silent = TRUE)
@@ -999,20 +835,15 @@ GroupSequentialDesign <- function(jaspResults, dataset, options) {
 }
 
 .csdBinaryAlternativeEffectLabel <- function(settings) {
-  .csdRequireKnownOption(gettext("binary effect scale"), settings[["binaryEffectScale"]], .csdKnownBinaryEffectScales)
-
   switch(
     settings[["binaryEffectScale"]],
     riskDifference = gettext("Alternative risk difference"),
     riskRatio      = gettext("Alternative risk ratio"),
-    oddsRatio      = gettext("Alternative odds ratio"),
-    .csdUnknownOptionError(gettext("binary effect scale"), settings[["binaryEffectScale"]])
+    oddsRatio      = gettext("Alternative odds ratio")
   )
 }
 
 .csdCanonicalDeltaConversionDescription <- function(settings) {
-  .csdRequireKnownOption(gettext("effect scale"), settings[["effectScale"]], .csdKnownEffectScales)
-
   switch(
     settings[["effectScale"]],
     canonicalDelta                   = gettext("Information-scale effect used by the sequential calculations."),
@@ -1021,8 +852,7 @@ GroupSequentialDesign <- function(jaspResults, dataset, options) {
     meanDifferenceOneSamplePaired    = gettext("The raw mean difference is divided by the relevant SD and used as the information-scale effect."),
     meanDifferenceIndependentSamples = gettext("Derived from the fixed-design total sample size computed from the mean difference, common SD, and allocation ratio."),
     twoSampleBinary                  = gettext("Derived from the fixed-design total sample size computed from the entered event probabilities or from the baseline event probability and alternative binary effect."),
-    survivalHazardRatio              = gettext("Derived from the event information implied by the hazard-ratio alternative, null hazard ratio, allocation ratio, and selected survival information method."),
-    .csdUnknownOptionError(gettext("effect scale"), settings[["effectScale"]])
+    survivalHazardRatio              = gettext("Derived from the event information implied by the hazard-ratio alternative, null hazard ratio, allocation ratio, and selected survival information method.")
   )
 }
 
@@ -1130,16 +960,6 @@ GroupSequentialDesign <- function(jaspResults, dataset, options) {
   return(as.numeric(value[1]))
 }
 
-.csdLowerBoundarySummary <- function(settings) {
-  if (settings[["testType"]] == 1)
-    return(gettext("Not applicable"))
-
-  if (settings[["testType"]] == 2)
-    return(gettext("Same as upper (symmetric)"))
-
-  return(settings[["lowerBoundaryLabel"]])
-}
-
 .csdDesignUsesLowerBound <- function(settings) {
   settings[["testType"]] != 1
 }
@@ -1172,8 +992,6 @@ GroupSequentialDesign <- function(jaspResults, dataset, options) {
 
   if (settings[["effectScale"]] == "survivalHazardRatio")
     return(.csdSurvivalFootnote(settings))
-
-  .csdUnknownOptionError(gettext("effect scale"), settings[["effectScale"]])
 }
 
 .csdSurvivalFootnote <- function(settings) {
@@ -1185,8 +1003,6 @@ GroupSequentialDesign <- function(jaspResults, dataset, options) {
 
   if (settings[["survivalInformationMethod"]] == "gsSurv")
     return(gettext("For group sequential accrual survival mode, values labeled events are event information; expected analysis time is measured from trial start in the same time unit as the survival inputs."))
-
-  .csdUnknownOptionError(gettext("survival information method"), settings[["survivalInformationMethod"]])
 }
 
 .csdUsesLanDeMetsBoundary <- function(settings) {
@@ -1197,7 +1013,11 @@ GroupSequentialDesign <- function(jaspResults, dataset, options) {
 }
 
 .csdBoundaryBasisFootnote <- function(settings) {
-  upper <- .csdBoundaryBasisLabel(settings[["upperBoundaryLabel"]], settings[["upperBoundary"]], settings[["upperBoundaryParameter"]])
+  upper <- .csdBoundaryBasisLabel(
+    .csdBoundaryLabel(settings[["upperBoundary"]], settings[["testType"]]),
+    settings[["upperBoundary"]],
+    settings[["upperBoundaryParameter"]]
+  )
 
   if (settings[["testType"]] == 1) {
     return(gettextf(
@@ -1213,7 +1033,11 @@ GroupSequentialDesign <- function(jaspResults, dataset, options) {
     ))
   }
 
-  lower <- .csdBoundaryBasisLabel(settings[["lowerBoundaryLabel"]], settings[["lowerBoundary"]], settings[["lowerBoundaryParameter"]])
+  lower <- .csdBoundaryBasisLabel(
+    .csdBoundaryLabel(settings[["lowerBoundary"]], settings[["testType"]]),
+    settings[["lowerBoundary"]],
+    settings[["lowerBoundaryParameter"]]
+  )
   gettextf(
     "Boundaries are based on the selected information fractions, \u03B1 and \u03B2 targets, and boundary families: upper = %1$s; lower = %2$s.",
     upper,
@@ -1254,7 +1078,7 @@ GroupSequentialDesign <- function(jaspResults, dataset, options) {
   }
 
   if (jaspBase::isTryError(result)) {
-    table$setError(gettextf("Unable to compute stopping boundaries: %1$s", .csdCleanError(result)))
+    table$setError(gettextf("Unable to compute stopping boundaries: %1$s", .bfdCleanError(result)))
     return()
   }
 
@@ -1286,7 +1110,7 @@ GroupSequentialDesign <- function(jaspResults, dataset, options) {
   table$addColumnInfo(name = "information", title = informationTitle, type = "number")
 
   if (jaspBase::isTryError(result)) {
-    table$setError(gettextf("Unable to compute look schedule: %1$s", .csdCleanError(result)))
+    table$setError(gettextf("Unable to compute look schedule: %1$s", .bfdCleanError(result)))
     return()
   }
 
@@ -1415,7 +1239,7 @@ GroupSequentialDesign <- function(jaspResults, dataset, options) {
   table$addColumnInfo(name = "noCrossing", title = gettext("No Boundary Crossing"), type = "number")
 
   if (jaspBase::isTryError(result)) {
-    table$setError(gettextf("Unable to compute final boundary crossing probabilities: %1$s", .csdCleanError(result)))
+    table$setError(gettextf("Unable to compute final boundary crossing probabilities: %1$s", .bfdCleanError(result)))
     return()
   }
 
@@ -1453,7 +1277,7 @@ GroupSequentialDesign <- function(jaspResults, dataset, options) {
   table$addColumnInfo(name = "h1NoCrossing", title = gettext("No Boundary Crossing Yet"), type = "number", overtitle = h1Overtitle)
 
   if (jaspBase::isTryError(result)) {
-    table$setError(gettextf("Unable to compute cumulative boundary crossing probabilities: %1$s", .csdCleanError(result)))
+    table$setError(gettextf("Unable to compute cumulative boundary crossing probabilities: %1$s", .bfdCleanError(result)))
     return()
   }
 
@@ -1489,7 +1313,7 @@ GroupSequentialDesign <- function(jaspResults, dataset, options) {
   table$addColumnInfo(name = "h1Upper", title = gettext("Cross Efficacy Bound"), type = "number", overtitle = h1Overtitle)
 
   if (jaspBase::isTryError(result)) {
-    table$setError(gettextf("Unable to compute new boundary crossings: %1$s", .csdCleanError(result)))
+    table$setError(gettextf("Unable to compute new boundary crossings: %1$s", .bfdCleanError(result)))
     return()
   }
 
@@ -1515,7 +1339,7 @@ GroupSequentialDesign <- function(jaspResults, dataset, options) {
   table$addColumnInfo(name = "upperNonBindingCumulative", title = gettext("Cumulative Efficacy Crossing"), type = "number")
 
   if (jaspBase::isTryError(result)) {
-    table$setError(gettextf("Unable to compute non-binding Type I error accounting: %1$s", .csdCleanError(result)))
+    table$setError(gettextf("Unable to compute non-binding Type I error accounting: %1$s", .bfdCleanError(result)))
     return()
   }
 
@@ -1694,7 +1518,7 @@ GroupSequentialDesign <- function(jaspResults, dataset, options) {
     "<p>",
     gettextf(
       "This classical group sequential design uses %1$s with %2$s planned looks.",
-      settings[["designTypeLabel"]],
+      .csdDesignTypeLabel(settings[["designType"]]),
       design[["k"]]
     ),
     "</p><p>",
@@ -1724,35 +1548,21 @@ GroupSequentialDesign <- function(jaspResults, dataset, options) {
 
   code <- try(.csdRCodeText(settings), silent = TRUE)
   if (jaspBase::isTryError(code)) {
-    html[["text"]] <- gettextf("Unable to generate R code: %1$s", .csdCleanError(code))
+    html[["text"]] <- gettextf("Unable to generate R code: %1$s", .bfdCleanError(code))
     return()
   }
 
-  html[["text"]] <- paste0(
-    "<pre><code>",
-    .csdEscapeHtml(code),
-    "</code></pre>"
-  )
+  html[["text"]] <- .bfdCodeHtml(code)
 }
 
 .csdRCodeText <- function(settings) {
   if (.csdUsesGsSurv(settings))
-    return(.csdFormatRCodeCall("gsDesign::gsSurv", .csdGsSurvCodeArgs(settings)))
+    return(.bfdFormatRCallValues("gsDesign::gsSurv", .csdGsSurvCodeArgs(settings)))
 
   fixedInformationCode <- .csdFixedInformationRCode(settings)
   nFixValue <- if (is.null(fixedInformationCode)) NULL else .csdFixedInformationNFixRCode(settings)
   args <- .csdDesignCodeArgs(settings, nFixValue)
-  maxNameWidth <- max(nchar(names(args)))
-
-  lines <- paste0(
-    "  ",
-    format(names(args), width = maxNameWidth, justify = "left"),
-    " = ",
-    unname(args),
-    c(rep(",", length(args) - 1), "")
-  )
-
-  designCode <- paste(c("gsDesign::gsDesign(", lines, ")"), collapse = "\n")
+  designCode <- .bfdFormatRCallValues("gsDesign::gsDesign", args)
 
   if (!is.null(fixedInformationCode))
     return(paste(paste0("fixedInformation <- ", fixedInformationCode), designCode, sep = "\n\n"))
@@ -1770,74 +1580,38 @@ GroupSequentialDesign <- function(jaspResults, dataset, options) {
 }
 
 .csdDesignCodeArgs <- function(settings, nFixValue = NULL) {
-  args <- c(
-    k         = .csdRValue(settings[["numberOfLooks"]]),
-    test.type = .csdRValue(settings[["testType"]]),
-    alpha     = .csdRValue(settings[["alpha"]]),
-    beta      = .csdRValue(settings[["beta"]]),
-    delta     = .csdRValue(settings[["delta"]]),
-    n.fix     = if (is.null(nFixValue)) .csdRValue(settings[["nFix"]]) else nFixValue,
-    timing    = .csdRValue(settings[["timing"]]),
-    r         = .csdRValue(settings[["gridPoints"]]),
-    sfu       = .csdSpendingFunctionRValue(settings[["upperBoundary"]], settings[["testType"]])
-  )
+  args       <- .csdDesignArgs(settings)
+  codeValues <- c(sfu = .csdSpendingFunctionRValue(settings[["upperBoundary"]], settings[["testType"]]))
 
-  if (.csdBoundaryUsesParameter(settings[["upperBoundary"]]))
-    args[["sfupar"]] <- .csdRValue(settings[["upperBoundaryParameter"]])
+  if (!is.null(nFixValue))
+    codeValues[["n.fix"]] <- nFixValue
 
-  if (.csdUsesGsDesignSurvivalEndpoint(settings)) {
-    args[["endpoint"]] <- .csdRValue("TTE")
-    args[["delta1"]]   <- paste0("log(", .csdRValue(settings[["hazardRatio"]]), ")")
-    args[["delta0"]]   <- paste0("log(", .csdRValue(settings[["nullHazardRatio"]]), ")")
-
-    if (!is.null(settings[["nFixSurv"]]))
-      args[["nFixSurv"]] <- if (identical(settings[["survivalInformationMethod"]], "nSurvival")) "fixedInformation[[\"n\"]]" else .csdRValue(settings[["nFixSurv"]])
+  if (.csdUsesGsDesignSurvivalEndpoint(settings) &&
+      !is.null(settings[["nFixSurv"]]) &&
+      identical(settings[["survivalInformationMethod"]], "nSurvival")) {
+    codeValues[["nFixSurv"]] <- "fixedInformation[[\"n\"]]"
   }
 
-  if (settings[["testType"]] %in% c(3, 4)) {
-    args[["sfl"]] <- .csdSpendingFunctionRValue(settings[["lowerBoundary"]], settings[["testType"]])
+  if (settings[["testType"]] %in% c(3, 4))
+    codeValues[["sfl"]] <- .csdSpendingFunctionRValue(settings[["lowerBoundary"]], settings[["testType"]])
 
-    if (.csdBoundaryUsesParameter(settings[["lowerBoundary"]]))
-      args[["sflpar"]] <- .csdRValue(settings[["lowerBoundaryParameter"]])
-  }
+  values <- vapply(args, .bfdFormatRValue, character(1))
+  values[names(codeValues)] <- codeValues
 
-  return(args)
+  return(values)
 }
 
 .csdGsSurvCodeArgs <- function(settings) {
-  helper <- .csdFixedDesignHelperSettings(settings)
-  args   <- c(
-    k         = .csdRValue(settings[["numberOfLooks"]]),
-    test.type = .csdRValue(settings[["testType"]]),
-    alpha     = .csdRValue(helper[["alpha"]]),
-    sided     = .csdRValue(helper[["sided"]]),
-    beta      = .csdRValue(settings[["beta"]]),
-    timing    = .csdRValue(settings[["timing"]]),
-    sfu       = .csdSpendingFunctionRValue(settings[["upperBoundary"]], settings[["testType"]]),
-    r         = .csdRValue(settings[["gridPoints"]]),
-    lambdaC   = .csdRValue(settings[["survivalControlHazard"]]),
-    hr        = .csdRValue(settings[["hazardRatio"]]),
-    hr0       = .csdRValue(settings[["nullHazardRatio"]]),
-    eta       = .csdRValue(settings[["survivalDropoutHazard"]]),
-    gamma     = .csdRValue(settings[["survivalAccrualRate"]]),
-    R         = .csdRValue(settings[["survivalAccrualDuration"]]),
-    T         = .csdRValue(settings[["survivalStudyDuration"]]),
-    minfup    = .csdRValue(settings[["survivalMinimumFollowup"]]),
-    ratio     = .csdRValue(settings[["sampleSizeAllocationRatio"]]),
-    method    = .csdRValue(settings[["survivalGsSurvMethod"]])
-  )
+  args       <- .csdGsSurvArgs(settings)
+  codeValues <- c(sfu = .csdSpendingFunctionRValue(settings[["upperBoundary"]], settings[["testType"]]))
 
-  if (.csdBoundaryUsesParameter(settings[["upperBoundary"]]))
-    args[["sfupar"]] <- .csdRValue(settings[["upperBoundaryParameter"]])
+  if (settings[["testType"]] %in% c(3, 4))
+    codeValues[["sfl"]] <- .csdSpendingFunctionRValue(settings[["lowerBoundary"]], settings[["testType"]])
 
-  if (settings[["testType"]] %in% c(3, 4)) {
-    args[["sfl"]] <- .csdSpendingFunctionRValue(settings[["lowerBoundary"]], settings[["testType"]])
+  values <- vapply(args, .bfdFormatRValue, character(1))
+  values[names(codeValues)] <- codeValues
 
-    if (.csdBoundaryUsesParameter(settings[["lowerBoundary"]]))
-      args[["sflpar"]] <- .csdRValue(settings[["lowerBoundaryParameter"]])
-  }
-
-  return(args)
+  return(values)
 }
 
 .csdFixedInformationRCode <- function(settings) {
@@ -1845,173 +1619,20 @@ GroupSequentialDesign <- function(jaspResults, dataset, options) {
     return(NULL)
 
   if (settings[["effectScale"]] %in% c("independentSamplesSmd", "meanDifferenceIndependentSamples"))
-    return(.csdNormalFixedInformationRCode(settings))
+    return(.bfdFormatRCall("gsDesign::nNormal", .csdNormalFixedInformationArgs(settings)))
 
   if (settings[["effectScale"]] == "twoSampleBinary")
-    return(.csdBinomialFixedInformationRCode(settings))
+    return(.bfdFormatRCall("gsDesign::nBinomial", .csdBinomialFixedInformationArgs(settings)))
 
-  if (settings[["effectScale"]] == "survivalHazardRatio")
-    return(.csdSurvivalFixedInformationRCode(settings))
+  if (settings[["effectScale"]] == "survivalHazardRatio") {
+    if (settings[["survivalInformationMethod"]] == "nSurvival")
+      return(.bfdFormatRCall("gsDesign::nSurvival", .csdNSurvivalFixedInformationArgs(settings)))
 
-  if (settings[["effectScale"]] %in% c("canonicalDelta", "oneSamplePairedSmd", "meanDifferenceOneSamplePaired"))
-    return(NULL)
-
-  .csdUnknownOptionError(gettext("effect scale"), settings[["effectScale"]])
-}
-
-.csdNormalFixedInformationRCode <- function(settings) {
-  helper <- .csdFixedDesignHelperSettings(settings)
-  delta1 <- if (settings[["effectScale"]] == "independentSamplesSmd") settings[["effectSize"]] else settings[["naturalEffectSize"]]
-  sd     <- if (settings[["effectScale"]] == "independentSamplesSmd") 1 else settings[["effectStandardDeviation"]]
-
-  .csdFormatRCall("gsDesign::nNormal", list(
-    delta1 = delta1,
-    sd     = sd,
-    alpha  = helper[["alpha"]],
-    beta   = settings[["beta"]],
-    ratio  = settings[["sampleSizeAllocationRatio"]],
-    sided  = helper[["sided"]]
-  ))
-}
-
-.csdBinomialFixedInformationRCode <- function(settings) {
-  helper <- .csdFixedDesignHelperSettings(settings)
-  rates  <- .csdBinomialEventRates(settings)
-
-  values <- vapply(list(
-    p1     = rates[["p1"]],
-    p2     = rates[["p2"]],
-    alpha  = helper[["alpha"]],
-    beta   = settings[["beta"]],
-    ratio  = settings[["sampleSizeAllocationRatio"]],
-    sided  = helper[["sided"]],
-    scale  = .csdBinomialScale(settings[["binaryEffectScale"]])
-  ), .csdRValue, character(1))
-
-  values[["delta0"]] <- .csdBinomialNullEffectRCode(settings)
-  values <- values[c("p1", "p2", "alpha", "beta", "delta0", "ratio", "sided", "scale")]
-
-  .csdFormatRCodeCall("gsDesign::nBinomial", values)
-}
-
-.csdBinomialNullEffectRCode <- function(settings) {
-  .csdRequireKnownOption(
-    gettext("binary effect scale"),
-    settings[["binaryEffectScale"]],
-    .csdKnownBinaryEffectScales
-  )
-
-  switch(
-    settings[["binaryEffectScale"]],
-    riskDifference = .csdRValue(settings[["binaryNullRiskDifference"]]),
-    riskRatio      = paste0("log(", .csdRValue(settings[["binaryNullRiskRatio"]]), ")"),
-    oddsRatio      = paste0("log(", .csdRValue(settings[["binaryNullOddsRatio"]]), ")"),
-    .csdUnknownOptionError(gettext("binary effect scale"), settings[["binaryEffectScale"]])
-  )
-}
-
-.csdSurvivalFixedInformationRCode <- function(settings) {
-  if (settings[["survivalInformationMethod"]] == "nSurvival")
-    return(.csdNSurvivalFixedInformationRCode(settings))
-
-  if (settings[["survivalInformationMethod"]] == "events")
-    return(.csdNEventsFixedInformationRCode(settings))
-
-  .csdUnknownOptionError(gettext("survival information method"), settings[["survivalInformationMethod"]])
-}
-
-.csdNEventsFixedInformationRCode <- function(settings) {
-  helper <- .csdFixedDesignHelperSettings(settings)
-
-  .csdFormatRCall("gsDesign::nEvents", list(
-    hr    = settings[["hazardRatio"]],
-    alpha = helper[["alpha"]],
-    beta  = settings[["beta"]],
-    ratio = settings[["sampleSizeAllocationRatio"]],
-    sided = helper[["sided"]],
-    hr0   = settings[["nullHazardRatio"]]
-  ))
-}
-
-.csdNSurvivalFixedInformationRCode <- function(settings) {
-  .csdRequireKnownOption(gettext("survival entry distribution"), settings[["survivalEntry"]], .csdKnownSurvivalEntries)
-
-  helper <- .csdFixedDesignHelperSettings(settings)
-  gamma  <- if (settings[["survivalEntry"]] == "expo") settings[["survivalEntryGamma"]] else NA_real_
-
-  .csdFormatRCall("gsDesign::nSurvival", list(
-    lambda1 = settings[["survivalControlHazard"]],
-    lambda2 = settings[["survivalControlHazard"]] * settings[["hazardRatio"]],
-    Ts      = settings[["survivalStudyDuration"]],
-    Tr      = settings[["survivalAccrualDuration"]],
-    eta     = settings[["survivalDropoutHazard"]],
-    ratio   = settings[["sampleSizeAllocationRatio"]],
-    alpha   = helper[["alpha"]],
-    beta    = settings[["beta"]],
-    sided   = helper[["sided"]],
-    approx  = FALSE,
-    type    = "rr",
-    entry   = settings[["survivalEntry"]],
-    gamma   = gamma
-  ))
-}
-
-.csdFormatRCall <- function(functionName, args) {
-  values <- vapply(args, .csdRValue, character(1))
-  .csdFormatRCodeCall(functionName, values)
-}
-
-.csdFormatRCodeCall <- function(functionName, values) {
-  maxNameWidth <- max(nchar(names(values)))
-
-  lines <- paste0(
-    "  ",
-    format(names(values), width = maxNameWidth, justify = "left"),
-    " = ",
-    values,
-    c(rep(",", length(values) - 1), "")
-  )
-
-  return(paste(c(paste0(functionName, "("), lines, ")"), collapse = "\n"))
-}
-
-.csdSpendingFunctionRValue <- function(boundary, testType) {
-  .csdRequireKnownBoundary(boundary)
-
-  if (testType %in% c(3, 4)) {
-    return(switch(
-      boundary,
-      obrienFleming   = "gsDesign::sfLDOF",
-      pocock          = "gsDesign::sfLDPocock",
-      wangTsiatis     = stop(gettext("Wang-Tsiatis boundaries are not available for asymmetric designs.")),
-      hwangShihDeCani = "gsDesign::sfHSD",
-      kimDeMetsPower  = "gsDesign::sfPower",
-      .csdUnknownBoundaryError(boundary)
-    ))
+    if (settings[["survivalInformationMethod"]] == "events")
+      return(.bfdFormatRCall("gsDesign::nEvents", .csdNEventsFixedInformationArgs(settings)))
   }
 
-  switch(
-    boundary,
-    obrienFleming   = "\"OF\"",
-    pocock          = "\"Pocock\"",
-    wangTsiatis     = "\"WT\"",
-    hwangShihDeCani = "gsDesign::sfHSD",
-    kimDeMetsPower  = "gsDesign::sfPower",
-    .csdUnknownBoundaryError(boundary)
-  )
-}
-
-.csdRValue <- function(x) {
-  if (length(x) > 1)
-    return(paste0("c(", paste(vapply(x, .csdRValue, character(1)), collapse = ", "), ")"))
-
-  if (is.numeric(x))
-    return(.csdRNumber(x))
-
-  if (is.logical(x))
-    return(if (isTRUE(x)) "TRUE" else "FALSE")
-
-  return(deparse(x))
+  return(NULL)
 }
 
 .csdRNumber <- function(x) {
@@ -2024,14 +1645,6 @@ GroupSequentialDesign <- function(jaspResults, dataset, options) {
   return(format(signif(x, 15), scientific = FALSE, trim = TRUE))
 }
 
-.csdEscapeHtml <- function(text) {
-  text <- gsub("&", "&amp;", text, fixed = TRUE)
-  text <- gsub("<", "&lt;", text, fixed = TRUE)
-  text <- gsub(">", "&gt;", text, fixed = TRUE)
-
-  return(text)
-}
-
 .csdBoundariesPlot <- function(jaspResults, settings, result) {
   if (!is.null(jaspResults[["classicalSequentialBoundariesPlot"]]))
     return()
@@ -2042,13 +1655,13 @@ GroupSequentialDesign <- function(jaspResults, dataset, options) {
   jaspResults[["classicalSequentialBoundariesPlot"]] <- plot
 
   if (jaspBase::isTryError(result)) {
-    plot$setError(gettextf("Unable to compute stopping boundaries plot: %1$s", .csdCleanError(result)))
+    plot$setError(gettextf("Unable to compute stopping boundaries plot: %1$s", .bfdCleanError(result)))
     return()
   }
 
   plotResult <- try(.csdBuildBoundariesPlot(settings, result[["design"]]), silent = TRUE)
   if (jaspBase::isTryError(plotResult)) {
-    plot$setError(gettextf("Unable to compute stopping boundaries plot: %1$s", .csdCleanError(plotResult)))
+    plot$setError(gettextf("Unable to compute stopping boundaries plot: %1$s", .bfdCleanError(plotResult)))
     return()
   }
 
@@ -2096,13 +1709,13 @@ GroupSequentialDesign <- function(jaspResults, dataset, options) {
   jaspResults[["classicalSequentialCrossingProbabilitiesPlot"]] <- plot
 
   if (jaspBase::isTryError(result)) {
-    plot$setError(gettextf("Unable to compute crossing probabilities plot: %1$s", .csdCleanError(result)))
+    plot$setError(gettextf("Unable to compute crossing probabilities plot: %1$s", .bfdCleanError(result)))
     return()
   }
 
   plotResult <- try(.csdBuildCrossingProbabilitiesPlot(settings, result[["design"]]), silent = TRUE)
   if (jaspBase::isTryError(plotResult)) {
-    plot$setError(gettextf("Unable to compute crossing probabilities plot: %1$s", .csdCleanError(plotResult)))
+    plot$setError(gettextf("Unable to compute crossing probabilities plot: %1$s", .bfdCleanError(plotResult)))
     return()
   }
 
@@ -2141,14 +1754,6 @@ GroupSequentialDesign <- function(jaspResults, dataset, options) {
     return(rep(NA_real_, n))
 
   return(as.numeric(x))
-}
-
-.csdCleanError <- function(error) {
-  message <- as.character(error)
-  message <- sub("^Error[^:]*: ", "", message)
-  message <- trimws(message)
-
-  return(message)
 }
 
 .csdFormatNumber <- function(x) {

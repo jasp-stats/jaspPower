@@ -22,11 +22,46 @@ import JASP.Controls
 
 Section
 {
+	id: root
+
 	expanded: false
 	title: qsTr("Observed Data Analysis")
 	columns: 2
 
 	property string testValue: ""
+	property bool controlsReady: false
+
+	Component.onCompleted:
+	{
+		controlsReady = true
+		syncObservedInputType()
+	}
+
+	onTestValueChanged:
+	{
+		if (controlsReady)
+			syncObservedInputType()
+	}
+
+	function validObservedInputTypes()
+	{
+		if (testValue === "independentSamplesTTest")
+			return ["tAndN", "cohensD", "meansAndSDs"]
+		if (testValue === "pairedSamplesTTest")
+			return ["tAndN", "cohensD", "meanDiffAndSD"]
+		if (testValue === "oneSampleTTest")
+			return ["tAndN", "cohensD", "meanAndSD"]
+		return []
+	}
+
+	function syncObservedInputType()
+	{
+		if (testValue.indexOf("TTest") === -1)
+			return
+
+		if (validObservedInputTypes().indexOf(observedInputType.value) === -1)
+			observedInputTypeTAndN.checked = true
+	}
 
 	RadioButtonGroup
 	{
@@ -258,6 +293,7 @@ Section
 
 		RadioButton
 		{
+			id:      observedInputTypeTAndN
 			value:   "tAndN"
 			label:   testValue === "independentSamplesTTest" ? qsTr("t and Sample Sizes") : qsTr("t and Sample Size")
 			checked: true

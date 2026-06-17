@@ -1,36 +1,3 @@
-.bfdCreatePlot <- function(parent, key, title, position, dependencies, width, height) {
-  if (!is.null(parent[[key]]))
-    return(NULL)
-
-  plot <- createJaspPlot(title = title, width = width, height = height)
-  plot$dependOn(dependencies)
-  plot$position <- position
-  parent[[key]] <- plot
-
-  return(plot)
-}
-
-.bfdCachedPlotData <- function(jaspResults, stateKey, dependencies, dataKey, compute) {
-  state <- jaspResults[[stateKey]]
-  if (is.null(state)) {
-    state <- createJaspState()
-    state$dependOn(dependencies)
-    jaspResults[[stateKey]] <- state
-  }
-
-  cache <- state$object
-  if (is.null(cache))
-    cache <- list()
-
-  if (!is.null(cache[[dataKey]]))
-    return(cache[[dataKey]])
-
-  cache[[dataKey]] <- try(compute(), silent = TRUE)
-  state$object <- cache
-
-  return(cache[[dataKey]])
-}
-
 .bfdProbabilityYScale <- function() {
   ggplot2::scale_y_continuous(limits = c(0, 1), labels = function(x) paste0(round(100 * x), "%"))
 }

@@ -1,36 +1,10 @@
 # ==== Major Helper Functions ====
 
-.pwrKnownAlternatives <- c("twoSided", "two.sided", "less", "greater")
-.pwrKnownCalculations <- c("sampleSize", "effectSize", "power")
-
-.pwrOptionValueLabel <- function(value) {
-  if (is.null(value) || length(value) == 0)
-    return(gettext("<missing>"))
-
-  if (length(value) != 1 || is.na(value) || value == "")
-    return(gettext("<invalid>"))
-
-  return(as.character(value))
-}
-
-.pwrUnknownOptionError <- function(optionName, value) {
-  stop(gettextf("Unknown %1$s option: %2$s.", optionName, .pwrOptionValueLabel(value)))
-}
-
-.pwrRequireKnownOption <- function(optionName, value, choices) {
-  if (is.null(value) || length(value) != 1 || is.na(value) || value == "" || !value %in% choices)
-    .pwrUnknownOptionError(optionName, value)
-}
-
 .pwrAlternative <- function(alternative) {
-  .pwrRequireKnownOption(gettext("alternative"), alternative, .pwrKnownAlternatives)
-
   switch(alternative,
     twoSided    = "two.sided",
     "two.sided" = "two.sided",
-    less        = "less",
-    greater     = "greater",
-    .pwrUnknownOptionError(gettext("alternative"), alternative)
+    alternative
   )
 }
 
@@ -41,22 +15,16 @@
     "two.sided" = gettext("Two-sided"),
     less        = gettext("Less (One-sided)"),
     greater     = gettext("Greater (One-sided)"),
-    .pwrUnknownOptionError(gettext("alternative"), alternative)
+    alternative
   )
 }
 
-.pwrRequireKnownCalculation <- function(calculation) {
-  .pwrRequireKnownOption(gettext("calculation"), calculation, .pwrKnownCalculations)
-}
-
 .pwrCalculationResultName <- function(calculation, sampleSizeName = "n") {
-  .pwrRequireKnownCalculation(calculation)
-
   switch(calculation,
     sampleSize = sampleSizeName,
     effectSize = "es",
     power      = "power",
-    .pwrUnknownOptionError(gettext("calculation"), calculation)
+    calculation
   )
 }
 
@@ -101,7 +69,6 @@
   }
 
   calc <- options$calculation
-  .pwrRequireKnownCalculation(calc)
 
   html <- jaspResults[["intro"]]
   if (is.null(html)) {
@@ -142,7 +109,7 @@
     power = gettext(
       "You have chosen to calculate the sensitivity of the chosen design for detecting the specified effect size"
     ),
-    .pwrUnknownOptionError(gettext("calculation"), calc)
+    ""
   )
 
   str <- paste0(
