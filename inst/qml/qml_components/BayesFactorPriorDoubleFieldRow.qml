@@ -28,6 +28,9 @@ GridLayout
 	Layout.columnSpan: 3
 	Layout.fillWidth: true
 
+	// Shared label-symbol-field row for repeated prior parameter controls.
+	// Some parameters are unconstrained, while beta/proportion parameters need bounds.
+	// The hasMinimum/hasMaximum flags let callers omit min/max instead of forcing defaults.
 	property string labelText: ""
 	property string symbolText: ""
 	property string fieldName: ""
