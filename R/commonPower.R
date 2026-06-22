@@ -238,7 +238,7 @@
   if (sum(sapply(list(p, n, power, sig.level), is.null)) != 1) {
     stop("exactly one of p, n, power, and sig.level must be NULL")
   }
-  if (any(!is.null(n) & n < 2)) {
+  if (!is.null(n) && any(n < 2)) {
     stop("number of observations in the first group must be at least 2")
   }
   if (!is.null(sig.level) && (!is.numeric(sig.level) || any(0 > sig.level | sig.level > 1))) {
@@ -318,7 +318,7 @@
     stop("exactly one of p1, n, n.ratio, power, and sig.level must be NULL")
   }
 
-  if (any(!is.null(n) & n < 2)) {
+  if (!is.null(n) && any(n < 2)) {
     stop("number of observations in the first group must be at least 2")
   }
   if (!is.null(n.ratio) && n.ratio <= 0) {
@@ -409,7 +409,7 @@
     stop("exactly one of rho, n, power, and sig.level must be NULL")
   }
 
-  if (any(!is.null(n) & n < 2)) {
+  if (!is.null(n) && any(n < 2)) {
     stop("number of observations in the first group must be at least 2")
   }
   if (!is.null(sig.level) && (!is.numeric(sig.level) || any(0 > sig.level | sig.level > 1))) {
@@ -418,7 +418,7 @@
   if (!is.null(power) && (!is.numeric(power) || any(0 > power | power > 1))) {
     stop("power must be between 0 and 1")
   }
-  if (any(!is.null(rho) & 0 > rho)) {
+  if (!is.null(rho) && any(0 > rho)) {
     stop("rho must be positive")
   }
   alternative <- match.arg(alternative)
@@ -496,7 +496,7 @@
     stop("exactly one of rho, n, n.ratio, power, and sig.level must be NULL")
   }
 
-  if (any(!is.null(n) & n < 2)) {
+  if (!is.null(n) && any(n < 2)) {
     stop("number of observations in the first group must be at least 2")
   }
   if (!is.null(n.ratio) && n.ratio <= 0) {
@@ -508,7 +508,7 @@
   if (!is.null(power) && (!is.numeric(power) || any(0 > power | power > 1))) {
     stop("power must be between 0 and 1")
   }
-  if (any(!is.null(rho) & 0 > rho)) {
+  if (!is.null(rho) && any(0 > rho)) {
     stop("rho must be positive")
   }
   alternative <- match.arg(alternative)
