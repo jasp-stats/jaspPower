@@ -13,7 +13,7 @@ msgstr "效力分析"
 
 msgctxt "Description|"
 msgid "This module allows you to conduct power analyses."
-msgstr "此模块提供效力（Power）分析"
+msgstr "此模块提供效力（Power）分析。"
 
 msgctxt "Power|"
 msgid "Statistical test:"
@@ -153,7 +153,7 @@ msgstr "效力演示"
 
 msgctxt "Power|"
 msgid "Power curve by effect size"
-msgstr "按效应大小的效力曲线"
+msgstr "按效应大小的功效曲线"
 
 msgctxt "Power|"
 msgid "Power curve by N"
@@ -233,7 +233,7 @@ msgstr "另存为"
 
 msgctxt "Power|"
 msgid "e.g., location/power.csv"
-msgstr "例如:保存位置/power.csv"
+msgstr "例如：位置/功率.csv"
 
 msgctxt "Power|"
 msgid "Save generated dataset"

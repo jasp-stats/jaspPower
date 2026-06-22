@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspPower 0.1.0\n"
-"POT-Creation-Date: 2023-09-23 03:34\n"
+"POT-Creation-Date: 2023-12-23 03:34\n"
 "PO-Revision-Date: 2023-11-18 20:24+0000\n"
 "Last-Translator: Tomasz Misiuro <tomaszmisiuro@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/jasp/jasppower-r/"
@@ -137,6 +137,14 @@ msgid "Effect size has to be lower than 0 with an alternative of lesser."
 msgstr ""
 
 msgid "Effect size has to be greater than 0 with an alternative of greater."
+msgstr ""
+
+msgid ""
+"The specified design leads to (an) unsolvable equation(s) while constructing "
+"the power curve. Try to enter less extreme values for the parameters"
+msgstr ""
+
+msgid "Error Message:"
 msgstr ""
 
 msgid "Sample size (group 2)"
@@ -327,27 +335,11 @@ msgstr "|h|"
 msgid "Power Contour"
 msgstr ""
 
-msgid ""
-"The specified design leads to (an) unsolvable equation(s) while constructing "
-"the Power Contour plot. Try to enter less extreme values for the parameters"
-msgstr ""
-
 msgid "Power Curve by Effect Size"
 msgstr "Krzywa mocy przez Wielkość efektu"
 
-msgid ""
-"The specified design leads to (an) unsolvable equation(s) while constructing "
-"the power curve. Try to enter less extreme values for the parameters"
-msgstr ""
-
 msgid "Power Curve by N"
 msgstr "Krzywa mocy przez N"
-
-msgid ""
-"The specified design leads to (an) unsolvable equation(s) while constructing "
-"the 'Power Curve by N' plot. Try to enter less extreme values for the "
-"parameters"
-msgstr ""
 
 msgid "Power Demonstration"
 msgstr ""
@@ -654,11 +646,6 @@ msgid ""
 msgstr ""
 
 msgid ""
-"The specified design leads to (an) unsolvable equation while constructing "
-"the Power Contour plot. Try to enter less extreme values for the parameters"
-msgstr ""
-
-msgid ""
 "The power contour plot shows how the sensitivity of the test changes with "
 "the hypothetical variance ratio and the sample sizes in the design. As we "
 "increase the sample sizes, less extreme variance ratios become reliably "
@@ -704,8 +691,8 @@ msgid ""
 msgstr ""
 
 msgid ""
-"On the other hand, if %3$s, the evidence would exceed the criterion  &mdash; "
-"and hence we would correctly claim that %4$s1 &mdash; at least %5$s%% of the "
+"On the other hand, if %1$s, the evidence would exceed the criterion  &mdash; "
+"and hence we would correctly claim that %2$s1 &mdash; at least %3$s%% of the "
 "time."
 msgstr ""
 

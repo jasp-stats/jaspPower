@@ -315,10 +315,7 @@
     table$addColumns(row)
   } else {
     row <- list()
-    row[[calc]] <- r[[switch(calc,
-      "sampleSize" = "n",
-      calc
-    )]]
+    row[[calc]] <- r[[.pwrCalculationResultName(calc)]]
     table$addColumns(row)
   }
   if (calc == "sampleSize") {
@@ -387,7 +384,7 @@
     alternative = alt
   )$n))
   if (jaspBase::isTryError(maxn)) {
-    image$setError(gettext("The specified design leads to (an) unsolvable equation(s) while constructing the Power Contour plot. Try to enter less extreme values for the parameters"))
+    image$setError(.errorMessageUnsolvable(maxn))
     return()
   }
 
@@ -426,8 +423,9 @@
       alternative = alt
     )$power
   }))
+
   if (jaspBase::isTryError(z.pwr)) {
-    image$setError(gettext("The specified design leads to (an) unsolvable equation(s) while constructing the Power Contour plot. Try to enter less extreme values for the parameters"))
+    image$setError(.errorMessageUnsolvable(z.pwr))
     return()
   }
 
@@ -441,7 +439,7 @@
     )$rho
   }))
   if (jaspBase::isTryError(z.delta)) {
-    image$setError(gettext("The specified design leads to (an) unsolvable equation while constructing the Power Contour plot. Try to enter less extreme values for the parameters"))
+    image$setError(.errorMessageUnsolvable(z.delta))
     return()
   }
 
@@ -548,7 +546,7 @@
 
   y <- try(.pwr2Var2NTest(n = n1, n.ratio = n_ratio, rho = dd, sig.level = alpha, alternative = alt)$power)
   if (jaspBase::isTryError(y)) {
-    image$setError(gettext("The specified design leads to (an) unsolvable equation(s) while constructing the power curve. Try to enter less extreme values for the parameters"))
+    image$setError(.errorMessageUnsolvable(y))
     return()
   }
   cols <- ps$pal(ps$pow.n.levels)
@@ -665,7 +663,8 @@
       "alpha",
       "calculation",
       "sampleSizeRatio",
-      "powerBySampleSize"
+      "powerBySampleSize",
+      "logSampleSize"
     ))
     image$position <- 9
     jaspResults[["powerCurveN"]] <- image
@@ -696,7 +695,7 @@
     alternative = alt
   )$n))
   if (jaspBase::isTryError(maxn)) {
-    image$setError(gettext("The specified design leads to (an) unsolvable equation(s) while constructing the 'Power Curve by N' plot. Try to enter less extreme values for the parameters"))
+    image$setError(.errorMessageUnsolvable(maxn))
     return()
   } else if (n1 >= maxn && n1 >= ps$maxn) {
     maxn <- ceiling(n1 * ps$max.scale)
@@ -718,7 +717,7 @@
     rho = d, sig.level = alpha, alternative = alt
   )$power)
   if (jaspBase::isTryError(y)) {
-    image$setError(gettext("The specified design leads to (an) unsolvable equation(s) while constructing the 'Power Curve by N' plot. Try to enter less extreme values for the parameters"))
+    image$setError(.errorMessageUnsolvable(y))
     return()
   }
 
@@ -975,7 +974,7 @@
     ),
     "</p><p>",
     gettextf(
-      "On the other hand, if %3$s, the evidence would exceed the criterion  &mdash; and hence we would correctly claim that %4$s1 &mdash; at least %5$s%% of the time.",
+      "On the other hand, if %1$s, the evidence would exceed the criterion  &mdash; and hence we would correctly claim that %2$s1 &mdash; at least %3$s%% of the time.",
       paste0("<i>", es_text, "\u2265", "</i>", d), paste0("<i>", alt_text, "</i>"), 100 * round(power, 3)
     ),
     gettextf(
@@ -1137,11 +1136,7 @@
   }
 
   powerTable[["es"]] <- d
-  powerTable[["alt"]] <- switch(alt,
-    "two.sided" = "Two-sided",
-    "less" = "Less (One-sided)",
-    "greater" = "Greater (One-sided)"
-  )
+  powerTable[["alt"]] <- .pwrAlternativeLabel(alt)
   powerTable[["power"]] <- power
   powerTable[["alpha"]] <- alpha
 

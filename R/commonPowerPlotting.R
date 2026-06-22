@@ -2,10 +2,170 @@
 
 # Apply a common theme for all plots
 # Due to jaspGraphs::geom_rangeframe this function cannot be used like regular ggplot theme
-.pwrApplyPlotTheme <- function(plot) {
+.pwrApplyPlotTheme <- function(plot, legendPosition = "right") {
   plot +
     jaspGraphs::geom_rangeframe() +
-    jaspGraphs::themeJaspRaw(legend.position = "right")
+    jaspGraphs::themeJaspRaw(legend.position = legendPosition)
+}
+
+.pwrPrettyAxisBreaks <- function(x) {
+  x <- x[is.finite(x)]
+
+  if (length(x) == 0)
+    return(c(0, 1))
+
+  breaks <- jaspGraphs::getPrettyAxisBreaks(x)
+  breaks <- breaks[is.finite(breaks)]
+
+  if (length(breaks) < 2)
+    breaks <- base::pretty(x)
+
+  breaks <- sort(unique(breaks[is.finite(breaks)]))
+
+  if (length(breaks) < 2) {
+    center <- x[1]
+    span   <- max(abs(center), 1) * 0.05
+    breaks <- center + c(-span, span)
+  }
+
+  return(breaks)
+}
+
+.pwrPrettyLogAxisBreaks <- function(x) {
+  x <- x[is.finite(x) & x > 0]
+
+  if (length(x) == 0)
+    return(c(1, 10))
+
+  breaks <- 10^.pwrPrettyAxisBreaks(log10(x))
+  breaks <- sort(unique(breaks[is.finite(breaks) & breaks > 0]))
+
+  if (length(breaks) < 2) {
+    center <- log10(x[1])
+    breaks <- 10^(center + c(-0.05, 0.05))
+  }
+
+  return(breaks)
+}
+
+.pwrPrettyIntegerAxisBreaks <- function(x) {
+  x <- x[is.finite(x)]
+
+  if (length(x) == 0)
+    return(c(0, 1))
+
+  minX <- floor(min(x))
+  maxX <- ceiling(max(x))
+
+  if (minX == maxX)
+    return(minX)
+
+  breaks <- .pwrPrettyAxisBreaks(c(minX, maxX))
+  breaks <- unique(round(breaks))
+  breaks <- breaks[breaks >= minX & breaks <= maxX]
+  breaks <- unique(c(minX, breaks, maxX))
+
+  if (length(breaks) < 2)
+    breaks <- seq.int(minX, maxX)
+
+  maxBreaks <- 8L
+  if (length(breaks) > maxBreaks)
+    breaks <- unique(round(seq(minX, maxX, length.out = maxBreaks)))
+
+  return(sort(unique(breaks)))
+}
+
+.pwrPrettyLogIntegerAxisBreaks <- function(x) {
+  x <- x[is.finite(x) & x > 0]
+
+  if (length(x) == 0)
+    return(c(1, 10))
+
+  breaks <- .pwrPrettyLogAxisBreaks(x)
+  breaks <- sort(unique(round(breaks[is.finite(breaks) & breaks > 0])))
+
+  if (length(breaks) < 2)
+    breaks <- unique(round(range(x)))
+
+  if (length(breaks) < 2)
+    breaks <- sort(unique(c(floor(min(x)), ceiling(max(x)))))
+
+  if (length(breaks) < 2)
+    breaks <- c(max(1, breaks[1] - 1), breaks[1] + 1)
+
+  maxBreaks <- 8L
+  if (length(breaks) > maxBreaks)
+    breaks <- unique(round(10^seq(log10(min(breaks)), log10(max(breaks)), length.out = maxBreaks)))
+
+  breaks <- breaks[breaks > 0]
+
+  if (length(breaks) == 0)
+    breaks <- c(1, 10)
+
+  if (length(breaks) == 1)
+    breaks <- c(max(1, breaks[1] - 1), breaks[1] + 1)
+
+  return(sort(unique(breaks)))
+}
+
+.pwrPrettyXAxisExpansion <- function() {
+  return(ggplot2::expansion(mult = c(0, 0.02), add = 0))
+}
+
+.pwrPrettyYAxisExpansion <- function() {
+  return(ggplot2::expansion(mult = c(0, 0.04), add = 0))
+}
+
+.pwrPrettyXAxisScale <- function(x, log10 = FALSE, ...) {
+  breaks <- if (isTRUE(log10)) .pwrPrettyLogAxisBreaks(x) else .pwrPrettyAxisBreaks(x)
+
+  if (isTRUE(log10)) {
+    return(ggplot2::scale_x_log10(
+      limits = range(breaks),
+      breaks = breaks,
+      expand = .pwrPrettyXAxisExpansion(),
+      ...
+    ))
+  }
+
+  return(ggplot2::scale_x_continuous(
+    limits = range(breaks),
+    breaks = breaks,
+    expand = .pwrPrettyXAxisExpansion(),
+    ...
+  ))
+}
+
+.pwrPrettyIntegerXAxisScale <- function(x, log10 = FALSE, ...) {
+  breaks <- if (isTRUE(log10)) .pwrPrettyLogIntegerAxisBreaks(x) else .pwrPrettyIntegerAxisBreaks(x)
+  limits <- if (length(breaks) == 1) breaks + c(-0.5, 0.5) else range(breaks)
+
+  if (isTRUE(log10)) {
+    return(ggplot2::scale_x_log10(
+      limits = limits,
+      breaks = breaks,
+      expand = .pwrPrettyXAxisExpansion(),
+      ...
+    ))
+  }
+
+  return(ggplot2::scale_x_continuous(
+    limits = limits,
+    breaks = breaks,
+    expand = .pwrPrettyXAxisExpansion(),
+    ...
+  ))
+}
+
+.pwrPrettyYAxisScale <- function(y, ...) {
+  breaks <- .pwrPrettyAxisBreaks(y)
+
+  return(ggplot2::scale_y_continuous(
+    limits = range(breaks),
+    breaks = breaks,
+    expand = .pwrPrettyYAxisExpansion(),
+    ...
+  ))
 }
 
 # Default settings to be used in plots
@@ -214,15 +374,15 @@
 
   if (is.null(n_ratio)) {
     # Paired or one sample
-    plot_subtitle <- sprintf(
-      "%1$s = %2$s, %3$s = %4$s",
-      es, round(delta, 3), "\u03B1", alpha
+    plot_subtitle <- substitute(
+      paste(es == d, ", ", alpha == a),
+      list(es = es, d = round(delta, 3), a = alpha)
     )
   } else {
     # Indipendent Samples
-    plot_subtitle <- sprintf(
-      "%1$s = %2$s, N%3$s = %4$s %5$s N%6$s, %7$s = %8$s",
-      es, round(delta, 3), "\u2082", n_ratio, "\u00D7", "\u2081", "\u03B1", alpha
+    plot_subtitle <- substitute(
+      paste(es == d, ", ", N[2] == ratio %*% N[1], ", ", alpha == a),
+      list(es = es, d = round(delta, 3), ratio = n_ratio, a = alpha)
     )
   }
 
@@ -236,9 +396,15 @@
   }
 
   # Add main plot
+  xScale <- if (options[["logSampleSize"]]) {
+    ggplot2::scale_x_log10(limits = lims$xlim)
+  } else {
+    ggplot2::scale_x_continuous(limits = lims$xlim)
+  }
+
   p <- p +
     ggplot2::geom_line(size = 1.5) +
-    ggplot2::scale_x_log10(limits = lims$xlim) +
+    xScale +
     ggplot2::scale_y_continuous(limits = lims$ylim) +
     ggplot2::labs(
       x = gettext("Sample size (group 1)"),

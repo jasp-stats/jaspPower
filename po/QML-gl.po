@@ -81,7 +81,7 @@ msgstr "p₁"
 
 msgctxt "Power|"
 msgid "Minimal effect size of interest:"
-msgstr "Tamaño do efecto mínimo de interese:"
+msgstr "Magnitude mínima do efecto de interese:"
 
 msgctxt "Power|"
 msgid "|δ|"
@@ -125,7 +125,7 @@ msgstr "N"
 
 msgctxt "Power|"
 msgid "Sample size ratio:"
-msgstr "Proporción de tamaño mostral:"
+msgstr "Proporción do tamaño mostral:"
 
 msgctxt "Power|"
 msgid "N₁/N₂"

@@ -1,13 +1,13 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: jaspPower 0.18.2\n"
-"POT-Creation-Date: 2023-11-17 12:27\n"
+"Project-Id-Version: jaspPower 0.96.6\n"
+"POT-Creation-Date: 2026-04-25 04:24\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "Effect size can't be 0."
@@ -104,6 +104,12 @@ msgid "Effect size has to be lower than 0 with an alternative of lesser."
 msgstr ""
 
 msgid "Effect size has to be greater than 0 with an alternative of greater."
+msgstr ""
+
+msgid "The specified design leads to (an) unsolvable equation(s) while constructing the power curve. Try to enter less extreme values for the parameters"
+msgstr ""
+
+msgid "Error Message:"
 msgstr ""
 
 msgid "Sample size (group 2)"
@@ -250,19 +256,10 @@ msgstr ""
 msgid "Power Contour"
 msgstr ""
 
-msgid "The specified design leads to (an) unsolvable equation(s) while constructing the Power Contour plot. Try to enter less extreme values for the parameters"
-msgstr ""
-
 msgid "Power Curve by Effect Size"
 msgstr ""
 
-msgid "The specified design leads to (an) unsolvable equation(s) while constructing the power curve. Try to enter less extreme values for the parameters"
-msgstr ""
-
 msgid "Power Curve by N"
-msgstr ""
-
-msgid "The specified design leads to (an) unsolvable equation(s) while constructing the 'Power Curve by N' plot. Try to enter less extreme values for the parameters"
 msgstr ""
 
 msgid "Power Demonstration"
@@ -475,9 +472,6 @@ msgstr ""
 msgid "To evaluate the design specified in the table, we can consider how sensitive it is to true effects of increasing sizes; that is, are we likely to correctly conclude that %1$s when the variance ratio is extreme enough to care about?"
 msgstr ""
 
-msgid "The specified design leads to (an) unsolvable equation while constructing the Power Contour plot. Try to enter less extreme values for the parameters"
-msgstr ""
-
 msgid "The power contour plot shows how the sensitivity of the test changes with the hypothetical variance ratio and the sample sizes in the design. As we increase the sample sizes, less extreme variance ratios become reliably detectable."
 msgstr ""
 
@@ -502,7 +496,7 @@ msgstr ""
 msgid "%1$sThe figure above shows two sampling distributions: the sampling distribution of the %1$s variance ratio when %2$s (left), and when %3$s%4$s (right)."
 msgstr ""
 
-msgid "On the other hand, if %3$s, the evidence would exceed the criterion  &mdash; and hence we would correctly claim that %4$s1 &mdash; at least %5$s%% of the time."
+msgid "On the other hand, if %1$s, the evidence would exceed the criterion  &mdash; and hence we would correctly claim that %2$s1 &mdash; at least %3$s%% of the time."
 msgstr ""
 
 msgid "The design's power for detecting effects of %1$s%2$s%3$s is thus %4$s."

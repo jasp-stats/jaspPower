@@ -1,5 +1,3 @@
-library(jaspGraphs)
-
 # Some plot snapshots slightly differ by operating system, this code will first
 # decide which os-specific variant to use and will then use the correct variant
 # and make sure that unused variants are not automatically deleted

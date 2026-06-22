@@ -9,31 +9,31 @@ msgstr ""
 
 msgctxt "Description|"
 msgid "Power"
-msgstr ""
+msgstr "puissance"
 
 msgctxt "Description|"
 msgid "This module allows you to conduct power analyses."
-msgstr ""
+msgstr "Ce module permet d'analyser la puissance des tests statistiques."
 
 msgctxt "Power|"
 msgid "Statistical test:"
-msgstr ""
+msgstr "Test Statistique :"
 
 msgctxt "Power|"
 msgid "Parameters"
-msgstr ""
+msgstr "Paramètres"
 
 msgctxt "Power|"
 msgid "I want to calculate the ..."
-msgstr ""
+msgstr "Je voudrais calculer ..."
 
 msgctxt "Power|"
 msgid "Direction of the effect:"
-msgstr ""
+msgstr "Direction de l'effet :"
 
 msgctxt "Power|"
 msgid "p₁ > p₀"
-msgstr ""
+msgstr "p₁ > p₀"
 
 msgctxt "Power|"
 msgid "p₁ > p₂"
@@ -45,7 +45,7 @@ msgstr ""
 
 msgctxt "Power|"
 msgid "p₁ < p₀"
-msgstr ""
+msgstr "p₁ < p₀"
 
 msgctxt "Power|"
 msgid "p₁ < p₂"
@@ -53,19 +53,19 @@ msgstr ""
 
 msgctxt "Power|"
 msgid "ρ < 1"
-msgstr ""
+msgstr "ρ < 1"
 
 msgctxt "Power|"
 msgid "Hypothesized proportion"
-msgstr ""
+msgstr "Proportion hypothétique"
 
 msgctxt "Power|"
 msgid "Baseline proportion"
-msgstr ""
+msgstr "Proportion de référence"
 
 msgctxt "Power|"
 msgid "p₀"
-msgstr ""
+msgstr "p₀"
 
 msgctxt "Power|"
 msgid "p₂"
@@ -81,23 +81,23 @@ msgstr ""
 
 msgctxt "Power|"
 msgid "Minimal effect size of interest:"
-msgstr ""
+msgstr "La taille d'effet d'intérêt minimale :"
 
 msgctxt "Power|"
 msgid "|δ|"
-msgstr ""
+msgstr "|δ|"
 
 msgctxt "Power|"
 msgid "ρ (σ₁²/σ₂²)"
-msgstr ""
+msgstr "ρ (σ₁²/σ₂²)"
 
 msgctxt "Power|"
 msgid "ρ (σ²/σ₀²)"
-msgstr ""
+msgstr "ρ (σ²/σ₀²)"
 
 msgctxt "Power|"
 msgid "Minimal desired power:"
-msgstr ""
+msgstr "Puissance minimale désirée :"
 
 msgctxt "Power|"
 msgid "(1-β)"
@@ -105,19 +105,19 @@ msgstr ""
 
 msgctxt "Power|"
 msgid "Type I error rate:"
-msgstr ""
+msgstr "Taux d'erreur de type I :"
 
 msgctxt "Power|"
 msgid "α"
-msgstr ""
+msgstr "α"
 
 msgctxt "Power|"
 msgid "Sample size:"
-msgstr ""
+msgstr "Effectif :"
 
 msgctxt "Power|"
 msgid "Sample size per group:"
-msgstr ""
+msgstr "Effectif par groupe :"
 
 msgctxt "Power|"
 msgid "N"

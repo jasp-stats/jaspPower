@@ -1,22 +1,48 @@
-import QtQuick		2.12
-import JASP.Module	1.0
+import QtQuick
+import JASP.Module
 
 Description
 {
-	name		: "jaspPower"
-	title		: qsTr("Power")
-	icon:			"power.svg"
-	description	: qsTr("This module allows you to conduct power analyses.")
-	version			: "0.18.2"
-	author		: "JASP Team"
-	maintainer	: "JASP Team <info@jasp-stats.org>"
-	website		: "jasp-stats.org"
-	license		: "GPL (>= 2)"
+	title		: 	qsTr("Power")
+	icon		: 	"power.svg"
+	description	: 	qsTr("This module allows you to conduct power analyses.")
 	requiresData:	false
+	hasWrappers: 	false
+	preloadData:  	true
+	
+	GroupTitle
+	{
+		title:		qsTr("Classical")
+		icon:		"power.svg"
+	}
 
 	Analysis
 	{
 		title:	qsTr("Power")
 		func: 	"Power"
+	}
+
+	Analysis
+	{
+		title:	qsTr("Group Sequential Design")
+		func: 	"GroupSequentialDesign"
+	}
+
+	GroupTitle
+	{
+		title:		qsTr("Bayesian")
+		icon:		"powerBayes.svg"
+	}
+
+	Analysis
+	{
+		title:	qsTr("Bayes Factor Design")
+		func: 	"BayesFactorDesign"
+	}
+
+	Analysis
+	{
+		title:	qsTr("Bayes Factor Sequential Design")
+		func: 	"BayesFactorSequentialDesign"
 	}
 }

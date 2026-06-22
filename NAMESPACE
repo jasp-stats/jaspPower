@@ -1,3 +1,5 @@
 import(jaspBase)
+export(BayesFactorDesign)
+export(BayesFactorSequentialDesign)
 export(Power)
-
+export(GroupSequentialDesign)
