@@ -1,19 +1,23 @@
 Package: jaspPower
 Type: Package
 Title: Power Module for JASP
-Version: 0.96.6
+Version: 0.97.0
 Date: 2021-09-28
 Author: JASP Team
 Website: jasp-stats.org
 Maintainer: JASP Team <info@jasp-stats.org>
 Description: This module offers analyses.
-License: GPL (>= 2)
+License: GPL (>= 3)
 Encoding: UTF-8
 Imports:
+  bfpwr (>= 0.3),
+  ggplot2,
+  gsDesign,
   pwr,
   viridis,
   jaspBase,
   jaspGraphs
 Remotes:
   jasp-stats/jaspBase,
-  jasp-stats/jaspGraphs
+  jasp-stats/jaspGraphs,
+  FBartos/bfpwr/package@fd488dac474e9f61e01884d17fa9deaad320ec87

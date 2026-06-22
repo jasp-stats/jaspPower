@@ -37,25 +37,19 @@
 <line x1='-167.46' y1='510.14' x2='-167.46' y2='20.71' style='stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;' />
 <line x1='389.39' y1='510.14' x2='389.39' y2='20.71' style='stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;' />
 <line x1='39.65' y1='510.14' x2='633.20' y2='510.14' style='stroke-width: 0.64; stroke-linecap: butt;' />
-<line x1='30.17' y1='510.46' x2='30.17' y2='83.80' style='stroke-width: 0.64; stroke-linecap: butt;' />
+<line x1='30.17' y1='510.46' x2='30.17' y2='154.81' style='stroke-width: 0.64; stroke-linecap: butt;' />
 <rect x='30.17' y='20.71' width='689.83' height='489.43' style='stroke-width: 0.00; stroke: none;' />
 </g>
 <g clip-path='url(#cpMC4wMHw3MjAuMDB8MC4wMHw1NzYuMDA=)'>
 <polyline points='30.17,510.14 30.17,20.71 ' style='stroke-width: 0.00; stroke: none; stroke-linecap: butt;' />
 <polyline points='30.17,510.14 720.00,510.14 ' style='stroke-width: 0.00; stroke: none; stroke-linecap: butt;' />
 <polyline points='39.97,518.64 39.97,510.14 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
-<polyline points='138.79,518.64 138.79,510.14 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
 <polyline points='237.60,518.64 237.60,510.14 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
-<polyline points='336.42,518.64 336.42,510.14 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
 <polyline points='435.24,518.64 435.24,510.14 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
-<polyline points='534.06,518.64 534.06,510.14 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
 <polyline points='632.88,518.64 632.88,510.14 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
 <text x='39.97' y='537.32' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='15.12px' lengthAdjust='spacingAndGlyphs'>-1</text>
-<text x='138.79' y='537.32' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='29.29px' lengthAdjust='spacingAndGlyphs'>-0.5</text>
 <text x='237.60' y='537.32' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='9.46px' lengthAdjust='spacingAndGlyphs'>0</text>
-<text x='336.42' y='537.32' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='23.63px' lengthAdjust='spacingAndGlyphs'>0.5</text>
 <text x='435.24' y='537.32' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='9.46px' lengthAdjust='spacingAndGlyphs'>1</text>
-<text x='534.06' y='537.32' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='23.63px' lengthAdjust='spacingAndGlyphs'>1.5</text>
 <text x='632.88' y='537.32' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='9.46px' lengthAdjust='spacingAndGlyphs'>2</text>
 <text x='375.09' y='567.49' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='189.34px' lengthAdjust='spacingAndGlyphs'>Observed effect size (|δ|)</text>
 <text transform='translate(16.68,265.42) rotate(-90)' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='140.80px' lengthAdjust='spacingAndGlyphs'>Probability Density</text>

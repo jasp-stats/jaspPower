@@ -14,34 +14,15 @@
 
 ---
 
-# jaspPower (development version)
+# jaspPower 0.97
+## Added
+* Group Sequential Design
+* Bayes Factor Design
+* Bayes Factor Sequential Design
 
 ---
 
 
-# jaspModuleTemplate 0.96.6
+# jaspPower 0.96.6
 ## Added
 * Fixed a bug in the power demonstration graph of the one sample z-test. Now n correctly determines the precision (width) of the distributions, making the visual consistent with the numerical result.  
-
-
----
-
-# jaspModuleTemplate 0.2.0
-## Added
-* Added NEWS.md
-* Added workflow to remind users to update their `NEWS.md`.
-* Added workflow to auto-bump version when user does not do so.
-
----
-
-# jaspModuleTemplate 0.1.0
-
-## Added
-* Initial examples to showcase JASP module development
-
-## Changed
-* Use best practices for checking input ([Issue #19](https://github.com/jasp-stats/jaspModuleTemplate/issues/19)).
-* The main results table now defaults to displaying 95% Confidence Intervals for effect sizes.
-
-## Fixed
-* Remove deprecated dependencies from qml files ([Issue #14](https://github.com/jasp-stats/jaspModuleTemplate/issues/14)).

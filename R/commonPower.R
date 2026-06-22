@@ -1,5 +1,33 @@
 # ==== Major Helper Functions ====
 
+.pwrAlternative <- function(alternative) {
+  switch(alternative,
+    twoSided    = "two.sided",
+    "two.sided" = "two.sided",
+    alternative
+  )
+}
+
+.pwrAlternativeLabel <- function(alternative) {
+  alternative <- .pwrAlternative(alternative)
+
+  switch(alternative,
+    "two.sided" = gettext("Two-sided"),
+    less        = gettext("Less (One-sided)"),
+    greater     = gettext("Greater (One-sided)"),
+    alternative
+  )
+}
+
+.pwrCalculationResultName <- function(calculation, sampleSizeName = "n") {
+  switch(calculation,
+    sampleSize = sampleSizeName,
+    effectSize = "es",
+    power      = "power",
+    calculation
+  )
+}
+
 # Prepare the statistics in a common format
 .prepareStats <- function(options) {
   ## Get options from interface
@@ -28,10 +56,7 @@
     # Shared
     n_ratio = n_ratio,
     pow = pow,
-    alt = switch(alt,
-      "twoSided" = "two.sided",
-      alt
-    ),
+    alt = .pwrAlternative(alt),
     alpha = alpha
   )
   return(stats)
@@ -83,7 +108,8 @@
     ),
     power = gettext(
       "You have chosen to calculate the sensitivity of the chosen design for detecting the specified effect size"
-    )
+    ),
+    ""
   )
 
   str <- paste0(
