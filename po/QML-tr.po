@@ -238,3 +238,2547 @@ msgstr "örneğin, konum/kuvvet.csv"
 msgctxt "Power|"
 msgid "Save generated dataset"
 msgstr "Oluşturulan veri kümesini kaydet"
+
+msgctxt "Description|"
+msgid "Classical"
+msgstr ""
+
+msgctxt "Description|"
+msgid "Group Sequential Design"
+msgstr ""
+
+msgctxt "Description|"
+msgid "Bayesian"
+msgstr ""
+
+msgctxt "Description|"
+msgid "Bayes Factor Design"
+msgstr ""
+
+msgctxt "Description|"
+msgid "Bayes Factor Sequential Design"
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid ""
+"Bayes Factor design allows you to design fixed sample size experiments for "
+"conclusive evidence."
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid "References"
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid "R Packages"
+msgstr ""
+
+#, fuzzy
+msgctxt "BayesFactorDesign|"
+msgid "Statistical test:"
+msgstr "İstatistiksel test:"
+
+msgctxt "BayesFactorDesign|"
+msgid ""
+"Select the statistical test for which the Bayes factor design is planned."
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid "Independent Samples T-Test"
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid "Paired Samples T-Test"
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid "One Sample T-Test"
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid "Independent Samples Z-Test"
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid "Paired Samples Z-Test"
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid "One Sample Z-Test"
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid "One Sample Proportion Test"
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid "General (z-approximation)"
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid "Explanatory notes"
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid "Append brief interpretation notes to each displayed Bayesian result."
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid "Generate report"
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid ""
+"Generate a short report describing the design, priors, thresholds, and "
+"achieved probabilities."
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid "LaTeX formatted output"
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid ""
+"Format the generated report with LaTeX notation for use in manuscripts and "
+"preregistrations."
+msgstr ""
+
+#, fuzzy
+msgctxt "BayesFactorDesign|"
+msgid "Parameters"
+msgstr "Parametreler"
+
+msgctxt "BayesFactorDesign|"
+msgid "Sample Size"
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid "Sample size in group 1:"
+msgstr ""
+
+#, fuzzy
+msgctxt "BayesFactorDesign|"
+msgid "Sample size:"
+msgstr "Örneklem büyüklüğü:"
+
+#, fuzzy
+msgctxt "BayesFactorDesign|"
+msgid "N"
+msgstr "N"
+
+msgctxt "BayesFactorDesign|"
+msgid ""
+"Fixed sample size at which the probability of conclusive, misleading, and "
+"inconclusive evidence is evaluated."
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid "Allocation ratio (N₂/N₁):"
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid "Ratio of the sample size in group 2 to the sample size in group 1."
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid "Tables"
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid "Design Results"
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid "Design summary"
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid ""
+"Show the main fixed-design result: the required sample size or the achieved "
+"probability of conclusive evidence."
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid "Decision probabilities"
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid ""
+"Show probabilities of evidence for H₁, evidence for H₀, and inconclusive "
+"evidence under each design prior."
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid "Design specification"
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid ""
+"Show the analysis and design priors used for computing and evaluating the "
+"Bayes factor design."
+msgstr ""
+
+#, fuzzy
+msgctxt "BayesFactorDesign|"
+msgid "Plots"
+msgstr "Grafikler"
+
+msgctxt "BayesFactorDesign|"
+msgid "Decision Probability"
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid "Decision probabilities by effect size"
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid ""
+"Plot how conclusive, misleading, and inconclusive evidence probabilities "
+"change across design-prior effect sizes."
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid "Decision probabilities by sample size"
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid ""
+"Plot how conclusive, misleading, and inconclusive evidence probabilities "
+"change as the fixed sample size increases."
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid "Log sample-size axis"
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid ""
+"Use a logarithmic x-axis to inspect changes across small and large sample "
+"sizes."
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid "Combine H₁ and H₀"
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid ""
+"Display curves for the H₁ and H₀ design priors in one figure instead of "
+"separate figures."
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid "Advanced"
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid "Generate R code"
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid "Generate R code that reproduces the Bayes factor design calculation."
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid "Minimum sample size:"
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid "Nmin"
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid ""
+"Smallest sample size considered when searching for the target probability of "
+"conclusive evidence."
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid "Maximum sample size:"
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid "Nmax"
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid ""
+"Largest sample size considered when searching for the target probability of "
+"conclusive evidence."
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid "Curve points:"
+msgstr ""
+
+msgctxt "BayesFactorDesign|"
+msgid "Number of points used to draw probability and prior curves."
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid ""
+"Bayes Factor sequential design allows you to design sequential experiments "
+"for conclusive evidence."
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "References"
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "R Packages"
+msgstr ""
+
+#, fuzzy
+msgctxt "BayesFactorSequentialDesign|"
+msgid "Statistical test:"
+msgstr "İstatistiksel test:"
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid ""
+"Select the statistical test for which the Bayes factor sequential design is "
+"planned."
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "Independent Samples T-Test"
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "Paired Samples T-Test"
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "One Sample T-Test"
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "Independent Samples Z-Test"
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "Paired Samples Z-Test"
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "One Sample Z-Test"
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "General (z-approximation)"
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "Explanatory notes"
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "Append brief interpretation notes to each displayed Bayesian result."
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "Generate report"
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid ""
+"Generate a short report describing the sequential design, priors, "
+"thresholds, and achieved probabilities."
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "LaTeX formatted output"
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid ""
+"Format the generated report with LaTeX notation for use in manuscripts and "
+"preregistrations."
+msgstr ""
+
+#, fuzzy
+msgctxt "BayesFactorSequentialDesign|"
+msgid "Parameters"
+msgstr "Parametreler"
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "Tables"
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "Design Results"
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "Design summary"
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid ""
+"Show the main sequential-design result: the maximum sample size or the "
+"achieved probability of conclusive evidence."
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "Sample size summary"
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid ""
+"Show the expected sample size and its variability under each design prior."
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "Decision probabilities"
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid ""
+"Show final probabilities of evidence for H₁, evidence for H₀, and "
+"inconclusive evidence under each design prior."
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "Design specification"
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid ""
+"Show the analysis and design priors used for computing and evaluating the "
+"Bayes factor sequential design."
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "Look-by-Look Results"
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "Cumulative decision probabilities"
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid ""
+"Show the probability that the study has stopped for each decision by each "
+"planned look."
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "Incremental decision probabilities"
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid ""
+"Show the probability that each decision is first reached at a given look."
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "Stopping boundaries"
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid ""
+"Show the test-statistic values corresponding to the Bayes factor stopping "
+"thresholds at each look."
+msgstr ""
+
+#, fuzzy
+msgctxt "BayesFactorSequentialDesign|"
+msgid "Plots"
+msgstr "Grafikler"
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "Decision Probability"
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid ""
+"Plot how stopping probabilities for conclusive, misleading, and inconclusive "
+"evidence accumulate across looks."
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid ""
+"Plot the test-statistic boundaries that trigger stopping for H₁ or H₀ at "
+"each look."
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "Combine H₁ and H₀"
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid ""
+"Display curves for the H₁ and H₀ design priors in one figure instead of "
+"separate figures."
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "Advanced"
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "Generate R Code"
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid ""
+"Generate R code that reproduces the Bayes factor sequential-design "
+"calculation."
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "Sample-size search:"
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "Strategy"
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid ""
+"Choose whether maximum sample-size search uses a faster adaptive search or "
+"an exhaustive search that certifies the smallest maximum sample size."
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "Adaptive"
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "Exhaustive"
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "Exact integration over all regions:"
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid ""
+"Use exact integration over all decision regions when computing sequential "
+"design characteristics."
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "Integration method:"
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "Method"
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid ""
+"Numerical method used for multivariate normal probabilities in sequential "
+"calculations."
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "Log-scale MVN"
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "MVN"
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "Absolute tolerance:"
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "abs"
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "Absolute error tolerance for numerical integration."
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "Relative tolerance:"
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "rel"
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "Relative error tolerance for numerical integration."
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "Maximum integration points:"
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "max"
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "Maximum number of integration points used by the numerical routine."
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "Curve points:"
+msgstr ""
+
+#, fuzzy
+msgctxt "BayesFactorSequentialDesign|"
+msgid "N"
+msgstr "N"
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "Number of points used to draw probability and prior curves."
+msgstr ""
+
+msgctxt "GroupSequentialDesign|"
+msgid "Design type:"
+msgstr ""
+
+msgctxt "GroupSequentialDesign|"
+msgid "One-sided"
+msgstr ""
+
+msgctxt "GroupSequentialDesign|"
+msgid "Two-sided symmetric"
+msgstr ""
+
+msgctxt "GroupSequentialDesign|"
+msgid "Two-sided asymmetric β-spending (binding)"
+msgstr ""
+
+msgctxt "GroupSequentialDesign|"
+msgid "Two-sided asymmetric β-spending (non-binding)"
+msgstr ""
+
+msgctxt "GroupSequentialDesign|"
+msgid ""
+"Selects one-sided, symmetric two-sided, or asymmetric two-sided β-spending "
+"designs. Binding or non-binding controls Type I error computation after a "
+"lower-bound crossing."
+msgstr ""
+
+#, fuzzy
+msgctxt "GroupSequentialDesign|"
+msgid "Explanatory text"
+msgstr "Açıklayıcı metin"
+
+msgctxt "GroupSequentialDesign|"
+msgid "Display a short explanation of the design."
+msgstr ""
+
+#, fuzzy
+msgctxt "GroupSequentialDesign|"
+msgid "Parameters"
+msgstr "Parametreler"
+
+msgctxt "GroupSequentialDesign|"
+msgid "Boundaries"
+msgstr ""
+
+msgctxt "GroupSequentialDesign|"
+msgid "Tables"
+msgstr ""
+
+msgctxt "GroupSequentialDesign|"
+msgid "Design Results"
+msgstr ""
+
+msgctxt "GroupSequentialDesign|"
+msgid "Design summary"
+msgstr ""
+
+msgctxt "GroupSequentialDesign|"
+msgid ""
+"Display the main design summary and effect scale conversions when applicable."
+msgstr ""
+
+msgctxt "GroupSequentialDesign|"
+msgid "Sample size / event details"
+msgstr ""
+
+msgctxt "GroupSequentialDesign|"
+msgid ""
+"Display endpoint-specific allocation, subject, and analysis-time details "
+"when available."
+msgstr ""
+
+msgctxt "GroupSequentialDesign|"
+msgid "Look-by-Look Results"
+msgstr ""
+
+msgctxt "GroupSequentialDesign|"
+msgid "Look schedule and stopping boundaries"
+msgstr ""
+
+msgctxt "GroupSequentialDesign|"
+msgid ""
+"Display the information schedule, Z-boundaries, and nominal p-values by look."
+msgstr ""
+
+msgctxt "GroupSequentialDesign|"
+msgid "Boundary crossing probabilities"
+msgstr ""
+
+msgctxt "GroupSequentialDesign|"
+msgid ""
+"Display final, cumulative, and stagewise boundary crossing probabilities "
+"under H₀ and H₁."
+msgstr ""
+
+#, fuzzy
+msgctxt "GroupSequentialDesign|"
+msgid "Plots"
+msgstr "Grafikler"
+
+msgctxt "GroupSequentialDesign|"
+msgid "Design Figures"
+msgstr ""
+
+msgctxt "GroupSequentialDesign|"
+msgid "Stopping boundaries"
+msgstr ""
+
+msgctxt "GroupSequentialDesign|"
+msgid "Display stopping boundaries across analyses."
+msgstr ""
+
+msgctxt "GroupSequentialDesign|"
+msgid "Display cumulative boundary crossing probabilities under H₀ and H₁."
+msgstr ""
+
+msgctxt "GroupSequentialDesign|"
+msgid "Choose the color palette used for boundaries in plots."
+msgstr ""
+
+msgctxt "GroupSequentialDesign|"
+msgid "Advanced Options"
+msgstr ""
+
+msgctxt "GroupSequentialDesign|"
+msgid "Generate R code"
+msgstr ""
+
+msgctxt "GroupSequentialDesign|"
+msgid "Display copyable R code for the current settings."
+msgstr ""
+
+msgctxt "GroupSequentialDesign|"
+msgid "Integration grid points:"
+msgstr ""
+
+#, qt-format
+msgctxt "GroupSequentialDesign|"
+msgid ""
+"Integer from 1 to 80 controlling the numerical integration grid. Default is "
+"%1; larger values can improve accuracy but slow computation."
+msgstr ""
+
+msgctxt "Power|"
+msgid "Log sample size"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Analysis Prior"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Prior Under H₀"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Distribution:"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid ""
+"Prior specification for H₀ used to compute the Bayes factor from the "
+"observed data."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Point null (p = p₀)"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Directional (p ≤ p₀)"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Directional (θ ≥ θ₀)"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Directional (θ ≤ θ₀)"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Point null (θ = θ₀)"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Null value:"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Parameter value specified by the null hypothesis."
+msgstr ""
+
+#, fuzzy
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Hypothesized proportion"
+msgstr "Varsayılan oran"
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Proportion specified by the null hypothesis for the binomial test."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Prior Under H₁"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid ""
+"Prior distribution under H₁ used to compute the Bayes factor from the data."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Beta prior"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Normal"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Point"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Normal-moment (mode)"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Normal-moment (spread)"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Cauchy"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Student-t"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Prior direction:"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Direction of the analysis prior under H₁."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Two-sided"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Less"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Greater"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Prior location:"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Point location of the H₁ analysis prior."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Prior mean:"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Mean of the normal H₁ analysis prior."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Prior scale:"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Scale of the normal H₁ analysis prior."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Prior spread:"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Spread parameter of the non-local moment prior under H₁."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Prior mode:"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Mode of the non-local moment prior under H₁."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Prior modes:"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Back-computed spread:"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Location of the Cauchy or Student-t analysis prior under H₁."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Scale of the Cauchy or Student-t analysis prior under H₁."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Prior degrees of freedom:"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Degrees of freedom of the Student-t analysis prior under H₁."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Beta prior successes:"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Success parameter of the beta analysis prior under H₁."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Beta prior failures:"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid "Failure parameter of the beta analysis prior under H₁."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Observed Data Analysis"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Input"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid ""
+"Choose whether to enter observed data as summary statistics or select "
+"variables from the dataset."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Summary statistics"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Dataset"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Successes"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Number of observed successes used to compute the observed Bayes factor."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Failures"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Number of observed failures used to compute the observed Bayes factor."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Effect size"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid ""
+"Observed effect estimate on the scale selected for the general z-test "
+"approximation."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "SE"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Standard error of the observed effect estimate."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "t"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Observed t statistic used to compute the observed Bayes factor."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Cohen's d"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid ""
+"Observed standardized mean difference used to compute the observed Bayes "
+"factor."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Mean 1"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Observed mean in group 1."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "SD 1"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Observed standard deviation in group 1."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Mean 2"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Observed mean in group 2."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "SD 2"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Observed standard deviation in group 2."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Mean"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Observed mean used to compute the observed Bayes factor."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Mean difference"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid ""
+"Observed paired mean difference used to compute the observed Bayes factor."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "SD"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Observed standard deviation used to compute the observed Bayes factor."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Observed standard deviation of paired differences."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Sample size"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Observed sample size used to compute the observed Bayes factor."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Sample size group 1"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "N₁"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Observed sample size in group 1."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Sample size group 2"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "N₂"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Observed sample size in group 2."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Input Type"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid ""
+"Choose which summary statistics are available for the observed t-test result."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "t and Sample Sizes"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "t and Sample Size"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Cohen's d and Sample Sizes"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Cohen's d and Sample Size"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Means, SDs, and Sample Sizes"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Mean Diff., SD, and Sample Size"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Mean, SD, and Sample Size"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Dataset columns available for the observed-data Bayes factor analysis."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Variable"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Observed scale variable for the one-sample or general z-test analysis."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Variable Pairs"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid ""
+"Observed paired variables used to compute the paired-samples Bayes factor."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Dependent Variable"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Observed outcome variable for the independent-samples Bayes factor."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Grouping Variable"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Grouping variable that defines the two independent samples."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid ""
+"Observed variable containing success and failure values for the binomial "
+"test."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Success value"
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Value in the selected variable that is counted as a success."
+msgstr ""
+
+msgctxt "BayesFactorBinomialDesignPriorGroup|"
+msgid "Distribution:"
+msgstr ""
+
+msgctxt "BayesFactorBinomialDesignPriorGroup|"
+msgid "Point proportion"
+msgstr ""
+
+msgctxt "BayesFactorBinomialDesignPriorGroup|"
+msgid "Beta prior"
+msgstr ""
+
+msgctxt "BayesFactorBinomialDesignPriorGroup|"
+msgid "Design proportion:"
+msgstr ""
+
+msgctxt "BayesFactorBinomialDesignPriorGroup|"
+msgid "Beta prior successes:"
+msgstr ""
+
+msgctxt "BayesFactorBinomialDesignPriorGroup|"
+msgid "Beta prior failures:"
+msgstr ""
+
+msgctxt "BayesFactorBinomialDesignPriorGroup|"
+msgid "Lower truncation:"
+msgstr ""
+
+msgctxt "BayesFactorBinomialDesignPriorGroup|"
+msgid "Upper truncation:"
+msgstr ""
+
+msgctxt "BayesFactorCalculationControls|"
+msgid "Calculation Target"
+msgstr ""
+
+#, fuzzy
+msgctxt "BayesFactorCalculationControls|"
+msgid "I want to calculate the ..."
+msgstr "... hesaplamak istiyorum."
+
+msgctxt "BayesFactorCalculationControls|"
+msgid ""
+"Choose whether to find the sample size needed for a target probability of "
+"conclusive evidence, or to evaluate that probability at a selected sample "
+"size."
+msgstr ""
+
+msgctxt "BayesFactorCalculationControls|"
+msgid "Maximum sample size"
+msgstr ""
+
+msgctxt "BayesFactorCalculationControls|"
+msgid "Sample Size"
+msgstr ""
+
+msgctxt "BayesFactorCalculationControls|"
+msgid "Pr(Conclusive evidence)"
+msgstr ""
+
+msgctxt "BayesFactorCalculationControls|"
+msgid "Evidence Thresholds"
+msgstr ""
+
+msgctxt "BayesFactorCalculationControls|"
+msgid "Conclusive evidence threshold for H₁:"
+msgstr ""
+
+msgctxt "BayesFactorCalculationControls|"
+msgid "Bayes factor threshold that defines conclusive evidence for H₁."
+msgstr ""
+
+msgctxt "BayesFactorCalculationControls|"
+msgid "Conclusive evidence threshold for H₀:"
+msgstr ""
+
+msgctxt "BayesFactorCalculationControls|"
+msgid "Bayes factor threshold that defines conclusive evidence for H₀."
+msgstr ""
+
+msgctxt "BayesFactorCalculationControls|"
+msgid "Probability of conclusive evidence under H₁:"
+msgstr ""
+
+msgctxt "BayesFactorCalculationControls|"
+msgid ""
+"Target probability of obtaining conclusive evidence for H₁ when data are "
+"generated under the H₁ design prior."
+msgstr ""
+
+msgctxt "BayesFactorCalculationControls|"
+msgid "Probability of conclusive evidence under H₀:"
+msgstr ""
+
+msgctxt "BayesFactorCalculationControls|"
+msgid ""
+"Target probability of obtaining conclusive evidence for H₀ when data are "
+"generated under the H₀ design prior."
+msgstr ""
+
+msgctxt "BayesFactorCalculationControls|"
+msgid "Design Sample Size"
+msgstr ""
+
+msgctxt "BayesFactorCalculationControls|"
+msgid "Maximum sample size based on:"
+msgstr ""
+
+msgctxt "BayesFactorCalculationControls|"
+msgid "Design sample size based on:"
+msgstr ""
+
+msgctxt "BayesFactorCalculationControls|"
+msgid ""
+"Controls whether output is evaluated at the sample size required for each "
+"design hypothesis, for both design hypotheses, or for one selected design "
+"hypothesis."
+msgstr ""
+
+msgctxt "BayesFactorCalculationControls|"
+msgid "Each design hypothesis"
+msgstr ""
+
+msgctxt "BayesFactorCalculationControls|"
+msgid "Both design hypotheses"
+msgstr ""
+
+msgctxt "BayesFactorCalculationControls|"
+msgid "Alternative hypothesis"
+msgstr ""
+
+msgctxt "BayesFactorCalculationControls|"
+msgid "Null hypothesis"
+msgstr ""
+
+msgctxt "BayesFactorCalculationControls|"
+msgid "Test Parameters"
+msgstr ""
+
+msgctxt "BayesFactorCalculationControls|"
+msgid "Known standard deviation:"
+msgstr ""
+
+msgctxt "BayesFactorCalculationControls|"
+msgid ""
+"Known population standard deviation used for z-test sample size planning."
+msgstr ""
+
+msgctxt "BayesFactorCalculationControls|"
+msgid "Parameterization:"
+msgstr ""
+
+msgctxt "BayesFactorCalculationControls|"
+msgid ""
+"Scale used for the general z-test approximation, such as standardized mean "
+"difference, Fisher's z, or a log effect measure."
+msgstr ""
+
+msgctxt "BayesFactorCalculationControls|"
+msgid "SMD"
+msgstr ""
+
+msgctxt "BayesFactorCalculationControls|"
+msgid "Fisher's z"
+msgstr ""
+
+msgctxt "BayesFactorCalculationControls|"
+msgid "logOR"
+msgstr ""
+
+msgctxt "BayesFactorCalculationControls|"
+msgid "logRR"
+msgstr ""
+
+msgctxt "BayesFactorCalculationControls|"
+msgid "logHR"
+msgstr ""
+
+msgctxt "BayesFactorCalculationControls|"
+msgid "logIRR"
+msgstr ""
+
+msgctxt "BayesFactorCalculationControls|"
+msgid "Specify"
+msgstr ""
+
+msgctxt "BayesFactorCalculationControls|"
+msgid "Standard error schedule"
+msgstr ""
+
+msgctxt "BayesFactorCalculationControls|"
+msgid "Unit information SD:"
+msgstr ""
+
+msgctxt "BayesFactorCalculationControls|"
+msgid "UISD"
+msgstr ""
+
+msgctxt "BayesFactorCalculationControls|"
+msgid ""
+"Standard deviation of the estimator at one unit of information for the "
+"general z-test approximation."
+msgstr ""
+
+msgctxt "BayesFactorContinuousDesignPriorGroup|"
+msgid "Distribution:"
+msgstr ""
+
+msgctxt "BayesFactorContinuousDesignPriorGroup|"
+msgid "Point"
+msgstr ""
+
+msgctxt "BayesFactorContinuousDesignPriorGroup|"
+msgid "Normal"
+msgstr ""
+
+msgctxt "BayesFactorContinuousDesignPriorGroup|"
+msgid "Location:"
+msgstr ""
+
+msgctxt "BayesFactorContinuousDesignPriorGroup|"
+msgid "Mean:"
+msgstr ""
+
+msgctxt "BayesFactorContinuousDesignPriorGroup|"
+msgid "Standard deviation:"
+msgstr ""
+
+msgctxt "BayesFactorDesignPriorSection|"
+msgid "Design Prior"
+msgstr ""
+
+msgctxt "BayesFactorDesignPriorSection|"
+msgid "Prior Under H₀"
+msgstr ""
+
+msgctxt "BayesFactorDesignPriorSection|"
+msgid ""
+"Design prior under H₀ used to evaluate study outcomes when the null "
+"hypothesis is true."
+msgstr ""
+
+msgctxt "BayesFactorDesignPriorSection|"
+msgid "Location or mean of the H₀ design prior."
+msgstr ""
+
+msgctxt "BayesFactorDesignPriorSection|"
+msgid "Standard deviation of the normal H₀ design prior."
+msgstr ""
+
+msgctxt "BayesFactorDesignPriorSection|"
+msgid ""
+"Design prior under H₀ used to evaluate binomial study outcomes when the null "
+"hypothesis is true."
+msgstr ""
+
+msgctxt "BayesFactorDesignPriorSection|"
+msgid "Point proportion assumed under the H₀ design prior."
+msgstr ""
+
+msgctxt "BayesFactorDesignPriorSection|"
+msgid "Success parameter of the beta H₀ design prior."
+msgstr ""
+
+msgctxt "BayesFactorDesignPriorSection|"
+msgid "Failure parameter of the beta H₀ design prior."
+msgstr ""
+
+msgctxt "BayesFactorDesignPriorSection|"
+msgid "Lower truncation point for the beta H₀ design prior."
+msgstr ""
+
+msgctxt "BayesFactorDesignPriorSection|"
+msgid "Upper truncation point for the beta H₀ design prior."
+msgstr ""
+
+msgctxt "BayesFactorDesignPriorSection|"
+msgid "Prior Under H₁"
+msgstr ""
+
+msgctxt "BayesFactorDesignPriorSection|"
+msgid ""
+"Design prior under H₁ used to evaluate study outcomes when the alternative "
+"hypothesis is true."
+msgstr ""
+
+msgctxt "BayesFactorDesignPriorSection|"
+msgid "Location or mean of the H₁ design prior."
+msgstr ""
+
+msgctxt "BayesFactorDesignPriorSection|"
+msgid "Standard deviation of the normal H₁ design prior."
+msgstr ""
+
+msgctxt "BayesFactorDesignPriorSection|"
+msgid ""
+"Design prior under H₁ used to evaluate binomial study outcomes when the "
+"alternative hypothesis is true."
+msgstr ""
+
+msgctxt "BayesFactorDesignPriorSection|"
+msgid "Point proportion assumed under the H₁ design prior."
+msgstr ""
+
+msgctxt "BayesFactorDesignPriorSection|"
+msgid "Success parameter of the beta H₁ design prior."
+msgstr ""
+
+msgctxt "BayesFactorDesignPriorSection|"
+msgid "Failure parameter of the beta H₁ design prior."
+msgstr ""
+
+msgctxt "BayesFactorDesignPriorSection|"
+msgid "Lower truncation point for the beta H₁ design prior."
+msgstr ""
+
+msgctxt "BayesFactorDesignPriorSection|"
+msgid "Upper truncation point for the beta H₁ design prior."
+msgstr ""
+
+msgctxt "BayesFactorPlotSettings|"
+msgid "Settings"
+msgstr ""
+
+msgctxt "BayesFactorPlotSettings|"
+msgid ""
+"Choose the color palette used for evidence outcomes and design priors in "
+"plots."
+msgstr ""
+
+msgctxt "BayesFactorPlotSettings|"
+msgid "Legend position"
+msgstr ""
+
+msgctxt "BayesFactorPlotSettings|"
+msgid "Choose where the plot legend is shown."
+msgstr ""
+
+msgctxt "BayesFactorPlotSettings|"
+msgid "None"
+msgstr ""
+
+msgctxt "BayesFactorPlotSettings|"
+msgid "Bottom"
+msgstr ""
+
+msgctxt "BayesFactorPlotSettings|"
+msgid "Right"
+msgstr ""
+
+msgctxt "BayesFactorPlotSettings|"
+msgid "Right (inside)"
+msgstr ""
+
+msgctxt "BayesFactorPlotSettings|"
+msgid "Top"
+msgstr ""
+
+msgctxt "BayesFactorPlotSettings|"
+msgid "Left"
+msgstr ""
+
+msgctxt "BayesFactorPlotSettings|"
+msgid "Color palette"
+msgstr ""
+
+msgctxt "BayesFactorPriorPlot|"
+msgid "Prior Distribution"
+msgstr ""
+
+msgctxt "BayesFactorPriorPlot|"
+msgid "Design prior distribution"
+msgstr ""
+
+msgctxt "BayesFactorPriorPlot|"
+msgid "Plot the design prior used to evaluate hypothetical study outcomes."
+msgstr ""
+
+msgctxt "BayesFactorPriorPlot|"
+msgid "Analysis prior distribution"
+msgstr ""
+
+msgctxt "BayesFactorPriorPlot|"
+msgid "Plot the analysis prior used to compute the Bayes factor from the data."
+msgstr ""
+
+msgctxt "BayesFactorPriorPlot|"
+msgid "Combine design and analysis"
+msgstr ""
+
+msgctxt "BayesFactorPriorPlot|"
+msgid ""
+"Display design and analysis prior distributions in the same figure for "
+"comparison."
+msgstr ""
+
+msgctxt "BayesFactorSequentialParameterControls|"
+msgid "Information Schedule"
+msgstr ""
+
+msgctxt "BayesFactorSequentialParameterControls|"
+msgid "Standard error schedule:"
+msgstr ""
+
+msgctxt "BayesFactorSequentialParameterControls|"
+msgid "SE"
+msgstr ""
+
+msgctxt "BayesFactorSequentialParameterControls|"
+msgid ""
+"Comma-separated standard errors for the planned looks in a sequential "
+"general z-test."
+msgstr ""
+
+msgctxt "BayesFactorSequentialParameterControls|"
+msgid "Look Schedule"
+msgstr ""
+
+msgctxt "BayesFactorSequentialParameterControls|"
+msgid "Look schedule:"
+msgstr ""
+
+msgctxt "BayesFactorSequentialParameterControls|"
+msgid "Type"
+msgstr ""
+
+msgctxt "BayesFactorSequentialParameterControls|"
+msgid ""
+"Defines how the planned interim looks are spaced across the sequential "
+"design."
+msgstr ""
+
+msgctxt "BayesFactorSequentialParameterControls|"
+msgid "Equally spaced information"
+msgstr ""
+
+msgctxt "BayesFactorSequentialParameterControls|"
+msgid "Sample size increase"
+msgstr ""
+
+msgctxt "BayesFactorSequentialParameterControls|"
+msgid "Custom information fractions"
+msgstr ""
+
+msgctxt "BayesFactorSequentialParameterControls|"
+msgid "Equally spaced sample sizes"
+msgstr ""
+
+msgctxt "BayesFactorSequentialParameterControls|"
+msgid "Custom sample-size schedule"
+msgstr ""
+
+msgctxt "BayesFactorSequentialParameterControls|"
+msgid "Number of looks:"
+msgstr ""
+
+msgctxt "BayesFactorSequentialParameterControls|"
+msgid "K"
+msgstr ""
+
+msgctxt "BayesFactorSequentialParameterControls|"
+msgid "Number of planned analyses, including the final look."
+msgstr ""
+
+msgctxt "BayesFactorSequentialParameterControls|"
+msgid "First information fraction:"
+msgstr ""
+
+msgctxt "BayesFactorSequentialParameterControls|"
+msgid "I1/Imax"
+msgstr ""
+
+msgctxt "BayesFactorSequentialParameterControls|"
+msgid ""
+"Information fraction at the first planned look relative to the maximum "
+"information."
+msgstr ""
+
+msgctxt "BayesFactorSequentialParameterControls|"
+msgid "Initial sample size in group 1:"
+msgstr ""
+
+msgctxt "BayesFactorSequentialParameterControls|"
+msgid "Initial sample size:"
+msgstr ""
+
+msgctxt "BayesFactorSequentialParameterControls|"
+msgid "Sample size at the first planned look."
+msgstr ""
+
+msgctxt "BayesFactorSequentialParameterControls|"
+msgid "Sample size increase per look in group 1:"
+msgstr ""
+
+msgctxt "BayesFactorSequentialParameterControls|"
+msgid "Sample size increase per look:"
+msgstr ""
+
+msgctxt "BayesFactorSequentialParameterControls|"
+msgid "Number of observations added between successive looks."
+msgstr ""
+
+msgctxt "BayesFactorSequentialParameterControls|"
+msgid "Maximum sample size in group 1:"
+msgstr ""
+
+msgctxt "BayesFactorSequentialParameterControls|"
+msgid "Maximum sample size:"
+msgstr ""
+
+msgctxt "BayesFactorSequentialParameterControls|"
+msgid ""
+"Maximum sample size reached at the final look if the study has not stopped "
+"earlier."
+msgstr ""
+
+msgctxt "BayesFactorSequentialParameterControls|"
+msgid "Sample size schedule in group 1:"
+msgstr ""
+
+msgctxt "BayesFactorSequentialParameterControls|"
+msgid "Sample size schedule:"
+msgstr ""
+
+msgctxt "BayesFactorSequentialParameterControls|"
+msgid "Comma-separated sample sizes for the planned looks."
+msgstr ""
+
+msgctxt "BayesFactorSequentialParameterControls|"
+msgid "Sample size schedule in group 2:"
+msgstr ""
+
+msgctxt "BayesFactorSequentialParameterControls|"
+msgid "Comma-separated group 2 sample sizes for the planned looks."
+msgstr ""
+
+msgctxt "BayesFactorSequentialParameterControls|"
+msgid "Information fractions:"
+msgstr ""
+
+msgctxt "BayesFactorSequentialParameterControls|"
+msgid "I/Imax"
+msgstr ""
+
+msgctxt "BayesFactorSequentialParameterControls|"
+msgid ""
+"Comma-separated information fractions for the planned looks, ending at 1."
+msgstr ""
+
+msgctxt "BayesFactorSequentialParameterControls|"
+msgid "Allocation ratio (N₂/N₁):"
+msgstr ""
+
+msgctxt "BayesFactorSequentialParameterControls|"
+msgid "Ratio of the sample size in group 2 to the sample size in group 1."
+msgstr ""
+
+msgctxt "BayesFactorSequentialSearchBounds|"
+msgid "Sample Size Search"
+msgstr ""
+
+msgctxt "BayesFactorSequentialSearchBounds|"
+msgid "Lower search bound from first look:"
+msgstr ""
+
+msgctxt "BayesFactorSequentialSearchBounds|"
+msgid "Lower search bound for maximum sample size:"
+msgstr ""
+
+msgctxt "BayesFactorSequentialSearchBounds|"
+msgid ", min"
+msgstr ""
+
+msgctxt "BayesFactorSequentialSearchBounds|"
+msgid ""
+"Smallest maximum sample size considered when searching for the target "
+"probability of conclusive evidence."
+msgstr ""
+
+msgctxt "BayesFactorSequentialSearchBounds|"
+msgid "Upper search bound for maximum sample size:"
+msgstr ""
+
+msgctxt "BayesFactorSequentialSearchBounds|"
+msgid ", max"
+msgstr ""
+
+msgctxt "BayesFactorSequentialSearchBounds|"
+msgid ""
+"Largest maximum sample size considered when searching for the target "
+"probability of conclusive evidence."
+msgstr ""
+
+msgctxt "BayesFactorTSearchRangeControls|"
+msgid "t search range:"
+msgstr ""
+
+msgctxt "BayesFactorTSearchRangeControls|"
+msgid "Range"
+msgstr ""
+
+msgctxt "BayesFactorTSearchRangeControls|"
+msgid ""
+"Choose whether the integration range for t-test calculations is selected "
+"automatically or supplied manually."
+msgstr ""
+
+msgctxt "BayesFactorTSearchRangeControls|"
+msgid "Adaptive"
+msgstr ""
+
+msgctxt "BayesFactorTSearchRangeControls|"
+msgid "Custom"
+msgstr ""
+
+msgctxt "BayesFactorTSearchRangeControls|"
+msgid "Lower:"
+msgstr ""
+
+msgctxt "BayesFactorTSearchRangeControls|"
+msgid "min"
+msgstr ""
+
+msgctxt "BayesFactorTSearchRangeControls|"
+msgid "Lower bound of the custom integration range for t-test calculations."
+msgstr ""
+
+msgctxt "BayesFactorTSearchRangeControls|"
+msgid "Upper:"
+msgstr ""
+
+msgctxt "BayesFactorTSearchRangeControls|"
+msgid "max"
+msgstr ""
+
+msgctxt "BayesFactorTSearchRangeControls|"
+msgid "Upper bound of the custom integration range for t-test calculations."
+msgstr ""
+
+msgctxt "GroupSequentialBoundaryControls|"
+msgid "Δ (WT)"
+msgstr ""
+
+msgctxt "GroupSequentialBoundaryControls|"
+msgid "γ"
+msgstr ""
+
+msgctxt "GroupSequentialBoundaryControls|"
+msgid "ρ"
+msgstr ""
+
+msgctxt "GroupSequentialBoundaryControls|"
+msgid "Parameter"
+msgstr ""
+
+#, qt-format
+msgctxt "GroupSequentialBoundaryControls|"
+msgid ""
+"γ parameter for Hwang-Shih-DeCani spending; allowable range is [%1, %2]. "
+"Default is %3 for the upper boundary and %4 for the lower boundary."
+msgstr ""
+
+#, qt-format
+msgctxt "GroupSequentialBoundaryControls|"
+msgid ""
+"ρ parameter for Kim-DeMets power spending; allowable range is (%1, %2]. "
+"Default is %3."
+msgstr ""
+
+#, qt-format
+msgctxt "GroupSequentialBoundaryControls|"
+msgid ""
+"Δ parameter for the Wang-Tsiatis boundary family. Default is %1; Δ = 0 gives "
+"an O'Brien-Fleming-like boundary and Δ = 0.5 gives a Pocock-like boundary."
+msgstr ""
+
+msgctxt "GroupSequentialBoundaryControls|"
+msgid "Parameter for the selected upper boundary."
+msgstr ""
+
+msgctxt "GroupSequentialBoundaryControls|"
+msgid "Parameter for the selected lower spending function."
+msgstr ""
+
+msgctxt "GroupSequentialBoundaryControls|"
+msgid "Efficacy Boundary"
+msgstr ""
+
+msgctxt "GroupSequentialBoundaryControls|"
+msgid "Upper boundary:"
+msgstr ""
+
+msgctxt "GroupSequentialBoundaryControls|"
+msgid "O'Brien-Fleming spending"
+msgstr ""
+
+msgctxt "GroupSequentialBoundaryControls|"
+msgid "Pocock spending"
+msgstr ""
+
+msgctxt "GroupSequentialBoundaryControls|"
+msgid "Hwang-Shih-DeCani"
+msgstr ""
+
+msgctxt "GroupSequentialBoundaryControls|"
+msgid "Kim-DeMets power"
+msgstr ""
+
+msgctxt "GroupSequentialBoundaryControls|"
+msgid "O'Brien-Fleming"
+msgstr ""
+
+msgctxt "GroupSequentialBoundaryControls|"
+msgid "Pocock"
+msgstr ""
+
+msgctxt "GroupSequentialBoundaryControls|"
+msgid "Wang-Tsiatis"
+msgstr ""
+
+msgctxt "GroupSequentialBoundaryControls|"
+msgid ""
+"Efficacy boundary family. For one-sided and symmetric designs, O'Brien-"
+"Fleming and Pocock are boundary types; for asymmetric designs they are Lan-"
+"DeMets spending functions."
+msgstr ""
+
+msgctxt "GroupSequentialBoundaryControls|"
+msgid "Upper boundary parameter:"
+msgstr ""
+
+msgctxt "GroupSequentialBoundaryControls|"
+msgid "Futility Boundary"
+msgstr ""
+
+msgctxt "GroupSequentialBoundaryControls|"
+msgid "Lower boundary:"
+msgstr ""
+
+msgctxt "GroupSequentialBoundaryControls|"
+msgid ""
+"Futility boundary family for asymmetric β-spending designs. Lower-bound "
+"spending is computed under the alternative hypothesis."
+msgstr ""
+
+msgctxt "GroupSequentialBoundaryControls|"
+msgid "Lower boundary parameter:"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Alternative risk difference:"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Alternative risk ratio:"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Alternative odds ratio:"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Alternative effect:"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "p₁ - p₂"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "RR"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "OR"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "effect"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid ""
+"Alternative risk difference p1 - p2. With the default baseline event "
+"probability 0.5, the default difference 0.1 implies p2 = 0.4."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Alternative risk ratio p1 / p2. The default example effect is 1.3."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid ""
+"Alternative odds ratio comparing p1 to p2. The default example effect is 1.3."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Alternative effect used to derive the second event probability."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid ""
+"Scale used for the binary fixed-design sample-size calculation and null "
+"margin. The event probabilities are entered directly."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid ""
+"Scale used to derive the second event probability and to set the binary "
+"fixed-design sample-size calculation."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Canonical effect:"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Standardized mean difference:"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Effect magnitude:"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "δ"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "SMD"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Canonical information-scale effect. This is not necessarily Cohen's d."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid ""
+"Standardized mean difference for a one-sample design, or mean paired "
+"difference divided by the SD of paired differences for a paired design."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid ""
+"Standardized mean difference for two independent groups. The design uses "
+"total sample size as information and adjusts for the allocation ratio."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Effect magnitude used to compute the information-scale δ."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Error Rates"
+msgstr ""
+
+#, fuzzy
+msgctxt "GroupSequentialParameterControls|"
+msgid "Type I error rate:"
+msgstr "Tip I hata oranı:"
+
+#, fuzzy
+msgctxt "GroupSequentialParameterControls|"
+msgid "α"
+msgstr "α"
+
+msgctxt "GroupSequentialParameterControls|"
+msgid ""
+"One-sided upper-bound Type I error rate. For symmetric two-sided designs, "
+"the total Type I error rate is 2α."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Target power:"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "1 - β"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid ""
+"Target power under the alternative hypothesis. gsDesign uses β = 1 - power "
+"and adjusts the maximum information to achieve this power; for asymmetric β-"
+"spending designs, β is also the total lower-bound spending under the "
+"alternative."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Information and Sample Size Scale"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Design scaling method:"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Information ratio"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Fixed design value"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Information-scale effect (δ)"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid ""
+"Controls whether the design is scaled by relative information, a fixed-"
+"design value, or an effect-specific sample-size calculation."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Fixed design value:"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "N, info, or events"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid ""
+"Fixed-design value with no interim analyses. For simple sample-size designs "
+"this is N; for information-based or event-driven designs, enter information "
+"units or events."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Effect scale:"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid ""
+"Scale used to convert the planned effect to the information scale. Endpoint-"
+"specific binary and survival choices first compute fixed-design sample size "
+"or events."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Canonical effect (δ)"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Standardized mean difference (one sample / paired)"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Standardized mean difference (independent samples)"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Mean difference (one sample / paired)"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Mean difference (independent samples)"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Two-sample binary endpoint"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Survival hazard ratio"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Mean difference:"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Δ"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid ""
+"Absolute effect on the natural scale. Direction is ignored for information "
+"planning."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Common standard deviation:"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Outcome / difference SD:"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "SD"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid ""
+"For one-sample designs, use the outcome SD; for paired designs, use the SD "
+"of paired differences; for independent samples, use the common outcome SD."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Allocation ratio:"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "N₂/N₁"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid ""
+"Ratio of group 2 to group 1 sample size. For survival endpoints, treat group "
+"2 as experimental and group 1 as control."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Binary endpoint input:"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid ""
+"Choose whether to enter both event probabilities directly or enter a "
+"baseline event probability and an alternative effect."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Baseline event probability + effect"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Event probabilities (p₁, p₂)"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Event probability group 1:"
+msgstr ""
+
+#, fuzzy
+msgctxt "GroupSequentialParameterControls|"
+msgid "p₁"
+msgstr "p₁"
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Event probability in group 1 under the alternative hypothesis."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Event probability group 2:"
+msgstr ""
+
+#, fuzzy
+msgctxt "GroupSequentialParameterControls|"
+msgid "p₂"
+msgstr "p₂"
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Event probability in group 2 under the alternative hypothesis."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Baseline event probability:"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid ""
+"Event probability for group 1 under the alternative hypothesis. A value near "
+"0.5 is conservative for risk-difference planning because it gives the "
+"largest Bernoulli variance."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Binary effect scale:"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Risk difference"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Risk ratio"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Odds ratio"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Null risk difference:"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Null risk difference p1 - p2. Use 0 for equal event probabilities."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Null risk ratio:"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "RR₀"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Null risk ratio p1 / p2. Use 1 for equal event probabilities."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Null odds ratio:"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "OR₀"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Null odds ratio. Use 1 for equal event probabilities."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Alternative hazard ratio:"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "HR"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid ""
+"Experimental/control hazard ratio under the alternative hypothesis. The "
+"default example effect is 1.3."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Null hazard ratio:"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "HR₀"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid ""
+"The subjects + events survival calculation supports only HR0 = 1. Use events "
+"only or group sequential accrual for a non-null hazard-ratio margin."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Hazard ratio specified by the null hypothesis."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Survival information method:"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid ""
+"Selects whether survival information is planned as events only, as fixed-"
+"design subjects plus events, or directly as a group sequential survival "
+"design with study-time accrual assumptions."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Events only"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Subjects + events"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Group sequential accrual"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Control hazard:"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "λC"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid ""
+"Control-group event hazard per time unit. Use the same time unit as accrual, "
+"study duration, follow-up, and dropout hazards. Defaults to 0.0833 for "
+"subjects + events and 0.1155 for group sequential accrual."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Dropout hazard:"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "η"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid ""
+"Equal dropout hazard for both groups, per time unit. Use 0 for no dropout."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Accrual duration:"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Tr"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "R"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid ""
+"Enrollment duration in the same time unit as the survival hazards and study "
+"duration."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Study duration:"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Ts"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "T"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid ""
+"Maximum study duration. Use the same time unit as the control hazard and "
+"accrual duration. Defaults to 24 for subjects + events and 18 for group "
+"sequential accrual."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Entry distribution:"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "entry"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Patient entry distribution during the enrollment period."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Uniform"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Exponential"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Entry rate parameter:"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "γ"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid ""
+"Non-zero γ for exponential entry; positive values are convex and negative "
+"values are concave. The default is a non-zero starting value."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Accrual-rate pattern:"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid ""
+"Enrollment-rate pattern. With fixed study duration and minimum follow-up, "
+"the calculation rescales this value to the required accrual rate; the "
+"default scalar 1 gives constant accrual."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Minimum follow-up:"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "minfup"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Minimum follow-up duration in the same time unit as the study duration."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Accrual calculation method:"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid ""
+"Method used for the fixed-design survival calculation inside the group "
+"sequential accrual design."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Lachin-Foulkes"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Schoenfeld"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Freedman"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Bernstein-Lagakos"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Look Schedule"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Number of looks:"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Number of planned analyses, including the final analysis."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Look schedule:"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Equally spaced information"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Custom information fractions"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid ""
+"Controls the relative timing of interim analyses on the planned information "
+"scale; this is information time, not calendar time."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid "Information fractions:"
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid ""
+"Increasing information fractions. Supply K values ending in 1, or K - 1 "
+"interim values strictly below 1. The default schedule is generated from K."
+msgstr ""

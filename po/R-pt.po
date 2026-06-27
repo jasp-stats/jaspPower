@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspPower 0.19.2\n"
-"POT-Creation-Date: 2024-10-19 03:38\n"
+"POT-Creation-Date: 2026-06-27 04:48\n"
 "PO-Revision-Date: 2025-08-09 17:01+0000\n"
 "Last-Translator: Wendel Paulo Silvestre <wpsilvestre@ucs.br>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
@@ -13,20 +13,1845 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 5.13-dev\n"
 
+msgid "Bayes Factor Design"
+msgstr ""
+
+msgid "Bayes Factor Decision Probabilities"
+msgstr ""
+
+msgid "Design Specification"
+msgstr ""
+
+msgid ""
+"Target conclusive evidence probability is not reached within the selected "
+"sample-size range."
+msgstr ""
+
+msgid "Unable to compute Bayes factor design: %1$s"
+msgstr ""
+
+#, fuzzy
+msgid ""
+"Due to rounding of the sample size, Pr(Conclusive Evidence) can deviate from "
+"the target probability."
+msgstr ""
+"Devido ao arredondamento do tamanho de amostra, a potência real pode se "
+"desviar da potência alvo."
+
+msgid ""
+"For independent samples, N₁ is the sample size in group 1 and N₂ is rounded "
+"up from the requested N₂/N₁ sample-size ratio."
+msgstr ""
+
+msgid "Computed"
+msgstr ""
+
+msgid "User Defined"
+msgstr "Definido pelo Usuário"
+
+msgid "Design Prior"
+msgstr ""
+
+msgid "Decision Rule"
+msgstr ""
+
+msgid "Target Probability"
+msgstr ""
+
+msgid "Achieved Probability"
+msgstr ""
+
+msgid "Bayes Factor Decision"
+msgstr ""
+
+msgid "Evidence for H₀"
+msgstr ""
+
+msgid "Evidence for H₁"
+msgstr ""
+
+msgid "Unable to compute Bayes factor decision probabilities: %1$s"
+msgstr ""
+
+msgid ""
+"To satisfy both design priors in a single fixed design, use N₁ = %1$s and N₂ "
+"= %2$s (total N = %3$s)."
+msgstr ""
+
+msgid "To satisfy both design priors in a single fixed design, use N = %1$s."
+msgstr ""
+
+msgid ""
+"Probabilities are evaluated at the fixed-design sample size required for the "
+"corresponding design prior under H₁ or H₀."
+msgstr ""
+
+msgid ""
+"Probabilities are evaluated at the fixed-design sample size required for "
+"each design prior: under H₁, N₁ = %1$s and N₂ = %2$s; under H₀, N₁ = %3$s "
+"and N₂ = %4$s."
+msgstr ""
+
+msgid ""
+"Probabilities are evaluated at the fixed-design sample size required for "
+"each design prior: under H₁, N = %1$s; under H₀, N = %2$s."
+msgstr ""
+
+msgid ""
+"Probabilities are evaluated at the selected fixed-design sample size. Rows "
+"use the corresponding design prior under H₁ or H₀."
+msgstr ""
+
+msgid ""
+"Probabilities are evaluated at the selected fixed-design sample sizes. Rows "
+"use the corresponding design prior under H₁ or H₀."
+msgstr ""
+
+msgid ""
+"Probabilities are evaluated at the selected fixed-design sample sizes: N₁ = "
+"%1$s and N₂ = %2$s (total N = %3$s). Rows use the corresponding design prior "
+"under H₁ or H₀."
+msgstr ""
+
+msgid ""
+"Probabilities are evaluated at the selected fixed-design sample size: N = "
+"%1$s. Rows use the corresponding design prior under H₁ or H₀."
+msgstr ""
+
+#, fuzzy
+msgid "Sample size is not available."
+msgstr "tamanhos de amostra de, pelo menos, %s"
+
+msgid "%1$s: %2$s"
+msgstr ""
+
+#, fuzzy
+msgid "Error:"
+msgstr "Mensagem de Erro:"
+
+msgid ""
+"This table reports the smallest fixed-design sample size that reaches the "
+"target probability of conclusive evidence for each design prior."
+msgstr ""
+
+msgid ""
+"This table evaluates the selected fixed sample size. Achieved probabilities "
+"are the chances that the planned study produces conclusive evidence in the "
+"requested direction when data are generated from the corresponding design "
+"prior."
+msgstr ""
+
+msgid ""
+"Rows condition on the design prior used to generate hypothetical data. "
+"Diagonal cells are conclusive evidence for the true hypothesis, off-diagonal "
+"cells are misleading evidence, and the middle column is the chance of "
+"remaining inconclusive."
+msgstr ""
+
+msgid ""
+"The analysis prior is used to compute the Bayes factor from the data. The "
+"design prior describes the effect sizes assumed during planning; it can "
+"differ from the analysis prior."
+msgstr ""
+
+msgid ""
+"Summary statistics are the data summaries used to compute the observed Bayes "
+"factor."
+msgstr ""
+
+msgid ""
+"The observed-data analysis applies the planned sequential decision rule to "
+"the current data. It is an interim or final decision for the observed study, "
+"not an operating characteristic of the design."
+msgstr ""
+
+msgid ""
+"The observed-data analysis applies the planned fixed-design Bayes factor "
+"rule to the current data. It is the decision for this observed study, not an "
+"operating characteristic of the design."
+msgstr ""
+
+msgid "Observed Data Analysis"
+msgstr ""
+
+msgid "Analysis Result"
+msgstr ""
+
+#, fuzzy
+msgid "Summary Statistics"
+msgstr "Características"
+
+msgid "Unable to summarize observed data: %1$s"
+msgstr ""
+
+msgid "Unable to compute observed Bayes factor: %1$s"
+msgstr ""
+
+msgid ""
+"For t-tests, the estimate is the standardized mean difference on the "
+"analysis scale."
+msgstr ""
+
+msgid ""
+"Sequential decisions use the configured BF thresholds for the current "
+"observed data."
+msgstr ""
+
+msgid "Statistical Test"
+msgstr ""
+
+msgid "Decision"
+msgstr ""
+
+#, fuzzy
+msgid "Independent Samples T-Test"
+msgstr "um teste t de amostras independentes"
+
+#, fuzzy
+msgid "Paired Samples T-Test"
+msgstr "teste t de amostras pareadas"
+
+#, fuzzy
+msgid "One Sample T-Test"
+msgstr "teste t para uma amostra"
+
+#, fuzzy
+msgid "Independent Samples Z-Test"
+msgstr "um teste t de amostras independentes"
+
+#, fuzzy
+msgid "Paired Samples Z-Test"
+msgstr "teste t de amostras pareadas"
+
+#, fuzzy
+msgid "One Sample Z-Test"
+msgstr "teste t para uma amostra"
+
+#, fuzzy
+msgid "One Sample Proportion Test"
+msgstr "teste de proporções para uma amostra"
+
+msgid "General (z-approximation)"
+msgstr ""
+
+msgid "Group"
+msgstr ""
+
+msgid "Mean"
+msgstr ""
+
+msgid "SD"
+msgstr ""
+
+msgid "Variable"
+msgstr ""
+
+msgid "Successes"
+msgstr ""
+
+msgid "Trials"
+msgstr ""
+
+msgid "Proportion"
+msgstr ""
+
+msgid "Mean Difference"
+msgstr ""
+
+msgid "SD Difference"
+msgstr ""
+
+msgid "SE"
+msgstr ""
+
+msgid "Group 1"
+msgstr ""
+
+msgid "Group 2"
+msgstr ""
+
+msgid "Missing option '%1$s'."
+msgstr ""
+
+msgid "Option '%1$s' must contain one finite numeric value."
+msgstr ""
+
+#, fuzzy
+msgid "Summary statistics"
+msgstr "Características"
+
+msgid "Estimate"
+msgstr ""
+
+msgid "Mean 1"
+msgstr ""
+
+msgid "Mean 2"
+msgstr ""
+
+msgid "SD 1"
+msgstr ""
+
+msgid "SD 2"
+msgstr ""
+
+msgid "Mean difference"
+msgstr ""
+
+msgid "SD difference"
+msgstr ""
+
+#, fuzzy
+msgid "Cohen's d"
+msgstr "de Cohen"
+
+msgid "Failures"
+msgstr ""
+
+msgid "The total number of successes and failures must be at least 1."
+msgstr ""
+
+msgid "No dataset is available for column input."
+msgstr ""
+
+msgid "Column data"
+msgstr ""
+
+msgid "The selected variable contains no observed values."
+msgstr ""
+
+msgid "Dependent variable"
+msgstr ""
+
+msgid "Grouping variable"
+msgstr ""
+
+msgid "The grouping variable must contain exactly two observed groups."
+msgstr ""
+
+msgid "%1$s by %2$s"
+msgstr ""
+
+msgid "First variable"
+msgstr ""
+
+msgid "Second variable"
+msgstr ""
+
+msgid "%1$s - %2$s"
+msgstr ""
+
+msgid "Variable pair must contain two different variables."
+msgstr ""
+
+msgid "Variable pair must be selected."
+msgstr ""
+
+msgid "Pooled SD"
+msgstr ""
+
+msgid "Observed Bayes factor is not finite."
+msgstr ""
+
+msgid "Stop for H₁"
+msgstr ""
+
+msgid "BF supports H₁"
+msgstr ""
+
+msgid "Stop for H₀"
+msgstr ""
+
+msgid "BF supports H₀"
+msgstr ""
+
+msgid "Continue"
+msgstr ""
+
+msgid "Inconclusive"
+msgstr ""
+
+msgid "%1$s must be selected."
+msgstr ""
+
+msgid "%1$s was not found in the dataset."
+msgstr ""
+
+msgid "%1$s contains no observed values."
+msgstr ""
+
+msgid "%1$s must be numeric."
+msgstr ""
+
+msgid "%1$s contains infinite values."
+msgstr ""
+
+msgid "%1$s must be a finite number."
+msgstr ""
+
+#, fuzzy
+msgid "%1$s must be an integer of at least %2$s."
+msgstr "tamanhos de amostra de, pelo menos, %1$s"
+
+#, fuzzy
+msgid "%1$s must be at least %2$s."
+msgstr "tamanhos de amostra de, pelo menos, %1$s"
+
+msgid "%1$s must be positive."
+msgstr ""
+
+msgid "N₁ = %1$s and N₂ = %2$s"
+msgstr ""
+
+msgid "N = %1$s"
+msgstr ""
+
+msgid "Report"
+msgstr ""
+
+msgid ""
+"The report could not be generated because the Bayes factor design could not "
+"be completed with the current settings."
+msgstr ""
+
+msgid ""
+"The report could not be generated because the Bayes factor design could not "
+"be completed for all design priors."
+msgstr ""
+
+msgid "fixed-sample"
+msgstr ""
+
+msgid "Unable to generate report: %1$s"
+msgstr ""
+
+msgid "A %1$s Bayes factor design %2$s a %3$s %4$s %5$s."
+msgstr ""
+
+msgid "specified"
+msgstr ""
+
+msgid "evaluated"
+msgstr ""
+
+msgid "one-sided"
+msgstr "unicaudal"
+
+msgid "two-sided"
+msgstr "bicaudal"
+
+msgid "(H₁: %1$s %2$s %3$s)"
+msgstr ""
+
+msgid "The analysis prior for H₀ %1$s, and the analysis prior for H₁ %2$s."
+msgstr ""
+
+msgid "The design prior for H₀ %1$s, and the design prior for H₁ %2$s."
+msgstr ""
+
+msgid "used %1$s, truncated to %2$s"
+msgstr ""
+
+msgid "%1$s ~ Cauchy(location = %2$s, scale = %3$s)"
+msgstr ""
+
+msgid "%1$s ~ Student-t(location = %2$s, scale = %3$s, df = %4$s)"
+msgstr ""
+
+msgid "%1$s ~ Normal-moment(spread = %2$s, modes = ±%3$s)"
+msgstr ""
+
+msgid "used %1$s"
+msgstr ""
+
+msgid "%1$s ~ Normal(mean = %2$s, SD = %3$s)"
+msgstr ""
+
+msgid "used %1$s ~ Normal(mean = %2$s, SD = %3$s)"
+msgstr ""
+
+msgid "used %1$s, truncated to %2$s ≤ p ≤ %3$s"
+msgstr ""
+
+msgid "placed all mass at %1$s = %2$s"
+msgstr ""
+
+msgid "%1$s ~ Beta(a = %2$s, b = %3$s)"
+msgstr ""
+
+msgid "%1$s > %2$s"
+msgstr ""
+
+msgid "%1$s ≤ %2$s"
+msgstr ""
+
+msgid "%1$s < %2$s"
+msgstr ""
+
+msgid "%1$s ≥ %2$s"
+msgstr ""
+
+msgid ""
+"The design used evidence thresholds of BF₁₀ ≥ %1$s for H₁ and BF₀₁ ≥ %2$s "
+"for H₀ (equivalently, BF₁₀ ≤ %3$s)."
+msgstr ""
+
+msgid "The design evaluated %1$s."
+msgstr ""
+
+msgid ""
+"The design selected %1$s to target conclusive evidence probabilities of %2$s "
+"under H₁ and %3$s under H₀."
+msgstr ""
+
+msgid ""
+"The design selected %1$s for the H₁ planning target and %2$s for the H₀ "
+"planning target, with target conclusive evidence probabilities of %3$s and "
+"%4$s, respectively."
+msgstr ""
+
+msgid ""
+"The achieved probability of conclusive evidence was %1$s under H₁ and %2$s "
+"under H₀; the probability of misleading evidence was %3$s under H₁ and %4$s "
+"under H₀."
+msgstr ""
+
+msgid ""
+"The design analysis used JASP with the jaspPower module version %1$s and the "
+"bfpwr R package version %2$s."
+msgstr ""
+
+msgid "unknown"
+msgstr ""
+
+msgid "not available"
+msgstr ""
+
+msgid "1/%1$s"
+msgstr ""
+
+msgid "R Code"
+msgstr ""
+
+msgid "Unable to generate R code: %1$s"
+msgstr ""
+
+msgid "Decision Probabilities by Sample Size"
+msgstr ""
+
+msgid ""
+"Unable to compute conclusive evidence and misleading evidence curves: %1$s"
+msgstr ""
+
+msgid "Sample size (group 1)"
+msgstr "Tamanho de amostra (grupo 1)"
+
+#, fuzzy
+msgid "Sample size"
+msgstr "um tamanho de amostra de"
+
+#, fuzzy
+msgid "Probability"
+msgstr "Densidade de Probabilidade"
+
+msgid "Outcome"
+msgstr ""
+
+msgid "Decision Probabilities by Proportion"
+msgstr ""
+
+#, fuzzy
+msgid "Decision Probabilities by Effect Size"
+msgstr "Potência pelo Tamanho de Efeito"
+
+msgid ""
+"This plot shows how the probabilities of conclusive and misleading evidence "
+"change with sample size while priors and thresholds are held fixed. Use it "
+"to see how quickly the planned design becomes informative."
+msgstr ""
+
+msgid ""
+"This plot shows how the probabilities of conclusive and misleading evidence "
+"change across possible design proportions. Use it as a sensitivity check for "
+"the assumed proportion under the design prior."
+msgstr ""
+
+msgid ""
+"This plot shows how the probabilities of conclusive and misleading evidence "
+"change across possible design-prior effect sizes. Use it as a sensitivity "
+"check for the assumed effect size."
+msgstr ""
+
+msgid "Design prior location"
+msgstr ""
+
+msgid "Design prior mean"
+msgstr ""
+
+#, fuzzy
+msgid "Design proportion"
+msgstr "Descrição"
+
+#, fuzzy
+msgid "Prior Distribution"
+msgstr "Demonstração de Potência"
+
+msgid "Unable to compute prior distribution plot: %1$s"
+msgstr ""
+
+msgid ""
+"Analysis priors determine how the Bayes factor is computed from the data. "
+"Design priors describe the data-generating assumptions used to evaluate the "
+"design, so comparing them helps assess whether the planning assumptions "
+"match the intended analysis."
+msgstr ""
+
+msgid "Design and Analysis Priors"
+msgstr ""
+
+msgid "Analysis Prior"
+msgstr ""
+
+msgid "Prior"
+msgstr ""
+
+msgid "H₁"
+msgstr ""
+
+msgid "H₀"
+msgstr ""
+
+msgid "Conclusive"
+msgstr ""
+
+msgid "Misleading"
+msgstr ""
+
+msgid "Parameter value"
+msgstr ""
+
+msgid "Density"
+msgstr ""
+
+#, fuzzy
+msgid "Hypothesis"
+msgstr "Taxa hipotetizada (%s)"
+
+msgid ""
+"The %1$s parameterization assumes a unit information standard deviation "
+"(UISD) of %2$s."
+msgstr ""
+
+msgid "SMD"
+msgstr ""
+
+msgid "Fisher's z"
+msgstr ""
+
+msgid "logRR"
+msgstr ""
+
+msgid "logOR"
+msgstr ""
+
+msgid "logHR"
+msgstr ""
+
+msgid "logIRR"
+msgstr ""
+
+msgid "specified UISD"
+msgstr ""
+
+msgid "standard error schedule"
+msgstr ""
+
+msgid "effect size"
+msgstr "tamanho de efeito"
+
+msgid ""
+"The sample-size ratio leads to a second-group sample size smaller than 2."
+msgstr ""
+
+#, fuzzy
+msgid "independent samples t-test"
+msgstr "um teste t de amostras independentes"
+
+#, fuzzy
+msgid "paired samples t-test"
+msgstr "teste t de amostras pareadas"
+
+#, fuzzy
+msgid "one sample t-test"
+msgstr "teste t para uma amostra"
+
+#, fuzzy
+msgid "independent samples z-test"
+msgstr "um teste t de amostras independentes"
+
+#, fuzzy
+msgid "paired samples z-test"
+msgstr "teste t de amostras pareadas"
+
+#, fuzzy
+msgid "one sample z-test"
+msgstr "teste z para uma amostra"
+
+#, fuzzy
+msgid "one sample proportion test"
+msgstr "teste de proporções para uma amostra"
+
+msgid "general z-approximation"
+msgstr ""
+
+msgid "H₁ (BF₁₀)"
+msgstr ""
+
+msgid "H₀ (BF₀₁)"
+msgstr ""
+
+msgid "Under H₁"
+msgstr ""
+
+msgid "Under H₀"
+msgstr ""
+
+msgid "Design Prior Under H₁"
+msgstr ""
+
+msgid "Design Prior Under H₀"
+msgstr ""
+
+#, fuzzy
+msgid "Directional"
+msgstr "Descrição"
+
+msgid "Point null"
+msgstr ""
+
+msgid "θ >= θ₀, θ₀ = %1$s"
+msgstr ""
+
+msgid "θ <= θ₀, θ₀ = %1$s"
+msgstr ""
+
+msgid "θ₀ = %1$s"
+msgstr ""
+
+msgid "p <= p₀, p₀ = %1$s"
+msgstr ""
+
+msgid "p₀ = %1$s"
+msgstr ""
+
+msgid "Beta"
+msgstr ""
+
+msgid "Cauchy"
+msgstr ""
+
+msgid "Student-t"
+msgstr ""
+
+msgid "Point"
+msgstr ""
+
+msgid "Normal"
+msgstr ""
+
+msgid "Normal-moment"
+msgstr ""
+
+msgid "a = %1$s, b = %2$s"
+msgstr ""
+
+msgid "location = %1$s, scale = %2$s"
+msgstr ""
+
+msgid "location = %1$s, scale = %2$s, df = %3$s"
+msgstr ""
+
+msgid "location = %1$s"
+msgstr ""
+
+msgid "mean = %1$s, sd = %2$s"
+msgstr ""
+
+msgid "spread = %1$s, modes = +/- %2$s"
+msgstr ""
+
+msgid "p = %1$s"
+msgstr ""
+
+msgid "Analysis Prior Under H₀"
+msgstr ""
+
+msgid "Analysis Prior Under H₁"
+msgstr ""
+
+msgid "Bayes Factor Sequential Design"
+msgstr ""
+
+msgid "Sample Size Operating Characteristics"
+msgstr ""
+
+msgid "Cumulative Decision Probabilities by Look"
+msgstr ""
+
+msgid "New Stop Probabilities by Look"
+msgstr ""
+
+msgid "Stopping Boundaries"
+msgstr ""
+
+msgid ""
+"Fast adaptive maximum sample-size search is enabled. It is not guaranteed to "
+"find the smallest maximum sample size when discrete interim looks make the "
+"power curve non-monotone. Use \"Sample-size search: Exhaustive\" in the "
+"Advanced section to obtain the smallest maximum sample size."
+msgstr ""
+
+msgid ""
+"Exact integration over all regions is enabled. It can be slow for designs "
+"with many looks."
+msgstr ""
+
+msgid ""
+"Exact integration over all regions is disabled. Use \"Exact integration over "
+"all regions\" in the Advanced section to obtain exact sequential-design "
+"calculations."
+msgstr ""
+
+msgid ""
+"Two-sided sequential sample-size and power calculations can take a long "
+"time. To speed up exploratory calculations set \"Exact integration over all "
+"regions\" to FALSE."
+msgstr ""
+
+msgid "Warning:"
+msgstr ""
+
+msgid "The standard error schedule must contain at least one look."
+msgstr ""
+
+msgid "The standard error schedule must be strictly decreasing."
+msgstr ""
+
+#, fuzzy
+msgid "sample size schedule"
+msgstr "tamanhos de amostra de %s"
+
+msgid "The custom sample size schedule must contain at least one look."
+msgstr ""
+
+msgid "All sample sizes in the custom schedule must be at least 2."
+msgstr ""
+
+msgid "The custom sample size schedule must be strictly increasing."
+msgstr ""
+
+msgid ""
+"The sample size at the first look must be smaller than or equal to the "
+"maximum sample size."
+msgstr ""
+
+msgid ""
+"More than one look requires a maximum sample size larger than the first-look "
+"sample size."
+msgstr ""
+
+msgid ""
+"The number of looks is too large for the selected first-look and maximum "
+"sample sizes."
+msgstr ""
+
+#, fuzzy
+msgid "The sample size increase must be at least 1."
+msgstr "tamanhos de amostra de, pelo menos, %1$s"
+
+msgid ""
+"The generated sample-size schedule contains sample sizes smaller than 2."
+msgstr ""
+
+msgid ""
+"The generated sample-size schedule is not strictly increasing. Increase the "
+"maximum sample size or adjust the sample size increase."
+msgstr ""
+
+msgid "group 2 sample size schedule"
+msgstr ""
+
+msgid ""
+"The group 1 and group 2 custom sample size schedules must have the same "
+"number of looks."
+msgstr ""
+
+msgid "All group 2 sample sizes in the custom schedule must be at least 2."
+msgstr ""
+
+msgid "The custom group 2 sample size schedule must be strictly increasing."
+msgstr ""
+
+msgid "The %1$s must contain only finite numeric values."
+msgstr ""
+
+msgid "The %1$s must contain only positive values."
+msgstr ""
+
+msgid "Searching maximum sample size"
+msgstr ""
+
+msgid ""
+"The bfpwr sample-size search did not return a finite maximum sample size."
+msgstr ""
+
+msgid "The bfpwr sample-size search did not return a sequential design."
+msgstr ""
+
+msgid ""
+"The bfpwr sample-size search result did not contain a sample-size schedule."
+msgstr ""
+
+msgid ""
+"Stagewise evidence tables and figures are evaluated through the largest "
+"computed maximum sample size."
+msgstr ""
+
+msgid ""
+"The generated sample-size schedule is not strictly increasing. Increase the "
+"maximum sample size or adjust the information fractions."
+msgstr ""
+
+msgid "information fraction schedule"
+msgstr ""
+
+msgid "The information fraction schedule must contain at least one look."
+msgstr ""
+
+msgid "Information fractions must be less than or equal to 1."
+msgstr ""
+
+msgid "The information fraction schedule must be strictly increasing."
+msgstr ""
+
+msgid "The information fraction schedule must end at 1."
+msgstr ""
+
+msgid ""
+"The standard error schedule must have the same number of entries as the look "
+"schedule."
+msgstr ""
+
+msgid "Unable to compute Bayes factor sequential design: %1$s"
+msgstr ""
+
+msgid ""
+"Due to integer sample-size schedules, Pr(Conclusive Evidence) can exceed the "
+"target probability."
+msgstr ""
+
+msgid ""
+"For independent samples, N₁ is the sample size in group 1 and N₂ is rounded "
+"up from the requested N₂/N₁ sample-size ratio, unless a custom group 2 "
+"schedule is supplied."
+msgstr ""
+
+msgid ""
+"This design uses the supplied standard error schedule, so sample-size "
+"summaries are omitted."
+msgstr ""
+
+msgid "Final SE"
+msgstr ""
+
+msgid "Maximum N₁"
+msgstr ""
+
+msgid "Maximum N₂"
+msgstr ""
+
+msgid "Maximum N"
+msgstr ""
+
+msgid ""
+"This table reports the maximum sample size schedule needed to reach the "
+"target probability of conclusive evidence at the planned looks."
+msgstr ""
+
+msgid ""
+"This table evaluates the selected sequential design through the final look. "
+"Achieved probabilities are cumulative stopping probabilities for conclusive "
+"evidence under the corresponding design prior."
+msgstr ""
+
+msgid ""
+"Mean sample size and SD describe how much data the sequential design is "
+"expected to use under each design prior. They are averages over hypothetical "
+"repetitions of the planned study."
+msgstr ""
+
+msgid ""
+"Rows condition on the design prior used to generate hypothetical sequential "
+"studies. Diagonal cells are conclusive evidence for the true hypothesis, off-"
+"diagonal cells are misleading evidence, and the middle column is the chance "
+"of reaching the final look without a conclusion."
+msgstr ""
+
+msgid ""
+"Cumulative probabilities show the chance that the study has stopped by each "
+"look. The inconclusive column is the chance that no stopping rule has been "
+"crossed yet."
+msgstr ""
+
+msgid ""
+"New stop probabilities isolate decisions first made at a given look. Summing "
+"them over looks gives the cumulative stopping probability for the "
+"corresponding decision."
+msgstr ""
+
+msgid ""
+"Stopping boundaries are the test-statistic values that correspond to the "
+"selected Bayes factor thresholds at each look. Crossing a boundary triggers "
+"stopping for H₁ or H₀."
+msgstr ""
+
+msgid "Unable to compute sample size summary: %1$s"
+msgstr ""
+
+msgid "Looks"
+msgstr ""
+
+msgid "First Look"
+msgstr ""
+
+#, fuzzy
+msgid "Maximum Sample Size"
+msgstr "um tamanho de amostra de"
+
+#, fuzzy
+msgid "Mean Sample Size"
+msgstr "um tamanho de amostra de"
+
+msgid "Standard Deviation"
+msgstr ""
+
+msgid ""
+"The requested BF target could not be reached within the selected maximum "
+"sample size for %1$s; entries that depend on reaching the target are left "
+"empty."
+msgstr ""
+
+msgid ""
+"To satisfy both design priors in a single sequential design, use a final "
+"look of N₁ = %1$s and N₂ = %2$s (total N = %3$s)."
+msgstr ""
+
+msgid ""
+"To satisfy both design priors in a single sequential design, use a final "
+"look of N = %1$s."
+msgstr ""
+
+msgid ""
+"Probabilities are cumulative through the selected final look: SE = %1$s. "
+"Rows use the corresponding design prior under H₁ or H₀."
+msgstr ""
+
+msgid ""
+"Probabilities are cumulative through the final look required for each design "
+"prior: under H₁, N₁ = %1$s and N₂ = %2$s; under H₀, N₁ = %3$s and N₂ = %4$s."
+msgstr ""
+
+msgid ""
+"Probabilities are cumulative through the final look required for each design "
+"prior: under H₁, N = %1$s; under H₀, N = %2$s."
+msgstr ""
+
+msgid ""
+"Probabilities are cumulative through the selected final look. Rows use the "
+"corresponding design prior under H₁ or H₀."
+msgstr ""
+
+msgid ""
+"Probabilities are cumulative through the selected final look: N₁ = %1$s and "
+"N₂ = %2$s (total N = %3$s). Rows use the corresponding design prior under H₁ "
+"or H₀."
+msgstr ""
+
+msgid ""
+"Probabilities are cumulative through the selected final look: N = %1$s. Rows "
+"use the corresponding design prior under H₁ or H₀."
+msgstr ""
+
+msgid "Unable to compute cumulative decision probabilities: %1$s"
+msgstr ""
+
+msgid "Unable to compute incremental stagewise stops: %1$s"
+msgstr ""
+
+msgid "Design Prior: %1$s"
+msgstr ""
+
+msgid "Look"
+msgstr ""
+
+msgid "Any Stop"
+msgstr ""
+
+msgid "Unable to compute stopping boundaries: %1$s"
+msgstr ""
+
+msgid ""
+"Boundaries are shown on the test-statistic scale. Empty cells mean no finite "
+"statistic reaches the decision rule at that look."
+msgstr ""
+
+msgid "Lower Statistic"
+msgstr ""
+
+msgid "Upper Statistic"
+msgstr ""
+
+msgid "Stop for H₁: %1$s"
+msgstr ""
+
+msgid "Stop for H₀: %1$s"
+msgstr ""
+
+msgid ""
+"Sequential bfpwr calculations are performed on the parameter scale centered "
+"at the null value."
+msgstr ""
+
+msgid ""
+"The report could not be generated because the Bayes factor sequential design "
+"could not be completed with the current settings."
+msgstr ""
+
+msgid "sequential"
+msgstr ""
+
+msgid ""
+"The design used a fixed standard-error schedule, so n_min, n_max, batch "
+"size, expected sample size, and sample-size SD are not defined."
+msgstr ""
+
+msgid ""
+"The design targeted conclusive evidence probabilities of %1$s under H₁ and "
+"%2$s under H₀."
+msgstr ""
+
+msgid ""
+"The design started at n_min,1 = %1$s and n_min,2 = %2$s, used %3$s, and "
+"stopped at n_max,1 = %4$s and n_max,2 = %5$s."
+msgstr ""
+
+msgid ""
+"The design started at n_min = %1$s, used %2$s, and stopped at n_max = %3$s."
+msgstr ""
+
+msgid ""
+"The design started at n_min,1 = %1$s and n_min,2 = %2$s, used %3$s, and "
+"found maximum sample sizes n_max,1 = %4$s and n_max,2 = %5$s under H₁ and "
+"n_max,1 = %6$s and n_max,2 = %7$s under H₀."
+msgstr ""
+
+msgid ""
+"The design started at n_min = %1$s, used %2$s, and found maximum sample "
+"sizes n_max = %3$s under H₁ and n_max = %4$s under H₀."
+msgstr ""
+
+msgid "not reached"
+msgstr ""
+
+msgid "a single planned look"
+msgstr ""
+
+msgid "batches of %1$s for n₁ and %2$s for n₂"
+msgstr ""
+
+msgid "batch-size increments of %1$s for n₁ and %2$s for n₂"
+msgstr ""
+
+#, fuzzy
+msgid "batches of %1$s"
+msgstr "tamanho de amostras de %1$s"
+
+msgid "batch-size increments of %1$s"
+msgstr ""
+
+msgid ""
+"Under the H₁ design prior, the expected sample sizes were n₁ = %1$s (SD = "
+"%2$s) and n₂ = %3$s (SD = %4$s); under the H₀ design prior, the expected "
+"sample sizes were n₁ = %5$s (SD = %6$s) and n₂ = %7$s (SD = %8$s)."
+msgstr ""
+
+msgid ""
+"Under the H₁ design prior, the expected sample size was %1$s (SD = %2$s); "
+"under the H₀ design prior, the expected sample size was %3$s (SD = %4$s)."
+msgstr ""
+
+msgid "%1$s to %2$s"
+msgstr ""
+
+msgid ""
+"R code could not be generated because the sequential design could not be "
+"computed."
+msgstr ""
+
+msgid "Unable to compute stopping probabilities: %1$s"
+msgstr ""
+
+msgid "Cumulative probability"
+msgstr ""
+
+msgid ""
+"The curves accumulate over planned looks: conclusive and misleading curves "
+"increase as studies stop for those outcomes, while the inconclusive curve "
+"decreases as decisions are made."
+msgstr ""
+
+msgid "No finite stopping boundaries are available for the current settings."
+msgstr ""
+
+msgid "Critical value"
+msgstr ""
+
+msgid "Target"
+msgstr ""
+
+msgid "Boundary"
+msgstr ""
+
+msgid ""
+"Each curve gives the critical test-statistic value that corresponds to a "
+"Bayes factor stopping threshold at a look. Crossing a boundary triggers "
+"stopping for H₁ or H₀."
+msgstr ""
+
+#, fuzzy
+msgid "Lower"
+msgstr "Potência"
+
+msgid "Upper"
+msgstr ""
+
+msgid "group 1 event probability"
+msgstr ""
+
+msgid "group 2 event probability"
+msgstr ""
+
+msgid "baseline event probability"
+msgstr ""
+
+msgid "The alternative binary effect must be finite."
+msgstr ""
+
+msgid "Alternative risk ratios and odds ratios must be greater than 0."
+msgstr ""
+
+msgid ""
+"The baseline event probability and alternative binary effect imply a group 2 "
+"event probability outside (0, 1)."
+msgstr ""
+
+msgid "The %1$s must be greater than 0 and less than 1."
+msgstr ""
+
+#, fuzzy
+msgid "One-sided"
+msgstr "unicaudal"
+
+msgid "Two-sided symmetric"
+msgstr ""
+
+msgid "Two-sided asymmetric β-spending (binding futility)"
+msgstr ""
+
+msgid "Two-sided asymmetric β-spending (non-binding futility)"
+msgstr ""
+
+#, fuzzy
+msgid "Canonical effect (δ)"
+msgstr "Tamanho de efeito hipotético (%s)"
+
+msgid "Standardized mean difference (one sample / paired)"
+msgstr ""
+
+msgid "Standardized mean difference (independent samples)"
+msgstr ""
+
+msgid "Mean difference (one sample / paired)"
+msgstr ""
+
+#, fuzzy
+msgid "Mean difference (independent samples)"
+msgstr "um teste t de amostras independentes"
+
+msgid "Two-sample binary endpoint"
+msgstr ""
+
+msgid "Survival hazard ratio"
+msgstr ""
+
+msgid "Information ratio"
+msgstr ""
+
+msgid "Fixed design value"
+msgstr ""
+
+msgid "O'Brien-Fleming spending"
+msgstr ""
+
+msgid "Pocock spending"
+msgstr ""
+
+msgid "Hwang-Shih-DeCani"
+msgstr ""
+
+msgid "Kim-DeMets power"
+msgstr ""
+
+msgid "O'Brien-Fleming"
+msgstr ""
+
+msgid "Pocock"
+msgstr ""
+
+msgid "Wang-Tsiatis"
+msgstr ""
+
+msgid "The information fraction schedule must contain K or K - 1 values."
+msgstr ""
+
+msgid "When K information fractions are supplied, the final value must be 1."
+msgstr ""
+
+msgid ""
+"When K - 1 information fractions are supplied, all values must be less than "
+"1."
+msgstr ""
+
+msgid "Information fractions must be greater than 0 and no larger than 1."
+msgstr ""
+
+msgid "Information fractions must be strictly increasing."
+msgstr ""
+
+msgid "Group Sequential Design"
+msgstr ""
+
+msgid "Design"
+msgstr ""
+
+msgid "α"
+msgstr ""
+
+msgid "Power (1 - β)"
+msgstr ""
+
+msgid "Planning Metric"
+msgstr ""
+
+msgid "Unable to compute classical group sequential design: %1$s"
+msgstr ""
+
+msgid "Inflation Ratio"
+msgstr ""
+
+msgid ""
+"α is the one-sided Type I error rate. For symmetric two-sided designs, the "
+"total Type I error rate is 2α."
+msgstr ""
+
+msgid "Sample Size / Event Details"
+msgstr ""
+
+msgid "Quantity"
+msgstr ""
+
+msgid "Fixed Design"
+msgstr ""
+
+msgid "Maximum / Final"
+msgstr ""
+
+msgid "Expected"
+msgstr ""
+
+msgid "Unable to compute sample size / event details: %1$s"
+msgstr ""
+
+#, fuzzy
+msgid "Group 1 sample size"
+msgstr "um tamanho de amostra de"
+
+#, fuzzy
+msgid "Group 2 sample size"
+msgstr "um tamanho de amostra de"
+
+msgid "Enrolled subjects"
+msgstr ""
+
+msgid "Expected analysis time"
+msgstr ""
+
+msgid ""
+"Group sample sizes are split from the total sample size using the allocation "
+"ratio N₂/N₁. Expected values are probability-weighted expected total sample "
+"sizes split by the same ratio."
+msgstr ""
+
+msgid ""
+"Survival subject and analysis-time quantities are derived from the accrual "
+"assumptions. Fixed-design values use the corresponding fixed-design survival "
+"calculation; maximum/final values use the group sequential design. Event "
+"information is summarized in the main design table and look schedule."
+msgstr ""
+
+msgid "Effect Scale Conversions"
+msgstr ""
+
+msgid "Value"
+msgstr ""
+
+msgid "Description"
+msgstr "Descrição"
+
+msgid "Canonical δ under H₁"
+msgstr ""
+
+msgid "Standardized mean difference"
+msgstr ""
+
+msgid "Mean difference divided by the outcome SD or paired-difference SD."
+msgstr ""
+
+msgid "Mean difference divided by the common outcome SD."
+msgstr ""
+
+msgid "Alternative effect used to derive the group 2 event probability."
+msgstr ""
+
+msgid "Group 1 event probability"
+msgstr ""
+
+#, fuzzy
+msgid "Baseline event probability under the alternative hypothesis."
+msgstr ""
+"O tamanho de efeito não pode ser 0 com uma hipótese alternativa 'bicaudal'."
+
+msgid "Event probability in group 1 under the alternative hypothesis."
+msgstr ""
+
+msgid "Group 2 event probability"
+msgstr ""
+
+msgid ""
+"Derived from the baseline event probability and selected alternative binary "
+"effect."
+msgstr ""
+
+msgid "Event probability in group 2 under the alternative hypothesis."
+msgstr ""
+
+msgid "Alternative risk difference"
+msgstr ""
+
+#, fuzzy
+msgid "Alternative risk ratio"
+msgstr "Hipótese alternativa"
+
+#, fuzzy
+msgid "Alternative odds ratio"
+msgstr "Hipótese alternativa"
+
+msgid "Information-scale effect used by the sequential calculations."
+msgstr ""
+
+msgid ""
+"The one-sample/paired standardized mean difference is used directly as the "
+"information-scale effect."
+msgstr ""
+
+msgid ""
+"Derived from the fixed-design total sample size computed from the "
+"independent-samples standardized mean difference and allocation ratio."
+msgstr ""
+
+msgid ""
+"The raw mean difference is divided by the relevant SD and used as the "
+"information-scale effect."
+msgstr ""
+
+msgid ""
+"Derived from the fixed-design total sample size computed from the mean "
+"difference, common SD, and allocation ratio."
+msgstr ""
+
+msgid ""
+"Derived from the fixed-design total sample size computed from the entered "
+"event probabilities or from the baseline event probability and alternative "
+"binary effect."
+msgstr ""
+
+msgid ""
+"Derived from the event information implied by the hazard-ratio alternative, "
+"null hazard ratio, allocation ratio, and selected survival information "
+"method."
+msgstr ""
+
+msgid "Yes"
+msgstr ""
+
+msgid "No"
+msgstr ""
+
+msgid "Fixed Information Ratio"
+msgstr ""
+
+msgid "Maximum Information Ratio"
+msgstr ""
+
+msgid "Expected Information Ratio"
+msgstr ""
+
+msgid "Information Ratio"
+msgstr ""
+
+msgid "information ratio"
+msgstr ""
+
+msgid "Fixed Design Value"
+msgstr ""
+
+msgid "Maximum Value"
+msgstr ""
+
+msgid "Expected Value"
+msgstr ""
+
+msgid "Planned Value"
+msgstr ""
+
+msgid "fixed-design value"
+msgstr ""
+
+msgid "Fixed Design Total Sample Size"
+msgstr ""
+
+msgid "Maximum Total Sample Size"
+msgstr ""
+
+msgid "Expected Total Sample Size"
+msgstr ""
+
+#, fuzzy
+msgid "Total Sample Size"
+msgstr "um tamanho de amostra de"
+
+#, fuzzy
+msgid "total sample size"
+msgstr "um tamanho de amostra de"
+
+msgid "Fixed Design Events"
+msgstr ""
+
+msgid "Maximum Events"
+msgstr ""
+
+msgid "Expected Events"
+msgstr ""
+
+msgid "Events"
+msgstr ""
+
+msgid "events"
+msgstr ""
+
+msgid "Fixed Design Information Units"
+msgstr ""
+
+msgid "Maximum Information Units"
+msgstr ""
+
+msgid "Expected Information Units"
+msgstr ""
+
+msgid "Information Units"
+msgstr ""
+
+msgid "information units"
+msgstr ""
+
+msgid ""
+"In information-ratio mode, fixed design information and maximum information "
+"are relative information values, not observations or events."
+msgstr ""
+
+msgid ""
+"In fixed design value mode, the entered value defines the scale for the "
+"maximum and expected values. It may represent information units, total "
+"sample size, or events depending on the endpoint."
+msgstr ""
+
+msgid ""
+"Canonical δ is the information-scale effect; it is not generally Cohen's d. "
+"The table reports information units."
+msgstr ""
+
+msgid ""
+"For one-sample and paired normal designs, the standardized mean difference "
+"uses the outcome SD or the SD of paired differences. The table reports "
+"information units."
+msgstr ""
+
+msgid ""
+"For independent-samples normal designs, values labeled total sample size are "
+"total observations across both groups; the allocation ratio determines the "
+"group split."
+msgstr ""
+
+msgid ""
+"For one-sample and paired mean-difference designs, δ is the mean difference "
+"divided by the outcome SD or SD of paired differences. The table reports "
+"information units."
+msgstr ""
+
+msgid ""
+"For two-sample binary endpoints, values labeled total sample size are total "
+"observations across both groups; the entered event probabilities or derived "
+"event probabilities and selected null margin define the endpoint."
+msgstr ""
+
+msgid ""
+"For survival events-only mode, values labeled events are required event "
+"counts; this mode does not estimate enrolled subjects or analysis times."
+msgstr ""
+
+msgid ""
+"For the subjects + events survival mode, values labeled events are event "
+"counts. Enrolled-subject rows are planned or expected participant counts "
+"under the accrual assumptions, not event counts."
+msgstr ""
+
+msgid ""
+"For group sequential accrual survival mode, values labeled events are event "
+"information; expected analysis time is measured from trial start in the same "
+"time unit as the survival inputs."
+msgstr ""
+
+msgid ""
+"Boundaries are based on the selected information fractions, α and β targets, "
+"and boundary family: upper = %1$s."
+msgstr ""
+
+msgid ""
+"Boundaries are based on the selected information fractions, α and β targets, "
+"and symmetric boundary family: upper/lower = %1$s."
+msgstr ""
+
+msgid ""
+"Boundaries are based on the selected information fractions, α and β targets, "
+"and boundary families: upper = %1$s; lower = %2$s."
+msgstr ""
+
+msgid "%1$s (parameter = %2$s)"
+msgstr ""
+
+msgid "Lower Bound"
+msgstr ""
+
+msgid "Upper Bound"
+msgstr ""
+
+msgid "Information Fraction"
+msgstr ""
+
+msgid "Upper-tail p"
+msgstr ""
+
+msgid "Lower-tail p"
+msgstr ""
+
+msgid ""
+"Nominal p values are one-sided tail areas for crossing the displayed Z-"
+"boundary."
+msgstr ""
+
+msgid "For asymmetric designs, the lower bound is a futility boundary."
+msgstr ""
+
+msgid ""
+"For asymmetric designs, O'Brien-Fleming and Pocock selections are "
+"implemented as Lan-DeMets spending functions."
+msgstr ""
+
+msgid "Look Schedule"
+msgstr ""
+
+msgid "Information"
+msgstr ""
+
+msgid "Unable to compute look schedule: %1$s"
+msgstr ""
+
+msgid "Expected Analysis Time"
+msgstr ""
+
+msgid "Expected Enrolled Subjects"
+msgstr ""
+
+msgid "Expected Accrued Events"
+msgstr ""
+
+msgid ""
+"Expected enrolled subjects and expected accrued events are accrual-model "
+"quantities at each analysis time. The events column is the planned event "
+"information used for boundary construction."
+msgstr ""
+
+msgid "Efficacy Bound"
+msgstr ""
+
+msgid "Upper Efficacy Bound"
+msgstr ""
+
+msgid "Lower Efficacy Bound"
+msgstr ""
+
+msgid "Futility Bound"
+msgstr ""
+
+msgid "Final Boundary Crossing Probabilities"
+msgstr ""
+
+msgid "Assumption"
+msgstr ""
+
+msgid "Cross Efficacy Bound"
+msgstr ""
+
+msgid "No Boundary Crossing"
+msgstr ""
+
+msgid "Unable to compute final boundary crossing probabilities: %1$s"
+msgstr ""
+
+msgid "Probabilities are cumulative through the final planned look."
+msgstr ""
+
+msgid "Cumulative Boundary Crossing Probabilities by Look"
+msgstr ""
+
+msgid "No Boundary Crossing Yet"
+msgstr ""
+
+msgid "Unable to compute cumulative boundary crossing probabilities: %1$s"
+msgstr ""
+
+msgid ""
+"Cumulative probabilities show the chance that a boundary has been crossed by "
+"each look."
+msgstr ""
+
+msgid "New Boundary Crossings by Look"
+msgstr ""
+
+msgid "Unable to compute new boundary crossings: %1$s"
+msgstr ""
+
+msgid ""
+"New crossing probabilities isolate boundary crossings that first occur at "
+"the given look."
+msgstr ""
+
+msgid "Non-Binding Type I Error Accounting"
+msgstr ""
+
+msgid "Stagewise Efficacy Crossing"
+msgstr ""
+
+msgid "Cumulative Efficacy Crossing"
+msgstr ""
+
+msgid "Unable to compute non-binding Type I error accounting: %1$s"
+msgstr ""
+
+msgid ""
+"These probabilities evaluate Type I error for the efficacy rule when "
+"crossing the futility bound would not force stopping."
+msgstr ""
+
+msgid "Cross Lower Efficacy Bound"
+msgstr ""
+
+msgid "Cross Futility Bound"
+msgstr ""
+
+msgid "Other"
+msgstr ""
+
+msgid "Explanation"
+msgstr ""
+
+msgid ""
+"The requested classical group sequential design could not be completed with "
+"the current settings."
+msgstr ""
+
+msgid ""
+"This classical group sequential design uses %1$s with %2$s planned looks."
+msgstr ""
+
+msgid ""
+"The maximum %1$s is %2$s, compared with %3$s for the corresponding fixed "
+"design."
+msgstr ""
+
+msgid ""
+"R code could not be generated because the classical group sequential design "
+"could not be computed."
+msgstr ""
+
+msgid "Unable to compute stopping boundaries plot: %1$s"
+msgstr ""
+
+msgid "Information fraction"
+msgstr ""
+
+msgid "Boundary Crossing Probabilities"
+msgstr ""
+
+msgid "Unable to compute crossing probabilities plot: %1$s"
+msgstr ""
+
+msgid "Under"
+msgstr ""
+
+msgid "Upper (non-binding)"
+msgstr ""
+
 msgid "Effect size can't be 0."
 msgstr "O tamanho de efeito não pode ser 0."
 
-msgid "The comparison proportion can't be equal to the hypothesized proportion with a 'Two-sided' alternative hypothesis."
+msgid ""
+"The comparison proportion can't be equal to the hypothesized proportion with "
+"a 'Two-sided' alternative hypothesis."
 msgstr ""
 "A proporção de comparação não pode ser igual à proporção hipotetizada com "
 "uma hipótese alternativa 'bicaudal'."
 
-msgid "The comparison proportion has to be less than the hypothesized proportion with an alternative hypothesis of 'Less'."
+msgid ""
+"The comparison proportion has to be less than the hypothesized proportion "
+"with an alternative hypothesis of 'Less'."
 msgstr ""
 "A proporção de comparação deve ser menor do que a proporção hipotetizada com "
 "uma hipótese alternativa de 'Menos'."
 
-msgid "The comparison proportion has to be greater than the hypothesized proportion with an alternative hypothesis of 'Greater'."
+msgid ""
+"The comparison proportion has to be greater than the hypothesized proportion "
+"with an alternative hypothesis of 'Greater'."
 msgstr ""
 "A proporção de comparação deve ser maior do que a proporção hipotetizada com "
 "uma hipótese alternativa de 'Maior'."
@@ -34,40 +1859,91 @@ msgstr ""
 msgid "Invalid alternative."
 msgstr "Alternativa inválida."
 
-msgid "The comparison proportion can't be equal to the baseline proportion with a 'Two-sided' alternative hypothesis."
+msgid ""
+"The comparison proportion can't be equal to the baseline proportion with a "
+"'Two-sided' alternative hypothesis."
 msgstr ""
 "A proporção de comparação não pode ser igual à proporção de base com uma "
 "hipótese alternativa 'bicaudal'."
 
-msgid "The comparison proportion has to be less than the baseline proportion with an alternative hypothesis of 'Less'."
+msgid ""
+"The comparison proportion has to be less than the baseline proportion with "
+"an alternative hypothesis of 'Less'."
 msgstr ""
 "A proporção de comparação deve ser menor do que a proporção de base com uma "
 "hipótese alternativa de 'Menos'."
 
-msgid "The comparison proportion has to be greater than the baseline proportion with an alternative hypothesis of 'Greater'."
+msgid ""
+"The comparison proportion has to be greater than the baseline proportion "
+"with an alternative hypothesis of 'Greater'."
 msgstr ""
 "A proporção de comparação deve ser maior do que a proporção de base com uma "
 "hipótese alternativa de 'Maior'."
 
-msgid "The variance ratio can't be 1 with a 'Two-sided' alternative hypothesis."
+msgid ""
+"The variance ratio can't be 1 with a 'Two-sided' alternative hypothesis."
 msgstr ""
 "A razão das variâncias não pode ser 1 com uma hipótese alternativa "
 "'bicaudal'."
 
-msgid "The variance ratio has to be less than 1 with an alternative hypothesis 'Less'."
+msgid ""
+"The variance ratio has to be less than 1 with an alternative hypothesis "
+"'Less'."
 msgstr ""
 "A razão das variâncias deve ser menor do que 1 com uma hipótese alternativa "
 "de 'Menos'."
 
-msgid "The variance ratio has to be greater than 1 with an alternative hypothesis of 'Greater'."
+msgid ""
+"The variance ratio has to be greater than 1 with an alternative hypothesis "
+"of 'Greater'."
 msgstr ""
 "A razão das variâncias deve ser maior do que 1 com uma hipótese alternativa "
 "de 'Maior'."
 
+msgid "BF₁₀ ≥ %1$s"
+msgstr ""
+
+msgid "BF₀₁ ≥ %1$s"
+msgstr ""
+
+msgid "Invalid target '%1$s'."
+msgstr ""
+
+msgid "Point proportion"
+msgstr ""
+
+msgid "a = %1$s, b = %2$s, lower = %3$s, upper = %4$s"
+msgstr ""
+
+msgid "Bayes Factor Evidence"
+msgstr ""
+
+msgid "Null"
+msgstr ""
+
+#, fuzzy
+msgid "Alternative"
+msgstr "Hipótese alternativa"
+
+msgid "Explanation:"
+msgstr ""
+
+#, fuzzy
+msgid "Two-sided"
+msgstr "bicaudal"
+
+#, fuzzy
+msgid "Less (One-sided)"
+msgstr "unicaudal"
+
+msgid "Greater (One-sided)"
+msgstr ""
+
 msgid "Power must be less than 1."
 msgstr "A potência deve ser menor do que 1."
 
-msgid "The purpose of a %s is to evaluate the sensitivity of a design and test."
+msgid ""
+"The purpose of a %s is to evaluate the sensitivity of a design and test."
 msgstr ""
 "O propósito de um %s é avaliar a sensibilidade de um delineamento e teste."
 
@@ -104,23 +1980,32 @@ msgstr "teste da razão de Poisson para duas amostras"
 msgid "when using"
 msgstr "ao usar"
 
-msgid "You have chosen to calculate the minimum sample size needed to have an experiment sensitive enough to consistently detect the specified hypothetical effect size"
+msgid ""
+"You have chosen to calculate the minimum sample size needed to have an "
+"experiment sensitive enough to consistently detect the specified "
+"hypothetical effect size"
 msgstr ""
 "Você escolheu calcular o tamanho mínimo da amostra necessário para ter um "
 "experimento sensível o suficiente para detectar consistentemente o tamanho "
 "do efeito hipotético especificado"
 
-msgid "You have chosen to calculate the minimum hypothetical effect size for which the chosen design will have the specified sensitivity"
+msgid ""
+"You have chosen to calculate the minimum hypothetical effect size for which "
+"the chosen design will have the specified sensitivity"
 msgstr ""
 "Você escolheu calcular o tamanho mínimo do efeito hipotético para o qual o "
 "delineamento escolhido terá a sensibilidade especificada"
 
-msgid "You have chosen to calculate the sensitivity of the chosen design for detecting the specified effect size"
+msgid ""
+"You have chosen to calculate the sensitivity of the chosen design for "
+"detecting the specified effect size"
 msgstr ""
 "Você escolheu calcular a sensibilidade do delineamento escolhido para "
 "detectar o tamanho do efeito especificado"
 
-msgid "Unable to compute the power results. Try to enter less extreme values for the input parameters."
+msgid ""
+"Unable to compute the power results. Try to enter less extreme values for "
+"the input parameters."
 msgstr ""
 "Incapaz de calcular os resultados de potência. Tente introduzir valores "
 "menos extremos nos parâmetros de entrada."
@@ -138,7 +2023,9 @@ msgstr "O tamanho do efeito deve ser menor que 0, com uma alternativa menor."
 msgid "Effect size has to be greater than 0 with an alternative of greater."
 msgstr "O tamanho do efeito deve ser maior que 0, com uma alternativa maior."
 
-msgid "The specified design leads to (an) unsolvable equation(s) while constructing the power curve. Try to enter less extreme values for the parameters"
+msgid ""
+"The specified design leads to (an) unsolvable equation(s) while constructing "
+"the power curve. Try to enter less extreme values for the parameters"
 msgstr ""
 "O delineamento especificado leva a uma ou mais equações insolúveis ao "
 "construir a curva de potência. Tente inserir valores menos extremos para os "
@@ -149,9 +2036,6 @@ msgstr "Mensagem de Erro:"
 
 msgid "Sample size (group 2)"
 msgstr "Tamanho de amostra (grupo 2)"
-
-msgid "Sample size (group 1)"
-msgstr "Tamanho de amostra (grupo 1)"
 
 msgid "Hypothetical effect size (%s)"
 msgstr "Tamanho de efeito hipotético (%s)"
@@ -171,9 +2055,6 @@ msgstr "Análise de Potência a priori"
 msgid "Cohen's %s"
 msgstr "%s de Cohen"
 
-msgid "User Defined"
-msgstr "Definido pelo Usuário"
-
 msgid "Power by effect size"
 msgstr "Potência pelo tamanho de efeito"
 
@@ -182,9 +2063,6 @@ msgstr "Tamanho de efeito verdadeiro"
 
 msgid "Power to detect"
 msgstr "Poder de detecção"
-
-msgid "Description"
-msgstr "Descrição"
 
 msgid "Likely miss"
 msgstr "Provável falha"
@@ -198,14 +2076,20 @@ msgstr "Provavelmente detectar"
 msgid "Almost surely detect"
 msgstr "Quase certamente detectar"
 
-msgid "The power contour plot shows how the sensitivity of the test changes with the hypothetical effect size and the sample sizes in the design. As we increase the sample sizes, smaller effect sizes become reliably detectable."
+msgid ""
+"The power contour plot shows how the sensitivity of the test changes with "
+"the hypothetical effect size and the sample sizes in the design. As we "
+"increase the sample sizes, smaller effect sizes become reliably detectable."
 msgstr ""
 "O gráfico de contorno de potência mostra como a sensibilidade do teste muda "
 "com o tamanho do efeito hipotético e os tamanhos das amostras no "
 "delineamento. À medida que se aumenta os tamanhos das amostras, tamanhos de "
 "efeito menores tornam-se detectáveis de forma confiável."
 
-msgid "Conversely, if one is satisfied to reliably detect only larger effect sizes, smaller sample sizes are needed. The point shows the power of the specified design and effect size."
+msgid ""
+"Conversely, if one is satisfied to reliably detect only larger effect sizes, "
+"smaller sample sizes are needed. The point shows the power of the specified "
+"design and effect size."
 msgstr ""
 "Por outro lado, se alguém estiver satisfeito em detectar de forma confiável "
 "apenas tamanhos de efeito maiores, serão necessários tamanhos de amostra "
@@ -215,14 +2099,8 @@ msgstr ""
 msgid "sample sizes of %1$s"
 msgstr "tamanho de amostras de %1$s"
 
-msgid "two-sided"
-msgstr "bicaudal"
-
 msgid "criteria"
 msgstr "critérios"
-
-msgid "one-sided"
-msgstr "unicaudal"
 
 msgid "criterion"
 msgstr "critério"
@@ -233,13 +2111,18 @@ msgstr "tem potência de, pelo menos, %1$s"
 msgid "only be sufficiently sensitive (power >%1$s)"
 msgstr "ser apenas suficientemente sensível (potência >%1$s)"
 
-msgid "The power curve above shows how the sensitivity of the test and design is larger for larger effect sizes. If we obtained %1$s our test and design would %2$s to effect sizes of %3$s%4$s."
+msgid ""
+"The power curve above shows how the sensitivity of the test and design is "
+"larger for larger effect sizes. If we obtained %1$s our test and design "
+"would %2$s to effect sizes of %3$s%4$s."
 msgstr ""
 "A curva de potência acima mostra como a sensibilidade do teste e do "
 "delineamento é maior para tamanhos de efeito maiores. Se obtivermos %1$s, "
 "nosso teste e delineamento seriam %2$s para tamanhos de efeito de %3$s%4$s."
 
-msgid "We would be more than likely to miss (power less than 50%%) effect sizes less than %1$s%2$s."
+msgid ""
+"We would be more than likely to miss (power less than 50%%) effect sizes "
+"less than %1$s%2$s."
 msgstr ""
 "É mais do que provável perder (potência menor que 50%%) tamanhos de efeito "
 "menores que %1$s%2$s."
@@ -247,7 +2130,11 @@ msgstr ""
 msgid "sample sizes of at least %1$s"
 msgstr "tamanhos de amostra de, pelo menos, %1$s"
 
-msgid "The power curve above shows how the sensitivity of the test and design is larger for larger effect sizes. In order for our test and design to have sufficient sensitivity (power > %1$s) to detect that %2$s when the effect size is %3$s or larger, we would need %4$s."
+msgid ""
+"The power curve above shows how the sensitivity of the test and design is "
+"larger for larger effect sizes. In order for our test and design to have "
+"sufficient sensitivity (power > %1$s) to detect that %2$s when the effect "
+"size is %3$s or larger, we would need %4$s."
 msgstr ""
 "A curva de potência acima mostra como a sensibilidade do teste e do "
 "delineamento é maior para tamanhos de efeito maiores. Para que nosso teste e "
@@ -257,31 +2144,42 @@ msgstr ""
 msgid "a sample size of %1$s"
 msgstr "um tamanho de amostra de %1$s"
 
-msgid "The figure above shows two sampling distributions: the sampling distribution of the %1$s effect size when %2$s (left), and when %3$s%4$s (right)."
+msgid ""
+"The figure above shows two sampling distributions: the sampling distribution "
+"of the %1$s effect size when %2$s (left), and when %3$s%4$s (right)."
 msgstr ""
 "A figura acima mostra duas distribuições de amostragem: a distribuição de "
-"amostragem do tamanho do efeito %1$s quando %2$s (esquerda) e quando %3$s%4$"
-"s (direita)."
+"amostragem do tamanho do efeito %1$s quando %2$s (esquerda) e quando "
+"%3$s%4$s (direita)."
 
 msgid "Both assume %1$s."
 msgstr "Ambos assumem %1$s."
 
-msgid "The vertical dashed lines show the %1$s we would set for a %2$s test with %3$s."
+msgid ""
+"The vertical dashed lines show the %1$s we would set for a %2$s test with "
+"%3$s."
 msgstr ""
 "A linha vertical tracejada mostra que %1$s deveríamos definir para um teste "
 "%2$s com %3$s."
 
-msgid "When the observed effect size is far enough away from 0 to be more extreme than the %1$s we say we 'reject' the null hypothesis."
+msgid ""
+"When the observed effect size is far enough away from 0 to be more extreme "
+"than the %1$s we say we 'reject' the null hypothesis."
 msgstr ""
 "Quando o tamanho do efeito observado está longe o suficiente de 0 para ser "
 "mais extremo do que %1$s, dizemos que 'rejeitamos' a hipótese nula."
 
-msgid "If the null hypothesis were true and %1$s the evidence would lead us to wrongly reject the null hypothesis at most %2$s%% of the time."
+msgid ""
+"If the null hypothesis were true and %1$s the evidence would lead us to "
+"wrongly reject the null hypothesis at most %2$s%% of the time."
 msgstr ""
 "Se a hipótese nula fosse verdadeira e %1$s, a evidência nos levaria a "
 "rejeitar erroneamente a hipótese nula no máximo %2$s%% das vezes."
 
-msgid "On the other hand, if %1$s%2$s, the evidence would exceed the criterion  &mdash; and hence we would correctly claim that %3$s &mdash; at least %4$s%% of the time."
+msgid ""
+"On the other hand, if %1$s%2$s, the evidence would exceed the criterion  "
+"&mdash; and hence we would correctly claim that %3$s &mdash; at least %4$s%% "
+"of the time."
 msgstr ""
 "Por outro lado, se %1$s%2$s, a evidência excederia o critério  &mdash; e, "
 "portanto, afirmaríamos corretamente que %3$s &mdash; pelo menos %4$s%% das "
@@ -291,7 +2189,9 @@ msgid "The design's power for detecting effects of %1$s%2$s is thus %3$s."
 msgstr ""
 "O poder do delineamento para detectar efeitos de %1$s%2$s é, portanto, %3$s."
 
-msgid "Due to the rounding of the sample size, the actual power can deviate from the target power."
+msgid ""
+"Due to the rounding of the sample size, the actual power can deviate from "
+"the target power."
 msgstr ""
 "Devido ao arredondamento do tamanho de amostra, a potência real pode se "
 "desviar da potência alvo."
@@ -302,33 +2202,49 @@ msgstr "Potência real:"
 msgid "a sample size of %s"
 msgstr "um tamanho de amostra de %s"
 
-msgid "We would need %1$s to reliably (with probability greater than or equal to %2$s) detect an effect size of %3$s%4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s."
+msgid ""
+"We would need %1$s to reliably (with probability greater than or equal to "
+"%2$s) detect an effect size of %3$s%4$s, assuming a %5$s criterion for "
+"detection that allows for a maximum Type I error rate of %6$s."
 msgstr ""
 "Precisaríamos de %1$s para detectar de forma confiável (com probabilidade "
 "maior ou igual a %2$s) um tamanho de efeito de %3$s%4$s, assumindo um "
 "critério de detecção de %5$s que permite uma taxa máxima de erro do tipo I "
 "de %6$s."
 
-msgid "A design with %1$s will reliably (with probability greater than or equal to %2$s) detect  effect sizes of %3$s%4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s."
+msgid ""
+"A design with %1$s will reliably (with probability greater than or equal to "
+"%2$s) detect  effect sizes of %3$s%4$s, assuming a %5$s criterion for "
+"detection that allows for a maximum Type I error rate of %6$s."
 msgstr ""
 "Um delineamento com %1$s detectará de forma confiável (com probabilidade "
 "maior ou igual a %2$s) tamanhos de efeito de %3$s%4$s, assumindo um critério "
 "de detecção de %5$s que permite uma taxa máxima de erro do tipo I de %6$s."
 
-msgid "A design with %1$s can detect effect sizes of %2$s%3$s with a probability of at least %4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s."
+msgid ""
+"A design with %1$s can detect effect sizes of %2$s%3$s with a probability of "
+"at least %4$s, assuming a %5$s criterion for detection that allows for a "
+"maximum Type I error rate of %6$s."
 msgstr ""
 "Um design com %1$s pode detectar tamanhos de efeito de %2$s%3$s com uma "
 "probabilidade de pelo menos %4$s, assumindo um critério de detecção de %5$s "
 "que permite uma taxa máxima de erro do tipo I de %6$s."
 
-msgid "To evaluate the design specified in the table, we can consider how sensitive it is to true effects of increasing sizes; that is, are we likely to correctly conclude that %1$s when the effect size is large enough to care about?"
+msgid ""
+"To evaluate the design specified in the table, we can consider how sensitive "
+"it is to true effects of increasing sizes; that is, are we likely to "
+"correctly conclude that %1$s when the effect size is large enough to care "
+"about?"
 msgstr ""
 "Para avaliar o delineamento especificado na tabela, podemos considerar o "
 "quão sensível ele é aos efeitos reais do aumento de tamanhos; ou seja, é "
 "provável que concluamos corretamente que %1$s quando o tamanho do efeito é "
 "grande o suficiente para ser considerado?"
 
-msgid "The specified design leads to (an) unsolvable equation(s) while computing the values for this power table. Try to enter less extreme values for the parameters."
+msgid ""
+"The specified design leads to (an) unsolvable equation(s) while computing "
+"the values for this power table. Try to enter less extreme values for the "
+"parameters."
 msgstr ""
 "O delineamento especificado leva a uma ou mais equações insolúveis ao "
 "calcular os valores para esta tabela de potência. Tente inserir valores "
@@ -363,7 +2279,9 @@ msgstr ""
 "O conjunto de dados gerado deve ser salvo como um arquivo .csv ou arquivo de "
 "texto .txt."
 
-msgid "The generated dataset could not be saved. Please make sure that the specified path exists and the specified csv file is closed."
+msgid ""
+"The generated dataset could not be saved. Please make sure that the "
+"specified path exists and the specified csv file is closed."
 msgstr ""
 "O conjunto de dados gerado não pôde ser salvo. Por favor, certifique-se de "
 "que o caminho especificado existe e o arquivo csv especificado está fechado."
@@ -389,38 +2307,52 @@ msgstr "um tamanho de amostra de"
 msgid "effect sizes of %s"
 msgstr "tamanhos de efeito de %s"
 
-msgid "We would need %1$s to reliably (with probability greater than %2$s) detect %3$s%4$s%5$s, assuming a %6$s criterion for detection that allows for a maximum Type I error rate of %7$s."
+msgid ""
+"We would need %1$s to reliably (with probability greater than %2$s) detect "
+"%3$s%4$s%5$s, assuming a %6$s criterion for detection that allows for a "
+"maximum Type I error rate of %7$s."
 msgstr ""
 "Precisaríamos de %1$s para detectar %3$s%4$s%5$s de forma confiável (com "
 "probabilidade maior que %2$s), assumindo um critério %6$s para detecção que "
 "permite uma taxa máxima de erro do tipo I de %7$s."
 
-msgid "A design with %1$s will reliably (with probability greater than %2$s) detect  %3$s%4$s%5$s, assuming a %6$s criterion for detection that allows for a maximum Type I error rate of %7$s."
+msgid ""
+"A design with %1$s will reliably (with probability greater than %2$s) "
+"detect  %3$s%4$s%5$s, assuming a %6$s criterion for detection that allows "
+"for a maximum Type I error rate of %7$s."
 msgstr ""
 "Um delineamento com %1$s detectará de forma confiável (com probabilidade "
 "maior que %2$s) %3$s%4$s%5$s, assumindo um critério %6$s para detecção que "
 "permite uma taxa máxima de erro do tipo I de %7$s."
 
-msgid "A design with %1$s can detect %2$s%3$s%4$s with a probability of at least %5$s, assuming a %6$s criterion for detection that allows for a maximum Type I error rate of %7$s."
+msgid ""
+"A design with %1$s can detect %2$s%3$s%4$s with a probability of at least "
+"%5$s, assuming a %6$s criterion for detection that allows for a maximum Type "
+"I error rate of %7$s."
 msgstr ""
 "Um delineamento com %1$s pode detectar %2$s%3$s%4$s com uma probabilidade de "
 "pelo menos %5$s, assumindo um critério de detecção de %6$s que permite uma "
 "taxa máxima de erro do tipo I de %7$s."
 
-msgid "To evaluate the design specified in the table, we can consider how sensitive it is to true effects of increasing sizes; that is, are we likely to correctly conclude that %s when the effect size is large enough to care about?"
+msgid ""
+"To evaluate the design specified in the table, we can consider how sensitive "
+"it is to true effects of increasing sizes; that is, are we likely to "
+"correctly conclude that %s when the effect size is large enough to care "
+"about?"
 msgstr ""
 "Para avaliar o delineamento especificado na tabela, podemos considerar o "
 "quão sensível ele é aos efeitos reais do aumento de tamanhos; ou seja, é "
 "provável que concluamos corretamente que %s quando o tamanho do efeito é "
 "grande o suficiente para ser considerado?"
 
-msgid "effect size"
-msgstr "tamanho de efeito"
-
 msgid "absolute difference in proportions"
 msgstr "diferença absoluta em proporções"
 
-msgid "Conversely, if one is satisfied to reliably detect only larger effect sizes, smaller sample sizes are needed. The solid black curve on the contour plot shows sample size/effect size combinations with a power of %1$s. The point shows the specified design and %2$s."
+msgid ""
+"Conversely, if one is satisfied to reliably detect only larger effect sizes, "
+"smaller sample sizes are needed. The solid black curve on the contour plot "
+"shows sample size/effect size combinations with a power of %1$s. The point "
+"shows the specified design and %2$s."
 msgstr ""
 "Por outro lado, se estivermos satisfeitos em detectar de forma confiável "
 "apenas tamanhos de efeito maiores, serão necessários tamanhos de amostra "
@@ -446,7 +2378,9 @@ msgstr "ser suficientemente sensível (potência >%s)"
 msgid "sample sizes of at least %s"
 msgstr "tamanhos de amostra de, pelo menos, %s"
 
-msgid "The figure above shows two sampling distributions: the sampling distribution of the %1$s effect size when %2$s (left), and when %3$s (right)."
+msgid ""
+"The figure above shows two sampling distributions: the sampling distribution "
+"of the %1$s effect size when %2$s (left), and when %3$s (right)."
 msgstr ""
 "A figura acima mostra duas distribuições de amostragem: a distribuição de "
 "amostragem do tamanho do efeito %1$s quando %2$s (esquerda) e quando %3$s "
@@ -455,12 +2389,17 @@ msgstr ""
 msgid "Both assume %s."
 msgstr "Ambos assumem %s."
 
-msgid "When the observed effect size is far enough away from 0 to be more extreme than the %s we say we 'reject' the null hypothesis."
+msgid ""
+"When the observed effect size is far enough away from 0 to be more extreme "
+"than the %s we say we 'reject' the null hypothesis."
 msgstr ""
 "Quando o tamanho do efeito observado está longe o suficiente de 0 para ser "
 "mais extremo do que %s, dizemos que 'rejeitamos' a hipótese nula."
 
-msgid "On the other hand, if %1$s, the evidence would exceed the criterion  &mdash; and hence we would correctly claim that %2$s &mdash; at least %3$s%% of the time."
+msgid ""
+"On the other hand, if %1$s, the evidence would exceed the criterion  &mdash; "
+"and hence we would correctly claim that %2$s &mdash; at least %3$s%% of the "
+"time."
 msgstr ""
 "Por outro lado, se %1$s, a evidência excederia o critério &mdash; e, "
 "portanto, afirmaríamos corretamente que %2$s &mdash; pelo menos %3$s%% das "
@@ -475,14 +2414,21 @@ msgstr "Potência pela razão das variâncias"
 msgid "True variance ratio (%s)"
 msgstr "Razão das variâncias verdadeiras (%s)"
 
-msgid "The power contour plot shows how the sensitivity of the test changes with the hypothetical variance ratio and the sample sizes in the design. As we increase the sample sizes, smaller variance ratios become reliably detectable."
+msgid ""
+"The power contour plot shows how the sensitivity of the test changes with "
+"the hypothetical variance ratio and the sample sizes in the design. As we "
+"increase the sample sizes, smaller variance ratios become reliably "
+"detectable."
 msgstr ""
 "O gráfico de contorno de potência mostra como a sensibilidade do teste muda "
 "com a razão de variância hipotética e os tamanhos de amostra no "
 "delineamento. À medida que aumentamos os tamanhos de amostra, razões de "
 "variância menores tornam-se detectáveis de forma confiável."
 
-msgid "Conversely, if one is satisfied to reliably detect only larger variance ratios, smaller sample sizes are needed. The point shows the power of specified  design and variance ratio."
+msgid ""
+"Conversely, if one is satisfied to reliably detect only larger variance "
+"ratios, smaller sample sizes are needed. The point shows the power of "
+"specified  design and variance ratio."
 msgstr ""
 "Por outro lado, se alguém estiver satisfeito em detectar de forma confiável "
 "apenas taxas de variância maiores, serão necessários tamanhos de amostra "
@@ -492,19 +2438,28 @@ msgstr ""
 msgid "only be sufficiently sensitive (power > %1$s)"
 msgstr "ser suficientemente sensível (potência > %1$s)"
 
-msgid "The power curve above shows how the sensitivity of the test and design is larger for larger variance ratios. If we obtained %1$s our test and design would %2$s to variance ratios of %3$s%4$s."
+msgid ""
+"The power curve above shows how the sensitivity of the test and design is "
+"larger for larger variance ratios. If we obtained %1$s our test and design "
+"would %2$s to variance ratios of %3$s%4$s."
 msgstr ""
 "A curva de potência acima mostra como a sensibilidade do teste e do "
 "delineamento é maior para taxas de variância maiores. Se obtivermos %1$s, "
 "nosso teste e delineamento resultariam em taxas de variância de %2$s para "
 "%3$s%4$s."
 
-msgid "We would be more than likely to miss (power less than 50%%) variance ratios of %s."
+msgid ""
+"We would be more than likely to miss (power less than 50%%) variance ratios "
+"of %s."
 msgstr ""
 "É mais provável que se perca (potência menor que 50%%) taxas de variância de "
 "%s."
 
-msgid "The power curve above shows how the sensitivity of the test and design is larger for larger sample sizes. In order for our test and design to have sufficient sensitivity (power > %1$s) to detect that %2$s when the variance ratio is %3$s or more extreme, we would need %4$s."
+msgid ""
+"The power curve above shows how the sensitivity of the test and design is "
+"larger for larger sample sizes. In order for our test and design to have "
+"sufficient sensitivity (power > %1$s) to detect that %2$s when the variance "
+"ratio is %3$s or more extreme, we would need %4$s."
 msgstr ""
 "A curva de potência acima mostra como a sensibilidade do teste e do "
 "delineamento é maior para tamanhos amostrais maiores. Para que nosso teste e "
@@ -512,42 +2467,62 @@ msgstr ""
 "%2$s quando a razão de variância for %3$s ou mais extrema, precisaríamos de "
 "%4$s."
 
-msgid "The figure above shows two sampling distributions: the sampling distribution of the %1$s variance ratio when %2$s, and when %3$s%4$s."
+msgid ""
+"The figure above shows two sampling distributions: the sampling distribution "
+"of the %1$s variance ratio when %2$s, and when %3$s%4$s."
 msgstr ""
 "A figura acima mostra duas distribuições de amostragem: a distribuição de "
 "amostragem da razão de variância %1$s quando %2$s e quando %3$s%4$s."
 
-msgid "When the observed variance ratio is far enough away from 1 to be more extreme than the %1$s we say we 'reject' the null hypothesis."
+msgid ""
+"When the observed variance ratio is far enough away from 1 to be more "
+"extreme than the %1$s we say we 'reject' the null hypothesis."
 msgstr ""
 "Quando a razão de variância observada está longe o suficiente de 1 para ser "
 "mais extrema que %1$s, dizemos que 'rejeitamos' a hipótese nula."
 
-msgid "We would need %1$s to reliably (with probability greater than %2$s) detect a variance ratio of %3$s, assuming a %4$s criterion for detection that allows for a maximum Type I error rate of %5$s."
+msgid ""
+"We would need %1$s to reliably (with probability greater than %2$s) detect a "
+"variance ratio of %3$s, assuming a %4$s criterion for detection that allows "
+"for a maximum Type I error rate of %5$s."
 msgstr ""
 "Precisaríamos de %1$s para detectar de forma confiável (com probabilidade "
 "maior que %2$s) uma taxa de variância de %3$s, assumindo um critério de "
 "detecção de %4$s que permite uma taxa máxima de erro do tipo I de %5$s."
 
-msgid "A design with %1$s will reliably (with probability greater than %2$s) detect variance ratios of %3$s, assuming a %4$s criterion for detection that allows for a maximum Type I error rate of %5$s."
+msgid ""
+"A design with %1$s will reliably (with probability greater than %2$s) detect "
+"variance ratios of %3$s, assuming a %4$s criterion for detection that allows "
+"for a maximum Type I error rate of %5$s."
 msgstr ""
 "Um delineamento com %1$s detectará de forma confiável (com probabilidade "
 "maior que %2$s) taxas de variância de %3$s, assumindo um critério %4$s para "
 "detecção que permite uma taxa máxima de erro do tipo I de %5$s."
 
-msgid "A design with %1$s can detect variance ratios of %2$s with a probability of at least %3$s, assuming a %4$s criterion for detection that allows for a maximum Type I error rate of %5$s."
+msgid ""
+"A design with %1$s can detect variance ratios of %2$s with a probability of "
+"at least %3$s, assuming a %4$s criterion for detection that allows for a "
+"maximum Type I error rate of %5$s."
 msgstr ""
 "Um delineamento com %1$s pode detectar taxas de variância de %2$s com uma "
 "probabilidade de pelo menos %3$s, assumindo um critério %4$s para detecção "
 "que permite uma taxa máxima de erro do tipo I de %5$s."
 
-msgid "To evaluate the design specified in the table, we can consider how sensitive it is to true effects of increasing sizes; that is, are we likely to correctly conclude that %1$s when the variance ratio is large enough to care about?"
+msgid ""
+"To evaluate the design specified in the table, we can consider how sensitive "
+"it is to true effects of increasing sizes; that is, are we likely to "
+"correctly conclude that %1$s when the variance ratio is large enough to care "
+"about?"
 msgstr ""
 "Para avaliar o delineamento especificado na tabela, podemos considerar o "
 "quão sensível ele é aos efeitos reais do aumento de tamanhos; ou seja, é "
 "provável que concluamos corretamente que %1$s quando a taxa de variância é "
 "grande o suficiente para ser considerada?"
 
-msgid "To improve readability of this power table for a 'Two-sided' alternative hypothesis, only the intervals in the direction of the specified variance ratio are displayed under 'True variance ratio'"
+msgid ""
+"To improve readability of this power table for a 'Two-sided' alternative "
+"hypothesis, only the intervals in the direction of the specified variance "
+"ratio are displayed under 'True variance ratio'"
 msgstr ""
 "Para melhorar a legibilidade desta tabela de potência para uma hipótese "
 "alternativa 'Bicaudal', apenas os intervalos na direção da razão de "
@@ -568,13 +2543,19 @@ msgstr "um tamanho de amostra de %1$s em cada grupo"
 msgid "group sample sizes of %1$s and %2$s respectively,"
 msgstr "tamanho de amostra dos grupos %1$s e %2$s, respectivamente,"
 
-msgid "A design with %1$s will reliably (with probability greater than or equal to %2$s) detect effect sizes of %3$s%4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s."
+msgid ""
+"A design with %1$s will reliably (with probability greater than or equal to "
+"%2$s) detect effect sizes of %3$s%4$s, assuming a %5$s criterion for "
+"detection that allows for a maximum Type I error rate of %6$s."
 msgstr ""
 "Um delineamento com %1$s detectará de forma confiável (com probabilidade "
 "maior ou igual a %2$s) tamanhos de efeito de %3$s%4$s, assumindo um critério "
 "de detecção de %5$s que permite uma taxa máxima de erro do tipo I de %6$s."
 
-msgid "Conversely, if one is satisfied to reliably detect only larger effect sizes, smaller sample sizes are needed The point shows the power of the specified  design and effect size."
+msgid ""
+"Conversely, if one is satisfied to reliably detect only larger effect sizes, "
+"smaller sample sizes are needed The point shows the power of the specified  "
+"design and effect size."
 msgstr ""
 "Por outro lado, se alguém estiver satisfeito em detectar de forma confiável "
 "apenas tamanhos de efeito maiores, serão necessários tamanhos de amostra "
@@ -591,9 +2572,13 @@ msgid "sample sizes of at least %1$s in each group"
 msgstr "tamanhos de amostra de, pelo menos, %1$s em cada grupo"
 
 msgid "group sample sizes of at least %1$s and %2$s, respectively"
-msgstr "tamanhos de amostra de grupo de pelo menos %1$s e %2$s, respectivamente"
+msgstr ""
+"tamanhos de amostra de grupo de pelo menos %1$s e %2$s, respectivamente"
 
-msgid "On the other hand, if %1$s%2$s, the evidence would exceed the criterion &mdash; and hence we would correctly claim that %3$s &mdash; at least %4$s%% of the time."
+msgid ""
+"On the other hand, if %1$s%2$s, the evidence would exceed the criterion "
+"&mdash; and hence we would correctly claim that %3$s &mdash; at least %4$s%% "
+"of the time."
 msgstr ""
 "Por outro lado, se %1$s%2$s, a evidência excederia o critério &mdash; e, "
 "portanto, afirmaríamos corretamente que %3$s &mdash; pelo menos %4$s%% das "
@@ -608,32 +2593,49 @@ msgstr "Razão de taxa de Poisson Verdadeira"
 msgid "a sample size of %s in each group"
 msgstr "um tamanho de amostra de %s em cada grupo"
 
-msgid "We would need %1$s to reliably (with probability greater than %2$s) detect a Poisson rate ratio of %3$s%4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s."
+msgid ""
+"We would need %1$s to reliably (with probability greater than %2$s) detect a "
+"Poisson rate ratio of %3$s%4$s, assuming a %5$s criterion for detection that "
+"allows for a maximum Type I error rate of %6$s."
 msgstr ""
 "Precisaríamos de %1$s para detectar de forma confiável (com probabilidade "
 "maior que %2$s) uma taxa de Poisson de %3$s%4$s, assumindo um critério de "
 "detecção de %5$s que permite uma taxa máxima de erro do tipo I de %6$s."
 
-msgid "A design with %1$s will reliably (with probability greater than %2$s) detect Poisson rate ratios of %3$s%4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s."
+msgid ""
+"A design with %1$s will reliably (with probability greater than %2$s) detect "
+"Poisson rate ratios of %3$s%4$s, assuming a %5$s criterion for detection "
+"that allows for a maximum Type I error rate of %6$s."
 msgstr ""
 "Um delineamento com %1$s detectará de forma confiável (com probabilidade "
 "maior que %2$s) razões de Poisson de %3$s%4$s, assumindo um critério de "
 "detecção de %5$s que permite uma taxa máxima de erro do tipo I de %6$s."
 
-msgid "A design with %1$s can detect Poisson rate ratios of %2$s%3$s with a probability of at least %4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s."
+msgid ""
+"A design with %1$s can detect Poisson rate ratios of %2$s%3$s with a "
+"probability of at least %4$s, assuming a %5$s criterion for detection that "
+"allows for a maximum Type I error rate of %6$s."
 msgstr ""
 "Um delineamento com %1$s pode detectar taxas de Poisson de %2$s%3$s com uma "
 "probabilidade de pelo menos %4$s, assumindo um critério de detecção de %5$s "
 "que permite uma taxa máxima de erro do tipo I de %6$s."
 
-msgid "The power contour plot shows how the sensitivity of the test changes with the hypothetical Poisson rate ratio and the sample sizes in the design. As we increase the sample sizes, Poisson rate ratios closer to one become reliably detectable."
+msgid ""
+"The power contour plot shows how the sensitivity of the test changes with "
+"the hypothetical Poisson rate ratio and the sample sizes in the design. As "
+"we increase the sample sizes, Poisson rate ratios closer to one become "
+"reliably detectable."
 msgstr ""
 "O gráfico de contorno de potência mostra como a sensibilidade do teste muda "
 "com a razão de Poisson hipotética e os tamanhos de amostra no delineamento. "
 "À medida que aumentamos os tamanhos de amostra, razões de Poisson mais "
 "próximas de um tornam-se detectáveis de forma confiável."
 
-msgid "Conversely, if one is satisfied to reliably detect only larger effects, smaller sample sizes are needed. The solid black curve on the contour plot shows sample size/Poisson rate ratios combinations with a power of %s. The point shows the specified  design and Poisson rate ratio."
+msgid ""
+"Conversely, if one is satisfied to reliably detect only larger effects, "
+"smaller sample sizes are needed. The solid black curve on the contour plot "
+"shows sample size/Poisson rate ratios combinations with a power of %s. The "
+"point shows the specified  design and Poisson rate ratio."
 msgstr ""
 "Por outro lado, se estivermos satisfeitos em detectar apenas efeitos maiores "
 "de forma confiável, serão necessários tamanhos de amostra menores. A curva "
@@ -650,40 +2652,59 @@ msgstr "tamanhos de amostra de pelo menos %s em cada grupo"
 msgid "True variance ratio"
 msgstr "Proporção de variâncias verdadeira"
 
-msgid "To evaluate the design specified in the table, we can consider how sensitive it is to true effects of increasing sizes; that is, are we likely to correctly conclude that %1$s when the variance ratio is extreme enough to care about?"
+msgid ""
+"To evaluate the design specified in the table, we can consider how sensitive "
+"it is to true effects of increasing sizes; that is, are we likely to "
+"correctly conclude that %1$s when the variance ratio is extreme enough to "
+"care about?"
 msgstr ""
 "Para avaliar o delineamento especificado na tabela, podemos considerar o "
 "quão sensível ele é aos efeitos reais do aumento de tamanhos; ou seja, é "
 "provável que concluamos corretamente que %1$s quando a taxa de variância é "
 "extrema o suficiente para nos importarmos?"
 
-msgid "The power contour plot shows how the sensitivity of the test changes with the hypothetical variance ratio and the sample sizes in the design. As we increase the sample sizes, less extreme variance ratios become reliably detectable."
+msgid ""
+"The power contour plot shows how the sensitivity of the test changes with "
+"the hypothetical variance ratio and the sample sizes in the design. As we "
+"increase the sample sizes, less extreme variance ratios become reliably "
+"detectable."
 msgstr ""
 "O gráfico de contorno de potência mostra como a sensibilidade do teste muda "
 "com a razão de variância hipotética e os tamanhos de amostra no "
 "delineamento. À medida que aumentamos os tamanhos de amostra, razões de "
 "variância menos extremas tornam-se detectáveis de forma confiável."
 
-msgid "Conversely, if one is satisfied to reliably detect only more extreme variance ratios, smaller sample sizes are needed. The point shows the power of the specified design and variance ratio."
+msgid ""
+"Conversely, if one is satisfied to reliably detect only more extreme "
+"variance ratios, smaller sample sizes are needed. The point shows the power "
+"of the specified design and variance ratio."
 msgstr ""
 "Por outro lado, se alguém estiver satisfeito em detectar de forma confiável "
 "apenas taxas de variância mais extremas, serão necessários tamanhos de "
 "amostra menores. O ponto demonstra o poder do delineamento e da taxa de "
 "variância especificados."
 
-msgid "The power curve above shows how the sensitivity of the test and design is larger for more extreme variance ratios. If we obtained %1$s our test and design would %2$s to variance ratios of %3$s%4$s."
+msgid ""
+"The power curve above shows how the sensitivity of the test and design is "
+"larger for more extreme variance ratios. If we obtained %1$s our test and "
+"design would %2$s to variance ratios of %3$s%4$s."
 msgstr ""
 "A curva de potência acima mostra como a sensibilidade do teste e do "
-"delineamento é maior para taxas de variância mais extremas. Se obtivermos %1$"
-"s, nosso teste e delineamento resultariam em taxas de variância de %2$s para "
-"%3$s%4$s."
+"delineamento é maior para taxas de variância mais extremas. Se obtivermos "
+"%1$s, nosso teste e delineamento resultariam em taxas de variância de %2$s "
+"para %3$s%4$s."
 
-msgid "We would be more than likely to miss (power less than 50%%) variance ratios of %1$s."
+msgid ""
+"We would be more than likely to miss (power less than 50%%) variance ratios "
+"of %1$s."
 msgstr ""
 "É mais provável que se perca (poder menor que 50%) taxas de variância de "
 "%1$s."
 
-msgid "The specified design leads to (an) unsolvable equation(s) while constructing the curves for the Power Demonstration. Try to enter less extreme values for the parameters"
+msgid ""
+"The specified design leads to (an) unsolvable equation(s) while constructing "
+"the curves for the Power Demonstration. Try to enter less extreme values for "
+"the parameters"
 msgstr ""
 "O delineamento especificado leva a uma ou mais equações insolúveis ao "
 "construir as curvas para a Demonstração de Potência. Tente inserir valores "
@@ -692,19 +2713,28 @@ msgstr ""
 msgid "Note."
 msgstr "Nota."
 
-msgid "When the variance ratio is less than 1, the inverse of the variance ratio is displayed. Therefore, the first and second degrees of freedom of both F-distributions switched places."
+msgid ""
+"When the variance ratio is less than 1, the inverse of the variance ratio is "
+"displayed. Therefore, the first and second degrees of freedom of both F-"
+"distributions switched places."
 msgstr ""
 "Quando a razão de variância é menor que 1, o inverso da razão de variância é "
 "exibido. Portanto, o primeiro e o segundo graus de liberdade de ambas as "
 "distribuições F trocaram de lugar."
 
-msgid "%1$sThe figure above shows two sampling distributions: the sampling distribution of the %1$s variance ratio when %2$s (left), and when %3$s%4$s (right)."
+msgid ""
+"%1$sThe figure above shows two sampling distributions: the sampling "
+"distribution of the %1$s variance ratio when %2$s (left), and when %3$s%4$s "
+"(right)."
 msgstr ""
 "%1$sA figura acima mostra duas distribuições de amostragem: a distribuição "
 "de amostragem da razão de variância %1$s quando %2$s (esquerda) e quando "
 "%3$s%4$s (direita)."
 
-msgid "On the other hand, if %1$s, the evidence would exceed the criterion  &mdash; and hence we would correctly claim that %2$s1 &mdash; at least %3$s%% of the time."
+msgid ""
+"On the other hand, if %1$s, the evidence would exceed the criterion  &mdash; "
+"and hence we would correctly claim that %2$s1 &mdash; at least %3$s%% of the "
+"time."
 msgstr ""
 "Por outro lado, se %1$s, a evidência excederia o critério &mdash; e, "
 "portanto, afirmaríamos corretamente que %2$s1 &mdash; pelo menos %3$s%% das "
@@ -715,7 +2745,11 @@ msgstr ""
 "O poder do delineamento para detectar efeitos de %1$s%2$s%3$s é, portanto, "
 "%4$s."
 
-msgid "The power curve above shows how the sensitivity of the test and design is larger for larger sample sizes. In order for our test and design to have sufficient sensitivity (power > %1$s) to detect that %2$s when the effect size is %3$s or larger, we would need %4$s."
+msgid ""
+"The power curve above shows how the sensitivity of the test and design is "
+"larger for larger sample sizes. In order for our test and design to have "
+"sufficient sensitivity (power > %1$s) to detect that %2$s when the effect "
+"size is %3$s or larger, we would need %4$s."
 msgstr ""
 "A curva de potência acima mostra como a sensibilidade do teste e do "
 "delineamento é maior para tamanhos de amostra maiores. Para que nosso teste "
