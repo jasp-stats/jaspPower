@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspPower 0.95.5\n"
 "POT-Creation-Date: 2026-06-27 04:48\n"
-"PO-Revision-Date: 2026-03-24 23:09+0000\n"
+"PO-Revision-Date: 2026-07-04 04:43+0000\n"
 "Last-Translator: Zahid Rizky Fakhri <zahidrizkyfakhri@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/jasp/"
 "jasppower-r/id/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.17-dev\n"
+"X-Generator: Weblate 2026.7.1.dev0\n"
 
 msgid "Bayes Factor Design"
 msgstr ""
@@ -195,7 +195,7 @@ msgid "Statistical Test"
 msgstr ""
 
 msgid "Decision"
-msgstr ""
+msgstr "Keputusan"
 
 msgid "Independent Samples T-Test"
 msgstr ""
@@ -228,7 +228,7 @@ msgid "Mean"
 msgstr ""
 
 msgid "SD"
-msgstr ""
+msgstr "SD"
 
 msgid "Variable"
 msgstr ""
@@ -249,13 +249,13 @@ msgid "SD Difference"
 msgstr ""
 
 msgid "SE"
-msgstr ""
+msgstr "SE"
 
 msgid "Group 1"
-msgstr ""
+msgstr "Grup 1"
 
 msgid "Group 2"
-msgstr ""
+msgstr "Grup 2"
 
 msgid "Missing option '%1$s'."
 msgstr ""
@@ -267,7 +267,7 @@ msgid "Summary statistics"
 msgstr ""
 
 msgid "Estimate"
-msgstr ""
+msgstr "Estimasi"
 
 msgid "Mean 1"
 msgstr ""
@@ -282,7 +282,7 @@ msgid "SD 2"
 msgstr ""
 
 msgid "Mean difference"
-msgstr ""
+msgstr "Perbedaan rerata"
 
 msgid "SD difference"
 msgstr ""
@@ -533,7 +533,7 @@ msgid "Sample size"
 msgstr ""
 
 msgid "Probability"
-msgstr ""
+msgstr "Probabilitas"
 
 msgid "Outcome"
 msgstr ""
@@ -572,7 +572,7 @@ msgid "Design proportion"
 msgstr ""
 
 msgid "Prior Distribution"
-msgstr ""
+msgstr "Distribusi Priori"
 
 msgid "Unable to compute prior distribution plot: %1$s"
 msgstr ""
@@ -612,7 +612,7 @@ msgid "Density"
 msgstr ""
 
 msgid "Hypothesis"
-msgstr ""
+msgstr "Hipotesis"
 
 msgid ""
 "The %1$s parameterization assumes a unit information standard deviation "
@@ -1337,7 +1337,7 @@ msgid "Maximum / Final"
 msgstr ""
 
 msgid "Expected"
-msgstr ""
+msgstr "Diharapkan"
 
 msgid "Unable to compute sample size / event details: %1$s"
 msgstr ""
