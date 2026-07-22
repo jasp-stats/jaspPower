@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspPower 0.18.0\n"
 "POT-Creation-Date: 2026-06-27 04:48\n"
-"PO-Revision-Date: 2026-07-21 16:01+0000\n"
+"PO-Revision-Date: 2026-07-22 23:01+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/jasp/jasppower-r/"
 "es/>\n"
@@ -50,10 +50,10 @@ msgid "User Defined"
 msgstr "Definido por el usuario"
 
 msgid "Design Prior"
-msgstr ""
+msgstr "Previa de diseño"
 
 msgid "Decision Rule"
-msgstr ""
+msgstr "Regla de decisión"
 
 msgid "Target Probability"
 msgstr ""
@@ -202,13 +202,11 @@ msgstr ""
 msgid "Decision"
 msgstr ""
 
-#, fuzzy
 msgid "Independent Samples T-Test"
-msgstr "Contraste t para muestras independientes"
+msgstr "Contraste T para muestras independientes"
 
-#, fuzzy
 msgid "Paired Samples T-Test"
-msgstr "Contraste t para muestras pareadas"
+msgstr "Contraste T para muestras emparejadas"
 
 msgid "One Sample T-Test"
 msgstr "Contraste T para una muestra"
@@ -601,32 +599,31 @@ msgid "Design and Analysis Priors"
 msgstr ""
 
 msgid "Analysis Prior"
-msgstr ""
+msgstr "Previa da análisis"
 
 msgid "Prior"
-msgstr ""
+msgstr "Previa"
 
 msgid "H₁"
-msgstr ""
+msgstr "H₁"
 
 msgid "H₀"
-msgstr ""
+msgstr "H₀"
 
 msgid "Conclusive"
-msgstr ""
+msgstr "Concluyente"
 
 msgid "Misleading"
-msgstr ""
+msgstr "Confuso"
 
 msgid "Parameter value"
-msgstr ""
+msgstr "Valor de parámetro"
 
 msgid "Density"
-msgstr ""
+msgstr "Densidad"
 
-#, fuzzy
 msgid "Hypothesis"
-msgstr "Tasa hipotética (%s)"
+msgstr "Hipótesis"
 
 msgid ""
 "The %1$s parameterization assumes a unit information standard deviation "
@@ -664,13 +661,11 @@ msgid ""
 "The sample-size ratio leads to a second-group sample size smaller than 2."
 msgstr ""
 
-#, fuzzy
 msgid "independent samples t-test"
-msgstr "Contraste t para muestras independientes"
+msgstr "Contraste T para muestras independientes"
 
-#, fuzzy
 msgid "paired samples t-test"
-msgstr "Contraste t para muestras pareadas"
+msgstr "Contraste T para muestras emparejadas"
 
 msgid "one sample t-test"
 msgstr "Contraste T para una muestra"
@@ -738,37 +733,37 @@ msgid "Cauchy"
 msgstr ""
 
 msgid "Student-t"
-msgstr ""
+msgstr "T de Student"
 
 msgid "Point"
-msgstr ""
+msgstr "Punto"
 
 msgid "Normal"
-msgstr ""
+msgstr "Normal"
 
 msgid "Normal-moment"
-msgstr ""
+msgstr "Normal-momento"
 
 msgid "a = %1$s, b = %2$s"
-msgstr ""
+msgstr "a = %1$s, b = %2$s"
 
 msgid "location = %1$s, scale = %2$s"
-msgstr ""
+msgstr "posición = %1$s, escala = %2$s"
 
 msgid "location = %1$s, scale = %2$s, df = %3$s"
-msgstr ""
+msgstr "posición = %1$s, escala = %2$s, gl = %3$s"
 
 msgid "location = %1$s"
-msgstr ""
+msgstr "posición = %1$s"
 
 msgid "mean = %1$s, sd = %2$s"
-msgstr ""
+msgstr "media = %1$s, dt = %2$s"
 
 msgid "spread = %1$s, modes = +/- %2$s"
-msgstr ""
+msgstr "dispersión = %1$s, modas = +/- %2$s"
 
 msgid "p = %1$s"
-msgstr ""
+msgstr "p = %1$s"
 
 msgid "Analysis Prior Under H₀"
 msgstr ""
@@ -1249,101 +1244,104 @@ msgid "One-sided"
 msgstr "Unilateral"
 
 msgid "Two-sided symmetric"
-msgstr ""
+msgstr "Bilateral simétrico"
 
 msgid "Two-sided asymmetric β-spending (binding futility)"
-msgstr ""
+msgstr "Bilateral asimétrico asignando β (inutilidad vinculante)"
 
 msgid "Two-sided asymmetric β-spending (non-binding futility)"
-msgstr ""
+msgstr "Bilateral asimétrico asignando β (inutilidad no vinculante)"
 
-#, fuzzy
 msgid "Canonical effect (δ)"
-msgstr "Tamaño hipotético del efecto (%s)"
+msgstr "Efecto canónico (δ)"
 
 msgid "Standardized mean difference (one sample / paired)"
-msgstr ""
+msgstr "Diferencia de medias tipificadas (una muestra/emparejadas)"
 
 msgid "Standardized mean difference (independent samples)"
-msgstr ""
+msgstr "Diferencia de medias tipificadas (muestras independientes)"
 
 msgid "Mean difference (one sample / paired)"
-msgstr ""
+msgstr "Diferencia de medias (una muestra/emparejadas)"
 
-#, fuzzy
 msgid "Mean difference (independent samples)"
-msgstr "Contraste t para muestras independientes"
+msgstr "Diferencia de medias (muestras independientes)"
 
 msgid "Two-sample binary endpoint"
-msgstr ""
+msgstr "Punto final binario de dos muestras"
 
 msgid "Survival hazard ratio"
-msgstr ""
+msgstr "Tasa de riesgo de supervivencia"
 
 msgid "Information ratio"
-msgstr ""
+msgstr "Proporción de información"
 
 msgid "Fixed design value"
-msgstr ""
+msgstr "Valor fijo de diseño"
 
 msgid "O'Brien-Fleming spending"
-msgstr ""
+msgstr "Asignación de O'Brien-Fleming"
 
 msgid "Pocock spending"
-msgstr ""
+msgstr "Asignación de Pocock"
 
 msgid "Hwang-Shih-DeCani"
-msgstr ""
+msgstr "Hwang-Shih-DeCani"
 
 msgid "Kim-DeMets power"
-msgstr ""
+msgstr "Potencia de Kim-DeMets"
 
 msgid "O'Brien-Fleming"
-msgstr ""
+msgstr "O'Brien-Fleming"
 
 msgid "Pocock"
-msgstr ""
+msgstr "Pocock"
 
 msgid "Wang-Tsiatis"
-msgstr ""
+msgstr "Wang-Tsiatis"
 
 msgid "The information fraction schedule must contain K or K - 1 values."
 msgstr ""
+"La programación de fracciones de información debe contener K o K - 1 valores."
 
 msgid "When K information fractions are supplied, the final value must be 1."
 msgstr ""
+"Cuando se indican K fracciones de información, el valor final debe ser 1."
 
 msgid ""
 "When K - 1 information fractions are supplied, all values must be less than "
 "1."
 msgstr ""
+"Cuando se indican K-1 fracciones de información, todos los valores deben ser "
+"menores que 1."
 
 msgid "Information fractions must be greater than 0 and no larger than 1."
 msgstr ""
+"Las fracciones de información deben ser mayores que 0 y no superiores a 1."
 
 msgid "Information fractions must be strictly increasing."
-msgstr ""
+msgstr "Las fracciones de información deben ser estrictamente crecientes."
 
 msgid "Group Sequential Design"
-msgstr ""
+msgstr "Diseño secuencial de grupos"
 
 msgid "Design"
-msgstr ""
+msgstr "Diseño"
 
 msgid "α"
-msgstr ""
+msgstr "α"
 
 msgid "Power (1 - β)"
-msgstr ""
+msgstr "Potencia (1 - β)"
 
 msgid "Planning Metric"
-msgstr ""
+msgstr "Métrica de planificación"
 
 msgid "Unable to compute classical group sequential design: %1$s"
-msgstr ""
+msgstr "No se puede calcular el diseño secuencial clásico de grupos: %1$s"
 
 msgid "Inflation Ratio"
-msgstr ""
+msgstr "Proporción de inflación"
 
 msgid ""
 "α is the one-sided Type I error rate. For symmetric two-sided designs, the "
@@ -1504,42 +1502,40 @@ msgid "Expected Information Ratio"
 msgstr ""
 
 msgid "Information Ratio"
-msgstr ""
+msgstr "Proporción de información"
 
 msgid "information ratio"
-msgstr ""
+msgstr "Proporción de información"
 
 msgid "Fixed Design Value"
-msgstr ""
+msgstr "Valor fijo de diseño"
 
 msgid "Maximum Value"
-msgstr ""
+msgstr "Valor máximo"
 
 msgid "Expected Value"
-msgstr ""
+msgstr "Valor esperado"
 
 msgid "Planned Value"
-msgstr ""
+msgstr "Valor planeado"
 
 msgid "fixed-design value"
-msgstr ""
+msgstr "Valor fijo de diseño"
 
 msgid "Fixed Design Total Sample Size"
-msgstr ""
+msgstr "Tamaño muestral total fijo de diseño"
 
 msgid "Maximum Total Sample Size"
-msgstr ""
+msgstr "Tamaño muestral total máximo"
 
 msgid "Expected Total Sample Size"
-msgstr ""
+msgstr "Tamaño muestral total esperado"
 
-#, fuzzy
 msgid "Total Sample Size"
-msgstr "Tamaño de muestra de"
+msgstr "Tamaño muestral total"
 
-#, fuzzy
 msgid "total sample size"
-msgstr "Tamaño de muestra de"
+msgstr "Tamaño muestral total"
 
 msgid "Fixed Design Events"
 msgstr ""
@@ -1897,7 +1893,7 @@ msgid "Invalid target '%1$s'."
 msgstr ""
 
 msgid "Point proportion"
-msgstr ""
+msgstr "Proporción de puntos"
 
 msgid "a = %1$s, b = %2$s, lower = %3$s, upper = %4$s"
 msgstr ""
