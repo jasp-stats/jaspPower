@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspPower 0.18.0\n"
 "POT-Creation-Date: 2026-06-27 04:48\n"
-"PO-Revision-Date: 2026-07-25 04:34+0000\n"
+"PO-Revision-Date: 2026-07-26 12:01+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/jasp/jasppower-r/"
 "es/>\n"
@@ -628,28 +628,28 @@ msgid ""
 msgstr ""
 
 msgid "SMD"
-msgstr ""
+msgstr "SMD"
 
 msgid "Fisher's z"
-msgstr ""
+msgstr "Z de Fisher"
 
 msgid "logRR"
-msgstr ""
+msgstr "logRR"
 
 msgid "logOR"
-msgstr ""
+msgstr "logOR"
 
 msgid "logHR"
-msgstr ""
+msgstr "logHR"
 
 msgid "logIRR"
-msgstr ""
+msgstr "logIRR"
 
 msgid "specified UISD"
 msgstr ""
 
 msgid "standard error schedule"
-msgstr ""
+msgstr "Programación del error típico"
 
 msgid "effect size"
 msgstr "Tamaño del efecto"
@@ -1666,10 +1666,10 @@ msgid ""
 msgstr ""
 
 msgid "Look Schedule"
-msgstr ""
+msgstr "Programación de apariencias"
 
 msgid "Information"
-msgstr ""
+msgstr "Información"
 
 msgid "Unable to compute look schedule: %1$s"
 msgstr ""
@@ -1799,7 +1799,7 @@ msgid "Information fraction"
 msgstr ""
 
 msgid "Boundary Crossing Probabilities"
-msgstr ""
+msgstr "Probabilidades de cruce de fronteras"
 
 msgid "Unable to compute crossing probabilities plot: %1$s"
 msgstr ""
