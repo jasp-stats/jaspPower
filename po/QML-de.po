@@ -3,15 +3,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Language: de\n"
 "X-Qt-Contexts: true\n"
-"PO-Revision-Date: 2026-08-01 04:37+0000\n"
-"Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/jasp/jasppower-"
-"qml/de/>\n"
-"Language: de\n"
-"X-Generator: Weblate 2026.8.dev0\n"
 
 msgctxt "Description|"
 msgid "Power"
@@ -555,13 +549,15 @@ msgid ""
 "for conclusive evidence."
 msgstr ""
 
+#, fuzzy
 msgctxt "BayesFactorSequentialDesign|"
 msgid "References"
-msgstr ""
+msgstr "Referenzen"
 
+#, fuzzy
 msgctxt "BayesFactorSequentialDesign|"
 msgid "R Packages"
-msgstr ""
+msgstr "R-Pakete"
 
 #, fuzzy
 msgctxt "BayesFactorSequentialDesign|"
@@ -574,45 +570,56 @@ msgid ""
 "planned."
 msgstr ""
 
+#, fuzzy
 msgctxt "BayesFactorSequentialDesign|"
 msgid "Independent Samples T-Test"
-msgstr ""
+msgstr "T-Test für unabhängige Stichproben"
 
+#, fuzzy
 msgctxt "BayesFactorSequentialDesign|"
 msgid "Paired Samples T-Test"
-msgstr ""
+msgstr "T-Test für abhängige Stichproben"
 
+#, fuzzy
 msgctxt "BayesFactorSequentialDesign|"
 msgid "One Sample T-Test"
-msgstr ""
+msgstr "T-Test für eine Stichprobe"
 
+#, fuzzy
 msgctxt "BayesFactorSequentialDesign|"
 msgid "Independent Samples Z-Test"
-msgstr ""
+msgstr "Z-Test für unabhängige Stichproben"
 
+#, fuzzy
 msgctxt "BayesFactorSequentialDesign|"
 msgid "Paired Samples Z-Test"
-msgstr ""
+msgstr "Z-Test für abhängige Stichproben"
 
+#, fuzzy
 msgctxt "BayesFactorSequentialDesign|"
 msgid "One Sample Z-Test"
-msgstr ""
+msgstr "Z-Test für eine Stichprobe"
 
+#, fuzzy
 msgctxt "BayesFactorSequentialDesign|"
 msgid "General (z-approximation)"
-msgstr ""
+msgstr "Allgemein (z-Approximation)"
 
+#, fuzzy
 msgctxt "BayesFactorSequentialDesign|"
 msgid "Explanatory notes"
-msgstr ""
+msgstr "Erklärende Notizen"
 
+#, fuzzy
 msgctxt "BayesFactorSequentialDesign|"
 msgid "Append brief interpretation notes to each displayed Bayesian result."
 msgstr ""
+"Anhängen von kurzen Erläuterungen an jedes angezeigte Bayessche Ergebnis."
 
+#, fuzzy
 msgctxt "BayesFactorSequentialDesign|"
 msgid "Generate report"
-msgstr ""
+msgstr "Bericht erstellen"
 
 msgctxt "BayesFactorSequentialDesign|"
 msgid ""
@@ -620,15 +627,19 @@ msgid ""
 "thresholds, and achieved probabilities."
 msgstr ""
 
+#, fuzzy
 msgctxt "BayesFactorSequentialDesign|"
 msgid "LaTeX formatted output"
-msgstr ""
+msgstr "LaTeX-formatierte Ausgabe"
 
+#, fuzzy
 msgctxt "BayesFactorSequentialDesign|"
 msgid ""
 "Format the generated report with LaTeX notation for use in manuscripts and "
 "preregistrations."
 msgstr ""
+"Formatieren des generierten Berichts mit LaTeX-Notation zur Verwendung in "
+"Manuskripten und Präregistrierungen."
 
 #, fuzzy
 msgctxt "BayesFactorSequentialDesign|"
@@ -662,9 +673,10 @@ msgid ""
 "Show the expected sample size and its variability under each design prior."
 msgstr ""
 
+#, fuzzy
 msgctxt "BayesFactorSequentialDesign|"
 msgid "Decision probabilities"
-msgstr ""
+msgstr "Entscheidungswahrscheinlichkeiten"
 
 msgctxt "BayesFactorSequentialDesign|"
 msgid ""
@@ -672,9 +684,10 @@ msgid ""
 "inconclusive evidence under each design prior."
 msgstr ""
 
+#, fuzzy
 msgctxt "BayesFactorSequentialDesign|"
 msgid "Design specification"
-msgstr ""
+msgstr "Design-Spezifikation"
 
 msgctxt "BayesFactorSequentialDesign|"
 msgid ""
@@ -720,9 +733,10 @@ msgctxt "BayesFactorSequentialDesign|"
 msgid "Plots"
 msgstr "Diagramme"
 
+#, fuzzy
 msgctxt "BayesFactorSequentialDesign|"
 msgid "Decision Probability"
-msgstr ""
+msgstr "Entscheidungswahrscheinlichkeit"
 
 msgctxt "BayesFactorSequentialDesign|"
 msgid ""
@@ -736,19 +750,24 @@ msgid ""
 "each look."
 msgstr ""
 
+#, fuzzy
 msgctxt "BayesFactorSequentialDesign|"
 msgid "Combine H₁ and H₀"
-msgstr ""
+msgstr "H₁ und H₀ kombinieren"
 
+#, fuzzy
 msgctxt "BayesFactorSequentialDesign|"
 msgid ""
 "Display curves for the H₁ and H₀ design priors in one figure instead of "
 "separate figures."
 msgstr ""
+"Anzeige der Kurven für die H₁ und H₀-Design-Prior in einer Abbildung anstatt "
+"in separaten Abbildungen."
 
+#, fuzzy
 msgctxt "BayesFactorSequentialDesign|"
 msgid "Advanced"
-msgstr ""
+msgstr "Erweitert"
 
 msgctxt "BayesFactorSequentialDesign|"
 msgid "Generate R Code"
@@ -908,17 +927,20 @@ msgctxt "GroupSequentialDesign|"
 msgid "Boundaries"
 msgstr ""
 
+#, fuzzy
 msgctxt "GroupSequentialDesign|"
 msgid "Tables"
-msgstr ""
+msgstr "Tabellen"
 
+#, fuzzy
 msgctxt "GroupSequentialDesign|"
 msgid "Design Results"
-msgstr ""
+msgstr "Design-Ergebnisse"
 
+#, fuzzy
 msgctxt "GroupSequentialDesign|"
 msgid "Design summary"
-msgstr ""
+msgstr "Design-Zusammenfassung"
 
 msgctxt "GroupSequentialDesign|"
 msgid ""
@@ -987,9 +1009,10 @@ msgctxt "GroupSequentialDesign|"
 msgid "Advanced Options"
 msgstr ""
 
+#, fuzzy
 msgctxt "GroupSequentialDesign|"
 msgid "Generate R code"
-msgstr ""
+msgstr "R-Code generieren"
 
 msgctxt "GroupSequentialDesign|"
 msgid "Display copyable R code for the current settings."
@@ -1508,9 +1531,10 @@ msgctxt "BayesFactorCalculationControls|"
 msgid "Maximum sample size"
 msgstr ""
 
+#, fuzzy
 msgctxt "BayesFactorCalculationControls|"
 msgid "Sample Size"
-msgstr ""
+msgstr "Stichprobenumfang"
 
 msgctxt "BayesFactorCalculationControls|"
 msgid "Pr(Conclusive evidence)"
@@ -1962,9 +1986,10 @@ msgctxt "BayesFactorSequentialParameterControls|"
 msgid "Maximum sample size in group 1:"
 msgstr ""
 
+#, fuzzy
 msgctxt "BayesFactorSequentialParameterControls|"
 msgid "Maximum sample size:"
-msgstr ""
+msgstr "Maximaler Stichprobenumfang:"
 
 msgctxt "BayesFactorSequentialParameterControls|"
 msgid ""
@@ -2005,13 +2030,17 @@ msgid ""
 "Comma-separated information fractions for the planned looks, ending at 1."
 msgstr ""
 
+#, fuzzy
 msgctxt "BayesFactorSequentialParameterControls|"
 msgid "Allocation ratio (N₂/N₁):"
-msgstr ""
+msgstr "Zuteilungsverhältnis (N₂/N₁):"
 
+#, fuzzy
 msgctxt "BayesFactorSequentialParameterControls|"
 msgid "Ratio of the sample size in group 2 to the sample size in group 1."
 msgstr ""
+"Verhältnis des Stichprobenumfangs in Gruppe 2 zum Stichprobenumfang in "
+"Gruppe 1."
 
 msgctxt "BayesFactorSequentialSearchBounds|"
 msgid "Sample Size Search"
