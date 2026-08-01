@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspPower 0.1.0\n"
 "POT-Creation-Date: 2026-06-27 04:48\n"
-"PO-Revision-Date: 2026-07-05 09:01+0000\n"
+"PO-Revision-Date: 2026-08-01 04:37+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/jasppower-r/"
 "de/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2026.7.1.dev0\n"
+"X-Generator: Weblate 2026.8.dev0\n"
 
 msgid "Bayes Factor Design"
 msgstr ""
@@ -388,9 +388,8 @@ msgstr ""
 msgid "%1$s must be a finite number."
 msgstr ""
 
-#, fuzzy
 msgid "%1$s must be an integer of at least %2$s."
-msgstr "Stichprobenumfänge von mindestens %1$s"
+msgstr "%1$s muss eine ganze Zahl von mindestens %2$s sein."
 
 msgid "%1$s must be at least %2$s."
 msgstr "%1$s muss mindestens %2$s sein."
@@ -544,9 +543,8 @@ msgstr ""
 msgid "Sample size (group 1)"
 msgstr "Stichprobenumfang (Gruppe 1)"
 
-#, fuzzy
 msgid "Sample size"
-msgstr "ein Stichprobenumfang von"
+msgstr "Stichprobenumfang"
 
 #, fuzzy
 msgid "Probability"

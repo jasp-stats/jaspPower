@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspPower 0.96.1\n"
 "POT-Creation-Date: 2026-06-27 04:48\n"
-"PO-Revision-Date: 2026-07-19 06:01+0000\n"
+"PO-Revision-Date: 2026-07-27 23:02+0000\n"
 "Last-Translator: 陳正昌 <chencc99@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/jasp/jasppower-r/zh_Hant/>\n"
@@ -233,7 +233,7 @@ msgid "General (z-approximation)"
 msgstr ""
 
 msgid "Group"
-msgstr ""
+msgstr "組別"
 
 msgid "Mean"
 msgstr ""
@@ -242,7 +242,7 @@ msgid "SD"
 msgstr ""
 
 msgid "Variable"
-msgstr ""
+msgstr "變項"
 
 msgid "Successes"
 msgstr ""
@@ -279,7 +279,7 @@ msgid "Summary statistics"
 msgstr "特徵"
 
 msgid "Estimate"
-msgstr ""
+msgstr "估計值"
 
 msgid "Mean 1"
 msgstr ""
@@ -547,9 +547,8 @@ msgstr "樣本數（組別1）"
 msgid "Sample size"
 msgstr "樣本數為"
 
-#, fuzzy
 msgid "Probability"
-msgstr "機率密度"
+msgstr "機率"
 
 msgid "Outcome"
 msgstr ""
@@ -630,9 +629,8 @@ msgstr ""
 msgid "Density"
 msgstr ""
 
-#, fuzzy
 msgid "Hypothesis"
-msgstr "假設率（%s）"
+msgstr "假設"
 
 msgid ""
 "The %1$s parameterization assumes a unit information standard deviation "
