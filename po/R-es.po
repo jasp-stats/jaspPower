@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspPower 0.18.0\n"
 "POT-Creation-Date: 2026-06-27 04:48\n"
-"PO-Revision-Date: 2026-08-03 19:15+0000\n"
+"PO-Revision-Date: 2026-08-04 08:18+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/jasp/jasppower-r/"
 "es/>\n"
@@ -556,9 +556,8 @@ msgstr "Resultado"
 msgid "Decision Probabilities by Proportion"
 msgstr ""
 
-#, fuzzy
 msgid "Decision Probabilities by Effect Size"
-msgstr "Potencia por Tamaño del efecto"
+msgstr "Probabilidades de decisiones por magnitud del efecto"
 
 msgid ""
 "This plot shows how the probabilities of conclusive and misleading evidence "
@@ -584,13 +583,11 @@ msgstr ""
 msgid "Design prior mean"
 msgstr ""
 
-#, fuzzy
 msgid "Design proportion"
-msgstr "Descripción"
+msgstr "Proporción de diseños"
 
-#, fuzzy
 msgid "Prior Distribution"
-msgstr "Demostración de Potencia"
+msgstr "Distribución previa"
 
 msgid "Unable to compute prior distribution plot: %1$s"
 msgstr ""
@@ -686,7 +683,6 @@ msgstr "Contraste Z para muestras emparejadas"
 msgid "one sample z-test"
 msgstr "Contraste Z para una muestra"
 
-#, fuzzy
 msgid "one sample proportion test"
 msgstr "Contraste de proporciones para una muestra"
 
@@ -711,9 +707,8 @@ msgstr ""
 msgid "Design Prior Under H₀"
 msgstr ""
 
-#, fuzzy
 msgid "Directional"
-msgstr "Descripción"
+msgstr "Direccional"
 
 msgid "Point null"
 msgstr ""
@@ -826,9 +821,8 @@ msgstr ""
 msgid "The standard error schedule must be strictly decreasing."
 msgstr ""
 
-#, fuzzy
 msgid "sample size schedule"
-msgstr "Tamaños de muestra de %s"
+msgstr "Programación de tamaños muestrales"
 
 msgid "The custom sample size schedule must contain at least one look."
 msgstr ""
@@ -1158,9 +1152,8 @@ msgstr ""
 msgid "batch-size increments of %1$s for n₁ and %2$s for n₂"
 msgstr ""
 
-#, fuzzy
 msgid "batches of %1$s"
-msgstr "Tamaños de muestra de %1$s"
+msgstr "Lotes de %1$s"
 
 msgid "batch-size increments of %1$s"
 msgstr ""
@@ -1246,7 +1239,6 @@ msgstr ""
 msgid "The %1$s must be greater than 0 and less than 1."
 msgstr ""
 
-#, fuzzy
 msgid "One-sided"
 msgstr "Unilateral"
 
@@ -1890,43 +1882,40 @@ msgstr ""
 "alternativa de \"Mayor que\"."
 
 msgid "BF₁₀ ≥ %1$s"
-msgstr ""
+msgstr "FB₁₀ ≥ %1$s"
 
 msgid "BF₀₁ ≥ %1$s"
-msgstr ""
+msgstr "FB₀₁ ≥ %1$s"
 
 msgid "Invalid target '%1$s'."
-msgstr ""
+msgstr "Objetivo '%1$s' inválido."
 
 msgid "Point proportion"
 msgstr "Proporción de puntos"
 
 msgid "a = %1$s, b = %2$s, lower = %3$s, upper = %4$s"
-msgstr ""
+msgstr "a = %1$s, b = %2$s, inferior = %3$s, superior = %4$s"
 
 msgid "Bayes Factor Evidence"
-msgstr ""
+msgstr "Evidencia de factores de Bayes"
 
 msgid "Null"
-msgstr ""
+msgstr "Nula"
 
-#, fuzzy
 msgid "Alternative"
-msgstr "Hipótesis alternativa"
+msgstr "Alternativa"
 
 msgid "Explanation:"
-msgstr ""
+msgstr "Explicación:"
 
-#, fuzzy
 msgid "Two-sided"
 msgstr "Bilateral"
 
-#, fuzzy
 msgid "Less (One-sided)"
-msgstr "Unilateral"
+msgstr "Inferior (Unilateral)"
 
 msgid "Greater (One-sided)"
-msgstr ""
+msgstr "Mayor (Unilateral)"
 
 msgid "Power must be less than 1."
 msgstr "La potencia debe ser inferior a 1."
@@ -2050,10 +2039,10 @@ msgid "Cohen's %s"
 msgstr "%s de Cohen"
 
 msgid "Power by effect size"
-msgstr "Potencia por tamaño del efecto"
+msgstr "Potencia por magnitud del efecto"
 
 msgid "True effect size"
-msgstr "Tamaño real del efecto"
+msgstr "Magnitud real del efecto"
 
 msgid "Power to detect"
 msgstr "Potencia de detección"
@@ -2529,7 +2518,7 @@ msgid "Alternative hypothesis"
 msgstr "Hipótesis alternativa"
 
 msgid "Power by Effect Size"
-msgstr "Potencia por Tamaño del efecto"
+msgstr "Potencia por magnitud del efecto"
 
 msgid "a sample size of %1$s in each group"
 msgstr "Tamaño de muestra de %1$s en cada grupo"
