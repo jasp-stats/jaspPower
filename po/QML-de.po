@@ -6,12 +6,12 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Language: de\n"
 "X-Qt-Contexts: true\n"
-"PO-Revision-Date: 2026-08-02 15:33+0000\n"
+"PO-Revision-Date: 2026-08-04 08:17+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/jasppower-"
 "qml/de/>\n"
 "Language: de\n"
-"X-Generator: Weblate 2026.8.dev0\n"
+"X-Generator: Weblate 2026.8.1.dev0\n"
 
 msgctxt "Description|"
 msgid "Power"
@@ -596,28 +596,23 @@ msgctxt "BayesFactorSequentialDesign|"
 msgid "Paired Samples Z-Test"
 msgstr "Z-Test für abhängige Stichproben"
 
-#, fuzzy
 msgctxt "BayesFactorSequentialDesign|"
 msgid "One Sample Z-Test"
 msgstr "Z-Test für eine Stichprobe"
 
-#, fuzzy
 msgctxt "BayesFactorSequentialDesign|"
 msgid "General (z-approximation)"
 msgstr "Allgemein (z-Approximation)"
 
-#, fuzzy
 msgctxt "BayesFactorSequentialDesign|"
 msgid "Explanatory notes"
 msgstr "Erklärende Notizen"
 
-#, fuzzy
 msgctxt "BayesFactorSequentialDesign|"
 msgid "Append brief interpretation notes to each displayed Bayesian result."
 msgstr ""
 "Anhängen von kurzen Erläuterungen an jedes angezeigte Bayessche Ergebnis."
 
-#, fuzzy
 msgctxt "BayesFactorSequentialDesign|"
 msgid "Generate report"
 msgstr "Bericht erstellen"
@@ -627,13 +622,14 @@ msgid ""
 "Generate a short report describing the sequential design, priors, "
 "thresholds, and achieved probabilities."
 msgstr ""
+"Erstellen eines kurzen Berichts, in dem das sequentielle Design, die Prior-"
+"Verteilungen, die Schwellenwerte und die erzielten Wahrscheinlichkeiten "
+"beschrieben werden."
 
-#, fuzzy
 msgctxt "BayesFactorSequentialDesign|"
 msgid "LaTeX formatted output"
 msgstr "LaTeX-formatierte Ausgabe"
 
-#, fuzzy
 msgctxt "BayesFactorSequentialDesign|"
 msgid ""
 "Format the generated report with LaTeX notation for use in manuscripts and "
@@ -642,7 +638,6 @@ msgstr ""
 "Formatieren des generierten Berichts mit LaTeX-Notation zur Verwendung in "
 "Manuskripten und Präregistrierungen."
 
-#, fuzzy
 msgctxt "BayesFactorSequentialDesign|"
 msgid "Parameters"
 msgstr "Parameter"
@@ -664,17 +659,21 @@ msgid ""
 "Show the main sequential-design result: the maximum sample size or the "
 "achieved probability of conclusive evidence."
 msgstr ""
+"Anzeige des wichtigsten Ergebnisses des sequentiellen Designs: die maximale "
+"Stichprobengröße oder die erzielte Wahrscheinlichkeit für aussagekräftige "
+"Evidenz."
 
 msgctxt "BayesFactorSequentialDesign|"
 msgid "Sample size summary"
-msgstr ""
+msgstr "Zusammenfassung Stichprobenumfang"
 
 msgctxt "BayesFactorSequentialDesign|"
 msgid ""
 "Show the expected sample size and its variability under each design prior."
 msgstr ""
+"Zeigen des erwarteten Stichprobenumfangs und dessen Variabilität unter jedem "
+"Design-Prior."
 
-#, fuzzy
 msgctxt "BayesFactorSequentialDesign|"
 msgid "Decision probabilities"
 msgstr "Entscheidungswahrscheinlichkeiten"
@@ -684,8 +683,9 @@ msgid ""
 "Show final probabilities of evidence for H₁, evidence for H₀, and "
 "inconclusive evidence under each design prior."
 msgstr ""
+"Anzeigen von finalen Wahrscheinlichkeiten von Evidenz für H₁, Evidenz für H"
+"₀, und unschlüssiger Evidenz für jedes Design."
 
-#, fuzzy
 msgctxt "BayesFactorSequentialDesign|"
 msgid "Design specification"
 msgstr "Design-Spezifikation"
@@ -695,33 +695,39 @@ msgid ""
 "Show the analysis and design priors used for computing and evaluating the "
 "Bayes factor sequential design."
 msgstr ""
+"Zeigt die Analyse- und Design-Prior, die für die Berechnung und Auswertung "
+"des sequentiellen Bayesfaktor-Designs verwendet wurden."
 
 msgctxt "BayesFactorSequentialDesign|"
 msgid "Look-by-Look Results"
-msgstr ""
+msgstr "Einblick-nach-Einblick Ergebnisse"
 
 msgctxt "BayesFactorSequentialDesign|"
 msgid "Cumulative decision probabilities"
-msgstr ""
+msgstr "Kumulierte Entscheidungswahrscheinlichkeiten"
 
 msgctxt "BayesFactorSequentialDesign|"
 msgid ""
 "Show the probability that the study has stopped for each decision by each "
 "planned look."
 msgstr ""
+"Anzeigen der Wahrscheinlichkeit, dass die Studie gestoppt wurde, für jede "
+"Entscheidung durch jeden geplanten Einblick."
 
 msgctxt "BayesFactorSequentialDesign|"
 msgid "Incremental decision probabilities"
-msgstr ""
+msgstr "Inkrementelle Entscheidungswahrscheinlichkeiten"
 
 msgctxt "BayesFactorSequentialDesign|"
 msgid ""
 "Show the probability that each decision is first reached at a given look."
 msgstr ""
+"Anzeigen der Wahrscheinlichkeit, dass jede Entscheidung zuerst bei einem "
+"bestimmten Einblick erreicht wird."
 
 msgctxt "BayesFactorSequentialDesign|"
 msgid "Stopping boundaries"
-msgstr ""
+msgstr "Stop-Grenzen"
 
 msgctxt "BayesFactorSequentialDesign|"
 msgid ""
@@ -751,12 +757,10 @@ msgid ""
 "each look."
 msgstr ""
 
-#, fuzzy
 msgctxt "BayesFactorSequentialDesign|"
 msgid "Combine H₁ and H₀"
 msgstr "H₁ und H₀ kombinieren"
 
-#, fuzzy
 msgctxt "BayesFactorSequentialDesign|"
 msgid ""
 "Display curves for the H₁ and H₀ design priors in one figure instead of "
@@ -765,42 +769,46 @@ msgstr ""
 "Anzeige der Kurven für die H₁ und H₀-Design-Prior in einer Abbildung anstatt "
 "in separaten Abbildungen."
 
-#, fuzzy
 msgctxt "BayesFactorSequentialDesign|"
 msgid "Advanced"
 msgstr "Erweitert"
 
 msgctxt "BayesFactorSequentialDesign|"
 msgid "Generate R Code"
-msgstr ""
+msgstr "R-Code generieren"
 
 msgctxt "BayesFactorSequentialDesign|"
 msgid ""
 "Generate R code that reproduces the Bayes factor sequential-design "
 "calculation."
 msgstr ""
+"R-Code generieren, der die sequentielle Bayesfaktor-Design-Berechnung "
+"reproduziert."
 
 msgctxt "BayesFactorSequentialDesign|"
 msgid "Sample-size search:"
-msgstr ""
+msgstr "Stichprobenumfangssuche:"
 
 msgctxt "BayesFactorSequentialDesign|"
 msgid "Strategy"
-msgstr ""
+msgstr "Strategie"
 
 msgctxt "BayesFactorSequentialDesign|"
 msgid ""
 "Choose whether maximum sample-size search uses a faster adaptive search or "
 "an exhaustive search that certifies the smallest maximum sample size."
 msgstr ""
+"Auswahl, ob die maximale Stichprobenumfangssuche eine schnellere adaptive "
+"Suche oder eine vollständige Suche verwendet, die den kleinste maximalen "
+"Stichprobenumfang bescheinigt."
 
 msgctxt "BayesFactorSequentialDesign|"
 msgid "Adaptive"
-msgstr ""
+msgstr "Adaptiv"
 
 msgctxt "BayesFactorSequentialDesign|"
 msgid "Exhaustive"
-msgstr ""
+msgstr "Vollständig"
 
 msgctxt "BayesFactorSequentialDesign|"
 msgid "Exact integration over all regions:"
@@ -814,11 +822,11 @@ msgstr ""
 
 msgctxt "BayesFactorSequentialDesign|"
 msgid "Integration method:"
-msgstr ""
+msgstr "Integrationsmethode:"
 
 msgctxt "BayesFactorSequentialDesign|"
 msgid "Method"
-msgstr ""
+msgstr "Methode"
 
 msgctxt "BayesFactorSequentialDesign|"
 msgid ""
@@ -856,7 +864,7 @@ msgstr ""
 
 msgctxt "BayesFactorSequentialDesign|"
 msgid "Relative error tolerance for numerical integration."
-msgstr ""
+msgstr "Relative Fehlertoleranz für numerische Integration."
 
 msgctxt "BayesFactorSequentialDesign|"
 msgid "Maximum integration points:"
@@ -950,7 +958,7 @@ msgstr ""
 
 msgctxt "GroupSequentialDesign|"
 msgid "Sample size / event details"
-msgstr ""
+msgstr "Stichprobenumfang / Ereignisdetails"
 
 msgctxt "GroupSequentialDesign|"
 msgid ""
