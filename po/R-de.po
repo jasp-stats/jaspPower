@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspPower 0.1.0\n"
 "POT-Creation-Date: 2026-06-27 04:48\n"
-"PO-Revision-Date: 2026-08-01 04:37+0000\n"
+"PO-Revision-Date: 2026-08-03 18:01+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/jasppower-r/"
 "de/>\n"
@@ -11,16 +11,16 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2026.8.dev0\n"
+"X-Generator: Weblate 2026.8.1.dev0\n"
 
 msgid "Bayes Factor Design"
-msgstr ""
+msgstr "Bayesfaktor-Design"
 
 msgid "Bayes Factor Decision Probabilities"
-msgstr ""
+msgstr "Bayesfaktor Entscheidungswahrscheinlichkeiten"
 
 msgid "Design Specification"
-msgstr ""
+msgstr "Design-Spezifikation"
 
 msgid ""
 "Target conclusive evidence probability is not reached within the selected "
@@ -28,50 +28,52 @@ msgid ""
 msgstr ""
 
 msgid "Unable to compute Bayes factor design: %1$s"
-msgstr ""
+msgstr "Kann Bayesfaktor-Design nicht berechnen: %1$s"
 
-#, fuzzy
 msgid ""
 "Due to rounding of the sample size, Pr(Conclusive Evidence) can deviate from "
 "the target probability."
 msgstr ""
-"Aufgrund der Rundung des Stichprobenumfangs kann die tatsächliche Teststärke "
-"von der gewünschten Teststärke abweichen."
+"Aufgrund der Rundung des Stichprobenumfangs kann Pr(Aussagekräftige Evidenz) "
+"von der gewünschten Zielwahrscheinlichkeit abweichen."
 
 msgid ""
 "For independent samples, N₁ is the sample size in group 1 and N₂ is rounded "
 "up from the requested N₂/N₁ sample-size ratio."
 msgstr ""
+"Für unabhängige Stichproben, N₁ ist der Stichprobenumfang von Gruppe 1 und N"
+"₂ ist auf das gewünschte N₂/N₁-Stichprobenumfangverhältnis aufgerundet."
 
 msgid "Computed"
-msgstr ""
+msgstr "Berechnet"
 
 msgid "User Defined"
 msgstr "Benutzerdefiniert"
 
 msgid "Design Prior"
-msgstr ""
+msgstr "Design-Prior"
 
 msgid "Decision Rule"
-msgstr ""
+msgstr "Entscheidungsregel"
 
 msgid "Target Probability"
-msgstr ""
+msgstr "Ziel-Wahrscheinlichkeit"
 
 msgid "Achieved Probability"
-msgstr ""
+msgstr "Erreichte Wahrscheinlichkeit"
 
 msgid "Bayes Factor Decision"
-msgstr ""
+msgstr "Bayesfaktor-Entscheidung"
 
 msgid "Evidence for H₀"
-msgstr ""
+msgstr "Evidenz für H₀"
 
 msgid "Evidence for H₁"
-msgstr ""
+msgstr "Evidenz für H₁"
 
 msgid "Unable to compute Bayes factor decision probabilities: %1$s"
 msgstr ""
+"Kann Bayesfaktor-Entscheidungs-Wahrscheinlichkeiten nicht berechnen: %1$s"
 
 msgid ""
 "To satisfy both design priors in a single fixed design, use N₁ = %1$s and N₂ "
