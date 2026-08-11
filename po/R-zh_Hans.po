@@ -14,112 +14,112 @@ msgstr ""
 "X-Generator: Weblate 2026.7.1.dev0\n"
 
 msgid "Bayes Factor Design"
-msgstr ""
+msgstr "贝叶斯因子设计"
 
 msgid "Bayes Factor Decision Probabilities"
-msgstr ""
+msgstr "贝叶斯因子决策概率"
 
 msgid "Design Specification"
-msgstr ""
+msgstr "设计规格"
 
 msgid ""
 "Target conclusive evidence probability is not reached within the selected "
 "sample-size range."
-msgstr ""
+msgstr "在所选样本量范围内未达到目标确定性证据概率。"
 
 msgid "Unable to compute Bayes factor design: %1$s"
-msgstr ""
+msgstr "无法计算贝叶斯因子设计：%1$s"
 
 msgid ""
 "Due to rounding of the sample size, Pr(Conclusive Evidence) can deviate from "
 "the target probability."
-msgstr ""
+msgstr "由于样本量取整，Pr(确定性证据) 可能偏离目标概率。"
 
 msgid ""
 "For independent samples, N₁ is the sample size in group 1 and N₂ is rounded "
 "up from the requested N₂/N₁ sample-size ratio."
-msgstr ""
+msgstr "对于独立样本，N₁ 为第 1 组的样本量，N₂ 由所请求的 N₂/N₁ 样本量比率向上取整得出。"
 
 msgid "Computed"
-msgstr ""
+msgstr "已计算"
 
 msgid "User Defined"
-msgstr ""
+msgstr "用户定义"
 
 msgid "Design Prior"
-msgstr ""
+msgstr "设计先验"
 
 msgid "Decision Rule"
-msgstr ""
+msgstr "决策规则"
 
 msgid "Target Probability"
-msgstr ""
+msgstr "目标概率"
 
 msgid "Achieved Probability"
-msgstr ""
+msgstr "达成概率"
 
 msgid "Bayes Factor Decision"
-msgstr ""
+msgstr "贝叶斯因子决策"
 
 msgid "Evidence for H₀"
-msgstr ""
+msgstr "支持 H₀ 的证据"
 
 msgid "Evidence for H₁"
-msgstr ""
+msgstr "支持 H₁ 的证据"
 
 msgid "Unable to compute Bayes factor decision probabilities: %1$s"
-msgstr ""
+msgstr "无法计算贝叶斯因子决策概率：%1$s"
 
 msgid ""
 "To satisfy both design priors in a single fixed design, use N₁ = %1$s and N₂ "
 "= %2$s (total N = %3$s)."
-msgstr ""
+msgstr "要在单一固定设计中同时满足两个设计先验，请使用 N₁ = %1$s 和 N₂ = %2$s（总 N = %3$s）。"
 
 msgid "To satisfy both design priors in a single fixed design, use N = %1$s."
-msgstr ""
+msgstr "要在单一固定设计中同时满足两个设计先验，请使用 N = %1$s。"
 
 msgid ""
 "Probabilities are evaluated at the fixed-design sample size required for the "
 "corresponding design prior under H₁ or H₀."
-msgstr ""
+msgstr "概率在相应设计先验（H₁ 或 H₀）所需的固定设计样本量处计算。"
 
 msgid ""
 "Probabilities are evaluated at the fixed-design sample size required for "
 "each design prior: under H₁, N₁ = %1$s and N₂ = %2$s; under H₀, N₁ = %3$s "
 "and N₂ = %4$s."
-msgstr ""
+msgstr "概率在每种设计先验所需的固定设计样本量处计算：H₁ 下 N₁ = %1$s 且 N₂ = %2$s；H₀ 下 N₁ = %3$s 且 N₂ = %4$s。"
 
 msgid ""
 "Probabilities are evaluated at the fixed-design sample size required for "
 "each design prior: under H₁, N = %1$s; under H₀, N = %2$s."
-msgstr ""
+msgstr "概率在每种设计先验所需的固定设计样本量处计算：H₁ 下 N = %1$s；H₀ 下 N = %2$s。"
 
 msgid ""
 "Probabilities are evaluated at the selected fixed-design sample size. Rows "
 "use the corresponding design prior under H₁ or H₀."
-msgstr ""
+msgstr "概率在所选固定设计样本量处计算。各行使用 H₁ 或 H₀ 下相应的设计先验。"
 
 msgid ""
 "Probabilities are evaluated at the selected fixed-design sample sizes. Rows "
 "use the corresponding design prior under H₁ or H₀."
-msgstr ""
+msgstr "概率在所选固定设计样本量处计算。各行使用 H₁ 或 H₀ 下相应的设计先验。"
 
 msgid ""
 "Probabilities are evaluated at the selected fixed-design sample sizes: N₁ = "
 "%1$s and N₂ = %2$s (total N = %3$s). Rows use the corresponding design prior "
 "under H₁ or H₀."
-msgstr ""
+msgstr "概率在所选固定设计样本量处计算：N₁ = %1$s 且 N₂ = %2$s（总 N = %3$s）。各行使用 H₁ 或 H₀ 下相应的设计先验。"
 
 msgid ""
 "Probabilities are evaluated at the selected fixed-design sample size: N = "
 "%1$s. Rows use the corresponding design prior under H₁ or H₀."
-msgstr ""
+msgstr "概率在所选固定设计样本量处计算：N = %1$s。各行使用 H₁ 或 H₀ 下相应的设计先验。"
 
 msgid "Sample size is not available."
-msgstr ""
+msgstr "样本量不可用。"
 
 msgid "%1$s: %2$s"
-msgstr ""
+msgstr "%1$s：%2$s"
 
 #, fuzzy
 msgid "Error:"
@@ -128,75 +128,75 @@ msgstr "错误信息："
 msgid ""
 "This table reports the smallest fixed-design sample size that reaches the "
 "target probability of conclusive evidence for each design prior."
-msgstr ""
+msgstr "此表报告每种设计先验达到目标确定性证据概率所需的最小固定设计样本量。"
 
 msgid ""
 "This table evaluates the selected fixed sample size. Achieved probabilities "
 "are the chances that the planned study produces conclusive evidence in the "
 "requested direction when data are generated from the corresponding design "
 "prior."
-msgstr ""
+msgstr "此表对所选固定样本量进行评估。达成概率是指在从相应设计先验生成数据时，计划研究在所请求方向上产生确定性证据的可能性。"
 
 msgid ""
 "Rows condition on the design prior used to generate hypothetical data. "
 "Diagonal cells are conclusive evidence for the true hypothesis, off-diagonal "
 "cells are misleading evidence, and the middle column is the chance of "
 "remaining inconclusive."
-msgstr ""
+msgstr "各行以用于生成假设数据的设计先验为条件。对角单元格是对真实假设的确定性证据，非对角单元格是误导性证据，中间列为保持无定论的机会。"
 
 msgid ""
 "The analysis prior is used to compute the Bayes factor from the data. The "
 "design prior describes the effect sizes assumed during planning; it can "
 "differ from the analysis prior."
-msgstr ""
+msgstr "分析先验用于从数据计算贝叶斯因子。设计先验描述规划期间假定的效应量；它可与分析先验不同。"
 
 msgid ""
 "Summary statistics are the data summaries used to compute the observed Bayes "
 "factor."
-msgstr ""
+msgstr "汇总统计量是用于计算观测贝叶斯因子的数据汇总。"
 
 msgid ""
 "The observed-data analysis applies the planned sequential decision rule to "
 "the current data. It is an interim or final decision for the observed study, "
 "not an operating characteristic of the design."
-msgstr ""
+msgstr "观测数据分析将计划的序贯决策规则应用于当前数据。它是观测研究的中期或最终决策，而非设计的操作特征。"
 
 msgid ""
 "The observed-data analysis applies the planned fixed-design Bayes factor "
 "rule to the current data. It is the decision for this observed study, not an "
 "operating characteristic of the design."
-msgstr ""
+msgstr "观测数据分析将计划的固定设计贝叶斯因子规则应用于当前数据。它是该观测研究的决策，而非设计的操作特征。"
 
 msgid "Observed Data Analysis"
-msgstr ""
+msgstr "观测数据分析"
 
 msgid "Analysis Result"
-msgstr ""
+msgstr "分析结果"
 
 msgid "Summary Statistics"
-msgstr ""
+msgstr "汇总统计量"
 
 msgid "Unable to summarize observed data: %1$s"
-msgstr ""
+msgstr "无法汇总观测数据：%1$s"
 
 msgid "Unable to compute observed Bayes factor: %1$s"
-msgstr ""
+msgstr "无法计算观测贝叶斯因子：%1$s"
 
 msgid ""
 "For t-tests, the estimate is the standardized mean difference on the "
 "analysis scale."
-msgstr ""
+msgstr "对于 t 检验，估计值是分析尺度上的标准化均数差。"
 
 msgid ""
 "Sequential decisions use the configured BF thresholds for the current "
 "observed data."
-msgstr ""
+msgstr "序贯决策对当前观测数据使用已配置的 BF 阈值。"
 
 msgid "Statistical Test"
-msgstr ""
+msgstr "统计检验"
 
 msgid "Decision"
-msgstr ""
+msgstr "决策"
 
 #, fuzzy
 msgid "Independent Samples T-Test"
@@ -227,10 +227,10 @@ msgid "One Sample Proportion Test"
 msgstr "单样本比率检验"
 
 msgid "General (z-approximation)"
-msgstr ""
+msgstr "一般（z 近似）"
 
 msgid "Group"
-msgstr ""
+msgstr "组"
 
 msgid "Mean"
 msgstr "均值"
@@ -239,192 +239,192 @@ msgid "SD"
 msgstr "标准差"
 
 msgid "Variable"
-msgstr ""
+msgstr "变量"
 
 msgid "Successes"
-msgstr ""
+msgstr "成功数"
 
 msgid "Trials"
-msgstr ""
+msgstr "试验次数"
 
 msgid "Proportion"
-msgstr ""
+msgstr "比例"
 
 msgid "Mean Difference"
-msgstr ""
+msgstr "均数差"
 
 msgid "SD Difference"
-msgstr ""
+msgstr "标准差差"
 
 msgid "SE"
 msgstr "标准误"
 
 msgid "Group 1"
-msgstr ""
+msgstr "组 1"
 
 msgid "Group 2"
-msgstr ""
+msgstr "组 2"
 
 msgid "Missing option '%1$s'."
-msgstr ""
+msgstr "缺少选项“%1$s”。"
 
 msgid "Option '%1$s' must contain one finite numeric value."
-msgstr ""
+msgstr "选项“%1$s”必须包含一个有限的数值。"
 
 msgid "Summary statistics"
-msgstr ""
+msgstr "汇总统计量"
 
 msgid "Estimate"
 msgstr "估计"
 
 msgid "Mean 1"
-msgstr ""
+msgstr "均值 1"
 
 msgid "Mean 2"
-msgstr ""
+msgstr "均值 2"
 
 msgid "SD 1"
-msgstr ""
+msgstr "标准差 1"
 
 msgid "SD 2"
-msgstr ""
+msgstr "标准差 2"
 
 msgid "Mean difference"
-msgstr ""
+msgstr "均数差"
 
 msgid "SD difference"
-msgstr ""
+msgstr "标准差差"
 
 #, fuzzy
 msgid "Cohen's d"
 msgstr "Cohen's"
 
 msgid "Failures"
-msgstr ""
+msgstr "失败数"
 
 msgid "The total number of successes and failures must be at least 1."
-msgstr ""
+msgstr "成功数与失败数的总和必须至少为 1。"
 
 msgid "No dataset is available for column input."
-msgstr ""
+msgstr "没有可用于列输入的数据集。"
 
 msgid "Column data"
-msgstr ""
+msgstr "列数据"
 
 msgid "The selected variable contains no observed values."
-msgstr ""
+msgstr "所选变量不包含任何观测值。"
 
 msgid "Dependent variable"
-msgstr ""
+msgstr "因变量"
 
 msgid "Grouping variable"
-msgstr ""
+msgstr "分组变量"
 
 msgid "The grouping variable must contain exactly two observed groups."
-msgstr ""
+msgstr "分组变量必须恰好包含两个观测组。"
 
 msgid "%1$s by %2$s"
-msgstr ""
+msgstr "%1$s 按 %2$s"
 
 msgid "First variable"
-msgstr ""
+msgstr "第一个变量"
 
 msgid "Second variable"
-msgstr ""
+msgstr "第二个变量"
 
 msgid "%1$s - %2$s"
-msgstr ""
+msgstr "%1$s - %2$s"
 
 msgid "Variable pair must contain two different variables."
-msgstr ""
+msgstr "变量对必须包含两个不同的变量。"
 
 msgid "Variable pair must be selected."
-msgstr ""
+msgstr "必须选择变量对。"
 
 msgid "Pooled SD"
-msgstr ""
+msgstr "合并标准差"
 
 msgid "Observed Bayes factor is not finite."
-msgstr ""
+msgstr "观测贝叶斯因子不是有限的。"
 
 msgid "Stop for H₁"
-msgstr ""
+msgstr "为 H₁ 停止"
 
 msgid "BF supports H₁"
-msgstr ""
+msgstr "BF 支持 H₁"
 
 msgid "Stop for H₀"
-msgstr ""
+msgstr "为 H₀ 停止"
 
 msgid "BF supports H₀"
-msgstr ""
+msgstr "BF 支持 H₀"
 
 msgid "Continue"
-msgstr ""
+msgstr "继续"
 
 msgid "Inconclusive"
-msgstr ""
+msgstr "无定论"
 
 msgid "%1$s must be selected."
-msgstr ""
+msgstr "必须选择 %1$s。"
 
 msgid "%1$s was not found in the dataset."
-msgstr ""
+msgstr "在数据集中未找到 %1$s。"
 
 msgid "%1$s contains no observed values."
-msgstr ""
+msgstr "%1$s 不包含任何观测值。"
 
 msgid "%1$s must be numeric."
-msgstr ""
+msgstr "%1$s 必须为数值。"
 
 msgid "%1$s contains infinite values."
-msgstr ""
+msgstr "%1$s 包含无限值。"
 
 msgid "%1$s must be a finite number."
-msgstr ""
+msgstr "%1$s 必须为有限数值。"
 
 msgid "%1$s must be an integer of at least %2$s."
-msgstr ""
+msgstr "%1$s 必须为至少 %2$s 的整数。"
 
 msgid "%1$s must be at least %2$s."
-msgstr ""
+msgstr "%1$s 必须至少为 %2$s。"
 
 msgid "%1$s must be positive."
-msgstr ""
+msgstr "%1$s 必须为正数。"
 
 msgid "N₁ = %1$s and N₂ = %2$s"
-msgstr ""
+msgstr "N₁ = %1$s 且 N₂ = %2$s"
 
 msgid "N = %1$s"
-msgstr ""
+msgstr "N = %1$s"
 
 msgid "Report"
-msgstr ""
+msgstr "报告"
 
 msgid ""
 "The report could not be generated because the Bayes factor design could not "
 "be completed with the current settings."
-msgstr ""
+msgstr "无法生成报告，因为无法使用当前设置完成贝叶斯因子设计。"
 
 msgid ""
 "The report could not be generated because the Bayes factor design could not "
 "be completed for all design priors."
-msgstr ""
+msgstr "无法生成报告，因为无法为所有设计先验完成贝叶斯因子设计。"
 
 msgid "fixed-sample"
-msgstr ""
+msgstr "固定样本"
 
 msgid "Unable to generate report: %1$s"
-msgstr ""
+msgstr "无法生成报告：%1$s"
 
 msgid "A %1$s Bayes factor design %2$s a %3$s %4$s %5$s."
-msgstr ""
+msgstr "一个 %1$s 贝叶斯因子设计 %2$s 一个 %3$s %4$s %5$s。"
 
 msgid "specified"
-msgstr ""
+msgstr "已指定"
 
 msgid "evaluated"
-msgstr ""
+msgstr "已评估"
 
 msgid "one-sided"
 msgstr "单尾"
@@ -433,107 +433,107 @@ msgid "two-sided"
 msgstr "双尾"
 
 msgid "(H₁: %1$s %2$s %3$s)"
-msgstr ""
+msgstr "（H₁：%1$s %2$s %3$s）"
 
 msgid "The analysis prior for H₀ %1$s, and the analysis prior for H₁ %2$s."
-msgstr ""
+msgstr "H₀ 的分析先验 %1$s，H₁ 的分析先验 %2$s。"
 
 msgid "The design prior for H₀ %1$s, and the design prior for H₁ %2$s."
-msgstr ""
+msgstr "H₀ 的设计先验 %1$s，H₁ 的设计先验 %2$s。"
 
 msgid "used %1$s, truncated to %2$s"
-msgstr ""
+msgstr "使用 %1$s，截断至 %2$s"
 
 msgid "%1$s ~ Cauchy(location = %2$s, scale = %3$s)"
-msgstr ""
+msgstr "%1$s ~ Cauchy（位置 = %2$s，尺度 = %3$s）"
 
 msgid "%1$s ~ Student-t(location = %2$s, scale = %3$s, df = %4$s)"
-msgstr ""
+msgstr "%1$s ~ Student-t（位置 = %2$s，尺度 = %3$s，自由度 = %4$s）"
 
 msgid "%1$s ~ Normal-moment(spread = %2$s, modes = ±%3$s)"
-msgstr ""
+msgstr "%1$s ~ 正态矩（扩散 = %2$s，众数 = ±%3$s）"
 
 msgid "used %1$s"
-msgstr ""
+msgstr "使用 %1$s"
 
 msgid "%1$s ~ Normal(mean = %2$s, SD = %3$s)"
-msgstr ""
+msgstr "%1$s ~ 正态（均值 = %2$s，标准差 = %3$s）"
 
 msgid "used %1$s ~ Normal(mean = %2$s, SD = %3$s)"
-msgstr ""
+msgstr "使用 %1$s ~ 正态（均值 = %2$s，标准差 = %3$s）"
 
 msgid "used %1$s, truncated to %2$s ≤ p ≤ %3$s"
-msgstr ""
+msgstr "使用 %1$s，截断至 %2$s ≤ p ≤ %3$s"
 
 msgid "placed all mass at %1$s = %2$s"
-msgstr ""
+msgstr "将所有质量置于 %1$s = %2$s"
 
 msgid "%1$s ~ Beta(a = %2$s, b = %3$s)"
-msgstr ""
+msgstr "%1$s ~ Beta（a = %2$s，b = %3$s）"
 
 msgid "%1$s > %2$s"
-msgstr ""
+msgstr "%1$s > %2$s"
 
 msgid "%1$s ≤ %2$s"
-msgstr ""
+msgstr "%1$s ≤ %2$s"
 
 msgid "%1$s < %2$s"
-msgstr ""
+msgstr "%1$s < %2$s"
 
 msgid "%1$s ≥ %2$s"
-msgstr ""
+msgstr "%1$s ≥ %2$s"
 
 msgid ""
 "The design used evidence thresholds of BF₁₀ ≥ %1$s for H₁ and BF₀₁ ≥ %2$s "
 "for H₀ (equivalently, BF₁₀ ≤ %3$s)."
-msgstr ""
+msgstr "该设计对 H₁ 使用证据阈值 BF₁₀ ≥ %1$s，对 H₀ 使用 BF₀₁ ≥ %2$s（等价地，BF₁₀ ≤ %3$s）。"
 
 msgid "The design evaluated %1$s."
-msgstr ""
+msgstr "该设计评估了 %1$s。"
 
 msgid ""
 "The design selected %1$s to target conclusive evidence probabilities of %2$s "
 "under H₁ and %3$s under H₀."
-msgstr ""
+msgstr "该设计选择 %1$s 以实现在 H₁ 下确定性证据概率为 %2$s、在 H₀ 下为 %3$s 的目标。"
 
 msgid ""
 "The design selected %1$s for the H₁ planning target and %2$s for the H₀ "
 "planning target, with target conclusive evidence probabilities of %3$s and "
 "%4$s, respectively."
-msgstr ""
+msgstr "该设计为 H₁ 规划目标选择 %1$s，为 H₀ 规划目标选择 %2$s，目标确定性证据概率分别为 %3$s 和 %4$s。"
 
 msgid ""
 "The achieved probability of conclusive evidence was %1$s under H₁ and %2$s "
 "under H₀; the probability of misleading evidence was %3$s under H₁ and %4$s "
 "under H₀."
-msgstr ""
+msgstr "H₁ 下确定性证据的达成概率为 %1$s，H₀ 下为 %2$s；误导性证据的概率在 H₁ 下为 %3$s，在 H₀ 下为 %4$s。"
 
 msgid ""
 "The design analysis used JASP with the jaspPower module version %1$s and the "
 "bfpwr R package version %2$s."
-msgstr ""
+msgstr "该设计分析使用 JASP（jaspPower 模块版本 %1$s）和 bfpwr R 软件包（版本 %2$s）。"
 
 msgid "unknown"
-msgstr ""
+msgstr "未知"
 
 msgid "not available"
-msgstr ""
+msgstr "不可用"
 
 msgid "1/%1$s"
-msgstr ""
+msgstr "1/%1$s"
 
 msgid "R Code"
-msgstr ""
+msgstr "R 代码"
 
 msgid "Unable to generate R code: %1$s"
-msgstr ""
+msgstr "无法生成 R 代码：%1$s"
 
 msgid "Decision Probabilities by Sample Size"
-msgstr ""
+msgstr "按样本量的决策概率"
 
 msgid ""
 "Unable to compute conclusive evidence and misleading evidence curves: %1$s"
-msgstr ""
+msgstr "无法计算确定性证据和误导性证据曲线：%1$s"
 
 msgid "Sample size (group 1)"
 msgstr "样本量（组1）"
@@ -547,119 +547,119 @@ msgid "Probability"
 msgstr "概率密度"
 
 msgid "Outcome"
-msgstr ""
+msgstr "结果"
 
 msgid "Decision Probabilities by Proportion"
-msgstr ""
+msgstr "按比例的决策概率"
 
 msgid "Decision Probabilities by Effect Size"
-msgstr ""
+msgstr "按效应量的决策概率"
 
 msgid ""
 "This plot shows how the probabilities of conclusive and misleading evidence "
 "change with sample size while priors and thresholds are held fixed. Use it "
 "to see how quickly the planned design becomes informative."
-msgstr ""
+msgstr "此图显示在先验和阈值保持固定时，确定性证据和误导性证据的概率如何随样本量变化。用它来查看计划设计多快变得有信息量。"
 
 msgid ""
 "This plot shows how the probabilities of conclusive and misleading evidence "
 "change across possible design proportions. Use it as a sensitivity check for "
 "the assumed proportion under the design prior."
-msgstr ""
+msgstr "此图显示确定性证据和误导性证据的概率如何在可能的设计比例间变化。将其用作设计先验下所假定比例的敏感性检验。"
 
 msgid ""
 "This plot shows how the probabilities of conclusive and misleading evidence "
 "change across possible design-prior effect sizes. Use it as a sensitivity "
 "check for the assumed effect size."
-msgstr ""
+msgstr "此图显示确定性证据和误导性证据的概率如何在可能的设计先验效应量间变化。将其用作所假定效应量的敏感性检验。"
 
 msgid "Design prior location"
-msgstr ""
+msgstr "设计先验位置"
 
 msgid "Design prior mean"
-msgstr ""
+msgstr "设计先验均值"
 
 msgid "Design proportion"
-msgstr ""
+msgstr "设计比例"
 
 msgid "Prior Distribution"
-msgstr ""
+msgstr "先验分布"
 
 msgid "Unable to compute prior distribution plot: %1$s"
-msgstr ""
+msgstr "无法计算先验分布图：%1$s"
 
 msgid ""
 "Analysis priors determine how the Bayes factor is computed from the data. "
 "Design priors describe the data-generating assumptions used to evaluate the "
 "design, so comparing them helps assess whether the planning assumptions "
 "match the intended analysis."
-msgstr ""
+msgstr "分析先验决定如何从数据计算贝叶斯因子。设计先验描述用于评估设计的数据生成假设，因此比较二者有助于评估规划假设是否与预期分析相符。"
 
 msgid "Design and Analysis Priors"
-msgstr ""
+msgstr "设计与分析先验"
 
 msgid "Analysis Prior"
-msgstr ""
+msgstr "分析先验"
 
 msgid "Prior"
 msgstr "先验"
 
 msgid "H₁"
-msgstr ""
+msgstr "H₁"
 
 msgid "H₀"
-msgstr ""
+msgstr "H₀"
 
 msgid "Conclusive"
-msgstr ""
+msgstr "确定性"
 
 msgid "Misleading"
-msgstr ""
+msgstr "误导性"
 
 msgid "Parameter value"
-msgstr ""
+msgstr "参数值"
 
 msgid "Density"
-msgstr ""
+msgstr "密度"
 
 msgid "Hypothesis"
-msgstr ""
+msgstr "假设"
 
 msgid ""
 "The %1$s parameterization assumes a unit information standard deviation "
 "(UISD) of %2$s."
-msgstr ""
+msgstr "%1$s 参数化假定单位信息标准差 (UISD) 为 %2$s。"
 
 msgid "SMD"
-msgstr ""
+msgstr "SMD"
 
 msgid "Fisher's z"
-msgstr ""
+msgstr "Fisher 的 z"
 
 msgid "logRR"
-msgstr ""
+msgstr "logRR"
 
 msgid "logOR"
-msgstr ""
+msgstr "logOR"
 
 msgid "logHR"
-msgstr ""
+msgstr "logHR"
 
 msgid "logIRR"
-msgstr ""
+msgstr "logIRR"
 
 msgid "specified UISD"
-msgstr ""
+msgstr "已指定 UISD"
 
 msgid "standard error schedule"
-msgstr ""
+msgstr "标准误时间安排"
 
 msgid "effect size"
-msgstr ""
+msgstr "效应量"
 
 msgid ""
 "The sample-size ratio leads to a second-group sample size smaller than 2."
-msgstr ""
+msgstr "样本量比率导致第 2 组样本量小于 2。"
 
 #, fuzzy
 msgid "independent samples t-test"
@@ -690,527 +690,527 @@ msgid "one sample proportion test"
 msgstr "单样本比率检验"
 
 msgid "general z-approximation"
-msgstr ""
+msgstr "一般 z 近似"
 
 msgid "H₁ (BF₁₀)"
-msgstr ""
+msgstr "H₁ (BF₁₀)"
 
 msgid "H₀ (BF₀₁)"
-msgstr ""
+msgstr "H₀ (BF₀₁)"
 
 msgid "Under H₁"
-msgstr ""
+msgstr "在 H₁ 下"
 
 msgid "Under H₀"
-msgstr ""
+msgstr "在 H₀ 下"
 
 msgid "Design Prior Under H₁"
-msgstr ""
+msgstr "H₁ 下的设计先验"
 
 msgid "Design Prior Under H₀"
-msgstr ""
+msgstr "H₀ 下的设计先验"
 
 msgid "Directional"
-msgstr ""
+msgstr "有方向的"
 
 msgid "Point null"
-msgstr ""
+msgstr "点零假设"
 
 msgid "θ >= θ₀, θ₀ = %1$s"
-msgstr ""
+msgstr "θ >= θ₀，θ₀ = %1$s"
 
 msgid "θ <= θ₀, θ₀ = %1$s"
-msgstr ""
+msgstr "θ <= θ₀，θ₀ = %1$s"
 
 msgid "θ₀ = %1$s"
-msgstr ""
+msgstr "θ₀ = %1$s"
 
 msgid "p <= p₀, p₀ = %1$s"
-msgstr ""
+msgstr "p <= p₀，p₀ = %1$s"
 
 msgid "p₀ = %1$s"
-msgstr ""
+msgstr "p₀ = %1$s"
 
 msgid "Beta"
-msgstr ""
+msgstr "Beta"
 
 msgid "Cauchy"
-msgstr ""
+msgstr "柯西"
 
 msgid "Student-t"
-msgstr ""
+msgstr "Student-t"
 
 msgid "Point"
-msgstr ""
+msgstr "点"
 
 msgid "Normal"
-msgstr ""
+msgstr "正态"
 
 msgid "Normal-moment"
-msgstr ""
+msgstr "正态矩"
 
 msgid "a = %1$s, b = %2$s"
-msgstr ""
+msgstr "a = %1$s，b = %2$s"
 
 msgid "location = %1$s, scale = %2$s"
-msgstr ""
+msgstr "位置 = %1$s，尺度 = %2$s"
 
 msgid "location = %1$s, scale = %2$s, df = %3$s"
-msgstr ""
+msgstr "位置 = %1$s，尺度 = %2$s，自由度 = %3$s"
 
 msgid "location = %1$s"
-msgstr ""
+msgstr "位置 = %1$s"
 
 msgid "mean = %1$s, sd = %2$s"
-msgstr ""
+msgstr "均值 = %1$s，标准差 = %2$s"
 
 msgid "spread = %1$s, modes = +/- %2$s"
-msgstr ""
+msgstr "扩散 = %1$s，众数 = +/- %2$s"
 
 msgid "p = %1$s"
-msgstr ""
+msgstr "p = %1$s"
 
 msgid "Analysis Prior Under H₀"
-msgstr ""
+msgstr "H₀ 下的分析先验"
 
 msgid "Analysis Prior Under H₁"
-msgstr ""
+msgstr "H₁ 下的分析先验"
 
 msgid "Bayes Factor Sequential Design"
-msgstr ""
+msgstr "贝叶斯因子序贯设计"
 
 msgid "Sample Size Operating Characteristics"
-msgstr ""
+msgstr "样本量操作特征"
 
 msgid "Cumulative Decision Probabilities by Look"
-msgstr ""
+msgstr "按分析阶段的累积决策概率"
 
 msgid "New Stop Probabilities by Look"
-msgstr ""
+msgstr "按分析阶段的新停止概率"
 
 msgid "Stopping Boundaries"
-msgstr ""
+msgstr "停止边界"
 
 msgid ""
 "Fast adaptive maximum sample-size search is enabled. It is not guaranteed to "
 "find the smallest maximum sample size when discrete interim looks make the "
 "power curve non-monotone. Use \"Sample-size search: Exhaustive\" in the "
 "Advanced section to obtain the smallest maximum sample size."
-msgstr ""
+msgstr "已启用快速自适应最大样本量搜索。当离散的中期分析阶段使功效曲线非单调时，不能保证找到最小的最大样本量。请使用“高级”部分中的“样本量搜索：穷举”以获得最小的最大样本量。"
 
 msgid ""
 "Exact integration over all regions is enabled. It can be slow for designs "
 "with many looks."
-msgstr ""
+msgstr "已启用对所有区域的精确积分。对于具有许多分析阶段的设计，这可能较慢。"
 
 msgid ""
 "Exact integration over all regions is disabled. Use \"Exact integration over "
 "all regions\" in the Advanced section to obtain exact sequential-design "
 "calculations."
-msgstr ""
+msgstr "已禁用对所有区域的精确积分。请使用“高级”部分中的“对所有区域精确积分”以获得精确的序贯设计计算。"
 
 msgid ""
 "Two-sided sequential sample-size and power calculations can take a long "
 "time. To speed up exploratory calculations set \"Exact integration over all "
 "regions\" to FALSE."
-msgstr ""
+msgstr "双侧序贯样本量和功效计算可能耗时较长。为加速探索性计算，请将“对所有区域精确积分”设为 FALSE。"
 
 msgid "Warning:"
 msgstr "警告："
 
 msgid "The standard error schedule must contain at least one look."
-msgstr ""
+msgstr "标准误时间安排必须至少包含一次分析。"
 
 msgid "The standard error schedule must be strictly decreasing."
-msgstr ""
+msgstr "标准误时间安排必须严格递减。"
 
 #, fuzzy
 msgid "sample size schedule"
 msgstr "每组有%s个样本"
 
 msgid "The custom sample size schedule must contain at least one look."
-msgstr ""
+msgstr "自定义样本量时间安排必须至少包含一次分析。"
 
 msgid "All sample sizes in the custom schedule must be at least 2."
-msgstr ""
+msgstr "自定义时间安排中的所有样本量必须至少为 2。"
 
 msgid "The custom sample size schedule must be strictly increasing."
-msgstr ""
+msgstr "自定义样本量时间安排必须严格递增。"
 
 msgid ""
 "The sample size at the first look must be smaller than or equal to the "
 "maximum sample size."
-msgstr ""
+msgstr "第一次分析时的样本量必须小于或等于最大样本量。"
 
 msgid ""
 "More than one look requires a maximum sample size larger than the first-look "
 "sample size."
-msgstr ""
+msgstr "多次分析要求最大样本量大于第一次分析的样本量。"
 
 msgid ""
 "The number of looks is too large for the selected first-look and maximum "
 "sample sizes."
-msgstr ""
+msgstr "对于所选定的首次分析和最大样本量而言，分析次数过多。"
 
 msgid "The sample size increase must be at least 1."
-msgstr ""
+msgstr "样本量增量必须至少为 1。"
 
 msgid ""
 "The generated sample-size schedule contains sample sizes smaller than 2."
-msgstr ""
+msgstr "生成的样本量时间安排包含小于 2 的样本量。"
 
 msgid ""
 "The generated sample-size schedule is not strictly increasing. Increase the "
 "maximum sample size or adjust the sample size increase."
-msgstr ""
+msgstr "生成的样本量时间安排并非严格递增。请增大最大样本量或调整样本量增量。"
 
 msgid "group 2 sample size schedule"
-msgstr ""
+msgstr "第 2 组样本量时间安排"
 
 msgid ""
 "The group 1 and group 2 custom sample size schedules must have the same "
 "number of looks."
-msgstr ""
+msgstr "第 1 组和第 2 组的自定义样本量时间安排必须具有相同的分析次数。"
 
 msgid "All group 2 sample sizes in the custom schedule must be at least 2."
-msgstr ""
+msgstr "自定义时间安排中第 2 组的所有样本量必须至少为 2。"
 
 msgid "The custom group 2 sample size schedule must be strictly increasing."
-msgstr ""
+msgstr "自定义第 2 组样本量时间安排必须严格递增。"
 
 msgid "The %1$s must contain only finite numeric values."
-msgstr ""
+msgstr "%1$s 必须只包含有限的数值。"
 
 msgid "The %1$s must contain only positive values."
-msgstr ""
+msgstr "%1$s 必须只包含正值。"
 
 msgid "Searching maximum sample size"
-msgstr ""
+msgstr "正在搜索最大样本量"
 
 msgid ""
 "The bfpwr sample-size search did not return a finite maximum sample size."
-msgstr ""
+msgstr "bfpwr 样本量搜索未返回有限的最大样本量。"
 
 msgid "The bfpwr sample-size search did not return a sequential design."
-msgstr ""
+msgstr "bfpwr 样本量搜索未返回序贯设计。"
 
 msgid ""
 "The bfpwr sample-size search result did not contain a sample-size schedule."
-msgstr ""
+msgstr "bfpwr 样本量搜索结果不包含样本量时间安排。"
 
 msgid ""
 "Stagewise evidence tables and figures are evaluated through the largest "
 "computed maximum sample size."
-msgstr ""
+msgstr "阶段式证据表和图的评估一直进行到计算出的最大最大样本量。"
 
 msgid ""
 "The generated sample-size schedule is not strictly increasing. Increase the "
 "maximum sample size or adjust the information fractions."
-msgstr ""
+msgstr "生成的样本量时间安排并非严格递增。请增大最大样本量或调整信息分数。"
 
 msgid "information fraction schedule"
-msgstr ""
+msgstr "信息分数时间安排"
 
 msgid "The information fraction schedule must contain at least one look."
-msgstr ""
+msgstr "信息分数时间安排必须至少包含一次分析。"
 
 msgid "Information fractions must be less than or equal to 1."
-msgstr ""
+msgstr "信息分数必须小于或等于 1。"
 
 msgid "The information fraction schedule must be strictly increasing."
-msgstr ""
+msgstr "信息分数时间安排必须严格递增。"
 
 msgid "The information fraction schedule must end at 1."
-msgstr ""
+msgstr "信息分数时间安排必须以 1 结束。"
 
 msgid ""
 "The standard error schedule must have the same number of entries as the look "
 "schedule."
-msgstr ""
+msgstr "标准误时间安排的条目数必须与分析阶段时间安排相同。"
 
 msgid "Unable to compute Bayes factor sequential design: %1$s"
-msgstr ""
+msgstr "无法计算贝叶斯因子序贯设计：%1$s"
 
 msgid ""
 "Due to integer sample-size schedules, Pr(Conclusive Evidence) can exceed the "
 "target probability."
-msgstr ""
+msgstr "由于整数样本量时间安排，Pr(确定性证据) 可能超过目标概率。"
 
 msgid ""
 "For independent samples, N₁ is the sample size in group 1 and N₂ is rounded "
 "up from the requested N₂/N₁ sample-size ratio, unless a custom group 2 "
 "schedule is supplied."
-msgstr ""
+msgstr "对于独立样本，N₁ 为第 1 组的样本量，N₂ 由所请求的 N₂/N₁ 样本量比率向上取整得出，除非提供了自定义的第 2 组时间安排。"
 
 msgid ""
 "This design uses the supplied standard error schedule, so sample-size "
 "summaries are omitted."
-msgstr ""
+msgstr "此设计使用提供的标准误时间安排，因此省略了样本量汇总。"
 
 msgid "Final SE"
-msgstr ""
+msgstr "最终标准误"
 
 msgid "Maximum N₁"
-msgstr ""
+msgstr "最大 N₁"
 
 msgid "Maximum N₂"
-msgstr ""
+msgstr "最大 N₂"
 
 msgid "Maximum N"
-msgstr ""
+msgstr "最大 N"
 
 msgid ""
 "This table reports the maximum sample size schedule needed to reach the "
 "target probability of conclusive evidence at the planned looks."
-msgstr ""
+msgstr "此表报告在计划的分析阶段达到目标确定性证据概率所需的最大样本量时间安排。"
 
 msgid ""
 "This table evaluates the selected sequential design through the final look. "
 "Achieved probabilities are cumulative stopping probabilities for conclusive "
 "evidence under the corresponding design prior."
-msgstr ""
+msgstr "此表评估选定序贯设计直至最终分析阶段。达成概率是相应设计先验下确定性证据的累积停止概率。"
 
 msgid ""
 "Mean sample size and SD describe how much data the sequential design is "
 "expected to use under each design prior. They are averages over hypothetical "
 "repetitions of the planned study."
-msgstr ""
+msgstr "均数样本量和标准差描述序贯设计在每种设计先验下预期使用的数据量。它们是计划研究假设重复的平均值。"
 
 msgid ""
 "Rows condition on the design prior used to generate hypothetical sequential "
 "studies. Diagonal cells are conclusive evidence for the true hypothesis, off-"
 "diagonal cells are misleading evidence, and the middle column is the chance "
 "of reaching the final look without a conclusion."
-msgstr ""
+msgstr "各行以用于生成假设序贯研究的设计先验为条件。对角单元格是对真实假设的确定性证据，非对角单元格是误导性证据，中间列为未得出结论而达到最终分析阶段的机会。"
 
 msgid ""
 "Cumulative probabilities show the chance that the study has stopped by each "
 "look. The inconclusive column is the chance that no stopping rule has been "
 "crossed yet."
-msgstr ""
+msgstr "累积概率表示研究在每个分析阶段之前已停止的机会。无定论列是尚未逾越任何停止规则的机会。"
 
 msgid ""
 "New stop probabilities isolate decisions first made at a given look. Summing "
 "them over looks gives the cumulative stopping probability for the "
 "corresponding decision."
-msgstr ""
+msgstr "新停止概率单独列出在给定分析阶段首次作出的决策。对它们按分析阶段求和即得到相应决策的累积停止概率。"
 
 msgid ""
 "Stopping boundaries are the test-statistic values that correspond to the "
 "selected Bayes factor thresholds at each look. Crossing a boundary triggers "
 "stopping for H₁ or H₀."
-msgstr ""
+msgstr "停止边界是与每个分析阶段所选贝叶斯因子阈值相对应的检验统计量值。逾越边界将触发为 H₁ 或 H₀ 停止。"
 
 msgid "Unable to compute sample size summary: %1$s"
-msgstr ""
+msgstr "无法计算样本量汇总：%1$s"
 
 msgid "Looks"
-msgstr ""
+msgstr "分析阶段"
 
 msgid "First Look"
-msgstr ""
+msgstr "首次分析"
 
 msgid "Maximum Sample Size"
-msgstr ""
+msgstr "最大样本量"
 
 #, fuzzy
 msgid "Mean Sample Size"
 msgstr "单样本z检验"
 
 msgid "Standard Deviation"
-msgstr ""
+msgstr "标准差"
 
 msgid ""
 "The requested BF target could not be reached within the selected maximum "
 "sample size for %1$s; entries that depend on reaching the target are left "
 "empty."
-msgstr ""
+msgstr "在 %1$s 的所选最大样本量内无法达到所请求的 BF 目标；依赖达到目标的条目留空。"
 
 msgid ""
 "To satisfy both design priors in a single sequential design, use a final "
 "look of N₁ = %1$s and N₂ = %2$s (total N = %3$s)."
-msgstr ""
+msgstr "要在单一序贯设计中同时满足两个设计先验，请使用最终分析 N₁ = %1$s 和 N₂ = %2$s（总 N = %3$s）。"
 
 msgid ""
 "To satisfy both design priors in a single sequential design, use a final "
 "look of N = %1$s."
-msgstr ""
+msgstr "要在单一序贯设计中同时满足两个设计先验，请使用最终分析 N = %1$s。"
 
 msgid ""
 "Probabilities are cumulative through the selected final look: SE = %1$s. "
 "Rows use the corresponding design prior under H₁ or H₀."
-msgstr ""
+msgstr "概率累积到所选最终分析阶段：SE = %1$s。各行使用 H₁ 或 H₀ 下相应的设计先验。"
 
 msgid ""
 "Probabilities are cumulative through the final look required for each design "
 "prior: under H₁, N₁ = %1$s and N₂ = %2$s; under H₀, N₁ = %3$s and N₂ = %4$s."
-msgstr ""
+msgstr "概率累积到每种设计先验所需的最终分析阶段：H₁ 下 N₁ = %1$s 且 N₂ = %2$s；H₀ 下 N₁ = %3$s 且 N₂ = %4$s。"
 
 msgid ""
 "Probabilities are cumulative through the final look required for each design "
 "prior: under H₁, N = %1$s; under H₀, N = %2$s."
-msgstr ""
+msgstr "概率累积到每种设计先验所需的最终分析阶段：H₁ 下 N = %1$s；H₀ 下 N = %2$s。"
 
 msgid ""
 "Probabilities are cumulative through the selected final look. Rows use the "
 "corresponding design prior under H₁ or H₀."
-msgstr ""
+msgstr "概率累积到所选最终分析阶段。各行使用 H₁ 或 H₀ 下相应的设计先验。"
 
 msgid ""
 "Probabilities are cumulative through the selected final look: N₁ = %1$s and "
 "N₂ = %2$s (total N = %3$s). Rows use the corresponding design prior under H₁ "
 "or H₀."
-msgstr ""
+msgstr "概率累积到所选最终分析阶段：N₁ = %1$s 且 N₂ = %2$s（总 N = %3$s）。各行使用 H₁ 或 H₀ 下相应的设计先验。"
 
 msgid ""
 "Probabilities are cumulative through the selected final look: N = %1$s. Rows "
 "use the corresponding design prior under H₁ or H₀."
-msgstr ""
+msgstr "概率累积到所选最终分析阶段：N = %1$s。各行使用 H₁ 或 H₀ 下相应的设计先验。"
 
 msgid "Unable to compute cumulative decision probabilities: %1$s"
-msgstr ""
+msgstr "无法计算累积决策概率：%1$s"
 
 msgid "Unable to compute incremental stagewise stops: %1$s"
-msgstr ""
+msgstr "无法计算增量式分阶段停止：%1$s"
 
 msgid "Design Prior: %1$s"
-msgstr ""
+msgstr "设计先验：%1$s"
 
 msgid "Look"
-msgstr ""
+msgstr "分析阶段"
 
 msgid "Any Stop"
-msgstr ""
+msgstr "任何停止"
 
 msgid "Unable to compute stopping boundaries: %1$s"
-msgstr ""
+msgstr "无法计算停止边界：%1$s"
 
 msgid ""
 "Boundaries are shown on the test-statistic scale. Empty cells mean no finite "
 "statistic reaches the decision rule at that look."
-msgstr ""
+msgstr "边界以检验统计量尺度显示。空格表示在该分析阶段没有有限统计量达到决策规则。"
 
 msgid "Lower Statistic"
-msgstr ""
+msgstr "下统计量"
 
 msgid "Upper Statistic"
-msgstr ""
+msgstr "上统计量"
 
 msgid "Stop for H₁: %1$s"
-msgstr ""
+msgstr "为 H₁ 停止：%1$s"
 
 msgid "Stop for H₀: %1$s"
-msgstr ""
+msgstr "为 H₀ 停止：%1$s"
 
 msgid ""
 "Sequential bfpwr calculations are performed on the parameter scale centered "
 "at the null value."
-msgstr ""
+msgstr "序贯 bfpwr 计算在以零值为中心的参数尺度上进行。"
 
 msgid ""
 "The report could not be generated because the Bayes factor sequential design "
 "could not be completed with the current settings."
-msgstr ""
+msgstr "无法生成报告，因为无法使用当前设置完成贝叶斯因子序贯设计。"
 
 msgid "sequential"
-msgstr ""
+msgstr "序贯"
 
 msgid ""
 "The design used a fixed standard-error schedule, so n_min, n_max, batch "
 "size, expected sample size, and sample-size SD are not defined."
-msgstr ""
+msgstr "该设计使用固定的标准误时间安排，因此 n_min、n_max、批次大小、期望样本量和样本量标准差未定义。"
 
 msgid ""
 "The design targeted conclusive evidence probabilities of %1$s under H₁ and "
 "%2$s under H₀."
-msgstr ""
+msgstr "该设计以 H₁ 下确定性证据概率 %1$s 和 H₀ 下 %2$s 为目标。"
 
 msgid ""
 "The design started at n_min,1 = %1$s and n_min,2 = %2$s, used %3$s, and "
 "stopped at n_max,1 = %4$s and n_max,2 = %5$s."
-msgstr ""
+msgstr "该设计从 n_min,1 = %1$s 和 n_min,2 = %2$s 开始，使用 %3$s，并在 n_max,1 = %4$s 和 n_max,2 = %5$s 处停止。"
 
 msgid ""
 "The design started at n_min = %1$s, used %2$s, and stopped at n_max = %3$s."
-msgstr ""
+msgstr "该设计从 n_min = %1$s 开始，使用 %2$s，并在 n_max = %3$s 处停止。"
 
 msgid ""
 "The design started at n_min,1 = %1$s and n_min,2 = %2$s, used %3$s, and "
 "found maximum sample sizes n_max,1 = %4$s and n_max,2 = %5$s under H₁ and "
 "n_max,1 = %6$s and n_max,2 = %7$s under H₀."
-msgstr ""
+msgstr "该设计从 n_min,1 = %1$s 和 n_min,2 = %2$s 开始，使用 %3$s，并在 H₁ 下求得最大样本量 n_max,1 = %4$s 和 n_max,2 = %5$s，在 H₀ 下 n_max,1 = %6$s 和 n_max,2 = %7$s。"
 
 msgid ""
 "The design started at n_min = %1$s, used %2$s, and found maximum sample "
 "sizes n_max = %3$s under H₁ and n_max = %4$s under H₀."
-msgstr ""
+msgstr "该设计从 n_min = %1$s 开始，使用 %2$s，并在 H₁ 下求得最大样本量 n_max = %3$s，在 H₀ 下 n_max = %4$s。"
 
 msgid "not reached"
-msgstr ""
+msgstr "未达到"
 
 msgid "a single planned look"
-msgstr ""
+msgstr "单次计划分析"
 
 msgid "batches of %1$s for n₁ and %2$s for n₂"
-msgstr ""
+msgstr "n₁ 的批次 %1$s 和 n₂ 的批次 %2$s"
 
 msgid "batch-size increments of %1$s for n₁ and %2$s for n₂"
-msgstr ""
+msgstr "n₁ 的批次大小增量 %1$s 和 n₂ 的增量 %2$s"
 
 msgid "batches of %1$s"
-msgstr ""
+msgstr "批次 %1$s"
 
 msgid "batch-size increments of %1$s"
-msgstr ""
+msgstr "批次大小增量 %1$s"
 
 msgid ""
 "Under the H₁ design prior, the expected sample sizes were n₁ = %1$s (SD = "
 "%2$s) and n₂ = %3$s (SD = %4$s); under the H₀ design prior, the expected "
 "sample sizes were n₁ = %5$s (SD = %6$s) and n₂ = %7$s (SD = %8$s)."
-msgstr ""
+msgstr "在 H₁ 设计先验下，期望样本量为 n₁ = %1$s（标准差 = %2$s）和 n₂ = %3$s（标准差 = %4$s）；在 H₀ 设计先验下，期望样本量为 n₁ = %5$s（标准差 = %6$s）和 n₂ = %7$s（标准差 = %8$s）。"
 
 msgid ""
 "Under the H₁ design prior, the expected sample size was %1$s (SD = %2$s); "
 "under the H₀ design prior, the expected sample size was %3$s (SD = %4$s)."
-msgstr ""
+msgstr "在 H₁ 设计先验下，期望样本量为 %1$s（标准差 = %2$s）；在 H₀ 设计先验下，期望样本量为 %3$s（标准差 = %4$s）。"
 
 msgid "%1$s to %2$s"
-msgstr ""
+msgstr "%1$s 至 %2$s"
 
 msgid ""
 "R code could not be generated because the sequential design could not be "
 "computed."
-msgstr ""
+msgstr "无法生成 R 代码，因为无法计算序贯设计。"
 
 msgid "Unable to compute stopping probabilities: %1$s"
-msgstr ""
+msgstr "无法计算停止概率：%1$s"
 
 msgid "Cumulative probability"
-msgstr ""
+msgstr "累积概率"
 
 msgid ""
 "The curves accumulate over planned looks: conclusive and misleading curves "
 "increase as studies stop for those outcomes, while the inconclusive curve "
 "decreases as decisions are made."
-msgstr ""
+msgstr "曲线随计划分析累积：随着研究因那些结果而停止，确定性曲线和误导性曲线上升，而无定论曲线随决策作出而下降。"
 
 msgid "No finite stopping boundaries are available for the current settings."
-msgstr ""
+msgstr "当前设置没有可用的有限停止边界。"
 
 msgid "Critical value"
-msgstr ""
+msgstr "临界值"
 
 msgid "Target"
-msgstr ""
+msgstr "目标"
 
 msgid "Boundary"
-msgstr ""
+msgstr "边界"
 
 msgid ""
 "Each curve gives the critical test-statistic value that corresponds to a "
 "Bayes factor stopping threshold at a look. Crossing a boundary triggers "
 "stopping for H₁ or H₀."
-msgstr ""
+msgstr "每条曲线给出与某分析阶段贝叶斯因子停止阈值相对应的临界检验统计量值。逾越边界将触发为 H₁ 或 H₀ 停止。"
 
 msgid "Lower"
 msgstr "下界"
@@ -1219,224 +1219,224 @@ msgid "Upper"
 msgstr "上界"
 
 msgid "group 1 event probability"
-msgstr ""
+msgstr "第 1 组事件概率"
 
 msgid "group 2 event probability"
-msgstr ""
+msgstr "第 2 组事件概率"
 
 msgid "baseline event probability"
-msgstr ""
+msgstr "基线事件概率"
 
 msgid "The alternative binary effect must be finite."
-msgstr ""
+msgstr "替代二分类效应必须是有限的。"
 
 msgid "Alternative risk ratios and odds ratios must be greater than 0."
-msgstr ""
+msgstr "替代风险比和比值比必须大于 0。"
 
 msgid ""
 "The baseline event probability and alternative binary effect imply a group 2 "
 "event probability outside (0, 1)."
-msgstr ""
+msgstr "基线与替代二分类效应隐含的第 2 组事件概率超出 (0, 1) 范围。"
 
 msgid "The %1$s must be greater than 0 and less than 1."
-msgstr ""
+msgstr "%1$s 必须大于 0 且小于 1。"
 
 #, fuzzy
 msgid "One-sided"
 msgstr "单尾"
 
 msgid "Two-sided symmetric"
-msgstr ""
+msgstr "双侧对称"
 
 msgid "Two-sided asymmetric β-spending (binding futility)"
-msgstr ""
+msgstr "双侧非对称 β 支出（约束性无效性）"
 
 msgid "Two-sided asymmetric β-spending (non-binding futility)"
-msgstr ""
+msgstr "双侧非对称 β 支出（非约束性无效性）"
 
 #, fuzzy
 msgid "Canonical effect (δ)"
 msgstr "假设效应量（%s）"
 
 msgid "Standardized mean difference (one sample / paired)"
-msgstr ""
+msgstr "标准化均数差（单样本 / 配对）"
 
 msgid "Standardized mean difference (independent samples)"
-msgstr ""
+msgstr "标准化均数差（独立样本）"
 
 msgid "Mean difference (one sample / paired)"
-msgstr ""
+msgstr "均数差（单样本 / 配对）"
 
 #, fuzzy
 msgid "Mean difference (independent samples)"
 msgstr "独立样本t检验"
 
 msgid "Two-sample binary endpoint"
-msgstr ""
+msgstr "两样本二分类终点"
 
 msgid "Survival hazard ratio"
-msgstr ""
+msgstr "生存风险比"
 
 msgid "Information ratio"
-msgstr ""
+msgstr "信息比"
 
 msgid "Fixed design value"
-msgstr ""
+msgstr "固定设计值"
 
 msgid "O'Brien-Fleming spending"
-msgstr ""
+msgstr "O'Brien-Fleming 支出"
 
 msgid "Pocock spending"
-msgstr ""
+msgstr "Pocock 支出"
 
 msgid "Hwang-Shih-DeCani"
-msgstr ""
+msgstr "Hwang-Shih-DeCani"
 
 msgid "Kim-DeMets power"
-msgstr ""
+msgstr "Kim-DeMets 功效"
 
 msgid "O'Brien-Fleming"
-msgstr ""
+msgstr "O'Brien-Fleming"
 
 msgid "Pocock"
-msgstr ""
+msgstr "Pocock"
 
 msgid "Wang-Tsiatis"
-msgstr ""
+msgstr "Wang-Tsiatis"
 
 msgid "The information fraction schedule must contain K or K - 1 values."
-msgstr ""
+msgstr "信息分数时间安排必须包含 K 或 K - 1 个值。"
 
 msgid "When K information fractions are supplied, the final value must be 1."
-msgstr ""
+msgstr "当提供 K 个信息分数时，最终值必须为 1。"
 
 msgid ""
 "When K - 1 information fractions are supplied, all values must be less than "
 "1."
-msgstr ""
+msgstr "当提供 K - 1 个信息分数时，所有值必须小于 1。"
 
 msgid "Information fractions must be greater than 0 and no larger than 1."
-msgstr ""
+msgstr "信息分数必须大于 0 且不大于 1。"
 
 msgid "Information fractions must be strictly increasing."
-msgstr ""
+msgstr "信息分数必须严格递增。"
 
 msgid "Group Sequential Design"
-msgstr ""
+msgstr "组序贯设计"
 
 msgid "Design"
-msgstr ""
+msgstr "设计"
 
 msgid "α"
-msgstr ""
+msgstr "α"
 
 msgid "Power (1 - β)"
-msgstr ""
+msgstr "功效 (1 - β)"
 
 msgid "Planning Metric"
-msgstr ""
+msgstr "规划度量"
 
 msgid "Unable to compute classical group sequential design: %1$s"
-msgstr ""
+msgstr "无法计算经典组序贯设计：%1$s"
 
 msgid "Inflation Ratio"
-msgstr ""
+msgstr "膨胀比"
 
 msgid ""
 "α is the one-sided Type I error rate. For symmetric two-sided designs, the "
 "total Type I error rate is 2α."
-msgstr ""
+msgstr "α 是单侧 I 类错误率。对于对称双侧设计，总 I 类错误率为 2α。"
 
 msgid "Sample Size / Event Details"
-msgstr ""
+msgstr "样本量 / 事件详情"
 
 msgid "Quantity"
-msgstr ""
+msgstr "数量"
 
 msgid "Fixed Design"
-msgstr ""
+msgstr "固定设计"
 
 msgid "Maximum / Final"
-msgstr ""
+msgstr "最大 / 最终"
 
 msgid "Expected"
-msgstr ""
+msgstr "期望"
 
 msgid "Unable to compute sample size / event details: %1$s"
-msgstr ""
+msgstr "无法计算样本量 / 事件详情：%1$s"
 
 msgid "Group 1 sample size"
-msgstr ""
+msgstr "第 1 组样本量"
 
 msgid "Group 2 sample size"
-msgstr ""
+msgstr "第 2 组样本量"
 
 msgid "Enrolled subjects"
-msgstr ""
+msgstr "入组受试者"
 
 msgid "Expected analysis time"
-msgstr ""
+msgstr "期望分析时间"
 
 msgid ""
 "Group sample sizes are split from the total sample size using the allocation "
 "ratio N₂/N₁. Expected values are probability-weighted expected total sample "
 "sizes split by the same ratio."
-msgstr ""
+msgstr "各组样本量使用分配比 N₂/N₁ 从总样本量拆分而来。期望值是按相同比率拆分的概率加权期望总样本量。"
 
 msgid ""
 "Survival subject and analysis-time quantities are derived from the accrual "
 "assumptions. Fixed-design values use the corresponding fixed-design survival "
 "calculation; maximum/final values use the group sequential design. Event "
 "information is summarized in the main design table and look schedule."
-msgstr ""
+msgstr "生存受试者和分析时间量由入组假设推导而来。固定设计值使用相应的固定设计生存计算；最大/最终值使用组序贯设计。事件信息在主设计表和分析阶段时间安排中汇总。"
 
 msgid "Effect Scale Conversions"
-msgstr ""
+msgstr "效应尺度转换"
 
 msgid "Value"
-msgstr ""
+msgstr "值"
 
 msgid "Description"
-msgstr ""
+msgstr "描述"
 
 msgid "Canonical δ under H₁"
-msgstr ""
+msgstr "H₁ 下的规范 δ"
 
 msgid "Standardized mean difference"
-msgstr ""
+msgstr "标准化均数差"
 
 msgid "Mean difference divided by the outcome SD or paired-difference SD."
-msgstr ""
+msgstr "均数差除以结果标准差或配对差标准差。"
 
 msgid "Mean difference divided by the common outcome SD."
-msgstr ""
+msgstr "均数差除以共同结果标准差。"
 
 msgid "Alternative effect used to derive the group 2 event probability."
-msgstr ""
+msgstr "用于推导第 2 组事件概率的替代效应。"
 
 msgid "Group 1 event probability"
-msgstr ""
+msgstr "第 1 组事件概率"
 
 #, fuzzy
 msgid "Baseline event probability under the alternative hypothesis."
 msgstr "双尾备择假设下，效应量不能为0。"
 
 msgid "Event probability in group 1 under the alternative hypothesis."
-msgstr ""
+msgstr "备择假设下第 1 组的事件概率。"
 
 msgid "Group 2 event probability"
-msgstr ""
+msgstr "第 2 组事件概率"
 
 msgid ""
 "Derived from the baseline event probability and selected alternative binary "
 "effect."
-msgstr ""
+msgstr "由基线事件概率和所选替代二分类效应推导而来。"
 
 msgid "Event probability in group 2 under the alternative hypothesis."
-msgstr ""
+msgstr "备择假设下第 2 组的事件概率。"
 
 msgid "Alternative risk difference"
-msgstr ""
+msgstr "替代风险差"
 
 #, fuzzy
 msgid "Alternative risk ratio"
@@ -1447,369 +1447,369 @@ msgid "Alternative odds ratio"
 msgstr "备择假设"
 
 msgid "Information-scale effect used by the sequential calculations."
-msgstr ""
+msgstr "序贯计算使用的信息尺度效应。"
 
 msgid ""
 "The one-sample/paired standardized mean difference is used directly as the "
 "information-scale effect."
-msgstr ""
+msgstr "单样本/配对标准化均数差直接用作信息尺度效应。"
 
 msgid ""
 "Derived from the fixed-design total sample size computed from the "
 "independent-samples standardized mean difference and allocation ratio."
-msgstr ""
+msgstr "由独立样本标准化均数差和分配比计算出的固定设计总样本量推导而来。"
 
 msgid ""
 "The raw mean difference is divided by the relevant SD and used as the "
 "information-scale effect."
-msgstr ""
+msgstr "原始均数差除以相关标准差并用作信息尺度效应。"
 
 msgid ""
 "Derived from the fixed-design total sample size computed from the mean "
 "difference, common SD, and allocation ratio."
-msgstr ""
+msgstr "由均数差、共同标准差和分配比计算出的固定设计总样本量推导而来。"
 
 msgid ""
 "Derived from the fixed-design total sample size computed from the entered "
 "event probabilities or from the baseline event probability and alternative "
 "binary effect."
-msgstr ""
+msgstr "由输入的事件概率或由基线事件概率和替代二分类效应计算出的固定设计总样本量推导而来。"
 
 msgid ""
 "Derived from the event information implied by the hazard-ratio alternative, "
 "null hazard ratio, allocation ratio, and selected survival information "
 "method."
-msgstr ""
+msgstr "由风险比备择、零风险比、分配比和所选生存信息方法隐含的事件信息推导而来。"
 
 msgid "Yes"
-msgstr ""
+msgstr "是"
 
 msgid "No"
-msgstr ""
+msgstr "否"
 
 msgid "Fixed Information Ratio"
-msgstr ""
+msgstr "固定信息比"
 
 msgid "Maximum Information Ratio"
-msgstr ""
+msgstr "最大信息比"
 
 msgid "Expected Information Ratio"
-msgstr ""
+msgstr "期望信息比"
 
 msgid "Information Ratio"
-msgstr ""
+msgstr "信息比"
 
 msgid "information ratio"
-msgstr ""
+msgstr "信息比"
 
 msgid "Fixed Design Value"
-msgstr ""
+msgstr "固定设计值"
 
 msgid "Maximum Value"
-msgstr ""
+msgstr "最大值"
 
 msgid "Expected Value"
-msgstr ""
+msgstr "期望值"
 
 msgid "Planned Value"
-msgstr ""
+msgstr "计划值"
 
 msgid "fixed-design value"
-msgstr ""
+msgstr "固定设计值"
 
 msgid "Fixed Design Total Sample Size"
-msgstr ""
+msgstr "固定设计总样本量"
 
 msgid "Maximum Total Sample Size"
-msgstr ""
+msgstr "最大总样本量"
 
 msgid "Expected Total Sample Size"
-msgstr ""
+msgstr "期望总样本量"
 
 msgid "Total Sample Size"
-msgstr ""
+msgstr "总样本量"
 
 #, fuzzy
 msgid "total sample size"
 msgstr "单样本z检验"
 
 msgid "Fixed Design Events"
-msgstr ""
+msgstr "固定设计事件数"
 
 msgid "Maximum Events"
-msgstr ""
+msgstr "最大事件数"
 
 msgid "Expected Events"
-msgstr ""
+msgstr "期望事件数"
 
 msgid "Events"
-msgstr ""
+msgstr "事件"
 
 msgid "events"
-msgstr ""
+msgstr "事件"
 
 msgid "Fixed Design Information Units"
-msgstr ""
+msgstr "固定设计信息单位"
 
 msgid "Maximum Information Units"
-msgstr ""
+msgstr "最大信息单位"
 
 msgid "Expected Information Units"
-msgstr ""
+msgstr "期望信息单位"
 
 msgid "Information Units"
-msgstr ""
+msgstr "信息单位"
 
 msgid "information units"
-msgstr ""
+msgstr "信息单位"
 
 msgid ""
 "In information-ratio mode, fixed design information and maximum information "
 "are relative information values, not observations or events."
-msgstr ""
+msgstr "在信息比模式下，固定设计信息和最大信息是相对信息值，而非观测数或事件数。"
 
 msgid ""
 "In fixed design value mode, the entered value defines the scale for the "
 "maximum and expected values. It may represent information units, total "
 "sample size, or events depending on the endpoint."
-msgstr ""
+msgstr "在固定设计值模式下，输入值定义最大值和期望值的尺度。根据终点，它可能表示信息单位、总样本量或事件数。"
 
 msgid ""
 "Canonical δ is the information-scale effect; it is not generally Cohen's d. "
 "The table reports information units."
-msgstr ""
+msgstr "规范 δ 是信息尺度效应；它通常不是 Cohen's d。此表报告信息单位。"
 
 msgid ""
 "For one-sample and paired normal designs, the standardized mean difference "
 "uses the outcome SD or the SD of paired differences. The table reports "
 "information units."
-msgstr ""
+msgstr "对于单样本和配对正态设计，标准化均数差使用结果标准差或配对差标准差。此表报告信息单位。"
 
 msgid ""
 "For independent-samples normal designs, values labeled total sample size are "
 "total observations across both groups; the allocation ratio determines the "
 "group split."
-msgstr ""
+msgstr "对于独立样本正态设计，标记为总样本量的值是两组的总观测数；分配比决定分组。"
 
 msgid ""
 "For one-sample and paired mean-difference designs, δ is the mean difference "
 "divided by the outcome SD or SD of paired differences. The table reports "
 "information units."
-msgstr ""
+msgstr "对于单样本和配对均数差设计，δ 是均数差除以结果标准差或配对差标准差。此表报告信息单位。"
 
 msgid ""
 "For two-sample binary endpoints, values labeled total sample size are total "
 "observations across both groups; the entered event probabilities or derived "
 "event probabilities and selected null margin define the endpoint."
-msgstr ""
+msgstr "对于两样本二分类终点，标记为总样本量的值是两组的总观测数；输入的事件概率或推导的事件概率以及所选零边际定义终点。"
 
 msgid ""
 "For survival events-only mode, values labeled events are required event "
 "counts; this mode does not estimate enrolled subjects or analysis times."
-msgstr ""
+msgstr "对于仅事件的生存模式，标记为事件的值是所需事件计数；此模式不估计入组受试者或分析时间。"
 
 msgid ""
 "For the subjects + events survival mode, values labeled events are event "
 "counts. Enrolled-subject rows are planned or expected participant counts "
 "under the accrual assumptions, not event counts."
-msgstr ""
+msgstr "对于受试者 + 事件生存模式，标记为事件的值是事件计数。入组受试者行是入组假设下计划或预期的参与者人数，而非事件计数。"
 
 msgid ""
 "For group sequential accrual survival mode, values labeled events are event "
 "information; expected analysis time is measured from trial start in the same "
 "time unit as the survival inputs."
-msgstr ""
+msgstr "对于组序贯入组生存模式，标记为事件的值是事件信息；期望分析时间从试验开始以与生存输入相同的时间单位衡量。"
 
 msgid ""
 "Boundaries are based on the selected information fractions, α and β targets, "
 "and boundary family: upper = %1$s."
-msgstr ""
+msgstr "边界基于所选信息分数、α 和 β 目标以及边界族：上 = %1$s。"
 
 msgid ""
 "Boundaries are based on the selected information fractions, α and β targets, "
 "and symmetric boundary family: upper/lower = %1$s."
-msgstr ""
+msgstr "边界基于所选信息分数、α 和 β 目标以及对称边界族：上/下 = %1$s。"
 
 msgid ""
 "Boundaries are based on the selected information fractions, α and β targets, "
 "and boundary families: upper = %1$s; lower = %2$s."
-msgstr ""
+msgstr "边界基于所选信息分数、α 和 β 目标以及边界族：上 = %1$s；下 = %2$s。"
 
 msgid "%1$s (parameter = %2$s)"
-msgstr ""
+msgstr "%1$s（参数 = %2$s）"
 
 msgid "Lower Bound"
-msgstr ""
+msgstr "下界"
 
 msgid "Upper Bound"
-msgstr ""
+msgstr "上界"
 
 msgid "Information Fraction"
-msgstr ""
+msgstr "信息分数"
 
 msgid "Upper-tail p"
-msgstr ""
+msgstr "上尾 p"
 
 msgid "Lower-tail p"
-msgstr ""
+msgstr "下尾 p"
 
 msgid ""
 "Nominal p values are one-sided tail areas for crossing the displayed Z-"
 "boundary."
-msgstr ""
+msgstr "名义 p 值是逾越所示 Z 边界的单侧尾面积。"
 
 msgid "For asymmetric designs, the lower bound is a futility boundary."
-msgstr ""
+msgstr "对于非对称设计，下界是无效性边界。"
 
 msgid ""
 "For asymmetric designs, O'Brien-Fleming and Pocock selections are "
 "implemented as Lan-DeMets spending functions."
-msgstr ""
+msgstr "对于非对称设计，O'Brien-Fleming 和 Pocock 选择以 Lan-DeMets 支出函数实现。"
 
 msgid "Look Schedule"
-msgstr ""
+msgstr "分析阶段时间安排"
 
 msgid "Information"
-msgstr ""
+msgstr "信息"
 
 msgid "Unable to compute look schedule: %1$s"
-msgstr ""
+msgstr "无法计算分析阶段时间安排：%1$s"
 
 msgid "Expected Analysis Time"
-msgstr ""
+msgstr "期望分析时间"
 
 msgid "Expected Enrolled Subjects"
-msgstr ""
+msgstr "期望入组受试者"
 
 msgid "Expected Accrued Events"
-msgstr ""
+msgstr "期望累积事件"
 
 msgid ""
 "Expected enrolled subjects and expected accrued events are accrual-model "
 "quantities at each analysis time. The events column is the planned event "
 "information used for boundary construction."
-msgstr ""
+msgstr "期望入组受试者和期望累积事件是每个分析时间的入组模型量。事件列是用于边界构建的计划事件信息。"
 
 msgid "Efficacy Bound"
-msgstr ""
+msgstr "有效性边界"
 
 msgid "Upper Efficacy Bound"
-msgstr ""
+msgstr "上有效性边界"
 
 msgid "Lower Efficacy Bound"
-msgstr ""
+msgstr "下有效性边界"
 
 msgid "Futility Bound"
-msgstr ""
+msgstr "无效性边界"
 
 msgid "Final Boundary Crossing Probabilities"
-msgstr ""
+msgstr "最终边界逾越概率"
 
 msgid "Assumption"
-msgstr ""
+msgstr "假设"
 
 msgid "Cross Efficacy Bound"
-msgstr ""
+msgstr "逾越有效性边界"
 
 msgid "No Boundary Crossing"
-msgstr ""
+msgstr "无边界逾越"
 
 msgid "Unable to compute final boundary crossing probabilities: %1$s"
-msgstr ""
+msgstr "无法计算最终边界逾越概率：%1$s"
 
 msgid "Probabilities are cumulative through the final planned look."
-msgstr ""
+msgstr "概率累积到最终计划分析阶段。"
 
 msgid "Cumulative Boundary Crossing Probabilities by Look"
-msgstr ""
+msgstr "按分析阶段的累积边界逾越概率"
 
 msgid "No Boundary Crossing Yet"
-msgstr ""
+msgstr "尚未逾越边界"
 
 msgid "Unable to compute cumulative boundary crossing probabilities: %1$s"
-msgstr ""
+msgstr "无法计算累积边界逾越概率：%1$s"
 
 msgid ""
 "Cumulative probabilities show the chance that a boundary has been crossed by "
 "each look."
-msgstr ""
+msgstr "累积概率表示每个分析阶段之前已经逾越边界的机会。"
 
 msgid "New Boundary Crossings by Look"
-msgstr ""
+msgstr "按分析阶段的新边界逾越"
 
 msgid "Unable to compute new boundary crossings: %1$s"
-msgstr ""
+msgstr "无法计算新边界逾越：%1$s"
 
 msgid ""
 "New crossing probabilities isolate boundary crossings that first occur at "
 "the given look."
-msgstr ""
+msgstr "新逾越概率单独列出在给定分析阶段首次发生的边界逾越。"
 
 msgid "Non-Binding Type I Error Accounting"
-msgstr ""
+msgstr "非约束性 I 类错误核算"
 
 msgid "Stagewise Efficacy Crossing"
-msgstr ""
+msgstr "分阶段有效性逾越"
 
 msgid "Cumulative Efficacy Crossing"
-msgstr ""
+msgstr "累积有效性逾越"
 
 msgid "Unable to compute non-binding Type I error accounting: %1$s"
-msgstr ""
+msgstr "无法计算非约束性 I 类错误核算：%1$s"
 
 msgid ""
 "These probabilities evaluate Type I error for the efficacy rule when "
 "crossing the futility bound would not force stopping."
-msgstr ""
+msgstr "当逾越无效性边界不会强制停止时，这些概率评估有效性规则的 I 类错误。"
 
 msgid "Cross Lower Efficacy Bound"
-msgstr ""
+msgstr "逾越下有效性边界"
 
 msgid "Cross Futility Bound"
-msgstr ""
+msgstr "逾越无效性边界"
 
 msgid "Other"
-msgstr ""
+msgstr "其他"
 
 msgid "Explanation"
-msgstr ""
+msgstr "说明"
 
 msgid ""
 "The requested classical group sequential design could not be completed with "
 "the current settings."
-msgstr ""
+msgstr "无法使用当前设置完成所请求的经典组序贯设计。"
 
 msgid ""
 "This classical group sequential design uses %1$s with %2$s planned looks."
-msgstr ""
+msgstr "此经典组序贯设计使用 %1$s，包含 %2$s 次计划分析。"
 
 msgid ""
 "The maximum %1$s is %2$s, compared with %3$s for the corresponding fixed "
 "design."
-msgstr ""
+msgstr "最大 %1$s 为 %2$s，而相应固定设计为 %3$s。"
 
 msgid ""
 "R code could not be generated because the classical group sequential design "
 "could not be computed."
-msgstr ""
+msgstr "无法生成 R 代码，因为无法计算经典组序贯设计。"
 
 msgid "Unable to compute stopping boundaries plot: %1$s"
-msgstr ""
+msgstr "无法计算停止边界图：%1$s"
 
 msgid "Information fraction"
-msgstr ""
+msgstr "信息分数"
 
 msgid "Boundary Crossing Probabilities"
-msgstr ""
+msgstr "边界逾越概率"
 
 msgid "Unable to compute crossing probabilities plot: %1$s"
-msgstr ""
+msgstr "无法计算逾越概率图：%1$s"
 
 msgid "Under"
-msgstr ""
+msgstr "在……下"
 
 msgid "Upper (non-binding)"
-msgstr ""
+msgstr "上（非约束性）"
 
 msgid "Effect size can't be 0."
 msgstr "效应量不能为0。"
@@ -1817,77 +1817,77 @@ msgstr "效应量不能为0。"
 msgid ""
 "The comparison proportion can't be equal to the hypothesized proportion with "
 "a 'Two-sided' alternative hypothesis."
-msgstr ""
+msgstr "在“双侧”备择假设下，比较比例不能等于假设比例。"
 
 msgid ""
 "The comparison proportion has to be less than the hypothesized proportion "
 "with an alternative hypothesis of 'Less'."
-msgstr ""
+msgstr "在“小于”备择假设下，比较比例必须小于假设比例。"
 
 msgid ""
 "The comparison proportion has to be greater than the hypothesized proportion "
 "with an alternative hypothesis of 'Greater'."
-msgstr ""
+msgstr "在“大于”备择假设下，比较比例必须大于假设比例。"
 
 msgid "Invalid alternative."
-msgstr ""
+msgstr "无效的备择假设。"
 
 msgid ""
 "The comparison proportion can't be equal to the baseline proportion with a "
 "'Two-sided' alternative hypothesis."
-msgstr ""
+msgstr "在“双侧”备择假设下，比较比例不能等于基线比例。"
 
 msgid ""
 "The comparison proportion has to be less than the baseline proportion with "
 "an alternative hypothesis of 'Less'."
-msgstr ""
+msgstr "在“小于”备择假设下，比较比例必须小于基线比例。"
 
 msgid ""
 "The comparison proportion has to be greater than the baseline proportion "
 "with an alternative hypothesis of 'Greater'."
-msgstr ""
+msgstr "在“大于”备择假设下，比较比例必须大于基线比例。"
 
 msgid ""
 "The variance ratio can't be 1 with a 'Two-sided' alternative hypothesis."
-msgstr ""
+msgstr "在“双侧”备择假设下，方差比不能为 1。"
 
 msgid ""
 "The variance ratio has to be less than 1 with an alternative hypothesis "
 "'Less'."
-msgstr ""
+msgstr "在“小于”备择假设下，方差比必须小于 1。"
 
 msgid ""
 "The variance ratio has to be greater than 1 with an alternative hypothesis "
 "of 'Greater'."
-msgstr ""
+msgstr "在“大于”备择假设下，方差比必须大于 1。"
 
 msgid "BF₁₀ ≥ %1$s"
-msgstr ""
+msgstr "BF₁₀ ≥ %1$s"
 
 msgid "BF₀₁ ≥ %1$s"
-msgstr ""
+msgstr "BF₀₁ ≥ %1$s"
 
 msgid "Invalid target '%1$s'."
-msgstr ""
+msgstr "无效目标“%1$s”。"
 
 msgid "Point proportion"
-msgstr ""
+msgstr "点比例"
 
 msgid "a = %1$s, b = %2$s, lower = %3$s, upper = %4$s"
-msgstr ""
+msgstr "a = %1$s，b = %2$s，下 = %3$s，上 = %4$s"
 
 msgid "Bayes Factor Evidence"
-msgstr ""
+msgstr "贝叶斯因子证据"
 
 msgid "Null"
-msgstr ""
+msgstr "零假设"
 
 #, fuzzy
 msgid "Alternative"
 msgstr "备择假设"
 
 msgid "Explanation:"
-msgstr ""
+msgstr "说明："
 
 #, fuzzy
 msgid "Two-sided"
@@ -1898,14 +1898,14 @@ msgid "Less (One-sided)"
 msgstr "单尾"
 
 msgid "Greater (One-sided)"
-msgstr ""
+msgstr "大于（单侧）"
 
 msgid "Power must be less than 1."
 msgstr "效力必须小于1。"
 
 msgid ""
 "The purpose of a %s is to evaluate the sensitivity of a design and test."
-msgstr ""
+msgstr "%s 的目的是评估设计和检验的敏感性。"
 
 msgid "an independent samples t-test"
 msgstr "独立样本t检验"
@@ -1926,10 +1926,10 @@ msgid "a two samples proportions test"
 msgstr "双样本比率检验"
 
 msgid "a one sample variance test"
-msgstr ""
+msgstr "一个单样本方差检验"
 
 msgid "a two samples variance test"
-msgstr ""
+msgstr "一个两样本方差检验"
 
 msgid "a one sample Poisson rate test"
 msgstr "单样本泊松比率检验"
@@ -1938,28 +1938,28 @@ msgid "a two samples Poisson rate test"
 msgstr "双样本泊松比率检验"
 
 msgid "when using"
-msgstr ""
+msgstr "当使用"
 
 msgid ""
 "You have chosen to calculate the minimum sample size needed to have an "
 "experiment sensitive enough to consistently detect the specified "
 "hypothetical effect size"
-msgstr ""
+msgstr "您已选择计算所需的最小样本量，以使实验足够敏感，能够持续检测到指定的假设效应量"
 
 msgid ""
 "You have chosen to calculate the minimum hypothetical effect size for which "
 "the chosen design will have the specified sensitivity"
-msgstr ""
+msgstr "您已选择计算所选设计达到指定敏感性所需的最小假设效应量"
 
 msgid ""
 "You have chosen to calculate the sensitivity of the chosen design for "
 "detecting the specified effect size"
-msgstr ""
+msgstr "您已选择计算所选设计检测指定效应量的敏感性"
 
 msgid ""
 "Unable to compute the power results. Try to enter less extreme values for "
 "the input parameters."
-msgstr ""
+msgstr "无法计算功效结果。请尝试为输入参数输入不那么极端的值。"
 
 msgid "Power cannot be 1"
 msgstr "效力不能为1"
@@ -1976,7 +1976,7 @@ msgstr "备择假设更大时，效应量需大于0。"
 msgid ""
 "The specified design leads to (an) unsolvable equation(s) while constructing "
 "the power curve. Try to enter less extreme values for the parameters"
-msgstr ""
+msgstr "指定的设计在构建功效曲线时导致无法求解的方程。请尝试为参数输入不那么极端的值"
 
 msgid "Error Message:"
 msgstr "错误信息："
@@ -2003,410 +2003,410 @@ msgid "Cohen's %s"
 msgstr "Cohen's %s"
 
 msgid "Power by effect size"
-msgstr ""
+msgstr "按效应量的功效"
 
 msgid "True effect size"
-msgstr ""
+msgstr "真实效应量"
 
 msgid "Power to detect"
-msgstr ""
+msgstr "检测功效"
 
 msgid "Likely miss"
-msgstr ""
+msgstr "可能遗漏"
 
 msgid "Good chance of missing"
-msgstr ""
+msgstr "很可能遗漏"
 
 msgid "Probably detect"
-msgstr ""
+msgstr "可能检测到"
 
 msgid "Almost surely detect"
-msgstr ""
+msgstr "几乎肯定能检测到"
 
 msgid ""
 "The power contour plot shows how the sensitivity of the test changes with "
 "the hypothetical effect size and the sample sizes in the design. As we "
 "increase the sample sizes, smaller effect sizes become reliably detectable."
-msgstr ""
+msgstr "功效等值线图显示检验的敏感性如何随假设效应量和设计中的样本量而变化。随着样本量的增大，更小的效应量变得可以可靠检测。"
 
 msgid ""
 "Conversely, if one is satisfied to reliably detect only larger effect sizes, "
 "smaller sample sizes are needed. The point shows the power of the specified "
 "design and effect size."
-msgstr ""
+msgstr "相反，如果只满足于可靠检测更大的效应量，则需要更小的样本量。该点显示所指定设计和效应量的功效。"
 
 msgid "sample sizes of %1$s"
-msgstr ""
+msgstr "样本量为 %1$s"
 
 msgid "criteria"
-msgstr ""
+msgstr "标准"
 
 msgid "criterion"
-msgstr ""
+msgstr "标准"
 
 msgid "have power of at least %1$s"
-msgstr ""
+msgstr "功效至少为 %1$s"
 
 msgid "only be sufficiently sensitive (power >%1$s)"
-msgstr ""
+msgstr "仅足够敏感（功效 >%1$s）"
 
 msgid ""
 "The power curve above shows how the sensitivity of the test and design is "
 "larger for larger effect sizes. If we obtained %1$s our test and design "
 "would %2$s to effect sizes of %3$s%4$s."
-msgstr ""
+msgstr "上方的功效曲线显示，对于更大的效应量，检验和设计的敏感性更大。如果我们获得 %1$s，那么我们的检验和设计将 %2$s 效应量 %3$s%4$s。"
 
 msgid ""
 "We would be more than likely to miss (power less than 50%%) effect sizes "
 "less than %1$s%2$s."
-msgstr ""
+msgstr "我们很可能会遗漏（功效小于 50%%）小于 %1$s%2$s 的效应量。"
 
 msgid "sample sizes of at least %1$s"
-msgstr ""
+msgstr "至少 %1$s 的样本量"
 
 msgid ""
 "The power curve above shows how the sensitivity of the test and design is "
 "larger for larger effect sizes. In order for our test and design to have "
 "sufficient sensitivity (power > %1$s) to detect that %2$s when the effect "
 "size is %3$s or larger, we would need %4$s."
-msgstr ""
+msgstr "上方的功效曲线显示，对于更大的效应量，检验和设计的敏感性更大。为了使我们的检验和设计具有足够的敏感性（功效 > %1$s）来在效应量为 %3$s 或更大时检测到 %2$s，我们需要 %4$s。"
 
 msgid "a sample size of %1$s"
-msgstr ""
+msgstr "样本量为 %1$s"
 
 msgid ""
 "The figure above shows two sampling distributions: the sampling distribution "
 "of the %1$s effect size when %2$s (left), and when %3$s%4$s (right)."
-msgstr ""
+msgstr "上图显示两个抽样分布：%2$s（左侧）时 %1$s 效应量的抽样分布，以及 %3$s%4$s（右侧）时的分布。"
 
 msgid "Both assume %1$s."
-msgstr ""
+msgstr "两者均假定 %1$s。"
 
 msgid ""
 "The vertical dashed lines show the %1$s we would set for a %2$s test with "
 "%3$s."
-msgstr ""
+msgstr "垂直虚线显示我们为具有 %3$s 的 %2$s 检验所设置的 %1$s。"
 
 msgid ""
 "When the observed effect size is far enough away from 0 to be more extreme "
 "than the %1$s we say we 'reject' the null hypothesis."
-msgstr ""
+msgstr "当观测效应量距 0 足够远，比 %1$s 更极端时，我们说我们“拒绝”零假设。"
 
 msgid ""
 "If the null hypothesis were true and %1$s the evidence would lead us to "
 "wrongly reject the null hypothesis at most %2$s%% of the time."
-msgstr ""
+msgstr "如果零假设为真且 %1$s，那么证据最多 %2$s%% 的时间会导致我们错误地拒绝零假设。"
 
 msgid ""
 "On the other hand, if %1$s%2$s, the evidence would exceed the criterion  "
 "&mdash; and hence we would correctly claim that %3$s &mdash; at least %4$s%% "
 "of the time."
-msgstr ""
+msgstr "另一方面，如果 %1$s%2$s，那么证据将超过标准 —— 因此至少 %4$s%% 的时间我们会正确地声称 %3$s。"
 
 msgid "The design's power for detecting effects of %1$s%2$s is thus %3$s."
-msgstr ""
+msgstr "因此，该设计检测 %1$s%2$s 效应的功效为 %3$s。"
 
 msgid ""
 "Due to the rounding of the sample size, the actual power can deviate from "
 "the target power."
-msgstr ""
+msgstr "由于样本量取整，实际功效可能偏离目标功效。"
 
 msgid "Actual power:"
 msgstr "实际效力："
 
 msgid "a sample size of %s"
-msgstr ""
+msgstr "样本量为 %s"
 
 msgid ""
 "We would need %1$s to reliably (with probability greater than or equal to "
 "%2$s) detect an effect size of %3$s%4$s, assuming a %5$s criterion for "
 "detection that allows for a maximum Type I error rate of %6$s."
-msgstr ""
+msgstr "我们需要 %1$s 才能可靠地（概率大于或等于 %2$s）检测到效应量 %3$s%4$s，前提是采用 %5$s 检测标准，允许最大 I 类错误率为 %6$s。"
 
 msgid ""
 "A design with %1$s will reliably (with probability greater than or equal to "
 "%2$s) detect  effect sizes of %3$s%4$s, assuming a %5$s criterion for "
 "detection that allows for a maximum Type I error rate of %6$s."
-msgstr ""
+msgstr "具有 %1$s 的设计将可靠地（概率大于或等于 %2$s）检测到效应量 %3$s%4$s，前提是采用 %5$s 检测标准，允许最大 I 类错误率为 %6$s。"
 
 msgid ""
 "A design with %1$s can detect effect sizes of %2$s%3$s with a probability of "
 "at least %4$s, assuming a %5$s criterion for detection that allows for a "
 "maximum Type I error rate of %6$s."
-msgstr ""
+msgstr "具有 %1$s 的设计能够以至少 %4$s 的概率检测到效应量 %2$s%3$s，前提是采用 %5$s 检测标准，允许最大 I 类错误率为 %6$s。"
 
 msgid ""
 "To evaluate the design specified in the table, we can consider how sensitive "
 "it is to true effects of increasing sizes; that is, are we likely to "
 "correctly conclude that %1$s when the effect size is large enough to care "
 "about?"
-msgstr ""
+msgstr "为评估表中指定的设计，我们可以考虑它对不断增大的真实效应有多敏感；也就是说，当效应量大到值得关注时，我们是否可能正确地得出结论 %1$s？"
 
 msgid ""
 "The specified design leads to (an) unsolvable equation(s) while computing "
 "the values for this power table. Try to enter less extreme values for the "
 "parameters."
-msgstr ""
+msgstr "指定的设计在计算此功效表的值时导致无法求解的方程。请尝试为参数输入不那么极端的值。"
 
 msgid "|h|"
-msgstr ""
+msgstr "|h|"
 
 msgid "Power Contour"
-msgstr ""
+msgstr "功效等值线"
 
 msgid "Power Curve by Effect Size"
-msgstr ""
+msgstr "按效应量的功效曲线"
 
 msgid "Power Curve by N"
-msgstr ""
+msgstr "按 N 的功效曲线"
 
 msgid "Power Demonstration"
-msgstr ""
+msgstr "功效演示"
 
 msgid "Synthetic Dataset"
-msgstr ""
+msgstr "合成数据集"
 
 msgid "Characteristics"
-msgstr ""
+msgstr "特征"
 
 msgid "Post Hoc Power Analysis"
-msgstr ""
+msgstr "事后功效分析"
 
 msgid "The generated dataset must be saved as a .csv or .txt file."
-msgstr ""
+msgstr "生成的数据集必须保存为 .csv 或 .txt 文件。"
 
 msgid ""
 "The generated dataset could not be saved. Please make sure that the "
 "specified path exists and the specified csv file is closed."
-msgstr ""
+msgstr "无法保存生成的数據集。请确保指定的路径存在且指定的 csv 文件已关闭。"
 
 msgid "The synthetic dataset is saved as %s"
-msgstr ""
+msgstr "合成数据集已保存为 %s"
 
 msgid "Hypothesized rate (%s)"
-msgstr ""
+msgstr "假设比率（%s）"
 
 msgid "Comparison rate (%s)"
-msgstr ""
+msgstr "比较比率（%s）"
 
 msgid "Effect size (%s)"
-msgstr ""
+msgstr "效应量（%s）"
 
 msgid "True effect size (%s)"
-msgstr ""
+msgstr "真实效应量（%s）"
 
 msgid "a sample size of"
-msgstr ""
+msgstr "样本量为"
 
 msgid "effect sizes of %s"
-msgstr ""
+msgstr "效应量为 %s"
 
 msgid ""
 "We would need %1$s to reliably (with probability greater than %2$s) detect "
 "%3$s%4$s%5$s, assuming a %6$s criterion for detection that allows for a "
 "maximum Type I error rate of %7$s."
-msgstr ""
+msgstr "我们需要 %1$s 才能可靠地（概率大于 %2$s）检测到 %3$s%4$s%5$s，前提是采用 %6$s 检测标准，允许最大 I 类错误率为 %7$s。"
 
 msgid ""
 "A design with %1$s will reliably (with probability greater than %2$s) "
 "detect  %3$s%4$s%5$s, assuming a %6$s criterion for detection that allows "
 "for a maximum Type I error rate of %7$s."
-msgstr ""
+msgstr "具有 %1$s 的设计将可靠地（概率大于 %2$s）检测到 %3$s%4$s%5$s，前提是采用 %6$s 检测标准，允许最大 I 类错误率为 %7$s。"
 
 msgid ""
 "A design with %1$s can detect %2$s%3$s%4$s with a probability of at least "
 "%5$s, assuming a %6$s criterion for detection that allows for a maximum Type "
 "I error rate of %7$s."
-msgstr ""
+msgstr "具有 %1$s 的设计能够以至少 %5$s 的概率检测到 %2$s%3$s%4$s，前提是采用 %6$s 检测标准，允许最大 I 类错误率为 %7$s。"
 
 msgid ""
 "To evaluate the design specified in the table, we can consider how sensitive "
 "it is to true effects of increasing sizes; that is, are we likely to "
 "correctly conclude that %s when the effect size is large enough to care "
 "about?"
-msgstr ""
+msgstr "为评估表中指定的设计，我们可以考虑它对不断增大的真实效应有多敏感；也就是说，当效应量大到值得关注时，我们是否可能正确地得出结论 %s？"
 
 msgid "absolute difference in proportions"
-msgstr ""
+msgstr "比例的绝对差"
 
 msgid ""
 "Conversely, if one is satisfied to reliably detect only larger effect sizes, "
 "smaller sample sizes are needed. The solid black curve on the contour plot "
 "shows sample size/effect size combinations with a power of %1$s. The point "
 "shows the specified design and %2$s."
-msgstr ""
+msgstr "相反，如果只满足于可靠检测更大的效应量，则需要更小的样本量。等值线图上的实黑曲线显示功效为 %1$s 的样本量/效应量组合。该点显示指定的设计和 %2$s。"
 
 msgid "sample sizes of %s"
-msgstr ""
+msgstr "样本量为 %s"
 
 msgid "effect sizes"
-msgstr ""
+msgstr "效应量"
 
 msgid "absolute differences in proportions"
-msgstr ""
+msgstr "比例的绝对差"
 
 msgid "have power of at least %s"
-msgstr ""
+msgstr "功效至少为 %s"
 
 msgid "only be sufficiently sensitive (power >%s)"
-msgstr ""
+msgstr "仅足够敏感（功效 >%s）"
 
 msgid "sample sizes of at least %s"
-msgstr ""
+msgstr "至少 %s 的样本量"
 
 msgid ""
 "The figure above shows two sampling distributions: the sampling distribution "
 "of the %1$s effect size when %2$s (left), and when %3$s (right)."
-msgstr ""
+msgstr "上图显示两个抽样分布：%2$s（左侧）时 %1$s 效应量的抽样分布，以及 %3$s（右侧）时的分布。"
 
 msgid "Both assume %s."
-msgstr ""
+msgstr "两者均假定 %s。"
 
 msgid ""
 "When the observed effect size is far enough away from 0 to be more extreme "
 "than the %s we say we 'reject' the null hypothesis."
-msgstr ""
+msgstr "当观测效应量距 0 足够远，比 %s 更极端时，我们说我们“拒绝”零假设。"
 
 msgid ""
 "On the other hand, if %1$s, the evidence would exceed the criterion  &mdash; "
 "and hence we would correctly claim that %2$s &mdash; at least %3$s%% of the "
 "time."
-msgstr ""
+msgstr "另一方面，如果 %1$s，那么证据将超过标准 —— 因此至少 %3$s%% 的时间我们会正确地声称 %2$s。"
 
 msgid "Variance ratio (%s)"
-msgstr ""
+msgstr "方差比（%s）"
 
 msgid "Power by variance ratio"
-msgstr ""
+msgstr "按方差比的功效"
 
 msgid "True variance ratio (%s)"
-msgstr ""
+msgstr "真实方差比（%s）"
 
 msgid ""
 "The power contour plot shows how the sensitivity of the test changes with "
 "the hypothetical variance ratio and the sample sizes in the design. As we "
 "increase the sample sizes, smaller variance ratios become reliably "
 "detectable."
-msgstr ""
+msgstr "功效等值线图显示检验的敏感性如何随假设方差比和设计中的样本量而变化。随着样本量的增大，更小的方差比变得可以可靠检测。"
 
 msgid ""
 "Conversely, if one is satisfied to reliably detect only larger variance "
 "ratios, smaller sample sizes are needed. The point shows the power of "
 "specified  design and variance ratio."
-msgstr ""
+msgstr "相反，如果只满足于可靠检测更大的方差比，则需要更小的样本量。该点显示指定设计和方差比的功效。"
 
 msgid "only be sufficiently sensitive (power > %1$s)"
-msgstr ""
+msgstr "仅足够敏感（功效 > %1$s）"
 
 msgid ""
 "The power curve above shows how the sensitivity of the test and design is "
 "larger for larger variance ratios. If we obtained %1$s our test and design "
 "would %2$s to variance ratios of %3$s%4$s."
-msgstr ""
+msgstr "上方的功效曲线显示，对于更大的方差比，检验和设计的敏感性更大。如果我们获得 %1$s，那么我们的检验和设计将 %2$s 方差比 %3$s%4$s。"
 
 msgid ""
 "We would be more than likely to miss (power less than 50%%) variance ratios "
 "of %s."
-msgstr ""
+msgstr "我们很可能会遗漏（功效小于 50%%）方差比 %s。"
 
 msgid ""
 "The power curve above shows how the sensitivity of the test and design is "
 "larger for larger sample sizes. In order for our test and design to have "
 "sufficient sensitivity (power > %1$s) to detect that %2$s when the variance "
 "ratio is %3$s or more extreme, we would need %4$s."
-msgstr ""
+msgstr "上方的功效曲线显示，对于更大的样本量，检验和设计的敏感性更大。为了使我们的检验和设计具有足够的敏感性（功效 > %1$s）来在方差比为 %3$s 或更极端时检测到 %2$s，我们需要 %4$s。"
 
 msgid ""
 "The figure above shows two sampling distributions: the sampling distribution "
 "of the %1$s variance ratio when %2$s, and when %3$s%4$s."
-msgstr ""
+msgstr "上图显示两个抽样分布：%2$s 时 %1$s 方差比的抽样分布，以及 %3$s%4$s 时的分布。"
 
 msgid ""
 "When the observed variance ratio is far enough away from 1 to be more "
 "extreme than the %1$s we say we 'reject' the null hypothesis."
-msgstr ""
+msgstr "当观测方差比距 1 足够远，比 %1$s 更极端时，我们说我们“拒绝”零假设。"
 
 msgid ""
 "We would need %1$s to reliably (with probability greater than %2$s) detect a "
 "variance ratio of %3$s, assuming a %4$s criterion for detection that allows "
 "for a maximum Type I error rate of %5$s."
-msgstr ""
+msgstr "我们需要 %1$s 才能可靠地（概率大于 %2$s）检测到方差比 %3$s，前提是采用 %4$s 检测标准，允许最大 I 类错误率为 %5$s。"
 
 msgid ""
 "A design with %1$s will reliably (with probability greater than %2$s) detect "
 "variance ratios of %3$s, assuming a %4$s criterion for detection that allows "
 "for a maximum Type I error rate of %5$s."
-msgstr ""
+msgstr "具有 %1$s 的设计将可靠地（概率大于 %2$s）检测到方差比 %3$s，前提是采用 %4$s 检测标准，允许最大 I 类错误率为 %5$s。"
 
 msgid ""
 "A design with %1$s can detect variance ratios of %2$s with a probability of "
 "at least %3$s, assuming a %4$s criterion for detection that allows for a "
 "maximum Type I error rate of %5$s."
-msgstr ""
+msgstr "具有 %1$s 的设计能够以至少 %3$s 的概率检测到方差比 %2$s，前提是采用 %4$s 检测标准，允许最大 I 类错误率为 %5$s。"
 
 msgid ""
 "To evaluate the design specified in the table, we can consider how sensitive "
 "it is to true effects of increasing sizes; that is, are we likely to "
 "correctly conclude that %1$s when the variance ratio is large enough to care "
 "about?"
-msgstr ""
+msgstr "为评估表中指定的设计，我们可以考虑它对不断增大的真实效应有多敏感；也就是说，当方差比大到值得关注时，我们是否可能正确地得出结论 %1$s？"
 
 msgid ""
 "To improve readability of this power table for a 'Two-sided' alternative "
 "hypothesis, only the intervals in the direction of the specified variance "
 "ratio are displayed under 'True variance ratio'"
-msgstr ""
+msgstr "为提高此功效表在“双侧”备择假设下的可读性，在“真实方差比”下仅显示所指定方差比方向的区间"
 
 msgid "Power Curve by variance ratio"
-msgstr ""
+msgstr "按方差比的功效曲线"
 
 msgid "Alternative hypothesis"
 msgstr "备择假设"
 
 msgid "Power by Effect Size"
-msgstr ""
+msgstr "按效应量的功效"
 
 msgid "a sample size of %1$s in each group"
-msgstr ""
+msgstr "每组样本量为 %1$s"
 
 msgid "group sample sizes of %1$s and %2$s respectively,"
-msgstr ""
+msgstr "各组的样本量分别为 %1$s 和 %2$s，"
 
 msgid ""
 "A design with %1$s will reliably (with probability greater than or equal to "
 "%2$s) detect effect sizes of %3$s%4$s, assuming a %5$s criterion for "
 "detection that allows for a maximum Type I error rate of %6$s."
-msgstr ""
+msgstr "具有 %1$s 的设计将可靠地（概率大于或等于 %2$s）检测到效应量 %3$s%4$s，前提是采用 %5$s 检测标准，允许最大 I 类错误率为 %6$s。"
 
 msgid ""
 "Conversely, if one is satisfied to reliably detect only larger effect sizes, "
 "smaller sample sizes are needed The point shows the power of the specified  "
 "design and effect size."
-msgstr ""
+msgstr "相反，如果只满足于可靠检测更大的效应量，则需要更小的样本量。该点显示指定设计和效应量的功效。"
 
 msgid "sample sizes of %1$s in each group"
-msgstr ""
+msgstr "每组样本量为 %1$s"
 
 msgid "group sample sizes of %1$s and %2$s, respectively"
-msgstr ""
+msgstr "各组的样本量分别为 %1$s 和 %2$s"
 
 msgid "sample sizes of at least %1$s in each group"
-msgstr ""
+msgstr "每组至少 %1$s 的样本量"
 
 msgid "group sample sizes of at least %1$s and %2$s, respectively"
-msgstr ""
+msgstr "各组样本量分别至少为 %1$s 和 %2$s"
 
 msgid ""
 "On the other hand, if %1$s%2$s, the evidence would exceed the criterion "
 "&mdash; and hence we would correctly claim that %3$s &mdash; at least %4$s%% "
 "of the time."
-msgstr ""
+msgstr "另一方面，如果 %1$s%2$s，那么证据将超过标准 —— 因此至少 %4$s%% 的时间我们会正确地声称 %3$s。"
 
 msgid "Power by Poisson Rate Ratio"
-msgstr ""
+msgstr "按泊松比率比的功效"
 
 msgid "True Poisson rate ratio"
-msgstr ""
+msgstr "真实泊松比率比"
 
 msgid "a sample size of %s in each group"
 msgstr "每组有%s个样本"
@@ -2415,33 +2415,33 @@ msgid ""
 "We would need %1$s to reliably (with probability greater than %2$s) detect a "
 "Poisson rate ratio of %3$s%4$s, assuming a %5$s criterion for detection that "
 "allows for a maximum Type I error rate of %6$s."
-msgstr ""
+msgstr "我们需要 %1$s 才能可靠地（概率大于 %2$s）检测到泊松比率比 %3$s%4$s，前提是采用 %5$s 检测标准，允许最大 I 类错误率为 %6$s。"
 
 msgid ""
 "A design with %1$s will reliably (with probability greater than %2$s) detect "
 "Poisson rate ratios of %3$s%4$s, assuming a %5$s criterion for detection "
 "that allows for a maximum Type I error rate of %6$s."
-msgstr ""
+msgstr "具有 %1$s 的设计将可靠地（概率大于 %2$s）检测到泊松比率比 %3$s%4$s，前提是采用 %5$s 检测标准，允许最大 I 类错误率为 %6$s。"
 
 msgid ""
 "A design with %1$s can detect Poisson rate ratios of %2$s%3$s with a "
 "probability of at least %4$s, assuming a %5$s criterion for detection that "
 "allows for a maximum Type I error rate of %6$s."
-msgstr ""
+msgstr "具有 %1$s 的设计能够以至少 %4$s 的概率检测到泊松比率比 %2$s%3$s，前提是采用 %5$s 检测标准，允许最大 I 类错误率为 %6$s。"
 
 msgid ""
 "The power contour plot shows how the sensitivity of the test changes with "
 "the hypothetical Poisson rate ratio and the sample sizes in the design. As "
 "we increase the sample sizes, Poisson rate ratios closer to one become "
 "reliably detectable."
-msgstr ""
+msgstr "功效等值线图显示检验的敏感性如何随假设泊松比率比和设计中的样本量而变化。随着样本量的增大，更接近 1 的泊松比率比变得可以可靠检测。"
 
 msgid ""
 "Conversely, if one is satisfied to reliably detect only larger effects, "
 "smaller sample sizes are needed. The solid black curve on the contour plot "
 "shows sample size/Poisson rate ratios combinations with a power of %s. The "
 "point shows the specified  design and Poisson rate ratio."
-msgstr ""
+msgstr "相反，如果只满足于可靠检测更大的效应，则需要更小的样本量。等值线图上的实黑曲线显示功效为 %s 的样本量/泊松比率比组合。该点显示指定的设计和泊松比率比。"
 
 msgid "sample sizes of %s in each group"
 msgstr "每组有%s个样本"
@@ -2450,75 +2450,75 @@ msgid "sample sizes of at least %s in each group"
 msgstr "每组至少有%s个样本"
 
 msgid "True variance ratio"
-msgstr ""
+msgstr "真实方差比"
 
 msgid ""
 "To evaluate the design specified in the table, we can consider how sensitive "
 "it is to true effects of increasing sizes; that is, are we likely to "
 "correctly conclude that %1$s when the variance ratio is extreme enough to "
 "care about?"
-msgstr ""
+msgstr "为评估表中指定的设计，我们可以考虑它对不断增大的真实效应有多敏感；也就是说，当方差比足够极端值得关注时，我们是否可能正确地得出结论 %1$s？"
 
 msgid ""
 "The power contour plot shows how the sensitivity of the test changes with "
 "the hypothetical variance ratio and the sample sizes in the design. As we "
 "increase the sample sizes, less extreme variance ratios become reliably "
 "detectable."
-msgstr ""
+msgstr "功效等值线图显示检验的敏感性如何随假设方差比和设计中的样本量而变化。随着样本量的增大，不那么极端的方差比变得可以可靠检测。"
 
 msgid ""
 "Conversely, if one is satisfied to reliably detect only more extreme "
 "variance ratios, smaller sample sizes are needed. The point shows the power "
 "of the specified design and variance ratio."
-msgstr ""
+msgstr "相反，如果只满足于可靠检测更极端的方差比，则需要更小的样本量。该点显示指定设计和方差比的功效。"
 
 msgid ""
 "The power curve above shows how the sensitivity of the test and design is "
 "larger for more extreme variance ratios. If we obtained %1$s our test and "
 "design would %2$s to variance ratios of %3$s%4$s."
-msgstr ""
+msgstr "上方的功效曲线显示，对于更极端的方差比，检验和设计的敏感性更大。如果我们获得 %1$s，那么我们的检验和设计将 %2$s 方差比 %3$s%4$s。"
 
 msgid ""
 "We would be more than likely to miss (power less than 50%%) variance ratios "
 "of %1$s."
-msgstr ""
+msgstr "我们很可能会遗漏（功效小于 50%%）方差比 %1$s。"
 
 msgid ""
 "The specified design leads to (an) unsolvable equation(s) while constructing "
 "the curves for the Power Demonstration. Try to enter less extreme values for "
 "the parameters"
-msgstr ""
+msgstr "指定的设计在构建功效演示的曲线时导致无法求解的方程。请尝试为参数输入不那么极端的值"
 
 msgid "Note."
-msgstr ""
+msgstr "注。"
 
 msgid ""
 "When the variance ratio is less than 1, the inverse of the variance ratio is "
 "displayed. Therefore, the first and second degrees of freedom of both F-"
 "distributions switched places."
-msgstr ""
+msgstr "当方差比小于 1 时，显示方差比的倒数。因此，两个 F 分布的第一和第二自由度互换了位置。"
 
 msgid ""
 "%1$sThe figure above shows two sampling distributions: the sampling "
 "distribution of the %1$s variance ratio when %2$s (left), and when %3$s%4$s "
 "(right)."
-msgstr ""
+msgstr "%1$s上图显示两个抽样分布：%2$s（左侧）时 %1$s 方差比的抽样分布，以及 %3$s%4$s（右侧）时的分布。"
 
 msgid ""
 "On the other hand, if %1$s, the evidence would exceed the criterion  &mdash; "
 "and hence we would correctly claim that %2$s1 &mdash; at least %3$s%% of the "
 "time."
-msgstr ""
+msgstr "另一方面，如果 %1$s，那么证据将超过标准 —— 因此至少 %3$s%% 的时间我们会正确地声称 %2$s1。"
 
 msgid "The design's power for detecting effects of %1$s%2$s%3$s is thus %4$s."
-msgstr ""
+msgstr "因此，该设计检测 %1$s%2$s%3$s 效应的功效为 %4$s。"
 
 msgid ""
 "The power curve above shows how the sensitivity of the test and design is "
 "larger for larger sample sizes. In order for our test and design to have "
 "sufficient sensitivity (power > %1$s) to detect that %2$s when the effect "
 "size is %3$s or larger, we would need %4$s."
-msgstr ""
+msgstr "上方的功效曲线显示，对于更大的样本量，检验和设计的敏感性更大。为了使我们的检验和设计具有足够的敏感性（功效 > %1$s）来在效应量为 %3$s 或更大时检测到 %2$s，我们需要 %4$s。"
 
 msgid "Cohen's"
 msgstr "Cohen's"
