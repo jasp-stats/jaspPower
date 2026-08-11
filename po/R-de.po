@@ -25,7 +25,7 @@ msgstr "Design-Spezifikation"
 msgid ""
 "Target conclusive evidence probability is not reached within the selected "
 "sample-size range."
-msgstr ""
+msgstr "Die Zielwahrscheinlichkeit für aussagekräftige Evidenz wird im gewählten Bereich des Stichprobenumfangs nicht erreicht."
 
 msgid "Unable to compute Bayes factor design: %1$s"
 msgstr "Kann Bayesfaktor-Design nicht berechnen: %1$s"
@@ -78,53 +78,53 @@ msgstr ""
 msgid ""
 "To satisfy both design priors in a single fixed design, use N₁ = %1$s and N₂ "
 "= %2$s (total N = %3$s)."
-msgstr ""
+msgstr "Um beide Design-Prior in einem einzigen festen Design zu erfüllen, verwenden Sie N₁ = %1$s und N₂ = %2$s (Gesamt-N = %3$s)."
 
 msgid "To satisfy both design priors in a single fixed design, use N = %1$s."
-msgstr ""
+msgstr "Um beide Design-Prior in einem einzigen festen Design zu erfüllen, verwenden Sie N = %1$s."
 
 msgid ""
 "Probabilities are evaluated at the fixed-design sample size required for the "
 "corresponding design prior under H₁ or H₀."
-msgstr ""
+msgstr "Die Wahrscheinlichkeiten werden bei dem Stichprobenumfang des festen Designs ausgewertet, der für den entsprechenden Design-Prior unter H₁ oder H₀ erforderlich ist."
 
 msgid ""
 "Probabilities are evaluated at the fixed-design sample size required for "
 "each design prior: under H₁, N₁ = %1$s and N₂ = %2$s; under H₀, N₁ = %3$s "
 "and N₂ = %4$s."
-msgstr ""
+msgstr "Die Wahrscheinlichkeiten werden bei dem für jeden Design-Prior erforderlichen Stichprobenumfang des festen Designs ausgewertet: unter H₁, N₁ = %1$s und N₂ = %2$s; unter H₀, N₁ = %3$s und N₂ = %4$s."
 
 msgid ""
 "Probabilities are evaluated at the fixed-design sample size required for "
 "each design prior: under H₁, N = %1$s; under H₀, N = %2$s."
-msgstr ""
+msgstr "Die Wahrscheinlichkeiten werden bei dem für jeden Design-Prior erforderlichen Stichprobenumfang des festen Designs ausgewertet: unter H₁, N = %1$s; unter H₀, N = %2$s."
 
 msgid ""
 "Probabilities are evaluated at the selected fixed-design sample size. Rows "
 "use the corresponding design prior under H₁ or H₀."
-msgstr ""
+msgstr "Die Wahrscheinlichkeiten werden beim gewählten Stichprobenumfang des festen Designs ausgewertet. Die Zeilen verwenden den entsprechenden Design-Prior unter H₁ oder H₀."
 
 msgid ""
 "Probabilities are evaluated at the selected fixed-design sample sizes. Rows "
 "use the corresponding design prior under H₁ or H₀."
-msgstr ""
+msgstr "Die Wahrscheinlichkeiten werden bei den gewählten Stichprobenumfängen des festen Designs ausgewertet. Die Zeilen verwenden den entsprechenden Design-Prior unter H₁ oder H₀."
 
 msgid ""
 "Probabilities are evaluated at the selected fixed-design sample sizes: N₁ = "
 "%1$s and N₂ = %2$s (total N = %3$s). Rows use the corresponding design prior "
 "under H₁ or H₀."
-msgstr ""
+msgstr "Die Wahrscheinlichkeiten werden bei den gewählten Stichprobenumfängen des festen Designs ausgewertet: N₁ = %1$s und N₂ = %2$s (Gesamt-N = %3$s). Die Zeilen verwenden den entsprechenden Design-Prior unter H₁ oder H₀."
 
 msgid ""
 "Probabilities are evaluated at the selected fixed-design sample size: N = "
 "%1$s. Rows use the corresponding design prior under H₁ or H₀."
-msgstr ""
+msgstr "Die Wahrscheinlichkeiten werden beim gewählten Stichprobenumfang des festen Designs ausgewertet: N = %1$s. Die Zeilen verwenden den entsprechenden Design-Prior unter H₁ oder H₀."
 
 msgid "Sample size is not available."
 msgstr "Stichprobenumfang is nicht verfügbar."
 
 msgid "%1$s: %2$s"
-msgstr ""
+msgstr "%1$s: %2$s"
 
 #, fuzzy
 msgid "Error:"
@@ -133,76 +133,76 @@ msgstr "Fehlermeldung:"
 msgid ""
 "This table reports the smallest fixed-design sample size that reaches the "
 "target probability of conclusive evidence for each design prior."
-msgstr ""
+msgstr "Diese Tabelle gibt den kleinsten Stichprobenumfang des festen Designs an, der die Zielwahrscheinlichkeit aussagekräftiger Evidenz für jeden Design-Prior erreicht."
 
 msgid ""
 "This table evaluates the selected fixed sample size. Achieved probabilities "
 "are the chances that the planned study produces conclusive evidence in the "
 "requested direction when data are generated from the corresponding design "
 "prior."
-msgstr ""
+msgstr "Diese Tabelle bewertet den gewählten festen Stichprobenumfang. Die erreichten Wahrscheinlichkeiten sind die Chancen, dass die geplante Studie in der gewünschten Richtung aussagekräftige Evidenz erzeugt, wenn die Daten aus dem entsprechenden Design-Prior erzeugt werden."
 
 msgid ""
 "Rows condition on the design prior used to generate hypothetical data. "
 "Diagonal cells are conclusive evidence for the true hypothesis, off-diagonal "
 "cells are misleading evidence, and the middle column is the chance of "
 "remaining inconclusive."
-msgstr ""
+msgstr "Die Zeilen bedingen auf den Design-Prior, der zur Erzeugung hypothetischer Daten verwendet wird. Diagonale Zellen sind aussagekräftige Evidenz für die wahre Hypothese, nicht-diagonale Zellen sind irreführende Evidenz, und die mittlere Spalte ist die Chance, unschlüssig zu bleiben."
 
 msgid ""
 "The analysis prior is used to compute the Bayes factor from the data. The "
 "design prior describes the effect sizes assumed during planning; it can "
 "differ from the analysis prior."
-msgstr ""
+msgstr "Der Analyse-Prior wird verwendet, um den Bayesfaktor aus den Daten zu berechnen. Der Design-Prior beschreibt die während der Planung angenommenen Effektstärken; er kann sich vom Analyse-Prior unterscheiden."
 
 msgid ""
 "Summary statistics are the data summaries used to compute the observed Bayes "
 "factor."
-msgstr ""
+msgstr "Zusammenfassende Statistiken sind die Datenzusammenfassungen, die zur Berechnung des beobachteten Bayesfaktors verwendet werden."
 
 msgid ""
 "The observed-data analysis applies the planned sequential decision rule to "
 "the current data. It is an interim or final decision for the observed study, "
 "not an operating characteristic of the design."
-msgstr ""
+msgstr "Die Analyse der beobachteten Daten wendet die geplante sequentielle Entscheidungsregel auf die aktuellen Daten an. Es handelt sich um eine Zwischen- oder Endentscheidung für die beobachtete Studie, nicht um eine operationelle Kennzahl des Designs."
 
 msgid ""
 "The observed-data analysis applies the planned fixed-design Bayes factor "
 "rule to the current data. It is the decision for this observed study, not an "
 "operating characteristic of the design."
-msgstr ""
+msgstr "Die Analyse der beobachteten Daten wendet die geplante Bayesfaktor-Regel des festen Designs auf die aktuellen Daten an. Es handelt sich um die Entscheidung für diese beobachtete Studie, nicht um eine operationelle Kennzahl des Designs."
 
 msgid "Observed Data Analysis"
-msgstr ""
+msgstr "Analyse der beobachteten Daten"
 
 msgid "Analysis Result"
-msgstr ""
+msgstr "Analyseergebnis"
 
 #, fuzzy
 msgid "Summary Statistics"
 msgstr "Eigenschaften"
 
 msgid "Unable to summarize observed data: %1$s"
-msgstr ""
+msgstr "Kann beobachtete Daten nicht zusammenfassen: %1$s"
 
 msgid "Unable to compute observed Bayes factor: %1$s"
-msgstr ""
+msgstr "Kann beobachteten Bayesfaktor nicht berechnen: %1$s"
 
 msgid ""
 "For t-tests, the estimate is the standardized mean difference on the "
 "analysis scale."
-msgstr ""
+msgstr "Bei t-Tests ist der Schätzwert die standardisierte Mittelwertdifferenz auf der Analyses-Skala."
 
 msgid ""
 "Sequential decisions use the configured BF thresholds for the current "
 "observed data."
-msgstr ""
+msgstr "Sequentielle Entscheidungen verwenden die konfigurierten BF-Schwellenwerte für die aktuellen beobachteten Daten."
 
 msgid "Statistical Test"
-msgstr ""
+msgstr "Statistischer Test"
 
 msgid "Decision"
-msgstr ""
+msgstr "Entscheidung"
 
 #, fuzzy
 msgid "Independent Samples T-Test"
@@ -233,162 +233,162 @@ msgid "One Sample Proportion Test"
 msgstr "ein Anteilstest für eine Stichprobe"
 
 msgid "General (z-approximation)"
-msgstr ""
+msgstr "Allgemein (z-Approximation)"
 
 msgid "Group"
-msgstr ""
+msgstr "Gruppe"
 
 msgid "Mean"
-msgstr ""
+msgstr "Mittelwert"
 
 msgid "SD"
 msgstr "SD"
 
 msgid "Variable"
-msgstr ""
+msgstr "Variable"
 
 msgid "Successes"
-msgstr ""
+msgstr "Erfolge"
 
 msgid "Trials"
-msgstr ""
+msgstr "Versuche"
 
 msgid "Proportion"
-msgstr ""
+msgstr "Anteil"
 
 msgid "Mean Difference"
-msgstr ""
+msgstr "Mittelwertdifferenz"
 
 msgid "SD Difference"
-msgstr ""
+msgstr "SD-Differenz"
 
 msgid "SE"
-msgstr ""
+msgstr "SE"
 
 msgid "Group 1"
-msgstr ""
+msgstr "Gruppe 1"
 
 msgid "Group 2"
-msgstr ""
+msgstr "Gruppe 2"
 
 msgid "Missing option '%1$s'."
-msgstr ""
+msgstr "Fehlende Option '%1$s'."
 
 msgid "Option '%1$s' must contain one finite numeric value."
-msgstr ""
+msgstr "Option '%1$s' muss genau einen endlichen numerischen Wert enthalten."
 
 #, fuzzy
 msgid "Summary statistics"
 msgstr "Eigenschaften"
 
 msgid "Estimate"
-msgstr ""
+msgstr "Schätzwert"
 
 msgid "Mean 1"
-msgstr ""
+msgstr "Mittelwert 1"
 
 msgid "Mean 2"
-msgstr ""
+msgstr "Mittelwert 2"
 
 msgid "SD 1"
-msgstr ""
+msgstr "SD 1"
 
 msgid "SD 2"
-msgstr ""
+msgstr "SD 2"
 
 msgid "Mean difference"
-msgstr ""
+msgstr "Mittelwertdifferenz"
 
 msgid "SD difference"
-msgstr ""
+msgstr "SD-Differenz"
 
 #, fuzzy
 msgid "Cohen's d"
 msgstr "Cohens"
 
 msgid "Failures"
-msgstr ""
+msgstr "Fehlschläge"
 
 msgid "The total number of successes and failures must be at least 1."
-msgstr ""
+msgstr "Die Gesamtzahl der Erfolge und Fehlschläge muss mindestens 1 betragen."
 
 msgid "No dataset is available for column input."
-msgstr ""
+msgstr "Für die Spalteneingabe ist kein Datensatz verfügbar."
 
 msgid "Column data"
-msgstr ""
+msgstr "Spaltendaten"
 
 msgid "The selected variable contains no observed values."
-msgstr ""
+msgstr "Die ausgewählte Variable enthält keine beobachteten Werte."
 
 msgid "Dependent variable"
-msgstr ""
+msgstr "Abhängige Variable"
 
 msgid "Grouping variable"
-msgstr ""
+msgstr "Gruppierungsvariable"
 
 msgid "The grouping variable must contain exactly two observed groups."
-msgstr ""
+msgstr "Die Gruppierungsvariable muss genau zwei beobachtete Gruppen enthalten."
 
 msgid "%1$s by %2$s"
-msgstr ""
+msgstr "%1$s nach %2$s"
 
 msgid "First variable"
-msgstr ""
+msgstr "Erste Variable"
 
 msgid "Second variable"
-msgstr ""
+msgstr "Zweite Variable"
 
 msgid "%1$s - %2$s"
-msgstr ""
+msgstr "%1$s - %2$s"
 
 msgid "Variable pair must contain two different variables."
-msgstr ""
+msgstr "Das Variablenpaar muss zwei verschiedene Variablen enthalten."
 
 msgid "Variable pair must be selected."
-msgstr ""
+msgstr "Es muss ein Variablenpaar ausgewählt werden."
 
 msgid "Pooled SD"
-msgstr ""
+msgstr "Gepoolte SD"
 
 msgid "Observed Bayes factor is not finite."
-msgstr ""
+msgstr "Der beobachtete Bayesfaktor ist nicht endlich."
 
 msgid "Stop for H₁"
-msgstr ""
+msgstr "Stopp für H₁"
 
 msgid "BF supports H₁"
-msgstr ""
+msgstr "BF unterstützt H₁"
 
 msgid "Stop for H₀"
-msgstr ""
+msgstr "Stopp für H₀"
 
 msgid "BF supports H₀"
-msgstr ""
+msgstr "BF unterstützt H₀"
 
 msgid "Continue"
-msgstr ""
+msgstr "Fortfahren"
 
 msgid "Inconclusive"
-msgstr ""
+msgstr "Unschlüssig"
 
 msgid "%1$s must be selected."
-msgstr ""
+msgstr "%1$s muss ausgewählt werden."
 
 msgid "%1$s was not found in the dataset."
-msgstr ""
+msgstr "%1$s wurde im Datensatz nicht gefunden."
 
 msgid "%1$s contains no observed values."
-msgstr ""
+msgstr "%1$s enthält keine beobachteten Werte."
 
 msgid "%1$s must be numeric."
-msgstr ""
+msgstr "%1$s muss numerisch sein."
 
 msgid "%1$s contains infinite values."
-msgstr ""
+msgstr "%1$s enthält unendliche Werte."
 
 msgid "%1$s must be a finite number."
-msgstr ""
+msgstr "%1$s muss eine endliche Zahl sein."
 
 msgid "%1$s must be an integer of at least %2$s."
 msgstr "%1$s muss eine ganze Zahl von mindestens %2$s sein."
@@ -397,41 +397,41 @@ msgid "%1$s must be at least %2$s."
 msgstr "%1$s muss mindestens %2$s sein."
 
 msgid "%1$s must be positive."
-msgstr ""
+msgstr "%1$s muss positiv sein."
 
 msgid "N₁ = %1$s and N₂ = %2$s"
-msgstr ""
+msgstr "N₁ = %1$s und N₂ = %2$s"
 
 msgid "N = %1$s"
-msgstr ""
+msgstr "N = %1$s"
 
 msgid "Report"
-msgstr ""
+msgstr "Bericht"
 
 msgid ""
 "The report could not be generated because the Bayes factor design could not "
 "be completed with the current settings."
-msgstr ""
+msgstr "Der Bericht konnte nicht erstellt werden, weil das Bayesfaktor-Design mit den aktuellen Einstellungen nicht abgeschlossen werden konnte."
 
 msgid ""
 "The report could not be generated because the Bayes factor design could not "
 "be completed for all design priors."
-msgstr ""
+msgstr "Der Bericht konnte nicht erstellt werden, weil das Bayesfaktor-Design nicht für alle Design-Prior abgeschlossen werden konnte."
 
 msgid "fixed-sample"
-msgstr ""
+msgstr "feste Stichprobe"
 
 msgid "Unable to generate report: %1$s"
-msgstr ""
+msgstr "Kann Bericht nicht erstellen: %1$s"
 
 msgid "A %1$s Bayes factor design %2$s a %3$s %4$s %5$s."
-msgstr ""
+msgstr "Ein %1$s Bayesfaktor-Design %2$s ein %3$s %4$s %5$s."
 
 msgid "specified"
-msgstr ""
+msgstr "vorgegeben"
 
 msgid "evaluated"
-msgstr ""
+msgstr "ausgewertet"
 
 msgid "one-sided"
 msgstr "einseitig"
@@ -440,107 +440,107 @@ msgid "two-sided"
 msgstr "zweiseitig"
 
 msgid "(H₁: %1$s %2$s %3$s)"
-msgstr ""
+msgstr "(H₁: %1$s %2$s %3$s)"
 
 msgid "The analysis prior for H₀ %1$s, and the analysis prior for H₁ %2$s."
-msgstr ""
+msgstr "Der Analyse-Prior für H₀ %1$s, und der Analyse-Prior für H₁ %2$s."
 
 msgid "The design prior for H₀ %1$s, and the design prior for H₁ %2$s."
-msgstr ""
+msgstr "Der Design-Prior für H₀ %1$s, und der Design-Prior für H₁ %2$s."
 
 msgid "used %1$s, truncated to %2$s"
-msgstr ""
+msgstr "%1$s verwendet, getrimmt auf %2$s"
 
 msgid "%1$s ~ Cauchy(location = %2$s, scale = %3$s)"
-msgstr ""
+msgstr "%1$s ~ Cauchy(lage = %2$s, skala = %3$s)"
 
 msgid "%1$s ~ Student-t(location = %2$s, scale = %3$s, df = %4$s)"
-msgstr ""
+msgstr "%1$s ~ Student-t(lage = %2$s, skala = %3$s, df = %4$s)"
 
 msgid "%1$s ~ Normal-moment(spread = %2$s, modes = ±%3$s)"
-msgstr ""
+msgstr "%1$s ~ Normal-moment(streung = %2$s, modi = ±%3$s)"
 
 msgid "used %1$s"
-msgstr ""
+msgstr "%1$s verwendet"
 
 msgid "%1$s ~ Normal(mean = %2$s, SD = %3$s)"
-msgstr ""
+msgstr "%1$s ~ Normal(mittelwert = %2$s, SD = %3$s)"
 
 msgid "used %1$s ~ Normal(mean = %2$s, SD = %3$s)"
-msgstr ""
+msgstr "%1$s ~ Normal(mittelwert = %2$s, SD = %3$s) verwendet"
 
 msgid "used %1$s, truncated to %2$s ≤ p ≤ %3$s"
-msgstr ""
+msgstr "%1$s verwendet, getrimmt auf %2$s ≤ p ≤ %3$s"
 
 msgid "placed all mass at %1$s = %2$s"
-msgstr ""
+msgstr "die gesamte Masse bei %1$s = %2$s platziert"
 
 msgid "%1$s ~ Beta(a = %2$s, b = %3$s)"
-msgstr ""
+msgstr "%1$s ~ Beta(a = %2$s, b = %3$s)"
 
 msgid "%1$s > %2$s"
-msgstr ""
+msgstr "%1$s > %2$s"
 
 msgid "%1$s ≤ %2$s"
-msgstr ""
+msgstr "%1$s ≤ %2$s"
 
 msgid "%1$s < %2$s"
-msgstr ""
+msgstr "%1$s < %2$s"
 
 msgid "%1$s ≥ %2$s"
-msgstr ""
+msgstr "%1$s ≥ %2$s"
 
 msgid ""
 "The design used evidence thresholds of BF₁₀ ≥ %1$s for H₁ and BF₀₁ ≥ %2$s "
 "for H₀ (equivalently, BF₁₀ ≤ %3$s)."
-msgstr ""
+msgstr "Das Design verwendete Evidenzschwellen von BF₁₀ ≥ %1$s für H₁ und BF₀₁ ≥ %2$s für H₀ (gleichermaßen, BF₁₀ ≤ %3$s)."
 
 msgid "The design evaluated %1$s."
-msgstr ""
+msgstr "Das Design hat %1$s ausgewertet."
 
 msgid ""
 "The design selected %1$s to target conclusive evidence probabilities of %2$s "
 "under H₁ and %3$s under H₀."
-msgstr ""
+msgstr "Das Design wählte %1$s, um Zielwahrscheinlichkeiten aussagekräftiger Evidenz von %2$s unter H₁ und %3$s unter H₀ anzustreben."
 
 msgid ""
 "The design selected %1$s for the H₁ planning target and %2$s for the H₀ "
 "planning target, with target conclusive evidence probabilities of %3$s and "
 "%4$s, respectively."
-msgstr ""
+msgstr "Das Design wählte %1$s für das H₁-Planungsziel und %2$s für das H₀-Planungsziel, mit Zielwahrscheinlichkeiten aussagekräftiger Evidenz von %3$s bzw. %4$s."
 
 msgid ""
 "The achieved probability of conclusive evidence was %1$s under H₁ and %2$s "
 "under H₀; the probability of misleading evidence was %3$s under H₁ and %4$s "
 "under H₀."
-msgstr ""
+msgstr "Die erreichte Wahrscheinlichkeit aussagekräftiger Evidenz betrug %1$s unter H₁ und %2$s unter H₀; die Wahrscheinlichkeit irreführender Evidenz betrug %3$s unter H₁ und %4$s unter H₀."
 
 msgid ""
 "The design analysis used JASP with the jaspPower module version %1$s and the "
 "bfpwr R package version %2$s."
-msgstr ""
+msgstr "Die Design-Analyse verwendete JASP mit der jaspPower-Modulversion %1$s und der bfpwr-R-Paketversion %2$s."
 
 msgid "unknown"
-msgstr ""
+msgstr "unbekannt"
 
 msgid "not available"
-msgstr ""
+msgstr "nicht verfügbar"
 
 msgid "1/%1$s"
-msgstr ""
+msgstr "1/%1$s"
 
 msgid "R Code"
-msgstr ""
+msgstr "R-Code"
 
 msgid "Unable to generate R code: %1$s"
-msgstr ""
+msgstr "Kann R-Code nicht erstellen: %1$s"
 
 msgid "Decision Probabilities by Sample Size"
-msgstr ""
+msgstr "Entscheidungswahrscheinlichkeiten nach Stichprobenumfang"
 
 msgid ""
 "Unable to compute conclusive evidence and misleading evidence curves: %1$s"
-msgstr ""
+msgstr "Kann Kurven für aussagekräftige und irreführende Evidenz nicht berechnen: %1$s"
 
 msgid "Sample size (group 1)"
 msgstr "Stichprobenumfang (Gruppe 1)"
@@ -553,10 +553,10 @@ msgid "Probability"
 msgstr "Wahrscheinlichkeitsdichte"
 
 msgid "Outcome"
-msgstr ""
+msgstr "Ergebnis"
 
 msgid "Decision Probabilities by Proportion"
-msgstr ""
+msgstr "Entscheidungswahrscheinlichkeiten nach Anteil"
 
 #, fuzzy
 msgid "Decision Probabilities by Effect Size"
@@ -566,25 +566,25 @@ msgid ""
 "This plot shows how the probabilities of conclusive and misleading evidence "
 "change with sample size while priors and thresholds are held fixed. Use it "
 "to see how quickly the planned design becomes informative."
-msgstr ""
+msgstr "Dieses Diagramm zeigt, wie sich die Wahrscheinlichkeiten aussagekräftiger und irreführender Evidenz mit dem Stichprobenumfang ändern, während Prioren und Schwellenwerte konstant gehalten werden. Verwenden Sie es, um zu sehen, wie schnell das geplante Design informativ wird."
 
 msgid ""
 "This plot shows how the probabilities of conclusive and misleading evidence "
 "change across possible design proportions. Use it as a sensitivity check for "
 "the assumed proportion under the design prior."
-msgstr ""
+msgstr "Dieses Diagramm zeigt, wie sich die Wahrscheinlichkeiten aussagekräftiger und irreführender Evidenz über mögliche Design-Anteile ändern. Verwenden Sie es als Sensitivitätsprüfung für den angenommenen Anteil unter dem Design-Prior."
 
 msgid ""
 "This plot shows how the probabilities of conclusive and misleading evidence "
 "change across possible design-prior effect sizes. Use it as a sensitivity "
 "check for the assumed effect size."
-msgstr ""
+msgstr "Dieses Diagramm zeigt, wie sich die Wahrscheinlichkeiten aussagekräftiger und irreführender Evidenz über mögliche Effektstärken des Design-Prior ändern. Verwenden Sie es als Sensitivitätsprüfung für die angenommene Effektstärke."
 
 msgid "Design prior location"
-msgstr ""
+msgstr "Lage des Design-Prior"
 
 msgid "Design prior mean"
-msgstr ""
+msgstr "Mittelwert des Design-Prior"
 
 #, fuzzy
 msgid "Design proportion"
@@ -595,41 +595,41 @@ msgid "Prior Distribution"
 msgstr "Teststärke-Demonstration"
 
 msgid "Unable to compute prior distribution plot: %1$s"
-msgstr ""
+msgstr "Kann Diagramm der Prior-Verteilung nicht berechnen: %1$s"
 
 msgid ""
 "Analysis priors determine how the Bayes factor is computed from the data. "
 "Design priors describe the data-generating assumptions used to evaluate the "
 "design, so comparing them helps assess whether the planning assumptions "
 "match the intended analysis."
-msgstr ""
+msgstr "Analyse-Prioren bestimmen, wie der Bayesfaktor aus den Daten berechnet wird. Design-Prioren beschreiben die datenerzeugenden Annahmen, die zur Bewertung des Designs verwendet werden; ihr Vergleich hilft zu beurteilen, ob die Planungsannahmen mit der beabsichtigten Analyse übereinstimmen."
 
 msgid "Design and Analysis Priors"
-msgstr ""
+msgstr "Design- und Analyse-Prioren"
 
 msgid "Analysis Prior"
-msgstr ""
+msgstr "Analyse-Prior"
 
 msgid "Prior"
-msgstr ""
+msgstr "Prior"
 
 msgid "H₁"
-msgstr ""
+msgstr "H₁"
 
 msgid "H₀"
-msgstr ""
+msgstr "H₀"
 
 msgid "Conclusive"
-msgstr ""
+msgstr "Aussagekräftig"
 
 msgid "Misleading"
-msgstr ""
+msgstr "Irreführend"
 
 msgid "Parameter value"
-msgstr ""
+msgstr "Parameterwert"
 
 msgid "Density"
-msgstr ""
+msgstr "Dichte"
 
 #, fuzzy
 msgid "Hypothesis"
@@ -638,38 +638,38 @@ msgstr "Hypothetische Rate (%s)"
 msgid ""
 "The %1$s parameterization assumes a unit information standard deviation "
 "(UISD) of %2$s."
-msgstr ""
+msgstr "Die %1$s-Parametrisierung nimmt eine Standardabweichung pro Informationseinheit (UISD) von %2$s an."
 
 msgid "SMD"
-msgstr ""
+msgstr "SMD"
 
 msgid "Fisher's z"
-msgstr ""
+msgstr "Fishers z"
 
 msgid "logRR"
-msgstr ""
+msgstr "logRR"
 
 msgid "logOR"
-msgstr ""
+msgstr "logOR"
 
 msgid "logHR"
-msgstr ""
+msgstr "logHR"
 
 msgid "logIRR"
-msgstr ""
+msgstr "logIRR"
 
 msgid "specified UISD"
-msgstr ""
+msgstr "vorgegebene UISD"
 
 msgid "standard error schedule"
-msgstr ""
+msgstr "Plan für Standardfehler"
 
 msgid "effect size"
 msgstr "Effektstärke"
 
 msgid ""
 "The sample-size ratio leads to a second-group sample size smaller than 2."
-msgstr ""
+msgstr "Das Stichprobenumfangverhältnis führt zu einem Stichprobenumfang der zweiten Gruppe kleiner als 2."
 
 #, fuzzy
 msgid "independent samples t-test"
@@ -700,326 +700,326 @@ msgid "one sample proportion test"
 msgstr "ein Anteilstest für eine Stichprobe"
 
 msgid "general z-approximation"
-msgstr ""
+msgstr "allgemein (z-Approximation)"
 
 msgid "H₁ (BF₁₀)"
-msgstr ""
+msgstr "H₁ (BF₁₀)"
 
 msgid "H₀ (BF₀₁)"
-msgstr ""
+msgstr "H₀ (BF₀₁)"
 
 msgid "Under H₁"
-msgstr ""
+msgstr "Unter H₁"
 
 msgid "Under H₀"
-msgstr ""
+msgstr "Unter H₀"
 
 msgid "Design Prior Under H₁"
-msgstr ""
+msgstr "Design-Prior unter H₁"
 
 msgid "Design Prior Under H₀"
-msgstr ""
+msgstr "Design-Prior unter H₀"
 
 #, fuzzy
 msgid "Directional"
 msgstr "Beschreibung"
 
 msgid "Point null"
-msgstr ""
+msgstr "Punkt-Nullhypothese"
 
 msgid "θ >= θ₀, θ₀ = %1$s"
-msgstr ""
+msgstr "θ >= θ₀, θ₀ = %1$s"
 
 msgid "θ <= θ₀, θ₀ = %1$s"
-msgstr ""
+msgstr "θ <= θ₀, θ₀ = %1$s"
 
 msgid "θ₀ = %1$s"
-msgstr ""
+msgstr "θ₀ = %1$s"
 
 msgid "p <= p₀, p₀ = %1$s"
-msgstr ""
+msgstr "p <= p₀, p₀ = %1$s"
 
 msgid "p₀ = %1$s"
-msgstr ""
+msgstr "p₀ = %1$s"
 
 msgid "Beta"
-msgstr ""
+msgstr "Beta"
 
 msgid "Cauchy"
-msgstr ""
+msgstr "Cauchy"
 
 msgid "Student-t"
-msgstr ""
+msgstr "Student-t"
 
 msgid "Point"
-msgstr ""
+msgstr "Punkt"
 
 msgid "Normal"
-msgstr ""
+msgstr "Normal"
 
 msgid "Normal-moment"
-msgstr ""
+msgstr "Normal-Moment"
 
 msgid "a = %1$s, b = %2$s"
-msgstr ""
+msgstr "a = %1$s, b = %2$s"
 
 msgid "location = %1$s, scale = %2$s"
-msgstr ""
+msgstr "lage = %1$s, skala = %2$s"
 
 msgid "location = %1$s, scale = %2$s, df = %3$s"
-msgstr ""
+msgstr "lage = %1$s, skala = %2$s, df = %3$s"
 
 msgid "location = %1$s"
-msgstr ""
+msgstr "lage = %1$s"
 
 msgid "mean = %1$s, sd = %2$s"
-msgstr ""
+msgstr "mittelwert = %1$s, sd = %2$s"
 
 msgid "spread = %1$s, modes = +/- %2$s"
-msgstr ""
+msgstr "streuung = %1$s, modi = +/- %2$s"
 
 msgid "p = %1$s"
-msgstr ""
+msgstr "p = %1$s"
 
 msgid "Analysis Prior Under H₀"
-msgstr ""
+msgstr "Analyse-Prior unter H₀"
 
 msgid "Analysis Prior Under H₁"
-msgstr ""
+msgstr "Analyse-Prior unter H₁"
 
 msgid "Bayes Factor Sequential Design"
-msgstr ""
+msgstr "Bayesfaktor-Sequentiell-Design"
 
 msgid "Sample Size Operating Characteristics"
-msgstr ""
+msgstr "Operationelle Kenngrößen des Stichprobenumfangs"
 
 msgid "Cumulative Decision Probabilities by Look"
-msgstr ""
+msgstr "Kumulative Entscheidungswahrscheinlichkeiten nach Einblick"
 
 msgid "New Stop Probabilities by Look"
-msgstr ""
+msgstr "Neue Stoppwahrscheinlichkeiten nach Einblick"
 
 msgid "Stopping Boundaries"
-msgstr ""
+msgstr "Stopp-Grenzen"
 
 msgid ""
 "Fast adaptive maximum sample-size search is enabled. It is not guaranteed to "
 "find the smallest maximum sample size when discrete interim looks make the "
 "power curve non-monotone. Use \"Sample-size search: Exhaustive\" in the "
 "Advanced section to obtain the smallest maximum sample size."
-msgstr ""
+msgstr "Die schnelle adaptive Suche nach dem maximalen Stichprobenumfang ist aktiviert. Es ist nicht garantiert, dass der kleinste maximale Stichprobenumfang gefunden wird, wenn diskrete Zwischenanalysen die Teststärke-Kurve nicht monoton machen. Verwenden Sie \"Stichprobenumfangssuche: Vollständig\" im Bereich Erweitert, um den kleinsten maximalen Stichprobenumfang zu erhalten."
 
 msgid ""
 "Exact integration over all regions is enabled. It can be slow for designs "
 "with many looks."
-msgstr ""
+msgstr "Die exakte Integration über alle Bereiche ist aktiviert. Sie kann bei Designs mit vielen Einblicken langsam sein."
 
 msgid ""
 "Exact integration over all regions is disabled. Use \"Exact integration over "
 "all regions\" in the Advanced section to obtain exact sequential-design "
 "calculations."
-msgstr ""
+msgstr "Die exakte Integration über alle Bereiche ist deaktiviert. Verwenden Sie \"Exakte Integration über alle Bereiche\" im Bereich Erweitert, um exakte sequentielle Design-Berechnungen zu erhalten."
 
 msgid ""
 "Two-sided sequential sample-size and power calculations can take a long "
 "time. To speed up exploratory calculations set \"Exact integration over all "
 "regions\" to FALSE."
-msgstr ""
+msgstr "Zweiseitige sequentielle Stichprobenumfang- und Teststärke-Berechnungen können lange dauern. Um explorative Berechnungen zu beschleunigen, setzen Sie \"Exakte Integration über alle Bereiche\" auf FALSCH."
 
 msgid "Warning:"
-msgstr ""
+msgstr "Warnung:"
 
 msgid "The standard error schedule must contain at least one look."
-msgstr ""
+msgstr "Der Plan für Standardfehler muss mindestens einen Einblick enthalten."
 
 msgid "The standard error schedule must be strictly decreasing."
-msgstr ""
+msgstr "Der Plan für Standardfehler muss streng abnehmend sein."
 
 #, fuzzy
 msgid "sample size schedule"
 msgstr "Stichprobenumfänge von %s"
 
 msgid "The custom sample size schedule must contain at least one look."
-msgstr ""
+msgstr "Der benutzerdefinierte Stichprobenumfangs-Plan muss mindestens einen Einblick enthalten."
 
 msgid "All sample sizes in the custom schedule must be at least 2."
-msgstr ""
+msgstr "Alle Stichprobenumfänge im benutzerdefinierten Plan müssen mindestens 2 betragen."
 
 msgid "The custom sample size schedule must be strictly increasing."
-msgstr ""
+msgstr "Der benutzerdefinierte Stichprobenumfangs-Plan muss streng zunehmend sein."
 
 msgid ""
 "The sample size at the first look must be smaller than or equal to the "
 "maximum sample size."
-msgstr ""
+msgstr "Der Stichprobenumfang beim ersten Einblick muss kleiner oder gleich dem maximalen Stichprobenumfang sein."
 
 msgid ""
 "More than one look requires a maximum sample size larger than the first-look "
 "sample size."
-msgstr ""
+msgstr "Mehr als ein Einblick erfordert einen maximalen Stichprobenumfang, der größer als der Stichprobenumfang des ersten Einblicks ist."
 
 msgid ""
 "The number of looks is too large for the selected first-look and maximum "
 "sample sizes."
-msgstr ""
+msgstr "Die Anzahl der Einblicke ist für die gewählten Stichprobenumfänge des ersten Einblicks und des Maximums zu groß."
 
 msgid "The sample size increase must be at least 1."
 msgstr "Die Stichprobenumfang-Erhöhung muss mindestens 1 sein."
 
 msgid ""
 "The generated sample-size schedule contains sample sizes smaller than 2."
-msgstr ""
+msgstr "Der erzeugte Stichprobenumfangs-Plan enthält Stichprobenumfänge kleiner als 2."
 
 msgid ""
 "The generated sample-size schedule is not strictly increasing. Increase the "
 "maximum sample size or adjust the sample size increase."
-msgstr ""
+msgstr "Der erzeugte Stichprobenumfangs-Plan ist nicht streng zunehmend. Erhöhen Sie den maximalen Stichprobenumfang oder passen Sie die Stichprobenumfang-Erhöhung an."
 
 msgid "group 2 sample size schedule"
-msgstr ""
+msgstr "Stichprobenumfangs-Plan von Gruppe 2"
 
 msgid ""
 "The group 1 and group 2 custom sample size schedules must have the same "
 "number of looks."
-msgstr ""
+msgstr "Die benutzerdefinierten Stichprobenumfangs-Pläne von Gruppe 1 und Gruppe 2 müssen dieselbe Anzahl von Einblicken haben."
 
 msgid "All group 2 sample sizes in the custom schedule must be at least 2."
-msgstr ""
+msgstr "Alle Stichprobenumfänge von Gruppe 2 im benutzerdefinierten Plan müssen mindestens 2 betragen."
 
 msgid "The custom group 2 sample size schedule must be strictly increasing."
-msgstr ""
+msgstr "Der benutzerdefinierte Stichprobenumfangs-Plan von Gruppe 2 muss streng zunehmend sein."
 
 msgid "The %1$s must contain only finite numeric values."
-msgstr ""
+msgstr "%1$s darf nur endliche numerische Werte enthalten."
 
 msgid "The %1$s must contain only positive values."
-msgstr ""
+msgstr "%1$s darf nur positive Werte enthalten."
 
 msgid "Searching maximum sample size"
-msgstr ""
+msgstr "Maximalen Stichprobenumfang suchen"
 
 msgid ""
 "The bfpwr sample-size search did not return a finite maximum sample size."
-msgstr ""
+msgstr "Die bfpwr-Stichprobenumfangssuche lieferte keinen endlichen maximalen Stichprobenumfang zurück."
 
 msgid "The bfpwr sample-size search did not return a sequential design."
-msgstr ""
+msgstr "Die bfpwr-Stichprobenumfangssuche lieferte kein sequentielles Design zurück."
 
 msgid ""
 "The bfpwr sample-size search result did not contain a sample-size schedule."
-msgstr ""
+msgstr "Das Ergebnis der bfpwr-Stichprobenumfangssuche enthielt keinen Stichprobenumfangs-Plan."
 
 msgid ""
 "Stagewise evidence tables and figures are evaluated through the largest "
 "computed maximum sample size."
-msgstr ""
+msgstr "Tabellen und Abbildungen zur stufenweisen Evidenz werden bis zum größten berechneten maximalen Stichprobenumfang ausgewertet."
 
 msgid ""
 "The generated sample-size schedule is not strictly increasing. Increase the "
 "maximum sample size or adjust the information fractions."
-msgstr ""
+msgstr "Der erzeugte Stichprobenumfangs-Plan ist nicht streng zunehmend. Erhöhen Sie den maximalen Stichprobenumfang oder passen Sie die Informationsanteile an."
 
 msgid "information fraction schedule"
-msgstr ""
+msgstr "Plan der Informationsanteile"
 
 msgid "The information fraction schedule must contain at least one look."
-msgstr ""
+msgstr "Der Plan der Informationsanteile muss mindestens einen Einblick enthalten."
 
 msgid "Information fractions must be less than or equal to 1."
-msgstr ""
+msgstr "Informationsanteile müssen kleiner oder gleich 1 sein."
 
 msgid "The information fraction schedule must be strictly increasing."
-msgstr ""
+msgstr "Der Plan der Informationsanteile muss streng zunehmend sein."
 
 msgid "The information fraction schedule must end at 1."
-msgstr ""
+msgstr "Der Plan der Informationsanteile muss bei 1 enden."
 
 msgid ""
 "The standard error schedule must have the same number of entries as the look "
 "schedule."
-msgstr ""
+msgstr "Der Plan für Standardfehler muss dieselbe Anzahl von Einträgen haben wie der Einblick-Plan."
 
 msgid "Unable to compute Bayes factor sequential design: %1$s"
-msgstr ""
+msgstr "Kann Bayesfaktor-Sequentiell-Design nicht berechnen: %1$s"
 
 msgid ""
 "Due to integer sample-size schedules, Pr(Conclusive Evidence) can exceed the "
 "target probability."
-msgstr ""
+msgstr "Aufgrund von ganzzahligen Stichprobenumfangs-Plänen kann Pr(Aussagekräftige Evidenz) die Zielwahrscheinlichkeit überschreiten."
 
 msgid ""
 "For independent samples, N₁ is the sample size in group 1 and N₂ is rounded "
 "up from the requested N₂/N₁ sample-size ratio, unless a custom group 2 "
 "schedule is supplied."
-msgstr ""
+msgstr "Für unabhängige Stichproben ist N₁ der Stichprobenumfang von Gruppe 1 und N₂ wird auf das gewünschte N₂/N₁-Stichprobenumfangverhältnis aufgerundet, sofern kein benutzerdefinierter Plan für Gruppe 2 angegeben wird."
 
 msgid ""
 "This design uses the supplied standard error schedule, so sample-size "
 "summaries are omitted."
-msgstr ""
+msgstr "Dieses Design verwendet den angegebenen Plan für Standardfehler, daher werden Stichprobenumfang-Zusammenfassungen weggelassen."
 
 msgid "Final SE"
-msgstr ""
+msgstr "Endgültiger SE"
 
 msgid "Maximum N₁"
-msgstr ""
+msgstr "Maximales N₁"
 
 msgid "Maximum N₂"
-msgstr ""
+msgstr "Maximales N₂"
 
 msgid "Maximum N"
-msgstr ""
+msgstr "Maximales N"
 
 msgid ""
 "This table reports the maximum sample size schedule needed to reach the "
 "target probability of conclusive evidence at the planned looks."
-msgstr ""
+msgstr "Diese Tabelle gibt den maximalen Stichprobenumfangs-Plan an, der benötigt wird, um die Zielwahrscheinlichkeit aussagekräftiger Evidenz bei den geplanten Einblicken zu erreichen."
 
 msgid ""
 "This table evaluates the selected sequential design through the final look. "
 "Achieved probabilities are cumulative stopping probabilities for conclusive "
 "evidence under the corresponding design prior."
-msgstr ""
+msgstr "Diese Tabelle bewertet das gewählte sequentielle Design bis zum finalen Einblick. Die erreichten Wahrscheinlichkeiten sind kumulative Stoppwahrscheinlichkeiten für aussagekräftige Evidenz unter dem entsprechenden Design-Prior."
 
 msgid ""
 "Mean sample size and SD describe how much data the sequential design is "
 "expected to use under each design prior. They are averages over hypothetical "
 "repetitions of the planned study."
-msgstr ""
+msgstr "Mittlerer Stichprobenumfang und SD beschreiben, wie viele Daten das sequentielle Design unter jedem Design-Prior voraussichtlich verwendet. Sie sind Mittelwerte über hypothetische Wiederholungen der geplanten Studie."
 
 msgid ""
 "Rows condition on the design prior used to generate hypothetical sequential "
 "studies. Diagonal cells are conclusive evidence for the true hypothesis, off-"
 "diagonal cells are misleading evidence, and the middle column is the chance "
 "of reaching the final look without a conclusion."
-msgstr ""
+msgstr "Die Zeilen bedingen auf den Design-Prior, der zur Erzeugung hypothetischer sequentieller Studien verwendet wird. Diagonale Zellen sind aussagekräftige Evidenz für die wahre Hypothese, nicht-diagonale Zellen sind irreführende Evidenz, und die mittlere Spalte ist die Chance, den finalen Einblick ohne Schlussfolgerung zu erreichen."
 
 msgid ""
 "Cumulative probabilities show the chance that the study has stopped by each "
 "look. The inconclusive column is the chance that no stopping rule has been "
 "crossed yet."
-msgstr ""
+msgstr "Kumulative Wahrscheinlichkeiten zeigen die Chance, dass die Studie bis zu jedem Einblick gestoppt wurde. Die unschlüssige Spalte ist die Chance, dass noch keine Stopp-Regel überschritten wurde."
 
 msgid ""
 "New stop probabilities isolate decisions first made at a given look. Summing "
 "them over looks gives the cumulative stopping probability for the "
 "corresponding decision."
-msgstr ""
+msgstr "Neue Stoppwahrscheinlichkeiten isolieren Entscheidungen, die zuerst bei einem bestimmten Einblick getroffen wurden. Ihre Summierung über die Einblicke ergibt die kumulative Stoppwahrscheinlichkeit für die entsprechende Entscheidung."
 
 msgid ""
 "Stopping boundaries are the test-statistic values that correspond to the "
 "selected Bayes factor thresholds at each look. Crossing a boundary triggers "
 "stopping for H₁ or H₀."
-msgstr ""
+msgstr "Stopp-Grenzen sind die Werte der Teststatistik, die den gewählten Bayesfaktor-Schwellenwerten bei jedem Einblick entsprechen. Das Überschreiten einer Grenze löst einen Stopp für H₁ oder H₀ aus."
 
 msgid "Unable to compute sample size summary: %1$s"
-msgstr ""
+msgstr "Kann Stichprobenumfang-Zusammenfassung nicht berechnen: %1$s"
 
 msgid "Looks"
-msgstr ""
+msgstr "Einblicke"
 
 msgid "First Look"
-msgstr ""
+msgstr "Erster Einblick"
 
 #, fuzzy
 msgid "Maximum Sample Size"
@@ -1030,354 +1030,354 @@ msgid "Mean Sample Size"
 msgstr "ein Stichprobenumfang von"
 
 msgid "Standard Deviation"
-msgstr ""
+msgstr "Standardabweichung"
 
 msgid ""
 "The requested BF target could not be reached within the selected maximum "
 "sample size for %1$s; entries that depend on reaching the target are left "
 "empty."
-msgstr ""
+msgstr "Das angeforderte BF-Ziel konnte innerhalb des gewählten maximalen Stichprobenumfangs für %1$s nicht erreicht werden; Einträge, die vom Erreichen des Ziels abhängen, bleiben leer."
 
 msgid ""
 "To satisfy both design priors in a single sequential design, use a final "
 "look of N₁ = %1$s and N₂ = %2$s (total N = %3$s)."
-msgstr ""
+msgstr "Um beide Design-Prior in einem einzigen sequentiellen Design zu erfüllen, verwenden Sie einen finalen Einblick von N₁ = %1$s und N₂ = %2$s (Gesamt-N = %3$s)."
 
 msgid ""
 "To satisfy both design priors in a single sequential design, use a final "
 "look of N = %1$s."
-msgstr ""
+msgstr "Um beide Design-Prior in einem einzigen sequentiellen Design zu erfüllen, verwenden Sie einen finalen Einblick von N = %1$s."
 
 msgid ""
 "Probabilities are cumulative through the selected final look: SE = %1$s. "
 "Rows use the corresponding design prior under H₁ or H₀."
-msgstr ""
+msgstr "Die Wahrscheinlichkeiten sind kumulativ bis zum gewählten finalen Einblick: SE = %1$s. Die Zeilen verwenden den entsprechenden Design-Prior unter H₁ oder H₀."
 
 msgid ""
 "Probabilities are cumulative through the final look required for each design "
 "prior: under H₁, N₁ = %1$s and N₂ = %2$s; under H₀, N₁ = %3$s and N₂ = %4$s."
-msgstr ""
+msgstr "Die Wahrscheinlichkeiten sind kumulativ bis zum für jeden Design-Prior erforderlichen finalen Einblick: unter H₁, N₁ = %1$s und N₂ = %2$s; unter H₀, N₁ = %3$s und N₂ = %4$s."
 
 msgid ""
 "Probabilities are cumulative through the final look required for each design "
 "prior: under H₁, N = %1$s; under H₀, N = %2$s."
-msgstr ""
+msgstr "Die Wahrscheinlichkeiten sind kumulativ bis zum für jeden Design-Prior erforderlichen finalen Einblick: unter H₁, N = %1$s; unter H₀, N = %2$s."
 
 msgid ""
 "Probabilities are cumulative through the selected final look. Rows use the "
 "corresponding design prior under H₁ or H₀."
-msgstr ""
+msgstr "Die Wahrscheinlichkeiten sind kumulativ bis zum gewählten finalen Einblick. Die Zeilen verwenden den entsprechenden Design-Prior unter H₁ oder H₀."
 
 msgid ""
 "Probabilities are cumulative through the selected final look: N₁ = %1$s and "
 "N₂ = %2$s (total N = %3$s). Rows use the corresponding design prior under H₁ "
 "or H₀."
-msgstr ""
+msgstr "Die Wahrscheinlichkeiten sind kumulativ bis zum gewählten finalen Einblick: N₁ = %1$s und N₂ = %2$s (Gesamt-N = %3$s). Die Zeilen verwenden den entsprechenden Design-Prior unter H₁ oder H₀."
 
 msgid ""
 "Probabilities are cumulative through the selected final look: N = %1$s. Rows "
 "use the corresponding design prior under H₁ or H₀."
-msgstr ""
+msgstr "Die Wahrscheinlichkeiten sind kumulativ bis zum gewählten finalen Einblick: N = %1$s. Die Zeilen verwenden den entsprechenden Design-Prior unter H₁ oder H₀."
 
 msgid "Unable to compute cumulative decision probabilities: %1$s"
-msgstr ""
+msgstr "Kann kumulative Entscheidungswahrscheinlichkeiten nicht berechnen: %1$s"
 
 msgid "Unable to compute incremental stagewise stops: %1$s"
-msgstr ""
+msgstr "Kann inkrementelle stufenweise Stopps nicht berechnen: %1$s"
 
 msgid "Design Prior: %1$s"
-msgstr ""
+msgstr "Design-Prior: %1$s"
 
 msgid "Look"
-msgstr ""
+msgstr "Einblick"
 
 msgid "Any Stop"
-msgstr ""
+msgstr "Beliebiger Stopp"
 
 msgid "Unable to compute stopping boundaries: %1$s"
-msgstr ""
+msgstr "Kann Stopp-Grenzen nicht berechnen: %1$s"
 
 msgid ""
 "Boundaries are shown on the test-statistic scale. Empty cells mean no finite "
 "statistic reaches the decision rule at that look."
-msgstr ""
+msgstr "Die Grenzen werden auf der Skala der Teststatistik angezeigt. Leere Zellen bedeuten, dass keine endliche Statistik bei diesem Einblick die Entscheidungsregel erreicht."
 
 msgid "Lower Statistic"
-msgstr ""
+msgstr "Untere Statistik"
 
 msgid "Upper Statistic"
-msgstr ""
+msgstr "Obere Statistik"
 
 msgid "Stop for H₁: %1$s"
-msgstr ""
+msgstr "Stopp für H₁: %1$s"
 
 msgid "Stop for H₀: %1$s"
-msgstr ""
+msgstr "Stopp für H₀: %1$s"
 
 msgid ""
 "Sequential bfpwr calculations are performed on the parameter scale centered "
 "at the null value."
-msgstr ""
+msgstr "Sequentielle bfpwr-Berechnungen werden auf der um den Nullwert zentrierten Parameterskala durchgeführt."
 
 msgid ""
 "The report could not be generated because the Bayes factor sequential design "
 "could not be completed with the current settings."
-msgstr ""
+msgstr "Der Bericht konnte nicht erstellt werden, weil das Bayesfaktor-Sequentiell-Design mit den aktuellen Einstellungen nicht abgeschlossen werden konnte."
 
 msgid "sequential"
-msgstr ""
+msgstr "sequentiell"
 
 msgid ""
 "The design used a fixed standard-error schedule, so n_min, n_max, batch "
 "size, expected sample size, and sample-size SD are not defined."
-msgstr ""
+msgstr "Das Design verwendete einen festen Standardfehler-Plan, daher sind n_min, n_max, Stapelgröße, erwarteter Stichprobenumfang und Stichprobenumfang-SD nicht definiert."
 
 msgid ""
 "The design targeted conclusive evidence probabilities of %1$s under H₁ and "
 "%2$s under H₀."
-msgstr ""
+msgstr "Das Design strebte Zielwahrscheinlichkeiten aussagekräftiger Evidenz von %1$s unter H₁ und %2$s unter H₀ an."
 
 msgid ""
 "The design started at n_min,1 = %1$s and n_min,2 = %2$s, used %3$s, and "
 "stopped at n_max,1 = %4$s and n_max,2 = %5$s."
-msgstr ""
+msgstr "Das Design begann bei n_min,1 = %1$s und n_min,2 = %2$s, verwendete %3$s und stoppte bei n_max,1 = %4$s und n_max,2 = %5$s."
 
 msgid ""
 "The design started at n_min = %1$s, used %2$s, and stopped at n_max = %3$s."
-msgstr ""
+msgstr "Das Design begann bei n_min = %1$s, verwendete %2$s und stoppte bei n_max = %3$s."
 
 msgid ""
 "The design started at n_min,1 = %1$s and n_min,2 = %2$s, used %3$s, and "
 "found maximum sample sizes n_max,1 = %4$s and n_max,2 = %5$s under H₁ and "
 "n_max,1 = %6$s and n_max,2 = %7$s under H₀."
-msgstr ""
+msgstr "Das Design begann bei n_min,1 = %1$s und n_min,2 = %2$s, verwendete %3$s und fand maximale Stichprobenumfänge n_max,1 = %4$s und n_max,2 = %5$s unter H₁ sowie n_max,1 = %6$s und n_max,2 = %7$s unter H₀."
 
 msgid ""
 "The design started at n_min = %1$s, used %2$s, and found maximum sample "
 "sizes n_max = %3$s under H₁ and n_max = %4$s under H₀."
-msgstr ""
+msgstr "Das Design begann bei n_min = %1$s, verwendete %2$s und fand maximale Stichprobenumfänge n_max = %3$s unter H₁ und n_max = %4$s unter H₀."
 
 msgid "not reached"
-msgstr ""
+msgstr "nicht erreicht"
 
 msgid "a single planned look"
-msgstr ""
+msgstr "ein einziger geplanter Einblick"
 
 msgid "batches of %1$s for n₁ and %2$s for n₂"
-msgstr ""
+msgstr "Stapel von %1$s für n₁ und %2$s für n₂"
 
 msgid "batch-size increments of %1$s for n₁ and %2$s for n₂"
-msgstr ""
+msgstr "Stapelgrößen-Erhöhungen von %1$s für n₁ und %2$s für n₂"
 
 #, fuzzy
 msgid "batches of %1$s"
 msgstr "Stichprobenumfänge von %1$s"
 
 msgid "batch-size increments of %1$s"
-msgstr ""
+msgstr "Stapelgrößen-Erhöhungen von %1$s"
 
 msgid ""
 "Under the H₁ design prior, the expected sample sizes were n₁ = %1$s (SD = "
 "%2$s) and n₂ = %3$s (SD = %4$s); under the H₀ design prior, the expected "
 "sample sizes were n₁ = %5$s (SD = %6$s) and n₂ = %7$s (SD = %8$s)."
-msgstr ""
+msgstr "Unter dem H₁-Design-Prior betrugen die erwarteten Stichprobenumfänge n₁ = %1$s (SD = %2$s) und n₂ = %3$s (SD = %4$s); unter dem H₀-Design-Prior betrugen die erwarteten Stichprobenumfänge n₁ = %5$s (SD = %6$s) und n₂ = %7$s (SD = %8$s)."
 
 msgid ""
 "Under the H₁ design prior, the expected sample size was %1$s (SD = %2$s); "
 "under the H₀ design prior, the expected sample size was %3$s (SD = %4$s)."
-msgstr ""
+msgstr "Unter dem H₁-Design-Prior betrug der erwartete Stichprobenumfang %1$s (SD = %2$s); unter dem H₀-Design-Prior betrug der erwartete Stichprobenumfang %3$s (SD = %4$s)."
 
 msgid "%1$s to %2$s"
-msgstr ""
+msgstr "%1$s bis %2$s"
 
 msgid ""
 "R code could not be generated because the sequential design could not be "
 "computed."
-msgstr ""
+msgstr "Der R-Code konnte nicht erstellt werden, weil das sequentielle Design nicht berechnet werden konnte."
 
 msgid "Unable to compute stopping probabilities: %1$s"
-msgstr ""
+msgstr "Kann Stoppwahrscheinlichkeiten nicht berechnen: %1$s"
 
 msgid "Cumulative probability"
-msgstr ""
+msgstr "Kumulative Wahrscheinlichkeit"
 
 msgid ""
 "The curves accumulate over planned looks: conclusive and misleading curves "
 "increase as studies stop for those outcomes, while the inconclusive curve "
 "decreases as decisions are made."
-msgstr ""
+msgstr "Die Kurven akkumulieren über die geplanten Einblicke: aussagekräftige und irreführende Kurven steigen, wenn Studien für diese Ergebnisse stoppen, während die unschlüssige Kurve sinkt, wenn Entscheidungen getroffen werden."
 
 msgid "No finite stopping boundaries are available for the current settings."
-msgstr ""
+msgstr "Für die aktuellen Einstellungen sind keine endlichen Stopp-Grenzen verfügbar."
 
 msgid "Critical value"
-msgstr ""
+msgstr "Kritischer Wert"
 
 msgid "Target"
-msgstr ""
+msgstr "Ziel"
 
 msgid "Boundary"
-msgstr ""
+msgstr "Grenze"
 
 msgid ""
 "Each curve gives the critical test-statistic value that corresponds to a "
 "Bayes factor stopping threshold at a look. Crossing a boundary triggers "
 "stopping for H₁ or H₀."
-msgstr ""
+msgstr "Jede Kurve liefert den kritischen Wert der Teststatistik, der bei einem Einblick einem Bayesfaktor-Stoppschwellenwert entspricht. Das Überschreiten einer Grenze löst einen Stopp für H₁ oder H₀ aus."
 
 #, fuzzy
 msgid "Lower"
 msgstr "Teststärke"
 
 msgid "Upper"
-msgstr ""
+msgstr "Oben"
 
 msgid "group 1 event probability"
-msgstr ""
+msgstr "Ereigniswahrscheinlichkeit von Gruppe 1"
 
 msgid "group 2 event probability"
-msgstr ""
+msgstr "Ereigniswahrscheinlichkeit von Gruppe 2"
 
 msgid "baseline event probability"
-msgstr ""
+msgstr "Basis-Ereigniswahrscheinlichkeit"
 
 msgid "The alternative binary effect must be finite."
-msgstr ""
+msgstr "Der alternative biniäre Effekt muss endlich sein."
 
 msgid "Alternative risk ratios and odds ratios must be greater than 0."
-msgstr ""
+msgstr "Alternative Risikoverhältnisse und Odds-Ratios müssen größer als 0 sein."
 
 msgid ""
 "The baseline event probability and alternative binary effect imply a group 2 "
 "event probability outside (0, 1)."
-msgstr ""
+msgstr "Die Basis-Ereigniswahrscheinlichkeit und der alternative biniäre Effekt implizieren eine Ereigniswahrscheinlichkeit von Gruppe 2 außerhalb von (0, 1)."
 
 msgid "The %1$s must be greater than 0 and less than 1."
-msgstr ""
+msgstr "%1$s muss größer als 0 und kleiner als 1 sein."
 
 #, fuzzy
 msgid "One-sided"
 msgstr "einseitig"
 
 msgid "Two-sided symmetric"
-msgstr ""
+msgstr "Zweiseitig symmetrisch"
 
 msgid "Two-sided asymmetric β-spending (binding futility)"
-msgstr ""
+msgstr "Zweiseitige asymmetrische β-Ausgabe (bindende Nutzlosigkeit)"
 
 msgid "Two-sided asymmetric β-spending (non-binding futility)"
-msgstr ""
+msgstr "Zweiseitige asymmetrische β-Ausgabe (nicht bindende Nutzlosigkeit)"
 
 #, fuzzy
 msgid "Canonical effect (δ)"
 msgstr "Hypothetische Effektstärke (%s)"
 
 msgid "Standardized mean difference (one sample / paired)"
-msgstr ""
+msgstr "Standardisierte Mittelwertdifferenz (eine Stichprobe / gepaart)"
 
 msgid "Standardized mean difference (independent samples)"
-msgstr ""
+msgstr "Standardisierte Mittelwertdifferenz (unabhängige Stichproben)"
 
 msgid "Mean difference (one sample / paired)"
-msgstr ""
+msgstr "Mittelwertdifferenz (eine Stichprobe / gepaart)"
 
 #, fuzzy
 msgid "Mean difference (independent samples)"
 msgstr "ein t-Test für unabhängige Stichproben"
 
 msgid "Two-sample binary endpoint"
-msgstr ""
+msgstr "Binärer Endpunkt mit zwei Stichproben"
 
 msgid "Survival hazard ratio"
-msgstr ""
+msgstr "Hazard-Ratio für Überleben"
 
 msgid "Information ratio"
-msgstr ""
+msgstr "Informationsverhältnis"
 
 msgid "Fixed design value"
-msgstr ""
+msgstr "Wert des festen Designs"
 
 msgid "O'Brien-Fleming spending"
-msgstr ""
+msgstr "O'Brien-Fleming-Ausgabe"
 
 msgid "Pocock spending"
-msgstr ""
+msgstr "Pocock-Ausgabe"
 
 msgid "Hwang-Shih-DeCani"
-msgstr ""
+msgstr "Hwang-Shih-DeCani"
 
 msgid "Kim-DeMets power"
-msgstr ""
+msgstr "Kim-DeMets-Kraft"
 
 msgid "O'Brien-Fleming"
-msgstr ""
+msgstr "O'Brien-Fleming"
 
 msgid "Pocock"
-msgstr ""
+msgstr "Pocock"
 
 msgid "Wang-Tsiatis"
-msgstr ""
+msgstr "Wang-Tsiatis"
 
 msgid "The information fraction schedule must contain K or K - 1 values."
-msgstr ""
+msgstr "Der Plan der Informationsanteile muss K oder K - 1 Werte enthalten."
 
 msgid "When K information fractions are supplied, the final value must be 1."
-msgstr ""
+msgstr "Wenn K Informationsanteile angegeben werden, muss der letzte Wert 1 sein."
 
 msgid ""
 "When K - 1 information fractions are supplied, all values must be less than "
 "1."
-msgstr ""
+msgstr "Wenn K - 1 Informationsanteile angegeben werden, müssen alle Werte kleiner als 1 sein."
 
 msgid "Information fractions must be greater than 0 and no larger than 1."
-msgstr ""
+msgstr "Informationsanteile müssen größer als 0 und nicht größer als 1 sein."
 
 msgid "Information fractions must be strictly increasing."
-msgstr ""
+msgstr "Informationsanteile müssen streng zunehmend sein."
 
 msgid "Group Sequential Design"
-msgstr ""
+msgstr "Gruppensequentielles Design"
 
 msgid "Design"
-msgstr ""
+msgstr "Design"
 
 msgid "α"
-msgstr ""
+msgstr "α"
 
 msgid "Power (1 - β)"
-msgstr ""
+msgstr "Teststärke (1 - β)"
 
 msgid "Planning Metric"
-msgstr ""
+msgstr "Planungsmessgröße"
 
 msgid "Unable to compute classical group sequential design: %1$s"
-msgstr ""
+msgstr "Kann klassisches gruppensequentielles Design nicht berechnen: %1$s"
 
 msgid "Inflation Ratio"
-msgstr ""
+msgstr "Inflationsverhältnis"
 
 msgid ""
 "α is the one-sided Type I error rate. For symmetric two-sided designs, the "
 "total Type I error rate is 2α."
-msgstr ""
+msgstr "α ist die einseitige Typ-I-Fehlerrate. Bei symmetrischen zweiseitigen Designs beträgt die gesamte Typ-I-Fehlerrate 2α."
 
 msgid "Sample Size / Event Details"
-msgstr ""
+msgstr "Stichprobenumfang / Ereignisdetails"
 
 msgid "Quantity"
-msgstr ""
+msgstr "Größe"
 
 msgid "Fixed Design"
-msgstr ""
+msgstr "Festes Design"
 
 msgid "Maximum / Final"
-msgstr ""
+msgstr "Maximum / Final"
 
 msgid "Expected"
-msgstr ""
+msgstr "Erwartet"
 
 msgid "Unable to compute sample size / event details: %1$s"
-msgstr ""
+msgstr "Kann Stichprobenumfang / Ereignisdetails nicht berechnen: %1$s"
 
 #, fuzzy
 msgid "Group 1 sample size"
@@ -1388,50 +1388,50 @@ msgid "Group 2 sample size"
 msgstr "ein Stichprobenumfang von"
 
 msgid "Enrolled subjects"
-msgstr ""
+msgstr "Eingeschriebene Probanden"
 
 msgid "Expected analysis time"
-msgstr ""
+msgstr "Erwartete Analysezeit"
 
 msgid ""
 "Group sample sizes are split from the total sample size using the allocation "
 "ratio N₂/N₁. Expected values are probability-weighted expected total sample "
 "sizes split by the same ratio."
-msgstr ""
+msgstr "Die Gruppen-Stichprobenumfänge werden anhand des Zuteilungsverhältnisses N₂/N₁ aus dem Gesamt-Stichprobenumfang aufgeteilt. Erwartete Werte sind wahrscheinlichkeitsgewichtete erwartete Gesamt-Stichprobenumfänge, die mit demselben Verhältnis aufgeteilt werden."
 
 msgid ""
 "Survival subject and analysis-time quantities are derived from the accrual "
 "assumptions. Fixed-design values use the corresponding fixed-design survival "
 "calculation; maximum/final values use the group sequential design. Event "
 "information is summarized in the main design table and look schedule."
-msgstr ""
+msgstr "Größen zu Probanden und Analysezeit im Überleben werden aus den Rekrutierungsannahmen abgeleitet. Werte des festen Designs verwenden die entsprechende Überlebensberechnung des festen Designs; Maximum-/Finalwerte verwenden das gruppensequentielle Design. Ereignisinformationen werden in der Haupt-Designtabelle und im Einblick-Plan zusammengefasst."
 
 msgid "Effect Scale Conversions"
-msgstr ""
+msgstr "Umrechnungen der Effektskala"
 
 msgid "Value"
-msgstr ""
+msgstr "Wert"
 
 msgid "Description"
 msgstr "Beschreibung"
 
 msgid "Canonical δ under H₁"
-msgstr ""
+msgstr "Kanonisches δ unter H₁"
 
 msgid "Standardized mean difference"
-msgstr ""
+msgstr "Standardisierte Mittelwertdifferenz"
 
 msgid "Mean difference divided by the outcome SD or paired-difference SD."
-msgstr ""
+msgstr "Mittelwertdifferenz geteilt durch die Ergebnis-SD oder die SD der gepaarten Differenzen."
 
 msgid "Mean difference divided by the common outcome SD."
-msgstr ""
+msgstr "Mittelwertdifferenz geteilt durch die gemeinsame Ergebnis-SD."
 
 msgid "Alternative effect used to derive the group 2 event probability."
-msgstr ""
+msgstr "Alternativer Effekt, der verwendet wird, um die Ereigniswahrscheinlichkeit von Gruppe 2 abzuleiten."
 
 msgid "Group 1 event probability"
-msgstr ""
+msgstr "Ereigniswahrscheinlichkeit von Gruppe 1"
 
 #, fuzzy
 msgid "Baseline event probability under the alternative hypothesis."
@@ -1440,21 +1440,21 @@ msgstr ""
 "sein."
 
 msgid "Event probability in group 1 under the alternative hypothesis."
-msgstr ""
+msgstr "Ereigniswahrscheinlichkeit in Gruppe 1 unter der Alternativhypothese."
 
 msgid "Group 2 event probability"
-msgstr ""
+msgstr "Ereigniswahrscheinlichkeit von Gruppe 2"
 
 msgid ""
 "Derived from the baseline event probability and selected alternative binary "
 "effect."
-msgstr ""
+msgstr "Abgeleitet aus der Basis-Ereigniswahrscheinlichkeit und dem gewählten alternativen binären Effekt."
 
 msgid "Event probability in group 2 under the alternative hypothesis."
-msgstr ""
+msgstr "Ereigniswahrscheinlichkeit in Gruppe 2 unter der Alternativhypothese."
 
 msgid "Alternative risk difference"
-msgstr ""
+msgstr "Alternative Risikodifferenz"
 
 #, fuzzy
 msgid "Alternative risk ratio"
@@ -1465,84 +1465,84 @@ msgid "Alternative odds ratio"
 msgstr "Alternativhypothese"
 
 msgid "Information-scale effect used by the sequential calculations."
-msgstr ""
+msgstr "Informationsskalen-Effekt, der von den sequentiellen Berechnungen verwendet wird."
 
 msgid ""
 "The one-sample/paired standardized mean difference is used directly as the "
 "information-scale effect."
-msgstr ""
+msgstr "Die standardisierte Mittelwertdifferenz für eine Stichprobe/gepaart wird direkt als Informationsskalen-Effekt verwendet."
 
 msgid ""
 "Derived from the fixed-design total sample size computed from the "
 "independent-samples standardized mean difference and allocation ratio."
-msgstr ""
+msgstr "Abgeleitet aus dem Gesamt-Stichprobenumfang des festen Designs, der aus der standardisierten Mittelwertdifferenz bei unabhängigen Stichproben und dem Zuteilungsverhältnis berechnet wird."
 
 msgid ""
 "The raw mean difference is divided by the relevant SD and used as the "
 "information-scale effect."
-msgstr ""
+msgstr "Die rohe Mittelwertdifferenz wird durch die relevante SD geteilt und als Informationsskalen-Effekt verwendet."
 
 msgid ""
 "Derived from the fixed-design total sample size computed from the mean "
 "difference, common SD, and allocation ratio."
-msgstr ""
+msgstr "Abgeleitet aus dem Gesamt-Stichprobenumfang des festen Designs, der aus der Mittelwertdifferenz, der gemeinsamen SD und dem Zuteilungsverhältnis berechnet wird."
 
 msgid ""
 "Derived from the fixed-design total sample size computed from the entered "
 "event probabilities or from the baseline event probability and alternative "
 "binary effect."
-msgstr ""
+msgstr "Abgeleitet aus dem Gesamt-Stichprobenumfang des festen Designs, der aus den eingegebenen Ereigniswahrscheinlichkeiten oder aus der Basis-Ereigniswahrscheinlichkeit und dem alternativen binären Effekt berechnet wird."
 
 msgid ""
 "Derived from the event information implied by the hazard-ratio alternative, "
 "null hazard ratio, allocation ratio, and selected survival information "
 "method."
-msgstr ""
+msgstr "Abgeleitet aus der Ereignisinformation, die durch die Hazard-Ratio-Alternative, die Null-Hazard-Ratio, das Zuteilungsverhältnis und die gewählte Überlebensinformationsmethode impliziert wird."
 
 msgid "Yes"
-msgstr ""
+msgstr "Ja"
 
 msgid "No"
-msgstr ""
+msgstr "Nein"
 
 msgid "Fixed Information Ratio"
-msgstr ""
+msgstr "Festes Informationsverhältnis"
 
 msgid "Maximum Information Ratio"
-msgstr ""
+msgstr "Maximales Informationsverhältnis"
 
 msgid "Expected Information Ratio"
-msgstr ""
+msgstr "Erwartetes Informationsverhältnis"
 
 msgid "Information Ratio"
-msgstr ""
+msgstr "Informationsverhältnis"
 
 msgid "information ratio"
-msgstr ""
+msgstr "Informationsverhältnis"
 
 msgid "Fixed Design Value"
-msgstr ""
+msgstr "Wert des festen Designs"
 
 msgid "Maximum Value"
-msgstr ""
+msgstr "Maximaler Wert"
 
 msgid "Expected Value"
-msgstr ""
+msgstr "Erwarteter Wert"
 
 msgid "Planned Value"
-msgstr ""
+msgstr "Geplanter Wert"
 
 msgid "fixed-design value"
-msgstr ""
+msgstr "Wert des festen Designs"
 
 msgid "Fixed Design Total Sample Size"
-msgstr ""
+msgstr "Gesamt-Stichprobenumfang des festen Designs"
 
 msgid "Maximum Total Sample Size"
-msgstr ""
+msgstr "Maximaler Gesamt-Stichprobenumfang"
 
 msgid "Expected Total Sample Size"
-msgstr ""
+msgstr "Erwarteter Gesamt-Stichprobenumfang"
 
 #, fuzzy
 msgid "Total Sample Size"
@@ -1553,282 +1553,282 @@ msgid "total sample size"
 msgstr "ein Stichprobenumfang von"
 
 msgid "Fixed Design Events"
-msgstr ""
+msgstr "Ereignisse des festen Designs"
 
 msgid "Maximum Events"
-msgstr ""
+msgstr "Maximale Ereignisse"
 
 msgid "Expected Events"
-msgstr ""
+msgstr "Erwartete Ereignisse"
 
 msgid "Events"
-msgstr ""
+msgstr "Ereignisse"
 
 msgid "events"
-msgstr ""
+msgstr "Ereignisse"
 
 msgid "Fixed Design Information Units"
-msgstr ""
+msgstr "Informationseinheiten des festen Designs"
 
 msgid "Maximum Information Units"
-msgstr ""
+msgstr "Maximale Informationseinheiten"
 
 msgid "Expected Information Units"
-msgstr ""
+msgstr "Erwartete Informationseinheiten"
 
 msgid "Information Units"
-msgstr ""
+msgstr "Informationseinheiten"
 
 msgid "information units"
-msgstr ""
+msgstr "Informationseinheiten"
 
 msgid ""
 "In information-ratio mode, fixed design information and maximum information "
 "are relative information values, not observations or events."
-msgstr ""
+msgstr "Im Informationsverhältnis-Modus sind die Information des festen Designs und die maximale Information relative Informationswerte, keine Beobachtungen oder Ereignisse."
 
 msgid ""
 "In fixed design value mode, the entered value defines the scale for the "
 "maximum and expected values. It may represent information units, total "
 "sample size, or events depending on the endpoint."
-msgstr ""
+msgstr "Im Modus des festen Designwerts definiert der eingegebene Wert die Skala für die maximalen und erwarteten Werte. Abhängig vom Endpunkt kann er Informationseinheiten, Gesamt-Stichprobenumfang oder Ereignisse darstellen."
 
 msgid ""
 "Canonical δ is the information-scale effect; it is not generally Cohen's d. "
 "The table reports information units."
-msgstr ""
+msgstr "Kanonisches δ ist der Informationsskalen-Effekt; es ist im Allgemeinen nicht Cohens d. Die Tabelle berichtet Informationseinheiten."
 
 msgid ""
 "For one-sample and paired normal designs, the standardized mean difference "
 "uses the outcome SD or the SD of paired differences. The table reports "
 "information units."
-msgstr ""
+msgstr "Für Normal-Designs mit einer Stichprobe und gepaarte Designs verwendet die standardisierte Mittelwertdifferenz die Ergebnis-SD oder die SD der gepaarten Differenzen. Die Tabelle berichtet Informationseinheiten."
 
 msgid ""
 "For independent-samples normal designs, values labeled total sample size are "
 "total observations across both groups; the allocation ratio determines the "
 "group split."
-msgstr ""
+msgstr "Für Normal-Designs mit unabhängigen Stichproben sind Werte, die als Gesamt-Stichprobenumfang gekennzeichnet sind, Gesamtbeobachtungen über beide Gruppen; das Zuteilungsverhältnis bestimmt die Gruppenaufteilung."
 
 msgid ""
 "For one-sample and paired mean-difference designs, δ is the mean difference "
 "divided by the outcome SD or SD of paired differences. The table reports "
 "information units."
-msgstr ""
+msgstr "Für Mittelwertdifferenz-Designs mit einer Stichprobe und gepaarten Designs ist δ die Mittelwertdifferenz geteilt durch die Ergebnis-SD oder die SD der gepaarten Differenzen. Die Tabelle berichtet Informationseinheiten."
 
 msgid ""
 "For two-sample binary endpoints, values labeled total sample size are total "
 "observations across both groups; the entered event probabilities or derived "
 "event probabilities and selected null margin define the endpoint."
-msgstr ""
+msgstr "Für binäre Endpunkte mit zwei Stichproben sind Werte, die als Gesamt-Stichprobenumfang gekennzeichnet sind, Gesamtbeobachtungen über beide Gruppen; die eingegebenen Ereigniswahrscheinlichkeiten oder abgeleiteten Ereigniswahrscheinlichkeiten und die gewählte Null-Marge definieren den Endpunkt."
 
 msgid ""
 "For survival events-only mode, values labeled events are required event "
 "counts; this mode does not estimate enrolled subjects or analysis times."
-msgstr ""
+msgstr "Im Überlebensmodus nur mit Ereignissen sind als Ereignisse gekennzeichnete Werte erforderliche Ereignis-Anzahlen; dieser Modus schätzt weder eingeschriebene Probanden noch Analysezeiten."
 
 msgid ""
 "For the subjects + events survival mode, values labeled events are event "
 "counts. Enrolled-subject rows are planned or expected participant counts "
 "under the accrual assumptions, not event counts."
-msgstr ""
+msgstr "Im Überlebensmodus Probanden + Ereignisse sind als Ereignisse gekennzeichnete Werte Ereignis-Anzahlen. Zeilen mit eingeschriebenen Probanden sind geplante oder erwartete Teilnehmerzahlen unter den Rekrutierungsannahmen, keine Ereignis-Anzahlen."
 
 msgid ""
 "For group sequential accrual survival mode, values labeled events are event "
 "information; expected analysis time is measured from trial start in the same "
 "time unit as the survival inputs."
-msgstr ""
+msgstr "Im Überlebensmodus mit gruppensequentieller Rekrutierung sind als Ereignisse gekennzeichnete Werte Ereignisinformationen; die erwartete Analysezeit wird ab Studienbeginn in derselben Zeiteinheit wie die Überlebenseingaben gemessen."
 
 msgid ""
 "Boundaries are based on the selected information fractions, α and β targets, "
 "and boundary family: upper = %1$s."
-msgstr ""
+msgstr "Grenzen basieren auf den gewählten Informationsanteilen, den α- und β-Zielen und der Grenzen-Familie: oben = %1$s."
 
 msgid ""
 "Boundaries are based on the selected information fractions, α and β targets, "
 "and symmetric boundary family: upper/lower = %1$s."
-msgstr ""
+msgstr "Grenzen basieren auf den gewählten Informationsanteilen, den α- und β-Zielen und der symmetrischen Grenzen-Familie: oben/unten = %1$s."
 
 msgid ""
 "Boundaries are based on the selected information fractions, α and β targets, "
 "and boundary families: upper = %1$s; lower = %2$s."
-msgstr ""
+msgstr "Grenzen basieren auf den gewählten Informationsanteilen, den α- und β-Zielen und den Grenzen-Familien: oben = %1$s; unten = %2$s."
 
 msgid "%1$s (parameter = %2$s)"
-msgstr ""
+msgstr "%1$s (Parameter = %2$s)"
 
 msgid "Lower Bound"
-msgstr ""
+msgstr "Untere Grenze"
 
 msgid "Upper Bound"
-msgstr ""
+msgstr "Obere Grenze"
 
 msgid "Information Fraction"
-msgstr ""
+msgstr "Informationsanteil"
 
 msgid "Upper-tail p"
-msgstr ""
+msgstr "P-Wert im oberen Schwanz"
 
 msgid "Lower-tail p"
-msgstr ""
+msgstr "P-Wert im unteren Schwanz"
 
 msgid ""
 "Nominal p values are one-sided tail areas for crossing the displayed Z-"
 "boundary."
-msgstr ""
+msgstr "Nominale p-Werte sind einseitige Schwanzflächen für das Überschreiten der angezeigten Z-Grenze."
 
 msgid "For asymmetric designs, the lower bound is a futility boundary."
-msgstr ""
+msgstr "Bei asymmetrischen Designs ist die untere Grenze eine Nutzlosigkeit-Grenze."
 
 msgid ""
 "For asymmetric designs, O'Brien-Fleming and Pocock selections are "
 "implemented as Lan-DeMets spending functions."
-msgstr ""
+msgstr "Bei asymmetrischen Designs werden O'Brien-Fleming- und Pocock-Auswahlen als Lan-DeMets-Ausgabefunktionen implementiert."
 
 msgid "Look Schedule"
-msgstr ""
+msgstr "Einblick-Plan"
 
 msgid "Information"
-msgstr ""
+msgstr "Information"
 
 msgid "Unable to compute look schedule: %1$s"
-msgstr ""
+msgstr "Kann Einblick-Plan nicht berechnen: %1$s"
 
 msgid "Expected Analysis Time"
-msgstr ""
+msgstr "Erwartete Analysezeit"
 
 msgid "Expected Enrolled Subjects"
-msgstr ""
+msgstr "Erwartete eingeschriebene Probanden"
 
 msgid "Expected Accrued Events"
-msgstr ""
+msgstr "Erwartete akkumulierte Ereignisse"
 
 msgid ""
 "Expected enrolled subjects and expected accrued events are accrual-model "
 "quantities at each analysis time. The events column is the planned event "
 "information used for boundary construction."
-msgstr ""
+msgstr "Erwartete eingeschriebene Probanden und erwartete akkumulierte Ereignisse sind Größen des Rekrutierungsmodells zu jedem Analysezeitpunkt. Die Ereignisspalte ist die geplante Ereignisinformation, die für die Grenzenkonstruktion verwendet wird."
 
 msgid "Efficacy Bound"
-msgstr ""
+msgstr "Wirksamkeitsgrenze"
 
 msgid "Upper Efficacy Bound"
-msgstr ""
+msgstr "Obere Wirksamkeitsgrenze"
 
 msgid "Lower Efficacy Bound"
-msgstr ""
+msgstr "Untere Wirksamkeitsgrenze"
 
 msgid "Futility Bound"
-msgstr ""
+msgstr "Nutzlosigkeit-Grenze"
 
 msgid "Final Boundary Crossing Probabilities"
-msgstr ""
+msgstr "Finale Grenzen-Überschreitungswahrscheinlichkeiten"
 
 msgid "Assumption"
-msgstr ""
+msgstr "Annahme"
 
 msgid "Cross Efficacy Bound"
-msgstr ""
+msgstr "Wirksamkeitsgrenze überschreiten"
 
 msgid "No Boundary Crossing"
-msgstr ""
+msgstr "Keine Grenzen-Überschreitung"
 
 msgid "Unable to compute final boundary crossing probabilities: %1$s"
-msgstr ""
+msgstr "Kann finale Grenzen-Überschreitungswahrscheinlichkeiten nicht berechnen: %1$s"
 
 msgid "Probabilities are cumulative through the final planned look."
-msgstr ""
+msgstr "Die Wahrscheinlichkeiten sind kumulativ bis zum finalen geplanten Einblick."
 
 msgid "Cumulative Boundary Crossing Probabilities by Look"
-msgstr ""
+msgstr "Kumulative Grenzen-Überschreitungswahrscheinlichkeiten nach Einblick"
 
 msgid "No Boundary Crossing Yet"
-msgstr ""
+msgstr "Noch keine Grenzen-Überschreitung"
 
 msgid "Unable to compute cumulative boundary crossing probabilities: %1$s"
-msgstr ""
+msgstr "Kann kumulative Grenzen-Überschreitungswahrscheinlichkeiten nicht berechnen: %1$s"
 
 msgid ""
 "Cumulative probabilities show the chance that a boundary has been crossed by "
 "each look."
-msgstr ""
+msgstr "Kumulative Wahrscheinlichkeiten zeigen die Chance, dass eine Grenze bis zu jedem Einblick überschritten wurde."
 
 msgid "New Boundary Crossings by Look"
-msgstr ""
+msgstr "Neue Grenzen-Überschreitungen nach Einblick"
 
 msgid "Unable to compute new boundary crossings: %1$s"
-msgstr ""
+msgstr "Kann neue Grenzen-Überschreitungen nicht berechnen: %1$s"
 
 msgid ""
 "New crossing probabilities isolate boundary crossings that first occur at "
 "the given look."
-msgstr ""
+msgstr "Neue Überschreitungswahrscheinlichkeiten isolieren Grenzen-Überschreitungen, die zuerst bei dem gegebenen Einblick auftreten."
 
 msgid "Non-Binding Type I Error Accounting"
-msgstr ""
+msgstr "Buchführung des nicht bindenden Typ-I-Fehlers"
 
 msgid "Stagewise Efficacy Crossing"
-msgstr ""
+msgstr "Stufenweise Wirksamkeits-Überschreitung"
 
 msgid "Cumulative Efficacy Crossing"
-msgstr ""
+msgstr "Kumulative Wirksamkeits-Überschreitung"
 
 msgid "Unable to compute non-binding Type I error accounting: %1$s"
-msgstr ""
+msgstr "Kann die Buchführung des nicht bindenden Typ-I-Fehlers nicht berechnen: %1$s"
 
 msgid ""
 "These probabilities evaluate Type I error for the efficacy rule when "
 "crossing the futility bound would not force stopping."
-msgstr ""
+msgstr "Diese Wahrscheinlichkeiten bewerten den Typ-I-Fehler für die Wirksamkeitsregel, wenn das Überschreiten der Nutzlosigkeit-Grenze keinen Stopp erzwingen würde."
 
 msgid "Cross Lower Efficacy Bound"
-msgstr ""
+msgstr "Untere Wirksamkeitsgrenze überschreiten"
 
 msgid "Cross Futility Bound"
-msgstr ""
+msgstr "Nutzlosigkeit-Grenze überschreiten"
 
 msgid "Other"
-msgstr ""
+msgstr "Andere"
 
 msgid "Explanation"
-msgstr ""
+msgstr "Erläuterung"
 
 msgid ""
 "The requested classical group sequential design could not be completed with "
 "the current settings."
-msgstr ""
+msgstr "Das angeforderte klassische gruppensequentielle Design konnte mit den aktuellen Einstellungen nicht abgeschlossen werden."
 
 msgid ""
 "This classical group sequential design uses %1$s with %2$s planned looks."
-msgstr ""
+msgstr "Dieses klassische gruppensequentielle Design verwendet %1$s mit %2$s geplanten Einblicken."
 
 msgid ""
 "The maximum %1$s is %2$s, compared with %3$s for the corresponding fixed "
 "design."
-msgstr ""
+msgstr "Das Maximum %1$s beträgt %2$s, verglichen mit %3$s für das entsprechende feste Design."
 
 msgid ""
 "R code could not be generated because the classical group sequential design "
 "could not be computed."
-msgstr ""
+msgstr "Der R-Code konnte nicht erstellt werden, weil das klassische gruppensequentielle Design nicht berechnet werden konnte."
 
 msgid "Unable to compute stopping boundaries plot: %1$s"
-msgstr ""
+msgstr "Kann Diagramm der Stopp-Grenzen nicht berechnen: %1$s"
 
 msgid "Information fraction"
-msgstr ""
+msgstr "Informationsanteil"
 
 msgid "Boundary Crossing Probabilities"
-msgstr ""
+msgstr "Grenzen-Überschreitungswahrscheinlichkeiten"
 
 msgid "Unable to compute crossing probabilities plot: %1$s"
-msgstr ""
+msgstr "Kann Diagramm der Überschreitungswahrscheinlichkeiten nicht berechnen: %1$s"
 
 msgid "Under"
-msgstr ""
+msgstr "Unter"
 
 msgid "Upper (non-binding)"
-msgstr ""
+msgstr "Oben (nicht bindend)"
 
 msgid "Effect size can't be 0."
 msgstr "Die Effektstärke darf nicht 0 sein."
@@ -1899,32 +1899,32 @@ msgstr ""
 "als 1 sein."
 
 msgid "BF₁₀ ≥ %1$s"
-msgstr ""
+msgstr "BF₁₀ ≥ %1$s"
 
 msgid "BF₀₁ ≥ %1$s"
-msgstr ""
+msgstr "BF₀₁ ≥ %1$s"
 
 msgid "Invalid target '%1$s'."
-msgstr ""
+msgstr "Ungültiges Ziel '%1$s'."
 
 msgid "Point proportion"
-msgstr ""
+msgstr "Punktanteil"
 
 msgid "a = %1$s, b = %2$s, lower = %3$s, upper = %4$s"
-msgstr ""
+msgstr "a = %1$s, b = %2$s, unten = %3$s, oben = %4$s"
 
 msgid "Bayes Factor Evidence"
-msgstr ""
+msgstr "Bayesfaktor-Evidenz"
 
 msgid "Null"
-msgstr ""
+msgstr "Null"
 
 #, fuzzy
 msgid "Alternative"
 msgstr "Alternativhypothese"
 
 msgid "Explanation:"
-msgstr ""
+msgstr "Erläuterung:"
 
 #, fuzzy
 msgid "Two-sided"
@@ -1935,7 +1935,7 @@ msgid "Less (One-sided)"
 msgstr "einseitig"
 
 msgid "Greater (One-sided)"
-msgstr ""
+msgstr "Größer (einseitig)"
 
 msgid "Power must be less than 1."
 msgstr "Die Teststärke muss kleiner als 1 sein."
