@@ -14,21 +14,21 @@ msgstr ""
 "X-Generator: Weblate 5.6-dev\n"
 
 msgid "Bayes Factor Design"
-msgstr ""
+msgstr "Bayes Factor-ontwerp"
 
 msgid "Bayes Factor Decision Probabilities"
-msgstr ""
+msgstr "Beslissingskansen Bayes-factor"
 
 msgid "Design Specification"
-msgstr ""
+msgstr "Ontwerpspecificatie"
 
 msgid ""
 "Target conclusive evidence probability is not reached within the selected "
 "sample-size range."
-msgstr ""
+msgstr "De doelkans op overtuigend bewijs wordt niet bereikt binnen het geselecteerde bereik van steekproefomvangen."
 
 msgid "Unable to compute Bayes factor design: %1$s"
-msgstr ""
+msgstr "Kan het Bayes-factorontwerp niet berekenen: %1$s"
 
 #, fuzzy
 msgid ""
@@ -41,89 +41,89 @@ msgstr ""
 msgid ""
 "For independent samples, N₁ is the sample size in group 1 and N₂ is rounded "
 "up from the requested N₂/N₁ sample-size ratio."
-msgstr ""
+msgstr "Voor onafhankelijke steekproeven is N₁ de steekproefomvang in groep 1 en wordt N₂ naar boven afgerond op basis van de gevraagde steekproefomvangverhouding N₂/N₁."
 
 msgid "Computed"
-msgstr ""
+msgstr "Berekend"
 
 msgid "User Defined"
 msgstr "Gedefinieerd door de gebruiker"
 
 msgid "Design Prior"
-msgstr ""
+msgstr "Ontwerpprior"
 
 msgid "Decision Rule"
-msgstr ""
+msgstr "Beslisregel"
 
 msgid "Target Probability"
-msgstr ""
+msgstr "Doelkans"
 
 msgid "Achieved Probability"
-msgstr ""
+msgstr "Gerealiseerde kans"
 
 msgid "Bayes Factor Decision"
-msgstr ""
+msgstr "Beslissing Bayes-factor"
 
 msgid "Evidence for H₀"
-msgstr ""
+msgstr "Bewijs voor H₀"
 
 msgid "Evidence for H₁"
-msgstr ""
+msgstr "Bewijs voor H₁"
 
 msgid "Unable to compute Bayes factor decision probabilities: %1$s"
-msgstr ""
+msgstr "Kan de beslissingskansen van de Bayes-factor niet berekenen: %1$s"
 
 msgid ""
 "To satisfy both design priors in a single fixed design, use N₁ = %1$s and N₂ "
 "= %2$s (total N = %3$s)."
-msgstr ""
+msgstr "Om in één enkel vast ontwerp aan beide ontwerppriors te voldoen, gebruik N₁ = %1$s en N₂ = %2$s (totaal N = %3$s)."
 
 msgid "To satisfy both design priors in a single fixed design, use N = %1$s."
-msgstr ""
+msgstr "Om in één enkel vast ontwerp aan beide ontwerppriors te voldoen, gebruik N = %1$s."
 
 msgid ""
 "Probabilities are evaluated at the fixed-design sample size required for the "
 "corresponding design prior under H₁ or H₀."
-msgstr ""
+msgstr "De kansen worden geëvalueerd bij de steekproefomvang van het vaste ontwerp die nodig is voor de overeenkomstige ontwerpprior onder H₁ of H₀."
 
 msgid ""
 "Probabilities are evaluated at the fixed-design sample size required for "
 "each design prior: under H₁, N₁ = %1$s and N₂ = %2$s; under H₀, N₁ = %3$s "
 "and N₂ = %4$s."
-msgstr ""
+msgstr "De kansen worden geëvalueerd bij de steekproefomvang van het vaste ontwerp die voor elke ontwerpprior nodig is: onder H₁, N₁ = %1$s en N₂ = %2$s; onder H₀, N₁ = %3$s en N₂ = %4$s."
 
 msgid ""
 "Probabilities are evaluated at the fixed-design sample size required for "
 "each design prior: under H₁, N = %1$s; under H₀, N = %2$s."
-msgstr ""
+msgstr "De kansen worden geëvalueerd bij de steekproefomvang van het vaste ontwerp die voor elke ontwerpprior nodig is: onder H₁, N = %1$s; onder H₀, N = %2$s."
 
 msgid ""
 "Probabilities are evaluated at the selected fixed-design sample size. Rows "
 "use the corresponding design prior under H₁ or H₀."
-msgstr ""
+msgstr "De kansen worden geëvalueerd bij de geselecteerde steekproefomvang van het vaste ontwerp. De rijen gebruiken de overeenkomstige ontwerpprior onder H₁ of H₀."
 
 msgid ""
 "Probabilities are evaluated at the selected fixed-design sample sizes. Rows "
 "use the corresponding design prior under H₁ or H₀."
-msgstr ""
+msgstr "De kansen worden geëvalueerd bij de geselecteerde steekproefomvangen van het vaste ontwerp. De rijen gebruiken de overeenkomstige ontwerpprior onder H₁ of H₀."
 
 msgid ""
 "Probabilities are evaluated at the selected fixed-design sample sizes: N₁ = "
 "%1$s and N₂ = %2$s (total N = %3$s). Rows use the corresponding design prior "
 "under H₁ or H₀."
-msgstr ""
+msgstr "De kansen worden geëvalueerd bij de geselecteerde steekproefomvangen van het vaste ontwerp: N₁ = %1$s en N₂ = %2$s (totaal N = %3$s). De rijen gebruiken de overeenkomstige ontwerpprior onder H₁ of H₀."
 
 msgid ""
 "Probabilities are evaluated at the selected fixed-design sample size: N = "
 "%1$s. Rows use the corresponding design prior under H₁ or H₀."
-msgstr ""
+msgstr "De kansen worden geëvalueerd bij de geselecteerde steekproefomvang van het vaste ontwerp: N = %1$s. De rijen gebruiken de overeenkomstige ontwerpprior onder H₁ of H₀."
 
 #, fuzzy
 msgid "Sample size is not available."
 msgstr "steekproefgroottes van ten minste %s"
 
 msgid "%1$s: %2$s"
-msgstr ""
+msgstr "%1$s: %2$s"
 
 #, fuzzy
 msgid "Error:"
@@ -132,76 +132,76 @@ msgstr "Foutmelding:"
 msgid ""
 "This table reports the smallest fixed-design sample size that reaches the "
 "target probability of conclusive evidence for each design prior."
-msgstr ""
+msgstr "Deze tabel rapporteert de kleinste steekproefomvang van het vaste ontwerp die de doelkans op overtuigend bewijs bereikt voor elke ontwerpprior."
 
 msgid ""
 "This table evaluates the selected fixed sample size. Achieved probabilities "
 "are the chances that the planned study produces conclusive evidence in the "
 "requested direction when data are generated from the corresponding design "
 "prior."
-msgstr ""
+msgstr "Deze tabel evalueert de geselecteerde vaste steekproefomvang. De gerealiseerde kansen zijn de kansen dat het geplande onderzoek in de gevraagde richting overtuigend bewijs oplevert wanneer de gegevens uit de overeenkomstige ontwerpprior worden gegenereerd."
 
 msgid ""
 "Rows condition on the design prior used to generate hypothetical data. "
 "Diagonal cells are conclusive evidence for the true hypothesis, off-diagonal "
 "cells are misleading evidence, and the middle column is the chance of "
 "remaining inconclusive."
-msgstr ""
+msgstr "De rijen zijn geconditioneerd op de ontwerpprior die wordt gebruikt om hypothetische gegevens te genereren. Diagonaalcellen zijn overtuigend bewijs voor de ware hypothese, off-diagonaalcellen zijn misleidend bewijs en de middelste kolom is de kans om onbeslist te blijven."
 
 msgid ""
 "The analysis prior is used to compute the Bayes factor from the data. The "
 "design prior describes the effect sizes assumed during planning; it can "
 "differ from the analysis prior."
-msgstr ""
+msgstr "De analyseprior wordt gebruikt om de Bayes-factor uit de gegevens te berekenen. De ontwerpprior beschrijft de effectgroottes waarvan tijdens de planning wordt uitgegaan; deze kan verschillen van de analyseprior."
 
 msgid ""
 "Summary statistics are the data summaries used to compute the observed Bayes "
 "factor."
-msgstr ""
+msgstr "De samenvattende statistieken zijn de gegevenssamenvattingen die worden gebruikt om de waargenomen Bayes-factor te berekenen."
 
 msgid ""
 "The observed-data analysis applies the planned sequential decision rule to "
 "the current data. It is an interim or final decision for the observed study, "
 "not an operating characteristic of the design."
-msgstr ""
+msgstr "De analyse van de waargenomen gegevens past de geplande sequentiële beslisregel toe op de huidige gegevens. Het is een tussentijdse of definitieve beslissing voor het waargenomen onderzoek, geen operationele karakteristiek van het ontwerp."
 
 msgid ""
 "The observed-data analysis applies the planned fixed-design Bayes factor "
 "rule to the current data. It is the decision for this observed study, not an "
 "operating characteristic of the design."
-msgstr ""
+msgstr "De analyse van de waargenomen gegevens past de geplande beslisregel voor de Bayes-factor van het vaste ontwerp toe op de huidige gegevens. Het is de beslissing voor dit waargenomen onderzoek, geen operationele karakteristiek van het ontwerp."
 
 msgid "Observed Data Analysis"
-msgstr ""
+msgstr "Analyse van waargenomen gegevens"
 
 msgid "Analysis Result"
-msgstr ""
+msgstr "Analyseresultaat"
 
 #, fuzzy
 msgid "Summary Statistics"
 msgstr "Karakteristieken"
 
 msgid "Unable to summarize observed data: %1$s"
-msgstr ""
+msgstr "Kan de waargenomen gegevens niet samenvatten: %1$s"
 
 msgid "Unable to compute observed Bayes factor: %1$s"
-msgstr ""
+msgstr "Kan de waargenomen Bayes-factor niet berekenen: %1$s"
 
 msgid ""
 "For t-tests, the estimate is the standardized mean difference on the "
 "analysis scale."
-msgstr ""
+msgstr "Voor t-toetsen is de schatting de gestandaardiseerde gemiddelde verschil op de analyseschaal."
 
 msgid ""
 "Sequential decisions use the configured BF thresholds for the current "
 "observed data."
-msgstr ""
+msgstr "Sequentiële beslissingen gebruiken de geconfigureerde BF-drempels voor de huidige waargenomen gegevens."
 
 msgid "Statistical Test"
-msgstr ""
+msgstr "Statistische toets"
 
 msgid "Decision"
-msgstr ""
+msgstr "Beslissing"
 
 #, fuzzy
 msgid "Independent Samples T-Test"
@@ -232,162 +232,162 @@ msgid "One Sample Proportion Test"
 msgstr "een proportietoets met een enkele steekproef"
 
 msgid "General (z-approximation)"
-msgstr ""
+msgstr "Algemeen (z-benadering)"
 
 msgid "Group"
-msgstr ""
+msgstr "Groep"
 
 msgid "Mean"
-msgstr ""
+msgstr "Gemiddelde"
 
 msgid "SD"
-msgstr ""
+msgstr "SD"
 
 msgid "Variable"
-msgstr ""
+msgstr "Variabele"
 
 msgid "Successes"
-msgstr ""
+msgstr "Successen"
 
 msgid "Trials"
-msgstr ""
+msgstr "Proeven"
 
 msgid "Proportion"
-msgstr ""
+msgstr "Proportie"
 
 msgid "Mean Difference"
-msgstr ""
+msgstr "Gemiddelde verschil"
 
 msgid "SD Difference"
-msgstr ""
+msgstr "SD-verschil"
 
 msgid "SE"
-msgstr ""
+msgstr "SE"
 
 msgid "Group 1"
-msgstr ""
+msgstr "Groep 1"
 
 msgid "Group 2"
-msgstr ""
+msgstr "Groep 2"
 
 msgid "Missing option '%1$s'."
-msgstr ""
+msgstr "Ontbrekende optie '%1$s'."
 
 msgid "Option '%1$s' must contain one finite numeric value."
-msgstr ""
+msgstr "Optie '%1$s' moet één eindig numerieke waarde bevatten."
 
 #, fuzzy
 msgid "Summary statistics"
 msgstr "Karakteristieken"
 
 msgid "Estimate"
-msgstr ""
+msgstr "Schatting"
 
 msgid "Mean 1"
-msgstr ""
+msgstr "Gemiddelde 1"
 
 msgid "Mean 2"
-msgstr ""
+msgstr "Gemiddelde 2"
 
 msgid "SD 1"
-msgstr ""
+msgstr "SD 1"
 
 msgid "SD 2"
-msgstr ""
+msgstr "SD 2"
 
 msgid "Mean difference"
-msgstr ""
+msgstr "Gemiddelde verschil"
 
 msgid "SD difference"
-msgstr ""
+msgstr "SD-verschil"
 
 #, fuzzy
 msgid "Cohen's d"
 msgstr "Cohen's"
 
 msgid "Failures"
-msgstr ""
+msgstr "Falen"
 
 msgid "The total number of successes and failures must be at least 1."
-msgstr ""
+msgstr "Het totale aantal successen en falen moet minstens 1 zijn."
 
 msgid "No dataset is available for column input."
-msgstr ""
+msgstr "Er is geen dataset beschikbaar voor kolominvoer."
 
 msgid "Column data"
-msgstr ""
+msgstr "Kolomgegevens"
 
 msgid "The selected variable contains no observed values."
-msgstr ""
+msgstr "De geselecteerde variabele bevat geen waargenomen waarden."
 
 msgid "Dependent variable"
-msgstr ""
+msgstr "Afhankelijke variabele"
 
 msgid "Grouping variable"
-msgstr ""
+msgstr "Groeperingsvariabele"
 
 msgid "The grouping variable must contain exactly two observed groups."
-msgstr ""
+msgstr "De groeperingsvariabele moet exact twee waargenomen groepen bevatten."
 
 msgid "%1$s by %2$s"
-msgstr ""
+msgstr "%1$s per %2$s"
 
 msgid "First variable"
-msgstr ""
+msgstr "Eerste variabele"
 
 msgid "Second variable"
-msgstr ""
+msgstr "Tweede variabele"
 
 msgid "%1$s - %2$s"
-msgstr ""
+msgstr "%1$s - %2$s"
 
 msgid "Variable pair must contain two different variables."
-msgstr ""
+msgstr "Het variabelepaar moet twee verschillende variabelen bevatten."
 
 msgid "Variable pair must be selected."
-msgstr ""
+msgstr "Er moet een variabelepaar worden geselecteerd."
 
 msgid "Pooled SD"
-msgstr ""
+msgstr "Gepoolde SD"
 
 msgid "Observed Bayes factor is not finite."
-msgstr ""
+msgstr "De waargenomen Bayes-factor is niet eindig."
 
 msgid "Stop for H₁"
-msgstr ""
+msgstr "Stop voor H₁"
 
 msgid "BF supports H₁"
-msgstr ""
+msgstr "BF ondersteunt H₁"
 
 msgid "Stop for H₀"
-msgstr ""
+msgstr "Stop voor H₀"
 
 msgid "BF supports H₀"
-msgstr ""
+msgstr "BF ondersteunt H₀"
 
 msgid "Continue"
-msgstr ""
+msgstr "Ga door"
 
 msgid "Inconclusive"
-msgstr ""
+msgstr "Onbeslist"
 
 msgid "%1$s must be selected."
-msgstr ""
+msgstr "%1$s moet worden geselecteerd."
 
 msgid "%1$s was not found in the dataset."
-msgstr ""
+msgstr "%1$s is niet gevonden in de dataset."
 
 msgid "%1$s contains no observed values."
-msgstr ""
+msgstr "%1$s bevat geen waargenomen waarden."
 
 msgid "%1$s must be numeric."
-msgstr ""
+msgstr "%1$s moet numeriek zijn."
 
 msgid "%1$s contains infinite values."
-msgstr ""
+msgstr "%1$s bevat oneindige waarden."
 
 msgid "%1$s must be a finite number."
-msgstr ""
+msgstr "%1$s moet een eindig getal zijn."
 
 #, fuzzy
 msgid "%1$s must be an integer of at least %2$s."
@@ -398,41 +398,41 @@ msgid "%1$s must be at least %2$s."
 msgstr "steekproefgroottes van ten minste %1$s"
 
 msgid "%1$s must be positive."
-msgstr ""
+msgstr "%1$s moet positief zijn."
 
 msgid "N₁ = %1$s and N₂ = %2$s"
-msgstr ""
+msgstr "N₁ = %1$s en N₂ = %2$s"
 
 msgid "N = %1$s"
-msgstr ""
+msgstr "N = %1$s"
 
 msgid "Report"
-msgstr ""
+msgstr "Rapport"
 
 msgid ""
 "The report could not be generated because the Bayes factor design could not "
 "be completed with the current settings."
-msgstr ""
+msgstr "Het rapport kon niet worden gegenereerd omdat het Bayes-factorontwerp met de huidige instellingen niet kon worden voltooid."
 
 msgid ""
 "The report could not be generated because the Bayes factor design could not "
 "be completed for all design priors."
-msgstr ""
+msgstr "Het rapport kon niet worden gegenereerd omdat het Bayes-factorontwerp niet voor alle ontwerppriors kon worden voltooid."
 
 msgid "fixed-sample"
-msgstr ""
+msgstr "vaststeekproef"
 
 msgid "Unable to generate report: %1$s"
-msgstr ""
+msgstr "Kan het rapport niet genereren: %1$s"
 
 msgid "A %1$s Bayes factor design %2$s a %3$s %4$s %5$s."
-msgstr ""
+msgstr "Een %1$s Bayes-factorontwerp %2$s een %3$s %4$s %5$s."
 
 msgid "specified"
-msgstr ""
+msgstr "gespecificeerd"
 
 msgid "evaluated"
-msgstr ""
+msgstr "geëvalueerd"
 
 msgid "one-sided"
 msgstr "eenzijdig"
@@ -441,107 +441,107 @@ msgid "two-sided"
 msgstr "tweezijdig"
 
 msgid "(H₁: %1$s %2$s %3$s)"
-msgstr ""
+msgstr "(H₁: %1$s %2$s %3$s)"
 
 msgid "The analysis prior for H₀ %1$s, and the analysis prior for H₁ %2$s."
-msgstr ""
+msgstr "De analyseprior voor H₀ %1$s, en de analyseprior voor H₁ %2$s."
 
 msgid "The design prior for H₀ %1$s, and the design prior for H₁ %2$s."
-msgstr ""
+msgstr "De ontwerpprior voor H₀ %1$s, en de ontwerpprior voor H₁ %2$s."
 
 msgid "used %1$s, truncated to %2$s"
-msgstr ""
+msgstr "gebruikte %1$s, getrunceerd tot %2$s"
 
 msgid "%1$s ~ Cauchy(location = %2$s, scale = %3$s)"
-msgstr ""
+msgstr "%1$s ~ Cauchy(ligging = %2$s, schaal = %3$s)"
 
 msgid "%1$s ~ Student-t(location = %2$s, scale = %3$s, df = %4$s)"
-msgstr ""
+msgstr "%1$s ~ Student-t(ligging = %2$s, schaal = %3$s, df = %4$s)"
 
 msgid "%1$s ~ Normal-moment(spread = %2$s, modes = ±%3$s)"
-msgstr ""
+msgstr "%1$s ~ Normaal-moment(spreiding = %2$s, modes = ±%3$s)"
 
 msgid "used %1$s"
-msgstr ""
+msgstr "gebruikte %1$s"
 
 msgid "%1$s ~ Normal(mean = %2$s, SD = %3$s)"
-msgstr ""
+msgstr "%1$s ~ Normaal(gemiddelde = %2$s, SD = %3$s)"
 
 msgid "used %1$s ~ Normal(mean = %2$s, SD = %3$s)"
-msgstr ""
+msgstr "gebruikte %1$s ~ Normaal(gemiddelde = %2$s, SD = %3$s)"
 
 msgid "used %1$s, truncated to %2$s ≤ p ≤ %3$s"
-msgstr ""
+msgstr "gebruikte %1$s, getrunceerd tot %2$s ≤ p ≤ %3$s"
 
 msgid "placed all mass at %1$s = %2$s"
-msgstr ""
+msgstr "legde alle massa op %1$s = %2$s"
 
 msgid "%1$s ~ Beta(a = %2$s, b = %3$s)"
-msgstr ""
+msgstr "%1$s ~ Beta(a = %2$s, b = %3$s)"
 
 msgid "%1$s > %2$s"
-msgstr ""
+msgstr "%1$s > %2$s"
 
 msgid "%1$s ≤ %2$s"
-msgstr ""
+msgstr "%1$s ≤ %2$s"
 
 msgid "%1$s < %2$s"
-msgstr ""
+msgstr "%1$s < %2$s"
 
 msgid "%1$s ≥ %2$s"
-msgstr ""
+msgstr "%1$s ≥ %2$s"
 
 msgid ""
 "The design used evidence thresholds of BF₁₀ ≥ %1$s for H₁ and BF₀₁ ≥ %2$s "
 "for H₀ (equivalently, BF₁₀ ≤ %3$s)."
-msgstr ""
+msgstr "Het ontwerp gebruikte bewijsdrempels van BF₁₀ ≥ %1$s voor H₁ en BF₀₁ ≥ %2$s voor H₀ (gelijkwaardig, BF₁₀ ≤ %3$s)."
 
 msgid "The design evaluated %1$s."
-msgstr ""
+msgstr "Het ontwerp evalueerde %1$s."
 
 msgid ""
 "The design selected %1$s to target conclusive evidence probabilities of %2$s "
 "under H₁ and %3$s under H₀."
-msgstr ""
+msgstr "Het ontwerp selecteerde %1$s om doelkansen op overtuigend bewijs van %2$s onder H₁ en %3$s onder H₀ te bereiken."
 
 msgid ""
 "The design selected %1$s for the H₁ planning target and %2$s for the H₀ "
 "planning target, with target conclusive evidence probabilities of %3$s and "
 "%4$s, respectively."
-msgstr ""
+msgstr "Het ontwerp selecteerde %1$s voor het planningsdoel onder H₁ en %2$s voor het planningsdoel onder H₀, met doelkansen op overtuigend bewijs van respectievelijk %3$s en %4$s."
 
 msgid ""
 "The achieved probability of conclusive evidence was %1$s under H₁ and %2$s "
 "under H₀; the probability of misleading evidence was %3$s under H₁ and %4$s "
 "under H₀."
-msgstr ""
+msgstr "De gerealiseerde kans op overtuigend bewijs was %1$s onder H₁ en %2$s onder H₀; de kans op misleidend bewijs was %3$s onder H₁ en %4$s onder H₀."
 
 msgid ""
 "The design analysis used JASP with the jaspPower module version %1$s and the "
 "bfpwr R package version %2$s."
-msgstr ""
+msgstr "De ontwerpanalyse gebruikte JASP met de jaspPower-moduleversie %1$s en de bfpwr R-pakketversie %2$s."
 
 msgid "unknown"
-msgstr ""
+msgstr "onbekend"
 
 msgid "not available"
-msgstr ""
+msgstr "niet beschikbaar"
 
 msgid "1/%1$s"
-msgstr ""
+msgstr "1/%1$s"
 
 msgid "R Code"
-msgstr ""
+msgstr "R-code"
 
 msgid "Unable to generate R code: %1$s"
-msgstr ""
+msgstr "Kan de R-code niet genereren: %1$s"
 
 msgid "Decision Probabilities by Sample Size"
-msgstr ""
+msgstr "Beslissingskansen per steekproefomvang"
 
 msgid ""
 "Unable to compute conclusive evidence and misleading evidence curves: %1$s"
-msgstr ""
+msgstr "Kan de curven voor overtuigend en misleidend bewijs niet berekenen: %1$s"
 
 msgid "Sample size (group 1)"
 msgstr "Steekproefgrootte (groep 1)"
@@ -555,10 +555,10 @@ msgid "Probability"
 msgstr "Kansdichtheid"
 
 msgid "Outcome"
-msgstr ""
+msgstr "Uitkomst"
 
 msgid "Decision Probabilities by Proportion"
-msgstr ""
+msgstr "Beslissingskansen per proportie"
 
 #, fuzzy
 msgid "Decision Probabilities by Effect Size"
@@ -568,25 +568,25 @@ msgid ""
 "This plot shows how the probabilities of conclusive and misleading evidence "
 "change with sample size while priors and thresholds are held fixed. Use it "
 "to see how quickly the planned design becomes informative."
-msgstr ""
+msgstr "Deze grafiek toont hoe de kansen op overtuigend en misleidend bewijs veranderen met de steekproefomvang terwijl de priors en drempels vast worden gehouden. Gebruik deze om te zien hoe snel het geplande ontwerp informatief wordt."
 
 msgid ""
 "This plot shows how the probabilities of conclusive and misleading evidence "
 "change across possible design proportions. Use it as a sensitivity check for "
 "the assumed proportion under the design prior."
-msgstr ""
+msgstr "Deze grafiek toont hoe de kansen op overtuigend en misleidend bewijs veranderen over mogelijke ontwerpproporties. Gebruik deze als gevoeligheidscontrole voor de veronderstelde proportie onder de ontwerpprior."
 
 msgid ""
 "This plot shows how the probabilities of conclusive and misleading evidence "
 "change across possible design-prior effect sizes. Use it as a sensitivity "
 "check for the assumed effect size."
-msgstr ""
+msgstr "Deze grafiek toont hoe de kansen op overtuigend en misleidend bewijs veranderen over mogelijke effectgroottes van de ontwerpprior. Gebruik deze als gevoeligheidscontrole voor de veronderstelde effectgrootte."
 
 msgid "Design prior location"
-msgstr ""
+msgstr "Ligging ontwerpprior"
 
 msgid "Design prior mean"
-msgstr ""
+msgstr "Gemiddelde ontwerpprior"
 
 #, fuzzy
 msgid "Design proportion"
@@ -597,41 +597,41 @@ msgid "Prior Distribution"
 msgstr "Power Demonstratie"
 
 msgid "Unable to compute prior distribution plot: %1$s"
-msgstr ""
+msgstr "Kan de priorverdelingsgrafiek niet berekenen: %1$s"
 
 msgid ""
 "Analysis priors determine how the Bayes factor is computed from the data. "
 "Design priors describe the data-generating assumptions used to evaluate the "
 "design, so comparing them helps assess whether the planning assumptions "
 "match the intended analysis."
-msgstr ""
+msgstr "Analysepriors bepalen hoe de Bayes-factor uit de gegevens wordt berekend. Ontwerppriors beschrijven de aannames over de gegevensgeneratie die worden gebruikt om het ontwerp te evalueren, zodat het vergelijken ervan helpt beoordelen of de planningsaannames overeenkomen met de beoogde analyse."
 
 msgid "Design and Analysis Priors"
-msgstr ""
+msgstr "Ontwerp- en analysepriors"
 
 msgid "Analysis Prior"
-msgstr ""
+msgstr "Analyseprior"
 
 msgid "Prior"
-msgstr ""
+msgstr "Prior"
 
 msgid "H₁"
-msgstr ""
+msgstr "H₁"
 
 msgid "H₀"
-msgstr ""
+msgstr "H₀"
 
 msgid "Conclusive"
-msgstr ""
+msgstr "Overtuigend"
 
 msgid "Misleading"
-msgstr ""
+msgstr "Misleidend"
 
 msgid "Parameter value"
-msgstr ""
+msgstr "Parameterwaarde"
 
 msgid "Density"
-msgstr ""
+msgstr "Dichtheid"
 
 #, fuzzy
 msgid "Hypothesis"
@@ -640,38 +640,38 @@ msgstr "Veronderstelde proportie (%s)"
 msgid ""
 "The %1$s parameterization assumes a unit information standard deviation "
 "(UISD) of %2$s."
-msgstr ""
+msgstr "De %1$s-parameterisatie veronderstelt een standaarddeviatie van één eenheid aan informatie (UISD) van %2$s."
 
 msgid "SMD"
-msgstr ""
+msgstr "SMD"
 
 msgid "Fisher's z"
-msgstr ""
+msgstr "Fisher's z"
 
 msgid "logRR"
-msgstr ""
+msgstr "logRR"
 
 msgid "logOR"
-msgstr ""
+msgstr "logOR"
 
 msgid "logHR"
-msgstr ""
+msgstr "logHR"
 
 msgid "logIRR"
-msgstr ""
+msgstr "logIRR"
 
 msgid "specified UISD"
-msgstr ""
+msgstr "gespecificeerde UISD"
 
 msgid "standard error schedule"
-msgstr ""
+msgstr "schema standaardfout"
 
 msgid "effect size"
 msgstr "effectgrootte"
 
 msgid ""
 "The sample-size ratio leads to a second-group sample size smaller than 2."
-msgstr ""
+msgstr "De steekproefomvangverhouding leidt tot een steekproefomvang voor de tweede groep kleiner dan 2."
 
 #, fuzzy
 msgid "independent samples t-test"
@@ -702,168 +702,168 @@ msgid "one sample proportion test"
 msgstr "een proportietoets met een enkele steekproef"
 
 msgid "general z-approximation"
-msgstr ""
+msgstr "algemene z-benadering"
 
 msgid "H₁ (BF₁₀)"
-msgstr ""
+msgstr "H₁ (BF₁₀)"
 
 msgid "H₀ (BF₀₁)"
-msgstr ""
+msgstr "H₀ (BF₀₁)"
 
 msgid "Under H₁"
-msgstr ""
+msgstr "Onder H₁"
 
 msgid "Under H₀"
-msgstr ""
+msgstr "Onder H₀"
 
 msgid "Design Prior Under H₁"
-msgstr ""
+msgstr "Ontwerpprior onder H₁"
 
 msgid "Design Prior Under H₀"
-msgstr ""
+msgstr "Ontwerpprior onder H₀"
 
 #, fuzzy
 msgid "Directional"
 msgstr "Beschrijving"
 
 msgid "Point null"
-msgstr ""
+msgstr "Puntnul"
 
 msgid "θ >= θ₀, θ₀ = %1$s"
-msgstr ""
+msgstr "θ >= θ₀, θ₀ = %1$s"
 
 msgid "θ <= θ₀, θ₀ = %1$s"
-msgstr ""
+msgstr "θ <= θ₀, θ₀ = %1$s"
 
 msgid "θ₀ = %1$s"
-msgstr ""
+msgstr "θ₀ = %1$s"
 
 msgid "p <= p₀, p₀ = %1$s"
-msgstr ""
+msgstr "p <= p₀, p₀ = %1$s"
 
 msgid "p₀ = %1$s"
-msgstr ""
+msgstr "p₀ = %1$s"
 
 msgid "Beta"
-msgstr ""
+msgstr "Beta"
 
 msgid "Cauchy"
-msgstr ""
+msgstr "Cauchy"
 
 msgid "Student-t"
-msgstr ""
+msgstr "Student-t"
 
 msgid "Point"
-msgstr ""
+msgstr "Punt"
 
 msgid "Normal"
-msgstr ""
+msgstr "Normaal"
 
 msgid "Normal-moment"
-msgstr ""
+msgstr "Normaal-moment"
 
 msgid "a = %1$s, b = %2$s"
-msgstr ""
+msgstr "a = %1$s, b = %2$s"
 
 msgid "location = %1$s, scale = %2$s"
-msgstr ""
+msgstr "ligging = %1$s, schaal = %2$s"
 
 msgid "location = %1$s, scale = %2$s, df = %3$s"
-msgstr ""
+msgstr "ligging = %1$s, schaal = %2$s, df = %3$s"
 
 msgid "location = %1$s"
-msgstr ""
+msgstr "ligging = %1$s"
 
 msgid "mean = %1$s, sd = %2$s"
-msgstr ""
+msgstr "gemiddelde = %1$s, sd = %2$s"
 
 msgid "spread = %1$s, modes = +/- %2$s"
-msgstr ""
+msgstr "spreiding = %1$s, modes = +/- %2$s"
 
 msgid "p = %1$s"
-msgstr ""
+msgstr "p = %1$s"
 
 msgid "Analysis Prior Under H₀"
-msgstr ""
+msgstr "Analyseprior onder H₀"
 
 msgid "Analysis Prior Under H₁"
-msgstr ""
+msgstr "Analyseprior onder H₁"
 
 msgid "Bayes Factor Sequential Design"
-msgstr ""
+msgstr "Sequentieel Bayes-factorontwerp"
 
 msgid "Sample Size Operating Characteristics"
-msgstr ""
+msgstr "Operationele kenmerken steekproefomvang"
 
 msgid "Cumulative Decision Probabilities by Look"
-msgstr ""
+msgstr "Cumulatieve beslissingskansen per look"
 
 msgid "New Stop Probabilities by Look"
-msgstr ""
+msgstr "Nieuwe stopkansen per look"
 
 msgid "Stopping Boundaries"
-msgstr ""
+msgstr "Stopgrenzen"
 
 msgid ""
 "Fast adaptive maximum sample-size search is enabled. It is not guaranteed to "
 "find the smallest maximum sample size when discrete interim looks make the "
 "power curve non-monotone. Use \"Sample-size search: Exhaustive\" in the "
 "Advanced section to obtain the smallest maximum sample size."
-msgstr ""
+msgstr "Snelle adaptieve zoektocht naar de maximale steekproefomvang is ingeschakeld. Deze vindt niet gegarandeerd de kleinste maximale steekproefomvang wanneer discrete tussentijdse looks de powercurve niet-monotoon maken. Gebruik \"Steekproefomvang zoeken: Uitputtend\" in het gedeelte Geavanceerd om de kleinste maximale steekproefomvang te verkrijgen."
 
 msgid ""
 "Exact integration over all regions is enabled. It can be slow for designs "
 "with many looks."
-msgstr ""
+msgstr "Exacte integratie over alle regio's is ingeschakeld. Deze kan traag zijn voor ontwerpen met veel looks."
 
 msgid ""
 "Exact integration over all regions is disabled. Use \"Exact integration over "
 "all regions\" in the Advanced section to obtain exact sequential-design "
 "calculations."
-msgstr ""
+msgstr "Exacte integratie over alle regio's is uitgeschakeld. Gebruik \"Exacte integratie over alle regio's\" in het gedeelte Geavanceerd om exacte sequentiële ontwerpberekeningen te verkrijgen."
 
 msgid ""
 "Two-sided sequential sample-size and power calculations can take a long "
 "time. To speed up exploratory calculations set \"Exact integration over all "
 "regions\" to FALSE."
-msgstr ""
+msgstr "Tweezijdige sequentiële steekproefomvang- en powerberekeningen kunnen lang duren. Om verkennende berekeningen te versnellen stelt u \"Exacte integratie over alle regio's\" in op ONWAAR."
 
 msgid "Warning:"
-msgstr ""
+msgstr "Waarschuwing:"
 
 msgid "The standard error schedule must contain at least one look."
-msgstr ""
+msgstr "Het schema van standaardfouten moet ten minste één look bevatten."
 
 msgid "The standard error schedule must be strictly decreasing."
-msgstr ""
+msgstr "Het schema van standaardfouten moet strikt dalend zijn."
 
 #, fuzzy
 msgid "sample size schedule"
 msgstr "steekproefgroottes van %s"
 
 msgid "The custom sample size schedule must contain at least one look."
-msgstr ""
+msgstr "Het aangepaste steekproefomvangschema moet ten minste één look bevatten."
 
 msgid "All sample sizes in the custom schedule must be at least 2."
-msgstr ""
+msgstr "Alle steekproefomvangen in het aangepaste schema moeten ten minste 2 zijn."
 
 msgid "The custom sample size schedule must be strictly increasing."
-msgstr ""
+msgstr "Het aangepaste steekproefomvangschema moet strikt stijgend zijn."
 
 msgid ""
 "The sample size at the first look must be smaller than or equal to the "
 "maximum sample size."
-msgstr ""
+msgstr "De steekproefomvang bij de eerste look moet kleiner dan of gelijk aan de maximale steekproefomvang zijn."
 
 msgid ""
 "More than one look requires a maximum sample size larger than the first-look "
 "sample size."
-msgstr ""
+msgstr "Meer dan één look vereist een maximale steekproefomvang groter dan de steekproefomvang van de eerste look."
 
 msgid ""
 "The number of looks is too large for the selected first-look and maximum "
 "sample sizes."
-msgstr ""
+msgstr "Het aantal looks is te groot voor de geselecteerde steekproefomvang van de eerste look en de maximale steekproefomvang."
 
 #, fuzzy
 msgid "The sample size increase must be at least 1."
@@ -871,158 +871,158 @@ msgstr "steekproefgroottes van ten minste %1$s"
 
 msgid ""
 "The generated sample-size schedule contains sample sizes smaller than 2."
-msgstr ""
+msgstr "Het gegenereerde steekproefomvangschema bevat steekproefomvangen kleiner dan 2."
 
 msgid ""
 "The generated sample-size schedule is not strictly increasing. Increase the "
 "maximum sample size or adjust the sample size increase."
-msgstr ""
+msgstr "Het gegenereerde steekproefomvangschema is niet strikt stijgend. Vergroot de maximale steekproefomvang of pas de steekproefomvangtoename aan."
 
 msgid "group 2 sample size schedule"
-msgstr ""
+msgstr "steekproefomvangschema groep 2"
 
 msgid ""
 "The group 1 and group 2 custom sample size schedules must have the same "
 "number of looks."
-msgstr ""
+msgstr "De aangepaste steekproefomvangschema's van groep 1 en groep 2 moeten hetzelfde aantal looks hebben."
 
 msgid "All group 2 sample sizes in the custom schedule must be at least 2."
-msgstr ""
+msgstr "Alle steekproefomvangen van groep 2 in het aangepaste schema moeten ten minste 2 zijn."
 
 msgid "The custom group 2 sample size schedule must be strictly increasing."
-msgstr ""
+msgstr "Het aangepaste steekproefomvangschema van groep 2 moet strikt stijgend zijn."
 
 msgid "The %1$s must contain only finite numeric values."
-msgstr ""
+msgstr "De %1$s mag alleen eindige numerieke waarden bevatten."
 
 msgid "The %1$s must contain only positive values."
-msgstr ""
+msgstr "De %1$s mag alleen positieve waarden bevatten."
 
 msgid "Searching maximum sample size"
-msgstr ""
+msgstr "Maximale steekproefomvang zoeken"
 
 msgid ""
 "The bfpwr sample-size search did not return a finite maximum sample size."
-msgstr ""
+msgstr "De bfpwr-zoektocht naar de steekproefomvang leverde geen eindige maximale steekproefomvang op."
 
 msgid "The bfpwr sample-size search did not return a sequential design."
-msgstr ""
+msgstr "De bfpwr-zoektocht naar de steekproefomvang leverde geen sequentieel ontwerp op."
 
 msgid ""
 "The bfpwr sample-size search result did not contain a sample-size schedule."
-msgstr ""
+msgstr "Het resultaat van de bfpwr-zoektocht naar de steekproefomvang bevatte geen steekproefomvangschema."
 
 msgid ""
 "Stagewise evidence tables and figures are evaluated through the largest "
 "computed maximum sample size."
-msgstr ""
+msgstr "Tussentijdse bewijstabellen en -figuren worden geëvalueerd tot en met de grootste berekende maximale steekproefomvang."
 
 msgid ""
 "The generated sample-size schedule is not strictly increasing. Increase the "
 "maximum sample size or adjust the information fractions."
-msgstr ""
+msgstr "Het gegenereerde steekproefomvangschema is niet strikt stijgend. Vergroot de maximale steekproefomvang of pas de informatiefracties aan."
 
 msgid "information fraction schedule"
-msgstr ""
+msgstr "schema informatiefracties"
 
 msgid "The information fraction schedule must contain at least one look."
-msgstr ""
+msgstr "Het schema van informatiefracties moet ten minste één look bevatten."
 
 msgid "Information fractions must be less than or equal to 1."
-msgstr ""
+msgstr "Informatiefracties moeten kleiner dan of gelijk aan 1 zijn."
 
 msgid "The information fraction schedule must be strictly increasing."
-msgstr ""
+msgstr "Het schema van informatiefracties moet strikt stijgend zijn."
 
 msgid "The information fraction schedule must end at 1."
-msgstr ""
+msgstr "Het schema van informatiefracties moet eindigen op 1."
 
 msgid ""
 "The standard error schedule must have the same number of entries as the look "
 "schedule."
-msgstr ""
+msgstr "Het schema van standaardfouten moet evenveel vermeldingen hebben als het lookschema."
 
 msgid "Unable to compute Bayes factor sequential design: %1$s"
-msgstr ""
+msgstr "Kan het sequentiële Bayes-factorontwerp niet berekenen: %1$s"
 
 msgid ""
 "Due to integer sample-size schedules, Pr(Conclusive Evidence) can exceed the "
 "target probability."
-msgstr ""
+msgstr "Door discrete steekproefomvangschema's kan Pr(Overtuigend Bewijs) de doelkans overschrijden."
 
 msgid ""
 "For independent samples, N₁ is the sample size in group 1 and N₂ is rounded "
 "up from the requested N₂/N₁ sample-size ratio, unless a custom group 2 "
 "schedule is supplied."
-msgstr ""
+msgstr "Voor onafhankelijke steekproeven is N₁ de steekproefomvang in groep 1 en wordt N₂ naar boven afgerond op basis van de gevraagde steekproefomvangverhouding N₂/N₁, tenzij een aangepast schema voor groep 2 wordt opgegeven."
 
 msgid ""
 "This design uses the supplied standard error schedule, so sample-size "
 "summaries are omitted."
-msgstr ""
+msgstr "Dit ontwerp gebruikt het opgegeven schema van standaardfouten, zodat de samenvattingen van de steekproefomvang worden weggelaten."
 
 msgid "Final SE"
-msgstr ""
+msgstr "Laatste SE"
 
 msgid "Maximum N₁"
-msgstr ""
+msgstr "Maximale N₁"
 
 msgid "Maximum N₂"
-msgstr ""
+msgstr "Maximale N₂"
 
 msgid "Maximum N"
-msgstr ""
+msgstr "Maximale N"
 
 msgid ""
 "This table reports the maximum sample size schedule needed to reach the "
 "target probability of conclusive evidence at the planned looks."
-msgstr ""
+msgstr "Deze tabel rapporteert het schema van maximale steekproefomvangen dat nodig is om de doelkans op overtuigend bewijs bij de geplande looks te bereiken."
 
 msgid ""
 "This table evaluates the selected sequential design through the final look. "
 "Achieved probabilities are cumulative stopping probabilities for conclusive "
 "evidence under the corresponding design prior."
-msgstr ""
+msgstr "Deze tabel evalueert het geselecteerde sequentiële ontwerp tot en met de laatste look. De gerealiseerde kansen zijn cumulatieve stopkansen voor overtuigend bewijs onder de overeenkomstige ontwerpprior."
 
 msgid ""
 "Mean sample size and SD describe how much data the sequential design is "
 "expected to use under each design prior. They are averages over hypothetical "
 "repetitions of the planned study."
-msgstr ""
+msgstr "De gemiddelde steekproefomvang en SD beschrijven hoeveel gegevens het sequentiële ontwerp naar verwachting onder elke ontwerpprior gebruikt. Het zijn gemiddelden over hypothetische herhalingen van het geplande onderzoek."
 
 msgid ""
 "Rows condition on the design prior used to generate hypothetical sequential "
 "studies. Diagonal cells are conclusive evidence for the true hypothesis, off-"
 "diagonal cells are misleading evidence, and the middle column is the chance "
 "of reaching the final look without a conclusion."
-msgstr ""
+msgstr "De rijen zijn geconditioneerd op de ontwerpprior die wordt gebruikt om hypothetische sequentiële onderzoeken te genereren. Diagonaalcellen zijn overtuigend bewijs voor de ware hypothese, off-diagonaalcellen zijn misleidend bewijs en de middelste kolom is de kans om de laatste look zonder conclusie te bereiken."
 
 msgid ""
 "Cumulative probabilities show the chance that the study has stopped by each "
 "look. The inconclusive column is the chance that no stopping rule has been "
 "crossed yet."
-msgstr ""
+msgstr "Cumulatieve kansen tonen de kans dat het onderzoek bij elke look is gestopt. De kolom onbeslist is de kans dat er nog geen stopregel is overschreden."
 
 msgid ""
 "New stop probabilities isolate decisions first made at a given look. Summing "
 "them over looks gives the cumulative stopping probability for the "
 "corresponding decision."
-msgstr ""
+msgstr "Nieuwe stopkansen isoleren beslissingen die voor het eerst bij een gegeven look worden genomen. Dit bij alle looks opgeteld geeft de cumulatieve stopkans voor de overeenkomstige beslissing."
 
 msgid ""
 "Stopping boundaries are the test-statistic values that correspond to the "
 "selected Bayes factor thresholds at each look. Crossing a boundary triggers "
 "stopping for H₁ or H₀."
-msgstr ""
+msgstr "Stopgrenzen zijn de toetsstatistiekwaarden die overeenkomen met de geselecteerde Bayes-factordrempels bij elke look. Het overschrijden van een grens leidt tot stoppen voor H₁ of H₀."
 
 msgid "Unable to compute sample size summary: %1$s"
-msgstr ""
+msgstr "Kan de samenvatting van de steekproefomvang niet berekenen: %1$s"
 
 msgid "Looks"
-msgstr ""
+msgstr "Looks"
 
 msgid "First Look"
-msgstr ""
+msgstr "Eerste look"
 
 #, fuzzy
 msgid "Maximum Sample Size"
@@ -1033,354 +1033,354 @@ msgid "Mean Sample Size"
 msgstr "een steekproefgrootte van"
 
 msgid "Standard Deviation"
-msgstr ""
+msgstr "Standaarddeviatie"
 
 msgid ""
 "The requested BF target could not be reached within the selected maximum "
 "sample size for %1$s; entries that depend on reaching the target are left "
 "empty."
-msgstr ""
+msgstr "Het gevraagde BF-doel kon binnen de geselecteerde maximale steekproefomvang niet worden bereikt voor %1$s; vermeldingen die afhangen van het bereiken van het doel blijven leeg."
 
 msgid ""
 "To satisfy both design priors in a single sequential design, use a final "
 "look of N₁ = %1$s and N₂ = %2$s (total N = %3$s)."
-msgstr ""
+msgstr "Om in één enkel sequentieel ontwerp aan beide ontwerppriors te voldoen, gebruik een laatste look van N₁ = %1$s en N₂ = %2$s (totaal N = %3$s)."
 
 msgid ""
 "To satisfy both design priors in a single sequential design, use a final "
 "look of N = %1$s."
-msgstr ""
+msgstr "Om in één enkel sequentieel ontwerp aan beide ontwerppriors te voldoen, gebruik een laatste look van N = %1$s."
 
 msgid ""
 "Probabilities are cumulative through the selected final look: SE = %1$s. "
 "Rows use the corresponding design prior under H₁ or H₀."
-msgstr ""
+msgstr "De kansen zijn cumulatief tot en met de geselecteerde laatste look: SE = %1$s. De rijen gebruiken de overeenkomstige ontwerpprior onder H₁ of H₀."
 
 msgid ""
 "Probabilities are cumulative through the final look required for each design "
 "prior: under H₁, N₁ = %1$s and N₂ = %2$s; under H₀, N₁ = %3$s and N₂ = %4$s."
-msgstr ""
+msgstr "De kansen zijn cumulatief tot en met de laatste look die voor elke ontwerpprior nodig is: onder H₁, N₁ = %1$s en N₂ = %2$s; onder H₀, N₁ = %3$s en N₂ = %4$s."
 
 msgid ""
 "Probabilities are cumulative through the final look required for each design "
 "prior: under H₁, N = %1$s; under H₀, N = %2$s."
-msgstr ""
+msgstr "De kansen zijn cumulatief tot en met de laatste look die voor elke ontwerpprior nodig is: onder H₁, N = %1$s; onder H₀, N = %2$s."
 
 msgid ""
 "Probabilities are cumulative through the selected final look. Rows use the "
 "corresponding design prior under H₁ or H₀."
-msgstr ""
+msgstr "De kansen zijn cumulatief tot en met de geselecteerde laatste look. De rijen gebruiken de overeenkomstige ontwerpprior onder H₁ of H₀."
 
 msgid ""
 "Probabilities are cumulative through the selected final look: N₁ = %1$s and "
 "N₂ = %2$s (total N = %3$s). Rows use the corresponding design prior under H₁ "
 "or H₀."
-msgstr ""
+msgstr "De kansen zijn cumulatief tot en met de geselecteerde laatste look: N₁ = %1$s en N₂ = %2$s (totaal N = %3$s). De rijen gebruiken de overeenkomstige ontwerpprior onder H₁ of H₀."
 
 msgid ""
 "Probabilities are cumulative through the selected final look: N = %1$s. Rows "
 "use the corresponding design prior under H₁ or H₀."
-msgstr ""
+msgstr "De kansen zijn cumulatief tot en met de geselecteerde laatste look: N = %1$s. De rijen gebruiken de overeenkomstige ontwerpprior onder H₁ of H₀."
 
 msgid "Unable to compute cumulative decision probabilities: %1$s"
-msgstr ""
+msgstr "Kan de cumulatieve beslissingskansen niet berekenen: %1$s"
 
 msgid "Unable to compute incremental stagewise stops: %1$s"
-msgstr ""
+msgstr "Kan de stapsgewijze tussentijdse stops niet berekenen: %1$s"
 
 msgid "Design Prior: %1$s"
-msgstr ""
+msgstr "Ontwerpprior: %1$s"
 
 msgid "Look"
-msgstr ""
+msgstr "Look"
 
 msgid "Any Stop"
-msgstr ""
+msgstr "Elke stop"
 
 msgid "Unable to compute stopping boundaries: %1$s"
-msgstr ""
+msgstr "Kan de stopgrenzen niet berekenen: %1$s"
 
 msgid ""
 "Boundaries are shown on the test-statistic scale. Empty cells mean no finite "
 "statistic reaches the decision rule at that look."
-msgstr ""
+msgstr "Grenzen worden weergegeven op de schaal van de toetsstatistiek. Lege cellen betekenen dat er bij die look geen eindige statistiek de beslisregel bereikt."
 
 msgid "Lower Statistic"
-msgstr ""
+msgstr "Lagere statistiek"
 
 msgid "Upper Statistic"
-msgstr ""
+msgstr "Bovenste statistiek"
 
 msgid "Stop for H₁: %1$s"
-msgstr ""
+msgstr "Stop voor H₁: %1$s"
 
 msgid "Stop for H₀: %1$s"
-msgstr ""
+msgstr "Stop voor H₀: %1$s"
 
 msgid ""
 "Sequential bfpwr calculations are performed on the parameter scale centered "
 "at the null value."
-msgstr ""
+msgstr "Sequentiële bfpwr-berekeningen worden uitgevoerd op de parameterschaal gecentreerd op de nulwaarde."
 
 msgid ""
 "The report could not be generated because the Bayes factor sequential design "
 "could not be completed with the current settings."
-msgstr ""
+msgstr "Het rapport kon niet worden gegenereerd omdat het sequentiële Bayes-factorontwerp met de huidige instellingen niet kon worden voltooid."
 
 msgid "sequential"
-msgstr ""
+msgstr "sequentieel"
 
 msgid ""
 "The design used a fixed standard-error schedule, so n_min, n_max, batch "
 "size, expected sample size, and sample-size SD are not defined."
-msgstr ""
+msgstr "Het ontwerp gebruikte een vast schema van standaardfouten, zodat n_min, n_max, batchgrootte, verwachte steekproefomvang en SD van de steekproefomvang niet zijn gedefinieerd."
 
 msgid ""
 "The design targeted conclusive evidence probabilities of %1$s under H₁ and "
 "%2$s under H₀."
-msgstr ""
+msgstr "Het ontwerp richtte zich op doelkansen op overtuigend bewijs van %1$s onder H₁ en %2$s onder H₀."
 
 msgid ""
 "The design started at n_min,1 = %1$s and n_min,2 = %2$s, used %3$s, and "
 "stopped at n_max,1 = %4$s and n_max,2 = %5$s."
-msgstr ""
+msgstr "Het ontwerp begon bij n_min,1 = %1$s en n_min,2 = %2$s, gebruikte %3$s en stopte bij n_max,1 = %4$s en n_max,2 = %5$s."
 
 msgid ""
 "The design started at n_min = %1$s, used %2$s, and stopped at n_max = %3$s."
-msgstr ""
+msgstr "Het ontwerp begon bij n_min = %1$s, gebruikte %2$s en stopte bij n_max = %3$s."
 
 msgid ""
 "The design started at n_min,1 = %1$s and n_min,2 = %2$s, used %3$s, and "
 "found maximum sample sizes n_max,1 = %4$s and n_max,2 = %5$s under H₁ and "
 "n_max,1 = %6$s and n_max,2 = %7$s under H₀."
-msgstr ""
+msgstr "Het ontwerp begon bij n_min,1 = %1$s en n_min,2 = %2$s, gebruikte %3$s en vond maximale steekproefomvangen n_max,1 = %4$s en n_max,2 = %5$s onder H₁ en n_max,1 = %6$s en n_max,2 = %7$s onder H₀."
 
 msgid ""
 "The design started at n_min = %1$s, used %2$s, and found maximum sample "
 "sizes n_max = %3$s under H₁ and n_max = %4$s under H₀."
-msgstr ""
+msgstr "Het ontwerp begon bij n_min = %1$s, gebruikte %2$s en vond maximale steekproefomvangen n_max = %3$s onder H₁ en n_max = %4$s onder H₀."
 
 msgid "not reached"
-msgstr ""
+msgstr "niet bereikt"
 
 msgid "a single planned look"
-msgstr ""
+msgstr "één enkele geplande look"
 
 msgid "batches of %1$s for n₁ and %2$s for n₂"
-msgstr ""
+msgstr "batches van %1$s voor n₁ en %2$s voor n₂"
 
 msgid "batch-size increments of %1$s for n₁ and %2$s for n₂"
-msgstr ""
+msgstr "toenames in batchgrootte van %1$s voor n₁ en %2$s voor n₂"
 
 #, fuzzy
 msgid "batches of %1$s"
 msgstr "steekproefgrootten van %1$s"
 
 msgid "batch-size increments of %1$s"
-msgstr ""
+msgstr "toenames in batchgrootte van %1$s"
 
 msgid ""
 "Under the H₁ design prior, the expected sample sizes were n₁ = %1$s (SD = "
 "%2$s) and n₂ = %3$s (SD = %4$s); under the H₀ design prior, the expected "
 "sample sizes were n₁ = %5$s (SD = %6$s) and n₂ = %7$s (SD = %8$s)."
-msgstr ""
+msgstr "Onder de ontwerpprior van H₁ waren de verwachte steekproefomvangen n₁ = %1$s (SD = %2$s) en n₂ = %3$s (SD = %4$s); onder de ontwerpprior van H₀ waren de verwachte steekproefomvangen n₁ = %5$s (SD = %6$s) en n₂ = %7$s (SD = %8$s)."
 
 msgid ""
 "Under the H₁ design prior, the expected sample size was %1$s (SD = %2$s); "
 "under the H₀ design prior, the expected sample size was %3$s (SD = %4$s)."
-msgstr ""
+msgstr "Onder de ontwerpprior van H₁ was de verwachte steekproefomvang %1$s (SD = %2$s); onder de ontwerpprior van H₀ was de verwachte steekproefomvang %3$s (SD = %4$s)."
 
 msgid "%1$s to %2$s"
-msgstr ""
+msgstr "%1$s tot %2$s"
 
 msgid ""
 "R code could not be generated because the sequential design could not be "
 "computed."
-msgstr ""
+msgstr "De R-code kon niet worden gegenereerd omdat het sequentiële ontwerp niet kon worden berekend."
 
 msgid "Unable to compute stopping probabilities: %1$s"
-msgstr ""
+msgstr "Kan de stopkansen niet berekenen: %1$s"
 
 msgid "Cumulative probability"
-msgstr ""
+msgstr "Cumulatieve kans"
 
 msgid ""
 "The curves accumulate over planned looks: conclusive and misleading curves "
 "increase as studies stop for those outcomes, while the inconclusive curve "
 "decreases as decisions are made."
-msgstr ""
+msgstr "De curven accumuleren over geplande looks: de curven voor overtuigend en misleidend bewijs stijgen naarmate onderzoeken voor die uitkomsten stoppen, terwijl de onbesliste curve daalt naarmate beslissingen worden genomen."
 
 msgid "No finite stopping boundaries are available for the current settings."
-msgstr ""
+msgstr "Er zijn geen eindige stopgrenzen beschikbaar voor de huidige instellingen."
 
 msgid "Critical value"
-msgstr ""
+msgstr "Kritieke waarde"
 
 msgid "Target"
-msgstr ""
+msgstr "Doel"
 
 msgid "Boundary"
-msgstr ""
+msgstr "Grens"
 
 msgid ""
 "Each curve gives the critical test-statistic value that corresponds to a "
 "Bayes factor stopping threshold at a look. Crossing a boundary triggers "
 "stopping for H₁ or H₀."
-msgstr ""
+msgstr "Elke curve geeft de kritieke toetsstatistiekwaarde die overeenkomt met een stopdrempel voor de Bayes-factor bij een look. Het overschrijden van een grens leidt tot stoppen voor H₁ of H₀."
 
 #, fuzzy
 msgid "Lower"
 msgstr "Power"
 
 msgid "Upper"
-msgstr ""
+msgstr "Boven"
 
 msgid "group 1 event probability"
-msgstr ""
+msgstr "gebeurteniskans groep 1"
 
 msgid "group 2 event probability"
-msgstr ""
+msgstr "gebeurteniskans groep 2"
 
 msgid "baseline event probability"
-msgstr ""
+msgstr "gebeurteniskans uitgangspunt"
 
 msgid "The alternative binary effect must be finite."
-msgstr ""
+msgstr "Het alternatieve binaire effect moet eindig zijn."
 
 msgid "Alternative risk ratios and odds ratios must be greater than 0."
-msgstr ""
+msgstr "Alternatieve risicoratio's en oddsratio's moeten groter dan 0 zijn."
 
 msgid ""
 "The baseline event probability and alternative binary effect imply a group 2 "
 "event probability outside (0, 1)."
-msgstr ""
+msgstr "De gebeurteniskans van het uitgangspunt en het alternatieve binaire effect impliceren een gebeurteniskans voor groep 2 buiten (0, 1)."
 
 msgid "The %1$s must be greater than 0 and less than 1."
-msgstr ""
+msgstr "De %1$s moet groter dan 0 en kleiner dan 1 zijn."
 
 #, fuzzy
 msgid "One-sided"
 msgstr "eenzijdig"
 
 msgid "Two-sided symmetric"
-msgstr ""
+msgstr "Tweezijdig symmetrisch"
 
 msgid "Two-sided asymmetric β-spending (binding futility)"
-msgstr ""
+msgstr "Tweezijdig asymmetrische β-uitgaven (bindende futiliteit)"
 
 msgid "Two-sided asymmetric β-spending (non-binding futility)"
-msgstr ""
+msgstr "Tweezijdig asymmetrische β-uitgaven (niet-bindende futiliteit)"
 
 #, fuzzy
 msgid "Canonical effect (δ)"
 msgstr "Veronderstelde effectgrootte (%s)"
 
 msgid "Standardized mean difference (one sample / paired)"
-msgstr ""
+msgstr "Gestandaardiseerd gemiddeld verschil (één steekproef / gepaard)"
 
 msgid "Standardized mean difference (independent samples)"
-msgstr ""
+msgstr "Gestandaardiseerd gemiddeld verschil (onafhankelijke steekproeven)"
 
 msgid "Mean difference (one sample / paired)"
-msgstr ""
+msgstr "Gemiddeld verschil (één steekproef / gepaard)"
 
 #, fuzzy
 msgid "Mean difference (independent samples)"
 msgstr "een t-toets met onafhankelijke steekproeven"
 
 msgid "Two-sample binary endpoint"
-msgstr ""
+msgstr "Binair eindpunt met twee steekproeven"
 
 msgid "Survival hazard ratio"
-msgstr ""
+msgstr "Hazardratio overleving"
 
 msgid "Information ratio"
-msgstr ""
+msgstr "Informatieratio"
 
 msgid "Fixed design value"
-msgstr ""
+msgstr "Waarde vast ontwerp"
 
 msgid "O'Brien-Fleming spending"
-msgstr ""
+msgstr "O'Brien-Fleming-uitgaven"
 
 msgid "Pocock spending"
-msgstr ""
+msgstr "Pocock-uitgaven"
 
 msgid "Hwang-Shih-DeCani"
-msgstr ""
+msgstr "Hwang-Shih-DeCani"
 
 msgid "Kim-DeMets power"
-msgstr ""
+msgstr "Kim-DeMets-power"
 
 msgid "O'Brien-Fleming"
-msgstr ""
+msgstr "O'Brien-Fleming"
 
 msgid "Pocock"
-msgstr ""
+msgstr "Pocock"
 
 msgid "Wang-Tsiatis"
-msgstr ""
+msgstr "Wang-Tsiatis"
 
 msgid "The information fraction schedule must contain K or K - 1 values."
-msgstr ""
+msgstr "Het schema van informatiefracties moet K of K - 1 waarden bevatten."
 
 msgid "When K information fractions are supplied, the final value must be 1."
-msgstr ""
+msgstr "Wanneer K informatiefracties worden opgegeven, moet de laatste waarde 1 zijn."
 
 msgid ""
 "When K - 1 information fractions are supplied, all values must be less than "
 "1."
-msgstr ""
+msgstr "Wanneer K - 1 informatiefracties worden opgegeven, moeten alle waarden kleiner dan 1 zijn."
 
 msgid "Information fractions must be greater than 0 and no larger than 1."
-msgstr ""
+msgstr "Informatiefracties moeten groter dan 0 en niet groter dan 1 zijn."
 
 msgid "Information fractions must be strictly increasing."
-msgstr ""
+msgstr "Informatiefracties moeten strikt stijgend zijn."
 
 msgid "Group Sequential Design"
-msgstr ""
+msgstr "Groepssequentieel ontwerp"
 
 msgid "Design"
-msgstr ""
+msgstr "Ontwerp"
 
 msgid "α"
-msgstr ""
+msgstr "α"
 
 msgid "Power (1 - β)"
-msgstr ""
+msgstr "Power (1 - β)"
 
 msgid "Planning Metric"
-msgstr ""
+msgstr "Planningsmetriek"
 
 msgid "Unable to compute classical group sequential design: %1$s"
-msgstr ""
+msgstr "Kan het klassieke groepssequentiële ontwerp niet berekenen: %1$s"
 
 msgid "Inflation Ratio"
-msgstr ""
+msgstr "Inflatieratio"
 
 msgid ""
 "α is the one-sided Type I error rate. For symmetric two-sided designs, the "
 "total Type I error rate is 2α."
-msgstr ""
+msgstr "α is het eenzijdige Type I-foutenpercentage. Voor symmetrische tweezijdige ontwerpen is het totale Type I-foutenpercentage 2α."
 
 msgid "Sample Size / Event Details"
-msgstr ""
+msgstr "Details steekproefomvang / gebeurtenissen"
 
 msgid "Quantity"
-msgstr ""
+msgstr "Hoeveelheid"
 
 msgid "Fixed Design"
-msgstr ""
+msgstr "Vast ontwerp"
 
 msgid "Maximum / Final"
-msgstr ""
+msgstr "Maximaal / definitief"
 
 msgid "Expected"
-msgstr ""
+msgstr "Verwacht"
 
 msgid "Unable to compute sample size / event details: %1$s"
-msgstr ""
+msgstr "Kan de details van steekproefomvang / gebeurtenissen niet berekenen: %1$s"
 
 #, fuzzy
 msgid "Group 1 sample size"
@@ -1391,50 +1391,50 @@ msgid "Group 2 sample size"
 msgstr "een steekproefgrootte van"
 
 msgid "Enrolled subjects"
-msgstr ""
+msgstr "Ingeschreven proefpersonen"
 
 msgid "Expected analysis time"
-msgstr ""
+msgstr "Verwachte analysetijd"
 
 msgid ""
 "Group sample sizes are split from the total sample size using the allocation "
 "ratio N₂/N₁. Expected values are probability-weighted expected total sample "
 "sizes split by the same ratio."
-msgstr ""
+msgstr "De steekproefomvangen van de groepen worden verdeeld uit de totale steekproefomvang met behulp van de allocatieratio N₂/N₁. De verwachte waarden zijn kansgewogen verwachte totale steekproefomvangen die volgens dezelfde ratio worden verdeeld."
 
 msgid ""
 "Survival subject and analysis-time quantities are derived from the accrual "
 "assumptions. Fixed-design values use the corresponding fixed-design survival "
 "calculation; maximum/final values use the group sequential design. Event "
 "information is summarized in the main design table and look schedule."
-msgstr ""
+msgstr "Overlevingsonderwerpen en analysetijdhoeveelheden worden afgeleid uit de instroomaannames. Waarden van het vaste ontwerp gebruiken de overeenkomstige berekening van het vaste overlevingsontwerp; maximale/definitieve waarden gebruiken het groepssequentiële ontwerp. Gebeurtenisinformatie wordt samengevat in de hoofdontwerptabel en het lookschema."
 
 msgid "Effect Scale Conversions"
-msgstr ""
+msgstr "Conversies effectschaal"
 
 msgid "Value"
-msgstr ""
+msgstr "Waarde"
 
 msgid "Description"
 msgstr "Beschrijving"
 
 msgid "Canonical δ under H₁"
-msgstr ""
+msgstr "Canonieke δ onder H₁"
 
 msgid "Standardized mean difference"
-msgstr ""
+msgstr "Gestandaardiseerd gemiddeld verschil"
 
 msgid "Mean difference divided by the outcome SD or paired-difference SD."
-msgstr ""
+msgstr "Gemiddeld verschil gedeeld door de uitkomst-SD of de SD van gepaarde verschillen."
 
 msgid "Mean difference divided by the common outcome SD."
-msgstr ""
+msgstr "Gemiddeld verschil gedeeld door de gemeenschappelijke uitkomst-SD."
 
 msgid "Alternative effect used to derive the group 2 event probability."
-msgstr ""
+msgstr "Alternatief effect dat wordt gebruikt om de gebeurteniskans van groep 2 af te leiden."
 
 msgid "Group 1 event probability"
-msgstr ""
+msgstr "Gebeurteniskans groep 1"
 
 #, fuzzy
 msgid "Baseline event probability under the alternative hypothesis."
@@ -1442,21 +1442,21 @@ msgstr ""
 "Effectgrootte kan niet 0 zijn met een tweezijdige alternatieve hypothese."
 
 msgid "Event probability in group 1 under the alternative hypothesis."
-msgstr ""
+msgstr "Gebeurteniskans in groep 1 onder de alternatieve hypothese."
 
 msgid "Group 2 event probability"
-msgstr ""
+msgstr "Gebeurteniskans groep 2"
 
 msgid ""
 "Derived from the baseline event probability and selected alternative binary "
 "effect."
-msgstr ""
+msgstr "Afgeleid uit de gebeurteniskans van het uitgangspunt en het geselecteerde alternatieve binaire effect."
 
 msgid "Event probability in group 2 under the alternative hypothesis."
-msgstr ""
+msgstr "Gebeurteniskans in groep 2 onder de alternatieve hypothese."
 
 msgid "Alternative risk difference"
-msgstr ""
+msgstr "Alternatief risicoverschil"
 
 #, fuzzy
 msgid "Alternative risk ratio"
@@ -1467,84 +1467,84 @@ msgid "Alternative odds ratio"
 msgstr "Alternatieve hypothese"
 
 msgid "Information-scale effect used by the sequential calculations."
-msgstr ""
+msgstr "Effect op de informatieschaal dat door de sequentiële berekeningen wordt gebruikt."
 
 msgid ""
 "The one-sample/paired standardized mean difference is used directly as the "
 "information-scale effect."
-msgstr ""
+msgstr "Het gestandaardiseerde gemiddelde verschil voor één steekproef/gepaard wordt rechtstreeks gebruikt als het effect op de informatieschaal."
 
 msgid ""
 "Derived from the fixed-design total sample size computed from the "
 "independent-samples standardized mean difference and allocation ratio."
-msgstr ""
+msgstr "Afgeleid uit de totale steekproefomvang van het vaste ontwerp die is berekend uit het gestandaardiseerde gemiddelde verschil voor onafhankelijke steekproeven en de allocatieratio."
 
 msgid ""
 "The raw mean difference is divided by the relevant SD and used as the "
 "information-scale effect."
-msgstr ""
+msgstr "Het ruwe gemiddelde verschil wordt gedeeld door de relevante SD en gebruikt als het effect op de informatieschaal."
 
 msgid ""
 "Derived from the fixed-design total sample size computed from the mean "
 "difference, common SD, and allocation ratio."
-msgstr ""
+msgstr "Afgeleid uit de totale steekproefomvang van het vaste ontwerp die is berekend uit het gemiddelde verschil, de gemeenschappelijke SD en de allocatieratio."
 
 msgid ""
 "Derived from the fixed-design total sample size computed from the entered "
 "event probabilities or from the baseline event probability and alternative "
 "binary effect."
-msgstr ""
+msgstr "Afgeleid uit de totale steekproefomvang van het vaste ontwerp die is berekend uit de ingevoerde gebeurteniskansen of uit de gebeurteniskans van het uitgangspunt en het alternatieve binaire effect."
 
 msgid ""
 "Derived from the event information implied by the hazard-ratio alternative, "
 "null hazard ratio, allocation ratio, and selected survival information "
 "method."
-msgstr ""
+msgstr "Afgeleid uit de gebeurtenisinformatie die wordt geïmpliceerd door het alternatief van de hazardratio, de nullhazardratio, de allocatieratio en de geselecteerde overlevingsinformatiemethode."
 
 msgid "Yes"
-msgstr ""
+msgstr "Ja"
 
 msgid "No"
-msgstr ""
+msgstr "Nee"
 
 msgid "Fixed Information Ratio"
-msgstr ""
+msgstr "Vaste informatieratio"
 
 msgid "Maximum Information Ratio"
-msgstr ""
+msgstr "Maximale informatieratio"
 
 msgid "Expected Information Ratio"
-msgstr ""
+msgstr "Verwachte informatieratio"
 
 msgid "Information Ratio"
-msgstr ""
+msgstr "Informatieratio"
 
 msgid "information ratio"
-msgstr ""
+msgstr "informatieratio"
 
 msgid "Fixed Design Value"
-msgstr ""
+msgstr "Waarde vast ontwerp"
 
 msgid "Maximum Value"
-msgstr ""
+msgstr "Maximale waarde"
 
 msgid "Expected Value"
-msgstr ""
+msgstr "Verwachte waarde"
 
 msgid "Planned Value"
-msgstr ""
+msgstr "Geplande waarde"
 
 msgid "fixed-design value"
-msgstr ""
+msgstr "waarde vast ontwerp"
 
 msgid "Fixed Design Total Sample Size"
-msgstr ""
+msgstr "Totale steekproefomvang vast ontwerp"
 
 msgid "Maximum Total Sample Size"
-msgstr ""
+msgstr "Maximale totale steekproefomvang"
 
 msgid "Expected Total Sample Size"
-msgstr ""
+msgstr "Verwachte totale steekproefomvang"
 
 #, fuzzy
 msgid "Total Sample Size"
@@ -1555,282 +1555,282 @@ msgid "total sample size"
 msgstr "een steekproefgrootte van"
 
 msgid "Fixed Design Events"
-msgstr ""
+msgstr "Gebeurtenissen vast ontwerp"
 
 msgid "Maximum Events"
-msgstr ""
+msgstr "Maximale gebeurtenissen"
 
 msgid "Expected Events"
-msgstr ""
+msgstr "Verwachte gebeurtenissen"
 
 msgid "Events"
-msgstr ""
+msgstr "Gebeurtenissen"
 
 msgid "events"
-msgstr ""
+msgstr "gebeurtenissen"
 
 msgid "Fixed Design Information Units"
-msgstr ""
+msgstr "Informatie-eenheden vast ontwerp"
 
 msgid "Maximum Information Units"
-msgstr ""
+msgstr "Maximale informatie-eenheden"
 
 msgid "Expected Information Units"
-msgstr ""
+msgstr "Verwachte informatie-eenheden"
 
 msgid "Information Units"
-msgstr ""
+msgstr "Informatie-eenheden"
 
 msgid "information units"
-msgstr ""
+msgstr "informatie-eenheden"
 
 msgid ""
 "In information-ratio mode, fixed design information and maximum information "
 "are relative information values, not observations or events."
-msgstr ""
+msgstr "In de informatieverhoudingsmodus zijn de informatie van het vaste ontwerp en de maximale informatie relatieve informatiewaarden, geen waarnemingen of gebeurtenissen."
 
 msgid ""
 "In fixed design value mode, the entered value defines the scale for the "
 "maximum and expected values. It may represent information units, total "
 "sample size, or events depending on the endpoint."
-msgstr ""
+msgstr "In de modus met vaste ontwerpwaarde definieert de ingevoerde waarde de schaal voor de maximale en verwachte waarden. Dit kan informatie-eenheden, totale steekproefomvang of gebeurtenissen vertegenwoordigen, afhankelijk van het eindpunt."
 
 msgid ""
 "Canonical δ is the information-scale effect; it is not generally Cohen's d. "
 "The table reports information units."
-msgstr ""
+msgstr "Canonieke δ is het effect op de informatieschaal; dit is doorgaans niet Cohen's d. De tabel rapporteert informatie-eenheden."
 
 msgid ""
 "For one-sample and paired normal designs, the standardized mean difference "
 "uses the outcome SD or the SD of paired differences. The table reports "
 "information units."
-msgstr ""
+msgstr "Voor normale ontwerpen met één steekproef en gepaarde ontwerpen gebruikt het gestandaardiseerde gemiddelde verschil de uitkomst-SD of de SD van gepaarde verschillen. De tabel rapporteert informatie-eenheden."
 
 msgid ""
 "For independent-samples normal designs, values labeled total sample size are "
 "total observations across both groups; the allocation ratio determines the "
 "group split."
-msgstr ""
+msgstr "Voor normale ontwerpen met onafhankelijke steekproeven zijn de waarden die worden aangeduid als totale steekproefomvang de totale waarnemingen over beide groepen; de allocatieratio bepaalt de verdeling over de groepen."
 
 msgid ""
 "For one-sample and paired mean-difference designs, δ is the mean difference "
 "divided by the outcome SD or SD of paired differences. The table reports "
 "information units."
-msgstr ""
+msgstr "Voor ontwerpen met één steekproef en gepaarde gemiddelde-verschilontwerpen is δ het gemiddelde verschil gedeeld door de uitkomst-SD of de SD van gepaarde verschillen. De tabel rapporteert informatie-eenheden."
 
 msgid ""
 "For two-sample binary endpoints, values labeled total sample size are total "
 "observations across both groups; the entered event probabilities or derived "
 "event probabilities and selected null margin define the endpoint."
-msgstr ""
+msgstr "Voor binaire eindpunten met twee steekproeven zijn de waarden die worden aangeduid als totale steekproefomvang de totale waarnemingen over beide groepen; de ingevoerde gebeurteniskansen of afgeleide gebeurteniskansen en de geselecteerde nullmarge definiëren het eindpunt."
 
 msgid ""
 "For survival events-only mode, values labeled events are required event "
 "counts; this mode does not estimate enrolled subjects or analysis times."
-msgstr ""
+msgstr "Voor de overlevingsmodus met alleen gebeurtenissen zijn de waarden die worden aangeduid als gebeurtenissen de vereiste aantallen gebeurtenissen; deze modus schat geen ingeschreven proefpersonen of analysetijden."
 
 msgid ""
 "For the subjects + events survival mode, values labeled events are event "
 "counts. Enrolled-subject rows are planned or expected participant counts "
 "under the accrual assumptions, not event counts."
-msgstr ""
+msgstr "Voor de overlevingsmodus met proefpersonen + gebeurtenissen zijn de waarden die worden aangeduid als gebeurtenissen aantallen gebeurtenissen. Rijen met ingeschreven proefpersonen zijn geplande of verwachte aantallen deelnemers onder de instroomaannames, geen aantallen gebeurtenissen."
 
 msgid ""
 "For group sequential accrual survival mode, values labeled events are event "
 "information; expected analysis time is measured from trial start in the same "
 "time unit as the survival inputs."
-msgstr ""
+msgstr "Voor de overlevingsmodus met groepssequentiële instroom zijn de waarden die worden aangeduid als gebeurtenissen gebeurtenisinformatie; de verwachte analysetijd wordt gemeten vanaf de start van het onderzoek in dezelfde tijdseenheid als de overlevingsinvoer."
 
 msgid ""
 "Boundaries are based on the selected information fractions, α and β targets, "
 "and boundary family: upper = %1$s."
-msgstr ""
+msgstr "Grenzen zijn gebaseerd op de geselecteerde informatiefracties, de α- en β-doelen en de grensfamilie: boven = %1$s."
 
 msgid ""
 "Boundaries are based on the selected information fractions, α and β targets, "
 "and symmetric boundary family: upper/lower = %1$s."
-msgstr ""
+msgstr "Grenzen zijn gebaseerd op de geselecteerde informatiefracties, de α- en β-doelen en de symmetrische grensfamilie: boven/onder = %1$s."
 
 msgid ""
 "Boundaries are based on the selected information fractions, α and β targets, "
 "and boundary families: upper = %1$s; lower = %2$s."
-msgstr ""
+msgstr "Grenzen zijn gebaseerd op de geselecteerde informatiefracties, de α- en β-doelen en de grensfamilies: boven = %1$s; onder = %2$s."
 
 msgid "%1$s (parameter = %2$s)"
-msgstr ""
+msgstr "%1$s (parameter = %2$s)"
 
 msgid "Lower Bound"
-msgstr ""
+msgstr "Ondergrens"
 
 msgid "Upper Bound"
-msgstr ""
+msgstr "Bovengrens"
 
 msgid "Information Fraction"
-msgstr ""
+msgstr "Informatiefractie"
 
 msgid "Upper-tail p"
-msgstr ""
+msgstr "Bovenstaart-p"
 
 msgid "Lower-tail p"
-msgstr ""
+msgstr "Onderstaart-p"
 
 msgid ""
 "Nominal p values are one-sided tail areas for crossing the displayed Z-"
 "boundary."
-msgstr ""
+msgstr "Nominale p-waarden zijn eenzijdige staartgebieden voor het overschrijden van de weergegeven Z-grens."
 
 msgid "For asymmetric designs, the lower bound is a futility boundary."
-msgstr ""
+msgstr "Voor asymmetrische ontwerpen is de ondergrens een futiliteitsgrens."
 
 msgid ""
 "For asymmetric designs, O'Brien-Fleming and Pocock selections are "
 "implemented as Lan-DeMets spending functions."
-msgstr ""
+msgstr "Voor asymmetrische ontwerpen worden de selecties O'Brien-Fleming en Pocock geïmplementeerd als Lan-DeMets-uitgavefuncties."
 
 msgid "Look Schedule"
-msgstr ""
+msgstr "Lookschema"
 
 msgid "Information"
-msgstr ""
+msgstr "Informatie"
 
 msgid "Unable to compute look schedule: %1$s"
-msgstr ""
+msgstr "Kan het lookschema niet berekenen: %1$s"
 
 msgid "Expected Analysis Time"
-msgstr ""
+msgstr "Verwachte analysetijd"
 
 msgid "Expected Enrolled Subjects"
-msgstr ""
+msgstr "Verwachte ingeschreven proefpersonen"
 
 msgid "Expected Accrued Events"
-msgstr ""
+msgstr "Verwachte opgebouwde gebeurtenissen"
 
 msgid ""
 "Expected enrolled subjects and expected accrued events are accrual-model "
 "quantities at each analysis time. The events column is the planned event "
 "information used for boundary construction."
-msgstr ""
+msgstr "Verwachte ingeschreven proefpersonen en verwachte opgebouwde gebeurtenissen zijn hoeveelheden van het instroommodel bij elke analysetijd. De gebeurtenissenkolom is de geplande gebeurtenisinformatie die wordt gebruikt voor de constructie van de grens."
 
 msgid "Efficacy Bound"
-msgstr ""
+msgstr "Werkzaamheidsgrens"
 
 msgid "Upper Efficacy Bound"
-msgstr ""
+msgstr "Bovenste werkzaamheidsgrens"
 
 msgid "Lower Efficacy Bound"
-msgstr ""
+msgstr "Onderste werkzaamheidsgrens"
 
 msgid "Futility Bound"
-msgstr ""
+msgstr "Futiliteitsgrens"
 
 msgid "Final Boundary Crossing Probabilities"
-msgstr ""
+msgstr "Kansen op overschrijding van de definitieve grens"
 
 msgid "Assumption"
-msgstr ""
+msgstr "Aanname"
 
 msgid "Cross Efficacy Bound"
-msgstr ""
+msgstr "Werkzaamheidsgrens overschreden"
 
 msgid "No Boundary Crossing"
-msgstr ""
+msgstr "Geen grensoverschrijding"
 
 msgid "Unable to compute final boundary crossing probabilities: %1$s"
-msgstr ""
+msgstr "Kan de kansen op overschrijding van de definitieve grens niet berekenen: %1$s"
 
 msgid "Probabilities are cumulative through the final planned look."
-msgstr ""
+msgstr "De kansen zijn cumulatief tot en met de laatste geplande look."
 
 msgid "Cumulative Boundary Crossing Probabilities by Look"
-msgstr ""
+msgstr "Cumulatieve grensoverschrijdingskansen per look"
 
 msgid "No Boundary Crossing Yet"
-msgstr ""
+msgstr "Nog geen grensoverschrijding"
 
 msgid "Unable to compute cumulative boundary crossing probabilities: %1$s"
-msgstr ""
+msgstr "Kan de cumulatieve grensoverschrijdingskansen niet berekenen: %1$s"
 
 msgid ""
 "Cumulative probabilities show the chance that a boundary has been crossed by "
 "each look."
-msgstr ""
+msgstr "Cumulatieve kansen tonen de kans dat een grens bij elke look is overschreden."
 
 msgid "New Boundary Crossings by Look"
-msgstr ""
+msgstr "Nieuwe grensoverschrijdingen per look"
 
 msgid "Unable to compute new boundary crossings: %1$s"
-msgstr ""
+msgstr "Kan de nieuwe grensoverschrijdingen niet berekenen: %1$s"
 
 msgid ""
 "New crossing probabilities isolate boundary crossings that first occur at "
 "the given look."
-msgstr ""
+msgstr "Nieuwe overschrijdingskansen isoleren grensoverschrijdingen die voor het eerst bij de gegeven look optreden."
 
 msgid "Non-Binding Type I Error Accounting"
-msgstr ""
+msgstr "Boekhouding niet-bindende Type I-fout"
 
 msgid "Stagewise Efficacy Crossing"
-msgstr ""
+msgstr "Stapsgewijze werkzaamheidsoverschrijding"
 
 msgid "Cumulative Efficacy Crossing"
-msgstr ""
+msgstr "Cumulatieve werkzaamheidsoverschrijding"
 
 msgid "Unable to compute non-binding Type I error accounting: %1$s"
-msgstr ""
+msgstr "Kan de boekhouding van de niet-bindende Type I-fout niet berekenen: %1$s"
 
 msgid ""
 "These probabilities evaluate Type I error for the efficacy rule when "
 "crossing the futility bound would not force stopping."
-msgstr ""
+msgstr "Deze kansen evalueren de Type I-fout voor de werkzaamheidsregel wanneer het overschrijden van de futiliteitsgrens geen verplicht stoppen zou veroorzaken."
 
 msgid "Cross Lower Efficacy Bound"
-msgstr ""
+msgstr "Onderste werkzaamheidsgrens overschreden"
 
 msgid "Cross Futility Bound"
-msgstr ""
+msgstr "Futiliteitsgrens overschreden"
 
 msgid "Other"
-msgstr ""
+msgstr "Anders"
 
 msgid "Explanation"
-msgstr ""
+msgstr "Uitleg"
 
 msgid ""
 "The requested classical group sequential design could not be completed with "
 "the current settings."
-msgstr ""
+msgstr "Het gevraagde klassieke groepssequentiële ontwerp kon met de huidige instellingen niet worden voltooid."
 
 msgid ""
 "This classical group sequential design uses %1$s with %2$s planned looks."
-msgstr ""
+msgstr "Dit klassieke groepssequentiële ontwerp gebruikt %1$s met %2$s geplande looks."
 
 msgid ""
 "The maximum %1$s is %2$s, compared with %3$s for the corresponding fixed "
 "design."
-msgstr ""
+msgstr "Het maximale %1$s is %2$s, vergeleken met %3$s voor het overeenkomstige vaste ontwerp."
 
 msgid ""
 "R code could not be generated because the classical group sequential design "
 "could not be computed."
-msgstr ""
+msgstr "De R-code kon niet worden gegenereerd omdat het klassieke groepssequentiële ontwerp niet kon worden berekend."
 
 msgid "Unable to compute stopping boundaries plot: %1$s"
-msgstr ""
+msgstr "Kan de plot van de stopgrenzen niet berekenen: %1$s"
 
 msgid "Information fraction"
-msgstr ""
+msgstr "Informatiefractie"
 
 msgid "Boundary Crossing Probabilities"
-msgstr ""
+msgstr "Kansen op grensoverschrijding"
 
 msgid "Unable to compute crossing probabilities plot: %1$s"
-msgstr ""
+msgstr "Kan de plot van de overschrijdingskansen niet berekenen: %1$s"
 
 msgid "Under"
-msgstr ""
+msgstr "Onder"
 
 msgid "Upper (non-binding)"
-msgstr ""
+msgstr "Boven (niet-bindend)"
 
 msgid "Effect size can't be 0."
 msgstr "Effectgrootte kan niet 0 zijn."
@@ -1901,32 +1901,32 @@ msgstr ""
 "'Groter'."
 
 msgid "BF₁₀ ≥ %1$s"
-msgstr ""
+msgstr "BF₁₀ ≥ %1$s"
 
 msgid "BF₀₁ ≥ %1$s"
-msgstr ""
+msgstr "BF₀₁ ≥ %1$s"
 
 msgid "Invalid target '%1$s'."
-msgstr ""
+msgstr "Ongeldig doel '%1$s'."
 
 msgid "Point proportion"
-msgstr ""
+msgstr "Puntproportie"
 
 msgid "a = %1$s, b = %2$s, lower = %3$s, upper = %4$s"
-msgstr ""
+msgstr "a = %1$s, b = %2$s, lager = %3$s, boven = %4$s"
 
 msgid "Bayes Factor Evidence"
-msgstr ""
+msgstr "Bewijs Bayes-factor"
 
 msgid "Null"
-msgstr ""
+msgstr "Nul"
 
 #, fuzzy
 msgid "Alternative"
 msgstr "Alternatieve hypothese"
 
 msgid "Explanation:"
-msgstr ""
+msgstr "Uitleg:"
 
 #, fuzzy
 msgid "Two-sided"
@@ -1937,7 +1937,7 @@ msgid "Less (One-sided)"
 msgstr "eenzijdig"
 
 msgid "Greater (One-sided)"
-msgstr ""
+msgstr "Groter (eenzijdig)"
 
 msgid "Power must be less than 1."
 msgstr "Power moet kleiner dan 1 zijn."
