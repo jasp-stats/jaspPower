@@ -3,9 +3,15 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Language: de\n"
 "X-Qt-Contexts: true\n"
+"PO-Revision-Date: 2026-08-18 06:53+0000\n"
+"Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/jasp/jasppower-"
+"qml/de/>\n"
+"Language: de\n"
+"X-Generator: Weblate 2026.9.dev0\n"
 
 msgctxt "Description|"
 msgid "Power"
@@ -434,7 +440,6 @@ msgstr ""
 "Zeigt die Analyse- und Design-Prior, die für die Berechnung und Auswertung "
 "des Bayesfaktor-Designs verwendet wurden."
 
-#, fuzzy
 msgctxt "BayesFactorDesign|"
 msgid "Plots"
 msgstr "Diagramme"
@@ -553,12 +558,10 @@ msgstr ""
 "Mit dem Bayesfaktor-Sequentiell-Design können Sie sequentielle Experimente "
 "für aussagekräftige Evidenz planen."
 
-#, fuzzy
 msgctxt "BayesFactorSequentialDesign|"
 msgid "References"
 msgstr "Referenzen"
 
-#, fuzzy
 msgctxt "BayesFactorSequentialDesign|"
 msgid "R Packages"
 msgstr "R-Pakete"
@@ -737,12 +740,10 @@ msgstr ""
 "Zeige die Werte der Teststatistik an, die den Bayesfaktor-"
 "Stoppschwellenwerten bei jedem Einblick entsprechen."
 
-#, fuzzy
 msgctxt "BayesFactorSequentialDesign|"
 msgid "Plots"
 msgstr "Diagramme"
 
-#, fuzzy
 msgctxt "BayesFactorSequentialDesign|"
 msgid "Decision Probability"
 msgstr "Entscheidungswahrscheinlichkeit"
@@ -894,7 +895,6 @@ msgctxt "BayesFactorSequentialDesign|"
 msgid "Curve points:"
 msgstr "Kurvenpunkte:"
 
-#, fuzzy
 msgctxt "BayesFactorSequentialDesign|"
 msgid "N"
 msgstr "N"
@@ -935,7 +935,6 @@ msgstr ""
 "Ausgabe-Designs. Bindend oder nicht bindend steuert die Berechnung des Typ-I-"
 "Fehlers nach dem Überschreiten der unteren Grenze."
 
-#, fuzzy
 msgctxt "GroupSequentialDesign|"
 msgid "Explanatory text"
 msgstr "Erklärungstext"
@@ -944,7 +943,6 @@ msgctxt "GroupSequentialDesign|"
 msgid "Display a short explanation of the design."
 msgstr "Zeige eine kurze Erläuterung des Designs."
 
-#, fuzzy
 msgctxt "GroupSequentialDesign|"
 msgid "Parameters"
 msgstr "Parameter"
@@ -953,17 +951,14 @@ msgctxt "GroupSequentialDesign|"
 msgid "Boundaries"
 msgstr "Grenzen"
 
-#, fuzzy
 msgctxt "GroupSequentialDesign|"
 msgid "Tables"
 msgstr "Tabellen"
 
-#, fuzzy
 msgctxt "GroupSequentialDesign|"
 msgid "Design Results"
 msgstr "Design-Ergebnisse"
 
-#, fuzzy
 msgctxt "GroupSequentialDesign|"
 msgid "Design summary"
 msgstr "Design-Zusammenfassung"
@@ -987,7 +982,6 @@ msgstr ""
 "Zeige endpunktspezifische Details zu Zuteilung, Probanden und Analysezeit, "
 "sofern verfügbar."
 
-#, fuzzy
 msgctxt "GroupSequentialDesign|"
 msgid "Look-by-Look Results"
 msgstr "Einblick-nach-Einblick Ergebnisse"
@@ -1015,7 +1009,6 @@ msgstr ""
 "Zeige finale, kumulative und stufenweise Grenzen-"
 "Überschreitungswahrscheinlichkeiten unter H₀ und H₁."
 
-#, fuzzy
 msgctxt "GroupSequentialDesign|"
 msgid "Plots"
 msgstr "Diagramme"
@@ -1024,7 +1017,6 @@ msgctxt "GroupSequentialDesign|"
 msgid "Design Figures"
 msgstr "Design-Abbildungen"
 
-#, fuzzy
 msgctxt "GroupSequentialDesign|"
 msgid "Stopping boundaries"
 msgstr "Stop-Grenzen"
@@ -1046,7 +1038,6 @@ msgctxt "GroupSequentialDesign|"
 msgid "Advanced Options"
 msgstr "Erweiterte Optionen"
 
-#, fuzzy
 msgctxt "GroupSequentialDesign|"
 msgid "Generate R code"
 msgstr "R-Code generieren"
@@ -1124,7 +1115,7 @@ msgstr "Parameterwert, der durch die Nullhypothese festgelegt wird."
 #, fuzzy
 msgctxt "BayesFactorAnalysisPriorSection|"
 msgid "Hypothesized proportion"
-msgstr "Hypothetischer Anteilswert"
+msgstr "Hypothetischer Anteil"
 
 msgctxt "BayesFactorAnalysisPriorSection|"
 msgid "Proportion specified by the null hypothesis for the binomial test."
@@ -1612,7 +1603,6 @@ msgctxt "BayesFactorCalculationControls|"
 msgid "Maximum sample size"
 msgstr "Maximaler Stichprobenumfang"
 
-#, fuzzy
 msgctxt "BayesFactorCalculationControls|"
 msgid "Sample Size"
 msgstr "Stichprobenumfang"
@@ -2106,7 +2096,6 @@ msgctxt "BayesFactorSequentialParameterControls|"
 msgid "Maximum sample size in group 1:"
 msgstr "Maximaler Stichprobenumfang in Gruppe 1:"
 
-#, fuzzy
 msgctxt "BayesFactorSequentialParameterControls|"
 msgid "Maximum sample size:"
 msgstr "Maximaler Stichprobenumfang:"
@@ -2156,12 +2145,10 @@ msgstr ""
 "Durch Komma getrennte Informationsanteile für die geplanten Einblicke, die "
 "bei 1 enden."
 
-#, fuzzy
 msgctxt "BayesFactorSequentialParameterControls|"
 msgid "Allocation ratio (N₂/N₁):"
 msgstr "Zuteilungsverhältnis (N₂/N₁):"
 
-#, fuzzy
 msgctxt "BayesFactorSequentialParameterControls|"
 msgid "Ratio of the sample size in group 2 to the sample size in group 1."
 msgstr ""
@@ -2224,7 +2211,6 @@ msgstr ""
 "Wählen Sie, ob der Integrationsbereich für t-Test-Berechnungen automatisch "
 "ausgewählt oder manuell angegeben wird."
 
-#, fuzzy
 msgctxt "BayesFactorTSearchRangeControls|"
 msgid "Adaptive"
 msgstr "Adaptiv"
@@ -2512,12 +2498,10 @@ msgctxt "GroupSequentialParameterControls|"
 msgid "Error Rates"
 msgstr "Fehlerraten"
 
-#, fuzzy
 msgctxt "GroupSequentialParameterControls|"
 msgid "Type I error rate:"
 msgstr "Fehlerquote 1. Art:"
 
-#, fuzzy
 msgctxt "GroupSequentialParameterControls|"
 msgid "α"
 msgstr "α"
@@ -2718,7 +2702,6 @@ msgctxt "GroupSequentialParameterControls|"
 msgid "Event probability group 1:"
 msgstr "Ereigniswahrscheinlichkeit Gruppe 1:"
 
-#, fuzzy
 msgctxt "GroupSequentialParameterControls|"
 msgid "p₁"
 msgstr "p₁"
@@ -2731,7 +2714,6 @@ msgctxt "GroupSequentialParameterControls|"
 msgid "Event probability group 2:"
 msgstr "Ereigniswahrscheinlichkeit Gruppe 2:"
 
-#, fuzzy
 msgctxt "GroupSequentialParameterControls|"
 msgid "p₂"
 msgstr "p₂"
