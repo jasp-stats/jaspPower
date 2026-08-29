@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspPower 0.1.0\n"
 "POT-Creation-Date: 2026-06-27 04:48\n"
-"PO-Revision-Date: 2026-08-03 18:01+0000\n"
+"PO-Revision-Date: 2026-08-30 05:51+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/jasppower-r/"
 "de/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2026.8.1.dev0\n"
+"X-Generator: Weblate 2026.9.dev0\n"
 
 msgid "Bayes Factor Design"
 msgstr "Bayesfaktor-Design"
@@ -126,9 +126,8 @@ msgstr "Stichprobenumfang is nicht verfügbar."
 msgid "%1$s: %2$s"
 msgstr "%1$s: %2$s"
 
-#, fuzzy
 msgid "Error:"
-msgstr "Fehlermeldung:"
+msgstr "Fehler:"
 
 msgid ""
 "This table reports the smallest fixed-design sample size that reaches the "
@@ -178,9 +177,8 @@ msgstr "Analyse der beobachteten Daten"
 msgid "Analysis Result"
 msgstr "Analyseergebnis"
 
-#, fuzzy
 msgid "Summary Statistics"
-msgstr "Eigenschaften"
+msgstr "Zusammenfassende Statistiken"
 
 msgid "Unable to summarize observed data: %1$s"
 msgstr "Kann beobachtete Daten nicht zusammenfassen: %1$s"
@@ -204,33 +202,26 @@ msgstr "Statistischer Test"
 msgid "Decision"
 msgstr "Entscheidung"
 
-#, fuzzy
 msgid "Independent Samples T-Test"
-msgstr "ein t-Test für unabhängige Stichproben"
+msgstr "T-Test für unabhängige Stichproben"
 
-#, fuzzy
 msgid "Paired Samples T-Test"
-msgstr "ein t-Test für abhängige Stichproben"
+msgstr "T-Test für abhängige Stichproben"
 
-#, fuzzy
 msgid "One Sample T-Test"
-msgstr "ein t-Test für eine Stichprobe"
+msgstr "T-Test für eine Stichprobe"
 
-#, fuzzy
 msgid "Independent Samples Z-Test"
-msgstr "ein t-Test für unabhängige Stichproben"
+msgstr "Z-Test für unabhängige Stichproben"
 
-#, fuzzy
 msgid "Paired Samples Z-Test"
-msgstr "ein t-Test für abhängige Stichproben"
+msgstr "Z-Test für abhängige Stichproben"
 
-#, fuzzy
 msgid "One Sample Z-Test"
-msgstr "ein t-Test für eine Stichprobe"
+msgstr "Z-Test für eine Stichprobe"
 
-#, fuzzy
 msgid "One Sample Proportion Test"
-msgstr "ein Anteilstest für eine Stichprobe"
+msgstr "Anteilstest für eine Stichprobe"
 
 msgid "General (z-approximation)"
 msgstr "Allgemein (z-Approximation)"
@@ -277,9 +268,8 @@ msgstr "Fehlende Option '%1$s'."
 msgid "Option '%1$s' must contain one finite numeric value."
 msgstr "Option '%1$s' muss genau einen endlichen numerischen Wert enthalten."
 
-#, fuzzy
 msgid "Summary statistics"
-msgstr "Eigenschaften"
+msgstr "Zusammenfassende Statistiken"
 
 msgid "Estimate"
 msgstr "Schätzwert"
@@ -302,9 +292,8 @@ msgstr "Mittelwertdifferenz"
 msgid "SD difference"
 msgstr "SD-Differenz"
 
-#, fuzzy
 msgid "Cohen's d"
-msgstr "Cohens"
+msgstr "Cohens d"
 
 msgid "Failures"
 msgstr "Fehlschläge"
@@ -548,9 +537,8 @@ msgstr "Stichprobenumfang (Gruppe 1)"
 msgid "Sample size"
 msgstr "Stichprobenumfang"
 
-#, fuzzy
 msgid "Probability"
-msgstr "Wahrscheinlichkeitsdichte"
+msgstr "Wahrscheinlichkeit"
 
 msgid "Outcome"
 msgstr "Ergebnis"
@@ -558,9 +546,8 @@ msgstr "Ergebnis"
 msgid "Decision Probabilities by Proportion"
 msgstr "Entscheidungswahrscheinlichkeiten nach Anteil"
 
-#, fuzzy
 msgid "Decision Probabilities by Effect Size"
-msgstr "Teststärke nach Effektstärke"
+msgstr "Entscheidungswahrscheinlichkeiten nach Effektstärke"
 
 msgid ""
 "This plot shows how the probabilities of conclusive and misleading evidence "
@@ -586,13 +573,11 @@ msgstr "Lage des Design-Prior"
 msgid "Design prior mean"
 msgstr "Mittelwert des Design-Prior"
 
-#, fuzzy
 msgid "Design proportion"
-msgstr "Beschreibung"
+msgstr "Design-Anteil"
 
-#, fuzzy
 msgid "Prior Distribution"
-msgstr "Teststärke-Demonstration"
+msgstr "Prior-Verteilung"
 
 msgid "Unable to compute prior distribution plot: %1$s"
 msgstr "Kann Diagramm der Prior-Verteilung nicht berechnen: %1$s"
@@ -631,9 +616,8 @@ msgstr "Parameterwert"
 msgid "Density"
 msgstr "Dichte"
 
-#, fuzzy
 msgid "Hypothesis"
-msgstr "Hypothetische Rate (%s)"
+msgstr "Hypothese"
 
 msgid ""
 "The %1$s parameterization assumes a unit information standard deviation "
@@ -671,33 +655,26 @@ msgid ""
 "The sample-size ratio leads to a second-group sample size smaller than 2."
 msgstr "Das Stichprobenumfangverhältnis führt zu einem Stichprobenumfang der zweiten Gruppe kleiner als 2."
 
-#, fuzzy
 msgid "independent samples t-test"
-msgstr "ein t-Test für unabhängige Stichproben"
+msgstr "t-Test für unabhängige Stichproben"
 
-#, fuzzy
 msgid "paired samples t-test"
-msgstr "ein t-Test für abhängige Stichproben"
+msgstr "t-Test für abhängige Stichproben"
 
-#, fuzzy
 msgid "one sample t-test"
-msgstr "ein t-Test für eine Stichprobe"
+msgstr "t-Test für eine Stichprobe"
 
-#, fuzzy
 msgid "independent samples z-test"
-msgstr "ein t-Test für unabhängige Stichproben"
+msgstr "z-Test für unabhängige Stichproben"
 
-#, fuzzy
 msgid "paired samples z-test"
-msgstr "ein t-Test für abhängige Stichproben"
+msgstr "z-Test für abhängige Stichproben"
 
-#, fuzzy
 msgid "one sample z-test"
-msgstr "ein z-Test für eine Stichprobe"
+msgstr "z-Test für eine Stichprobe"
 
-#, fuzzy
 msgid "one sample proportion test"
-msgstr "ein Anteilstest für eine Stichprobe"
+msgstr "Anteilstest für eine Stichprobe"
 
 msgid "general z-approximation"
 msgstr "allgemein (z-Approximation)"
@@ -720,9 +697,8 @@ msgstr "Design-Prior unter H₁"
 msgid "Design Prior Under H₀"
 msgstr "Design-Prior unter H₀"
 
-#, fuzzy
 msgid "Directional"
-msgstr "Beschreibung"
+msgstr "Gerichtet"
 
 msgid "Point null"
 msgstr "Punkt-Nullhypothese"
@@ -1021,13 +997,11 @@ msgstr "Einblicke"
 msgid "First Look"
 msgstr "Erster Einblick"
 
-#, fuzzy
 msgid "Maximum Sample Size"
-msgstr "ein Stichprobenumfang von"
+msgstr "Maximaler Stichprobenumfang"
 
-#, fuzzy
 msgid "Mean Sample Size"
-msgstr "ein Stichprobenumfang von"
+msgstr "Mittlerer Stichprobenumfang"
 
 msgid "Standard Deviation"
 msgstr "Standardabweichung"
@@ -1169,9 +1143,8 @@ msgstr "Stapel von %1$s für n₁ und %2$s für n₂"
 msgid "batch-size increments of %1$s for n₁ and %2$s for n₂"
 msgstr "Stapelgrößen-Erhöhungen von %1$s für n₁ und %2$s für n₂"
 
-#, fuzzy
 msgid "batches of %1$s"
-msgstr "Stichprobenumfänge von %1$s"
+msgstr "Chargen von %1$s"
 
 msgid "batch-size increments of %1$s"
 msgstr "Stapelgrößen-Erhöhungen von %1$s"
@@ -1225,9 +1198,8 @@ msgid ""
 "stopping for H₁ or H₀."
 msgstr "Jede Kurve liefert den kritischen Wert der Teststatistik, der bei einem Einblick einem Bayesfaktor-Stoppschwellenwert entspricht. Das Überschreiten einer Grenze löst einen Stopp für H₁ oder H₀ aus."
 
-#, fuzzy
 msgid "Lower"
-msgstr "Teststärke"
+msgstr "Untere"
 
 msgid "Upper"
 msgstr "Oben"
@@ -1255,9 +1227,8 @@ msgstr "Die Basis-Ereigniswahrscheinlichkeit und der alternative biniäre Effekt
 msgid "The %1$s must be greater than 0 and less than 1."
 msgstr "%1$s muss größer als 0 und kleiner als 1 sein."
 
-#, fuzzy
 msgid "One-sided"
-msgstr "einseitig"
+msgstr "Einseitig"
 
 msgid "Two-sided symmetric"
 msgstr "Zweiseitig symmetrisch"
@@ -1268,9 +1239,8 @@ msgstr "Zweiseitige asymmetrische β-Ausgabe (bindende Nutzlosigkeit)"
 msgid "Two-sided asymmetric β-spending (non-binding futility)"
 msgstr "Zweiseitige asymmetrische β-Ausgabe (nicht bindende Nutzlosigkeit)"
 
-#, fuzzy
 msgid "Canonical effect (δ)"
-msgstr "Hypothetische Effektstärke (%s)"
+msgstr "Kanonischer Effekt (δ)"
 
 msgid "Standardized mean difference (one sample / paired)"
 msgstr "Standardisierte Mittelwertdifferenz (eine Stichprobe / gepaart)"
@@ -1281,9 +1251,8 @@ msgstr "Standardisierte Mittelwertdifferenz (unabhängige Stichproben)"
 msgid "Mean difference (one sample / paired)"
 msgstr "Mittelwertdifferenz (eine Stichprobe / gepaart)"
 
-#, fuzzy
 msgid "Mean difference (independent samples)"
-msgstr "ein t-Test für unabhängige Stichproben"
+msgstr "Mittelwertdifferenz (unabhängige Stichproben)"
 
 msgid "Two-sample binary endpoint"
 msgstr "Binärer Endpunkt mit zwei Stichproben"
@@ -1379,13 +1348,11 @@ msgstr "Erwartet"
 msgid "Unable to compute sample size / event details: %1$s"
 msgstr "Kann Stichprobenumfang / Ereignisdetails nicht berechnen: %1$s"
 
-#, fuzzy
 msgid "Group 1 sample size"
-msgstr "ein Stichprobenumfang von"
+msgstr "Stichprobenumfang Gruppe 1"
 
-#, fuzzy
 msgid "Group 2 sample size"
-msgstr "ein Stichprobenumfang von"
+msgstr "Stichprobenumfang Gruppe 2"
 
 msgid "Enrolled subjects"
 msgstr "Eingeschriebene Probanden"
@@ -1456,13 +1423,11 @@ msgstr "Ereigniswahrscheinlichkeit in Gruppe 2 unter der Alternativhypothese."
 msgid "Alternative risk difference"
 msgstr "Alternative Risikodifferenz"
 
-#, fuzzy
 msgid "Alternative risk ratio"
-msgstr "Alternativhypothese"
+msgstr "Alternatives Risikoverhältnis"
 
-#, fuzzy
 msgid "Alternative odds ratio"
-msgstr "Alternativhypothese"
+msgstr "Alternatives Chancenverhältnis"
 
 msgid "Information-scale effect used by the sequential calculations."
 msgstr "Informationsskalen-Effekt, der von den sequentiellen Berechnungen verwendet wird."
@@ -1544,13 +1509,11 @@ msgstr "Maximaler Gesamt-Stichprobenumfang"
 msgid "Expected Total Sample Size"
 msgstr "Erwarteter Gesamt-Stichprobenumfang"
 
-#, fuzzy
 msgid "Total Sample Size"
-msgstr "ein Stichprobenumfang von"
+msgstr "Gesamter Stichprobenumfang"
 
-#, fuzzy
 msgid "total sample size"
-msgstr "ein Stichprobenumfang von"
+msgstr "Gesamter Stichprobenumfang"
 
 msgid "Fixed Design Events"
 msgstr "Ereignisse des festen Designs"
@@ -1919,20 +1882,17 @@ msgstr "Bayesfaktor-Evidenz"
 msgid "Null"
 msgstr "Null"
 
-#, fuzzy
 msgid "Alternative"
-msgstr "Alternativhypothese"
+msgstr "Alternative"
 
 msgid "Explanation:"
 msgstr "Erläuterung:"
 
-#, fuzzy
 msgid "Two-sided"
-msgstr "zweiseitig"
+msgstr "Zweiseitig"
 
-#, fuzzy
 msgid "Less (One-sided)"
-msgstr "einseitig"
+msgstr "Kleiner (einseitig)"
 
 msgid "Greater (One-sided)"
 msgstr "Größer (einseitig)"
