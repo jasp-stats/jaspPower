@@ -18,7 +18,7 @@ This module is based upon [jpower](https://github.com/richarddmorey/jpower/commi
 - Minimal effect size of interest (δ): The minimal effect size using Cohen's δ, that would be interesting to detect.
 - Minimum desired power (1-β): The minimum desired probability of detecting an effect (statistical power). β refers to the probability of conducting a Type II error (false negative), therefore power is defined as the opposite i.e. 1-β.
 - Sample size (N) / Number of pairs (N) / Sample size in group 1 (N₁): The given sample size. For one sample tests this is the total sample size, for the paired samples t-test it is the number of pairs, and for two group tests it is the sample size of the first group (the size of the second group follows from the sample size ratio).
-- Sample size ratio (N₂/N₁): Ratio of the second to the first groups sample size (two group tests only).
+- Sample size ratio (N₂/N₁): Ratio of the second group's sample size to the first group's sample size (two group tests only).
 - Type I error rate (α): The Type I error rate (false positive) threshold which will be used when running tests later.
 - Alternative Hypothesis: Whether a one-sided or two-sided hypothesis will be tested.
 
