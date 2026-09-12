@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspPower 0.1.0\n"
 "POT-Creation-Date: 2026-06-27 04:48\n"
-"PO-Revision-Date: 2026-08-30 05:51+0000\n"
+"PO-Revision-Date: 2026-09-06 21:51+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/jasppower-r/"
 "de/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2026.9.dev0\n"
+"X-Generator: Weblate 2026.9.1.dev0\n"
 
 msgid "Bayes Factor Design"
 msgstr "Bayesfaktor-Design"
@@ -811,9 +811,8 @@ msgstr "Der Plan für Standardfehler muss mindestens einen Einblick enthalten."
 msgid "The standard error schedule must be strictly decreasing."
 msgstr "Der Plan für Standardfehler muss streng abnehmend sein."
 
-#, fuzzy
 msgid "sample size schedule"
-msgstr "Stichprobenumfänge von %s"
+msgstr "Stichprobenumfangs-Plan"
 
 msgid "The custom sample size schedule must contain at least one look."
 msgstr "Der benutzerdefinierte Stichprobenumfangs-Plan muss mindestens einen Einblick enthalten."
@@ -1400,11 +1399,8 @@ msgstr "Alternativer Effekt, der verwendet wird, um die Ereigniswahrscheinlichke
 msgid "Group 1 event probability"
 msgstr "Ereigniswahrscheinlichkeit von Gruppe 1"
 
-#, fuzzy
 msgid "Baseline event probability under the alternative hypothesis."
-msgstr ""
-"Die Effektstärke kann bei einer zweiseitigen Alternativhypothese nicht 0 "
-"sein."
+msgstr "Referenz-Ereigniswahrscheinlichkeit unter der Alternativhypothese."
 
 msgid "Event probability in group 1 under the alternative hypothesis."
 msgstr "Ereigniswahrscheinlichkeit in Gruppe 1 unter der Alternativhypothese."
