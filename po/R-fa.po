@@ -2,14 +2,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspPower 0.96.6\n"
 "POT-Creation-Date: 2026-06-27 04:48\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2026-09-14 02:34+0000\n"
+"Last-Translator: Sohrab Delshad <sdel4030@gmail.com>\n"
+"Language-Team: Persian <https://hosted.weblate.org/projects/jasp/jasppower-r/"
+"fa/>\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 2026.10.dev0\n"
 
 msgid "Bayes Factor Design"
 msgstr ""
@@ -193,7 +195,7 @@ msgid "Statistical Test"
 msgstr ""
 
 msgid "Decision"
-msgstr ""
+msgstr "تصمیم"
 
 msgid "Independent Samples T-Test"
 msgstr ""
@@ -223,13 +225,13 @@ msgid "Group"
 msgstr ""
 
 msgid "Mean"
-msgstr ""
+msgstr "میانگین"
 
 msgid "SD"
-msgstr ""
+msgstr "انحراف معیار"
 
 msgid "Variable"
-msgstr ""
+msgstr "متغیّر"
 
 msgid "Successes"
 msgstr ""
@@ -241,13 +243,13 @@ msgid "Proportion"
 msgstr ""
 
 msgid "Mean Difference"
-msgstr ""
+msgstr "اختلاف میانگین"
 
 msgid "SD Difference"
 msgstr ""
 
 msgid "SE"
-msgstr ""
+msgstr "خطای استاندارد (SE)"
 
 msgid "Group 1"
 msgstr ""
@@ -265,7 +267,7 @@ msgid "Summary statistics"
 msgstr ""
 
 msgid "Estimate"
-msgstr ""
+msgstr "برآورد"
 
 msgid "Mean 1"
 msgstr ""
@@ -286,7 +288,7 @@ msgid "SD difference"
 msgstr ""
 
 msgid "Cohen's d"
-msgstr ""
+msgstr "d کوهن"
 
 msgid "Failures"
 msgstr ""
@@ -419,7 +421,7 @@ msgid "one-sided"
 msgstr ""
 
 msgid "two-sided"
-msgstr ""
+msgstr "دوطرفه"
 
 msgid "(H₁: %1$s %2$s %3$s)"
 msgstr ""
@@ -528,10 +530,10 @@ msgid "Sample size (group 1)"
 msgstr ""
 
 msgid "Sample size"
-msgstr ""
+msgstr "اندازه نمونه"
 
 msgid "Probability"
-msgstr ""
+msgstr "احتمال"
 
 msgid "Outcome"
 msgstr ""
@@ -570,7 +572,7 @@ msgid "Design proportion"
 msgstr ""
 
 msgid "Prior Distribution"
-msgstr ""
+msgstr "توزیع پیشین"
 
 msgid "Unable to compute prior distribution plot: %1$s"
 msgstr ""
@@ -607,10 +609,10 @@ msgid "Parameter value"
 msgstr ""
 
 msgid "Density"
-msgstr ""
+msgstr "چگالی"
 
 msgid "Hypothesis"
-msgstr ""
+msgstr "فرضیه"
 
 msgid ""
 "The %1$s parameterization assumes a unit information standard deviation "
@@ -1191,10 +1193,10 @@ msgid ""
 msgstr ""
 
 msgid "Lower"
-msgstr ""
+msgstr "پایین"
 
 msgid "Upper"
-msgstr ""
+msgstr "بالا"
 
 msgid "group 1 event probability"
 msgstr ""
@@ -1369,10 +1371,10 @@ msgid "Effect Scale Conversions"
 msgstr ""
 
 msgid "Value"
-msgstr ""
+msgstr "مقدار"
 
 msgid "Description"
-msgstr ""
+msgstr "توصیف"
 
 msgid "Canonical δ under H₁"
 msgstr ""
@@ -2120,7 +2122,7 @@ msgid "|h|"
 msgstr ""
 
 msgid "Power Contour"
-msgstr ""
+msgstr "خطوط تراز توان"
 
 msgid "Power Curve by Effect Size"
 msgstr ""
@@ -2329,7 +2331,7 @@ msgid "Power Curve by variance ratio"
 msgstr ""
 
 msgid "Alternative hypothesis"
-msgstr ""
+msgstr "فرض مقابل"
 
 msgid "Power by Effect Size"
 msgstr ""
