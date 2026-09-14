@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspPower 0.96.6\n"
 "POT-Creation-Date: 2026-06-27 04:48\n"
-"PO-Revision-Date: 2026-09-14 02:34+0000\n"
+"PO-Revision-Date: 2026-09-15 04:04+0000\n"
 "Last-Translator: Sohrab Delshad <sdel4030@gmail.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/jasp/jasppower-r/"
 "fa/>\n"
@@ -198,13 +198,13 @@ msgid "Decision"
 msgstr "تصمیم"
 
 msgid "Independent Samples T-Test"
-msgstr ""
+msgstr "آزمون t نمونه‌های مستقل"
 
 msgid "Paired Samples T-Test"
-msgstr ""
+msgstr "آزمون t نمونه‌های جفتی"
 
 msgid "One Sample T-Test"
-msgstr ""
+msgstr "آزمون t تک‌نمونه‌ای"
 
 msgid "Independent Samples Z-Test"
 msgstr ""
@@ -222,7 +222,7 @@ msgid "General (z-approximation)"
 msgstr ""
 
 msgid "Group"
-msgstr ""
+msgstr "گروه"
 
 msgid "Mean"
 msgstr "میانگین"
@@ -243,13 +243,13 @@ msgid "Proportion"
 msgstr ""
 
 msgid "Mean Difference"
-msgstr "اختلاف میانگین"
+msgstr "تفاوت میانگین"
 
 msgid "SD Difference"
 msgstr ""
 
 msgid "SE"
-msgstr "خطای استاندارد (SE)"
+msgstr "خطای معیار"
 
 msgid "Group 1"
 msgstr ""
@@ -469,7 +469,7 @@ msgid "%1$s ≤ %2$s"
 msgstr ""
 
 msgid "%1$s < %2$s"
-msgstr ""
+msgstr "%1$s < %2$s"
 
 msgid "%1$s ≥ %2$s"
 msgstr ""
@@ -591,7 +591,7 @@ msgid "Analysis Prior"
 msgstr ""
 
 msgid "Prior"
-msgstr ""
+msgstr "پیشین"
 
 msgid "H₁"
 msgstr ""
@@ -714,7 +714,7 @@ msgid "p₀ = %1$s"
 msgstr ""
 
 msgid "Beta"
-msgstr ""
+msgstr "بتا"
 
 msgid "Cauchy"
 msgstr ""
@@ -998,7 +998,7 @@ msgid "Mean Sample Size"
 msgstr ""
 
 msgid "Standard Deviation"
-msgstr ""
+msgstr "انحراف معیار"
 
 msgid ""
 "The requested BF target could not be reached within the selected maximum "
