@@ -249,7 +249,7 @@
     d <- round(as.numeric(d), 3)
   }
 
-  n_text <- gettextf("sample sizes of %1$s", n)
+  n_text <- gettextf("a sample size of %1$s", n)
 
   if (d > 1) {
     alt_text <- "<i>\u03C1\u003E</i>"
@@ -316,7 +316,7 @@
   power <- ifelse(calc == "power", r$power, lst$pow)
   alt <- lst$alt
 
-  n_text <- gettextf("sample sizes of at least %1$s", n)
+  n_text <- gettextf("a sample size of at least %1$s", n)
 
   if (alt == "two.sided") {
     alt_text <- "<i>\u03C1\u2260</i>1"
@@ -484,7 +484,7 @@
   alpha <- ifelse(calc == "alpha", r$alpha, lst$alpha)
   alt <- lst$alt
 
-  n_text <- gettextf("a sample size of ", n)
+  n_text <- gettextf("a sample size of %1$s", n)
 
   tail_text <- ifelse(alt == "two.sided",
     gettext("two-sided"),
