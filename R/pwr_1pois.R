@@ -222,7 +222,7 @@
   alpha <- ifelse(calc == "alpha", r$alpha, lst$alpha)
   alt <- lst$alt
 
-  n_text <- gettextf("a sample size of ", n)
+  n_text <- gettextf("a sample size of %1$s", n)
 
   tail_text <- ifelse(alt == "two.sided",
     gettext("two-sided"),
@@ -324,7 +324,7 @@
   alpha <- ifelse(calc == "alpha", r$alpha, lst$alpha)
   alt <- lst$alt
 
-  n_text <- gettextf("sample sizes of %s", n)
+  n_text <- gettextf("a sample size of %1$s", n)
 
   dType_text <- ifelse(options$esType == "h",
     gettext("effect sizes"),
@@ -396,7 +396,7 @@
   power <- ifelse(calc == "power", r$power, lst$pow)
   alt <- lst$alt
 
-  n_text <- gettextf("sample sizes of at least %s", n)
+  n_text <- gettextf("a sample size of at least %1$s", n)
 
 
 
@@ -441,7 +441,7 @@
   alpha <- ifelse(calc == "alpha", r$alpha, lst$alpha)
   alt <- lst$alt
 
-  n_text <- gettextf("a sample size of %s", n)
+  n_text <- gettextf("a sample size of %1$s", n)
 
   if (alt == "two.sided") {
     tail_text <- gettext("two-sided")

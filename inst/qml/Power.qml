@@ -215,15 +215,29 @@ Form
 				visible: test.currentIndex == 2 || test.currentIndex == 3 || test.currentIndex == 4 || test.currentIndex == 6 || test.currentIndex == 8
 				enabled: calc.currentIndex != 0
 			}
+			// Paired samples t-test: sample size refers to pairs, not to groups
 			Text
 			{
-				text: qsTr("Sample size per group:")
-				visible: test.currentIndex == 0 || test.currentIndex == 1 || test.currentIndex == 5 || test.currentIndex == 7 || test.currentIndex == 9
+				text: qsTr("Number of pairs:")
+				visible: test.currentIndex == 1
 				enabled: calc.currentIndex != 0
 			}
 			Text
 			{
 				text: qsTr("N")
+				visible: test.currentIndex == 1 || test.currentIndex == 2 || test.currentIndex == 3 || test.currentIndex == 4 || test.currentIndex == 6 || test.currentIndex == 8
+				enabled: calc.currentIndex != 0
+			}
+			Text
+			{
+				text: qsTr("Sample size in group 1:")
+				visible: test.currentIndex == 0 || test.currentIndex == 5 || test.currentIndex == 7 || test.currentIndex == 9
+				enabled: calc.currentIndex != 0
+			}
+			Text
+			{
+				text: qsTr("N₁")
+				visible: test.currentIndex == 0 || test.currentIndex == 5 || test.currentIndex == 7 || test.currentIndex == 9
 				enabled: calc.currentIndex != 0
 			}
 			IntegerField
@@ -243,7 +257,7 @@ Form
 			}
 			Text
 			{
-				text: qsTr("N₁/N₂")
+				text: qsTr("N₂/N₁")
 				visible: test.currentIndex == 0 || test.currentIndex == 5 || test.currentIndex == 7 || test.currentIndex == 9
 			}
 			DoubleField
