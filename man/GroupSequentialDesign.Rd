@@ -6,7 +6,7 @@
 \usage{
 GroupSequentialDesign(
   data = NULL,
-  version = "0.97.1",
+  version = "1",
   alpha = 0.025,
   binaryAlternativeEffect = 0.1,
   binaryBaselineEventRate = 0.5,

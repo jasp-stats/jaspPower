@@ -78,7 +78,7 @@
 #' @param upperBoundaryParameter, Parameter for the selected upper boundary.
 GroupSequentialDesign <- function(
           data = NULL,
-          version = "0.97.1",
+          version = "1",
           alpha = 0.025,
           binaryAlternativeEffect = 0.1,
           binaryBaselineEventRate = 0.5,

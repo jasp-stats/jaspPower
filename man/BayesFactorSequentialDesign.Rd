@@ -6,7 +6,7 @@
 \usage{
 BayesFactorSequentialDesign(
   data = NULL,
-  version = "0.97.1",
+  version = "1",
   analysisPriorDirection = "greater",
   analysisPriorDistribution = "cauchy",
   analysisPriorDistributionFigure = TRUE,
@@ -285,10 +285,10 @@ Defaults to \code{FALSE}.}
 
 \item{observedInputType, }{Choose which summary statistics are available for the observed t-test result.
 \itemize{
-  \item \code{"meansAndSDs"}
-  \item \code{"meanDiffAndSD"}
   \item \code{"tAndN"}
   \item \code{"cohensD"}
+  \item \code{"meansAndSDs"}
+  \item \code{"meanDiffAndSD"}
   \item \code{"meanAndSD"}
 }}
 

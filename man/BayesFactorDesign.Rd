@@ -6,7 +6,7 @@
 \usage{
 BayesFactorDesign(
   data = NULL,
-  version = "0.97.1",
+  version = "1",
   analysisPriorDirection = "greater",
   analysisPriorDistribution = "cauchy",
   analysisPriorDistributionFigure = TRUE,
@@ -232,8 +232,8 @@ Defaults to \code{TRUE}.}
 
 \item{observedDataAnalysisInput, }{Choose whether to enter observed data as summary statistics or select variables from the dataset.
 \itemize{
-  \item \code{"columns"}
   \item \code{"summaryStatistics"}
+  \item \code{"columns"}
 }}
 
 \item{observedDependentVariable, }{Observed outcome variable for the independent-samples Bayes factor.}
@@ -247,9 +247,9 @@ Defaults to \code{TRUE}.}
 \item{observedInputType, }{Choose which summary statistics are available for the observed t-test result.
 \itemize{
   \item \code{"tAndN"}
+  \item \code{"cohensD"}
   \item \code{"meansAndSDs"}
   \item \code{"meanDiffAndSD"}
-  \item \code{"cohensD"}
   \item \code{"meanAndSD"}
 }}
 

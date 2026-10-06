@@ -93,8 +93,8 @@
 #' @param observedCohensD, Observed standardized mean difference used to compute the observed Bayes factor.
 #' @param observedDataAnalysisInput, Choose whether to enter observed data as summary statistics or select variables from the dataset.
 #' \itemize{
-#'   \item \code{"columns"}
 #'   \item \code{"summaryStatistics"}
+#'   \item \code{"columns"}
 #' }
 #' @param observedDependentVariable, Observed outcome variable for the independent-samples Bayes factor.
 #' @param observedEffectSize, Observed effect estimate on the scale selected for the general z-test approximation.
@@ -103,9 +103,9 @@
 #' @param observedInputType, Choose which summary statistics are available for the observed t-test result.
 #' \itemize{
 #'   \item \code{"tAndN"}
+#'   \item \code{"cohensD"}
 #'   \item \code{"meansAndSDs"}
 #'   \item \code{"meanDiffAndSD"}
-#'   \item \code{"cohensD"}
 #'   \item \code{"meanAndSD"}
 #' }
 #' @param observedMean, Observed mean used to compute the observed Bayes factor.
@@ -140,7 +140,7 @@
 #' @param unitInformationSd, Standard deviation of the estimator at one unit of information for the general z-test approximation.
 BayesFactorDesign <- function(
           data = NULL,
-          version = "0.97.1",
+          version = "1",
           analysisPriorDirection = "greater",
           analysisPriorDistribution = "cauchy",
           analysisPriorDistributionFigure = TRUE,

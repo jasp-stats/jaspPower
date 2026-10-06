@@ -6,7 +6,7 @@
 \usage{
 Power(
   data = NULL,
-  version = "0.97.1",
+  version = "1",
   alpha = 0.05,
   alternative = "twoSided",
   baselineProportion = 0.5,

@@ -113,10 +113,10 @@
 #' @param observedGroupingVariable, Grouping variable that defines the two independent samples.
 #' @param observedInputType, Choose which summary statistics are available for the observed t-test result.
 #' \itemize{
-#'   \item \code{"meansAndSDs"}
-#'   \item \code{"meanDiffAndSD"}
 #'   \item \code{"tAndN"}
 #'   \item \code{"cohensD"}
+#'   \item \code{"meansAndSDs"}
+#'   \item \code{"meanDiffAndSD"}
 #'   \item \code{"meanAndSD"}
 #' }
 #' @param observedMean, Observed mean used to compute the observed Bayes factor.
@@ -162,7 +162,7 @@
 #' @param upperSearchBoundForMaximumSampleSize, Largest maximum sample size considered when searching for the target probability of conclusive evidence.
 BayesFactorSequentialDesign <- function(
           data = NULL,
-          version = "0.97.1",
+          version = "1",
           analysisPriorDirection = "greater",
           analysisPriorDistribution = "cauchy",
           analysisPriorDistributionFigure = TRUE,
