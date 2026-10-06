@@ -1,4 +1,4 @@
-GroupSequentialDesign <- function(jaspResults, dataset, options) {
+GroupSequentialDesignInternal <- function(jaspResults, dataset, options) {
   settings <- try(.csdPrepareSettings(options), silent = TRUE)
   result   <- if (jaspBase::isTryError(settings)) {
     settings
