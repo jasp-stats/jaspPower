@@ -7,7 +7,7 @@ Description
 	icon		: 	"power.svg"
 	description	: 	qsTr("This module allows you to conduct power analyses.")
 	requiresData:	false
-	hasWrappers: 	false
+	hasWrappers: 	true
 	preloadData:  	true
 	
 	GroupTitle

@@ -241,7 +241,7 @@ msgstr "Simpan set data yang dihasilkan"
 
 msgctxt "Description|"
 msgid "Classical"
-msgstr ""
+msgstr "Klasikal"
 
 msgctxt "Description|"
 msgid "Group Sequential Design"

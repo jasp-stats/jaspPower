@@ -1,4 +1,4 @@
-Power <- function(jaspResults, dataset, options) {
+PowerInternal <- function(jaspResults, dataset, options) {
   options <- .checkOptions(options)
 
   # Run the appropriate test

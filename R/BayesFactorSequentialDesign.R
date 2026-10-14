@@ -1,4 +1,4 @@
-BayesFactorSequentialDesign <- function(jaspResults, dataset, options) {
+BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
   settings    <- .bfsdPrepareSettings(options)
   tables      <- .bfsdInitializeOutputTables(jaspResults, options, settings)
   if (.bfdPriorPlotRequested(options))
