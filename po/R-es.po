@@ -418,7 +418,7 @@ msgid "%1$s must be selected."
 msgstr "Debe seleccionarse %1$s."
 
 msgid "%1$s was not found in the dataset."
-msgstr "No se encontró %1$ en el conjunto de datos."
+msgstr "No se encontró %1$s en el conjunto de datos."
 
 msgid "%1$s contains no observed values."
 msgstr "%1$s no contiene valores observados."

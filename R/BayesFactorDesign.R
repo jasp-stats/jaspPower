@@ -818,7 +818,7 @@ BayesFactorDesignInternal <- function(jaspResults, dataset, options) {
   }
 
   return(gettext(
-    "This table evaluates the selected fixed sample size. Achieved probabilities are the probability that the planned study produces conclusive evidence in the requested direction when data are generated from the corresponding design prior."
+    "This table evaluates the selected fixed sample size. Achieved probabilities are the probabilities that the planned study produces conclusive evidence in the requested direction when data are generated from the corresponding design prior."
   ))
 }
 
