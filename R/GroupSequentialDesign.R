@@ -1282,7 +1282,7 @@ GroupSequentialDesign <- function(jaspResults, dataset, options) {
   }
 
   table$setData(.csdCumulativeCrossingRows(settings, result[["design"]]))
-  table$addFootnote(gettext("Cumulative probabilities show the chance that a boundary has been crossed by each look."))
+  table$addFootnote(gettext("Cumulative probabilities show the probability that a boundary has been crossed by each look."))
 }
 
 .csdStagewiseCrossingProbabilitiesTable <- function(jaspResults, settings, result) {
@@ -1595,10 +1595,7 @@ GroupSequentialDesign <- function(jaspResults, dataset, options) {
   if (settings[["testType"]] %in% c(3, 4))
     codeValues[["sfl"]] <- .csdSpendingFunctionRValue(settings[["lowerBoundary"]], settings[["testType"]])
 
-  values <- vapply(args, .bfdFormatRValue, character(1))
-  values[names(codeValues)] <- codeValues
-
-  return(values)
+  return(.csdFormatCodeArgs(args, codeValues))
 }
 
 .csdGsSurvCodeArgs <- function(settings) {
@@ -1608,8 +1605,18 @@ GroupSequentialDesign <- function(jaspResults, dataset, options) {
   if (settings[["testType"]] %in% c(3, 4))
     codeValues[["sfl"]] <- .csdSpendingFunctionRValue(settings[["lowerBoundary"]], settings[["testType"]])
 
-  values <- vapply(args, .bfdFormatRValue, character(1))
-  values[names(codeValues)] <- codeValues
+  return(.csdFormatCodeArgs(args, codeValues))
+}
+
+.csdFormatCodeArgs <- function(args, codeValues) {
+  values <- character(length(args))
+  names(values) <- names(args)
+
+  codeNames <- intersect(names(codeValues), names(args))
+  valueNames <- setdiff(names(args), codeNames)
+
+  values[valueNames] <- vapply(args[valueNames], .bfdFormatRValue, character(1))
+  values[codeNames] <- codeValues[codeNames]
 
   return(values)
 }

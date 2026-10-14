@@ -78,7 +78,6 @@
 <text x='649.54' y='240.19' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='103.94px' lengthAdjust='spacingAndGlyphs'>Analysis Prior</text>
 <rect x='597.66' y='247.43' width='28.35' height='28.35' style='stroke-width: 10.67; stroke: none;' />
 <line x1='600.49' y1='261.60' x2='623.17' y2='261.60' style='stroke-width: 2.35; stroke: #1B9E77; stroke-linecap: butt;' />
-<polygon points='618.18,264.48 623.17,261.60 618.18,258.72 ' style='stroke-width: 2.35; stroke: #1B9E77; stroke-linecap: butt; fill: #1B9E77;' />
 <rect x='597.66' y='275.78' width='28.35' height='28.35' style='stroke-width: 10.67; stroke: none;' />
 <line x1='600.49' y1='289.95' x2='623.17' y2='289.95' style='stroke-width: 2.35; stroke: #666666; stroke-linecap: butt;' />
 <text x='631.49' y='266.14' style='font-size: 17.00px; font-family: sans;' textLength='51.03px' lengthAdjust='spacingAndGlyphs'>Under </text>
