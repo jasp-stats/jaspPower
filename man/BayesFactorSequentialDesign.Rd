@@ -52,7 +52,6 @@ BayesFactorSequentialDesign(
   exactIntegrationOverAllRegions = FALSE,
   explanatoryText = TRUE,
   firstInformationFraction = 0.2,
-  generalZParameterization = "standardizedMeanDifference",
   generateRCode = FALSE,
   generateReport = FALSE,
   generateReportLatexFormattedOutput = FALSE,
@@ -107,7 +106,6 @@ BayesFactorSequentialDesign(
   sampleSizeScheduleGroup2 = "20, 40, 60, 80, 100",
   sampleSizeSearchStrategy = "adaptive",
   sampleSizeSummary = TRUE,
-  standardErrorSchedule = "0.224, 0.158, 0.129, 0.112, 0.100",
   statisticalTest = "independentSamplesTTest",
   stoppingBoundariesPlot = FALSE,
   stoppingBoundariesTable = FALSE,
@@ -223,8 +221,6 @@ Defaults to \code{TRUE}.}
 
 \item{firstInformationFraction, }{Information fraction at the first planned look relative to the maximum information.}
 
-\item{generalZParameterization, }{Scale used for the general z-test approximation, such as standardized mean difference, Fisher's z, or a log effect measure.}
-
 \item{generateRCode, }{Generate R code that reproduces the Bayes factor sequential-design calculation.
 Defaults to \code{FALSE}.}
 
@@ -271,8 +267,8 @@ Defaults to \code{FALSE}.}
 
 \item{observedDataAnalysisInput, }{Choose whether to enter observed data as summary statistics or select variables from the dataset.
 \itemize{
-  \item \code{"summaryStatistics"}
   \item \code{"columns"}
+  \item \code{"summaryStatistics"}
 }}
 
 \item{observedDependentVariable, }{Observed outcome variable for the independent-samples Bayes factor.}
@@ -286,9 +282,9 @@ Defaults to \code{FALSE}.}
 \item{observedInputType, }{Choose which summary statistics are available for the observed t-test result.
 \itemize{
   \item \code{"tAndN"}
-  \item \code{"cohensD"}
-  \item \code{"meansAndSDs"}
   \item \code{"meanDiffAndSD"}
+  \item \code{"meansAndSDs"}
+  \item \code{"cohensD"}
   \item \code{"meanAndSD"}
 }}
 
@@ -344,8 +340,6 @@ Defaults to \code{FALSE}.}
 
 \item{sampleSizeSummary, }{Show the expected sample size and its variability under each design prior.
 Defaults to \code{TRUE}.}
-
-\item{standardErrorSchedule, }{Comma-separated standard errors for the planned looks in a sequential general z-test.}
 
 \item{statisticalTest, }{Select the statistical test for which the Bayes factor sequential design is planned.}
 

@@ -77,7 +77,6 @@
 #' @param explanatoryText, Append brief interpretation notes to each displayed Bayesian result.
 #'    Defaults to \code{TRUE}.
 #' @param firstInformationFraction, Information fraction at the first planned look relative to the maximum information.
-#' @param generalZParameterization, Scale used for the general z-test approximation, such as standardized mean difference, Fisher's z, or a log effect measure.
 #' @param generateRCode, Generate R code that reproduces the Bayes factor sequential-design calculation.
 #'    Defaults to \code{FALSE}.
 #' @param generateReport, Generate a short report describing the sequential design, priors, thresholds, and achieved probabilities.
@@ -104,8 +103,8 @@
 #' @param observedCohensD, Observed standardized mean difference used to compute the observed Bayes factor.
 #' @param observedDataAnalysisInput, Choose whether to enter observed data as summary statistics or select variables from the dataset.
 #' \itemize{
-#'   \item \code{"summaryStatistics"}
 #'   \item \code{"columns"}
+#'   \item \code{"summaryStatistics"}
 #' }
 #' @param observedDependentVariable, Observed outcome variable for the independent-samples Bayes factor.
 #' @param observedEffectSize, Observed effect estimate on the scale selected for the general z-test approximation.
@@ -114,9 +113,9 @@
 #' @param observedInputType, Choose which summary statistics are available for the observed t-test result.
 #' \itemize{
 #'   \item \code{"tAndN"}
-#'   \item \code{"cohensD"}
-#'   \item \code{"meansAndSDs"}
 #'   \item \code{"meanDiffAndSD"}
+#'   \item \code{"meansAndSDs"}
+#'   \item \code{"cohensD"}
 #'   \item \code{"meanAndSD"}
 #' }
 #' @param observedMean, Observed mean used to compute the observed Bayes factor.
@@ -146,7 +145,6 @@
 #' @param sampleSizeSearchStrategy, Choose whether maximum sample-size search uses a faster adaptive search or an exhaustive search that certifies the smallest maximum sample size.
 #' @param sampleSizeSummary, Show the expected sample size and its variability under each design prior.
 #'    Defaults to \code{TRUE}.
-#' @param standardErrorSchedule, Comma-separated standard errors for the planned looks in a sequential general z-test.
 #' @param statisticalTest, Select the statistical test for which the Bayes factor sequential design is planned.
 #' @param stoppingBoundariesPlot, Plot the test-statistic boundaries that trigger stopping for H₁ or H₀ at each look.
 #'    Defaults to \code{FALSE}.
@@ -208,7 +206,6 @@ BayesFactorSequentialDesign <- function(
           exactIntegrationOverAllRegions = FALSE,
           explanatoryText = TRUE,
           firstInformationFraction = 0.2,
-          generalZParameterization = "standardizedMeanDifference",
           generateRCode = FALSE,
           generateReport = FALSE,
           generateReportLatexFormattedOutput = FALSE,
@@ -263,7 +260,6 @@ BayesFactorSequentialDesign <- function(
           sampleSizeScheduleGroup2 = "20, 40, 60, 80, 100",
           sampleSizeSearchStrategy = "adaptive",
           sampleSizeSummary = TRUE,
-          standardErrorSchedule = "0.224, 0.158, 0.129, 0.112, 0.100",
           statisticalTest = "independentSamplesTTest",
           stoppingBoundariesPlot = FALSE,
           stoppingBoundariesTable = FALSE,
@@ -290,7 +286,7 @@ BayesFactorSequentialDesign <- function(
       jaspBase::storeDataSet(data)
    }
 
-   optionsWithFormula <- c("analysisPriorDirection", "analysisPriorDistribution", "binomialDesignNullPriorDistribution", "binomialDesignPriorDistribution", "calculationTarget", "colorPalette", "designNullPriorDistribution", "designPriorDistribution", "designSampleSizeBasis", "generalZParameterization", "integrationMethod", "legendPosition", "lookScheduleType", "nullPriorDistribution", "observedDependentVariable", "observedGroupingVariable", "observedProportionVariable", "observedVariable", "observedVariablePairs", "sampleSizeSearchStrategy", "statisticalTest", "tSearchRangeMode")
+   optionsWithFormula <- c("analysisPriorDirection", "analysisPriorDistribution", "binomialDesignNullPriorDistribution", "binomialDesignPriorDistribution", "calculationTarget", "colorPalette", "designNullPriorDistribution", "designPriorDistribution", "designSampleSizeBasis", "integrationMethod", "legendPosition", "lookScheduleType", "nullPriorDistribution", "observedDependentVariable", "observedGroupingVariable", "observedProportionVariable", "observedVariable", "observedVariablePairs", "sampleSizeSearchStrategy", "statisticalTest", "tSearchRangeMode")
    for (name in optionsWithFormula) {
       if ((name %in% optionsWithFormula) && inherits(options[[name]], "formula")) options[[name]] = jaspBase::jaspFormula(options[[name]], data)   }
 
