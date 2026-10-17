@@ -195,12 +195,12 @@
   str <- paste(
     "<p>",
     gettext(
-      "The power contour plot shows how the sensitivity of the test changes with the hypothetical effect size and the sample sizes in the design. As we increase the sample sizes, smaller effect sizes become reliably detectable."
+      "The power contour plot shows how the sensitivity of the test changes with the hypothetical effect size and the number of pairs in the design. As we increase the number of pairs, smaller effect sizes become reliably detectable."
     ),
     "</p>",
     "<p>",
     gettext(
-      "Conversely, if one is satisfied to reliably detect only larger effect sizes, smaller sample sizes are needed. The point shows the power of the specified design and effect size."
+      "Conversely, if one is satisfied to reliably detect only larger effect sizes, fewer pairs are needed. The point shows the power of the specified design and effect size."
     ),
     "</p>"
   )
@@ -231,7 +231,7 @@
   )
   d <- round(d, 3)
 
-  n_text <- gettextf("sample sizes of %1$s", n)
+  n_text <- gettextf("%1$s pairs", n)
 
   if (alt == "two.sided") {
     tail_text <- gettext("two-sided")
@@ -287,7 +287,7 @@
   power <- ifelse(calc == "power", r$power, lst$pow)
   alt <- lst$alt
 
-  n_text <- gettextf("sample sizes of at least %1$s", n)
+  n_text <- gettextf("at least %1$s pairs", n)
 
   if (alt == "two.sided") {
     tail_text <- "two-sided"
@@ -333,7 +333,7 @@
     )
   )
 
-  n_text <- gettextf("a sample size of %1$s", n)
+  n_text <- gettextf("%1$s pairs", n)
 
   if (alt == "two.sided") {
     tail_text <- gettext("two-sided")
@@ -407,7 +407,7 @@
       power_rounded <- ">0.999"
     }
     table$addFootnote(paste(
-      gettext("Due to the rounding of the sample size, the actual power can deviate from the target power."),
+      gettext("Due to the rounding of the number of pairs, the actual power can deviate from the target power."),
       "<b>",
       gettext("Actual power:"),
       power_rounded,
@@ -432,7 +432,7 @@
   alpha <- ifelse(calc == "alpha", r$alpha, lst$alpha)
   alt <- lst$alt
 
-  n_text <- gettextf("a sample size of %1$s", n)
+  n_text <- gettextf("%1$s pairs", n)
 
   tail_text <- ifelse(alt == "two.sided",
     gettext("two-sided"),
