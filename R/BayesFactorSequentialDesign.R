@@ -46,7 +46,7 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
   "informationFractionSchedule", "lowerSearchBoundForMaximumSampleSize", "upperSearchBoundForMaximumSampleSize",
   "sampleSizeSearchStrategy",
   "knownStandardDeviation",
-  "generalZParameterization", "unitInformationSd", "standardErrorSchedule",
+  "unitInformationSd",
   "nullPriorDistribution", "nullValue", "analysisPriorDistribution",
   "analysisPriorLocation", "analysisPriorMean", "analysisPriorScale",
   "analysisPriorSpread", "analysisPriorMode", "tPriorLocation", "tPriorScale",
@@ -94,7 +94,7 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
       jaspResults[["sequentialEvidenceResults"]] <- table
       table
     },
-    sampleSizeSummary = if (options[["sampleSizeSummary"]] && !.bfsdUsesStandardErrorOnly(settings) && is.null(jaspResults[["sequentialEvidenceSampleSizeSummary"]])) {
+    sampleSizeSummary = if (options[["sampleSizeSummary"]] && is.null(jaspResults[["sequentialEvidenceSampleSizeSummary"]])) {
       table <- createJaspTable(title = gettext("Sample Size Operating Characteristics"))
       table$dependOn(.bfsdSummarySampleSizeDependencies)
       table$position <- 2
@@ -214,10 +214,17 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
     ))
   }
 
-  if (!isTRUE(twoSidedWarningShown))
+  if (.bfsdUsesTwoSidedTest(settings) && !isTRUE(twoSidedWarningShown))
     table$addFootnote(.bfsdExactIntegrationFootnote(settings))
 
   return(invisible(TRUE))
+}
+
+.bfsdUsesTwoSidedTest <- function(settings) {
+  return(
+    identical(settings[["alternative"]], "two.sided") &&
+      !isTRUE(settings[["isDirectionalZTest"]])
+  )
 }
 
 .bfsdExactIntegrationFootnote <- function(settings) {
@@ -248,7 +255,7 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
 
 .bfsdShowsTwoSidedSequentialWarning <- function(settings) {
   return(
-    identical(settings[["alternative"]], "two.sided") &&
+    .bfsdUsesTwoSidedTest(settings) &&
       isTRUE(settings[["exactIntegrationOverAllRegions"]]) &&
       settings[["calculationTarget"]] %in% c("sampleSize", "evidenceProbability")
   )
@@ -332,14 +339,6 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
   )
 }
 
-.bfsdUsesStandardErrorOnly <- function(settings) {
-  return(
-    isTRUE(settings[["isGeneralZ"]]) &&
-      identical(settings[["generalZParameterization"]], "standardErrorSchedule") &&
-      !.bfsdUsesSampleSizeSearch(settings)
-  )
-}
-
 .bfsdSearchLowerBound <- function(settings) {
   minimumN <- ceiling(settings[["lowerSearchBoundForMaximumSampleSize"]])
 
@@ -350,9 +349,6 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
 }
 
 .bfsdCompleteSettings <- function(settings) {
-  if (.bfsdUsesStandardErrorOnly(settings))
-    return(.bfsdApplyStandardErrorSchedule(settings))
-
   if (!.bfsdUsesSampleSizeSearch(settings))
     return(.bfsdApplyFixedSchedule(settings))
 
@@ -364,24 +360,6 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
   settings[["n2Seq"]] <- .bfsdSampleSizeSecondGroup(settings, settings[["n1Seq"]])
   settings[["n1"]]    <- max(settings[["n1Seq"]])
   settings[["n2"]]    <- max(settings[["n2Seq"]])
-
-  return(settings)
-}
-
-.bfsdApplyStandardErrorSchedule <- function(settings) {
-  se <- .bfsdParseNumericSchedule(settings[["standardErrorSchedule"]], gettext("standard error schedule"))
-
-  if (length(se) < 1)
-    stop(gettext("The standard error schedule must contain at least one look."))
-
-  if (any(diff(se) >= 0))
-    stop(gettext("The standard error schedule must be strictly decreasing."))
-
-  settings[["standardErrors"]] <- se
-  settings[["n1Seq"]]          <- seq_along(se)
-  settings[["n2Seq"]]          <- settings[["n1Seq"]]
-  settings[["n1"]]             <- NA_integer_
-  settings[["n2"]]             <- NA_integer_
 
   return(settings)
 }
@@ -1000,8 +978,7 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
     strict = settings[["exactIntegrationOverAllRegions"]]
   )
 
-  if (!.bfsdUsesStandardErrorOnly(settings))
-    args[["n"]] <- settings[["n1Seq"]]
+  args[["n"]] <- settings[["n1Seq"]]
 
   do.call(
     what = bfpwr::pbf01seq,
@@ -1081,21 +1058,6 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
 }
 
 .bfsdGeneralZStandardErrors <- function(settings) {
-  if (!is.null(settings[["standardErrors"]]))
-    return(settings[["standardErrors"]])
-
-  if (settings[["generalZParameterization"]] == "standardErrorSchedule") {
-    se <- .bfsdParseNumericSchedule(settings[["standardErrorSchedule"]], gettext("standard error schedule"))
-
-    if (length(se) != length(settings[["n1Seq"]]))
-      stop(gettext("The standard error schedule must have the same number of entries as the look schedule."))
-
-    if (any(diff(se) >= 0))
-      stop(gettext("The standard error schedule must be strictly decreasing."))
-
-    return(se)
-  }
-
   unitSd <- .bfdGeneralZUnitInformationSd(settings)
 
   return(unitSd / sqrt(settings[["n1Seq"]]))
@@ -1136,18 +1098,11 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
   if (!is.null(unreachedTargetsFootnote))
     table$addFootnote(unreachedTargetsFootnote)
 
-  generalZUisdFootnote <- .bfdGeneralZKnownUisdFootnote(settings)
-  if (!is.null(generalZUisdFootnote))
-    table$addFootnote(generalZUisdFootnote)
-
   if (.bfsdShowsIntegerSampleSizeScheduleFootnote(settings))
     table$addFootnote(gettext("Due to integer sample-size schedules, Pr(Conclusive Evidence) can exceed the target probability."))
 
   if (settings[["isIndependentSamples"]])
     table$addFootnote(gettext("For independent samples, N\u2081 is the sample size in group 1 and N\u2082 is rounded up from the requested N\u2082/N\u2081 sample-size ratio, unless a custom group 2 schedule is supplied."))
-
-  if (.bfsdUsesStandardErrorOnly(settings))
-    table$addFootnote(gettext("This design uses the supplied standard error schedule, so sample-size summaries are omitted."))
 
   .bfdAddExplanationFootnotes(table, settings, .bfsdResultsTableExplanation(settings))
 }
@@ -1165,9 +1120,7 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
 
   table$addColumnInfo(name = "actualProbability", title = gettext("Achieved Probability"), type = "number", overtitle = computed)
 
-  if (.bfsdUsesStandardErrorOnly(settings)) {
-    table$addColumnInfo(name = "finalSE", title = gettext("Final SE"), type = "number", overtitle = computed)
-  } else if (settings[["isIndependentSamples"]]) {
+  if (settings[["isIndependentSamples"]]) {
     table$addColumnInfo(name = "maximumN1", title = gettext("Maximum N\u2081"), type = "integer", overtitle = computed)
     table$addColumnInfo(name = "maximumN2", title = gettext("Maximum N\u2082"), type = "integer", overtitle = computed)
   } else {
@@ -1182,19 +1135,14 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
     "decisionRule",
     if (.bfsdUsesSampleSizeSearch(settings)) "targetProbability",
     "actualProbability",
-    if (.bfsdUsesStandardErrorOnly(settings)) "finalSE",
-    if (!.bfsdUsesStandardErrorOnly(settings) && settings[["isIndependentSamples"]]) c("maximumN1", "maximumN2"),
-    if (!.bfsdUsesStandardErrorOnly(settings) && !settings[["isIndependentSamples"]]) "maximumN"
+    if (settings[["isIndependentSamples"]]) c("maximumN1", "maximumN2"),
+    if (!settings[["isIndependentSamples"]]) "maximumN"
   )
 
   return(.bfdEmptyTableRow(
     columns        = columns,
     stringColumns  = c("designPrior", "decisionRule"),
-    integerColumns = if (!.bfsdUsesStandardErrorOnly(settings)) {
-      if (settings[["isIndependentSamples"]]) c("maximumN1", "maximumN2") else "maximumN"
-    } else {
-      character()
-    }
+    integerColumns = if (settings[["isIndependentSamples"]]) c("maximumN1", "maximumN2") else "maximumN"
   ))
 }
 
@@ -1210,17 +1158,13 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
   if (.bfsdUsesSampleSizeSearch(settings))
     row[["targetProbability"]] <- targetRows[["targetProbability"]]
 
-  if (.bfsdUsesStandardErrorOnly(settings)) {
-    row[["finalSE"]] <- utils::tail(.bfsdStandardErrors(settings), 1)
-  } else {
-    for (i in seq_len(nrow(targetRows))) {
-      maximum <- .bfsdMaximumSampleSizes(settings, result, targetRows[["target"]][i])
-      if (settings[["isIndependentSamples"]]) {
-        row[["maximumN1"]][i] <- maximum[["n1"]]
-        row[["maximumN2"]][i] <- maximum[["n2"]]
-      } else {
-        row[["maximumN"]][i] <- maximum[["n1"]]
-      }
+  for (i in seq_len(nrow(targetRows))) {
+    maximum <- .bfsdMaximumSampleSizes(settings, result, targetRows[["target"]][i])
+    if (settings[["isIndependentSamples"]]) {
+      row[["maximumN1"]][i] <- maximum[["n1"]]
+      row[["maximumN2"]][i] <- maximum[["n2"]]
+    } else {
+      row[["maximumN"]][i] <- maximum[["n1"]]
     }
   }
 
@@ -1231,9 +1175,8 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
     "designPrior", "decisionRule",
     if (.bfsdUsesSampleSizeSearch(settings)) "targetProbability",
     "actualProbability",
-    if (.bfsdUsesStandardErrorOnly(settings)) "finalSE",
-    if (!.bfsdUsesStandardErrorOnly(settings) && settings[["isIndependentSamples"]]) c("maximumN1", "maximumN2"),
-    if (!.bfsdUsesStandardErrorOnly(settings) && !settings[["isIndependentSamples"]]) "maximumN"
+    if (settings[["isIndependentSamples"]]) c("maximumN1", "maximumN2"),
+    if (!settings[["isIndependentSamples"]]) "maximumN"
   )
   row <- row[, columnOrder, drop = FALSE]
   row.names(row) <- NULL
@@ -1275,13 +1218,13 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
 
 .bfsdDesignOutcomeTableExplanation <- function() {
   gettext(
-    "Rows condition on the design prior used to generate hypothetical sequential studies. Diagonal cells are conclusive evidence for the true hypothesis, off-diagonal cells are misleading evidence, and the middle column is the chance of reaching the final look without a conclusion."
+    "Rows condition on the design prior used to generate hypothetical sequential studies. Diagonal cells are conclusive evidence for the true hypothesis, off-diagonal cells are misleading evidence, and the middle column is the probability of reaching the final look without a conclusion."
   )
 }
 
 .bfsdStagewiseTotalExplanation <- function() {
   gettext(
-    "Cumulative probabilities show the chance that the study has stopped by each look. The inconclusive column is the chance that no stopping rule has been crossed yet."
+    "Cumulative probabilities show the probability that the study has stopped by each look. The inconclusive column is the probability that no stopping rule has been crossed yet."
   )
 }
 
@@ -1595,14 +1538,6 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
 }
 
 .bfsdDesignOutcomeSampleSizeFootnote <- function(settings, result) {
-  if (.bfsdUsesStandardErrorOnly(settings)) {
-    finalSE <- utils::tail(.bfsdStandardErrors(settings), 1)
-    return(gettextf(
-      "Probabilities are cumulative through the selected final look: SE = %1$s. Rows use the corresponding design prior under H\u2081 or H\u2080.",
-      .bfdFormatNumber(finalSE)
-    ))
-  }
-
   if (.bfsdUsesSampleSizeSearch(settings) && identical(settings[["designSampleSizeBasis"]], "eachDesignHypothesis")) {
     h1Context <- .bfsdBasisContext(settings, result, "h1")
     h0Context <- .bfsdBasisContext(settings, result, "h0")
@@ -1697,9 +1632,7 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
 .bfsdAddLookColumns <- function(table, settings, separate = TRUE) {
   table$addColumnInfo(name = "look", title = gettext("Look"), type = "integer")
 
-  if (.bfsdUsesStandardErrorOnly(settings)) {
-    table$addColumnInfo(name = "standardError", title = gettext("SE"), type = "number")
-  } else if (isTRUE(separate) && .bfsdUsesSeparateLookSchedules(settings)) {
+  if (isTRUE(separate) && .bfsdUsesSeparateLookSchedules(settings)) {
     h1Overtitle <- .bfsdDesignPriorOvertitle("h1")
     h0Overtitle <- .bfsdDesignPriorOvertitle("h0")
     if (settings[["isIndependentSamples"]]) {
@@ -1755,9 +1688,7 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
   overtitle <- if (is.null(under)) NULL else .bfsdDesignPriorOvertitle(under)
   prefix    <- if (is.null(under)) "n" else under
 
-  if (.bfsdUsesStandardErrorOnly(settings)) {
-    .bfsdAddColumnInfo(table, name = "standardError", title = gettext("SE"), type = "number", overtitle = overtitle)
-  } else if (settings[["isIndependentSamples"]]) {
+  if (settings[["isIndependentSamples"]]) {
     .bfsdAddColumnInfo(table, name = paste0(prefix, if (is.null(under)) "1" else "N1"), title = "N\u2081", type = "integer", overtitle = overtitle)
     .bfsdAddColumnInfo(table, name = paste0(prefix, if (is.null(under)) "2" else "N2"), title = "N\u2082", type = "integer", overtitle = overtitle)
   } else {
@@ -1882,9 +1813,6 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
 }
 
 .bfsdStagewiseSampleSizeColumnNames <- function(settings, under = NULL) {
-  if (.bfsdUsesStandardErrorOnly(settings))
-    return("standardError")
-
   if (settings[["isIndependentSamples"]]) {
     if (is.null(under))
       return(c("n1", "n2"))
@@ -1929,7 +1857,7 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
   } else {
     .bfsdStagewiseSampleSizeColumnNames(settings)
   }
-  integerColumns <- c("look", if (!.bfsdUsesStandardErrorOnly(settings)) sampleSizeColumns)
+  integerColumns <- c("look", sampleSizeColumns)
 
   return(.bfdEmptyTableRow(
     columns        = columns,
@@ -1968,9 +1896,7 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
     stringsAsFactors = FALSE
   )
 
-  if (.bfsdUsesStandardErrorOnly(settings)) {
-    rows[["standardError"]] <- .bfsdStandardErrors(settings)
-  } else if (settings[["isIndependentSamples"]]) {
+  if (settings[["isIndependentSamples"]]) {
     rows[["n1"]] <- settings[["n1Seq"]]
     rows[["n2"]] <- settings[["n2Seq"]]
   } else {
@@ -2009,9 +1935,7 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
 }
 
 .bfsdEmptyBoundariesRow <- function(settings) {
-  sampleSizeColumns <- if (.bfsdUsesStandardErrorOnly(settings)) {
-    "standardError"
-  } else if (settings[["isIndependentSamples"]]) {
+  sampleSizeColumns <- if (settings[["isIndependentSamples"]]) {
     c("n1", "n2")
   } else {
     "n"
@@ -2019,7 +1943,7 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
 
   return(.bfdEmptyTableRow(
     columns        = c("look", sampleSizeColumns, "h1Lower", "h1Upper", "h0Lower", "h0Upper"),
-    integerColumns = c("look", if (!.bfsdUsesStandardErrorOnly(settings)) sampleSizeColumns)
+    integerColumns = c("look", sampleSizeColumns)
   ))
 }
 
@@ -2113,12 +2037,6 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
 }
 
 .bfsdReportSampleSizeSentence <- function(settings, result) {
-  if (.bfsdUsesStandardErrorOnly(settings)) {
-    return(gettext(
-      "The design used a fixed standard-error schedule, so n_min, n_max, batch size, expected sample size, and sample-size SD are not defined."
-    ))
-  }
-
   pieces <- c(
     if (.bfsdUsesSampleSizeSearch(settings)) .bfsdReportTargetSentence(settings),
     .bfsdReportScheduleSentence(settings, result),
@@ -2320,11 +2238,9 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
   args <- list(
     k1 = 1 / settings[["conclusiveEvidenceThresholdH1"]],
     k0 = settings[["conclusiveEvidenceThresholdH0"]],
-    se = .bfsdStandardErrors(settings)
+    se = .bfsdStandardErrors(settings),
+    n  = settings[["n1Seq"]]
   )
-
-  if (!.bfsdUsesStandardErrorOnly(settings))
-    args[["n"]] <- settings[["n1Seq"]]
 
   args <- c(
     args,
@@ -2561,7 +2477,7 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
     settings     = settings,
     position     = position + 0.1,
     dependencies = .bfsdStoppingBoundariesPlotDependencies,
-    text         = .bfsdStoppingBoundariesPlotExplanation()
+    text         = .bfsdStoppingBoundariesPlotExplanation(settings)
   )
 }
 
@@ -2577,22 +2493,37 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
     stop(gettext("No finite stopping boundaries are available for the current settings."))
 
   xLabel <- .bfsdLookAxisLabel(settings)
+  yLabel <- .bfsdCriticalValueLabel(settings)
 
   plot <- ggplot2::ggplot(data, ggplot2::aes(x = n, y = criticalValue, color = target, linetype = boundary)) +
     ggplot2::geom_line(linewidth = 1.1) +
     ggplot2::geom_point(size = 2) +
     .pwrPrettyIntegerXAxisScale(data[["n"]]) +
     .pwrPrettyYAxisScale(c(0, data[["criticalValue"]])) +
-    ggplot2::labs(x = xLabel, y = gettext("Critical value"), color = gettext("Target"), linetype = gettext("Boundary")) +
+    ggplot2::labs(x = xLabel, y = yLabel, color = gettext("Target"), linetype = gettext("Boundary")) +
     ggplot2::geom_hline(yintercept = 0, linetype = "dotted", color = "#666666")
 
   return(.bfdApplyPlotTheme(plot, settings))
 }
 
-.bfsdStoppingBoundariesPlotExplanation <- function() {
-  gettext(
-    "Each curve gives the critical test-statistic value that corresponds to a Bayes factor stopping threshold at a look. Crossing a boundary triggers stopping for H\u2081 or H\u2080."
+.bfsdStoppingBoundariesPlotExplanation <- function(settings) {
+  gettextf(
+    "Each curve gives the %1$s that corresponds to a Bayes factor stopping threshold at a look. Crossing a boundary triggers stopping for H\u2081 or H\u2080.",
+    .bfsdCriticalValueLabel(settings, sentence = TRUE)
   )
+}
+
+.bfsdCriticalValueLabel <- function(settings, sentence = FALSE) {
+  if (isTRUE(settings[["isTTest"]]))
+    return(if (sentence) gettext("critical t-value") else gettext("Critical t-value"))
+
+  if (isTRUE(settings[["isZTest"]]))
+    return(if (sentence) gettext("critical z-value") else gettext("Critical z-value"))
+
+  if (sentence)
+    return(gettext("critical value"))
+
+  return(gettext("Critical value"))
 }
 
 .bfsdBoundaryPlotData <- function(settings, design) {
@@ -2612,9 +2543,6 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
 }
 
 .bfsdLookAxisValues <- function(settings) {
-  if (.bfsdUsesStandardErrorOnly(settings))
-    return(seq_along(settings[["n1Seq"]]))
-
   if (settings[["isIndependentSamples"]])
     return(settings[["n1Seq"]])
 
@@ -2622,9 +2550,6 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
 }
 
 .bfsdLookAxisLabel <- function(settings) {
-  if (.bfsdUsesStandardErrorOnly(settings))
-    return(gettext("Look"))
-
   if (settings[["isIndependentSamples"]])
     return(gettext("Sample size (group 1)"))
 

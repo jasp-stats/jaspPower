@@ -15,7 +15,11 @@
   legendPosition <- settings[["legendPosition"]]
 
   plot <- .pwrApplyPlotTheme(plot, legendPosition = .bfdLegendPosition(legendPosition)) +
-    jaspGraphs::scale_JASPcolor_discrete(palette, labels = .bfdPlotmathLabels)
+    jaspGraphs::scale_JASPcolor_discrete(palette, labels = .bfdPlotmathLabels) +
+    ggplot2::theme(
+      legend.title  = ggplot2::element_text(margin = ggplot2::margin(r = 6, unit = "pt")),
+      legend.text   = ggplot2::element_text(margin = ggplot2::margin(r = 6, unit = "pt"))
+    )
 
   if (is.null(linetypeValues)) {
     plot <- plot + ggplot2::scale_linetype_discrete(labels = .bfdPlotmathLabels)
