@@ -6,6 +6,12 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Language: zh_Hans\n"
 "X-Qt-Contexts: true\n"
+"PO-Revision-Date: 2026-10-25 12:51+0000\n"
+"Last-Translator: Shun Wang <shuonwang@gmail.com>\n"
+"Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
+"projects/jasp/jasppower-qml/zh_Hans/>\n"
+"Language: zh_Hans\n"
+"X-Generator: Weblate 2026.11.dev0\n"
 
 msgctxt "Description|"
 msgid "Power"
@@ -273,7 +279,6 @@ msgctxt "BayesFactorDesign|"
 msgid "R Packages"
 msgstr "R 软件包"
 
-#, fuzzy
 msgctxt "BayesFactorDesign|"
 msgid "Statistical test:"
 msgstr "统计检验："
@@ -343,7 +348,6 @@ msgid ""
 "preregistrations."
 msgstr "使用 LaTeX 记号格式生成报告，供手稿和预注册使用。"
 
-#, fuzzy
 msgctxt "BayesFactorDesign|"
 msgid "Parameters"
 msgstr "参数"
@@ -356,12 +360,10 @@ msgctxt "BayesFactorDesign|"
 msgid "Sample size in group 1:"
 msgstr "第 1 组的样本量："
 
-#, fuzzy
 msgctxt "BayesFactorDesign|"
 msgid "Sample size:"
 msgstr "样本量："
 
-#, fuzzy
 msgctxt "BayesFactorDesign|"
 msgid "N"
 msgstr "N"
@@ -418,7 +420,6 @@ msgid ""
 "Bayes factor design."
 msgstr "显示用于计算和评估贝叶斯因子设计的分析与设计先验。"
 
-#, fuzzy
 msgctxt "BayesFactorDesign|"
 msgid "Plots"
 msgstr "绘图"
@@ -529,7 +530,6 @@ msgctxt "BayesFactorSequentialDesign|"
 msgid "R Packages"
 msgstr "R 软件包"
 
-#, fuzzy
 msgctxt "BayesFactorSequentialDesign|"
 msgid "Statistical test:"
 msgstr "统计检验："
@@ -596,7 +596,6 @@ msgid ""
 "preregistrations."
 msgstr "使用 LaTeX 记号格式生成报告，供手稿和预注册使用。"
 
-#, fuzzy
 msgctxt "BayesFactorSequentialDesign|"
 msgid "Parameters"
 msgstr "参数"
@@ -682,7 +681,6 @@ msgid ""
 "thresholds at each look."
 msgstr "显示与每个分析阶段贝叶斯因子停止阈值相对应的检验统计量值。"
 
-#, fuzzy
 msgctxt "BayesFactorSequentialDesign|"
 msgid "Plots"
 msgstr "绘图"
@@ -823,7 +821,6 @@ msgctxt "BayesFactorSequentialDesign|"
 msgid "Curve points:"
 msgstr "曲线点数："
 
-#, fuzzy
 msgctxt "BayesFactorSequentialDesign|"
 msgid "N"
 msgstr "N"
@@ -861,7 +858,6 @@ msgstr ""
 "可选择单侧、对称双侧或非对称双侧 β 支出设计。约束性或非约束性控制下界逾越后"
 "的 I 类错误计算。"
 
-#, fuzzy
 msgctxt "GroupSequentialDesign|"
 msgid "Explanatory text"
 msgstr "说明文本"
@@ -870,7 +866,6 @@ msgctxt "GroupSequentialDesign|"
 msgid "Display a short explanation of the design."
 msgstr "显示设计的简短说明。"
 
-#, fuzzy
 msgctxt "GroupSequentialDesign|"
 msgid "Parameters"
 msgstr "参数"
@@ -929,7 +924,6 @@ msgid ""
 "under H₀ and H₁."
 msgstr "显示 H₀ 和 H₁ 下的最终、累积和分阶段边界逾越概率。"
 
-#, fuzzy
 msgctxt "GroupSequentialDesign|"
 msgid "Plots"
 msgstr "绘图"
@@ -1029,7 +1023,6 @@ msgctxt "BayesFactorAnalysisPriorSection|"
 msgid "Parameter value specified by the null hypothesis."
 msgstr "由零假设指定的参数值。"
 
-#, fuzzy
 msgctxt "BayesFactorAnalysisPriorSection|"
 msgid "Hypothesized proportion"
 msgstr "假设比例"
@@ -1466,10 +1459,9 @@ msgctxt "BayesFactorCalculationControls|"
 msgid "Calculation Target"
 msgstr "计算目标"
 
-#, fuzzy
 msgctxt "BayesFactorCalculationControls|"
 msgid "I want to calculate the ..."
-msgstr "我想计算..."
+msgstr "我想计算……"
 
 msgctxt "BayesFactorCalculationControls|"
 msgid ""
@@ -2297,12 +2289,10 @@ msgctxt "GroupSequentialParameterControls|"
 msgid "Error Rates"
 msgstr "错误率"
 
-#, fuzzy
 msgctxt "GroupSequentialParameterControls|"
 msgid "Type I error rate:"
-msgstr "I类错误率："
+msgstr "I 类错误率："
 
-#, fuzzy
 msgctxt "GroupSequentialParameterControls|"
 msgid "α"
 msgstr "α"
@@ -2487,7 +2477,6 @@ msgctxt "GroupSequentialParameterControls|"
 msgid "Event probability group 1:"
 msgstr "第 1 组事件概率："
 
-#, fuzzy
 msgctxt "GroupSequentialParameterControls|"
 msgid "p₁"
 msgstr "p₁"
@@ -2500,7 +2489,6 @@ msgctxt "GroupSequentialParameterControls|"
 msgid "Event probability group 2:"
 msgstr "第 2 组事件概率："
 
-#, fuzzy
 msgctxt "GroupSequentialParameterControls|"
 msgid "p₂"
 msgstr "p₂"
