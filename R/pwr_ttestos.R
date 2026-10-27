@@ -231,7 +231,7 @@
   )
   d <- round(d, 3)
 
-  n_text <- gettextf("sample sizes of %1$s", n)
+  n_text <- gettextf("a sample size of %1$s", n)
 
   if (alt == "two.sided") {
     tail_text <- gettext("two-sided")
@@ -287,7 +287,7 @@
   power <- ifelse(calc == "power", r$power, lst$pow)
   alt <- lst$alt
 
-  n_text <- gettextf("sample sizes of at least %1$s", n)
+  n_text <- gettextf("a sample size of at least %1$s", n)
 
   if (alt == "two.sided") {
     tail_text <- "two-sided"
