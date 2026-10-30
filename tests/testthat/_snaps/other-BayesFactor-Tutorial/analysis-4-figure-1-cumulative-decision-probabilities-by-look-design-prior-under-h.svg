@@ -87,21 +87,21 @@
 <text x='707.63' y='537.32' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='28.37px' lengthAdjust='spacingAndGlyphs'>120</text>
 <text x='404.57' y='567.49' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='92.62px' lengthAdjust='spacingAndGlyphs'>Sample size</text>
 <text transform='translate(16.68,265.42) rotate(-90)' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='167.26px' lengthAdjust='spacingAndGlyphs'>Cumulative probability</text>
-<rect x='569.02' y='207.07' width='138.36' height='116.71' style='stroke-width: 0.75; stroke: none;' />
-<rect x='569.02' y='207.07' width='138.36' height='116.71' style='stroke-width: 10.67; stroke: none;' />
-<text x='638.20' y='226.01' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='68.99px' lengthAdjust='spacingAndGlyphs'>Outcome</text>
-<rect x='574.50' y='233.26' width='28.35' height='28.35' style='stroke-width: 10.67; stroke: none;' />
-<line x1='577.34' y1='247.43' x2='600.01' y2='247.43' style='stroke-width: 2.35; stroke: #1B9E77; stroke-linecap: butt;' />
-<circle cx='588.68' cy='247.43' r='2.49' style='stroke-width: 0.71; stroke: #1B9E77; fill: #1B9E77;' />
-<rect x='574.50' y='261.60' width='28.35' height='28.35' style='stroke-width: 10.67; stroke: none;' />
-<line x1='577.34' y1='275.78' x2='600.01' y2='275.78' style='stroke-width: 2.35; stroke: #B27D5D; stroke-linecap: butt;' />
-<circle cx='588.68' cy='275.78' r='2.49' style='stroke-width: 0.71; stroke: #B27D5D; fill: #B27D5D;' />
-<rect x='574.50' y='289.95' width='28.35' height='28.35' style='stroke-width: 10.67; stroke: none;' />
-<line x1='577.34' y1='304.12' x2='600.01' y2='304.12' style='stroke-width: 2.35; stroke: #666666; stroke-linecap: butt;' />
-<circle cx='588.68' cy='304.12' r='2.49' style='stroke-width: 0.71; stroke: #666666; fill: #666666;' />
-<text x='608.33' y='253.28' style='font-size: 17.00px; font-family: sans;' textLength='83.17px' lengthAdjust='spacingAndGlyphs'>Conclusive</text>
-<text x='608.33' y='281.63' style='font-size: 17.00px; font-family: sans;' textLength='93.57px' lengthAdjust='spacingAndGlyphs'>Inconclusive</text>
-<text x='608.33' y='309.97' style='font-size: 17.00px; font-family: sans;' textLength='81.27px' lengthAdjust='spacingAndGlyphs'>Misleading</text>
+<rect x='563.05' y='207.07' width='144.34' height='116.71' style='stroke-width: 0.75; stroke: none;' />
+<rect x='563.05' y='207.07' width='144.34' height='116.71' style='stroke-width: 10.67; stroke: none;' />
+<text x='632.23' y='226.01' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='68.99px' lengthAdjust='spacingAndGlyphs'>Outcome</text>
+<rect x='568.52' y='233.26' width='28.35' height='28.35' style='stroke-width: 10.67; stroke: none;' />
+<line x1='571.36' y1='247.43' x2='594.04' y2='247.43' style='stroke-width: 2.35; stroke: #1B9E77; stroke-linecap: butt;' />
+<circle cx='582.70' cy='247.43' r='2.49' style='stroke-width: 0.71; stroke: #1B9E77; fill: #1B9E77;' />
+<rect x='568.52' y='261.60' width='28.35' height='28.35' style='stroke-width: 10.67; stroke: none;' />
+<line x1='571.36' y1='275.78' x2='594.04' y2='275.78' style='stroke-width: 2.35; stroke: #B27D5D; stroke-linecap: butt;' />
+<circle cx='582.70' cy='275.78' r='2.49' style='stroke-width: 0.71; stroke: #B27D5D; fill: #B27D5D;' />
+<rect x='568.52' y='289.95' width='28.35' height='28.35' style='stroke-width: 10.67; stroke: none;' />
+<line x1='571.36' y1='304.12' x2='594.04' y2='304.12' style='stroke-width: 2.35; stroke: #666666; stroke-linecap: butt;' />
+<circle cx='582.70' cy='304.12' r='2.49' style='stroke-width: 0.71; stroke: #666666; fill: #666666;' />
+<text x='602.35' y='253.28' style='font-size: 17.00px; font-family: sans;' textLength='83.17px' lengthAdjust='spacingAndGlyphs'>Conclusive</text>
+<text x='602.35' y='281.63' style='font-size: 17.00px; font-family: sans;' textLength='93.57px' lengthAdjust='spacingAndGlyphs'>Inconclusive</text>
+<text x='602.35' y='309.97' style='font-size: 17.00px; font-family: sans;' textLength='81.27px' lengthAdjust='spacingAndGlyphs'>Misleading</text>
 <text x='404.57' y='11.70' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='624.63px' lengthAdjust='spacingAndGlyphs'>analysis-4_figure-1_cumulative-decision-probabilities-by-look-design-prior-under-h-</text>
 </g>
 </svg>
