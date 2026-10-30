@@ -120,7 +120,17 @@
 }
 
 .bfdPlotmathText <- function(text) {
+  # leading/trailing spaces become plotmath spacing (~): SVG viewers drop them inside text elements
+  if (nzchar(text) && !nzchar(trimws(text)))
+    return('""~""')
+
+  leadingSpace  <- grepl("^\\s", text)
+  trailingSpace <- grepl("\\s$", text)
+
+  text <- trimws(text)
   text <- gsub("\\", "\\\\", text, fixed = TRUE)
   text <- gsub("\"", "\\\"", text, fixed = TRUE)
-  paste0("\"", text, "\"")
+  text <- paste0("\"", text, "\"")
+
+  paste0(if (leadingSpace) '""~', text, if (trailingSpace) '~""')
 }
