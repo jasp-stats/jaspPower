@@ -116,20 +116,12 @@ msgid "Sample size:"
 msgstr "Stichprobenumfang:"
 
 msgctxt "Power|"
-msgid "Sample size per group:"
-msgstr "Stichprobenumfang pro Gruppe:"
-
-msgctxt "Power|"
 msgid "N"
 msgstr "N"
 
 msgctxt "Power|"
 msgid "Sample size ratio:"
 msgstr "Stichprobenumfangsverhältnis:"
-
-msgctxt "Power|"
-msgid "N₁/N₂"
-msgstr "N₁/N₂"
 
 msgctxt "Power|"
 msgid "Alternative Hypothesis:"
@@ -3056,3 +3048,22 @@ msgstr ""
 "Zunehmende Informationsanteile. Geben Sie K Werte an, die mit 1 enden, oder "
 "K - 1 Zwischenwerte, die strikt unter 1 liegen. Der Standardplan wird aus K "
 "erzeugt."
+
+msgctxt "Power|"
+msgid "Number of pairs:"
+msgstr ""
+
+#, fuzzy
+msgctxt "Power|"
+msgid "Sample size in group 1:"
+msgstr "Stichprobenumfang von Gruppe 1:"
+
+#, fuzzy
+msgctxt "Power|"
+msgid "N₁"
+msgstr "N₁"
+
+#, fuzzy
+msgctxt "Power|"
+msgid "N₂/N₁"
+msgstr "N₂/N₁"

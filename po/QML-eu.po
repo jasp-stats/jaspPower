@@ -114,19 +114,11 @@ msgid "Sample size:"
 msgstr ""
 
 msgctxt "Power|"
-msgid "Sample size per group:"
-msgstr ""
-
-msgctxt "Power|"
 msgid "N"
 msgstr ""
 
 msgctxt "Power|"
 msgid "Sample size ratio:"
-msgstr ""
-
-msgctxt "Power|"
-msgid "N₁/N₂"
 msgstr ""
 
 msgctxt "Power|"
@@ -2761,4 +2753,20 @@ msgctxt "GroupSequentialParameterControls|"
 msgid ""
 "Increasing information fractions. Supply K values ending in 1, or K - 1 "
 "interim values strictly below 1. The default schedule is generated from K."
+msgstr ""
+
+msgctxt "Power|"
+msgid "Number of pairs:"
+msgstr ""
+
+msgctxt "Power|"
+msgid "Sample size in group 1:"
+msgstr ""
+
+msgctxt "Power|"
+msgid "N₁"
+msgstr ""
+
+msgctxt "Power|"
+msgid "N₂/N₁"
 msgstr ""

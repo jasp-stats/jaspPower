@@ -6,12 +6,6 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Language: zh_Hans\n"
 "X-Qt-Contexts: true\n"
-"PO-Revision-Date: 2026-10-25 12:51+0000\n"
-"Last-Translator: Shun Wang <shuonwang@gmail.com>\n"
-"Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
-"projects/jasp/jasppower-qml/zh_Hans/>\n"
-"Language: zh_Hans\n"
-"X-Generator: Weblate 2026.11.dev0\n"
 
 msgctxt "Description|"
 msgid "Power"
@@ -122,20 +116,12 @@ msgid "Sample size:"
 msgstr "样本量："
 
 msgctxt "Power|"
-msgid "Sample size per group:"
-msgstr "每组样本量："
-
-msgctxt "Power|"
 msgid "N"
 msgstr "N"
 
 msgctxt "Power|"
 msgid "Sample size ratio:"
 msgstr "样本量比率："
-
-msgctxt "Power|"
-msgid "N₁/N₂"
-msgstr "N₁/N₂"
 
 msgctxt "Power|"
 msgid "Alternative Hypothesis:"
@@ -2812,3 +2798,22 @@ msgid ""
 msgstr ""
 "递增的信息分数。提供以 1 结尾的 K 个值，或严格低于 1 的 K - 1 个中期值。默认"
 "时间安排由 K 生成。"
+
+msgctxt "Power|"
+msgid "Number of pairs:"
+msgstr ""
+
+#, fuzzy
+msgctxt "Power|"
+msgid "Sample size in group 1:"
+msgstr "第 1 组的样本量："
+
+#, fuzzy
+msgctxt "Power|"
+msgid "N₁"
+msgstr "N₁"
+
+#, fuzzy
+msgctxt "Power|"
+msgid "N₂/N₁"
+msgstr "N₂/N₁"

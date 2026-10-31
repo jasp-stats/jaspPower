@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspPower 0.19.2\n"
-"POT-Creation-Date: 2026-06-27 04:48\n"
+"POT-Creation-Date: 2026-10-31 03:35\n"
 "PO-Revision-Date: 2025-08-09 17:01+0000\n"
 "Last-Translator: Wendel Paulo Silvestre <wpsilvestre@ucs.br>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
@@ -2096,8 +2096,8 @@ msgstr ""
 "menores. O ponto demonstra o poder do delineamento e do tamanho do efeito "
 "especificados."
 
-msgid "sample sizes of %1$s"
-msgstr "tamanho de amostras de %1$s"
+msgid "a sample size of %1$s"
+msgstr "um tamanho de amostra de %1$s"
 
 msgid "criteria"
 msgstr "critérios"
@@ -2127,7 +2127,8 @@ msgstr ""
 "É mais do que provável perder (potência menor que 50%%) tamanhos de efeito "
 "menores que %1$s%2$s."
 
-msgid "sample sizes of at least %1$s"
+#, fuzzy
+msgid "a sample size of at least %1$s"
 msgstr "tamanhos de amostra de, pelo menos, %1$s"
 
 msgid ""
@@ -2140,9 +2141,6 @@ msgstr ""
 "delineamento é maior para tamanhos de efeito maiores. Para que nosso teste e "
 "delineamento tenham sensibilidade suficiente (potência > %1$s) para detectar "
 "%2$s quando o tamanho do efeito é %3$s ou maior, precisaríamos de %4$s."
-
-msgid "a sample size of %1$s"
-msgstr "um tamanho de amostra de %1$s"
 
 msgid ""
 "The figure above shows two sampling distributions: the sampling distribution "
@@ -2198,9 +2196,6 @@ msgstr ""
 
 msgid "Actual power:"
 msgstr "Potência real:"
-
-msgid "a sample size of %s"
-msgstr "um tamanho de amostra de %s"
 
 msgid ""
 "We would need %1$s to reliably (with probability greater than or equal to "
@@ -2301,9 +2296,6 @@ msgstr "Tamanho de efeito (%s)"
 msgid "True effect size (%s)"
 msgstr "Tamanho de efeito verdadeiro (%s)"
 
-msgid "a sample size of"
-msgstr "um tamanho de amostra de"
-
 msgid "effect sizes of %s"
 msgstr "tamanhos de efeito de %s"
 
@@ -2360,9 +2352,6 @@ msgstr ""
 "tamanho de amostra/tamanho de efeito com uma potência de %1$s. O ponto "
 "mostra o delineamento especificado e %2$s."
 
-msgid "sample sizes of %s"
-msgstr "tamanhos de amostra de %s"
-
 msgid "effect sizes"
 msgstr "tamanhos de efeito"
 
@@ -2374,9 +2363,6 @@ msgstr "tem a potência de, pelo menos, %s"
 
 msgid "only be sufficiently sensitive (power >%s)"
 msgstr "ser suficientemente sensível (potência >%s)"
-
-msgid "sample sizes of at least %s"
-msgstr "tamanhos de amostra de, pelo menos, %s"
 
 msgid ""
 "The figure above shows two sampling distributions: the sampling distribution "
@@ -2757,5 +2743,57 @@ msgstr ""
 "detectar %2$s quando o tamanho do efeito é %3$s ou maior, precisaríamos de "
 "%4$s."
 
-msgid "Cohen's"
-msgstr "de Cohen"
+#, fuzzy
+msgid ""
+"The power contour plot shows how the sensitivity of the test changes with "
+"the hypothetical effect size and the number of pairs in the design. As we "
+"increase the number of pairs, smaller effect sizes become reliably "
+"detectable."
+msgstr ""
+"O gráfico de contorno de potência mostra como a sensibilidade do teste muda "
+"com o tamanho do efeito hipotético e os tamanhos das amostras no "
+"delineamento. À medida que se aumenta os tamanhos das amostras, tamanhos de "
+"efeito menores tornam-se detectáveis de forma confiável."
+
+#, fuzzy
+msgid ""
+"Conversely, if one is satisfied to reliably detect only larger effect sizes, "
+"fewer pairs are needed. The point shows the power of the specified design "
+"and effect size."
+msgstr ""
+"Por outro lado, se alguém estiver satisfeito em detectar de forma confiável "
+"apenas tamanhos de efeito maiores, serão necessários tamanhos de amostra "
+"menores. O ponto demonstra o poder do delineamento e do tamanho do efeito "
+"especificados."
+
+msgid "%1$s pairs"
+msgstr ""
+
+msgid "at least %1$s pairs"
+msgstr ""
+
+#, fuzzy
+msgid ""
+"Due to the rounding of the number of pairs, the actual power can deviate "
+"from the target power."
+msgstr ""
+"Devido ao arredondamento do tamanho de amostra, a potência real pode se "
+"desviar da potência alvo."
+
+#~ msgid "sample sizes of %1$s"
+#~ msgstr "tamanho de amostras de %1$s"
+
+#~ msgid "a sample size of %s"
+#~ msgstr "um tamanho de amostra de %s"
+
+#~ msgid "a sample size of"
+#~ msgstr "um tamanho de amostra de"
+
+#~ msgid "sample sizes of %s"
+#~ msgstr "tamanhos de amostra de %s"
+
+#~ msgid "sample sizes of at least %s"
+#~ msgstr "tamanhos de amostra de, pelo menos, %s"
+
+#~ msgid "Cohen's"
+#~ msgstr "de Cohen"

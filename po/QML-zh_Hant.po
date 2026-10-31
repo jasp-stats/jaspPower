@@ -116,20 +116,12 @@ msgid "Sample size:"
 msgstr "樣本數："
 
 msgctxt "Power|"
-msgid "Sample size per group:"
-msgstr "每組樣本數："
-
-msgctxt "Power|"
 msgid "N"
 msgstr "N"
 
 msgctxt "Power|"
 msgid "Sample size ratio:"
 msgstr "樣本數比例："
-
-msgctxt "Power|"
-msgid "N₁/N₂"
-msgstr "N₁/N₂"
 
 msgctxt "Power|"
 msgid "Alternative Hypothesis:"
@@ -2819,3 +2811,22 @@ msgid ""
 msgstr ""
 "遞增的資訊分數。提供以 1 結尾的 K 個值，或嚴格低於 1 的 K - 1 箇中期值。預設"
 "時間安排由 K 生成。"
+
+msgctxt "Power|"
+msgid "Number of pairs:"
+msgstr ""
+
+#, fuzzy
+msgctxt "Power|"
+msgid "Sample size in group 1:"
+msgstr "第 1 組的樣本量："
+
+#, fuzzy
+msgctxt "Power|"
+msgid "N₁"
+msgstr "N₁"
+
+#, fuzzy
+msgctxt "Power|"
+msgid "N₂/N₁"
+msgstr "N₂/N₁"

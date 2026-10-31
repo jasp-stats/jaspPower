@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspPower 0.1.0\n"
-"POT-Creation-Date: 2026-06-27 04:48\n"
+"POT-Creation-Date: 2026-10-31 03:35\n"
 "PO-Revision-Date: 2023-11-18 20:24+0000\n"
 "Last-Translator: Tomasz Misiuro <tomaszmisiuro@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/jasp/jasppower-r/"
@@ -2050,8 +2050,8 @@ msgid ""
 "design and effect size."
 msgstr ""
 
-msgid "sample sizes of %1$s"
-msgstr "wielkość próby równa %1$s"
+msgid "a sample size of %1$s"
+msgstr "wielkość próby %1$s"
 
 msgid "criteria"
 msgstr "kryteria"
@@ -2076,7 +2076,8 @@ msgid ""
 "less than %1$s%2$s."
 msgstr ""
 
-msgid "sample sizes of at least %1$s"
+#, fuzzy
+msgid "a sample size of at least %1$s"
 msgstr "wielkość próby równa co najmniej %1$s"
 
 msgid ""
@@ -2085,9 +2086,6 @@ msgid ""
 "sufficient sensitivity (power > %1$s) to detect that %2$s when the effect "
 "size is %3$s or larger, we would need %4$s."
 msgstr ""
-
-msgid "a sample size of %1$s"
-msgstr "wielkość próby %1$s"
 
 msgid ""
 "The figure above shows two sampling distributions: the sampling distribution "
@@ -2128,9 +2126,6 @@ msgstr ""
 
 msgid "Actual power:"
 msgstr "Rzeczywista moc:"
-
-msgid "a sample size of %s"
-msgstr "wielkość próby %s"
 
 msgid ""
 "We would need %1$s to reliably (with probability greater than or equal to "
@@ -2212,9 +2207,6 @@ msgstr "Wielkość efektu (%s)"
 msgid "True effect size (%s)"
 msgstr "Prawdziwa wielkość efektu (%s)"
 
-msgid "a sample size of"
-msgstr "wielkość próby"
-
 msgid "effect sizes of %s"
 msgstr "wielkość efektu %s"
 
@@ -2253,9 +2245,6 @@ msgid ""
 "shows the specified design and %2$s."
 msgstr ""
 
-msgid "sample sizes of %s"
-msgstr "wielkość próby %s"
-
 msgid "effect sizes"
 msgstr "wielkości efektów"
 
@@ -2267,9 +2256,6 @@ msgstr "ma moc równą co najmniej %s"
 
 msgid "only be sufficiently sensitive (power >%s)"
 msgstr ""
-
-msgid "sample sizes of at least %s"
-msgstr "wielkość próby równa co najmniej %s"
 
 msgid ""
 "The figure above shows two sampling distributions: the sampling distribution "
@@ -2537,5 +2523,44 @@ msgid ""
 "size is %3$s or larger, we would need %4$s."
 msgstr ""
 
-msgid "Cohen's"
-msgstr "Cohena"
+msgid ""
+"The power contour plot shows how the sensitivity of the test changes with "
+"the hypothetical effect size and the number of pairs in the design. As we "
+"increase the number of pairs, smaller effect sizes become reliably "
+"detectable."
+msgstr ""
+
+msgid ""
+"Conversely, if one is satisfied to reliably detect only larger effect sizes, "
+"fewer pairs are needed. The point shows the power of the specified design "
+"and effect size."
+msgstr ""
+
+msgid "%1$s pairs"
+msgstr ""
+
+msgid "at least %1$s pairs"
+msgstr ""
+
+msgid ""
+"Due to the rounding of the number of pairs, the actual power can deviate "
+"from the target power."
+msgstr ""
+
+#~ msgid "sample sizes of %1$s"
+#~ msgstr "wielkość próby równa %1$s"
+
+#~ msgid "a sample size of %s"
+#~ msgstr "wielkość próby %s"
+
+#~ msgid "a sample size of"
+#~ msgstr "wielkość próby"
+
+#~ msgid "sample sizes of %s"
+#~ msgstr "wielkość próby %s"
+
+#~ msgid "sample sizes of at least %s"
+#~ msgstr "wielkość próby równa co najmniej %s"
+
+#~ msgid "Cohen's"
+#~ msgstr "Cohena"

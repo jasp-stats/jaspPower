@@ -116,20 +116,12 @@ msgid "Sample size:"
 msgstr "Steekproefgrootte:"
 
 msgctxt "Power|"
-msgid "Sample size per group:"
-msgstr "Steekproefgrootte per groep:"
-
-msgctxt "Power|"
 msgid "N"
 msgstr "N"
 
 msgctxt "Power|"
 msgid "Sample size ratio:"
 msgstr "Steekproefgrootte ratio:"
-
-msgctxt "Power|"
-msgid "N₁/N₂"
-msgstr "N₁/N₂"
 
 msgctxt "Power|"
 msgid "Alternative Hypothesis:"
@@ -3054,3 +3046,22 @@ msgstr ""
 "Toenemende informatiefracties. Geef K waarden op die eindigen op 1, of K - 1 "
 "tussentijdse waarden strikt onder 1. Het standaardschema wordt gegenereerd "
 "uit K."
+
+msgctxt "Power|"
+msgid "Number of pairs:"
+msgstr ""
+
+#, fuzzy
+msgctxt "Power|"
+msgid "Sample size in group 1:"
+msgstr "Steekproefomvang in groep 1:"
+
+#, fuzzy
+msgctxt "Power|"
+msgid "N₁"
+msgstr "N₁"
+
+#, fuzzy
+msgctxt "Power|"
+msgid "N₂/N₁"
+msgstr "N₂/N₁"

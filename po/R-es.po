@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspPower 0.18.0\n"
-"POT-Creation-Date: 2026-06-27 04:48\n"
+"POT-Creation-Date: 2026-10-31 03:35\n"
 "PO-Revision-Date: 2026-08-06 08:03+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/jasp/jasppower-r/"
@@ -104,8 +104,8 @@ msgid ""
 "and N₂ = %4$s."
 msgstr ""
 "Las probabilidades se evalúan con el tamaño muestral de diseño fijo "
-"requerido para cada previa de diseño: bajo H₁, N₁ = %1$s y N₂ = %2$s; bajo H"
-"₀, N₁ = %3$s y N₂ = %4$s."
+"requerido para cada previa de diseño: bajo H₁, N₁ = %1$s y N₂ = %2$s; bajo "
+"H₀, N₁ = %3$s y N₂ = %4$s."
 
 msgid ""
 "Probabilities are evaluated at the fixed-design sample size required for "
@@ -143,8 +143,8 @@ msgid ""
 "%1$s. Rows use the corresponding design prior under H₁ or H₀."
 msgstr ""
 "Las probabilidades se evalúan con el tamaño muestral seleccionado de diseño "
-"fijo: N = %1$s. Las filas utilizan la previa correspondiente de diseño bajo H"
-"₁ o H₀."
+"fijo: N = %1$s. Las filas utilizan la previa correspondiente de diseño bajo "
+"H₁ o H₀."
 
 msgid "Sample size is not available."
 msgstr "El tamaño de la muestra no está disponible."
@@ -493,7 +493,8 @@ msgstr ""
 "La previa del análisis para H₀ %1$s, y la previa del análisis para H₁ %2$s."
 
 msgid "The design prior for H₀ %1$s, and the design prior for H₁ %2$s."
-msgstr "La previa del diseño para H₀ %1$s, y la previa del diseño para H₁ %2$s."
+msgstr ""
+"La previa del diseño para H₀ %1$s, y la previa del diseño para H₁ %2$s."
 
 msgid "used %1$s, truncated to %2$s"
 msgstr "utilizado %1$s, truncado en %2$s"
@@ -569,8 +570,8 @@ msgid ""
 "under H₀."
 msgstr ""
 "La probabilidad alcanzada de evidencia concluyente fue %1$s bajo H₁ y %2$s "
-"bajo H₀; la probabilidad de evidencia confusa fue %3$s bajo H₁ y %4$s bajo H"
-"₀."
+"bajo H₀; la probabilidad de evidencia confusa fue %3$s bajo H₁ y %4$s bajo "
+"H₀."
 
 msgid ""
 "The design analysis used JASP with the jaspPower module version %1$s and the "
@@ -1213,8 +1214,8 @@ msgid ""
 "prior: under H₁, N₁ = %1$s and N₂ = %2$s; under H₀, N₁ = %3$s and N₂ = %4$s."
 msgstr ""
 "Las probabilidades están acumuladas a través de la apariencia final "
-"requerida para cada previa de diseño: bajo H₁, N₁ = %1$s y N₂ = %2$s; bajo H"
-"₀, N₁ = %3$s y N₂ = %4$s."
+"requerida para cada previa de diseño: bajo H₁, N₁ = %1$s y N₂ = %2$s; bajo "
+"H₀, N₁ = %3$s y N₂ = %4$s."
 
 msgid ""
 "Probabilities are cumulative through the final look required for each design "
@@ -1228,8 +1229,8 @@ msgid ""
 "corresponding design prior under H₁ or H₀."
 msgstr ""
 "Las probabilidades están acumuladas a través de la apariencia final "
-"seleccionada. Las filas utilizan la previa correspondiente del diseño bajo H"
-"₁ o H₀."
+"seleccionada. Las filas utilizan la previa correspondiente del diseño bajo "
+"H₁ o H₀."
 
 msgid ""
 "Probabilities are cumulative through the selected final look: N₁ = %1$s and "
@@ -2022,7 +2023,8 @@ msgid "Unable to compute final boundary crossing probabilities: %1$s"
 msgstr "No es posible calcular las probabilidades de cruzar la frontera: %1$s"
 
 msgid "Probabilities are cumulative through the final planned look."
-msgstr "Las probabilidades son acumuladas durante la apariencia final planeada."
+msgstr ""
+"Las probabilidades son acumuladas durante la apariencia final planeada."
 
 msgid "Cumulative Boundary Crossing Probabilities by Look"
 msgstr "Probabilidades acumuladas de cruzar la frontera por Apariencia"
@@ -2398,8 +2400,8 @@ msgstr ""
 "tamaños del efecto, necesitará de tamaños de muestra más pequeños. El punto "
 "muestra la potencia del diseño y el tamaño del efecto especificados."
 
-msgid "sample sizes of %1$s"
-msgstr "Tamaños de muestra de %1$s"
+msgid "a sample size of %1$s"
+msgstr "Tamaño de muestra de %1$s"
 
 msgid "criteria"
 msgstr "Criterios"
@@ -2429,7 +2431,8 @@ msgstr ""
 "Es más que probable que no consigamos (potencia inferior al 50%%) tamaños "
 "del efecto inferiores a %1$s%2$s."
 
-msgid "sample sizes of at least %1$s"
+#, fuzzy
+msgid "a sample size of at least %1$s"
 msgstr "Tamaños de muestra de al menos %1$s"
 
 msgid ""
@@ -2442,9 +2445,6 @@ msgstr ""
 "diseño es mayor para tamaños del efecto mayores. Para que nuestra prueba y "
 "diseño tengan suficiente sensibilidad (potencia > %1$s) para detectar que "
 "%2$s cuando el tamaño del efecto es %3$s o mayor, necesitaríamos %4$s."
-
-msgid "a sample size of %1$s"
-msgstr "Tamaño de muestra de %1$s"
 
 msgid ""
 "The figure above shows two sampling distributions: the sampling distribution "
@@ -2500,9 +2500,6 @@ msgstr ""
 
 msgid "Actual power:"
 msgstr "Potencia real:"
-
-msgid "a sample size of %s"
-msgstr "Tamaño de muestra de %s"
 
 msgid ""
 "We would need %1$s to reliably (with probability greater than or equal to "
@@ -2601,9 +2598,6 @@ msgstr "Tamaño del efecto (%s)"
 msgid "True effect size (%s)"
 msgstr "Tamaño real del efecto (%s)"
 
-msgid "a sample size of"
-msgstr "Tamaño de muestra de"
-
 msgid "effect sizes of %s"
 msgstr "tamaños del efecto de %s"
 
@@ -2660,9 +2654,6 @@ msgstr ""
 "de muestra/tamaño del efecto con una potencia de %1$s. El punto muestra el "
 "diseño especificado y %2$s. El punto muestra el diseño especificado y %2$s."
 
-msgid "sample sizes of %s"
-msgstr "Tamaños de muestra de %s"
-
 msgid "effect sizes"
 msgstr "Tamaños del efecto"
 
@@ -2674,9 +2665,6 @@ msgstr "Tienen una Potencia de al menos %s"
 
 msgid "only be sufficiently sensitive (power >%s)"
 msgstr "Sólo ser suficientemente sensible (potencia >%s)"
-
-msgid "sample sizes of at least %s"
-msgstr "Tamaños de muestra de al menos %s"
 
 msgid ""
 "The figure above shows two sampling distributions: the sampling distribution "
@@ -3060,8 +3048,60 @@ msgstr ""
 "y diseño tengan suficiente sensibilidad (potencia > %1$s) para detectar que "
 "%2$s cuando el tamaño del efecto es %3$s o mayor, necesitaríamos %4$s."
 
-msgid "Cohen's"
-msgstr "de Cohen"
+#, fuzzy
+msgid ""
+"The power contour plot shows how the sensitivity of the test changes with "
+"the hypothetical effect size and the number of pairs in the design. As we "
+"increase the number of pairs, smaller effect sizes become reliably "
+"detectable."
+msgstr ""
+"El gráfico de contorno de potencia muestra cómo cambia la sensibilidad de la "
+"prueba con el tamaño hipotético del efecto y los tamaños de muestra en el "
+"diseño. A medida que aumentamos el tamaño de las muestras, se pueden "
+"detectar con fiabilidad efectos más pequeños."
+
+#, fuzzy
+msgid ""
+"Conversely, if one is satisfied to reliably detect only larger effect sizes, "
+"fewer pairs are needed. The point shows the power of the specified design "
+"and effect size."
+msgstr ""
+"A la inversa, si uno se conforma con detectar de forma fiable mayores "
+"tamaños del efecto, necesitará de tamaños de muestra más pequeños. El punto "
+"muestra la potencia del diseño y el tamaño del efecto especificados."
+
+#, fuzzy
+msgid "%1$s pairs"
+msgstr "%1$s: %2$s"
+
+msgid "at least %1$s pairs"
+msgstr ""
+
+#, fuzzy
+msgid ""
+"Due to the rounding of the number of pairs, the actual power can deviate "
+"from the target power."
+msgstr ""
+"Debido al redondeo del tamaño de la muestra, la potencia real puede "
+"desviarse de la potencia objetivo."
+
+#~ msgid "sample sizes of %1$s"
+#~ msgstr "Tamaños de muestra de %1$s"
+
+#~ msgid "a sample size of %s"
+#~ msgstr "Tamaño de muestra de %s"
+
+#~ msgid "a sample size of"
+#~ msgstr "Tamaño de muestra de"
+
+#~ msgid "sample sizes of %s"
+#~ msgstr "Tamaños de muestra de %s"
+
+#~ msgid "sample sizes of at least %s"
+#~ msgstr "Tamaños de muestra de al menos %s"
+
+#~ msgid "Cohen's"
+#~ msgstr "de Cohen"
 
 #~ msgid ""
 #~ "The specified design leads to (an) unsolvable equation(s) while "

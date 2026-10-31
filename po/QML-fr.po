@@ -116,20 +116,12 @@ msgid "Sample size:"
 msgstr "Effectif :"
 
 msgctxt "Power|"
-msgid "Sample size per group:"
-msgstr "Effectif par groupe :"
-
-msgctxt "Power|"
 msgid "N"
 msgstr "N"
 
 msgctxt "Power|"
 msgid "Sample size ratio:"
 msgstr "Rapport des tailles d'échantillon :"
-
-msgctxt "Power|"
-msgid "N₁/N₂"
-msgstr "N₁/N₂"
 
 msgctxt "Power|"
 msgid "Alternative Hypothesis:"
@@ -3052,3 +3044,22 @@ msgstr ""
 "Fractions d'information croissantes. Fournissez K valeurs se terminant par "
 "1, ou K - 1 valeurs intermédiaires strictement inférieures à 1. Le "
 "calendrier par défaut est généré à partir de K."
+
+msgctxt "Power|"
+msgid "Number of pairs:"
+msgstr ""
+
+#, fuzzy
+msgctxt "Power|"
+msgid "Sample size in group 1:"
+msgstr "Taille d'échantillon dans le groupe 1 :"
+
+#, fuzzy
+msgctxt "Power|"
+msgid "N₁"
+msgstr "N₁"
+
+#, fuzzy
+msgctxt "Power|"
+msgid "N₂/N₁"
+msgstr "N₂/N₁"

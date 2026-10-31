@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspPower 0.97.0\n"
-"POT-Creation-Date: 2026-06-27 04:48\n"
+"POT-Creation-Date: 2026-10-31 03:35\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1693,7 +1693,7 @@ msgstr ""
 msgid "Conversely, if one is satisfied to reliably detect only larger effect sizes, smaller sample sizes are needed. The point shows the power of the specified design and effect size."
 msgstr ""
 
-msgid "sample sizes of %1$s"
+msgid "a sample size of %1$s"
 msgstr ""
 
 msgid "criteria"
@@ -1714,13 +1714,10 @@ msgstr ""
 msgid "We would be more than likely to miss (power less than 50%%) effect sizes less than %1$s%2$s."
 msgstr ""
 
-msgid "sample sizes of at least %1$s"
+msgid "a sample size of at least %1$s"
 msgstr ""
 
 msgid "The power curve above shows how the sensitivity of the test and design is larger for larger effect sizes. In order for our test and design to have sufficient sensitivity (power > %1$s) to detect that %2$s when the effect size is %3$s or larger, we would need %4$s."
-msgstr ""
-
-msgid "a sample size of %1$s"
 msgstr ""
 
 msgid "The figure above shows two sampling distributions: the sampling distribution of the %1$s effect size when %2$s (left), and when %3$s%4$s (right)."
@@ -1748,9 +1745,6 @@ msgid "Due to the rounding of the sample size, the actual power can deviate from
 msgstr ""
 
 msgid "Actual power:"
-msgstr ""
-
-msgid "a sample size of %s"
 msgstr ""
 
 msgid "We would need %1$s to reliably (with probability greater than or equal to %2$s) detect an effect size of %3$s%4$s, assuming a %5$s criterion for detection that allows for a maximum Type I error rate of %6$s."
@@ -1813,9 +1807,6 @@ msgstr ""
 msgid "True effect size (%s)"
 msgstr ""
 
-msgid "a sample size of"
-msgstr ""
-
 msgid "effect sizes of %s"
 msgstr ""
 
@@ -1837,9 +1828,6 @@ msgstr ""
 msgid "Conversely, if one is satisfied to reliably detect only larger effect sizes, smaller sample sizes are needed. The solid black curve on the contour plot shows sample size/effect size combinations with a power of %1$s. The point shows the specified design and %2$s."
 msgstr ""
 
-msgid "sample sizes of %s"
-msgstr ""
-
 msgid "effect sizes"
 msgstr ""
 
@@ -1850,9 +1838,6 @@ msgid "have power of at least %s"
 msgstr ""
 
 msgid "only be sufficiently sensitive (power >%s)"
-msgstr ""
-
-msgid "sample sizes of at least %s"
 msgstr ""
 
 msgid "The figure above shows two sampling distributions: the sampling distribution of the %1$s effect size when %2$s (left), and when %3$s (right)."
@@ -2020,5 +2005,17 @@ msgstr ""
 msgid "The power curve above shows how the sensitivity of the test and design is larger for larger sample sizes. In order for our test and design to have sufficient sensitivity (power > %1$s) to detect that %2$s when the effect size is %3$s or larger, we would need %4$s."
 msgstr ""
 
-msgid "Cohen's"
+msgid "The power contour plot shows how the sensitivity of the test changes with the hypothetical effect size and the number of pairs in the design. As we increase the number of pairs, smaller effect sizes become reliably detectable."
+msgstr ""
+
+msgid "Conversely, if one is satisfied to reliably detect only larger effect sizes, fewer pairs are needed. The point shows the power of the specified design and effect size."
+msgstr ""
+
+msgid "%1$s pairs"
+msgstr ""
+
+msgid "at least %1$s pairs"
+msgstr ""
+
+msgid "Due to the rounding of the number of pairs, the actual power can deviate from the target power."
 msgstr ""

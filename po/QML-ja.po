@@ -116,20 +116,12 @@ msgid "Sample size:"
 msgstr "サンプルサイズ:"
 
 msgctxt "Power|"
-msgid "Sample size per group:"
-msgstr "グループごとのサンプルサイズ:"
-
-msgctxt "Power|"
 msgid "N"
 msgstr "N"
 
 msgctxt "Power|"
 msgid "Sample size ratio:"
 msgstr "サンプルサイズ比:"
-
-msgctxt "Power|"
-msgid "N₁/N₂"
-msgstr "N₁/N₂"
 
 msgctxt "Power|"
 msgid "Alternative Hypothesis:"
@@ -2913,3 +2905,22 @@ msgid ""
 msgstr ""
 "増加する情報割合です。末尾が 1 の K 個の値か、1 より小さい K - 1 個の中間値を"
 "指定します。既定の予定は K から生成されます。"
+
+msgctxt "Power|"
+msgid "Number of pairs:"
+msgstr ""
+
+#, fuzzy
+msgctxt "Power|"
+msgid "Sample size in group 1:"
+msgstr "群1のサンプルサイズ:"
+
+#, fuzzy
+msgctxt "Power|"
+msgid "N₁"
+msgstr "N₁"
+
+#, fuzzy
+msgctxt "Power|"
+msgid "N₂/N₁"
+msgstr "N₂/N₁"

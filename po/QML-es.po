@@ -116,20 +116,12 @@ msgid "Sample size:"
 msgstr "Tamaño de la muestra:"
 
 msgctxt "Power|"
-msgid "Sample size per group:"
-msgstr "Tamaño de la muestra por grupo:"
-
-msgctxt "Power|"
 msgid "N"
 msgstr "N"
 
 msgctxt "Power|"
 msgid "Sample size ratio:"
 msgstr "Proporción del tamaño muestral:"
-
-msgctxt "Power|"
-msgid "N₁/N₂"
-msgstr "N₁/N₂"
 
 msgctxt "Power|"
 msgid "Alternative Hypothesis:"
@@ -3052,3 +3044,22 @@ msgstr ""
 "Fracciones crecientes de información. Proporcione K valores que acaben en 1, "
 "o K-1 valores intermedios estrictamente menores que 1. La programación "
 "predeterminada se genera desde K."
+
+msgctxt "Power|"
+msgid "Number of pairs:"
+msgstr ""
+
+#, fuzzy
+msgctxt "Power|"
+msgid "Sample size in group 1:"
+msgstr "Tamaño de la muestra en grupo 1:"
+
+#, fuzzy
+msgctxt "Power|"
+msgid "N₁"
+msgstr "N₁"
+
+#, fuzzy
+msgctxt "Power|"
+msgid "N₂/N₁"
+msgstr "N₂/N₁"
