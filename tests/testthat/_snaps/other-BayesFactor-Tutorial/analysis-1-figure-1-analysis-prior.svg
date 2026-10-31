@@ -73,20 +73,22 @@
 <text x='690.42' y='537.32' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='9.46px' lengthAdjust='spacingAndGlyphs'>2</text>
 <text x='394.64' y='567.49' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='124.75px' lengthAdjust='spacingAndGlyphs'>Parameter value</text>
 <text transform='translate(16.68,265.42) rotate(-90)' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='56.70px' lengthAdjust='spacingAndGlyphs'>Density</text>
-<rect x='592.09' y='221.24' width='114.90' height='88.36' style='stroke-width: 0.75; stroke: none;' />
-<rect x='592.09' y='221.24' width='114.90' height='88.36' style='stroke-width: 10.67; stroke: none;' />
-<text x='649.54' y='240.19' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='103.94px' lengthAdjust='spacingAndGlyphs'>Analysis Prior</text>
-<rect x='597.66' y='247.43' width='28.35' height='28.35' style='stroke-width: 10.67; stroke: none;' />
-<line x1='600.49' y1='261.60' x2='623.17' y2='261.60' style='stroke-width: 2.35; stroke: #1B9E77; stroke-linecap: butt;' />
-<polygon points='618.18,264.48 623.17,261.60 618.18,258.72 ' style='stroke-width: 2.35; stroke: #1B9E77; stroke-linecap: butt; fill: #1B9E77;' />
-<rect x='597.66' y='275.78' width='28.35' height='28.35' style='stroke-width: 10.67; stroke: none;' />
-<line x1='600.49' y1='289.95' x2='623.17' y2='289.95' style='stroke-width: 2.35; stroke: #666666; stroke-linecap: butt;' />
-<text x='631.49' y='266.14' style='font-size: 17.00px; font-family: sans;' textLength='51.03px' lengthAdjust='spacingAndGlyphs'>Under </text>
-<text x='682.52' y='266.14' style='font-size: 17.00px; font-family: sans;' textLength='12.28px' lengthAdjust='spacingAndGlyphs'>H</text>
-<text x='694.80' y='269.28' style='font-size: 11.90px; font-family: sans;' textLength='6.62px' lengthAdjust='spacingAndGlyphs'>0</text>
-<text x='631.49' y='294.54' style='font-size: 17.00px; font-family: sans;' textLength='51.03px' lengthAdjust='spacingAndGlyphs'>Under </text>
-<text x='682.52' y='294.54' style='font-size: 17.00px; font-family: sans;' textLength='12.28px' lengthAdjust='spacingAndGlyphs'>H</text>
-<text x='694.80' y='297.68' style='font-size: 11.90px; font-family: sans;' textLength='6.62px' lengthAdjust='spacingAndGlyphs'>1</text>
+<rect x='586.11' y='221.24' width='120.87' height='88.36' style='stroke-width: 0.75; stroke: none;' />
+<rect x='586.11' y='221.24' width='120.87' height='88.36' style='stroke-width: 10.67; stroke: none;' />
+<text x='643.56' y='240.19' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='103.94px' lengthAdjust='spacingAndGlyphs'>Analysis Prior</text>
+<rect x='591.92' y='247.43' width='28.35' height='28.35' style='stroke-width: 10.67; stroke: none;' />
+<line x1='594.75' y1='261.60' x2='617.43' y2='261.60' style='stroke-width: 2.35; stroke: #1B9E77; stroke-linecap: butt;' />
+<rect x='591.92' y='275.78' width='28.35' height='28.35' style='stroke-width: 10.67; stroke: none;' />
+<line x1='594.75' y1='289.95' x2='617.43' y2='289.95' style='stroke-width: 2.35; stroke: #666666; stroke-linecap: butt;' />
+<line x1='594.75' y1='289.95' x2='617.43' y2='289.95' style='stroke-width: 2.35; stroke: #666666; stroke-linecap: butt;' />
+<text x='625.74' y='266.14' style='font-size: 17.00px; font-family: sans;' textLength='46.31px' lengthAdjust='spacingAndGlyphs'>Under</text>
+<text x='672.05' y='266.14' style='font-size: 17.00px; font-family: sans;' textLength='4.25px' lengthAdjust='spacingAndGlyphs'> </text>
+<text x='676.30' y='266.14' style='font-size: 17.00px; font-family: sans;' textLength='12.28px' lengthAdjust='spacingAndGlyphs'>H</text>
+<text x='688.58' y='269.28' style='font-size: 11.90px; font-family: sans;' textLength='6.62px' lengthAdjust='spacingAndGlyphs'>0</text>
+<text x='625.74' y='294.54' style='font-size: 17.00px; font-family: sans;' textLength='46.31px' lengthAdjust='spacingAndGlyphs'>Under</text>
+<text x='672.05' y='294.54' style='font-size: 17.00px; font-family: sans;' textLength='4.25px' lengthAdjust='spacingAndGlyphs'> </text>
+<text x='676.30' y='294.54' style='font-size: 17.00px; font-family: sans;' textLength='12.28px' lengthAdjust='spacingAndGlyphs'>H</text>
+<text x='688.58' y='297.68' style='font-size: 11.90px; font-family: sans;' textLength='6.62px' lengthAdjust='spacingAndGlyphs'>1</text>
 <text x='394.64' y='11.70' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='254.20px' lengthAdjust='spacingAndGlyphs'>analysis-1_figure-1_analysis-prior</text>
 </g>
 </svg>

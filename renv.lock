@@ -419,7 +419,7 @@
       "RemoteUsername": "SamCH93",
       "RemoteRepo": "bfpwr",
       "RemoteSubdir": "package",
-      "RemoteRef": "main",
+      "RemoteRef": "fd488dac474e9f61e01884d17fa9deaad320ec87",
       "RemoteSha": "fd488dac474e9f61e01884d17fa9deaad320ec87"
     },
     "bigD": {

@@ -1,7 +1,7 @@
 Package: jaspPower
 Type: Package
 Title: Power Module for JASP
-Version: 0.97.0
+Version: 0.97.1
 Date: 2021-09-28
 Author: JASP Team
 Website: jasp-stats.org
@@ -20,4 +20,4 @@ Imports:
 Remotes:
   jasp-stats/jaspBase,
   jasp-stats/jaspGraphs,
-  FBartos/bfpwr/package@fd488dac474e9f61e01884d17fa9deaad320ec87
+  SamCH93/bfpwr/package@fd488dac474e9f61e01884d17fa9deaad320ec87
