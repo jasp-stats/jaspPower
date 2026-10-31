@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspPower 0.18.1\n"
 "POT-Creation-Date: 2026-06-27 04:48\n"
-"PO-Revision-Date: 2026-07-10 05:01+0000\n"
-"Last-Translator: 陳正昌 <chencc99@gmail.com>\n"
+"PO-Revision-Date: 2026-10-26 12:51+0000\n"
+"Last-Translator: Shun Wang <shuonwang@gmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/jasp/jasppower-r/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2026.7.1.dev0\n"
+"X-Generator: Weblate 2026.11.dev0\n"
 
 msgid "Bayes Factor Design"
 msgstr "贝叶斯因子设计"
@@ -121,9 +121,8 @@ msgstr "样本量不可用。"
 msgid "%1$s: %2$s"
 msgstr "%1$s：%2$s"
 
-#, fuzzy
 msgid "Error:"
-msgstr "错误信息："
+msgstr "错误："
 
 msgid ""
 "This table reports the smallest fixed-design sample size that reaches the "
@@ -198,33 +197,26 @@ msgstr "统计检验"
 msgid "Decision"
 msgstr "决策"
 
-#, fuzzy
 msgid "Independent Samples T-Test"
-msgstr "独立样本t检验"
+msgstr "独立样本 t 检验"
 
-#, fuzzy
 msgid "Paired Samples T-Test"
-msgstr "配对样本t检验"
+msgstr "配对样本 t 检验"
 
-#, fuzzy
 msgid "One Sample T-Test"
-msgstr "单样本t检验"
+msgstr "单样本 t 检验"
 
-#, fuzzy
 msgid "Independent Samples Z-Test"
-msgstr "独立样本t检验"
+msgstr "独立样本 Z 检验"
 
-#, fuzzy
 msgid "Paired Samples Z-Test"
-msgstr "配对样本t检验"
+msgstr "配对样本 Z 检验"
 
-#, fuzzy
 msgid "One Sample Z-Test"
-msgstr "单样本t检验"
+msgstr "单样本 Z 检验"
 
-#, fuzzy
 msgid "One Sample Proportion Test"
-msgstr "单样本比率检验"
+msgstr "单样本比例检验"
 
 msgid "General (z-approximation)"
 msgstr "一般（z 近似）"
@@ -295,9 +287,8 @@ msgstr "均数差"
 msgid "SD difference"
 msgstr "标准差差"
 
-#, fuzzy
 msgid "Cohen's d"
-msgstr "Cohen's"
+msgstr "Cohen's d"
 
 msgid "Failures"
 msgstr "失败数"
@@ -430,7 +421,7 @@ msgid "one-sided"
 msgstr "单尾"
 
 msgid "two-sided"
-msgstr "双尾"
+msgstr "双侧"
 
 msgid "(H₁: %1$s %2$s %3$s)"
 msgstr "（H₁：%1$s %2$s %3$s）"
@@ -538,13 +529,11 @@ msgstr "无法计算确定性证据和误导性证据曲线：%1$s"
 msgid "Sample size (group 1)"
 msgstr "样本量（组1）"
 
-#, fuzzy
 msgid "Sample size"
-msgstr "样本量（组2）"
+msgstr "样本量"
 
-#, fuzzy
 msgid "Probability"
-msgstr "概率密度"
+msgstr "概率"
 
 msgid "Outcome"
 msgstr "结果"
@@ -661,33 +650,26 @@ msgid ""
 "The sample-size ratio leads to a second-group sample size smaller than 2."
 msgstr "样本量比率导致第 2 组样本量小于 2。"
 
-#, fuzzy
 msgid "independent samples t-test"
-msgstr "独立样本t检验"
+msgstr "独立样本 t 检验"
 
-#, fuzzy
 msgid "paired samples t-test"
-msgstr "配对样本t检验"
+msgstr "配对样本 t 检验"
 
-#, fuzzy
 msgid "one sample t-test"
-msgstr "单样本t检验"
+msgstr "单样本 t 检验"
 
-#, fuzzy
 msgid "independent samples z-test"
-msgstr "独立样本t检验"
+msgstr "独立样本 z 检验"
 
-#, fuzzy
 msgid "paired samples z-test"
-msgstr "配对样本t检验"
+msgstr "配对样本 z 检验"
 
-#, fuzzy
 msgid "one sample z-test"
-msgstr "单样本z检验"
+msgstr "单样本 z 检验"
 
-#, fuzzy
 msgid "one sample proportion test"
-msgstr "单样本比率检验"
+msgstr "单样本比例检验"
 
 msgid "general z-approximation"
 msgstr "一般 z 近似"
@@ -824,9 +806,8 @@ msgstr "标准误时间安排必须至少包含一次分析。"
 msgid "The standard error schedule must be strictly decreasing."
 msgstr "标准误时间安排必须严格递减。"
 
-#, fuzzy
 msgid "sample size schedule"
-msgstr "每组有%s个样本"
+msgstr "样本量方案"
 
 msgid "The custom sample size schedule must contain at least one look."
 msgstr "自定义样本量时间安排必须至少包含一次分析。"
@@ -974,7 +955,9 @@ msgid ""
 "Mean sample size and SD describe how much data the sequential design is "
 "expected to use under each design prior. They are averages over hypothetical "
 "repetitions of the planned study."
-msgstr "均数样本量和标准差描述序贯设计在每种设计先验下预期使用的数据量。它们是计划研究假设重复的平均值。"
+msgstr ""
+"均数样本量和标准差描述序贯设计在每种设计先验下预期使用的数据量。它们是计划研"
+"究假设重复的均值。"
 
 msgid ""
 "Rows condition on the design prior used to generate hypothetical sequential "
@@ -1013,9 +996,8 @@ msgstr "首次分析"
 msgid "Maximum Sample Size"
 msgstr "最大样本量"
 
-#, fuzzy
 msgid "Mean Sample Size"
-msgstr "单样本z检验"
+msgstr "平均样本量"
 
 msgid "Standard Deviation"
 msgstr "标准差"
@@ -1213,10 +1195,10 @@ msgid ""
 msgstr "每条曲线给出与某分析阶段贝叶斯因子停止阈值相对应的临界检验统计量值。逾越边界将触发为 H₁ 或 H₀ 停止。"
 
 msgid "Lower"
-msgstr "下界"
+msgstr "下限"
 
 msgid "Upper"
-msgstr "上界"
+msgstr "上限"
 
 msgid "group 1 event probability"
 msgstr "第 1 组事件概率"
@@ -1241,9 +1223,8 @@ msgstr "基线与替代二分类效应隐含的第 2 组事件概率超出 (0, 1
 msgid "The %1$s must be greater than 0 and less than 1."
 msgstr "%1$s 必须大于 0 且小于 1。"
 
-#, fuzzy
 msgid "One-sided"
-msgstr "单尾"
+msgstr "单侧"
 
 msgid "Two-sided symmetric"
 msgstr "双侧对称"
@@ -1254,9 +1235,8 @@ msgstr "双侧非对称 β 支出（约束性无效性）"
 msgid "Two-sided asymmetric β-spending (non-binding futility)"
 msgstr "双侧非对称 β 支出（非约束性无效性）"
 
-#, fuzzy
 msgid "Canonical effect (δ)"
-msgstr "假设效应量（%s）"
+msgstr "典型效应（δ）"
 
 msgid "Standardized mean difference (one sample / paired)"
 msgstr "标准化均数差（单样本 / 配对）"
@@ -1267,9 +1247,8 @@ msgstr "标准化均数差（独立样本）"
 msgid "Mean difference (one sample / paired)"
 msgstr "均数差（单样本 / 配对）"
 
-#, fuzzy
 msgid "Mean difference (independent samples)"
-msgstr "独立样本t检验"
+msgstr "均值差（独立样本）"
 
 msgid "Two-sample binary endpoint"
 msgstr "两样本二分类终点"
@@ -1417,9 +1396,8 @@ msgstr "用于推导第 2 组事件概率的替代效应。"
 msgid "Group 1 event probability"
 msgstr "第 1 组事件概率"
 
-#, fuzzy
 msgid "Baseline event probability under the alternative hypothesis."
-msgstr "双尾备择假设下，效应量不能为0。"
+msgstr "备择假设下的基线事件概率。"
 
 msgid "Event probability in group 1 under the alternative hypothesis."
 msgstr "备择假设下第 1 组的事件概率。"
@@ -1438,13 +1416,11 @@ msgstr "备择假设下第 2 组的事件概率。"
 msgid "Alternative risk difference"
 msgstr "替代风险差"
 
-#, fuzzy
 msgid "Alternative risk ratio"
-msgstr "备择假设"
+msgstr "备择风险比"
 
-#, fuzzy
 msgid "Alternative odds ratio"
-msgstr "备择假设"
+msgstr "备择优势比"
 
 msgid "Information-scale effect used by the sequential calculations."
 msgstr "序贯计算使用的信息尺度效应。"
@@ -1529,9 +1505,8 @@ msgstr "期望总样本量"
 msgid "Total Sample Size"
 msgstr "总样本量"
 
-#, fuzzy
 msgid "total sample size"
-msgstr "单样本z检验"
+msgstr "总样本量"
 
 msgid "Fixed Design Events"
 msgstr "固定设计事件数"
@@ -1882,20 +1857,17 @@ msgstr "贝叶斯因子证据"
 msgid "Null"
 msgstr "零假设"
 
-#, fuzzy
 msgid "Alternative"
 msgstr "备择假设"
 
 msgid "Explanation:"
 msgstr "说明："
 
-#, fuzzy
 msgid "Two-sided"
-msgstr "双尾"
+msgstr "双侧"
 
-#, fuzzy
 msgid "Less (One-sided)"
-msgstr "单尾"
+msgstr "小于（单侧）"
 
 msgid "Greater (One-sided)"
 msgstr "大于（单侧）"
