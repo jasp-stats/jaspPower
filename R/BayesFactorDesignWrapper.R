@@ -74,7 +74,6 @@
 #'    Defaults to \code{TRUE}.
 #' @param explanatoryText, Append brief interpretation notes to each displayed Bayesian result.
 #'    Defaults to \code{TRUE}.
-#' @param generalZParameterization, Scale used for the general z-test approximation, such as standardized mean difference, Fisher's z, or a log effect measure.
 #' @param generateRCode, Generate R code that reproduces the Bayes factor design calculation.
 #'    Defaults to \code{FALSE}.
 #' @param generateReport, Generate a short report describing the design, priors, thresholds, and achieved probabilities.
@@ -103,10 +102,10 @@
 #' @param observedInputType, Choose which summary statistics are available for the observed t-test result.
 #' \itemize{
 #'   \item \code{"tAndN"}
+#'   \item \code{"meanAndSD"}
 #'   \item \code{"cohensD"}
 #'   \item \code{"meansAndSDs"}
 #'   \item \code{"meanDiffAndSD"}
-#'   \item \code{"meanAndSD"}
 #' }
 #' @param observedMean, Observed mean used to compute the observed Bayes factor.
 #' @param observedMean1, Observed mean in group 1.
@@ -184,7 +183,6 @@ BayesFactorDesign <- function(
           designSpecification = TRUE,
           designSummary = TRUE,
           explanatoryText = TRUE,
-          generalZParameterization = "standardizedMeanDifference",
           generateRCode = FALSE,
           generateReport = FALSE,
           generateReportLatexFormattedOutput = FALSE,
@@ -250,7 +248,7 @@ BayesFactorDesign <- function(
       jaspBase::storeDataSet(data)
    }
 
-   optionsWithFormula <- c("analysisPriorDirection", "analysisPriorDistribution", "binomialDesignNullPriorDistribution", "binomialDesignPriorDistribution", "calculationTarget", "colorPalette", "designNullPriorDistribution", "designPriorDistribution", "designSampleSizeBasis", "generalZParameterization", "legendPosition", "nullPriorDistribution", "observedDependentVariable", "observedGroupingVariable", "observedProportionVariable", "observedVariable", "observedVariablePairs", "statisticalTest", "tSearchRangeMode")
+   optionsWithFormula <- c("analysisPriorDirection", "analysisPriorDistribution", "binomialDesignNullPriorDistribution", "binomialDesignPriorDistribution", "calculationTarget", "colorPalette", "designNullPriorDistribution", "designPriorDistribution", "designSampleSizeBasis", "legendPosition", "nullPriorDistribution", "observedDependentVariable", "observedGroupingVariable", "observedProportionVariable", "observedVariable", "observedVariablePairs", "statisticalTest", "tSearchRangeMode")
    for (name in optionsWithFormula) {
       if ((name %in% optionsWithFormula) && inherits(options[[name]], "formula")) options[[name]] = jaspBase::jaspFormula(options[[name]], data)   }
 

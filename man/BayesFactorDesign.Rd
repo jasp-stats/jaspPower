@@ -50,7 +50,6 @@ BayesFactorDesign(
   designSpecification = TRUE,
   designSummary = TRUE,
   explanatoryText = TRUE,
-  generalZParameterization = "standardizedMeanDifference",
   generateRCode = FALSE,
   generateReport = FALSE,
   generateReportLatexFormattedOutput = FALSE,
@@ -200,8 +199,6 @@ Defaults to \code{TRUE}.}
 \item{explanatoryText, }{Append brief interpretation notes to each displayed Bayesian result.
 Defaults to \code{TRUE}.}
 
-\item{generalZParameterization, }{Scale used for the general z-test approximation, such as standardized mean difference, Fisher's z, or a log effect measure.}
-
 \item{generateRCode, }{Generate R code that reproduces the Bayes factor design calculation.
 Defaults to \code{FALSE}.}
 
@@ -247,10 +244,10 @@ Defaults to \code{TRUE}.}
 \item{observedInputType, }{Choose which summary statistics are available for the observed t-test result.
 \itemize{
   \item \code{"tAndN"}
+  \item \code{"meanAndSD"}
   \item \code{"cohensD"}
   \item \code{"meansAndSDs"}
   \item \code{"meanDiffAndSD"}
-  \item \code{"meanAndSD"}
 }}
 
 \item{observedMean, }{Observed mean used to compute the observed Bayes factor.}

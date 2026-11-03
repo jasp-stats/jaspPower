@@ -33,10 +33,7 @@ Group
 	property bool isZTest: testValue.indexOf("ZTest") !== -1
 	property bool isTTest: testValue.indexOf("TTest") !== -1
 	property alias calculationValue: calc.currentValue
-	property alias generalZParameterizationValue: generalZParameterization.currentValue
 	property bool usesSampleSizeSearch: calc.currentValue === "sampleSize"
-	property bool usesGeneralZStandardErrorParameterization: isSequentialDesign && isGeneralZ && generalZParameterization.currentValue === "standardErrorSchedule"
-	property bool usesStandardErrorSchedule: calc.currentValue === "evidenceProbability" && usesGeneralZStandardErrorParameterization
 
 	Group
 	{
@@ -167,48 +164,13 @@ Group
 
 		Text
 		{
-			text: qsTr("Parameterization:")
-			visible: root.isGeneralZ
-		}
-		DropDown
-		{
-			name: "generalZParameterization"
-			id:   generalZParameterization
-			info: qsTr("Scale used for the general z-test approximation, such as standardized mean difference, Fisher's z, or a log effect measure.")
-			indexDefaultValue: 0
-			Layout.columnSpan: 2
-			visible: root.isGeneralZ
-			values: root.isSequentialDesign && calc.currentValue === "evidenceProbability" ?
-			[
-				{ label: qsTr("SMD"),                     value: "standardizedMeanDifference" },
-				{ label: qsTr("Fisher's z"),              value: "fisherZCorrelation"        },
-				{ label: qsTr("logOR"),                   value: "logOddsRatio"              },
-				{ label: qsTr("logRR"),                   value: "logRiskRatio"              },
-				{ label: qsTr("logHR"),                   value: "logHazardRatio"            },
-				{ label: qsTr("logIRR"),                  value: "logIncidenceRateRatio"     },
-				{ label: qsTr("Specify"),                 value: "unitInformationSd"         },
-				{ label: qsTr("Standard error schedule"), value: "standardErrorSchedule"     }
-			] :
-			[
-				{ label: qsTr("SMD"),        value: "standardizedMeanDifference" },
-				{ label: qsTr("Fisher's z"), value: "fisherZCorrelation"        },
-				{ label: qsTr("logOR"),      value: "logOddsRatio"              },
-				{ label: qsTr("logRR"),      value: "logRiskRatio"              },
-				{ label: qsTr("logHR"),      value: "logHazardRatio"            },
-				{ label: qsTr("logIRR"),     value: "logIncidenceRateRatio"     },
-				{ label: qsTr("Specify"),    value: "unitInformationSd"         }
-			]
-		}
-
-		Text
-		{
 			text: qsTr("Unit information SD:")
-			visible: root.isGeneralZ && generalZParameterization.currentValue === "unitInformationSd"
+			visible: root.isGeneralZ
 		}
 		Text
 		{
 			text: qsTr("UISD")
-			visible: root.isGeneralZ && generalZParameterization.currentValue === "unitInformationSd"
+			visible: root.isGeneralZ
 		}
 		DoubleField
 		{
@@ -218,7 +180,7 @@ Group
 			min: 0
 			defaultValue: 1
 			inclusive: JASP.None
-			visible: root.isGeneralZ && generalZParameterization.currentValue === "unitInformationSd"
+			visible: root.isGeneralZ
 		}
 	}
 

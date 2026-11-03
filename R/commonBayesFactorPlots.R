@@ -15,7 +15,11 @@
   legendPosition <- settings[["legendPosition"]]
 
   plot <- .pwrApplyPlotTheme(plot, legendPosition = .bfdLegendPosition(legendPosition)) +
-    jaspGraphs::scale_JASPcolor_discrete(palette, labels = .bfdPlotmathLabels)
+    jaspGraphs::scale_JASPcolor_discrete(palette, labels = .bfdPlotmathLabels) +
+    ggplot2::theme(
+      legend.title  = ggplot2::element_text(margin = ggplot2::margin_part(r = 6, unit = "pt")),
+      legend.text   = ggplot2::element_text(margin = ggplot2::margin_part(r = 6, unit = "pt"))
+    )
 
   if (is.null(linetypeValues)) {
     plot <- plot + ggplot2::scale_linetype_discrete(labels = .bfdPlotmathLabels)
@@ -116,7 +120,17 @@
 }
 
 .bfdPlotmathText <- function(text) {
+  # leading/trailing spaces become plotmath spacing (~): SVG viewers drop them inside text elements
+  if (nzchar(text) && !nzchar(trimws(text)))
+    return('""~""')
+
+  leadingSpace  <- grepl("^\\s", text)
+  trailingSpace <- grepl("\\s$", text)
+
+  text <- trimws(text)
   text <- gsub("\\", "\\\\", text, fixed = TRUE)
   text <- gsub("\"", "\\\"", text, fixed = TRUE)
-  paste0("\"", text, "\"")
+  text <- paste0("\"", text, "\"")
+
+  paste0(if (leadingSpace) '""~', text, if (trailingSpace) '~""')
 }

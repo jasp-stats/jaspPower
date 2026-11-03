@@ -32,7 +32,7 @@ BayesFactorDesignInternal <- function(jaspResults, dataset, options) {
   "statisticalTest", "calculationTarget", "conclusiveEvidenceThresholdH1", "conclusiveEvidenceThresholdH0",
   "probabilityOfConclusiveEvidenceUnderH1", "probabilityOfConclusiveEvidenceUnderH0",
   "designSampleSizeBasis", "sampleSize", "sampleSizeAllocationRatio", "knownStandardDeviation",
-  "generalZParameterization", "unitInformationSd",
+  "unitInformationSd",
   "analysisPriorDirection", "nullPriorDistribution", "nullValue", "nullProportion",
   "analysisPriorDistribution", "analysisPriorLocation", "analysisPriorMean",
   "analysisPriorScale", "analysisPriorSpread", "analysisPriorMode", "tPriorLocation",
@@ -452,10 +452,6 @@ BayesFactorDesignInternal <- function(jaspResults, dataset, options) {
   table$setData(.bfdResultsRows(settings, result))
   .bfdAddDesignPriorErrorFootnotes(table, result[["targetErrors"]])
 
-  generalZUisdFootnote <- .bfdGeneralZKnownUisdFootnote(settings)
-  if (!is.null(generalZUisdFootnote))
-    table$addFootnote(generalZUisdFootnote)
-
   if (settings[["calculationTarget"]] == "sampleSize")
     table$addFootnote(gettext("Due to rounding of the sample size, Pr(Conclusive Evidence) can deviate from the target probability."))
 
@@ -822,13 +818,13 @@ BayesFactorDesignInternal <- function(jaspResults, dataset, options) {
   }
 
   return(gettext(
-    "This table evaluates the selected fixed sample size. Achieved probabilities are the chances that the planned study produces conclusive evidence in the requested direction when data are generated from the corresponding design prior."
+    "This table evaluates the selected fixed sample size. Achieved probabilities are the probabilities that the planned study produces conclusive evidence in the requested direction when data are generated from the corresponding design prior."
   ))
 }
 
 .bfdDesignOutcomeTableExplanation <- function() {
   gettext(
-    "Rows condition on the design prior used to generate hypothetical data. Diagonal cells are conclusive evidence for the true hypothesis, off-diagonal cells are misleading evidence, and the middle column is the chance of remaining inconclusive."
+    "Rows condition on the design prior used to generate hypothetical data. Diagonal cells are conclusive evidence for the true hypothesis, off-diagonal cells are misleading evidence, and the middle column is the probability of remaining inconclusive."
   )
 }
 
@@ -1845,9 +1841,20 @@ BayesFactorDesignInternal <- function(jaspResults, dataset, options) {
     designType,
     .bfdReportDesignAction(settings),
     .bfdReportAlternativeLabel(settings),
-    .bfdTestLabel(settings[["statisticalTest"]]),
+    .bfdReportTestLabel(settings),
     .bfdReportHypothesisClause(settings)
   )
+}
+
+.bfdReportTestLabel <- function(settings) {
+  if (isTRUE(settings[["isGeneralZ"]]) || identical(settings[["statisticalTest"]], "generalZApproximation")) {
+    return(gettextf(
+      "general z-test (with UISD = %1$s)",
+      .bfdReportNumber(settings[["unitInformationSd"]])
+    ))
+  }
+
+  return(.bfdTestLabel(settings[["statisticalTest"]]))
 }
 
 .bfdReportDesignAction <- function(settings) {
@@ -2924,6 +2931,14 @@ BayesFactorDesignInternal <- function(jaspResults, dataset, options) {
   return(.bfdBuildContinuousPriorPlot(settings, priorSet, plotData))
 }
 
+.bfdPriorSpikeLegendData <- function(spikeData) {
+  legendData <- spikeData
+  legendData[["x"]]      <- NA_real_
+  legendData[["height"]] <- NA_real_
+
+  return(legendData)
+}
+
 .bfdFilterCurveData <- function(data, under = NULL) {
   if (is.null(under))
     return(data)
@@ -3084,7 +3099,16 @@ BayesFactorDesignInternal <- function(jaspResults, dataset, options) {
         ggplot2::aes(x = x, xend = x, y = 0, yend = height, color = hypothesis, linetype = priorType),
         arrow       = grid::arrow(length = grid::unit(0.08, "inches"), type = "closed"),
         linewidth   = 1.1,
-        inherit.aes = FALSE
+        inherit.aes = FALSE,
+        show.legend = FALSE
+      ) +
+      ggplot2::geom_segment(
+        data = .bfdPriorSpikeLegendData(spikeData),
+        ggplot2::aes(x = x, xend = x, y = 0, yend = height, color = hypothesis, linetype = priorType),
+        linewidth   = 1.1,
+        inherit.aes = FALSE,
+        show.legend = TRUE,
+        na.rm       = TRUE
       )
     } else {
       plot + ggplot2::geom_segment(
@@ -3092,7 +3116,16 @@ BayesFactorDesignInternal <- function(jaspResults, dataset, options) {
         ggplot2::aes(x = x, xend = x, y = 0, yend = height, color = prior),
         arrow       = grid::arrow(length = grid::unit(0.08, "inches"), type = "closed"),
         linewidth   = 1.1,
-        inherit.aes = FALSE
+        inherit.aes = FALSE,
+        show.legend = FALSE
+      ) +
+      ggplot2::geom_segment(
+        data = .bfdPriorSpikeLegendData(spikeData),
+        ggplot2::aes(x = x, xend = x, y = 0, yend = height, color = prior),
+        linewidth   = 1.1,
+        inherit.aes = FALSE,
+        show.legend = TRUE,
+        na.rm       = TRUE
       )
     }
   }
@@ -3342,7 +3375,16 @@ BayesFactorDesignInternal <- function(jaspResults, dataset, options) {
         ggplot2::aes(x = x, xend = x, y = 0, yend = height, color = hypothesis, linetype = priorType),
         arrow       = grid::arrow(length = grid::unit(0.08, "inches"), type = "closed"),
         linewidth   = 1.1,
-        inherit.aes = FALSE
+        inherit.aes = FALSE,
+        show.legend = FALSE
+      ) +
+      ggplot2::geom_segment(
+        data = .bfdPriorSpikeLegendData(spikeData),
+        ggplot2::aes(x = x, xend = x, y = 0, yend = height, color = hypothesis, linetype = priorType),
+        linewidth   = 1.1,
+        inherit.aes = FALSE,
+        show.legend = TRUE,
+        na.rm       = TRUE
       )
     } else {
       plot + ggplot2::geom_segment(
@@ -3350,7 +3392,16 @@ BayesFactorDesignInternal <- function(jaspResults, dataset, options) {
         ggplot2::aes(x = x, xend = x, y = 0, yend = height, color = prior),
         arrow       = grid::arrow(length = grid::unit(0.08, "inches"), type = "closed"),
         linewidth   = 1.1,
-        inherit.aes = FALSE
+        inherit.aes = FALSE,
+        show.legend = FALSE
+      ) +
+      ggplot2::geom_segment(
+        data = .bfdPriorSpikeLegendData(spikeData),
+        ggplot2::aes(x = x, xend = x, y = 0, yend = height, color = prior),
+        linewidth   = 1.1,
+        inherit.aes = FALSE,
+        show.legend = TRUE,
+        na.rm       = TRUE
       )
     }
   }
@@ -3630,58 +3681,7 @@ BayesFactorDesignInternal <- function(jaspResults, dataset, options) {
 }
 
 .bfdGeneralZUnitInformationSd <- function(settings) {
-  parameterization <- settings[["generalZParameterization"]]
-
-  if (parameterization == "unitInformationSd")
-    return(settings[["unitInformationSd"]])
-
-  switch(
-    parameterization,
-    standardizedMeanDifference = sqrt(2),
-    fisherZCorrelation        = 1,
-    logRiskRatio              = sqrt(4),
-    logOddsRatio              = sqrt(4),
-    logHazardRatio            = sqrt(4),
-    logIncidenceRateRatio     = sqrt(4),
-    effectSize                = 1
-  )
-}
-
-.bfdGeneralZKnownUisdFootnote <- function(settings) {
-  if (!isTRUE(settings[["isGeneralZ"]]))
-    return(NULL)
-
-  if (!settings[["generalZParameterization"]] %in% c(
-    "standardizedMeanDifference",
-    "fisherZCorrelation",
-    "logRiskRatio",
-    "logOddsRatio",
-    "logHazardRatio",
-    "logIncidenceRateRatio",
-    "effectSize"
-  ))
-    return(NULL)
-
-  gettextf(
-    "The %1$s parameterization assumes a unit information standard deviation (UISD) of %2$s.",
-    .bfdGeneralZParameterizationLabel(settings[["generalZParameterization"]]),
-    .bfdFormatNumber(.bfdGeneralZUnitInformationSd(settings))
-  )
-}
-
-.bfdGeneralZParameterizationLabel <- function(parameterization) {
-  switch(
-    parameterization,
-    standardizedMeanDifference = gettext("SMD"),
-    fisherZCorrelation        = gettext("Fisher's z"),
-    logRiskRatio              = gettext("logRR"),
-    logOddsRatio              = gettext("logOR"),
-    logHazardRatio            = gettext("logHR"),
-    logIncidenceRateRatio     = gettext("logIRR"),
-    unitInformationSd         = gettext("specified UISD"),
-    standardErrorSchedule     = gettext("standard error schedule"),
-    effectSize                = gettext("effect size")
-  )
+  return(settings[["unitInformationSd"]])
 }
 
 .bfdSampleSizeSecondGroup <- function(settings, n1) {

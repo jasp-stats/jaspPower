@@ -31,8 +31,6 @@ Group
 	property bool usesSampleSizeSearch: calculationControls.usesSampleSizeSearch
 	property bool usesSampleSizeSearchStrategy: usesSampleSizeSearch && lookScheduleMode.currentValue !== "increase"
 	property bool usesEvidenceProbability: calculationControls.calculationValue === "evidenceProbability"
-	property bool usesStandardErrorSchedule: calculationControls.usesStandardErrorSchedule
-	property bool usesGeneralZStandardErrorParameterization: calculationControls.usesGeneralZStandardErrorParameterization
 	property bool linksLowerSearchBoundToStartingPoint: usesSampleSizeSearch && lookScheduleMode.currentValue === "increase"
 	property int searchStartingSampleSize: sampleSizeFirstLook.value
 	property string maximumSampleSizeSymbol: isIndependentSamples ? "Nmax,1" : "Nmax"
@@ -46,27 +44,8 @@ Group
 
 	Group
 	{
-		title: qsTr("Information Schedule")
-		columns: 3
-		visible: root.usesStandardErrorSchedule
-
-		Text { text: qsTr("Standard error schedule:") }
-		Text { text: qsTr("SE") }
-		TextField
-		{
-			name: "standardErrorSchedule"
-			id:   standardErrorSchedule
-			info: qsTr("Comma-separated standard errors for the planned looks in a sequential general z-test.")
-			defaultValue: "0.224, 0.158, 0.129, 0.112, 0.100"
-			fieldWidth: 140
-		}
-	}
-
-	Group
-	{
 		title: qsTr("Look Schedule")
 		columns: 3
-		visible: !root.usesStandardErrorSchedule
 
 		Text
 		{

@@ -54,7 +54,7 @@
     if (is.na(x))
       return(if (is.integer(x)) "NA_integer_" else "NA_real_")
 
-    return(format(signif(x, 12), scientific = FALSE, trim = TRUE))
+    return(format(x, digits = 15, scientific = FALSE, trim = TRUE))
   }
 
   return(encodeString(as.character(x), quote = "\""))
