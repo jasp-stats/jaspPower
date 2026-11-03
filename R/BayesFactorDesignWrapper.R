@@ -102,10 +102,10 @@
 #' @param observedInputType, Choose which summary statistics are available for the observed t-test result.
 #' \itemize{
 #'   \item \code{"tAndN"}
-#'   \item \code{"meanAndSD"}
 #'   \item \code{"cohensD"}
 #'   \item \code{"meansAndSDs"}
 #'   \item \code{"meanDiffAndSD"}
+#'   \item \code{"meanAndSD"}
 #' }
 #' @param observedMean, Observed mean used to compute the observed Bayes factor.
 #' @param observedMean1, Observed mean in group 1.
@@ -234,12 +234,7 @@ BayesFactorDesign <- function(
           tSearchRangeUpper = 5,
           unitInformationSd = 1) {
 
-   defaultArgCalls <- formals(jaspPower::BayesFactorDesign)
-   defaultArgs <- lapply(defaultArgCalls, eval)
-   options <- as.list(match.call())[-1L]
-   options <- lapply(options, eval)
-   defaults <- setdiff(names(defaultArgs), names(options))
-   options[defaults] <- defaultArgs[defaults]
+   options <- mget(names(formals(sys.function())), envir = environment(), inherits = FALSE)
    options[["data"]] <- NULL
    options[["version"]] <- NULL
 

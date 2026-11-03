@@ -244,10 +244,10 @@ Defaults to \code{TRUE}.}
 \item{observedInputType, }{Choose which summary statistics are available for the observed t-test result.
 \itemize{
   \item \code{"tAndN"}
-  \item \code{"meanAndSD"}
   \item \code{"cohensD"}
   \item \code{"meansAndSDs"}
   \item \code{"meanDiffAndSD"}
+  \item \code{"meanAndSD"}
 }}
 
 \item{observedMean, }{Observed mean used to compute the observed Bayes factor.}

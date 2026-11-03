@@ -267,8 +267,8 @@ Defaults to \code{FALSE}.}
 
 \item{observedDataAnalysisInput, }{Choose whether to enter observed data as summary statistics or select variables from the dataset.
 \itemize{
-  \item \code{"columns"}
   \item \code{"summaryStatistics"}
+  \item \code{"columns"}
 }}
 
 \item{observedDependentVariable, }{Observed outcome variable for the independent-samples Bayes factor.}
@@ -282,9 +282,9 @@ Defaults to \code{FALSE}.}
 \item{observedInputType, }{Choose which summary statistics are available for the observed t-test result.
 \itemize{
   \item \code{"tAndN"}
-  \item \code{"meanDiffAndSD"}
-  \item \code{"meansAndSDs"}
   \item \code{"cohensD"}
+  \item \code{"meansAndSDs"}
+  \item \code{"meanDiffAndSD"}
   \item \code{"meanAndSD"}
 }}
 
