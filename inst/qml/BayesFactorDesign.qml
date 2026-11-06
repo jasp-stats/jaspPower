@@ -28,12 +28,13 @@ Form
 	// Bartoš F, Pawel S (2026). “Bayes Factor Power and Sample Size Calculations in JASP: A Tutorial for Fixed and Sequential Designs.” _PsyArXiv Preprint_
 	infoBottom: "## " + qsTr("References") + "\n" +
 	"- Gelfand, A. E. and Wang, F. (2002). “A simulation-based approach to Bayesian sample size determination for performance under a given model and for separating models.” _Statistical Science, 17_(2), 193--208. https://doi.org/10.1214/ss/1030550861\n" +
+    "- Kelter, R. and Pawel, S. (2026). “Sample size determination for Bayes factor analysis of binomial data.” _arXiv Preprint_ https://doi.org/10.48550/arXiv.2502.02914\n" +
     "- Pawel, S. and Held, L. (2025). “Closed-form power and sample size calculations for Bayes factors.” _The American Statistician, 79_(3), 330--344. 10.1080/00031305.2025.2467919\n" +
     "- Pawel, S. and Held, L. (2026). “Bayes factor group sequential designs.” _arXiv Preprint_ https://doi.org/10.48550/ARXIV.2601.02851\n" +
     "- Schönbrodt, F. D. and Wagenmakers, E.-J. (2018). “Bayes factor design analysis: Planning for compelling evidence.” _Psychonomic Bulletin & Review, 25_(1), 128--142. https://doi.org/10.3758/s13423-017-1230-y\n" +
     "- Stefan, A. M., Gronau, Q. F., Schönbrodt, F. D., and Wagenmakers, E.-J. (2019). “A tutorial on Bayes factor design analysis using an informed prior.” _Behavior Research Methods, 51_(3), 1042--1058. https://doi.org/10.3758/s13428-018-01189-8\n" +
     "- Stefan, A. M., Gronau, Q. F., and Wagenmakers, E.-J. (2025). “Interim design analysis using bayes factor forecasts.” _Psychological Methods, 30_(6), 1198--1217. https://doi.org/10.1037/met0000641\n" +
-    "- Pawel S, Bartoš F, (2026) _bfpwr: Power and Sample Size Calculations for Bayes Factor Analysis_. R package version 0.1.7 Available at: <https://CRAN.R-project.org/package=bfpwr>.\n" +
+    "- Pawel, S. and Bartoš, F. (2026). _bfpwr: Power and Sample Size Calculations for Bayes Factor Analysis_. R package version 0.3. https://github.com/SamCH93/bfpwr\n" +
 	"## " + qsTr("R Packages") + "\n" +
 	"- bfpwr"	
 

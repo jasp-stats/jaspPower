@@ -3,7 +3,7 @@
   message <- gsub("\n", " ", message, fixed = TRUE)
   message <- sub("^Error[^:]*: ", "", message)
 
-  return(message)
+  return(trimws(message))
 }
 
 .bfdCodeHtml <- function(code) {

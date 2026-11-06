@@ -178,6 +178,8 @@ BayesFactorDesignInternal <- function(jaspResults, dataset, options) {
 }
 
 .bfdComputeResult <- function(settings) {
+  .bfdValidateOneSidedPointPrior(settings)
+
   targets       <- c("h1", "h0")
   targetResults <- lapply(targets, .bfdComputeTargetResult, settings = settings)
   targetErrors  <- vapply(targetResults, .bfdTargetResultError, character(1))
@@ -273,27 +275,29 @@ BayesFactorDesignInternal <- function(jaspResults, dataset, options) {
 
   if (settings[["analysisPriorDistribution"]] %in% c("point", "normal")) {
     return(bfpwr::pbf01(
-      k          = k,
-      n          = n1,
-      usd        = unitSd,
-      null       = settings[["nullValue"]],
-      pm         = .bfdZAnalysisPriorMean(settings),
-      psd        = .bfdZAnalysisPriorSd(settings),
-      dpm        = designPriorMean,
-      dpsd       = designPriorSd,
-      lower.tail = lowerTail
+      k           = k,
+      n           = n1,
+      usd         = unitSd,
+      null        = settings[["nullValue"]],
+      pm          = .bfdZAnalysisPriorMean(settings),
+      psd         = .bfdZAnalysisPriorSd(settings),
+      dpm         = designPriorMean,
+      dpsd        = designPriorSd,
+      lower.tail  = lowerTail,
+      alternative = .bfdZAlternative(settings)
     ))
   }
 
   return(bfpwr::pnmbf01(
-    k          = k,
-    n          = n1,
-    usd        = unitSd,
-    null       = settings[["nullValue"]],
-    psd        = .bfdMomentPriorSpread(settings),
-    dpm        = designPriorMean,
-    dpsd       = designPriorSd,
-    lower.tail = lowerTail
+    k           = k,
+    n           = n1,
+    usd         = unitSd,
+    null        = settings[["nullValue"]],
+    psd         = .bfdMomentPriorSpread(settings),
+    dpm         = designPriorMean,
+    dpsd        = designPriorSd,
+    lower.tail  = lowerTail,
+    alternative = .bfdZAlternative(settings)
   ))
 }
 
@@ -302,7 +306,7 @@ BayesFactorDesignInternal <- function(jaspResults, dataset, options) {
     list(
       k           = k,
       null        = settings[["nullValue"]],
-      plocation   = .bfdTPriorLocationRelative(settings),
+      plocation   = settings[["tPriorLocation"]],
       pscale      = settings[["tPriorScale"]],
       pdf         = .bfdTPriorDf(settings),
       dpm         = designPriorMean,
@@ -388,30 +392,32 @@ BayesFactorDesignInternal <- function(jaspResults, dataset, options) {
 
   if (settings[["isZTest"]] && settings[["analysisPriorDistribution"]] %in% c("point", "normal")) {
     return(bfpwr::nbf01(
-      k          = k,
-      power      = .bfdTargetPower(settings, target),
-      usd        = .bfdZUnitStandardDeviation(settings, minimumN),
-      null       = settings[["nullValue"]],
-      pm         = .bfdZAnalysisPriorMean(settings),
-      psd        = .bfdZAnalysisPriorSd(settings),
-      dpm        = designPrior[["mean"]],
-      dpsd       = designPrior[["sd"]],
-      nrange     = nrange,
-      lower.tail = lowerTail
+      k           = k,
+      power       = .bfdTargetPower(settings, target),
+      usd         = .bfdZUnitStandardDeviation(settings, minimumN),
+      null        = settings[["nullValue"]],
+      pm          = .bfdZAnalysisPriorMean(settings),
+      psd         = .bfdZAnalysisPriorSd(settings),
+      dpm         = designPrior[["mean"]],
+      dpsd        = designPrior[["sd"]],
+      nrange      = nrange,
+      lower.tail  = lowerTail,
+      alternative = .bfdZAlternative(settings)
     ))
   }
 
   if (settings[["isZTest"]]) {
     return(bfpwr::nnmbf01(
-      k          = k,
-      power      = .bfdTargetPower(settings, target),
-      usd        = .bfdZUnitStandardDeviation(settings, minimumN),
-      null       = settings[["nullValue"]],
-      psd        = .bfdMomentPriorSpread(settings),
-      dpm        = designPrior[["mean"]],
-      dpsd       = designPrior[["sd"]],
-      nrange     = nrange,
-      lower.tail = lowerTail
+      k           = k,
+      power       = .bfdTargetPower(settings, target),
+      usd         = .bfdZUnitStandardDeviation(settings, minimumN),
+      null        = settings[["nullValue"]],
+      psd         = .bfdMomentPriorSpread(settings),
+      dpm         = designPrior[["mean"]],
+      dpsd        = designPrior[["sd"]],
+      nrange      = nrange,
+      lower.tail  = lowerTail,
+      alternative = .bfdZAlternative(settings)
     ))
   }
 
@@ -419,7 +425,7 @@ BayesFactorDesignInternal <- function(jaspResults, dataset, options) {
     k           = k,
     power       = .bfdTargetPower(settings, target),
     null        = settings[["nullValue"]],
-    plocation   = .bfdTPriorLocationRelative(settings),
+    plocation   = settings[["tPriorLocation"]],
     pscale      = settings[["tPriorScale"]],
     pdf         = .bfdTPriorDf(settings),
     type        = settings[["testType"]],
@@ -1589,6 +1595,8 @@ BayesFactorDesignInternal <- function(jaspResults, dataset, options) {
 }
 
 .bfdObservedBayesFactor <- function(settings, summary) {
+  .bfdValidateOneSidedPointPrior(settings)
+
   bf01 <- if (settings[["isBinomial"]]) {
     .bfdObservedBinomialBayesFactor(settings, summary)
   } else if (settings[["isTTest"]]) {
@@ -1629,19 +1637,21 @@ BayesFactorDesignInternal <- function(jaspResults, dataset, options) {
 
   if (settings[["analysisPriorDistribution"]] %in% c("point", "normal")) {
     return(bfpwr::bf01(
-      estimate = estimate,
-      se       = se,
-      null     = settings[["nullValue"]],
-      pm       = .bfdZAnalysisPriorMean(settings),
-      psd      = .bfdZAnalysisPriorSd(settings)
+      estimate    = estimate,
+      se          = se,
+      null        = settings[["nullValue"]],
+      pm          = .bfdZAnalysisPriorMean(settings),
+      psd         = .bfdZAnalysisPriorSd(settings),
+      alternative = .bfdZAlternative(settings)
     ))
   }
 
   return(bfpwr::nmbf01(
-    estimate = estimate,
-    se       = se,
-    null     = settings[["nullValue"]],
-    psd      = .bfdMomentPriorSpread(settings)
+    estimate    = estimate,
+    se          = se,
+    null        = settings[["nullValue"]],
+    psd         = .bfdMomentPriorSpread(settings),
+    alternative = .bfdZAlternative(settings)
   ))
 }
 
@@ -2293,31 +2303,33 @@ BayesFactorDesignInternal <- function(jaspResults, dataset, options) {
     n <- .bfdMinimumSampleSize(settings)
     if (normalPrior) {
       args <- list(
-        k          = .bfdEventK(settings, target),
-        power      = .bfdTargetPower(settings, target),
-        usd        = .bfdZUnitStandardDeviation(settings, n),
-        null       = settings[["nullValue"]],
-        pm         = .bfdZAnalysisPriorMean(settings),
-        psd        = .bfdZAnalysisPriorSd(settings),
-        dpm        = designPrior[["mean"]],
-        dpsd       = designPrior[["sd"]],
-        nrange     = c(n, ceiling(settings[["maximumSampleSize"]])),
-        lower.tail = .bfdLowerTail(target)
+        k           = .bfdEventK(settings, target),
+        power       = .bfdTargetPower(settings, target),
+        usd         = .bfdZUnitStandardDeviation(settings, n),
+        null        = settings[["nullValue"]],
+        pm          = .bfdZAnalysisPriorMean(settings),
+        psd         = .bfdZAnalysisPriorSd(settings),
+        dpm         = designPrior[["mean"]],
+        dpsd        = designPrior[["sd"]],
+        nrange      = c(n, ceiling(settings[["maximumSampleSize"]])),
+        lower.tail  = .bfdLowerTail(target),
+        alternative = .bfdZAlternative(settings)
       )
 
       return(.bfdFormatRCall("bfpwr::nbf01", args))
     }
 
     args <- list(
-      k          = .bfdEventK(settings, target),
-      power      = .bfdTargetPower(settings, target),
-      usd        = .bfdZUnitStandardDeviation(settings, n),
-      null       = settings[["nullValue"]],
-      psd        = .bfdMomentPriorSpread(settings),
-      dpm        = designPrior[["mean"]],
-      dpsd       = designPrior[["sd"]],
-      nrange     = c(n, ceiling(settings[["maximumSampleSize"]])),
-      lower.tail = .bfdLowerTail(target)
+      k           = .bfdEventK(settings, target),
+      power       = .bfdTargetPower(settings, target),
+      usd         = .bfdZUnitStandardDeviation(settings, n),
+      null        = settings[["nullValue"]],
+      psd         = .bfdMomentPriorSpread(settings),
+      dpm         = designPrior[["mean"]],
+      dpsd        = designPrior[["sd"]],
+      nrange      = c(n, ceiling(settings[["maximumSampleSize"]])),
+      lower.tail  = .bfdLowerTail(target),
+      alternative = .bfdZAlternative(settings)
     )
 
     return(.bfdFormatRCall("bfpwr::nnmbf01", args))
@@ -2327,29 +2339,31 @@ BayesFactorDesignInternal <- function(jaspResults, dataset, options) {
 
   if (normalPrior) {
     args <- list(
-      k          = .bfdEventK(settings, target),
-      n          = n,
-      usd        = .bfdZUnitStandardDeviation(settings, n),
-      null       = settings[["nullValue"]],
-      pm         = .bfdZAnalysisPriorMean(settings),
-      psd        = .bfdZAnalysisPriorSd(settings),
-      dpm        = designPrior[["mean"]],
-      dpsd       = designPrior[["sd"]],
-      lower.tail = .bfdLowerTail(target)
+      k           = .bfdEventK(settings, target),
+      n           = n,
+      usd         = .bfdZUnitStandardDeviation(settings, n),
+      null        = settings[["nullValue"]],
+      pm          = .bfdZAnalysisPriorMean(settings),
+      psd         = .bfdZAnalysisPriorSd(settings),
+      dpm         = designPrior[["mean"]],
+      dpsd        = designPrior[["sd"]],
+      lower.tail  = .bfdLowerTail(target),
+      alternative = .bfdZAlternative(settings)
     )
 
     return(.bfdFormatRCall("bfpwr::pbf01", args))
   }
 
   args <- list(
-    k          = .bfdEventK(settings, target),
-    n          = n,
-    usd        = .bfdZUnitStandardDeviation(settings, n),
-    null       = settings[["nullValue"]],
-    psd        = .bfdMomentPriorSpread(settings),
-    dpm        = designPrior[["mean"]],
-    dpsd       = designPrior[["sd"]],
-    lower.tail = .bfdLowerTail(target)
+    k           = .bfdEventK(settings, target),
+    n           = n,
+    usd         = .bfdZUnitStandardDeviation(settings, n),
+    null        = settings[["nullValue"]],
+    psd         = .bfdMomentPriorSpread(settings),
+    dpm         = designPrior[["mean"]],
+    dpsd        = designPrior[["sd"]],
+    lower.tail  = .bfdLowerTail(target),
+    alternative = .bfdZAlternative(settings)
   )
 
   return(.bfdFormatRCall("bfpwr::pnmbf01", args))
@@ -2363,7 +2377,7 @@ BayesFactorDesignInternal <- function(jaspResults, dataset, options) {
       k           = .bfdEventK(settings, target),
       power       = .bfdTargetPower(settings, target),
       null        = settings[["nullValue"]],
-      plocation   = .bfdTPriorLocationRelative(settings),
+      plocation   = settings[["tPriorLocation"]],
       pscale      = settings[["tPriorScale"]],
       pdf         = .bfdTPriorDf(settings),
       type        = settings[["testType"]],
@@ -2388,7 +2402,7 @@ BayesFactorDesignInternal <- function(jaspResults, dataset, options) {
     .bfdTTestSampleSizeArguments(settings, n1, n2),
     list(
       null        = settings[["nullValue"]],
-      plocation   = .bfdTPriorLocationRelative(settings),
+      plocation   = settings[["tPriorLocation"]],
       pscale      = settings[["tPriorScale"]],
       pdf         = .bfdTPriorDf(settings),
       dpm         = designPrior[["mean"]],
@@ -3183,6 +3197,19 @@ BayesFactorDesignInternal <- function(jaspResults, dataset, options) {
     if (.bfdUsesDirectionalZTest(settings))
       return(.bfdDirectionalNormalPriorDensityRows(settings, x))
 
+    if (settings[["alternative"]] != "two.sided") {
+      h1 <- .bfdDirectionalNormalPriorDensity(settings, x, "h1")
+      return(list(.bfdPriorDensityRows(
+        x            = x,
+        density      = h1[["density"]],
+        prior        = .bfdAnalysisPriorPlotLabel("h1"),
+        lower        = h1[["lower"]],
+        upper        = h1[["upper"]],
+        lowerDensity = h1[["lowerDensity"]],
+        upperDensity = h1[["upperDensity"]]
+      )))
+    }
+
     return(list(.bfdPriorDensityRows(
       x       = x,
       density = stats::dnorm(x, mean = .bfdZAnalysisPriorMean(settings), sd = .bfdZAnalysisPriorSd(settings)),
@@ -3190,9 +3217,16 @@ BayesFactorDesignInternal <- function(jaspResults, dataset, options) {
     )))
   }
 
-  spread <- .bfdMomentPriorSpread(settings)
-  density <- ((x - settings[["nullValue"]])^2 / spread^2) *
-    stats::dnorm(x, mean = settings[["nullValue"]], sd = spread)
+  # the normal-moment density is symmetric around the null value, so the one-sided prior doubles one half
+  nullValue <- settings[["nullValue"]]
+  spread    <- .bfdMomentPriorSpread(settings)
+  density   <- ((x - nullValue)^2 / spread^2) * stats::dnorm(x, mean = nullValue, sd = spread)
+
+  if (settings[["alternative"]] == "greater")
+    return(list(.bfdPriorDensityRows(x = x, density = 2 * density, prior = .bfdAnalysisPriorPlotLabel("h1"), lower = nullValue)))
+
+  if (settings[["alternative"]] == "less")
+    return(list(.bfdPriorDensityRows(x = x, density = 2 * density, prior = .bfdAnalysisPriorPlotLabel("h1"), upper = nullValue)))
 
   return(list(.bfdPriorDensityRows(
     x       = x,

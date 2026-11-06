@@ -14,6 +14,20 @@
 
 ---
 
+# jaspPower (development version)
+## Added
+* One-sided analysis priors with a point null for z-test Bayes factor designs (normal, point, and normal-moment priors), in fixed and sequential designs and in the observed-data analysis.
+* Sequential z-test designs with a one-sided normal prior can use either a point null or the directional null (θ ≤ θ₀ vs. θ > θ₀).
+* Integration grid points setting for the log-scale MVN integration of sequential designs.
+
+## Changed
+* Updated bfpwr to version 0.3 (commit `cf36a7f`): sequential sample-size searches use the new bfpwr interface, z-test sequential designs are computed and reported on the original parameter scale, and results change slightly due to more accurate numerical defaults.
+
+## Fixed
+* Fixed-sample t-test designs with a nonzero null value no longer shift the analysis prior location twice.
+
+---
+
 # jaspPower 0.97.1
 ## Changed
 * Simplified general z-test Bayes factor designs to use a specified unit information standard deviation (UISD), with sample-size schedules for sequential designs.

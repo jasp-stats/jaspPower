@@ -87,10 +87,6 @@
   return(settings[["analysisPriorScale"]])
 }
 
-.bfdZAnalysisPriorMeanRelative <- function(settings) {
-  return(.bfdZAnalysisPriorMean(settings) - settings[["nullValue"]])
-}
-
 .bfdMomentPriorSpread <- function(settings) {
   if (identical(settings[["analysisPriorDistribution"]], "normalMomentMode"))
     return(settings[["analysisPriorMode"]] / sqrt(2))
@@ -109,18 +105,48 @@
   return(settings[["tPriorDegreesOfFreedom"]])
 }
 
+# Prior location centered at the null value. Use it for bfpwr t-test functions that test against zero
+# (tbf01() and the sequential functions); ptbf01() and ntbf01() take `null` and shift the location internally.
 .bfdTPriorLocationRelative <- function(settings) {
   return(settings[["tPriorLocation"]] - settings[["nullValue"]])
 }
 
+# Composite directional H0 (theta <= theta0 vs. theta > theta0, bfpwr type = "directional"). One-sided normal
+# priors with a point null instead use bfpwr's truncated analysis priors via `alternative`.
 .bfdDirectionalZAnalysis <- function(settings) {
   if (!settings[["isZTest"]])
     return(FALSE)
 
-  if (!settings[["analysisPriorDistribution"]] %in% c("normal", "directional"))
-    return(FALSE)
+  # legacy option value from analyses saved before the H0 prior choice was added
+  if (identical(settings[["analysisPriorDistribution"]], "directional"))
+    return(TRUE)
 
-  return(settings[["alternative"]] != "two.sided" || settings[["analysisPriorDistribution"]] == "directional")
+  return(
+    identical(settings[["analysisPriorDistribution"]], "normal") &&
+      settings[["alternative"]] != "two.sided" &&
+      identical(settings[["nullPriorDistribution"]], "directional")
+  )
+}
+
+# Direction passed to the bfpwr z-test functions. The composite directional test is always run as
+# theta <= null vs. theta > null (reflected for "less"), so bfpwr receives a two-sided `alternative` there.
+.bfdZAlternative <- function(settings) {
+  if (.bfdUsesDirectionalZTest(settings))
+    return("two.sided")
+
+  return(settings[["alternative"]])
+}
+
+.bfdValidateOneSidedPointPrior <- function(settings) {
+  if (!settings[["isZTest"]] || !identical(settings[["analysisPriorDistribution"]], "point"))
+    return(invisible(TRUE))
+
+  location <- settings[["analysisPriorLocation"]]
+  null     <- settings[["nullValue"]]
+  if ((settings[["alternative"]] == "greater" && location <= null) || (settings[["alternative"]] == "less" && location >= null))
+    stop(gettext("A one-sided point analysis prior must lie strictly on the H₁ side of the null value."))
+
+  return(invisible(TRUE))
 }
 
 .bfdContinuousDesignPrior <- function(settings, under) {
@@ -146,10 +172,6 @@
 
   designPrior[["parameters"]] <- .bfdContinuousDesignParameters(designPrior)
   return(designPrior)
-}
-
-.bfdContinuousDesignPriorMeanRelative <- function(settings, under) {
-  return(.bfdContinuousDesignPrior(settings, under)[["mean"]] - settings[["nullValue"]])
 }
 
 .bfdContinuousDesignParameters <- function(designPrior) {

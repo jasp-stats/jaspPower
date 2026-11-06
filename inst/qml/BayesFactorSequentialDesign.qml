@@ -33,7 +33,7 @@ Form
     "- Schönbrodt, F. D. and Wagenmakers, E.-J. (2018). “Bayes factor design analysis: Planning for compelling evidence.” _Psychonomic Bulletin & Review, 25_(1), 128--142. https://doi.org/10.3758/s13423-017-1230-y\n" +
     "- Stefan, A. M., Gronau, Q. F., Schönbrodt, F. D., and Wagenmakers, E.-J. (2019). “A tutorial on Bayes factor design analysis using an informed prior.” _Behavior Research Methods, 51_(3), 1042--1058. https://doi.org/10.3758/s13428-018-01189-8\n" +
     "- Stefan, A. M., Gronau, Q. F., and Wagenmakers, E.-J. (2025). “Interim design analysis using bayes factor forecasts.” _Psychological Methods, 30_(6), 1198--1217. https://doi.org/10.1037/met0000641\n" +
-    "- Pawel S, Bartoš F, (2026) _bfpwr: Power and Sample Size Calculations for Bayes Factor Analysis_. R package version 0.1.7 Available at: <https://CRAN.R-project.org/package=bfpwr>.\n" +
+    "- Pawel, S. and Bartoš, F. (2026). _bfpwr: Power and Sample Size Calculations for Bayes Factor Analysis_. R package version 0.3. https://github.com/SamCH93/bfpwr\n" +
 	"## " + qsTr("R Packages") + "\n" +
 	"- bfpwr"	
 
@@ -101,7 +101,7 @@ Form
 	PowerComponents.BayesFactorAnalysisPriorSection
 	{
 		testValue: test.currentValue
-		supportsDirectionalZ: true
+		supportsDirectionalNull: true
 	}
 
 	PowerComponents.BayesFactorDesignPriorSection
@@ -302,6 +302,26 @@ Form
 					{ label: qsTr("Log-scale MVN"), value: "lpmvnorm" },
 					{ label: qsTr("MVN"),           value: "pmvnorm"  }
 				]
+			}
+
+			Text
+			{
+				text: qsTr("Integration grid points:")
+				visible: integrationMethod.currentValue === "lpmvnorm"
+			}
+			Text
+			{
+				text: qsTr("grid")
+				visible: integrationMethod.currentValue === "lpmvnorm"
+			}
+			IntegerField
+			{
+				name: "integrationGridPoints"
+				id:   integrationGridPoints
+				info: qsTr("Number of deterministic quasi-Monte Carlo (Halton) grid points used by the log-scale MVN integration. Increase it to check the convergence of small stopping probabilities.")
+				min: 1000
+				defaultValue: 10000
+				visible: integrationMethod.currentValue === "lpmvnorm"
 			}
 
 			Text

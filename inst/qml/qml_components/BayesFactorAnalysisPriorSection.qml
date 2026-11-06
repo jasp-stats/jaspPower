@@ -28,12 +28,14 @@ Section
 
 	property string testValue: ""
 	property bool supportsBinomial: false
-	property bool supportsDirectionalZ: false
+	// The composite directional H₀ (θ ≤ θ₀ vs. θ > θ₀) is only available for sequential z-test designs with a normal prior
+	property bool supportsDirectionalNull: false
 	property bool isBinomial: supportsBinomial && testValue === "oneSampleProportion"
 	property bool isContinuousZ: testValue.indexOf("ZTest") !== -1 || testValue === "generalZApproximation"
 	property bool isTTest: testValue.indexOf("TTest") !== -1
-	property bool usesDirectionalZ: supportsDirectionalZ && isContinuousZ && alternative.currentValue !== "twoSided"
-	property bool usesPriorDirection: !isBinomial && (isTTest || supportsDirectionalZ)
+	property bool usesPriorDirection: !isBinomial
+	property bool isOneSided: usesPriorDirection && alternative.currentValue !== "twoSided"
+	property bool offersDirectionalNull: supportsDirectionalNull && isContinuousZ && isOneSided && analysisPriorDistribution.currentValue === "normal"
 
 	Group
 	{
@@ -45,17 +47,18 @@ Section
 		{
 			name: "nullPriorDistribution"
 			id:   nullPriorDistribution
-			info: qsTr("Prior specification for H\u2080 used to compute the Bayes factor from the observed data.")
+			info: qsTr("Prior specification for H\u2080 used to compute the Bayes factor from the observed data. A point null fixes the parameter at the null value. A directional null places the opposite half of the normal analysis prior on H\u2080 (available for one-sided normal priors in sequential z-test designs and for the proportion test).")
 			indexDefaultValue: 0
 			label: ""
-			enabled: isBinomial
+			enabled: isBinomial || offersDirectionalNull
 			values: isBinomial ?
 			[
 				{ label: qsTr("Point null (p = p₀)"),      value: "point"     },
 				{ label: qsTr("Directional (p ≤ p₀)"), value: "direction" }
 			] :
-			(usesDirectionalZ ?
+			(offersDirectionalNull ?
 			[
+				{ label: qsTr("Point null (θ = θ₀)"), value: "point" },
 				{ label: alternative.currentValue === "less" ? qsTr("Directional (θ ≥ θ₀)") : qsTr("Directional (θ ≤ θ₀)"), value: "directional" }
 			] :
 			[
@@ -106,10 +109,6 @@ Section
 			[
 				{ label: qsTr("Beta prior"), value: "beta" }
 			] :
-			(usesDirectionalZ ?
-			[
-				{ label: qsTr("Normal"), value: "normal" }
-			] :
 			(isContinuousZ ?
 			[
 				{ label: qsTr("Normal"),                  value: "normal"             },
@@ -120,7 +119,7 @@ Section
 			[
 				{ label: qsTr("Cauchy"),    value: "cauchy" },
 				{ label: qsTr("Student-t"), value: "t"      }
-			]))
+			])
 		}
 
 		Text
@@ -137,7 +136,7 @@ Section
 		{
 			name: "analysisPriorDirection"
 			id:   alternative
-			info: qsTr("Direction of the analysis prior under H\u2081.")
+			info: qsTr("Direction of the analysis prior under H\u2081. One-sided directions truncate the analysis prior to values below (less) or above (greater) the null value and renormalize it; the prior parameters describe the distribution before truncation.")
 			indexDefaultValue: 2
 			visible: usesPriorDirection
 			values: [
@@ -152,7 +151,7 @@ Section
 			labelText: qsTr("Prior location:")
 			symbolText: "\u03B8\u2081"
 			fieldName: "analysisPriorLocation"
-			fieldInfo: qsTr("Point location of the H\u2081 analysis prior.")
+			fieldInfo: qsTr("Point location of the H\u2081 analysis prior. For a one-sided direction, it must lie strictly on the H\u2081 side of the null value.")
 			defaultValue: 0.5
 			negativeValues: true
 			visible: isContinuousZ && analysisPriorDistribution.currentValue === "point"
@@ -208,12 +207,12 @@ Section
 		Text
 		{
 			Layout.columnSpan: 2
-			text: qsTr("Prior modes:")
+			text: isOneSided ? qsTr("Prior mode:") : qsTr("Prior modes:")
 			visible: isContinuousZ && analysisPriorDistribution.currentValue === "normalMomentSpread"
 		}
 		Text
 		{
-			text: "\u00B1\u221A2\u03C4"
+			text: (isOneSided ? (alternative.currentValue === "less" ? "\u2212" : "+") : "\u00B1") + "\u221A2\u03C4"
 			visible: isContinuousZ && analysisPriorDistribution.currentValue === "normalMomentSpread"
 		}
 
