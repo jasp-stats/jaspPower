@@ -36,6 +36,8 @@ Section
 	property bool usesPriorDirection: !isBinomial
 	property bool isOneSided: usesPriorDirection && alternative.currentValue !== "twoSided"
 	property bool offersDirectionalNull: supportsDirectionalNull && isContinuousZ && isOneSided && analysisPriorDistribution.currentValue === "normal"
+	// two critical values per look (two-sided prior with spread): only then does exact integration over all regions matter
+	property bool hasTwoCriticalValues: !isBinomial && !isOneSided && !(isContinuousZ && analysisPriorDistribution.currentValue === "point")
 
 	Group
 	{
@@ -47,7 +49,7 @@ Section
 		{
 			name: "nullPriorDistribution"
 			id:   nullPriorDistribution
-			info: qsTr("Prior specification for H\u2080 used to compute the Bayes factor from the observed data. A point null fixes the parameter at the null value. A directional null places the opposite half of the normal analysis prior on H\u2080 (available for one-sided normal priors in sequential z-test designs and for the proportion test).")
+			info: qsTr("Prior specification for H\u2080 used to compute the Bayes factor from the observed data. A point null fixes the parameter at the null value. A directional null places the opposite half of the analysis prior on H\u2080 (available for one-sided normal priors in sequential z-test designs and for the proportion test).")
 			indexDefaultValue: 0
 			label: ""
 			enabled: isBinomial || offersDirectionalNull

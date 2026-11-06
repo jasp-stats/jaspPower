@@ -116,7 +116,7 @@ Section
 		{
 			name: "observedEffectSize"
 			label: qsTr("Effect size")
-			info:  qsTr("Observed effect estimate on the scale selected for the general z-test approximation.")
+			info:  qsTr("Observed effect estimate for the general z-test approximation.")
 			defaultValue: 0
 			negativeValues: true
 			visible: testValue === "generalZApproximation"

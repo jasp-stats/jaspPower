@@ -28,7 +28,7 @@ Form
 	// Bartoš F, Pawel S (2026). “Bayes Factor Power and Sample Size Calculations in JASP: A Tutorial for Fixed and Sequential Designs.” _PsyArXiv Preprint_
 	infoBottom: "## " + qsTr("References") + "\n" +
 	"- Gelfand, A. E. and Wang, F. (2002). “A simulation-based approach to Bayesian sample size determination for performance under a given model and for separating models.” _Statistical Science, 17_(2), 193--208. https://doi.org/10.1214/ss/1030550861\n" +
-    "- Pawel, S. and Held, L. (2025). “Closed-form power and sample size calculations for Bayes factors.” _The American Statistician, 79_(3), 330--344. 10.1080/00031305.2025.2467919\n" +
+    "- Pawel, S. and Held, L. (2025). “Closed-form power and sample size calculations for Bayes factors.” _The American Statistician, 79_(3), 330--344. https://doi.org/10.1080/00031305.2025.2467919\n" +
     "- Pawel, S. and Held, L. (2026). “Bayes factor group sequential designs.” _arXiv Preprint_ https://doi.org/10.48550/ARXIV.2601.02851\n" +
     "- Schönbrodt, F. D. and Wagenmakers, E.-J. (2018). “Bayes factor design analysis: Planning for compelling evidence.” _Psychonomic Bulletin & Review, 25_(1), 128--142. https://doi.org/10.3758/s13423-017-1230-y\n" +
     "- Stefan, A. M., Gronau, Q. F., Schönbrodt, F. D., and Wagenmakers, E.-J. (2019). “A tutorial on Bayes factor design analysis using an informed prior.” _Behavior Research Methods, 51_(3), 1042--1058. https://doi.org/10.3758/s13428-018-01189-8\n" +
@@ -100,6 +100,7 @@ Form
 
 	PowerComponents.BayesFactorAnalysisPriorSection
 	{
+		id: analysisPriorSection
 		testValue: test.currentValue
 		supportsDirectionalNull: true
 	}
@@ -280,14 +281,20 @@ Form
 				]
 			}
 
-			Text { Layout.columnSpan: 2; text: qsTr("Exact integration over all regions:") }
+			Text
+			{
+				Layout.columnSpan: 2
+				text: qsTr("Exact integration over all regions:")
+				enabled: analysisPriorSection.hasTwoCriticalValues
+			}
 			CheckBox
 			{
 				name: "exactIntegrationOverAllRegions"
 				id:   strictIntegration
 				label: ""
-				info:  qsTr("Use exact integration over all decision regions when computing sequential design characteristics.")
+				info:  qsTr("Use exact integration over all decision regions when computing sequential design characteristics. Only two-sided analysis priors with a spread have more than one decision region per look; for other priors the option has no effect.")
 				checked: false
+				enabled: analysisPriorSection.hasTwoCriticalValues
 			}
 
 			Text { text: qsTr("Integration method:") }
@@ -320,6 +327,7 @@ Form
 				id:   integrationGridPoints
 				info: qsTr("Number of deterministic quasi-Monte Carlo (Halton) grid points used by the log-scale MVN integration. Increase it to check the convergence of small stopping probabilities.")
 				min: 1000
+				max: 1000000
 				defaultValue: 10000
 				visible: integrationMethod.currentValue === "lpmvnorm"
 			}
@@ -389,6 +397,7 @@ Form
 			PowerComponents.BayesFactorTSearchRangeControls
 			{
 				testValue: test.currentValue
+				sequential: true
 			}
 
 			Text { text: qsTr("Curve points:") }

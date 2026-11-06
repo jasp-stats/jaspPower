@@ -29,7 +29,7 @@ Form
 	infoBottom: "## " + qsTr("References") + "\n" +
 	"- Gelfand, A. E. and Wang, F. (2002). “A simulation-based approach to Bayesian sample size determination for performance under a given model and for separating models.” _Statistical Science, 17_(2), 193--208. https://doi.org/10.1214/ss/1030550861\n" +
     "- Kelter, R. and Pawel, S. (2026). “Sample size determination for Bayes factor analysis of binomial data.” _arXiv Preprint_ https://doi.org/10.48550/arXiv.2502.02914\n" +
-    "- Pawel, S. and Held, L. (2025). “Closed-form power and sample size calculations for Bayes factors.” _The American Statistician, 79_(3), 330--344. 10.1080/00031305.2025.2467919\n" +
+    "- Pawel, S. and Held, L. (2025). “Closed-form power and sample size calculations for Bayes factors.” _The American Statistician, 79_(3), 330--344. https://doi.org/10.1080/00031305.2025.2467919\n" +
     "- Pawel, S. and Held, L. (2026). “Bayes factor group sequential designs.” _arXiv Preprint_ https://doi.org/10.48550/ARXIV.2601.02851\n" +
     "- Schönbrodt, F. D. and Wagenmakers, E.-J. (2018). “Bayes factor design analysis: Planning for compelling evidence.” _Psychonomic Bulletin & Review, 25_(1), 128--142. https://doi.org/10.3758/s13423-017-1230-y\n" +
     "- Stefan, A. M., Gronau, Q. F., Schönbrodt, F. D., and Wagenmakers, E.-J. (2019). “A tutorial on Bayes factor design analysis using an informed prior.” _Behavior Research Methods, 51_(3), 1042--1058. https://doi.org/10.3758/s13428-018-01189-8\n" +
@@ -113,7 +113,7 @@ Form
 			}
 			Text
 			{
-				text: qsTr("N")
+				text: test.currentValue.indexOf("independentSamples") !== -1 ? "N\u2081" : qsTr("N")
 				enabled: calculationControls.calculationValue !== "sampleSize"
 			}
 			IntegerField
@@ -258,6 +258,7 @@ Form
 
 		Group
 		{
+			id:      sampleSizeRangeGroup
 			columns: 3
 
 			function syncSampleSizeRange()
@@ -296,7 +297,7 @@ Form
 				min: 1
 				defaultValue: 10
 				visible: calculationControls.calculationValue === "sampleSize"
-				onValueChanged: syncSampleSizeRange()
+				onValueChanged: sampleSizeRangeGroup.syncSampleSizeRange()
 			}
 
 			Text
@@ -322,6 +323,7 @@ Form
 			PowerComponents.BayesFactorTSearchRangeControls
 			{
 				testValue: test.currentValue
+				sequential: false
 			}
 
 			Text { text: qsTr("Curve points:") }

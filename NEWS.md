@@ -22,9 +22,20 @@
 
 ## Changed
 * Updated bfpwr to version 0.3 (commit `cf36a7f`): sequential sample-size searches use the new bfpwr interface, z-test sequential designs are computed and reported on the original parameter scale, and results change slightly due to more accurate numerical defaults.
+* Fixed-sample z-test designs now use the prior direction (default: greater). Previously the direction was hidden for z-tests and the calculations were always two-sided.
+* Independent-samples z-test designs use the exact allocation ratio in all calculations; the reported N₂ is rounded up.
+* "Design sample size based on" only changes the displayed results and no longer reruns the sample-size searches.
+* Clearer labels: normal-moment priors list their actual mode(s), the t-test critical value search range names its scale, and "Exact integration over all regions" is only enabled where it has an effect.
 
 ## Fixed
 * Fixed-sample t-test designs with a nonzero null value no longer shift the analysis prior location twice.
+* Fixed-sample sample-size searches: targets already met at the minimum sample size, point analysis priors outside the sample-size range, and too small independent z-test sample sizes.
+* Results that depend on an unreached planning target (combined sample size, decision probabilities, report, plots) are left empty or explained instead of showing values at the search bound.
+* Sequential directional "less" designs show the stopping boundaries on the original z scale (they were mirrored).
+* Sequential independent z-test designs no longer fail for small allocation ratios, and the sample-size search shows bfpwr's diagnostic when it fails.
+* Observed-data Bayes factors are computed on the log scale, so very strong evidence still yields a decision; a binomial success value that does not occur in the data is reported.
+* The report states the sample size each probability was evaluated at for every "design sample size based on" choice, and the sequential report gives the look schedule of each design prior.
+* The fixed-design minimum/maximum sample-size fields stay ordered (a QML error prevented the update).
 
 ---
 

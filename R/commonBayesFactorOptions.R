@@ -114,15 +114,9 @@
 # Composite directional H0 (theta <= theta0 vs. theta > theta0, bfpwr type = "directional"). One-sided normal
 # priors with a point null instead use bfpwr's truncated analysis priors via `alternative`.
 .bfdDirectionalZAnalysis <- function(settings) {
-  if (!settings[["isZTest"]])
-    return(FALSE)
-
-  # legacy option value from analyses saved before the H0 prior choice was added
-  if (identical(settings[["analysisPriorDistribution"]], "directional"))
-    return(TRUE)
-
   return(
-    identical(settings[["analysisPriorDistribution"]], "normal") &&
+    isTRUE(settings[["isZTest"]]) &&
+      identical(settings[["analysisPriorDistribution"]], "normal") &&
       settings[["alternative"]] != "two.sided" &&
       identical(settings[["nullPriorDistribution"]], "directional")
   )
@@ -137,16 +131,37 @@
   return(settings[["alternative"]])
 }
 
-.bfdValidateOneSidedPointPrior <- function(settings) {
-  if (!settings[["isZTest"]] || !identical(settings[["analysisPriorDistribution"]], "point"))
+.bfdZAnalysisPriorDistributions <- c("normal", "point", "normalMomentMode", "normalMomentSpread")
+
+.bfdValidateAnalysisPrior <- function(settings) {
+  if (!isTRUE(settings[["isZTest"]]))
+    return(invisible(TRUE))
+
+  if (!settings[["analysisPriorDistribution"]] %in% .bfdZAnalysisPriorDistributions)
+    stop(gettextf("The analysis prior '%1$s' is not available for z-tests.", settings[["analysisPriorDistribution"]]))
+
+  if (!identical(settings[["analysisPriorDistribution"]], "point"))
     return(invisible(TRUE))
 
   location <- settings[["analysisPriorLocation"]]
   null     <- settings[["nullValue"]]
   if ((settings[["alternative"]] == "greater" && location <= null) || (settings[["alternative"]] == "less" && location >= null))
-    stop(gettext("A one-sided point analysis prior must lie strictly on the H₁ side of the null value."))
+    stop(gettext("A one-sided point analysis prior must lie strictly on the H\u2081 side of the null value."))
 
   return(invisible(TRUE))
+}
+
+# Unit SD of a z-test estimate (its standard error at N1 = 1). Independent samples use the exact allocation
+# ratio N2/N1 in every calculation (as the bfpwr searches do); the reported N2 is rounded up, so the planned
+# groups hold at least the evaluated information.
+.bfdZUnitStandardDeviation <- function(settings) {
+  if (isTRUE(settings[["isGeneralZ"]]))
+    return(settings[["unitInformationSd"]])
+
+  if (settings[["isIndependentSamples"]])
+    return(settings[["knownStandardDeviation"]] * sqrt(1 + 1 / settings[["sampleSizeAllocationRatio"]]))
+
+  return(settings[["knownStandardDeviation"]])
 }
 
 .bfdContinuousDesignPrior <- function(settings, under) {

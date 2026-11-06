@@ -7,11 +7,19 @@ context("Bayes factor designs: bfpwr one-sided priors and API")
   return(jaspTools::analysisOptions(jaspFile)[[index]])
 }
 
-.bfRun <- function(analysis, index, ...) {
+.bfRun <- function(analysis, index, ..., .dataset = NULL) {
   options <- .bfTutorialOptions(index)
   changes <- list(...)
   options[names(changes)] <- changes
-  return(jaspTools::runAnalysis(analysis, NULL, options, view = FALSE, quiet = TRUE)[["results"]])
+  return(jaspTools::runAnalysis(analysis, .dataset, options, view = FALSE, quiet = TRUE)[["results"]])
+}
+
+.bfFootnotes <- function(table) {
+  return(vapply(table[["footnotes"]], function(footnote) footnote[["text"]], character(1)))
+}
+
+.bfIsEmptyCell <- function(value) {
+  return(is.null(value) || identical(value, "") || isTRUE(is.na(value)))
 }
 
 .bfRCodeValues <- function(html) {
@@ -165,7 +173,7 @@ test_that("Sequential directional z-test reflects 'less' designs around the null
 
 test_that("Sequential maximum sample-size search supports one-sided normal-moment priors", {
   results <- do.call(.bfRun, c(list("BayesFactorSequentialDesign", 3), .bfSequentialZOptions, list(
-    calculationTarget = "sampleSize", lookScheduleType = "equal", numberOfLooks = 3, firstInformationFraction = 1/3,
+    calculationTarget = "sampleSize", lookScheduleType = "even", numberOfLooks = 3, firstInformationFraction = 1/3,
     analysisPriorDistribution = "normalMomentMode", analysisPriorMode = 0.5, analysisPriorDirection = "greater",
     nullPriorDistribution = "point", sampleSizeSearchStrategy = "adaptive", designSampleSizeBasis = "eachDesignHypothesis",
     lowerSearchBoundForMaximumSampleSize = 10, upperSearchBoundForMaximumSampleSize = 2000
@@ -178,4 +186,119 @@ test_that("Sequential maximum sample-size search supports one-sided normal-momen
 
   rows <- results[["sequentialEvidenceResults"]][["data"]]
   expect_equal(rows[[1]][["maximumN"]], expected)
+})
+
+# ---- regressions from the end-to-end review --------------------------------------------------------------------
+
+test_that("Independent z-test sample size uses the exact allocation ratio, matching the generated R code", {
+  results <- do.call(.bfRun, c(list("BayesFactorDesign", 1), .bfFixedZOptions, list(
+    statisticalTest = "independentSamplesZTest", sampleSizeAllocationRatio = 0.35, calculationTarget = "sampleSize",
+    analysisPriorDistribution = "normal", analysisPriorMean = 0, analysisPriorScale = 0.707, analysisPriorDirection = "twoSided",
+    minimumSampleSize = 10, maximumSampleSize = 10000, generateRCode = TRUE
+  )))
+
+  rows <- results[["evidenceResults"]][["data"]]
+  expected <- bfpwr::nbf01(k = 1/6, power = 0.8, usd = sqrt(1 + 1/0.35), null = 0, pm = 0, psd = 0.707, dpm = 0.5, dpsd = 0,
+                           nrange = c(10, 10000), analytical = FALSE)
+  expect_equal(rows[[1]][["n1"]], expected)
+  expect_equal(rows[[1]][["n2"]], ceiling(expected * 0.35))
+  expect_gte(rows[[1]][["probability"]], 0.8)
+
+  code <- .bfRCodeValues(results[["evidenceRCode"]][["rawtext"]])
+  expect_equal(unlist(code[["values"]]), c(rows[[1]][["n1"]], rows[[2]][["n1"]]))
+})
+
+test_that("Fixed sample-size search handles a target met at the minimum and point priors limited by the maximum", {
+  results <- do.call(.bfRun, c(list("BayesFactorDesign", 1), .bfFixedZOptions, list(
+    calculationTarget = "sampleSize", analysisPriorDistribution = "normal", analysisPriorDirection = "twoSided",
+    designPriorMean = 1.5, minimumSampleSize = 10, maximumSampleSize = 10000
+  )))
+  expect_equal(results[["evidenceResults"]][["data"]][[1]][["n"]], 10)
+
+  results <- do.call(.bfRun, c(list("BayesFactorDesign", 1), .bfFixedZOptions, list(
+    calculationTarget = "sampleSize", analysisPriorDistribution = "point", analysisPriorLocation = 0.5, analysisPriorDirection = "twoSided",
+    designPriorMean = 0.2, minimumSampleSize = 10, maximumSampleSize = 50
+  )))
+  table <- results[["evidenceResults"]]
+  expect_true(.bfIsEmptyCell(table[["data"]][[1]][["n"]]))
+  expect_true(any(grepl("not reached within the selected sample-size range", .bfFootnotes(table), fixed = TRUE)))
+  # no combined design exists when a planning target fails
+  expect_false(any(grepl("To satisfy both design priors", .bfFootnotes(table), fixed = TRUE)))
+})
+
+test_that("Observed Bayes factors are computed on the log scale for very strong evidence", {
+  results <- do.call(.bfRun, c(list("BayesFactorDesign", 1), .bfFixedZOptions, list(
+    analysisPriorDistribution = "normal", analysisPriorDirection = "twoSided",
+    observedDataAnalysisInput = "summaryStatistics", observedSampleSize = 1000, observedMean = 1.5
+  )))
+
+  observed <- results[["evidenceObservedAnalysis"]][["collection"]][["evidenceObservedAnalysis_result"]]
+  expect_identical(observed[["status"]], "complete")
+  expect_identical(observed[["data"]][[1]][["decision"]], "BF supports H₁")
+})
+
+test_that("Binomial dataset input rejects a success value that does not occur in the variable", {
+  results <- .bfRun(
+    "BayesFactorDesign", 1, statisticalTest = "oneSampleProportion", analysisPriorDistribution = "beta",
+    calculationTarget = "evidenceProbability", observedDataAnalysisInput = "columns",
+    observedProportionVariable = "contBinom", observedSuccessValue = "yes", .dataset = "debug.csv"
+  )
+
+  observed <- results[["evidenceObservedAnalysis"]][["collection"]][["evidenceObservedAnalysis_result"]]
+  expect_match(observed[["error"]][["errorMessage"]], "does not occur in the selected variable", fixed = TRUE)
+})
+
+test_that("One-sided normal-moment priors are described by their single mode", {
+  results <- do.call(.bfRun, c(list("BayesFactorDesign", 1), .bfFixedZOptions, list(
+    nullValue = 0.1, designNullPriorMean = 0.1, analysisPriorDistribution = "normalMomentMode", analysisPriorMode = 0.5,
+    analysisPriorDirection = "less"
+  )))
+
+  expect_identical(results[["evidencePriors"]][["data"]][[1]][["analysisPrior"]], "Normal-moment₋(spread = 0.3536, mode = -0.4)")
+})
+
+test_that("Sequential directional 'less' designs report the stopping boundaries on the original z scale", {
+  results <- do.call(.bfRun, c(list("BayesFactorSequentialDesign", 3), .bfSequentialZOptions, list(
+    analysisPriorDistribution = "normal", analysisPriorMean = 0, analysisPriorScale = 1, analysisPriorDirection = "less",
+    nullPriorDistribution = "directional", designPriorMean = -0.3, stoppingBoundariesTable = TRUE
+  )))
+
+  boundaries <- results[["sequentialEvidenceBoundaries"]][["data"]][[1]]
+  expect_true(.bfIsEmptyCell(boundaries[["h1Upper"]]))
+  expect_true(.bfIsEmptyCell(boundaries[["h0Lower"]]))
+  expect_lt(boundaries[["h1Lower"]], 0)
+  expect_equal(boundaries[["h0Upper"]], -boundaries[["h1Lower"]])
+
+  # the observed Bayes factor at the H1 boundary is the H1 threshold
+  z  <- boundaries[["h1Lower"]]
+  se <- 1 / sqrt(20)
+  expect_equal(1 / bfpwr::dirbf01(estimate = -z * se, se = se, null = 0, pm = 0, psd = 1), 6, tolerance = 1e-4)
+})
+
+test_that("Sequential independent z designs allow small allocation ratios and use the exact ratio", {
+  results <- do.call(.bfRun, c(list("BayesFactorSequentialDesign", 3), .bfSequentialZOptions, list(
+    statisticalTest = "independentSamplesZTest", sampleSizeAllocationRatio = 0.3, lookScheduleType = "even",
+    initialSampleSize = 2, maximumSampleSize = 6, numberOfLooks = 3, designPriorMean = 2.5,
+    analysisPriorDistribution = "normal", analysisPriorMean = 0, analysisPriorScale = 1, analysisPriorDirection = "greater"
+  )))
+
+  n        <- c(2, 4, 6)
+  expected <- bfpwr::pbf01seq(k1 = 1/6, k0 = 6, se = sqrt(1 + 1/0.3) / sqrt(n), n = n, null = 0, pm = 0, psd = 1, dpm = 2.5, dpsd = 0,
+                              alternative = "greater")
+  outcome  <- results[["sequentialEvidenceDesignOutcome"]][["data"]]
+  expect_equal(outcome[[1]][["alternative"]], utils::tail(expected[["cumpH1"]], 1), tolerance = 1e-6)
+})
+
+test_that("Sequential designs blank results that depend on an unreached planning target", {
+  results <- do.call(.bfRun, c(list("BayesFactorSequentialDesign", 3), .bfSequentialZOptions, list(
+    calculationTarget = "sampleSize", lookScheduleType = "even", numberOfLooks = 3, firstInformationFraction = 1/3,
+    analysisPriorDistribution = "normal", analysisPriorMean = 0, analysisPriorScale = 1, analysisPriorDirection = "greater",
+    designPriorMean = 1, designSampleSizeBasis = "eachDesignHypothesis", sampleSizeSearchStrategy = "adaptive",
+    lowerSearchBoundForMaximumSampleSize = 10, upperSearchBoundForMaximumSampleSize = 30
+  )))
+
+  outcome <- results[["sequentialEvidenceDesignOutcome"]]
+  expect_false(.bfIsEmptyCell(outcome[["data"]][[1]][["alternative"]]))
+  expect_true(.bfIsEmptyCell(outcome[["data"]][[2]][["null"]]))
+  expect_true(any(grepl("could not be reached", .bfFootnotes(outcome), fixed = TRUE)))
 })
