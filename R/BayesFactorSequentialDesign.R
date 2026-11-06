@@ -526,7 +526,9 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
     max(vapply(targetComputations, function(x) x[["maximumN"]], numeric(1)), na.rm = TRUE)
   }
   displaySettings <- .bfsdSettingsForMaximumN(settings, displayMaximumN)
-  result          <- .bfsdComputeDesignResult(displaySettings)
+  result          <- .bfsdReuseDesignResult(targetComputations, displaySettings)
+  if (is.null(result))
+    result <- .bfsdComputeDesignResult(displaySettings)
 
   result[["settings"]] <- displaySettings
   result[["solver"]] <- list(
@@ -536,6 +538,17 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
   )
 
   return(result)
+}
+
+# The display schedule usually equals the schedule of one target's search; reuse that target's designs then
+.bfsdReuseDesignResult <- function(targetComputations, displaySettings) {
+  for (computation in targetComputations) {
+    if (identical(as.integer(computation[["settings"]][["n1Seq"]]), as.integer(displaySettings[["n1Seq"]])) &&
+        identical(as.integer(computation[["settings"]][["n2Seq"]]), as.integer(displaySettings[["n2Seq"]])))
+      return(computation[["designResult"]])
+  }
+
+  return(NULL)
 }
 
 .bfsdMaximumSampleSizeSearchProgress <- function(nrange) {
@@ -620,7 +633,12 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
   search         <- .bfsdRunMaximumSampleSizeSearch(settings, target, nrange, progress)
   maximumN       <- .bfsdSearchMaximumN(search)
   targetSettings <- .bfsdSettingsForSequentialSearch(settings, search, maximumN)
-  designResult   <- .bfsdComputeDesignResult(targetSettings)
+  # the search already evaluated the design under this target's own design prior; only the other one is computed
+  otherUnder     <- if (target == "h1") "h0" else "h1"
+  designResult   <- list(
+    design = if (target == "h1") search[["result"]] else .bfsdRunDesign(targetSettings, under = otherUnder),
+    null   = if (target == "h0") search[["result"]] else .bfsdRunDesign(targetSettings, under = otherUnder)
+  )
   targetResult   <- .bfsdTargetResults(settings, designResult, target)
   reached        <- isTRUE(search[["reached"]]) && isTRUE(targetResult[["reached"]][1])
 
