@@ -45,7 +45,7 @@
 #' @param fixedSampleSize, Fixed-design value with no interim analyses. For simple sample-size designs this is N; for information-based or event-driven designs, enter information units or events.
 #' @param generateRCode, Display copyable R code for the current settings.
 #'    Defaults to \code{FALSE}.
-#' @param gridPoints, Integer from 1 to 80 controlling the numerical integration grid. Default is 18; larger values can improve accuracy but slow computation.
+#' @param gridPoints, Integer from 1 to 80 controlling the numerical integration grid. Default is 18; larger values can improve accuracy but slow computation. Group sequential survival accrual designs always use gsDesign's default grid of 18.
 #' @param hazardRatio, Experimental/control hazard ratio under the alternative hypothesis. The default example effect is 1.3.
 #' @param legendPosition, Choose where the plot legend is shown.
 #' @param lowerBoundary, Futility boundary family for asymmetric β-spending designs. Lower-bound spending is computed under the alternative hypothesis.

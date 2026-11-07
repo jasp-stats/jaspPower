@@ -418,6 +418,7 @@ GroupSequentialDesignInternal <- function(jaspResults, dataset, options) {
   return(args)
 }
 
+# gsDesign::gsSurv() accepts r but does not pass it on to gsDesign(), so the grid is always 18 there
 .csdGsSurvArgs <- function(settings) {
   helper <- .csdFixedDesignHelperSettings(settings)
   args   <- list(
@@ -428,7 +429,6 @@ GroupSequentialDesignInternal <- function(jaspResults, dataset, options) {
     beta      = 1 - settings[["power"]],
     timing    = settings[["timing"]],
     sfu       = .csdSpendingFunction(settings[["upperBoundary"]], settings[["testType"]]),
-    r         = settings[["gridPoints"]],
     lambdaC   = settings[["survivalControlHazard"]],
     hr        = settings[["hazardRatio"]],
     hr0       = settings[["nullHazardRatio"]],
