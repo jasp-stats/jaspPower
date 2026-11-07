@@ -30,6 +30,10 @@ Section
 
 	property string testValue: ""
 	property bool controlsReady: false
+	// standardized z-tests take the same observed inputs as the t-tests (the standard deviation is treated as known)
+	property bool standardizedZ: true
+	property bool usesStandardizedInput: testValue.indexOf("TTest") !== -1 || (standardizedZ && testValue.indexOf("ZTest") !== -1)
+	property string statisticSymbol: testValue.indexOf("TTest") !== -1 ? "t" : "z"
 
 	Component.onCompleted:
 	{
@@ -43,20 +47,28 @@ Section
 			syncObservedInputType()
 	}
 
+	onStandardizedZChanged:
+	{
+		if (controlsReady)
+			syncObservedInputType()
+	}
+
 	function validObservedInputTypes()
 	{
-		if (testValue === "independentSamplesTTest")
+		if (!usesStandardizedInput)
+			return []
+		if (testValue.indexOf("independentSamples") !== -1)
 			return ["tAndN", "cohensD", "meansAndSDs"]
-		if (testValue === "pairedSamplesTTest")
+		if (testValue.indexOf("pairedSamples") !== -1)
 			return ["tAndN", "cohensD", "meanDiffAndSD"]
-		if (testValue === "oneSampleTTest")
+		if (testValue.indexOf("oneSample") !== -1)
 			return ["tAndN", "cohensD", "meanAndSD"]
 		return []
 	}
 
 	function syncObservedInputType()
 	{
-		if (testValue.indexOf("TTest") === -1)
+		if (!usesStandardizedInput)
 			return
 
 		if (validObservedInputTypes().indexOf(observedInputType.value) === -1)
@@ -116,7 +128,7 @@ Section
 		{
 			name: "observedEffectSize"
 			label: qsTr("Effect size")
-			info:  qsTr("Observed effect estimate on the scale selected for the general z-test approximation.")
+			info:  qsTr("Observed effect estimate for the general z-test approximation.")
 			defaultValue: 0
 			negativeValues: true
 			visible: testValue === "generalZApproximation"
@@ -136,11 +148,11 @@ Section
 		DoubleField
 		{
 			name: "observedT"
-			label: qsTr("t")
-			info:  qsTr("Observed t statistic used to compute the observed Bayes factor.")
+			label: statisticSymbol
+			info:  qsTr("Observed t or z statistic used to compute the observed Bayes factor.")
 			defaultValue: 0
 			negativeValues: true
-			visible: testValue.indexOf("TTest") !== -1 && observedInputType.value === "tAndN"
+			visible: usesStandardizedInput && observedInputType.value === "tAndN"
 		}
 
 		DoubleField
@@ -150,13 +162,13 @@ Section
 			info:  qsTr("Observed standardized mean difference used to compute the observed Bayes factor.")
 			defaultValue: 0
 			negativeValues: true
-			visible: testValue.indexOf("TTest") !== -1 && observedInputType.value === "cohensD"
+			visible: usesStandardizedInput && observedInputType.value === "cohensD"
 		}
 
 		Group
 		{
 			columns: 2
-			visible: testValue === "independentSamplesZTest" || (testValue === "independentSamplesTTest" && observedInputType.value === "meansAndSDs")
+			visible: testValue.indexOf("independentSamples") !== -1 && (!usesStandardizedInput || observedInputType.value === "meansAndSDs")
 
 			DoubleField
 			{
@@ -175,14 +187,14 @@ Section
 				min: 0
 				defaultValue: 1
 				inclusive: JASP.None
-				visible: testValue === "independentSamplesTTest"
+				visible: usesStandardizedInput
 			}
 		}
 
 		Group
 		{
 			columns: 2
-			visible: testValue === "independentSamplesZTest" || (testValue === "independentSamplesTTest" && observedInputType.value === "meansAndSDs")
+			visible: testValue.indexOf("independentSamples") !== -1 && (!usesStandardizedInput || observedInputType.value === "meansAndSDs")
 
 			DoubleField
 			{
@@ -201,7 +213,7 @@ Section
 				min: 0
 				defaultValue: 1
 				inclusive: JASP.None
-				visible: testValue === "independentSamplesTTest"
+				visible: usesStandardizedInput
 			}
 		}
 
@@ -217,7 +229,7 @@ Section
 				info:  qsTr("Observed mean used to compute the observed Bayes factor.")
 				defaultValue: 0
 				negativeValues: true
-				visible: testValue === "oneSampleZTest" || (testValue === "oneSampleTTest" && observedInputType.value === "meanAndSD")
+				visible: (testValue === "oneSampleZTest" || testValue === "oneSampleTTest") && (!usesStandardizedInput || observedInputType.value === "meanAndSD")
 			}
 
 			DoubleField
@@ -227,7 +239,7 @@ Section
 				info:  qsTr("Observed paired mean difference used to compute the observed Bayes factor.")
 				defaultValue: 0
 				negativeValues: true
-				visible: testValue === "pairedSamplesZTest" || (testValue === "pairedSamplesTTest" && observedInputType.value === "meanDiffAndSD")
+				visible: (testValue === "pairedSamplesZTest" || testValue === "pairedSamplesTTest") && (!usesStandardizedInput || observedInputType.value === "meanDiffAndSD")
 			}
 
 			DoubleField
@@ -238,7 +250,7 @@ Section
 				min: 0
 				defaultValue: 1
 				inclusive: JASP.None
-				visible: testValue === "oneSampleTTest" && observedInputType.value === "meanAndSD"
+				visible: (testValue === "oneSampleZTest" || testValue === "oneSampleTTest") && usesStandardizedInput && observedInputType.value === "meanAndSD"
 			}
 
 			DoubleField
@@ -249,7 +261,7 @@ Section
 				min: 0
 				defaultValue: 1
 				inclusive: JASP.None
-				visible: testValue === "pairedSamplesTTest" && observedInputType.value === "meanDiffAndSD"
+				visible: (testValue === "pairedSamplesZTest" || testValue === "pairedSamplesTTest") && usesStandardizedInput && observedInputType.value === "meanDiffAndSD"
 			}
 
 			IntegerField
@@ -265,7 +277,7 @@ Section
 		IntegerField
 		{
 			name: "observedSampleSizeGroup1"
-			label: testValue === "independentSamplesTTest" ? qsTr("Sample size group 1") : qsTr("N\u2081")
+			label: usesStandardizedInput ? qsTr("Sample size group 1") : qsTr("N\u2081")
 			info:  qsTr("Observed sample size in group 1.")
 			min: 0
 			defaultValue: 0
@@ -275,7 +287,7 @@ Section
 		IntegerField
 		{
 			name: "observedSampleSizeGroup2"
-			label: testValue === "independentSamplesTTest" ? qsTr("Sample size group 2") : qsTr("N\u2082")
+			label: usesStandardizedInput ? qsTr("Sample size group 2") : qsTr("N\u2082")
 			info:  qsTr("Observed sample size in group 2.")
 			min: 0
 			defaultValue: 0
@@ -288,48 +300,50 @@ Section
 		name:    "observedInputType"
 		id:      observedInputType
 		title:   qsTr("Input Type")
-		info:    qsTr("Choose which summary statistics are available for the observed t-test result.")
-		visible: observedAnalysisInput.value === "summaryStatistics" && testValue.indexOf("TTest") !== -1
+		info:    qsTr("Choose which summary statistics are available for the observed result.")
+		visible: observedAnalysisInput.value === "summaryStatistics" && usesStandardizedInput
 
 		RadioButton
 		{
 			id:      observedInputTypeTAndN
 			value:   "tAndN"
-			label:   testValue === "independentSamplesTTest" ? qsTr("t and Sample Sizes") : qsTr("t and Sample Size")
+			label:   testValue.indexOf("independentSamples") !== -1 ? qsTr("%1 and Sample Sizes").arg(statisticSymbol) : qsTr("%1 and Sample Size").arg(statisticSymbol)
 			checked: true
 		}
 
 		RadioButton
 		{
 			value: "cohensD"
-			label: testValue === "independentSamplesTTest" ? qsTr("Cohen's d and Sample Sizes") : qsTr("Cohen's d and Sample Size")
+			label: testValue.indexOf("independentSamples") !== -1 ? qsTr("Cohen's d and Sample Sizes") : qsTr("Cohen's d and Sample Size")
 		}
 
 		RadioButton
 		{
 			value:   "meansAndSDs"
 			label:   qsTr("Means, SDs, and Sample Sizes")
-			visible: testValue === "independentSamplesTTest"
+			visible: testValue.indexOf("independentSamples") !== -1
 		}
 
 		RadioButton
 		{
 			value:   "meanDiffAndSD"
 			label:   qsTr("Mean Diff., SD, and Sample Size")
-			visible: testValue === "pairedSamplesTTest"
+			visible: testValue.indexOf("pairedSamples") !== -1
 		}
 
 		RadioButton
 		{
 			value:   "meanAndSD"
 			label:   qsTr("Mean, SD, and Sample Size")
-			visible: testValue === "oneSampleTTest"
+			visible: testValue === "oneSampleTTest" || testValue === "oneSampleZTest"
 		}
 	}
 
 	VariablesForm
 	{
 		Layout.columnSpan: 2
+		preferredHeight: jaspTheme.defaultVariablesFormHeight / 2
+		removeInvisibles: true
 		visible: observedAnalysisInput.value === "columns"
 
 		AvailableVariablesList

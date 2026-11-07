@@ -408,8 +408,8 @@ Form
 				name: "effectDirectionSyntheticDataset"
 				title: qsTr("Effect direction")
 				visible: test.currentIndex != 6 && test.currentIndex != 7
-				RadioButton { value: "less"; label: (test.currentIndex == 2 || test.currentIndex == 3) ? qsTr("\u0078\u0305 < \u03BC\u2080") : qsTr("\u0078\u0305\u2081 < \u0078\u0305\u2082"); checked: true }
-				RadioButton { value: "greater"; label: (test.currentIndex == 2 || test.currentIndex == 3) ? qsTr("\u0078\u0305 > \u03BC\u2080") : qsTr("\u0078\u0305\u2081 > \u0078\u0305\u2082") }
+				RadioButton { value: "less"; label: (test.currentIndex == 2 || test.currentIndex == 3) ? qsTr("\u0078\u0305 < \u03BC\u2080") : qsTr("\u0078\u0305\u2081 < \u0078\u0305\u2082") }
+				RadioButton { value: "greater"; label: (test.currentIndex == 2 || test.currentIndex == 3) ? qsTr("\u0078\u0305 > \u03BC\u2080") : qsTr("\u0078\u0305\u2081 > \u0078\u0305\u2082"); checked: true }
 			}
 		}
 

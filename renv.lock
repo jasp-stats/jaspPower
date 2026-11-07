@@ -389,19 +389,20 @@
       "Package": "bfpwr",
       "Version": "0.3",
       "Source": "GitHub",
-      "Date": "2026-05-22",
+      "Date": "2026-11-05",
       "Authors@R": "c(person(given = \"Samuel\", family = \"Pawel\", role = c(\"aut\", \"cre\"), email = \"samuel.pawel@uzh.ch\", comment = c(ORCID = \"0000-0003-2779-320X\")), person(given = \"František\", family = \"Bartoš\", role = c(\"aut\"), email   = \"f.bartos96@gmail.com\", comment = c(ORCID = \"0000-0002-0018-5573\")) )",
       "Author": "Samuel Pawel [aut, cre] (<https://orcid.org/0000-0003-2779-320X>), František Bartoš [aut] (<https://orcid.org/0000-0002-0018-5573>)",
       "Maintainer": "Samuel Pawel <samuel.pawel@uzh.ch>",
       "Title": "Power and Sample Size Calculations for Bayes Factor Analysis",
-      "Description": "Implements z-test, t-test, and normal moment prior Bayes factors based on summary statistics, along with functionality to perform corresponding power and sample size calculations for fixed and sequential designs as described in Pawel and Held (2025) <doi:10.1080/00031305.2025.2467919> and Pawel and Held (2026) <doi:10.48550/ARXIV.2601.02851>.",
+      "Description": "Implements z-test, t-test, normal moment prior, and binomial test Bayes factors based on summary statistics, along with functionality to perform corresponding power and sample size calculations for fixed and sequential designs as described in Pawel and Held (2025) <doi:10.1080/00031305.2025.2467919>, Pawel and Held (2026) <doi:10.48550/ARXIV.2601.02851>, and Kelter and Pawel (2026) <doi:10.48550/arXiv.2502.02914>.",
       "License": "GPL-3",
       "Encoding": "UTF-8",
       "Imports": [
         "lamW",
         "mvtnorm",
         "withr",
-        "qrng"
+        "qrng",
+        "utils"
       ],
       "Suggests": [
         "roxygen2",
@@ -414,13 +415,14 @@
       "URL": "https://github.com/SamCH93/bfpwr",
       "BugReports": "https://github.com/SamCH93/bfpwr/issues",
       "Config/roxygen2/version": "8.0.0",
+      "RoxygenNote": "7.3.3",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
       "RemoteUsername": "SamCH93",
       "RemoteRepo": "bfpwr",
       "RemoteSubdir": "package",
-      "RemoteRef": "fd488dac474e9f61e01884d17fa9deaad320ec87",
-      "RemoteSha": "fd488dac474e9f61e01884d17fa9deaad320ec87"
+      "RemoteRef": "cf36a7f1190ba392f59541989dda536e4bbb7b6a",
+      "RemoteSha": "cf36a7f1190ba392f59541989dda536e4bbb7b6a"
     },
     "bigD": {
       "Package": "bigD",

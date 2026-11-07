@@ -40,39 +40,42 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
 
 .bfsdComputationDependencies <- c(
   "statisticalTest", "calculationTarget", "conclusiveEvidenceThresholdH1", "conclusiveEvidenceThresholdH0",
-  "probabilityOfConclusiveEvidenceUnderH1", "probabilityOfConclusiveEvidenceUnderH0", "designSampleSizeBasis", "analysisPriorDirection", "lookScheduleType",
+  "probabilityOfConclusiveEvidenceUnderH1", "probabilityOfConclusiveEvidenceUnderH0", "analysisPriorDirection", "lookScheduleType",
   "numberOfLooks", "initialSampleSize", "sampleSizeIncreasePerLook", "maximumSampleSize", "sampleSizeSchedule",
   "sampleSizeScheduleGroup2", "sampleSizeAllocationRatio", "firstInformationFraction",
   "informationFractionSchedule", "lowerSearchBoundForMaximumSampleSize", "upperSearchBoundForMaximumSampleSize",
   "sampleSizeSearchStrategy",
-  "knownStandardDeviation",
+  "zTestScale", "knownStandardDeviation",
   "unitInformationSd",
   "nullPriorDistribution", "nullValue", "analysisPriorDistribution",
   "analysisPriorLocation", "analysisPriorMean", "analysisPriorScale",
   "analysisPriorSpread", "analysisPriorMode", "tPriorLocation", "tPriorScale",
   "tPriorDegreesOfFreedom", "designNullPriorDistribution", "designNullPriorMean", "designNullPriorStandardDeviation",
   "designPriorDistribution", "designPriorMean", "designPriorStandardDeviation",
-  "exactIntegrationOverAllRegions", "integrationMethod", "integrationAbsoluteTolerance",
+  "exactIntegrationOverAllRegions", "integrationMethod", "integrationGridPoints", "integrationAbsoluteTolerance",
   "integrationRelativeTolerance", "integrationMaximumPoints", "tSearchRangeMode", "tSearchRangeLower",
   "tSearchRangeUpper"
 )
 
-.bfsdReportDependencies <- c(.bfsdComputationDependencies, "generateReport", "generateReportLatexFormattedOutput")
+# designSampleSizeBasis only selects which computed design is displayed, so it does not invalidate the search
+.bfsdOutputDependencies <- c(.bfsdComputationDependencies, "designSampleSizeBasis")
+
+.bfsdReportDependencies <- c(.bfsdOutputDependencies, "generateReport", "generateReportLatexFormattedOutput")
 .bfsdRCodeDependencies  <- c(.bfsdComputationDependencies, "generateRCode")
-.bfsdSummaryDesignDependencies                 <- c(.bfsdComputationDependencies, "designSummary", "explanatoryText")
-.bfsdSummarySampleSizeDependencies             <- c(.bfsdComputationDependencies, "sampleSizeSummary", "explanatoryText")
-.bfsdSummaryEvidenceDependencies               <- c(.bfsdComputationDependencies, "decisionProbabilities", "explanatoryText")
+.bfsdSummaryDesignDependencies                 <- c(.bfsdOutputDependencies, "designSummary", "explanatoryText")
+.bfsdSummarySampleSizeDependencies             <- c(.bfsdOutputDependencies, "sampleSizeSummary", "explanatoryText")
+.bfsdSummaryEvidenceDependencies               <- c(.bfsdOutputDependencies, "decisionProbabilities", "explanatoryText")
 .bfsdSummarySpecificationDependencies          <- c(.bfsdComputationDependencies, "designSpecification", "explanatoryText")
-.bfsdStagewiseEvidenceDependencies             <- c(.bfsdComputationDependencies, "cumulativeDecisionProbabilities", "explanatoryText")
-.bfsdStagewiseIncrementalEvidenceDependencies  <- c(.bfsdComputationDependencies, "incrementalDecisionProbabilities", "explanatoryText")
-.bfsdStagewiseStoppingBoundariesDependencies   <- c(.bfsdComputationDependencies, "stoppingBoundariesTable", "explanatoryText")
+.bfsdStagewiseEvidenceDependencies             <- c(.bfsdOutputDependencies, "cumulativeDecisionProbabilities", "explanatoryText")
+.bfsdStagewiseIncrementalEvidenceDependencies  <- c(.bfsdOutputDependencies, "incrementalDecisionProbabilities", "explanatoryText")
+.bfsdStagewiseStoppingBoundariesDependencies   <- c(.bfsdOutputDependencies, "stoppingBoundariesTable", "explanatoryText")
 
 .bfsdStoppingProbabilitiesPlotDependencies <- c(
-  .bfsdComputationDependencies, "cumulativeDecisionProbabilitiesPlot",
+  .bfsdOutputDependencies, "cumulativeDecisionProbabilitiesPlot",
   "combineH1H0Figures", "legendPosition", "colorPalette", "explanatoryText"
 )
 .bfsdStoppingBoundariesPlotDependencies <- c(
-  .bfsdComputationDependencies, "stoppingBoundariesPlot", "legendPosition", "colorPalette", "explanatoryText"
+  .bfsdOutputDependencies, "stoppingBoundariesPlot", "legendPosition", "colorPalette", "explanatoryText"
 )
 .bfsdPriorPlotDependencies <- c(
   .bfsdComputationDependencies, "designPriorDistributionFigure", "analysisPriorDistributionFigure", "combineDesignAnalysisPriorFigures",
@@ -82,7 +85,8 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
 .bfsdDisplaySettingNames <- c(
   "curvePoints", "combineH1H0Figures",
   "designPriorDistributionFigure", "analysisPriorDistributionFigure", "combineDesignAnalysisPriorFigures",
-  "generateReportLatexFormattedOutput", "legendPosition", "colorPalette", "explanatoryText"
+  "generateReportLatexFormattedOutput", "legendPosition", "colorPalette", "explanatoryText",
+  "designSampleSizeBasis"
 )
 
 .bfsdInitializeOutputTables <- function(jaspResults, options, settings) {
@@ -220,11 +224,10 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
   return(invisible(TRUE))
 }
 
+# Designs with two critical values per look, where "exact integration over all regions" matters (one-sided,
+# directional and point priors have one critical value per look)
 .bfsdUsesTwoSidedTest <- function(settings) {
-  return(
-    identical(settings[["alternative"]], "two.sided") &&
-      !isTRUE(settings[["isDirectionalZTest"]])
-  )
+  return(is.null(.bfsdH1BoundaryDirection(settings)) && !isTRUE(settings[["isDirectionalZTest"]]))
 }
 
 .bfsdExactIntegrationFootnote <- function(settings) {
@@ -321,6 +324,7 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
     isBinomial           = FALSE
   )
   settings[names(derivedSettings)] <- derivedSettings
+  settings <- .bfdApplyZTestScale(settings)
 
   settings[["alternative"]] <- .bfdAnalysisPriorAlternative(settings[["analysisPriorDirection"]])
   settings[["isDirectionalZTest"]] <- .bfdDirectionalZAnalysis(settings)
@@ -447,13 +451,14 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
   }
 
   n2 <- ceiling(n1 * settings[["sampleSizeAllocationRatio"]])
-  .bfsdValidateSecondGroupSampleSize(n2)
+  .bfsdValidateSecondGroupSampleSize(settings, n2)
 
   return(n2)
 }
 
-.bfsdValidateSecondGroupSampleSize <- function(n2) {
-  if (any(n2 < 2))
+# t-tests need at least two observations per group; z-tests use the known SD and the exact ratio
+.bfsdValidateSecondGroupSampleSize <- function(settings, n2) {
+  if (settings[["isTTest"]] && any(n2 < 2))
     stop(gettext("The sample-size ratio leads to a second-group sample size smaller than 2."))
 
   return(invisible(TRUE))
@@ -478,6 +483,7 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
 }
 
 .bfsdComputeResult <- function(settings) {
+  .bfdValidateAnalysisPrior(settings)
   settings <- .bfsdCompleteSettings(settings)
 
   if (.bfsdUsesSampleSizeSearch(settings))
@@ -490,21 +496,9 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
 }
 
 .bfsdComputeDesignResult <- function(settings) {
-  design <- .bfsdRunDesign(
-    settings,
-    designPriorMean = .bfdContinuousDesignPriorMeanRelative(settings, "h1"),
-    designPriorSd   = .bfdContinuousDesignPrior(settings, "h1")[["sd"]]
-  )
-
-  null <- .bfsdRunDesign(
-    settings,
-    designPriorMean = .bfdContinuousDesignPriorMeanRelative(settings, "h0"),
-    designPriorSd   = .bfdContinuousDesignPrior(settings, "h0")[["sd"]]
-  )
-
   return(list(
-    design = design,
-    null   = null
+    design = .bfsdRunDesign(settings, under = "h1"),
+    null   = .bfsdRunDesign(settings, under = "h0")
   ))
 }
 
@@ -523,20 +517,39 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
     progress[["finish"]]()
   names(targetComputations) <- targets
 
-  displayMaximumN <- max(vapply(targetComputations, function(x) x[["maximumN"]], numeric(1)), na.rm = TRUE)
+  targetResults <- do.call(rbind, lapply(targetComputations, `[[`, "targetResult"))
+
+  # the displayed (common) schedule follows the reached targets; an unreached target only has the upper search bound
+  reachedMaxima   <- targetResults[["maximumN"]][targetResults[["reached"]]]
+  displayMaximumN <- if (length(reachedMaxima) > 0) {
+    max(reachedMaxima)
+  } else {
+    max(vapply(targetComputations, function(x) x[["maximumN"]], numeric(1)), na.rm = TRUE)
+  }
   displaySettings <- .bfsdSettingsForMaximumN(settings, displayMaximumN)
-  result          <- .bfsdComputeDesignResult(displaySettings)
-  targetResults   <- do.call(rbind, lapply(targetComputations, `[[`, "targetResult"))
+  result          <- .bfsdReuseDesignResult(targetComputations, displaySettings)
+  if (is.null(result))
+    result <- .bfsdComputeDesignResult(displaySettings)
 
   result[["settings"]] <- displaySettings
   result[["solver"]] <- list(
     maximumN           = displayMaximumN,
     targetResults      = targetResults,
-    targetComputations = targetComputations,
-    limitReached       = any(vapply(targetComputations, function(x) isTRUE(x[["limitReached"]]), logical(1)))
+    targetComputations = targetComputations
   )
 
   return(result)
+}
+
+# The display schedule usually equals the schedule of one target's search; reuse that target's designs then
+.bfsdReuseDesignResult <- function(targetComputations, displaySettings) {
+  for (computation in targetComputations) {
+    if (identical(as.integer(computation[["settings"]][["n1Seq"]]), as.integer(displaySettings[["n1Seq"]])) &&
+        identical(as.integer(computation[["settings"]][["n2Seq"]]), as.integer(displaySettings[["n2Seq"]])))
+      return(computation[["designResult"]])
+  }
+
+  return(NULL)
 }
 
 .bfsdMaximumSampleSizeSearchProgress <- function(nrange) {
@@ -568,7 +581,7 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
   }
 
   callback <- function(info) {
-    target <- info[["target"]]
+    target <- tolower(info[["target"]])
     targetIndex <- match(target, targets)
     if (is.na(targetIndex))
       targetIndex <- 1L
@@ -621,7 +634,12 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
   search         <- .bfsdRunMaximumSampleSizeSearch(settings, target, nrange, progress)
   maximumN       <- .bfsdSearchMaximumN(search)
   targetSettings <- .bfsdSettingsForSequentialSearch(settings, search, maximumN)
-  designResult   <- .bfsdComputeDesignResult(targetSettings)
+  # the search already evaluated the design under this target's own design prior; only the other one is computed
+  otherUnder     <- if (target == "h1") "h0" else "h1"
+  designResult   <- list(
+    design = if (target == "h1") search[["result"]] else .bfsdRunDesign(targetSettings, under = otherUnder),
+    null   = if (target == "h0") search[["result"]] else .bfsdRunDesign(targetSettings, under = otherUnder)
+  )
   targetResult   <- .bfsdTargetResults(settings, designResult, target)
   reached        <- isTRUE(search[["reached"]]) && isTRUE(targetResult[["reached"]][1])
 
@@ -635,8 +653,7 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
     maximumN     = max(targetSettings[["n1Seq"]], na.rm = TRUE),
     targetResult = targetResult,
     settings     = targetSettings,
-    designResult = designResult,
-    limitReached = !reached
+    designResult = designResult
   ))
 }
 
@@ -664,7 +681,7 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
     .bfsdTMaximumSampleSizeSearchArguments(settings, target)
   }
   searchArgs <- list(
-    target  = target,
+    target  = .bfsdSearchTarget(target),
     nrange  = nrange,
     strict  = settings[["exactIntegrationOverAllRegions"]],
     integer = TRUE,
@@ -682,37 +699,74 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
 }
 
 .bfsdZMaximumSampleSizeSearchArguments <- function(settings, target) {
-  analysisPrior <- .bfsdZAnalysisPrior(settings)
-
-  return(list(
-    k1    = 1 / settings[["conclusiveEvidenceThresholdH1"]],
-    k0    = settings[["conclusiveEvidenceThresholdH0"]],
-    power = .bfdTargetPower(settings, target),
-    usd   = .bfsdZSearchUnitStandardDeviation(settings),
-    null  = 0,
-    pm    = analysisPrior[["pm"]],
-    psd   = analysisPrior[["psd"]],
-    dpm   = .bfsdDirectionalMean(settings, .bfdContinuousDesignPriorMeanRelative(settings, target)),
-    dpsd  = .bfdContinuousDesignPrior(settings, target)[["sd"]],
-    type  = analysisPrior[["type"]]
+  return(c(
+    list(
+      k1    = 1 / settings[["conclusiveEvidenceThresholdH1"]],
+      k0    = settings[["conclusiveEvidenceThresholdH0"]],
+      power = .bfdTargetPower(settings, target),
+      usd   = .bfdZUnitStandardDeviation(settings)
+    ),
+    .bfsdZPriorArguments(settings, under = target)
   ))
 }
 
 .bfsdTMaximumSampleSizeSearchArguments <- function(settings, target) {
+  return(c(
+    list(
+      k1    = 1 / settings[["conclusiveEvidenceThresholdH1"]],
+      k0    = settings[["conclusiveEvidenceThresholdH0"]],
+      power = .bfdTargetPower(settings, target)
+    ),
+    .bfsdTPriorArguments(settings, under = target),
+    list(
+      ratio  = if (settings[["isIndependentSamples"]]) settings[["sampleSizeAllocationRatio"]] else 1,
+      trange = .bfdTSearchRangeArgument(settings)
+    )
+  ))
+}
+
+# bfpwr names the sequential search targets "H1" and "H0"
+.bfsdSearchTarget <- function(target) {
+  return(switch(target, h1 = "H1", h0 = "H0", stop(gettextf("Invalid target '%1$s'.", target))))
+}
+
+# Analysis and design prior arguments of pbf01seq() and nbf01seq(), on the original parameter scale. The
+# composite directional test is computed as theta <= null vs. theta > null; for "less" all locations are
+# reflected around the null value.
+.bfsdZPriorArguments <- function(settings, under) {
+  analysisPrior <- .bfsdZAnalysisPrior(settings)
+  designPrior   <- .bfdContinuousDesignPrior(settings, under)
+
+  args <- list(
+    null        = settings[["nullValue"]],
+    pm          = analysisPrior[["pm"]],
+    psd         = analysisPrior[["psd"]],
+    dpm         = .bfsdDirectionalMean(settings, designPrior[["mean"]]),
+    dpsd        = designPrior[["sd"]],
+    type        = analysisPrior[["type"]],
+    alternative = .bfdZAlternative(settings)
+  )
+
+  # the moment prior is centered at the null value and has no mean argument
+  if (is.null(analysisPrior[["pm"]]))
+    args[["pm"]] <- NULL
+
+  return(args)
+}
+
+# Analysis and design prior arguments of ptbf01seq() and ntbf01seq(). These functions test against zero, so
+# the prior locations are centered at the null value.
+.bfsdTPriorArguments <- function(settings, under) {
+  designPrior <- .bfdContinuousDesignPrior(settings, under)
+
   return(list(
-    k1          = 1 / settings[["conclusiveEvidenceThresholdH1"]],
-    k0          = settings[["conclusiveEvidenceThresholdH0"]],
-    power       = .bfdTargetPower(settings, target),
-    null        = 0,
     plocation   = .bfdTPriorLocationRelative(settings),
     pscale      = settings[["tPriorScale"]],
     pdf         = .bfdTPriorDf(settings),
-    dpm         = .bfdContinuousDesignPriorMeanRelative(settings, target),
-    dpsd        = .bfdContinuousDesignPrior(settings, target)[["sd"]],
+    dpm         = designPrior[["mean"]] - settings[["nullValue"]],
+    dpsd        = designPrior[["sd"]],
     type        = settings[["testType"]],
-    alternative = settings[["alternative"]],
-    ratio       = if (settings[["isIndependentSamples"]]) settings[["sampleSizeAllocationRatio"]] else 1,
-    trange      = .bfdTSearchRangeArgument(settings)
+    alternative = settings[["alternative"]]
   ))
 }
 
@@ -727,23 +781,22 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
   return(list(timing = .bfsdInformationFractions(settings)))
 }
 
-.bfsdZSearchUnitStandardDeviation <- function(settings) {
-  if (isTRUE(settings[["isGeneralZ"]]))
-    return(.bfdGeneralZUnitInformationSd(settings))
-
-  if (settings[["isIndependentSamples"]])
-    return(settings[["knownStandardDeviation"]] * sqrt(1 + 1 / settings[["sampleSizeAllocationRatio"]]))
-
-  return(settings[["knownStandardDeviation"]])
-}
-
 .bfsdSearchMaximumN <- function(search) {
   maximumN <- search[["maximumN"]]
 
-  if (length(maximumN) != 1 || !is.finite(maximumN))
-    stop(gettext("The bfpwr sample-size search did not return a finite maximum sample size."))
+  if (length(maximumN) != 1 || !is.finite(maximumN) || is.null(search[["result"]]))
+    stop(.bfsdSearchErrorMessage(search))
 
   return(as.integer(ceiling(maximumN)))
+}
+
+# bfpwr reports why a search candidate failed (e.g. a too narrow t search range); show it instead of a generic message
+.bfsdSearchErrorMessage <- function(search) {
+  error <- search[["error"]]
+  if (is.character(error) && length(error) > 0 && nzchar(error[1]))
+    return(gettextf("The maximum sample-size search failed: %1$s", error[1]))
+
+  return(gettext("The bfpwr sample-size search did not return a sequential design."))
 }
 
 .bfsdSettingsForSequentialSearch <- function(settings, search, maximumN) {
@@ -762,7 +815,7 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
   }
 
   if (candidate[["isIndependentSamples"]])
-    .bfsdValidateSecondGroupSampleSize(candidate[["n2Seq"]])
+    .bfsdValidateSecondGroupSampleSize(candidate, candidate[["n2Seq"]])
 
   candidate[["n1"]] <- max(candidate[["n1Seq"]])
   candidate[["n2"]] <- max(candidate[["n2Seq"]])
@@ -881,7 +934,8 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
 }
 
 .bfsdDisplayMaximumFootnote <- function(settings, result) {
-  if (.bfsdUsesSeparateLookSchedules(settings, result))
+  # only the common design of the "both design hypotheses" basis uses the largest maximum sample size
+  if (!identical(settings[["designSampleSizeBasis"]], "bothDesignHypotheses"))
     return(NULL)
 
   targetRows <- result[["solver"]][["targetResults"]]
@@ -922,7 +976,7 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
   candidate[["n1Seq"]] <- n1Seq
   candidate[["n2Seq"]] <- if (candidate[["isIndependentSamples"]]) as.integer(ceiling(n1Seq * candidate[["sampleSizeAllocationRatio"]])) else n1Seq
   if (candidate[["isIndependentSamples"]])
-    .bfsdValidateSecondGroupSampleSize(candidate[["n2Seq"]])
+    .bfsdValidateSecondGroupSampleSize(candidate, candidate[["n2Seq"]])
   candidate[["n1"]]    <- max(candidate[["n1Seq"]])
   candidate[["n2"]]    <- max(candidate[["n2Seq"]])
 
@@ -954,95 +1008,69 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
   return(fractions)
 }
 
-.bfsdRunDesign <- function(settings, designPriorMean, designPriorSd) {
+.bfsdRunDesign <- function(settings, under) {
   if (settings[["isZTest"]])
-    return(.bfsdRunZDesign(settings, designPriorMean, designPriorSd))
+    return(do.call(bfpwr::pbf01seq, .bfsdZDesignArguments(settings, under)))
 
-  return(.bfsdRunTDesign(settings, designPriorMean, designPriorSd))
+  return(do.call(bfpwr::ptbf01seq, .bfsdTDesignArguments(settings, under)))
 }
 
-.bfsdRunZDesign <- function(settings, designPriorMean, designPriorSd) {
-  se              <- .bfsdStandardErrors(settings)
-  analysisPrior   <- .bfsdZAnalysisPrior(settings)
-  designPriorMean <- .bfsdDirectionalMean(settings, designPriorMean)
-
-  args <- list(
-    k1     = 1 / settings[["conclusiveEvidenceThresholdH1"]],
-    k0     = settings[["conclusiveEvidenceThresholdH0"]],
-    se     = se,
-    pm     = analysisPrior[["pm"]],
-    psd    = analysisPrior[["psd"]],
-    dpm    = designPriorMean,
-    dpsd   = designPriorSd,
-    type   = analysisPrior[["type"]],
-    strict = settings[["exactIntegrationOverAllRegions"]]
-  )
-
-  args[["n"]] <- settings[["n1Seq"]]
-
-  do.call(
-    what = bfpwr::pbf01seq,
-    args = c(args, .bfsdIntegrationArguments(settings))
-  )
+.bfsdZDesignArguments <- function(settings, under) {
+  return(c(
+    list(
+      k1 = 1 / settings[["conclusiveEvidenceThresholdH1"]],
+      k0 = settings[["conclusiveEvidenceThresholdH0"]],
+      se = .bfsdStandardErrors(settings),
+      n  = settings[["n1Seq"]]
+    ),
+    .bfsdZPriorArguments(settings, under),
+    list(strict = settings[["exactIntegrationOverAllRegions"]]),
+    .bfsdIntegrationArguments(settings)
+  ))
 }
 
-.bfsdRunTDesign <- function(settings, designPriorMean, designPriorSd) {
-  do.call(
-    what = bfpwr::ptbf01seq,
-    args = c(
-      list(
-        k1          = 1 / settings[["conclusiveEvidenceThresholdH1"]],
-        k0          = settings[["conclusiveEvidenceThresholdH0"]],
-        plocation   = .bfdTPriorLocationRelative(settings),
-        pscale      = settings[["tPriorScale"]],
-        pdf         = .bfdTPriorDf(settings),
-        dpm         = designPriorMean,
-        dpsd        = designPriorSd,
-        type        = settings[["testType"]],
-        alternative = settings[["alternative"]],
-        strict      = settings[["exactIntegrationOverAllRegions"]],
-        trange      = .bfdTSearchRangeArgument(settings)
-      ),
-      .bfdTTestSampleSizeArguments(settings, settings[["n1Seq"]], settings[["n2Seq"]]),
-      .bfsdIntegrationArguments(settings)
-    )
-  )
+.bfsdTDesignArguments <- function(settings, under) {
+  return(c(
+    list(
+      k1 = 1 / settings[["conclusiveEvidenceThresholdH1"]],
+      k0 = settings[["conclusiveEvidenceThresholdH0"]]
+    ),
+    .bfdTTestSampleSizeArguments(settings, settings[["n1Seq"]], settings[["n2Seq"]]),
+    .bfsdTPriorArguments(settings, under),
+    list(
+      strict = settings[["exactIntegrationOverAllRegions"]],
+      trange = .bfdTSearchRangeArgument(settings)
+    ),
+    .bfsdIntegrationArguments(settings)
+  ))
 }
 
+# Custom group 2 schedules give the group sizes directly; otherwise the exact allocation ratio is used, as in the
+# bfpwr maximum sample-size search
 .bfsdStandardErrors <- function(settings) {
-  if (isTRUE(settings[["isGeneralZ"]]))
-    return(.bfsdGeneralZStandardErrors(settings))
-
-  if (settings[["isIndependentSamples"]])
+  if (settings[["isIndependentSamples"]] && identical(settings[["lookScheduleType"]], "custom"))
     return(settings[["knownStandardDeviation"]] * sqrt(1 / settings[["n1Seq"]] + 1 / settings[["n2Seq"]]))
 
-  return(settings[["knownStandardDeviation"]] / sqrt(settings[["n1Seq"]]))
+  return(.bfdZUnitStandardDeviation(settings) / sqrt(settings[["n1Seq"]]))
 }
 
 .bfsdZAnalysisPrior <- function(settings) {
-  if (isTRUE(settings[["isDirectionalZTest"]])) {
+  if (.bfdUsesDirectionalZTest(settings)) {
     return(list(
       type = "directional",
-      pm   = .bfsdDirectionalMean(settings, .bfdZAnalysisPriorMeanRelative(settings)),
+      pm   = .bfsdDirectionalMean(settings, .bfdZAnalysisPriorMean(settings)),
       psd  = .bfdZAnalysisPriorSd(settings)
     ))
   }
 
-  if (settings[["analysisPriorDistribution"]] == "point") {
+  if (settings[["analysisPriorDistribution"]] %in% c("point", "normal")) {
     return(list(
       type = "normal",
-      pm   = .bfdZAnalysisPriorMeanRelative(settings),
-      psd  = 0
-    ))
-  }
-
-  if (settings[["analysisPriorDistribution"]] == "normal") {
-    return(list(
-      type = "normal",
-      pm   = .bfdZAnalysisPriorMeanRelative(settings),
+      pm   = .bfdZAnalysisPriorMean(settings),
       psd  = .bfdZAnalysisPriorSd(settings)
     ))
   }
+
   return(list(
     type = "moment",
     pm   = NULL,
@@ -1050,21 +1078,19 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
   ))
 }
 
+# bfpwr's directional test is theta <= null vs. theta > null; reflect locations around the null for "less"
 .bfsdDirectionalMean <- function(settings, mean) {
-  if (!isTRUE(settings[["isDirectionalZTest"]]) || settings[["alternative"]] != "less")
+  if (!.bfdUsesDirectionalZTest(settings) || settings[["alternative"]] != "less")
     return(mean)
 
-  return(-mean)
-}
-
-.bfsdGeneralZStandardErrors <- function(settings) {
-  unitSd <- .bfdGeneralZUnitInformationSd(settings)
-
-  return(unitSd / sqrt(settings[["n1Seq"]]))
+  return(2 * settings[["nullValue"]] - mean)
 }
 
 .bfsdIntegrationArguments <- function(settings) {
   args <- list(method = settings[["integrationMethod"]])
+
+  if (settings[["integrationMethod"]] == "lpmvnorm")
+    args[["ngrid"]] <- settings[["integrationGridPoints"]]
 
   if (settings[["integrationMethod"]] == "pmvnorm") {
     args[["abseps"]] <- settings[["integrationAbsoluteTolerance"]]
@@ -1380,6 +1406,10 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
   if (!.bfsdUsesSampleSizeSearch(settings))
     return(TRUE)
 
+  # the common design of the "both design hypotheses" basis exists only when both targets are reached
+  if (identical(settings[["designSampleSizeBasis"]], "bothDesignHypotheses"))
+    return(.bfsdBasisTargetReached(settings, result, "h1") && .bfsdBasisTargetReached(settings, result, "h0"))
+
   basisTarget <- .bfsdSampleSizeBasisTarget(settings, under)
   if (!is.null(basisTarget) && basisTarget != under)
     return(.bfsdBasisTargetReached(settings, result, basisTarget))
@@ -1424,6 +1454,19 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
     "The requested BF target could not be reached within the selected maximum sample size for %1$s; entries that depend on reaching the target are left empty.",
     paste(unreachedTargets, collapse = ", ")
   ))
+}
+
+.bfsdAddUnreachedLooksFootnote <- function(table, result) {
+  unreachedTargets <- .bfsdUnreachedTargetLabels(result)
+  if (length(unreachedTargets) == 0)
+    return(invisible(FALSE))
+
+  table$addFootnote(gettextf(
+    "The requested BF target could not be reached within the selected maximum sample size for %1$s; its look-by-look results are evaluated up to the upper search bound.",
+    paste(unreachedTargets, collapse = ", ")
+  ))
+
+  return(invisible(TRUE))
 }
 
 .bfsdBlankUnreachedRows <- function(row, targetRows) {
@@ -1503,6 +1546,11 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
 
   table$setData(rows)
   table$addFootnote(.bfsdDesignOutcomeSampleSizeFootnote(settings, result))
+
+  unreachedTargetsFootnote <- .bfsdUnreachedTargetsFootnote(result)
+  if (!is.null(unreachedTargetsFootnote))
+    table$addFootnote(unreachedTargetsFootnote)
+
   .bfdAddExplanationFootnotes(table, settings, .bfsdDesignOutcomeTableExplanation())
 }
 
@@ -1521,6 +1569,12 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
   h0Context <- .bfsdBasisContext(settings, result, "h0")
   h1Outcome <- .bfsdFinalOutcome(h1Context[["designResult"]][["design"]])
   h0Outcome <- .bfsdFinalOutcome(h0Context[["designResult"]][["null"]])
+
+  # outcomes that depend on an unreached planning target are left empty
+  if (!.bfsdBasisRowAvailable(settings, result, "h1"))
+    h1Outcome[] <- NA_real_
+  if (!.bfsdBasisRowAvailable(settings, result, "h0"))
+    h0Outcome[] <- NA_real_
 
   return(.bfdDesignOutcomeRowsFromOutcomes(
     h1Outcome,
@@ -1603,6 +1657,7 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
     result       = result,
     layoutResult = if (isTRUE(columnsReady)) NULL else result
   ))
+  .bfsdAddUnreachedLooksFootnote(table, result)
   .bfdAddExplanationFootnotes(table, settings, .bfsdStagewiseTotalExplanation())
 }
 
@@ -1622,6 +1677,7 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
     result       = result,
     layoutResult = if (isTRUE(columnsReady)) NULL else result
   ))
+  .bfsdAddUnreachedLooksFootnote(table, result)
   .bfdAddExplanationFootnotes(table, settings, .bfsdStagewiseIncrementalExplanation())
 }
 
@@ -1920,6 +1976,10 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
   table$setData(rows)
 
   table$addFootnote(gettext("Boundaries are shown on the test-statistic scale. Empty cells mean no finite statistic reaches the decision rule at that look."))
+
+  if (.bfsdUsesSeparateLookSchedules(settings, result))
+    table$addFootnote(gettextf("The design priors use separate look schedules; the boundaries are shown for the schedule ending at N = %1$s.", max(context[["n1Seq"]], na.rm = TRUE)))
+
   .bfdAddExplanationFootnotes(table, settings, .bfsdBoundariesTableExplanation())
 }
 
@@ -1955,8 +2015,19 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
 }
 
 .bfsdBoundaryRows <- function(settings, design) {
-  h1 <- .bfsdBoundaryMatrix(design[["zk1"]], design[["zk0"]])
-  h0 <- .bfsdBoundaryMatrix(design[["zk0"]], design[["zk1"]])
+  zk1 <- design[["zk1"]]
+  zk0 <- design[["zk0"]]
+
+  # the directional "less" design is computed on the reflected scale (-z); report the boundaries for z itself
+  if (.bfdUsesDirectionalZTest(settings) && identical(settings[["alternative"]], "less")) {
+    zk1 <- -zk1
+    zk0 <- -zk0
+  }
+
+  h1Direction <- .bfsdH1BoundaryDirection(settings)
+  h0Direction <- if (is.null(h1Direction)) NULL else setdiff(c("positive", "negative"), h1Direction)
+  h1 <- .bfsdBoundaryMatrix(zk1, zk0, h1Direction)
+  h0 <- .bfsdBoundaryMatrix(zk0, zk1, h0Direction)
 
   rows <- .bfsdLookRows(settings)
   rows[["h1Lower"]] <- h1[1, ]
@@ -1967,14 +2038,31 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
   return(rows)
 }
 
-.bfsdBoundaryMatrix <- function(boundary, otherBoundary) {
+# Side on which a one-critical-value design stops for H1 ("positive": z above the boundary). NULL for designs with
+# two critical values per look (two-sided priors with spread), whose boundaries already come as lower/upper rows.
+.bfsdH1BoundaryDirection <- function(settings) {
+  if (identical(settings[["alternative"]], "greater"))
+    return("positive")
+
+  if (identical(settings[["alternative"]], "less"))
+    return("negative")
+
+  if (isTRUE(settings[["isZTest"]]) && identical(settings[["analysisPriorDistribution"]], "point"))
+    return(if (settings[["analysisPriorLocation"]] > settings[["nullValue"]]) "positive" else "negative")
+
+  return(NULL)
+}
+
+.bfsdBoundaryMatrix <- function(boundary, otherBoundary, direction = NULL) {
   boundary <- replace(boundary, !is.finite(boundary), NA_real_)
 
   if (is.matrix(boundary))
     return(boundary)
 
-  direction <- if (all(boundary >= otherBoundary, na.rm = TRUE)) "positive" else "negative"
-  out       <- matrix(NA_real_, nrow = 2, ncol = length(boundary))
+  if (is.null(direction))
+    direction <- if (all(boundary >= otherBoundary, na.rm = TRUE)) "positive" else "negative"
+
+  out <- matrix(NA_real_, nrow = 2, ncol = length(boundary))
 
   if (direction == "positive") {
     out[2, ] <- boundary
@@ -1989,8 +2077,8 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
   .bfdAddPriorsTableColumns(table)
   table$setData(.bfdPriorsRows(settings))
 
-  if (!identical(settings[["nullValue"]], 0))
-    table$addFootnote(gettext("Sequential bfpwr calculations are performed on the parameter scale centered at the null value."))
+  if (settings[["isTTest"]] && !identical(settings[["nullValue"]], 0))
+    table$addFootnote(gettext("Sequential bfpwr t-test calculations are performed on the effect-size scale centered at the null value."))
 
   .bfdAddExplanationFootnotes(table, settings, .bfdPriorsTableExplanation())
 }
@@ -2078,38 +2166,51 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
 }
 
 .bfsdReportSearchedScheduleSentence <- function(settings, result) {
-  if (settings[["isIndependentSamples"]]) {
+  h1Context <- .bfsdBasisContext(settings, result, "h1")
+  h0Context <- .bfsdBasisContext(settings, result, "h0")
+
+  sentences <- if (identical(h1Context[["n1Seq"]], h0Context[["n1Seq"]]) && identical(h1Context[["n2Seq"]], h0Context[["n2Seq"]])) {
+    .bfsdReportScheduleSentence(h1Context[["settings"]])
+  } else {
+    c(
+      .bfsdReportDesignPriorScheduleSentence(h1Context[["settings"]], "h1"),
+      .bfsdReportDesignPriorScheduleSentence(h0Context[["settings"]], "h0")
+    )
+  }
+
+  unreachedTargets <- .bfsdUnreachedTargetLabels(result)
+  if (length(unreachedTargets) > 0) {
+    sentences <- c(sentences, gettextf(
+      "The requested BF target was not reached within the upper search bound for %1$s; the corresponding results are evaluated at that bound.",
+      paste(unreachedTargets, collapse = ", ")
+    ))
+  }
+
+  return(paste(sentences, collapse = " "))
+}
+
+.bfsdReportDesignPriorScheduleSentence <- function(contextSettings, under) {
+  label <- if (under == "h1") gettext("H\u2081") else gettext("H\u2080")
+
+  if (contextSettings[["isIndependentSamples"]]) {
     return(gettextf(
-      "The design started at n_min,1 = %1$s and n_min,2 = %2$s, used %3$s, and found maximum sample sizes n_max,1 = %4$s and n_max,2 = %5$s under H\u2081 and n_max,1 = %6$s and n_max,2 = %7$s under H\u2080.",
-      .bfdReportNumber(settings[["n1Seq"]][1]),
-      .bfdReportNumber(settings[["n2Seq"]][1]),
-      .bfsdReportBatchText(settings),
-      .bfsdReportTargetMaximumText(settings, result, "h1", "n1"),
-      .bfsdReportTargetMaximumText(settings, result, "h1", "n2"),
-      .bfsdReportTargetMaximumText(settings, result, "h0", "n1"),
-      .bfsdReportTargetMaximumText(settings, result, "h0", "n2")
+      "Under the %1$s design prior, the design started at n_min,1 = %2$s and n_min,2 = %3$s, used %4$s, and stopped at n_max,1 = %5$s and n_max,2 = %6$s.",
+      label,
+      .bfdReportNumber(contextSettings[["n1Seq"]][1]),
+      .bfdReportNumber(contextSettings[["n2Seq"]][1]),
+      .bfsdReportBatchText(contextSettings),
+      .bfdReportNumber(max(contextSettings[["n1Seq"]], na.rm = TRUE)),
+      .bfdReportNumber(max(contextSettings[["n2Seq"]], na.rm = TRUE))
     ))
   }
 
   return(gettextf(
-    "The design started at n_min = %1$s, used %2$s, and found maximum sample sizes n_max = %3$s under H\u2081 and n_max = %4$s under H\u2080.",
-    .bfdReportNumber(settings[["n1Seq"]][1]),
-    .bfsdReportBatchText(settings),
-    .bfsdReportTargetMaximumText(settings, result, "h1", "n1"),
-    .bfsdReportTargetMaximumText(settings, result, "h0", "n1")
+    "Under the %1$s design prior, the design started at n_min = %2$s, used %3$s, and stopped at n_max = %4$s.",
+    label,
+    .bfdReportNumber(contextSettings[["n1Seq"]][1]),
+    .bfsdReportBatchText(contextSettings),
+    .bfdReportNumber(max(contextSettings[["n1Seq"]], na.rm = TRUE))
   ))
-}
-
-.bfsdReportTargetMaximumText <- function(settings, result, target, sampleSize = "n1") {
-  targetRows <- result[["solver"]][["targetResults"]]
-  index <- which(targetRows[["target"]] == target)
-  if (length(index) == 0 || is.na(targetRows[["maximumN"]][index[1]]))
-    return(gettext("not reached"))
-
-  context <- .bfsdTargetContext(settings, result, target)
-  n <- if (sampleSize == "n2") max(context[["n2Seq"]], na.rm = TRUE) else max(context[["n1Seq"]], na.rm = TRUE)
-
-  return(.bfdReportNumber(n))
 }
 
 .bfsdReportBatchText <- function(settings) {
@@ -2232,30 +2333,7 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
     ))
   }
 
-  analysisPrior <- .bfsdZAnalysisPrior(settings)
-  dpm           <- .bfsdDirectionalMean(settings, .bfdContinuousDesignPriorMeanRelative(settings, target))
-
-  args <- list(
-    k1 = 1 / settings[["conclusiveEvidenceThresholdH1"]],
-    k0 = settings[["conclusiveEvidenceThresholdH0"]],
-    se = .bfsdStandardErrors(settings),
-    n  = settings[["n1Seq"]]
-  )
-
-  args <- c(
-    args,
-    list(
-      pm     = analysisPrior[["pm"]],
-      psd    = analysisPrior[["psd"]],
-      dpm    = dpm,
-      dpsd   = .bfdContinuousDesignPrior(settings, target)[["sd"]],
-      type   = analysisPrior[["type"]],
-      strict = settings[["exactIntegrationOverAllRegions"]]
-    ),
-    .bfsdIntegrationArguments(settings)
-  )
-
-  return(.bfdFormatRCall("bfpwr::pbf01seq", args))
+  return(.bfdFormatRCall("bfpwr::pbf01seq", .bfsdZDesignArguments(settings, under = target)))
 }
 
 .bfsdTBfpwrCall <- function(settings, target) {
@@ -2273,27 +2351,7 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
     ))
   }
 
-  args <- c(
-    list(
-      k1          = 1 / settings[["conclusiveEvidenceThresholdH1"]],
-      k0          = settings[["conclusiveEvidenceThresholdH0"]]
-    ),
-    .bfdTTestSampleSizeArguments(settings, settings[["n1Seq"]], settings[["n2Seq"]]),
-    list(
-      plocation   = .bfdTPriorLocationRelative(settings),
-      pscale      = settings[["tPriorScale"]],
-      pdf         = .bfdTPriorDf(settings),
-      dpm         = .bfdContinuousDesignPriorMeanRelative(settings, target),
-      dpsd        = .bfdContinuousDesignPrior(settings, target)[["sd"]],
-      type        = settings[["testType"]],
-      alternative = settings[["alternative"]],
-      strict      = settings[["exactIntegrationOverAllRegions"]],
-      trange      = .bfdTSearchRangeArgument(settings)
-    ),
-    .bfsdIntegrationArguments(settings)
-  )
-
-  return(.bfdFormatRCall("bfpwr::ptbf01seq", args))
+  return(.bfdFormatRCall("bfpwr::ptbf01seq", .bfsdTDesignArguments(settings, under = target)))
 }
 
 .bfsdStoppingProbabilitiesPlot <- function(jaspResults, settings, result) {
