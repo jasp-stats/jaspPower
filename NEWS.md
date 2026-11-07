@@ -14,7 +14,7 @@
 
 ---
 
-# jaspPower (development version)
+# jaspPower 0.98.0
 ## Added
 * One-sided analysis priors with a point null for z-test Bayes factor designs (normal, point, and normal-moment priors), in fixed and sequential designs and in the observed-data analysis.
 * Sequential z-test designs with a one-sided normal prior can use either a point null or the directional null (θ ≤ θ₀ vs. θ > θ₀).
