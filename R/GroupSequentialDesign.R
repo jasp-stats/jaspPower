@@ -1530,13 +1530,13 @@ GroupSequentialDesignInternal <- function(jaspResults, dataset, options) {
   html[["text"]] <- paste0(
     "<p>",
     gettextf(
-      "This classical group sequential design uses %1$s with %2$s planned looks.",
-      .csdDesignTypeLabel(settings[["designType"]]),
+      "This is a %1$s classical group sequential design with %2$s planned looks, including the final analysis.",
+      tolower(.csdDesignTypeLabel(settings[["designType"]])),
       design[["k"]]
     ),
     "</p><p>",
     gettextf(
-      "The maximum %1$s is %2$s, compared with %3$s for the corresponding fixed design.",
+      "Maximum %1$s: %2$s (corresponding fixed design: %3$s).",
       informationLabel,
       .csdFormatNumber(max(design[["n.I"]], na.rm = TRUE)),
       .csdFormatNumber(design[["n.fix"]])
