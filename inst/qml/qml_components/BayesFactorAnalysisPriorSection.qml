@@ -68,28 +68,27 @@ Section
 			])
 		}
 
-		BayesFactorPriorDoubleFieldRow
+		Text { text: qsTr("Null value:"); visible: !isBinomial }
+		Text { text: "\u03B8\u2080"; visible: !isBinomial }
+		DoubleField
 		{
-			labelText: qsTr("Null value:")
-			symbolText: "\u03B8\u2080"
-			fieldName: "nullValue"
-			fieldInfo: qsTr("Parameter value specified by the null hypothesis.")
+			name: "nullValue"
+			info: qsTr("Parameter value specified by the null hypothesis.")
 			defaultValue: 0
 			negativeValues: true
 			visible: !isBinomial
 		}
 
-		BayesFactorPriorDoubleFieldRow
+		Text { text: qsTr("Hypothesized proportion"); visible: isBinomial }
+		Text { text: "p\u2080"; visible: isBinomial }
+		DoubleField
 		{
-			labelText: qsTr("Hypothesized proportion")
-			symbolText: "p\u2080"
-			fieldName: "nullProportion"
-			fieldInfo: qsTr("Proportion specified by the null hypothesis for the binomial test.")
-			hasMinimum: true
-			hasMaximum: true
-			minimum: 0
-			maximum: 1
+			name: "nullProportion"
+			info: qsTr("Proportion specified by the null hypothesis for the binomial test.")
 			defaultValue: 0.5
+			min: 0
+			max: 1
+			inclusive: JASP.None
 			visible: isBinomial
 		}
 	}
@@ -148,61 +147,61 @@ Section
 			]
 		}
 
-		BayesFactorPriorDoubleFieldRow
+		Text { text: qsTr("Prior location:"); visible: isContinuousZ && analysisPriorDistribution.currentValue === "point" }
+		Text { text: "\u03B8\u2081"; visible: isContinuousZ && analysisPriorDistribution.currentValue === "point" }
+		DoubleField
 		{
-			labelText: qsTr("Prior location:")
-			symbolText: "\u03B8\u2081"
-			fieldName: "analysisPriorLocation"
-			fieldInfo: qsTr("Point location of the H\u2081 analysis prior. For a one-sided direction, it must lie strictly on the H\u2081 side of the null value.")
+			name: "analysisPriorLocation"
+			info: qsTr("Point location of the H\u2081 analysis prior. For a one-sided direction, it must lie strictly on the H\u2081 side of the null value.")
 			defaultValue: 0.5
 			negativeValues: true
 			visible: isContinuousZ && analysisPriorDistribution.currentValue === "point"
 		}
 
-		BayesFactorPriorDoubleFieldRow
+		Text { text: qsTr("Prior mean:"); visible: isContinuousZ && analysisPriorDistribution.currentValue === "normal" }
+		Text { text: "\u03BC"; visible: isContinuousZ && analysisPriorDistribution.currentValue === "normal" }
+		DoubleField
 		{
-			labelText: qsTr("Prior mean:")
-			symbolText: "\u03BC"
-			fieldName: "analysisPriorMean"
-			fieldInfo: qsTr("Mean of the normal H\u2081 analysis prior.")
+			name: "analysisPriorMean"
+			info: qsTr("Mean of the normal H\u2081 analysis prior.")
 			defaultValue: 0
 			negativeValues: true
 			visible: isContinuousZ && analysisPriorDistribution.currentValue === "normal"
 		}
 
-		BayesFactorPriorDoubleFieldRow
+		Text { text: qsTr("Prior scale:"); visible: isContinuousZ && analysisPriorDistribution.currentValue === "normal" }
+		Text { text: "\u03C3"; visible: isContinuousZ && analysisPriorDistribution.currentValue === "normal" }
+		DoubleField
 		{
-			labelText: qsTr("Prior scale:")
-			symbolText: "\u03C3"
-			fieldName: "analysisPriorScale"
-			fieldInfo: qsTr("Scale of the normal H\u2081 analysis prior.")
-			hasMinimum: true
-			minimum: 0
+			name: "analysisPriorScale"
+			info: qsTr("Scale of the normal H\u2081 analysis prior.")
 			defaultValue: 0.707
+			min: 0
+			inclusive: JASP.None
 			visible: isContinuousZ && analysisPriorDistribution.currentValue === "normal"
 		}
 
-		BayesFactorPriorDoubleFieldRow
+		Text { text: qsTr("Prior spread:"); visible: isContinuousZ && analysisPriorDistribution.currentValue === "normalMomentSpread" }
+		Text { text: "\u03C4"; visible: isContinuousZ && analysisPriorDistribution.currentValue === "normalMomentSpread" }
+		DoubleField
 		{
-			labelText: qsTr("Prior spread:")
-			symbolText: "\u03C4"
-			fieldName: "analysisPriorSpread"
-			fieldInfo: qsTr("Spread parameter of the non-local moment prior under H\u2081.")
-			hasMinimum: true
-			minimum: 0
+			name: "analysisPriorSpread"
+			info: qsTr("Spread parameter of the non-local moment prior under H\u2081.")
 			defaultValue: 0.707
+			min: 0
+			inclusive: JASP.None
 			visible: isContinuousZ && analysisPriorDistribution.currentValue === "normalMomentSpread"
 		}
 
-		BayesFactorPriorDoubleFieldRow
+		Text { text: qsTr("Prior mode:"); visible: isContinuousZ && analysisPriorDistribution.currentValue === "normalMomentMode" }
+		Text { text: "|m|"; visible: isContinuousZ && analysisPriorDistribution.currentValue === "normalMomentMode" }
+		DoubleField
 		{
-			labelText: qsTr("Prior mode:")
-			symbolText: "|m|"
-			fieldName: "analysisPriorMode"
-			fieldInfo: qsTr("Mode of the non-local moment prior under H\u2081.")
-			hasMinimum: true
-			minimum: 0
+			name: "analysisPriorMode"
+			info: qsTr("Mode of the non-local moment prior under H\u2081.")
 			defaultValue: 1
+			min: 0
+			inclusive: JASP.None
 			visible: isContinuousZ && analysisPriorDistribution.currentValue === "normalMomentMode"
 		}
 
@@ -230,62 +229,62 @@ Section
 			visible: isContinuousZ && analysisPriorDistribution.currentValue === "normalMomentMode"
 		}
 
-		BayesFactorPriorDoubleFieldRow
+		Text { text: qsTr("Prior location:"); visible: isTTest }
+		Text { text: "\u03BC"; visible: isTTest }
+		DoubleField
 		{
-			labelText: qsTr("Prior location:")
-			symbolText: "\u03BC"
-			fieldName: "tPriorLocation"
-			fieldInfo: qsTr("Location of the Cauchy or Student-t analysis prior under H\u2081.")
+			name: "tPriorLocation"
+			info: qsTr("Location of the Cauchy or Student-t analysis prior under H\u2081.")
 			defaultValue: 0
 			negativeValues: true
 			visible: isTTest
 		}
 
-		BayesFactorPriorDoubleFieldRow
+		Text { text: qsTr("Prior scale:"); visible: isTTest }
+		Text { text: "\u03C3"; visible: isTTest }
+		DoubleField
 		{
-			labelText: qsTr("Prior scale:")
-			symbolText: "\u03C3"
-			fieldName: "tPriorScale"
-			fieldInfo: qsTr("Scale of the Cauchy or Student-t analysis prior under H\u2081.")
-			hasMinimum: true
-			minimum: 0
+			name: "tPriorScale"
+			info: qsTr("Scale of the Cauchy or Student-t analysis prior under H\u2081.")
 			defaultValue: 0.707
+			min: 0
+			inclusive: JASP.None
 			visible: isTTest
 		}
 
-		BayesFactorPriorDoubleFieldRow
+		Text { text: qsTr("Prior degrees of freedom:"); visible: isTTest && analysisPriorDistribution.currentValue === "t" }
+		Text { text: "df"; visible: isTTest && analysisPriorDistribution.currentValue === "t" }
+		DoubleField
 		{
-			labelText: qsTr("Prior degrees of freedom:")
-			symbolText: "df"
-			fieldName: "tPriorDegreesOfFreedom"
-			fieldInfo: qsTr("Degrees of freedom of the Student-t analysis prior under H\u2081.")
-			hasMinimum: true
-			minimum: 0
+			name: "tPriorDegreesOfFreedom"
+			info: qsTr("Degrees of freedom of the Student-t analysis prior under H\u2081.")
 			defaultValue: 1
+			min: 0
+			inclusive: JASP.None
 			visible: isTTest && analysisPriorDistribution.currentValue === "t"
 		}
 
-		BayesFactorPriorDoubleFieldRow
+		Text { text: qsTr("Beta prior successes:"); visible: isBinomial }
+		Text { text: "a"; visible: isBinomial }
+		DoubleField
 		{
-			labelText: qsTr("Beta prior successes:")
-			symbolText: "a"
-			fieldName: "analysisPriorSuccesses"
-			fieldInfo: qsTr("Success parameter of the beta analysis prior under H\u2081.")
-			hasMinimum: true
-			minimum: 0
+			name: "analysisPriorSuccesses"
+			info: qsTr("Success parameter of the beta analysis prior under H\u2081.")
 			defaultValue: 1
+			min: 0
+			inclusive: JASP.None
 			visible: isBinomial
 		}
 
-		BayesFactorPriorDoubleFieldRow
+		Text { text: qsTr("Beta prior failures:"); visible: isBinomial }
+		Text { text: "b"; visible: isBinomial }
+		DoubleField
 		{
-			labelText: qsTr("Beta prior failures:")
-			symbolText: "b"
-			fieldName: "analysisPriorFailures"
-			fieldInfo: qsTr("Failure parameter of the beta analysis prior under H\u2081.")
-			hasMinimum: true
-			minimum: 0
+			name: "analysisPriorFailures"
+			info: qsTr("Failure parameter of the beta analysis prior under H\u2081.")
 			defaultValue: 1
+			min: 0
+			inclusive: JASP.None
 			visible: isBinomial
 		}
 	}

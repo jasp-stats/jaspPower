@@ -37,6 +37,7 @@
 * Observed-data Bayes factors are computed on the log scale, so very strong evidence still yields a decision; a binomial success value that does not occur in the data is reported.
 * The report states the sample size each probability was evaluated at for every "design sample size based on" choice, and the sequential report gives the look schedule of each design prior.
 * The fixed-design minimum/maximum sample-size fields stay ordered (a QML error prevented the update).
+* The analysis prior parameter fields line up with each other and with the dropdowns (each row was laid out separately).
 
 ---
 
