@@ -45,7 +45,7 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
   "sampleSizeScheduleGroup2", "sampleSizeAllocationRatio", "firstInformationFraction",
   "informationFractionSchedule", "lowerSearchBoundForMaximumSampleSize", "upperSearchBoundForMaximumSampleSize",
   "sampleSizeSearchStrategy",
-  "knownStandardDeviation",
+  "zTestScale", "knownStandardDeviation",
   "unitInformationSd",
   "nullPriorDistribution", "nullValue", "analysisPriorDistribution",
   "analysisPriorLocation", "analysisPriorMean", "analysisPriorScale",
@@ -324,6 +324,7 @@ BayesFactorSequentialDesignInternal <- function(jaspResults, dataset, options) {
     isBinomial           = FALSE
   )
   settings[names(derivedSettings)] <- derivedSettings
+  settings <- .bfdApplyZTestScale(settings)
 
   settings[["alternative"]] <- .bfdAnalysisPriorAlternative(settings[["analysisPriorDirection"]])
   settings[["isDirectionalZTest"]] <- .bfdDirectionalZAnalysis(settings)

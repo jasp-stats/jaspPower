@@ -225,6 +225,7 @@ Form
 	PowerComponents.BayesFactorAnalysisSection
 	{
 		testValue: test.currentValue
+		standardizedZ: sequentialParameters.zTestScaleValue !== "raw"
 	}
 
 	Section

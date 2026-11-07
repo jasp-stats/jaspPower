@@ -154,6 +154,18 @@
 # Unit SD of a z-test estimate (its standard error at N1 = 1). Independent samples use the exact allocation
 # ratio N2/N1 in every calculation (as the bfpwr searches do); the reported N2 is rounded up, so the planned
 # groups hold at least the evaluated information.
+# z-tests on the standardized scale (the default) plan and analyse the standardized mean difference (Cohen's d)
+# with the standard deviation treated as known, like the t-tests; on the raw scale the effect is the mean
+# (difference) in the units of the outcome and the known standard deviation is specified
+.bfdApplyZTestScale <- function(settings) {
+  settings[["isStandardizedZ"]] <- isTRUE(settings[["isZTest"]]) && !isTRUE(settings[["isGeneralZ"]]) &&
+    !identical(settings[["zTestScale"]], "raw")
+  if (settings[["isStandardizedZ"]])
+    settings[["knownStandardDeviation"]] <- 1
+
+  return(settings)
+}
+
 .bfdZUnitStandardDeviation <- function(settings) {
   if (isTRUE(settings[["isGeneralZ"]]))
     return(settings[["unitInformationSd"]])

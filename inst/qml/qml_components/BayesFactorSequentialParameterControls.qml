@@ -27,6 +27,7 @@ Group
 
 	property string testValue: ""
 	property alias calculationValue: calculationControls.calculationValue
+	property alias zTestScaleValue: calculationControls.zTestScaleValue
 	property bool isIndependentSamples: testValue.indexOf("independentSamples") !== -1
 	property bool usesSampleSizeSearch: calculationControls.usesSampleSizeSearch
 	property bool usesSampleSizeSearchStrategy: usesSampleSizeSearch && lookScheduleMode.currentValue !== "increase"

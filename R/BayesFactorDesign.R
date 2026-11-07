@@ -31,7 +31,7 @@ BayesFactorDesignInternal <- function(jaspResults, dataset, options) {
 .bfdDesignDependencies <- c(
   "statisticalTest", "calculationTarget", "conclusiveEvidenceThresholdH1", "conclusiveEvidenceThresholdH0",
   "probabilityOfConclusiveEvidenceUnderH1", "probabilityOfConclusiveEvidenceUnderH0",
-  "sampleSize", "sampleSizeAllocationRatio", "knownStandardDeviation",
+  "sampleSize", "sampleSizeAllocationRatio", "zTestScale", "knownStandardDeviation",
   "unitInformationSd",
   "analysisPriorDirection", "nullPriorDistribution", "nullValue", "nullProportion",
   "analysisPriorDistribution", "analysisPriorLocation", "analysisPriorMean",
@@ -165,6 +165,7 @@ BayesFactorDesignInternal <- function(jaspResults, dataset, options) {
     isBinomial           = identical(settings[["statisticalTest"]], "oneSampleProportion")
   )
   settings[names(derivedSettings)] <- derivedSettings
+  settings <- .bfdApplyZTestScale(settings)
 
   if (!settings[["isBinomial"]])
     settings[["alternative"]] <- .bfdAnalysisPriorAlternative(settings[["analysisPriorDirection"]])
@@ -944,6 +945,9 @@ BayesFactorDesignInternal <- function(jaspResults, dataset, options) {
   if (settings[["isTTest"]])
     resultTable$addFootnote(gettext("For t-tests, the estimate is the standardized mean difference on the analysis scale."))
 
+  if (isTRUE(settings[["isStandardizedZ"]]))
+    resultTable$addFootnote(.bfdObservedStandardizedZFootnote(summary))
+
   if (isTRUE(sequential))
     resultTable$addFootnote(gettext("Sequential decisions use the configured BF thresholds for the current observed data."))
 
@@ -1148,7 +1152,7 @@ BayesFactorDesignInternal <- function(jaspResults, dataset, options) {
   if (settings[["isGeneralZ"]])
     return(.bfdObservedOptionNumber(options, "observedStandardError") > 0)
 
-  if (settings[["isTTest"]])
+  if (.bfdObservedUsesStandardizedInput(settings))
     return(.bfdObservedTSampleSizeStarted(options, settings))
 
   if (settings[["isIndependentSamples"]]) {
@@ -1213,7 +1217,7 @@ BayesFactorDesignInternal <- function(jaspResults, dataset, options) {
 .bfdObservedSummaryFromOptions <- function(options, settings) {
   source <- gettext("Summary statistics")
 
-  if (settings[["isTTest"]])
+  if (.bfdObservedUsesStandardizedInput(settings))
     return(.bfdObservedTSummaryFromOptions(options, settings, source))
 
   if (settings[["isBinomial"]]) {
@@ -1448,7 +1452,7 @@ BayesFactorDesignInternal <- function(jaspResults, dataset, options) {
     .bfdObservedDecodeVariable(groupingVariable)
   )
 
-  if (settings[["isTTest"]]) {
+  if (.bfdObservedUsesStandardizedInput(settings)) {
     .bfdObservedCheckSampleSize(n1, "N1", minimum = 2)
     .bfdObservedCheckSampleSize(n2, "N2", minimum = 2)
     summary <- .bfdObservedIndependentTSummary(source, variable, n1, n2, mean1, mean2, stats::sd(values1), stats::sd(values2), settings)
@@ -1479,7 +1483,7 @@ BayesFactorDesignInternal <- function(jaspResults, dataset, options) {
   meanDifference <- mean(difference)
   variable       <- gettextf("%1$s - %2$s", .bfdObservedDecodeVariable(firstVariable), .bfdObservedDecodeVariable(secondVariable))
 
-  if (settings[["isTTest"]]) {
+  if (.bfdObservedUsesStandardizedInput(settings)) {
     .bfdObservedCheckSampleSize(n, "N", minimum = 2)
     return(.bfdObservedPairedTSummary(source, variable, n, meanDifference, stats::sd(difference), settings))
   }
@@ -1535,7 +1539,7 @@ BayesFactorDesignInternal <- function(jaspResults, dataset, options) {
     return(.bfdObservedGeneralZSummary(source, .bfdObservedDecodeVariable(variable), n, mean, sd, settings))
   }
 
-  if (settings[["isTTest"]]) {
+  if (.bfdObservedUsesStandardizedInput(settings)) {
     .bfdObservedCheckSampleSize(n, "N", minimum = 2)
     return(.bfdObservedOneSampleTSummary(source, .bfdObservedDecodeVariable(variable), n, mean, sd, settings))
   }
@@ -1557,7 +1561,7 @@ BayesFactorDesignInternal <- function(jaspResults, dataset, options) {
 
   return(list(
     source = source, variable = variable, n1 = n1, n2 = n2, mean1 = mean1,
-    mean2 = mean2, sd1 = sd1, sd2 = sd2, estimate = estimate,
+    mean2 = mean2, sd1 = sd1, sd2 = sd2, pooledSd = pooledSd, estimate = estimate,
     standardError = standardError, testStatistic = t
   ))
 }
@@ -1811,6 +1815,23 @@ BayesFactorDesignInternal <- function(jaspResults, dataset, options) {
     stop(gettextf("%1$s must be positive.", label))
 }
 
+# t-tests and standardized z-tests analyse Cohen's d from the same observed inputs
+.bfdObservedUsesStandardizedInput <- function(settings) {
+  isTRUE(settings[["isTTest"]]) || isTRUE(settings[["isStandardizedZ"]])
+}
+
+.bfdObservedStandardizedZFootnote <- function(summary) {
+  pooledSd <- .bfdObservedValue(summary, "pooledSd")
+  if (!is.na(pooledSd))
+    return(gettextf("The z-test treats the standard deviation as known; the observed pooled standard deviation (SD = %1$s) is used.", .bfdFormatNumber(pooledSd)))
+
+  sd <- .bfdObservedValue(summary, if (!is.na(.bfdObservedValue(summary, "sdDifference"))) "sdDifference" else "sd")
+  if (!is.na(sd))
+    return(gettextf("The z-test treats the standard deviation as known; the observed standard deviation (SD = %1$s) is used.", .bfdFormatNumber(sd)))
+
+  return(gettext("The z-test treats the standard deviation as known; the estimate is the standardized mean difference (Cohen's d)."))
+}
+
 .bfdObservedValue <- function(summary, name) {
   value <- summary[[name]]
   if (is.null(value))
@@ -1820,7 +1841,7 @@ BayesFactorDesignInternal <- function(jaspResults, dataset, options) {
 }
 
 .bfdObservedEstimateTitle <- function(settings) {
-  if (settings[["isTTest"]])
+  if (.bfdObservedUsesStandardizedInput(settings))
     return("SMD")
 
   return(gettext("Estimate"))
@@ -1913,6 +1934,21 @@ BayesFactorDesignInternal <- function(jaspResults, dataset, options) {
     return(gettextf(
       "general z-test (with UISD = %1$s)",
       .bfdReportNumber(settings[["unitInformationSd"]])
+    ))
+  }
+
+  if (isTRUE(settings[["isStandardizedZ"]])) {
+    return(gettextf(
+      "%1$s on the standardized mean difference (Cohen's d) scale, treating the standard deviation as known",
+      .bfdTestLabel(settings[["statisticalTest"]])
+    ))
+  }
+
+  if (isTRUE(settings[["isZTest"]])) {
+    return(gettextf(
+      "%1$s on the raw scale (with known \u03C3 = %2$s)",
+      .bfdTestLabel(settings[["statisticalTest"]]),
+      .bfdReportNumber(settings[["knownStandardDeviation"]])
     ))
   }
 

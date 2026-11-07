@@ -23,6 +23,7 @@
 ## Changed
 * Updated bfpwr to version 0.3 (commit `cf36a7f`): sequential sample-size searches use the new bfpwr interface, z-test sequential designs are computed and reported on the original parameter scale, and results change slightly due to more accurate numerical defaults.
 * Fixed-sample z-test designs now use the prior direction (default: greater). Previously the direction was hidden for z-tests and the calculations were always two-sided.
+* One sample, paired, and independent samples z-tests have a Scale setting. Standardized (default) plans and analyses the standardized mean difference (Cohen's d) like the t-tests, with the standard deviation treated as known; observed data take the same inputs as the t-tests and use the observed standard deviation. Raw keeps the previous behaviour: mean (differences) in the units of the outcome with a known standard deviation. Breaking change: z-test analyses saved with a known standard deviation other than 1 must select Raw.
 * Independent-samples z-test designs use the exact allocation ratio in all calculations; the reported N₂ is rounded up.
 * "Design sample size based on" only changes the displayed results and no longer reruns the sample-size searches.
 * Normal-moment analysis priors default to a mode of 0.5 (mode 0.5, or spread 0.354 = 0.5/√2), matching the default point analysis prior and design priors.

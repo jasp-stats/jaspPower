@@ -131,7 +131,8 @@ test_that("Fixed t-test design does not shift the prior location twice for a non
 test_that("Observed z-test Bayes factor uses the one-sided analysis prior", {
   results <- do.call(.bfRun, c(list("BayesFactorDesign", 1), .bfFixedZOptions, list(
     nullValue = 0.1, analysisPriorDistribution = "normalMomentMode", analysisPriorMode = 0.6, analysisPriorDirection = "greater",
-    designNullPriorMean = 0.1, observedDataAnalysisInput = "summaryStatistics", observedSampleSize = 60, observedMean = 0.35
+    designNullPriorMean = 0.1, zTestScale = "raw", observedDataAnalysisInput = "summaryStatistics", observedSampleSize = 60,
+    observedMean = 0.35
   )))
 
   observed <- results[["evidenceObservedAnalysis"]][["collection"]][["evidenceObservedAnalysis_result"]][["data"]][[1]]
@@ -229,7 +230,7 @@ test_that("Fixed sample-size search handles a target met at the minimum and poin
 test_that("Observed Bayes factors are computed on the log scale for very strong evidence", {
   results <- do.call(.bfRun, c(list("BayesFactorDesign", 1), .bfFixedZOptions, list(
     analysisPriorDistribution = "normal", analysisPriorDirection = "twoSided",
-    observedDataAnalysisInput = "summaryStatistics", observedSampleSize = 1000, observedMean = 1.5
+    zTestScale = "raw", observedDataAnalysisInput = "summaryStatistics", observedSampleSize = 1000, observedMean = 1.5
   )))
 
   observed <- results[["evidenceObservedAnalysis"]][["collection"]][["evidenceObservedAnalysis_result"]]
@@ -301,4 +302,56 @@ test_that("Sequential designs blank results that depend on an unreached planning
   expect_false(.bfIsEmptyCell(outcome[["data"]][[1]][["alternative"]]))
   expect_true(.bfIsEmptyCell(outcome[["data"]][[2]][["null"]]))
   expect_true(any(grepl("could not be reached", .bfFootnotes(outcome), fixed = TRUE)))
+})
+
+test_that("Standardized z-tests ignore the known SD and match raw z-tests with a rescaled effect", {
+  common <- c(.bfFixedZOptions, list(
+    statisticalTest = "independentSamplesZTest", sampleSizeAllocationRatio = 2, sampleSize = 40,
+    analysisPriorDistribution = "normal", analysisPriorMean = 0, analysisPriorScale = 0.707, analysisPriorDirection = "greater"
+  ))
+  common[["knownStandardDeviation"]] <- NULL
+  run <- function(...) do.call(.bfRun, c(list("BayesFactorDesign", 1), common, list(...)))
+  outcome <- function(results) results[["evidenceDesignOutcome"]][["data"]][[1]][["alternative"]]
+
+  standardized <- run(zTestScale = "standardized", knownStandardDeviation = 15)
+  raw          <- run(zTestScale = "raw", knownStandardDeviation = 2, analysisPriorScale = 2 * 0.707, designPriorMean = 2 * 0.5)
+  expected     <- bfpwr::pbf01(k = 1/6, n = 40, usd = sqrt(1 + 1/2), null = 0, pm = 0, psd = 0.707, dpm = 0.5, dpsd = 0,
+                               alternative = "greater")
+  expect_equal(outcome(standardized), expected, tolerance = 1e-8)
+  expect_equal(outcome(raw), expected, tolerance = 1e-8)
+})
+
+test_that("Standardized z-tests analyse Cohen's d from summary statistics", {
+  results <- do.call(.bfRun, c(list("BayesFactorDesign", 1), .bfFixedZOptions, list(
+    statisticalTest = "independentSamplesZTest", zTestScale = "standardized", analysisPriorDistribution = "normal",
+    analysisPriorMean = 0, analysisPriorScale = 0.707, analysisPriorDirection = "greater",
+    observedDataAnalysisInput = "summaryStatistics", observedInputType = "meansAndSDs", observedMean1 = 1.2, observedMean2 = 0.4,
+    observedSd1 = 1.5, observedSd2 = 2, observedSampleSizeGroup1 = 30, observedSampleSizeGroup2 = 40
+  )))
+
+  table    <- results[["evidenceObservedAnalysis"]][["collection"]][["evidenceObservedAnalysis_result"]]
+  pooledSd <- sqrt((29 * 1.5^2 + 39 * 2^2) / 68)
+  se       <- sqrt(1/30 + 1/40)
+  expected <- bfpwr::bf01(estimate = 0.8 / pooledSd, se = se, null = 0, pm = 0, psd = 0.707, alternative = "greater")
+  expect_equal(table[["data"]][[1]][["bf10"]], 1 / expected, tolerance = 1e-8)
+  expect_equal(table[["data"]][[1]][["statistic"]], 0.8 / pooledSd / se, tolerance = 1e-8)
+  expect_true(any(grepl(sprintf("observed pooled standard deviation (SD = %s) is used", format(signif(pooledSd, 4))),
+                        .bfFootnotes(table), fixed = TRUE)))
+})
+
+test_that("Standardized z-tests use the observed SD of dataset columns", {
+  results <- do.call(.bfRun, c(list("BayesFactorDesign", 1), .bfFixedZOptions, list(
+    statisticalTest = "oneSampleZTest", zTestScale = "standardized", analysisPriorDistribution = "normal",
+    analysisPriorMean = 0, analysisPriorScale = 0.707, analysisPriorDirection = "twoSided",
+    observedDataAnalysisInput = "columns", observedVariable = "contNormal", .dataset = "debug.csv"
+  )))
+
+  collection <- results[["evidenceObservedAnalysis"]][["collection"]]
+  summary    <- collection[["evidenceObservedAnalysis_summaryStatistics"]][["data"]][[1]]
+  result     <- collection[["evidenceObservedAnalysis_result"]]
+  expected   <- bfpwr::bf01(estimate = summary[["mean"]] / summary[["sd"]], se = 1 / sqrt(summary[["n"]]), null = 0, pm = 0, psd = 0.707)
+  expect_equal(summary[["estimate"]], summary[["mean"]] / summary[["sd"]], tolerance = 1e-8)
+  expect_equal(result[["data"]][[1]][["bf10"]], 1 / expected, tolerance = 1e-6)
+  expect_true(any(grepl(sprintf("observed standard deviation (SD = %s) is used", format(signif(summary[["sd"]], 4))),
+                        .bfFootnotes(result), fixed = TRUE)))
 })
