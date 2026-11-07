@@ -187,7 +187,7 @@ Section
 		{
 			name: "analysisPriorSpread"
 			info: qsTr("Spread parameter of the non-local moment prior under H\u2081.")
-			defaultValue: 0.707
+			defaultValue: 0.354 // modes at 0.5 (= sqrt(2) * 0.354), like the mode parameterization
 			min: 0
 			inclusive: JASP.None
 			visible: isContinuousZ && analysisPriorDistribution.currentValue === "normalMomentSpread"
@@ -199,7 +199,7 @@ Section
 		{
 			name: "analysisPriorMode"
 			info: qsTr("Mode of the non-local moment prior under H\u2081.")
-			defaultValue: 1
+			defaultValue: 0.5
 			min: 0
 			inclusive: JASP.None
 			visible: isContinuousZ && analysisPriorDistribution.currentValue === "normalMomentMode"

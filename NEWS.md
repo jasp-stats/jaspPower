@@ -25,6 +25,7 @@
 * Fixed-sample z-test designs now use the prior direction (default: greater). Previously the direction was hidden for z-tests and the calculations were always two-sided.
 * Independent-samples z-test designs use the exact allocation ratio in all calculations; the reported N₂ is rounded up.
 * "Design sample size based on" only changes the displayed results and no longer reruns the sample-size searches.
+* Normal-moment analysis priors default to a mode of 0.5 (mode 0.5, or spread 0.354 = 0.5/√2), matching the default point analysis prior and design priors.
 * Power analysis: the effect direction of the synthetic dataset now defaults to greater (x̄₁ > x̄₂ or x̄ > μ₀), matching the positive effect size and the one-sided alternative, like the other direction defaults in the module.
 * Clearer labels: normal-moment priors list their actual mode(s), the t-test critical value search range names its scale, and "Exact integration over all regions" is only enabled where it has an effect.
 
