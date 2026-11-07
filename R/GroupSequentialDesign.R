@@ -32,10 +32,10 @@ GroupSequentialDesignInternal <- function(jaspResults, dataset, options) {
     .csdText(jaspResults, settings, result)
 
   if (options[["boundariesPlot"]])
-    .csdBoundariesPlot(jaspResults, settings, result)
+    .csdBoundariesPlot(jaspResults, options, settings, result)
 
   if (options[["crossingProbabilitiesPlot"]])
-    .csdCrossingProbabilitiesPlot(jaspResults, settings, result)
+    .csdCrossingProbabilitiesPlot(jaspResults, options, settings, result)
 
   if (options[["generateRCode"]])
     .csdRCode(jaspResults, settings, result)
@@ -1652,11 +1652,12 @@ GroupSequentialDesignInternal <- function(jaspResults, dataset, options) {
   return(format(signif(x, 15), scientific = FALSE, trim = TRUE))
 }
 
-.csdBoundariesPlot <- function(jaspResults, settings, result) {
+.csdBoundariesPlot <- function(jaspResults, options, settings, result) {
   if (!is.null(jaspResults[["classicalSequentialBoundariesPlot"]]))
     return()
 
-  plot <- createJaspPlot(title = gettext("Stopping Boundaries"), width = .bfdPlotWidth(settings), height = 350)
+  # settings is a try-error when the inputs are invalid, so the width comes from the raw options
+  plot <- createJaspPlot(title = gettext("Stopping Boundaries"), width = .bfdPlotWidth(options), height = 350)
   plot$dependOn(.csdBoundariesPlotDependencies)
   plot$position <- 12
   jaspResults[["classicalSequentialBoundariesPlot"]] <- plot
@@ -1706,11 +1707,11 @@ GroupSequentialDesignInternal <- function(jaspResults, dataset, options) {
   return(data)
 }
 
-.csdCrossingProbabilitiesPlot <- function(jaspResults, settings, result) {
+.csdCrossingProbabilitiesPlot <- function(jaspResults, options, settings, result) {
   if (!is.null(jaspResults[["classicalSequentialCrossingProbabilitiesPlot"]]))
     return()
 
-  plot <- createJaspPlot(title = gettext("Boundary Crossing Probabilities"), width = .bfdPlotWidth(settings), height = 350)
+  plot <- createJaspPlot(title = gettext("Boundary Crossing Probabilities"), width = .bfdPlotWidth(options), height = 350)
   plot$dependOn(.csdCrossingProbabilitiesPlotDependencies)
   plot$position <- 13
   jaspResults[["classicalSequentialCrossingProbabilitiesPlot"]] <- plot
