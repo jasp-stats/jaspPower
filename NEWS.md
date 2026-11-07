@@ -43,6 +43,7 @@
 * The observed-data variable selection is half as tall and lists only the variables the selected test uses, starting at the top.
 * Group sequential designs with invalid inputs show the validation message instead of a fatal plot error.
 * Subjects + events survival designs reject a null hazard ratio other than 1 from the R interface instead of ignoring it.
+* Equal alternative and null hazard ratios in survival group sequential designs give a clear message instead of a uniroot error.
 
 ---
 

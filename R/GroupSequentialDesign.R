@@ -102,6 +102,10 @@ GroupSequentialDesignInternal <- function(jaspResults, dataset, options) {
   if (settings[["effectScale"]] == "survivalHazardRatio") {
     settings[["delta"]] <- 0
 
+    # equal hazard ratios imply infinite fixed-design events, which gsDesign reports only as a uniroot failure
+    if (isTRUE(all.equal(settings[["hazardRatio"]], settings[["nullHazardRatio"]])))
+      stop(gettext("The alternative hazard ratio must differ from the null hazard ratio."))
+
     if (settings[["survivalInformationMethod"]] == "gsSurv") {
       settings[["nFix"]]      <- 1
       settings[["usesGsSurv"]] <- TRUE
