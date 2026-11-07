@@ -38,6 +38,7 @@
 * The report states the sample size each probability was evaluated at for every "design sample size based on" choice, and the sequential report gives the look schedule of each design prior.
 * The fixed-design minimum/maximum sample-size fields stay ordered (a QML error prevented the update).
 * The analysis prior parameter fields line up with each other and with the dropdowns (each row was laid out separately).
+* The observed-data variable selection is half as tall and lists only the variables the selected test uses, starting at the top.
 
 ---
 

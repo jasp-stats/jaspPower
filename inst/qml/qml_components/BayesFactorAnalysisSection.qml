@@ -330,6 +330,8 @@ Section
 	VariablesForm
 	{
 		Layout.columnSpan: 2
+		preferredHeight: jaspTheme.defaultVariablesFormHeight / 2
+		removeInvisibles: true
 		visible: observedAnalysisInput.value === "columns"
 
 		AvailableVariablesList
