@@ -109,6 +109,10 @@ GroupSequentialDesignInternal <- function(jaspResults, dataset, options) {
     }
 
     if (settings[["survivalInformationMethod"]] == "nSurvival") {
+      # gsDesign::nSurvival() only tests HR0 = 1; the form disables HR0 here, but the R interface does not
+      if (!isTRUE(all.equal(settings[["nullHazardRatio"]], 1)))
+        stop(gettext("The subjects + events survival calculation supports only a null hazard ratio of 1. Use events only or group sequential accrual for a non-null hazard-ratio margin."))
+
       fixed <- do.call(gsDesign::nSurvival, .csdNSurvivalFixedInformationArgs(settings))
       settings[["nFix"]]     <- fixed[["nEvents"]]
       settings[["nFixSurv"]] <- fixed[["n"]]
