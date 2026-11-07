@@ -324,6 +324,7 @@ Form
 			IntegerField
 			{
 				name: "integrationGridPoints"
+				fieldWidth: 2 * jaspTheme.numericFieldWidth
 				id:   integrationGridPoints
 				info: qsTr("Number of deterministic quasi-Monte Carlo (Halton) grid points used by the log-scale MVN integration. Increase it to check the convergence of small stopping probabilities.")
 				min: 1000
@@ -405,6 +406,7 @@ Form
 			IntegerField
 			{
 				name: "curvePoints"
+				fieldWidth: 2 * jaspTheme.numericFieldWidth
 				id:   plotPoints
 				info: qsTr("Number of points used to draw probability and prior curves.")
 				min: 10

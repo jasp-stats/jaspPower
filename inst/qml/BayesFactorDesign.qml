@@ -292,6 +292,7 @@ Form
 			IntegerField
 			{
 				name: "minimumSampleSize"
+				fieldWidth: 2 * jaspTheme.numericFieldWidth
 				id:   sampleSizeRangeMin
 				info: qsTr("Smallest sample size considered when searching for the target probability of conclusive evidence.")
 				min: 1
@@ -313,6 +314,7 @@ Form
 			IntegerField
 			{
 				name: "maximumSampleSize"
+				fieldWidth: 2 * jaspTheme.numericFieldWidth
 				id:   sampleSizeRangeMax
 				info: qsTr("Largest sample size considered when searching for the target probability of conclusive evidence.")
 				min: sampleSizeRangeMin.value + 1
@@ -331,6 +333,7 @@ Form
 			IntegerField
 			{
 				name: "curvePoints"
+				fieldWidth: 2 * jaspTheme.numericFieldWidth
 				id:   plotPoints
 				info: qsTr("Number of points used to draw probability and prior curves.")
 				min: 10
