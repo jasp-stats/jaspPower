@@ -501,7 +501,7 @@ Group
 			decimals:     4
 			inclusive:    JASP.None
 			visible:      root.usesBinaryEffectInput
-			info:         qsTr("Event probability for group 1 under the alternative hypothesis. A value near 0.5 is conservative for risk-difference planning because it gives the largest Bernoulli variance.")
+			info:         qsTr("Event probability for group 1 under the alternative hypothesis. The group 2 event probability is derived from it and the alternative effect, so the required sample size depends on both probabilities.")
 		}
 
 		Text { Layout.columnSpan: 2; text: qsTr("Binary effect scale:"); visible: root.usesBinaryEndpoint }

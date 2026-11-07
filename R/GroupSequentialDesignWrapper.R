@@ -21,7 +21,7 @@
 #'
 #' @param alpha, One-sided upper-bound Type I error rate. For symmetric two-sided designs, the total Type I error rate is 2α.
 #' @param binaryAlternativeEffect, Alternative risk difference p1 - p2. With the default baseline event probability 0.5, the default difference 0.1 implies p2 = 0.4.
-#' @param binaryBaselineEventRate, Event probability for group 1 under the alternative hypothesis. A value near 0.5 is conservative for risk-difference planning because it gives the largest Bernoulli variance.
+#' @param binaryBaselineEventRate, Event probability for group 1 under the alternative hypothesis. The group 2 event probability is derived from it and the alternative effect, so the required sample size depends on both probabilities.
 #' @param binaryEffectScale, Scale used to derive the second event probability and to set the binary fixed-design sample-size calculation.
 #' @param binaryEventRateGroup1, Event probability in group 1 under the alternative hypothesis.
 #' @param binaryEventRateGroup2, Event probability in group 2 under the alternative hypothesis.
