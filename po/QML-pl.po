@@ -1565,48 +1565,6 @@ msgid ""
 msgstr ""
 
 msgctxt "BayesFactorCalculationControls|"
-msgid "Parameterization:"
-msgstr ""
-
-msgctxt "BayesFactorCalculationControls|"
-msgid ""
-"Scale used for the general z-test approximation, such as standardized mean "
-"difference, Fisher's z, or a log effect measure."
-msgstr ""
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "SMD"
-msgstr ""
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "Fisher's z"
-msgstr ""
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "logOR"
-msgstr ""
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "logRR"
-msgstr ""
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "logHR"
-msgstr ""
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "logIRR"
-msgstr ""
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "Specify"
-msgstr ""
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "Standard error schedule"
-msgstr ""
-
-msgctxt "BayesFactorCalculationControls|"
 msgid "Unit information SD:"
 msgstr ""
 
@@ -1810,24 +1768,6 @@ msgctxt "BayesFactorPriorPlot|"
 msgid ""
 "Display design and analysis prior distributions in the same figure for "
 "comparison."
-msgstr ""
-
-msgctxt "BayesFactorSequentialParameterControls|"
-msgid "Information Schedule"
-msgstr ""
-
-msgctxt "BayesFactorSequentialParameterControls|"
-msgid "Standard error schedule:"
-msgstr ""
-
-msgctxt "BayesFactorSequentialParameterControls|"
-msgid "SE"
-msgstr ""
-
-msgctxt "BayesFactorSequentialParameterControls|"
-msgid ""
-"Comma-separated standard errors for the planned looks in a sequential "
-"general z-test."
 msgstr ""
 
 msgctxt "BayesFactorSequentialParameterControls|"

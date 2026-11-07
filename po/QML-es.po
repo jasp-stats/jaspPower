@@ -1687,51 +1687,6 @@ msgstr ""
 "muestral del contraste Z."
 
 msgctxt "BayesFactorCalculationControls|"
-msgid "Parameterization:"
-msgstr "Parametrización:"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid ""
-"Scale used for the general z-test approximation, such as standardized mean "
-"difference, Fisher's z, or a log effect measure."
-msgstr ""
-"Escala usada para la aproximación general del contraste Z, como la "
-"diferencia de medias tipificada, la Z de Fisher o la medida del efecto "
-"logarítmico."
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "SMD"
-msgstr "SMD"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "Fisher's z"
-msgstr "Z de Fisher"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "logOR"
-msgstr "logOR"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "logRR"
-msgstr "logRR"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "logHR"
-msgstr "logHR"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "logIRR"
-msgstr "logIRR"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "Specify"
-msgstr "Especificar"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "Standard error schedule"
-msgstr "Programación del error típico"
-
-msgctxt "BayesFactorCalculationControls|"
 msgid "Unit information SD:"
 msgstr "DT de la unidad de información:"
 
@@ -1954,26 +1909,6 @@ msgid ""
 msgstr ""
 "Presentar distribuciones de las previas de diseño y análisis en la misma "
 "imagen para compararlas."
-
-msgctxt "BayesFactorSequentialParameterControls|"
-msgid "Information Schedule"
-msgstr "Programación de la información"
-
-msgctxt "BayesFactorSequentialParameterControls|"
-msgid "Standard error schedule:"
-msgstr "Programación del error típico:"
-
-msgctxt "BayesFactorSequentialParameterControls|"
-msgid "SE"
-msgstr "ET"
-
-msgctxt "BayesFactorSequentialParameterControls|"
-msgid ""
-"Comma-separated standard errors for the planned looks in a sequential "
-"general z-test."
-msgstr ""
-"Errores típicos separados por comas para las apariencias planeadas en un "
-"contraste general Z secuencial."
 
 msgctxt "BayesFactorSequentialParameterControls|"
 msgid "Look Schedule"

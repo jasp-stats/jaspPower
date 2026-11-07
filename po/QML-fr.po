@@ -1690,51 +1690,6 @@ msgstr ""
 "d'échantillon du test z."
 
 msgctxt "BayesFactorCalculationControls|"
-msgid "Parameterization:"
-msgstr "Paramétrisation :"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid ""
-"Scale used for the general z-test approximation, such as standardized mean "
-"difference, Fisher's z, or a log effect measure."
-msgstr ""
-"Échelle utilisée pour l'approximation du test z général, telle que la "
-"différence de moyennes standardisée, le z de Fisher ou une mesure d'effet "
-"logarithmique."
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "SMD"
-msgstr "SMD"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "Fisher's z"
-msgstr "z de Fisher"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "logOR"
-msgstr "logOR"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "logRR"
-msgstr "logRR"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "logHR"
-msgstr "logHR"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "logIRR"
-msgstr "logIRR"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "Specify"
-msgstr "Spécifier"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "Standard error schedule"
-msgstr "Calendrier d'erreurs-types"
-
-msgctxt "BayesFactorCalculationControls|"
 msgid "Unit information SD:"
 msgstr "Écart-type de l'unité d'information :"
 
@@ -1957,26 +1912,6 @@ msgid ""
 msgstr ""
 "Affiche les distributions a priori du plan et de l'analyse dans la même "
 "figure pour comparaison."
-
-msgctxt "BayesFactorSequentialParameterControls|"
-msgid "Information Schedule"
-msgstr "Calendrier d'information"
-
-msgctxt "BayesFactorSequentialParameterControls|"
-msgid "Standard error schedule:"
-msgstr "Calendrier d'erreurs-types :"
-
-msgctxt "BayesFactorSequentialParameterControls|"
-msgid "SE"
-msgstr "SE"
-
-msgctxt "BayesFactorSequentialParameterControls|"
-msgid ""
-"Comma-separated standard errors for the planned looks in a sequential "
-"general z-test."
-msgstr ""
-"Erreurs-types séparées par des virgules pour les looks prévus dans un test z "
-"général séquentiel."
 
 msgctxt "BayesFactorSequentialParameterControls|"
 msgid "Look Schedule"

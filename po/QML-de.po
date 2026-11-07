@@ -1695,50 +1695,6 @@ msgstr ""
 "Stichprobenumfangsplanung beim z-Test verwendet wird."
 
 msgctxt "BayesFactorCalculationControls|"
-msgid "Parameterization:"
-msgstr "Parametrisierung:"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid ""
-"Scale used for the general z-test approximation, such as standardized mean "
-"difference, Fisher's z, or a log effect measure."
-msgstr ""
-"Skala, die für die allgemeine z-Test-Approximation verwendet wird, z. B. "
-"standardisierte Mittelwertdifferenz, Fishers z oder ein Log-Effektmaß."
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "SMD"
-msgstr "SMD"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "Fisher's z"
-msgstr "Fishers z"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "logOR"
-msgstr "logOR"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "logRR"
-msgstr "logRR"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "logHR"
-msgstr "logHR"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "logIRR"
-msgstr "logIRR"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "Specify"
-msgstr "Angeben"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "Standard error schedule"
-msgstr "Plan für Standardfehler"
-
-msgctxt "BayesFactorCalculationControls|"
 msgid "Unit information SD:"
 msgstr "SD pro Informationseinheit:"
 
@@ -1961,26 +1917,6 @@ msgid ""
 msgstr ""
 "Zeige Design- und Analyse-Prior-Verteilungen zum Vergleich in derselben "
 "Abbildung."
-
-msgctxt "BayesFactorSequentialParameterControls|"
-msgid "Information Schedule"
-msgstr "Informationsplan"
-
-msgctxt "BayesFactorSequentialParameterControls|"
-msgid "Standard error schedule:"
-msgstr "Plan für Standardfehler:"
-
-msgctxt "BayesFactorSequentialParameterControls|"
-msgid "SE"
-msgstr "SE"
-
-msgctxt "BayesFactorSequentialParameterControls|"
-msgid ""
-"Comma-separated standard errors for the planned looks in a sequential "
-"general z-test."
-msgstr ""
-"Durch Komma getrennte Standardfehler für die geplanten Einblicke in einem "
-"sequentiellen allgemeinen z-Test."
 
 msgctxt "BayesFactorSequentialParameterControls|"
 msgid "Look Schedule"

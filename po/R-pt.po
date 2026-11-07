@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspPower 0.19.2\n"
-"POT-Creation-Date: 2026-10-31 03:35\n"
+"POT-Creation-Date: 2026-11-07 03:35\n"
 "PO-Revision-Date: 2025-08-09 17:01+0000\n"
 "Last-Translator: Wendel Paulo Silvestre <wpsilvestre@ucs.br>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
@@ -136,15 +136,15 @@ msgstr ""
 
 msgid ""
 "This table evaluates the selected fixed sample size. Achieved probabilities "
-"are the chances that the planned study produces conclusive evidence in the "
-"requested direction when data are generated from the corresponding design "
-"prior."
+"are the probabilities that the planned study produces conclusive evidence in "
+"the requested direction when data are generated from the corresponding "
+"design prior."
 msgstr ""
 
 msgid ""
 "Rows condition on the design prior used to generate hypothetical data. "
 "Diagonal cells are conclusive evidence for the true hypothesis, off-diagonal "
-"cells are misleading evidence, and the middle column is the chance of "
+"cells are misleading evidence, and the middle column is the probability of "
 "remaining inconclusive."
 msgstr ""
 
@@ -428,6 +428,9 @@ msgstr ""
 msgid "A %1$s Bayes factor design %2$s a %3$s %4$s %5$s."
 msgstr ""
 
+msgid "general z-test (with UISD = %1$s)"
+msgstr ""
+
 msgid "specified"
 msgstr ""
 
@@ -638,38 +641,6 @@ msgid "Hypothesis"
 msgstr "Taxa hipotetizada (%s)"
 
 msgid ""
-"The %1$s parameterization assumes a unit information standard deviation "
-"(UISD) of %2$s."
-msgstr ""
-
-msgid "SMD"
-msgstr ""
-
-msgid "Fisher's z"
-msgstr ""
-
-msgid "logRR"
-msgstr ""
-
-msgid "logOR"
-msgstr ""
-
-msgid "logHR"
-msgstr ""
-
-msgid "logIRR"
-msgstr ""
-
-msgid "specified UISD"
-msgstr ""
-
-msgid "standard error schedule"
-msgstr ""
-
-msgid "effect size"
-msgstr "tamanho de efeito"
-
-msgid ""
 "The sample-size ratio leads to a second-group sample size smaller than 2."
 msgstr ""
 
@@ -831,12 +802,6 @@ msgstr ""
 msgid "Warning:"
 msgstr ""
 
-msgid "The standard error schedule must contain at least one look."
-msgstr ""
-
-msgid "The standard error schedule must be strictly decreasing."
-msgstr ""
-
 #, fuzzy
 msgid "sample size schedule"
 msgstr "tamanhos de amostra de %s"
@@ -937,11 +902,6 @@ msgstr ""
 msgid "The information fraction schedule must end at 1."
 msgstr ""
 
-msgid ""
-"The standard error schedule must have the same number of entries as the look "
-"schedule."
-msgstr ""
-
 msgid "Unable to compute Bayes factor sequential design: %1$s"
 msgstr ""
 
@@ -954,14 +914,6 @@ msgid ""
 "For independent samples, N₁ is the sample size in group 1 and N₂ is rounded "
 "up from the requested N₂/N₁ sample-size ratio, unless a custom group 2 "
 "schedule is supplied."
-msgstr ""
-
-msgid ""
-"This design uses the supplied standard error schedule, so sample-size "
-"summaries are omitted."
-msgstr ""
-
-msgid "Final SE"
 msgstr ""
 
 msgid "Maximum N₁"
@@ -993,14 +945,14 @@ msgstr ""
 msgid ""
 "Rows condition on the design prior used to generate hypothetical sequential "
 "studies. Diagonal cells are conclusive evidence for the true hypothesis, off-"
-"diagonal cells are misleading evidence, and the middle column is the chance "
-"of reaching the final look without a conclusion."
+"diagonal cells are misleading evidence, and the middle column is the "
+"probability of reaching the final look without a conclusion."
 msgstr ""
 
 msgid ""
-"Cumulative probabilities show the chance that the study has stopped by each "
-"look. The inconclusive column is the chance that no stopping rule has been "
-"crossed yet."
+"Cumulative probabilities show the probability that the study has stopped by "
+"each look. The inconclusive column is the probability that no stopping rule "
+"has been crossed yet."
 msgstr ""
 
 msgid ""
@@ -1049,11 +1001,6 @@ msgstr ""
 msgid ""
 "To satisfy both design priors in a single sequential design, use a final "
 "look of N = %1$s."
-msgstr ""
-
-msgid ""
-"Probabilities are cumulative through the selected final look: SE = %1$s. "
-"Rows use the corresponding design prior under H₁ or H₀."
 msgstr ""
 
 msgid ""
@@ -1128,11 +1075,6 @@ msgid ""
 msgstr ""
 
 msgid "sequential"
-msgstr ""
-
-msgid ""
-"The design used a fixed standard-error schedule, so n_min, n_max, batch "
-"size, expected sample size, and sample-size SD are not defined."
 msgstr ""
 
 msgid ""
@@ -1213,9 +1155,6 @@ msgstr ""
 msgid "No finite stopping boundaries are available for the current settings."
 msgstr ""
 
-msgid "Critical value"
-msgstr ""
-
 msgid "Target"
 msgstr ""
 
@@ -1223,9 +1162,26 @@ msgid "Boundary"
 msgstr ""
 
 msgid ""
-"Each curve gives the critical test-statistic value that corresponds to a "
-"Bayes factor stopping threshold at a look. Crossing a boundary triggers "
-"stopping for H₁ or H₀."
+"Each curve gives the %1$s that corresponds to a Bayes factor stopping "
+"threshold at a look. Crossing a boundary triggers stopping for H₁ or H₀."
+msgstr ""
+
+msgid "critical t-value"
+msgstr ""
+
+msgid "Critical t-value"
+msgstr ""
+
+msgid "critical z-value"
+msgstr ""
+
+msgid "Critical z-value"
+msgstr ""
+
+msgid "critical value"
+msgstr ""
+
+msgid "Critical value"
 msgstr ""
 
 #, fuzzy
@@ -1751,8 +1707,8 @@ msgid "Unable to compute cumulative boundary crossing probabilities: %1$s"
 msgstr ""
 
 msgid ""
-"Cumulative probabilities show the chance that a boundary has been crossed by "
-"each look."
+"Cumulative probabilities show the probability that a boundary has been "
+"crossed by each look."
 msgstr ""
 
 msgid "New Boundary Crossings by Look"
@@ -2336,6 +2292,9 @@ msgstr ""
 "quão sensível ele é aos efeitos reais do aumento de tamanhos; ou seja, é "
 "provável que concluamos corretamente que %s quando o tamanho do efeito é "
 "grande o suficiente para ser considerado?"
+
+msgid "effect size"
+msgstr "tamanho de efeito"
 
 msgid "absolute difference in proportions"
 msgstr "diferença absoluta em proporções"

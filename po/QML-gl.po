@@ -1678,50 +1678,6 @@ msgstr ""
 "da proba Z."
 
 msgctxt "BayesFactorCalculationControls|"
-msgid "Parameterization:"
-msgstr "Parametrización:"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid ""
-"Scale used for the general z-test approximation, such as standardized mean "
-"difference, Fisher's z, or a log effect measure."
-msgstr ""
-"Escala utilizada para a aproximación xeral da proba Z, como a diferenza de "
-"medias tipificada, a Z de Fisher ou a medida do efecto logarítmico."
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "SMD"
-msgstr "SMD"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "Fisher's z"
-msgstr "Z de Fisher"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "logOR"
-msgstr "logOR"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "logRR"
-msgstr "logRR"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "logHR"
-msgstr "logHR"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "logIRR"
-msgstr "logIRR"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "Specify"
-msgstr "Especificar"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "Standard error schedule"
-msgstr "Programación do erro padrón"
-
-msgctxt "BayesFactorCalculationControls|"
 msgid "Unit information SD:"
 msgstr "DP da unidade de información:"
 
@@ -1944,26 +1900,6 @@ msgid ""
 msgstr ""
 "Presentar distribucións das previas de deseño e análise na mesma imaxe para "
 "comparalas."
-
-msgctxt "BayesFactorSequentialParameterControls|"
-msgid "Information Schedule"
-msgstr "Programación da información"
-
-msgctxt "BayesFactorSequentialParameterControls|"
-msgid "Standard error schedule:"
-msgstr "Programación do erro padrón:"
-
-msgctxt "BayesFactorSequentialParameterControls|"
-msgid "SE"
-msgstr "EP"
-
-msgctxt "BayesFactorSequentialParameterControls|"
-msgid ""
-"Comma-separated standard errors for the planned looks in a sequential "
-"general z-test."
-msgstr ""
-"Erros padrón separados por comas para as aparencias planeadas nunha proba "
-"xeral Z secuencial."
 
 msgctxt "BayesFactorSequentialParameterControls|"
 msgid "Look Schedule"

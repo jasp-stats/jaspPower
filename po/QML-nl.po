@@ -1703,50 +1703,6 @@ msgstr ""
 "de steekproefomvang voor de z-toets."
 
 msgctxt "BayesFactorCalculationControls|"
-msgid "Parameterization:"
-msgstr "Parameterisatie:"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid ""
-"Scale used for the general z-test approximation, such as standardized mean "
-"difference, Fisher's z, or a log effect measure."
-msgstr ""
-"Schaal die wordt gebruikt voor de algemene z-toetsbenadering, zoals "
-"gestandaardiseerd gemiddeld verschil, Fisher's z of een log-effectmaat."
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "SMD"
-msgstr "SMD"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "Fisher's z"
-msgstr "Fisher's z"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "logOR"
-msgstr "logOR"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "logRR"
-msgstr "logRR"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "logHR"
-msgstr "logHR"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "logIRR"
-msgstr "logIRR"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "Specify"
-msgstr "Specificeren"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "Standard error schedule"
-msgstr "Schema standaardfout"
-
-msgctxt "BayesFactorCalculationControls|"
 msgid "Unit information SD:"
 msgstr "SD eenheid-informatie:"
 
@@ -1969,26 +1925,6 @@ msgid ""
 msgstr ""
 "Toon de priorverdelingen van ontwerp en analyse in dezelfde figuur ter "
 "vergelijking."
-
-msgctxt "BayesFactorSequentialParameterControls|"
-msgid "Information Schedule"
-msgstr "Informatieschema"
-
-msgctxt "BayesFactorSequentialParameterControls|"
-msgid "Standard error schedule:"
-msgstr "Schema standaardfout:"
-
-msgctxt "BayesFactorSequentialParameterControls|"
-msgid "SE"
-msgstr "SE"
-
-msgctxt "BayesFactorSequentialParameterControls|"
-msgid ""
-"Comma-separated standard errors for the planned looks in a sequential "
-"general z-test."
-msgstr ""
-"Door komma's gescheiden standaardfouten voor de geplande looks in een "
-"sequentiële algemene z-toets."
 
 msgctxt "BayesFactorSequentialParameterControls|"
 msgid "Look Schedule"

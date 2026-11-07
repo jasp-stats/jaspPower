@@ -6,12 +6,6 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Language: ja\n"
 "X-Qt-Contexts: true\n"
-"PO-Revision-Date: 2026-11-01 03:51+0000\n"
-"Last-Translator: Koji Kosugi <kosugitti@users.noreply.hosted.weblate.org>\n"
-"Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/jasppower-"
-"qml/ja/>\n"
-"Language: ja\n"
-"X-Generator: Weblate 2026.11.dev0\n"
 
 msgctxt "Description|"
 msgid "Power"
@@ -1619,50 +1613,6 @@ msgid ""
 msgstr "z検定のサンプルサイズ計画に使う、既知の母標準偏差です。"
 
 msgctxt "BayesFactorCalculationControls|"
-msgid "Parameterization:"
-msgstr "パラメータ化:"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid ""
-"Scale used for the general z-test approximation, such as standardized mean "
-"difference, Fisher's z, or a log effect measure."
-msgstr ""
-"一般z検定の近似に使うスケールです。標準化平均差・フィッシャーのz・対数効果指"
-"標などがあります。"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "SMD"
-msgstr "SMD"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "Fisher's z"
-msgstr "フィッシャーのz"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "logOR"
-msgstr "logOR"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "logRR"
-msgstr "logRR"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "logHR"
-msgstr "logHR"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "logIRR"
-msgstr "logIRR"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "Specify"
-msgstr "指定する"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "Standard error schedule"
-msgstr "標準誤差の予定"
-
-msgctxt "BayesFactorCalculationControls|"
 msgid "Unit information SD:"
 msgstr "単位情報SD:"
 
@@ -1874,26 +1824,6 @@ msgid ""
 "Display design and analysis prior distributions in the same figure for "
 "comparison."
 msgstr "比較のため、デザイン事前分布と分析事前分布を同じ図に表示します。"
-
-msgctxt "BayesFactorSequentialParameterControls|"
-msgid "Information Schedule"
-msgstr "情報の予定"
-
-msgctxt "BayesFactorSequentialParameterControls|"
-msgid "Standard error schedule:"
-msgstr "標準誤差の予定:"
-
-msgctxt "BayesFactorSequentialParameterControls|"
-msgid "SE"
-msgstr "SE"
-
-msgctxt "BayesFactorSequentialParameterControls|"
-msgid ""
-"Comma-separated standard errors for the planned looks in a sequential "
-"general z-test."
-msgstr ""
-"逐次的な一般z検定で、計画された中間解析における標準誤差をカンマ区切りで指定し"
-"ます。"
 
 msgctxt "BayesFactorSequentialParameterControls|"
 msgid "Look Schedule"

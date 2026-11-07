@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspPower 0.18.1\n"
-"POT-Creation-Date: 2026-10-31 03:35\n"
+"POT-Creation-Date: 2026-11-07 03:35\n"
 "PO-Revision-Date: 2024-05-22 21:40+0000\n"
 "Last-Translator: Koen Derks <koen-derks@hotmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/jasppower-r/"
@@ -164,21 +164,23 @@ msgstr ""
 "Deze tabel rapporteert de kleinste steekproefomvang van het vaste ontwerp "
 "die de doelkans op overtuigend bewijs bereikt voor elke ontwerpprior."
 
+#, fuzzy
 msgid ""
 "This table evaluates the selected fixed sample size. Achieved probabilities "
-"are the chances that the planned study produces conclusive evidence in the "
-"requested direction when data are generated from the corresponding design "
-"prior."
+"are the probabilities that the planned study produces conclusive evidence in "
+"the requested direction when data are generated from the corresponding "
+"design prior."
 msgstr ""
 "Deze tabel evalueert de geselecteerde vaste steekproefomvang. De "
 "gerealiseerde kansen zijn de kansen dat het geplande onderzoek in de "
 "gevraagde richting overtuigend bewijs oplevert wanneer de gegevens uit de "
 "overeenkomstige ontwerpprior worden gegenereerd."
 
+#, fuzzy
 msgid ""
 "Rows condition on the design prior used to generate hypothetical data. "
 "Diagonal cells are conclusive evidence for the true hypothesis, off-diagonal "
-"cells are misleading evidence, and the middle column is the chance of "
+"cells are misleading evidence, and the middle column is the probability of "
 "remaining inconclusive."
 msgstr ""
 "De rijen zijn geconditioneerd op de ontwerpprior die wordt gebruikt om "
@@ -487,6 +489,9 @@ msgstr "Kan het rapport niet genereren: %1$s"
 msgid "A %1$s Bayes factor design %2$s a %3$s %4$s %5$s."
 msgstr "Een %1$s Bayes-factorontwerp %2$s een %3$s %4$s %5$s."
 
+msgid "general z-test (with UISD = %1$s)"
+msgstr ""
+
 msgid "specified"
 msgstr "gespecificeerd"
 
@@ -723,40 +728,6 @@ msgid "Hypothesis"
 msgstr "Veronderstelde proportie (%s)"
 
 msgid ""
-"The %1$s parameterization assumes a unit information standard deviation "
-"(UISD) of %2$s."
-msgstr ""
-"De %1$s-parameterisatie veronderstelt een standaarddeviatie van één eenheid "
-"aan informatie (UISD) van %2$s."
-
-msgid "SMD"
-msgstr "SMD"
-
-msgid "Fisher's z"
-msgstr "Fisher's z"
-
-msgid "logRR"
-msgstr "logRR"
-
-msgid "logOR"
-msgstr "logOR"
-
-msgid "logHR"
-msgstr "logHR"
-
-msgid "logIRR"
-msgstr "logIRR"
-
-msgid "specified UISD"
-msgstr "gespecificeerde UISD"
-
-msgid "standard error schedule"
-msgstr "schema standaardfout"
-
-msgid "effect size"
-msgstr "effectgrootte"
-
-msgid ""
 "The sample-size ratio leads to a second-group sample size smaller than 2."
 msgstr ""
 "De steekproefomvangverhouding leidt tot een steekproefomvang voor de tweede "
@@ -933,12 +904,6 @@ msgstr ""
 msgid "Warning:"
 msgstr "Waarschuwing:"
 
-msgid "The standard error schedule must contain at least one look."
-msgstr "Het schema van standaardfouten moet ten minste één look bevatten."
-
-msgid "The standard error schedule must be strictly decreasing."
-msgstr "Het schema van standaardfouten moet strikt dalend zijn."
-
 #, fuzzy
 msgid "sample size schedule"
 msgstr "steekproefgroottes van %s"
@@ -1066,13 +1031,6 @@ msgstr "Het schema van informatiefracties moet strikt stijgend zijn."
 msgid "The information fraction schedule must end at 1."
 msgstr "Het schema van informatiefracties moet eindigen op 1."
 
-msgid ""
-"The standard error schedule must have the same number of entries as the look "
-"schedule."
-msgstr ""
-"Het schema van standaardfouten moet evenveel vermeldingen hebben als het "
-"lookschema."
-
 msgid "Unable to compute Bayes factor sequential design: %1$s"
 msgstr "Kan het sequentiële Bayes-factorontwerp niet berekenen: %1$s"
 
@@ -1092,16 +1050,6 @@ msgstr ""
 "wordt N₂ naar boven afgerond op basis van de gevraagde "
 "steekproefomvangverhouding N₂/N₁, tenzij een aangepast schema voor groep 2 "
 "wordt opgegeven."
-
-msgid ""
-"This design uses the supplied standard error schedule, so sample-size "
-"summaries are omitted."
-msgstr ""
-"Dit ontwerp gebruikt het opgegeven schema van standaardfouten, zodat de "
-"samenvattingen van de steekproefomvang worden weggelaten."
-
-msgid "Final SE"
-msgstr "Laatste SE"
 
 msgid "Maximum N₁"
 msgstr "Maximale N₁"
@@ -1137,11 +1085,12 @@ msgstr ""
 "sequentiële ontwerp naar verwachting onder elke ontwerpprior gebruikt. Het "
 "zijn gemiddelden over hypothetische herhalingen van het geplande onderzoek."
 
+#, fuzzy
 msgid ""
 "Rows condition on the design prior used to generate hypothetical sequential "
 "studies. Diagonal cells are conclusive evidence for the true hypothesis, off-"
-"diagonal cells are misleading evidence, and the middle column is the chance "
-"of reaching the final look without a conclusion."
+"diagonal cells are misleading evidence, and the middle column is the "
+"probability of reaching the final look without a conclusion."
 msgstr ""
 "De rijen zijn geconditioneerd op de ontwerpprior die wordt gebruikt om "
 "hypothetische sequentiële onderzoeken te genereren. Diagonaalcellen zijn "
@@ -1149,10 +1098,11 @@ msgstr ""
 "misleidend bewijs en de middelste kolom is de kans om de laatste look zonder "
 "conclusie te bereiken."
 
+#, fuzzy
 msgid ""
-"Cumulative probabilities show the chance that the study has stopped by each "
-"look. The inconclusive column is the chance that no stopping rule has been "
-"crossed yet."
+"Cumulative probabilities show the probability that the study has stopped by "
+"each look. The inconclusive column is the probability that no stopping rule "
+"has been crossed yet."
 msgstr ""
 "Cumulatieve kansen tonen de kans dat het onderzoek bij elke look is gestopt. "
 "De kolom onbeslist is de kans dat er nog geen stopregel is overschreden."
@@ -1217,13 +1167,6 @@ msgid ""
 msgstr ""
 "Om in één enkel sequentieel ontwerp aan beide ontwerppriors te voldoen, "
 "gebruik een laatste look van N = %1$s."
-
-msgid ""
-"Probabilities are cumulative through the selected final look: SE = %1$s. "
-"Rows use the corresponding design prior under H₁ or H₀."
-msgstr ""
-"De kansen zijn cumulatief tot en met de geselecteerde laatste look: SE = "
-"%1$s. De rijen gebruiken de overeenkomstige ontwerpprior onder H₁ of H₀."
 
 msgid ""
 "Probabilities are cumulative through the final look required for each design "
@@ -1316,14 +1259,6 @@ msgstr ""
 
 msgid "sequential"
 msgstr "sequentieel"
-
-msgid ""
-"The design used a fixed standard-error schedule, so n_min, n_max, batch "
-"size, expected sample size, and sample-size SD are not defined."
-msgstr ""
-"Het ontwerp gebruikte een vast schema van standaardfouten, zodat n_min, "
-"n_max, batchgrootte, verwachte steekproefomvang en SD van de "
-"steekproefomvang niet zijn gedefinieerd."
 
 msgid ""
 "The design targeted conclusive evidence probabilities of %1$s under H₁ and "
@@ -1426,23 +1361,43 @@ msgid "No finite stopping boundaries are available for the current settings."
 msgstr ""
 "Er zijn geen eindige stopgrenzen beschikbaar voor de huidige instellingen."
 
-msgid "Critical value"
-msgstr "Kritieke waarde"
-
 msgid "Target"
 msgstr "Doel"
 
 msgid "Boundary"
 msgstr "Grens"
 
+#, fuzzy
 msgid ""
-"Each curve gives the critical test-statistic value that corresponds to a "
-"Bayes factor stopping threshold at a look. Crossing a boundary triggers "
-"stopping for H₁ or H₀."
+"Each curve gives the %1$s that corresponds to a Bayes factor stopping "
+"threshold at a look. Crossing a boundary triggers stopping for H₁ or H₀."
 msgstr ""
 "Elke curve geeft de kritieke toetsstatistiekwaarde die overeenkomt met een "
 "stopdrempel voor de Bayes-factor bij een look. Het overschrijden van een "
 "grens leidt tot stoppen voor H₁ of H₀."
+
+#, fuzzy
+msgid "critical t-value"
+msgstr "Kritieke waarde"
+
+#, fuzzy
+msgid "Critical t-value"
+msgstr "Kritieke waarde"
+
+#, fuzzy
+msgid "critical z-value"
+msgstr "Kritieke waarde"
+
+#, fuzzy
+msgid "Critical z-value"
+msgstr "Kritieke waarde"
+
+#, fuzzy
+msgid "critical value"
+msgstr "Kritieke waarde"
+
+msgid "Critical value"
+msgstr "Kritieke waarde"
 
 #, fuzzy
 msgid "Lower"
@@ -2055,9 +2010,10 @@ msgstr "Nog geen grensoverschrijding"
 msgid "Unable to compute cumulative boundary crossing probabilities: %1$s"
 msgstr "Kan de cumulatieve grensoverschrijdingskansen niet berekenen: %1$s"
 
+#, fuzzy
 msgid ""
-"Cumulative probabilities show the chance that a boundary has been crossed by "
-"each look."
+"Cumulative probabilities show the probability that a boundary has been "
+"crossed by each look."
 msgstr ""
 "Cumulatieve kansen tonen de kans dat een grens bij elke look is overschreden."
 
@@ -2661,6 +2617,9 @@ msgstr ""
 "waarschijnlijk dat we correct concluderen dat %s als de effectgrootte groot "
 "genoeg is om ons zorgen over te maken?"
 
+msgid "effect size"
+msgstr "effectgrootte"
+
 msgid "absolute difference in proportions"
 msgstr "absoluut verschil in proporties"
 
@@ -3103,6 +3062,75 @@ msgid ""
 msgstr ""
 "Door het afronden van de steekproefgrootte kan de werkelijke power afwijken "
 "van de gewenste power."
+
+#~ msgid ""
+#~ "The %1$s parameterization assumes a unit information standard deviation "
+#~ "(UISD) of %2$s."
+#~ msgstr ""
+#~ "De %1$s-parameterisatie veronderstelt een standaarddeviatie van één "
+#~ "eenheid aan informatie (UISD) van %2$s."
+
+#~ msgid "SMD"
+#~ msgstr "SMD"
+
+#~ msgid "Fisher's z"
+#~ msgstr "Fisher's z"
+
+#~ msgid "logRR"
+#~ msgstr "logRR"
+
+#~ msgid "logOR"
+#~ msgstr "logOR"
+
+#~ msgid "logHR"
+#~ msgstr "logHR"
+
+#~ msgid "logIRR"
+#~ msgstr "logIRR"
+
+#~ msgid "specified UISD"
+#~ msgstr "gespecificeerde UISD"
+
+#~ msgid "standard error schedule"
+#~ msgstr "schema standaardfout"
+
+#~ msgid "The standard error schedule must contain at least one look."
+#~ msgstr "Het schema van standaardfouten moet ten minste één look bevatten."
+
+#~ msgid "The standard error schedule must be strictly decreasing."
+#~ msgstr "Het schema van standaardfouten moet strikt dalend zijn."
+
+#~ msgid ""
+#~ "The standard error schedule must have the same number of entries as the "
+#~ "look schedule."
+#~ msgstr ""
+#~ "Het schema van standaardfouten moet evenveel vermeldingen hebben als het "
+#~ "lookschema."
+
+#~ msgid ""
+#~ "This design uses the supplied standard error schedule, so sample-size "
+#~ "summaries are omitted."
+#~ msgstr ""
+#~ "Dit ontwerp gebruikt het opgegeven schema van standaardfouten, zodat de "
+#~ "samenvattingen van de steekproefomvang worden weggelaten."
+
+#~ msgid "Final SE"
+#~ msgstr "Laatste SE"
+
+#~ msgid ""
+#~ "Probabilities are cumulative through the selected final look: SE = %1$s. "
+#~ "Rows use the corresponding design prior under H₁ or H₀."
+#~ msgstr ""
+#~ "De kansen zijn cumulatief tot en met de geselecteerde laatste look: SE = "
+#~ "%1$s. De rijen gebruiken de overeenkomstige ontwerpprior onder H₁ of H₀."
+
+#~ msgid ""
+#~ "The design used a fixed standard-error schedule, so n_min, n_max, batch "
+#~ "size, expected sample size, and sample-size SD are not defined."
+#~ msgstr ""
+#~ "Het ontwerp gebruikte een vast schema van standaardfouten, zodat n_min, "
+#~ "n_max, batchgrootte, verwachte steekproefomvang en SD van de "
+#~ "steekproefomvang niet zijn gedefinieerd."
 
 #~ msgid "sample sizes of %1$s"
 #~ msgstr "steekproefgrootten van %1$s"

@@ -1571,49 +1571,6 @@ msgid ""
 msgstr "z 檢驗樣本量規劃所用的已知總體標準差。"
 
 msgctxt "BayesFactorCalculationControls|"
-msgid "Parameterization:"
-msgstr "引數化："
-
-msgctxt "BayesFactorCalculationControls|"
-msgid ""
-"Scale used for the general z-test approximation, such as standardized mean "
-"difference, Fisher's z, or a log effect measure."
-msgstr ""
-"一般 z 檢驗近似所用的尺度，例如標準化均數差、Fisher 的 z 或對數效應度量。"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "SMD"
-msgstr "SMD"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "Fisher's z"
-msgstr "Fisher 的 z"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "logOR"
-msgstr "logOR"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "logRR"
-msgstr "logRR"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "logHR"
-msgstr "logHR"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "logIRR"
-msgstr "logIRR"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "Specify"
-msgstr "指定"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid "Standard error schedule"
-msgstr "標準誤時間安排"
-
-msgctxt "BayesFactorCalculationControls|"
 msgid "Unit information SD:"
 msgstr "單位資訊標準差："
 
@@ -1818,24 +1775,6 @@ msgid ""
 "Display design and analysis prior distributions in the same figure for "
 "comparison."
 msgstr "在同一圖中顯示設計和分析先驗分佈以便比較。"
-
-msgctxt "BayesFactorSequentialParameterControls|"
-msgid "Information Schedule"
-msgstr "資訊時間安排"
-
-msgctxt "BayesFactorSequentialParameterControls|"
-msgid "Standard error schedule:"
-msgstr "標準誤時間安排："
-
-msgctxt "BayesFactorSequentialParameterControls|"
-msgid "SE"
-msgstr "SE"
-
-msgctxt "BayesFactorSequentialParameterControls|"
-msgid ""
-"Comma-separated standard errors for the planned looks in a sequential "
-"general z-test."
-msgstr "序貫一般 z 檢驗中計劃分析階段的逗號分隔標準誤。"
 
 msgctxt "BayesFactorSequentialParameterControls|"
 msgid "Look Schedule"

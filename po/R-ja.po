@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspPower 0.19.2\n"
-"POT-Creation-Date: 2026-10-31 03:35\n"
+"POT-Creation-Date: 2026-11-07 03:35\n"
 "PO-Revision-Date: 2026-11-01 03:51+0000\n"
 "Last-Translator: Koji Kosugi <kosugitti@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/jasppower-"
@@ -157,20 +157,22 @@ msgstr ""
 "この表は、各デザイン事前分布について、目標とする決定的な証拠の確率に到達する"
 "最小の固定デザインのサンプルサイズを示しています。"
 
+#, fuzzy
 msgid ""
 "This table evaluates the selected fixed sample size. Achieved probabilities "
-"are the chances that the planned study produces conclusive evidence in the "
-"requested direction when data are generated from the corresponding design "
-"prior."
+"are the probabilities that the planned study produces conclusive evidence in "
+"the requested direction when data are generated from the corresponding "
+"design prior."
 msgstr ""
 "この表は、選択した固定サンプルサイズを評価します。達成された確率とは、対応す"
 "るデザイン事前分布からデータが生成されたときに、計画した研究が求める向きの決"
 "定的な証拠を得られる見込みです。"
 
+#, fuzzy
 msgid ""
 "Rows condition on the design prior used to generate hypothetical data. "
 "Diagonal cells are conclusive evidence for the true hypothesis, off-diagonal "
-"cells are misleading evidence, and the middle column is the chance of "
+"cells are misleading evidence, and the middle column is the probability of "
 "remaining inconclusive."
 msgstr ""
 "各行は、仮想的なデータの生成に使ったデザイン事前分布を条件としています。対角"
@@ -459,6 +461,9 @@ msgstr "レポートを生成できません: %1$s"
 msgid "A %1$s Bayes factor design %2$s a %3$s %4$s %5$s."
 msgstr "%1$s のベイズファクターデザインで、%3$s %4$s %5$s を %2$s。"
 
+msgid "general z-test (with UISD = %1$s)"
+msgstr ""
+
 msgid "specified"
 msgstr "指定しました"
 
@@ -685,39 +690,6 @@ msgid "Hypothesis"
 msgstr "仮説"
 
 msgid ""
-"The %1$s parameterization assumes a unit information standard deviation "
-"(UISD) of %2$s."
-msgstr ""
-"%1$s のパラメータ化では、単位情報標準偏差 (UISD) を %2$s と仮定します。"
-
-msgid "SMD"
-msgstr "SMD"
-
-msgid "Fisher's z"
-msgstr "フィッシャーのz"
-
-msgid "logRR"
-msgstr "logRR"
-
-msgid "logOR"
-msgstr "logOR"
-
-msgid "logHR"
-msgstr "logHR"
-
-msgid "logIRR"
-msgstr "logIRR"
-
-msgid "specified UISD"
-msgstr "指定したUISD"
-
-msgid "standard error schedule"
-msgstr "標準誤差の予定"
-
-msgid "effect size"
-msgstr "効果量"
-
-msgid ""
 "The sample-size ratio leads to a second-group sample size smaller than 2."
 msgstr ""
 "サンプルサイズの比により、2つ目の群のサンプルサイズが 2 未満になります。"
@@ -883,12 +855,6 @@ msgstr ""
 msgid "Warning:"
 msgstr "警告:"
 
-msgid "The standard error schedule must contain at least one look."
-msgstr "標準誤差の予定には、中間解析を少なくとも1つ含めてください。"
-
-msgid "The standard error schedule must be strictly decreasing."
-msgstr "標準誤差の予定は厳密に減少していなければなりません。"
-
 msgid "sample size schedule"
 msgstr "サンプルサイズの予定"
 
@@ -1007,11 +973,6 @@ msgstr "情報割合の予定は厳密に増加していなければなりませ
 msgid "The information fraction schedule must end at 1."
 msgstr "情報割合の予定は 1 で終わらなければなりません。"
 
-msgid ""
-"The standard error schedule must have the same number of entries as the look "
-"schedule."
-msgstr "標準誤差の予定は、中間解析の予定と同じ個数でなければなりません。"
-
 msgid "Unable to compute Bayes factor sequential design: %1$s"
 msgstr "ベイズファクター逐次デザインを計算できません: %1$s"
 
@@ -1029,16 +990,6 @@ msgid ""
 msgstr ""
 "対応のない標本では、N₁ が群1のサンプルサイズであり、N₂ は指定した N₂/N₁ の比"
 "から切り上げて求めます。ただし群2の予定を個別に指定した場合を除きます。"
-
-msgid ""
-"This design uses the supplied standard error schedule, so sample-size "
-"summaries are omitted."
-msgstr ""
-"このデザインは指定された標準誤差の予定を使うため、サンプルサイズの要約は省略"
-"されます。"
-
-msgid "Final SE"
-msgstr "最終SE"
 
 msgid "Maximum N₁"
 msgstr "最大 N₁"
@@ -1074,20 +1025,22 @@ msgstr ""
 "データを使うと期待されるかを表します。これらは計画した研究を仮想的に繰り返し"
 "たときの平均です。"
 
+#, fuzzy
 msgid ""
 "Rows condition on the design prior used to generate hypothetical sequential "
 "studies. Diagonal cells are conclusive evidence for the true hypothesis, off-"
-"diagonal cells are misleading evidence, and the middle column is the chance "
-"of reaching the final look without a conclusion."
+"diagonal cells are misleading evidence, and the middle column is the "
+"probability of reaching the final look without a conclusion."
 msgstr ""
 "各行は、仮想的な逐次研究の生成に使ったデザイン事前分布を条件としています。対"
 "角のセルは真の仮説についての決定的な証拠、非対角のセルは誤った方向の証拠、中"
 "央の列は結論に至らず最終の中間解析まで到達する見込みです。"
 
+#, fuzzy
 msgid ""
-"Cumulative probabilities show the chance that the study has stopped by each "
-"look. The inconclusive column is the chance that no stopping rule has been "
-"crossed yet."
+"Cumulative probabilities show the probability that the study has stopped by "
+"each look. The inconclusive column is the probability that no stopping rule "
+"has been crossed yet."
 msgstr ""
 "累積確率は、各中間解析までに研究が中止された見込みを示します。決定的でないの"
 "列は、まだどの中止規則にも触れていない見込みです。"
@@ -1147,13 +1100,6 @@ msgid ""
 msgstr ""
 "1つの逐次デザインで両方のデザイン事前分布を満たすには、最終の中間解析を N = "
 "%1$s にしてください。"
-
-msgid ""
-"Probabilities are cumulative through the selected final look: SE = %1$s. "
-"Rows use the corresponding design prior under H₁ or H₀."
-msgstr ""
-"確率は、選択した最終の中間解析までの累積値です (SE = %1$s)。各行は H₁ または "
-"H₀ のもとでの対応するデザイン事前分布を使っています。"
 
 msgid ""
 "Probabilities are cumulative through the final look required for each design "
@@ -1244,13 +1190,6 @@ msgstr ""
 
 msgid "sequential"
 msgstr "逐次"
-
-msgid ""
-"The design used a fixed standard-error schedule, so n_min, n_max, batch "
-"size, expected sample size, and sample-size SD are not defined."
-msgstr ""
-"このデザインは固定の標準誤差の予定を使ったため、n_min・n_max・バッチサイズ・"
-"期待サンプルサイズ・サンプルサイズのSDは定義されません。"
 
 msgid ""
 "The design targeted conclusive evidence probabilities of %1$s under H₁ and "
@@ -1348,22 +1287,42 @@ msgstr ""
 msgid "No finite stopping boundaries are available for the current settings."
 msgstr "現在の設定では、有限の中止境界が得られません。"
 
-msgid "Critical value"
-msgstr "臨界値"
-
 msgid "Target"
 msgstr "ターゲット"
 
 msgid "Boundary"
 msgstr "境界"
 
+#, fuzzy
 msgid ""
-"Each curve gives the critical test-statistic value that corresponds to a "
-"Bayes factor stopping threshold at a look. Crossing a boundary triggers "
-"stopping for H₁ or H₀."
+"Each curve gives the %1$s that corresponds to a Bayes factor stopping "
+"threshold at a look. Crossing a boundary triggers stopping for H₁ or H₀."
 msgstr ""
 "各曲線は、ある中間解析でベイズファクターの中止しきい値に対応する検定統計量の"
 "臨界値を示します。境界を越えると H₁ または H₀ による中止となります。"
+
+#, fuzzy
+msgid "critical t-value"
+msgstr "臨界値"
+
+#, fuzzy
+msgid "Critical t-value"
+msgstr "臨界値"
+
+#, fuzzy
+msgid "critical z-value"
+msgstr "臨界値"
+
+#, fuzzy
+msgid "Critical z-value"
+msgstr "臨界値"
+
+#, fuzzy
+msgid "critical value"
+msgstr "臨界値"
+
+msgid "Critical value"
+msgstr "臨界値"
 
 msgid "Lower"
 msgstr "下限"
@@ -1935,9 +1894,10 @@ msgstr "まだ境界を越えていない"
 msgid "Unable to compute cumulative boundary crossing probabilities: %1$s"
 msgstr "累積の境界通過確率を計算できません: %1$s"
 
+#, fuzzy
 msgid ""
-"Cumulative probabilities show the chance that a boundary has been crossed by "
-"each look."
+"Cumulative probabilities show the probability that a boundary has been "
+"crossed by each look."
 msgstr "累積確率は、各中間解析までに境界を越えた見込みを示します。"
 
 msgid "New Boundary Crossings by Look"
@@ -2496,6 +2456,9 @@ msgstr ""
 "が高まるかを考えます。つまり、気にするだけの大きさの効果量があるとき、%s と正"
 "しく結論できそうか、ということです？"
 
+msgid "effect size"
+msgstr "効果量"
+
 msgid "absolute difference in proportions"
 msgstr "比率の差の絶対値"
 
@@ -2892,7 +2855,73 @@ msgstr "%1$s 以上のペア"
 msgid ""
 "Due to the rounding of the number of pairs, the actual power can deviate "
 "from the target power."
-msgstr "ペアの数の丸めにより、実際の検出力が目標の検出力からずれることがあります。"
+msgstr ""
+"ペアの数の丸めにより、実際の検出力が目標の検出力からずれることがあります。"
+
+#~ msgid ""
+#~ "The %1$s parameterization assumes a unit information standard deviation "
+#~ "(UISD) of %2$s."
+#~ msgstr ""
+#~ "%1$s のパラメータ化では、単位情報標準偏差 (UISD) を %2$s と仮定します。"
+
+#~ msgid "SMD"
+#~ msgstr "SMD"
+
+#~ msgid "Fisher's z"
+#~ msgstr "フィッシャーのz"
+
+#~ msgid "logRR"
+#~ msgstr "logRR"
+
+#~ msgid "logOR"
+#~ msgstr "logOR"
+
+#~ msgid "logHR"
+#~ msgstr "logHR"
+
+#~ msgid "logIRR"
+#~ msgstr "logIRR"
+
+#~ msgid "specified UISD"
+#~ msgstr "指定したUISD"
+
+#~ msgid "standard error schedule"
+#~ msgstr "標準誤差の予定"
+
+#~ msgid "The standard error schedule must contain at least one look."
+#~ msgstr "標準誤差の予定には、中間解析を少なくとも1つ含めてください。"
+
+#~ msgid "The standard error schedule must be strictly decreasing."
+#~ msgstr "標準誤差の予定は厳密に減少していなければなりません。"
+
+#~ msgid ""
+#~ "The standard error schedule must have the same number of entries as the "
+#~ "look schedule."
+#~ msgstr "標準誤差の予定は、中間解析の予定と同じ個数でなければなりません。"
+
+#~ msgid ""
+#~ "This design uses the supplied standard error schedule, so sample-size "
+#~ "summaries are omitted."
+#~ msgstr ""
+#~ "このデザインは指定された標準誤差の予定を使うため、サンプルサイズの要約は省"
+#~ "略されます。"
+
+#~ msgid "Final SE"
+#~ msgstr "最終SE"
+
+#~ msgid ""
+#~ "Probabilities are cumulative through the selected final look: SE = %1$s. "
+#~ "Rows use the corresponding design prior under H₁ or H₀."
+#~ msgstr ""
+#~ "確率は、選択した最終の中間解析までの累積値です (SE = %1$s)。各行は H₁ また"
+#~ "は H₀ のもとでの対応するデザイン事前分布を使っています。"
+
+#~ msgid ""
+#~ "The design used a fixed standard-error schedule, so n_min, n_max, batch "
+#~ "size, expected sample size, and sample-size SD are not defined."
+#~ msgstr ""
+#~ "このデザインは固定の標準誤差の予定を使ったため、n_min・n_max・バッチサイ"
+#~ "ズ・期待サンプルサイズ・サンプルサイズのSDは定義されません。"
 
 #~ msgid "sample sizes of %1$s"
 #~ msgstr "サンプルサイズ %1$s"
