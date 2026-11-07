@@ -6,6 +6,12 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Language: ja\n"
 "X-Qt-Contexts: true\n"
+"PO-Revision-Date: 2026-11-01 03:51+0000\n"
+"Last-Translator: Koji Kosugi <kosugitti@users.noreply.hosted.weblate.org>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/jasppower-"
+"qml/ja/>\n"
+"Language: ja\n"
+"X-Generator: Weblate 2026.11.dev0\n"
 
 msgctxt "Description|"
 msgid "Power"
@@ -2908,19 +2914,16 @@ msgstr ""
 
 msgctxt "Power|"
 msgid "Number of pairs:"
-msgstr ""
+msgstr "ペアの数:"
 
-#, fuzzy
 msgctxt "Power|"
 msgid "Sample size in group 1:"
 msgstr "群1のサンプルサイズ:"
 
-#, fuzzy
 msgctxt "Power|"
 msgid "N₁"
 msgstr "N₁"
 
-#, fuzzy
 msgctxt "Power|"
 msgid "N₂/N₁"
 msgstr "N₂/N₁"
