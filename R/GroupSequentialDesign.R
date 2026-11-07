@@ -118,6 +118,11 @@ GroupSequentialDesignInternal <- function(jaspResults, dataset, options) {
         stop(gettext("The subjects + events survival calculation supports only a null hazard ratio of 1. Use events only or group sequential accrual for a non-null hazard-ratio margin."))
 
       fixed <- do.call(gsDesign::nSurvival, .csdNSurvivalFixedInformationArgs(settings))
+
+      # nSurvival()'s exponential-entry formula is 0/0 when gamma is 0 or equals a group's event-plus-dropout hazard
+      if (!is.finite(fixed[["nEvents"]]) || !is.finite(fixed[["n"]]))
+        stop(gettext("The subjects + events survival calculation returned no finite sample size. With exponential entry, this happens when the entry rate parameter γ is 0 or equals a group's event hazard plus dropout hazard; change γ slightly."))
+
       settings[["nFix"]]     <- fixed[["nEvents"]]
       settings[["nFixSurv"]] <- fixed[["n"]]
       return(settings)

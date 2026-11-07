@@ -44,6 +44,7 @@
 * Group sequential designs with invalid inputs show the validation message instead of a fatal plot error.
 * Subjects + events survival designs reject a null hazard ratio other than 1 from the R interface instead of ignoring it.
 * Equal alternative and null hazard ratios in survival group sequential designs give a clear message instead of a uniroot error.
+* Subjects + events designs with exponential entry explain non-finite sample sizes (γ = 0 or γ equal to a group's event-plus-dropout hazard).
 
 ---
 
