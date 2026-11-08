@@ -48,6 +48,7 @@
 * The integration grid setting is disabled for group sequential survival accrual designs, where gsDesign ignores it, and no longer appears in their R code.
 * Grammar of the group sequential design explanation.
 * The binary-endpoint help no longer claims that a baseline event probability of 0.5 is conservative for group sequential designs.
+* The numeric fields in the group sequential Parameters section are wider, so values such as the default control hazards are no longer clipped.
 
 ---
 

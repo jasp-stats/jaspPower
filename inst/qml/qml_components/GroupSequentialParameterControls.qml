@@ -74,6 +74,7 @@ Group
 	property double defaultSurvivalAccrualRate: 1
 	property double defaultSurvivalMinimumFollowup: 6
 	property int defaultNumberOfLooks: 3
+	property int parameterFieldWidth: 1.3 * jaspTheme.numericFieldWidth
 
 	Component.onCompleted:
 	{
@@ -303,6 +304,7 @@ Group
 			min:          0
 			max:          1
 			defaultValue: root.defaultAlpha
+			fieldWidth:   root.parameterFieldWidth
 			decimals:     4
 			inclusive:    JASP.None
 			info:         qsTr("One-sided upper-bound Type I error rate. For symmetric two-sided designs, the total Type I error rate is 2\u03B1.")
@@ -317,6 +319,7 @@ Group
 			min:          0
 			max:          1
 			defaultValue: root.defaultPower
+			fieldWidth:   root.parameterFieldWidth
 			decimals:     4
 			inclusive:    JASP.None
 			info:         qsTr("Target power under the alternative hypothesis. gsDesign uses \u03B2 = 1 - power and adjusts the maximum information to achieve this power; for asymmetric \u03B2-spending designs, \u03B2 is also the total lower-bound spending under the alternative.")
@@ -358,6 +361,7 @@ Group
 			id:           fixedSampleSize
 			min:          2
 			defaultValue: root.defaultFixedSampleSize
+			fieldWidth:   root.parameterFieldWidth
 			visible:      sampleSizeMode.currentValue === "fixedDesign"
 			info:         qsTr("Fixed-design value with no interim analyses. For simple sample-size designs this is N; for information-based or event-driven designs, enter information units or events.")
 		}
@@ -389,6 +393,7 @@ Group
 			id:           effectSize
 			min:          0
 			defaultValue: root.defaultEffectSize
+			fieldWidth:   root.parameterFieldWidth
 			decimals:     4
 			inclusive:    JASP.None
 			visible:      root.usesEffectValue
@@ -407,6 +412,7 @@ Group
 			id:           naturalEffectSize
 			min:          0
 			defaultValue: root.defaultNaturalEffectSize
+			fieldWidth:   root.parameterFieldWidth
 			decimals:     4
 			inclusive:    JASP.None
 			visible:      root.usesMeanDifference
@@ -425,6 +431,7 @@ Group
 			id:           effectStandardDeviation
 			min:          0
 			defaultValue: root.defaultEffectStandardDeviation
+			fieldWidth:   root.parameterFieldWidth
 			decimals:     4
 			inclusive:    JASP.None
 			visible:      root.usesNormalSd
@@ -439,6 +446,7 @@ Group
 			id:           sampleSizeRatio
 			min:          0
 			defaultValue: root.defaultAllocationRatio
+			fieldWidth:   root.parameterFieldWidth
 			decimals:     4
 			inclusive:    JASP.None
 			visible:      root.usesAllocationRatio
@@ -468,6 +476,7 @@ Group
 			min:          0
 			max:          1
 			defaultValue: root.defaultBinaryEventRateGroup1
+			fieldWidth:   root.parameterFieldWidth
 			decimals:     4
 			inclusive:    JASP.None
 			visible:      root.usesBinaryEventRateInput
@@ -483,6 +492,7 @@ Group
 			min:          0
 			max:          1
 			defaultValue: root.defaultBinaryEventRateGroup2
+			fieldWidth:   root.parameterFieldWidth
 			decimals:     4
 			inclusive:    JASP.None
 			visible:      root.usesBinaryEventRateInput
@@ -498,6 +508,7 @@ Group
 			min:          0
 			max:          1
 			defaultValue: root.defaultBinaryBaselineEventRate
+			fieldWidth:   root.parameterFieldWidth
 			decimals:     4
 			inclusive:    JASP.None
 			visible:      root.usesBinaryEffectInput
@@ -533,6 +544,7 @@ Group
 			min:          root.binaryAlternativeEffectMinimum(binaryEffectScale.currentValue)
 			max:          root.binaryAlternativeEffectMaximum(binaryEffectScale.currentValue)
 			defaultValue: root.binaryAlternativeEffectDefault(binaryEffectScale.currentValue)
+			fieldWidth:   root.parameterFieldWidth
 			decimals:     4
 			inclusive:    JASP.None
 			negativeValues: binaryEffectScale.currentValue === "riskDifference"
@@ -547,6 +559,7 @@ Group
 			name:           "binaryNullRiskDifference"
 			id:             binaryNullRiskDifference
 			defaultValue:   root.defaultBinaryNullRiskDifference
+			fieldWidth:     root.parameterFieldWidth
 			decimals:       4
 			negativeValues: true
 			visible:        root.usesBinaryEndpoint && binaryEffectScale.currentValue === "riskDifference"
@@ -561,6 +574,7 @@ Group
 			id:           binaryNullRiskRatio
 			min:          0
 			defaultValue: root.defaultNullRatio
+			fieldWidth:   root.parameterFieldWidth
 			decimals:     4
 			inclusive:    JASP.None
 			visible:      root.usesBinaryEndpoint && binaryEffectScale.currentValue === "riskRatio"
@@ -575,6 +589,7 @@ Group
 			id:           binaryNullOddsRatio
 			min:          0
 			defaultValue: root.defaultNullRatio
+			fieldWidth:   root.parameterFieldWidth
 			decimals:     4
 			inclusive:    JASP.None
 			visible:      root.usesBinaryEndpoint && binaryEffectScale.currentValue === "oddsRatio"
@@ -589,6 +604,7 @@ Group
 			id:           hazardRatio
 			min:          0
 			defaultValue: root.survivalHazardRatioDefault(survivalInformationMethod.currentValue)
+			fieldWidth:   root.parameterFieldWidth
 			decimals:     4
 			inclusive:    JASP.None
 			visible:      root.usesSurvivalEndpoint
@@ -603,6 +619,7 @@ Group
 			id:           nullHazardRatio
 			min:          0
 			defaultValue: root.defaultNullRatio
+			fieldWidth:   root.parameterFieldWidth
 			decimals:     4
 			inclusive:    JASP.None
 			visible:      root.usesSurvivalEndpoint
@@ -638,6 +655,7 @@ Group
 			id:           survivalControlHazard
 			min:          0
 			defaultValue: root.survivalControlHazardDefault(survivalInformationMethod.currentValue)
+			fieldWidth:   root.parameterFieldWidth
 			decimals:     4
 			inclusive:    JASP.None
 			visible:      root.usesSurvivalAccrual
@@ -652,6 +670,7 @@ Group
 			id:           survivalDropoutHazard
 			min:          0
 			defaultValue: root.defaultSurvivalDropoutHazard
+			fieldWidth:   root.parameterFieldWidth
 			decimals:     4
 			inclusive:    JASP.MinMax
 			visible:      root.usesSurvivalAccrual
@@ -666,6 +685,7 @@ Group
 			id:           survivalAccrualDuration
 			min:          0
 			defaultValue: root.defaultSurvivalAccrualDuration
+			fieldWidth:   root.parameterFieldWidth
 			decimals:     4
 			inclusive:    JASP.None
 			visible:      root.usesSurvivalAccrual
@@ -680,6 +700,7 @@ Group
 			id:           survivalStudyDuration
 			min:          0
 			defaultValue: root.survivalStudyDurationDefault(survivalInformationMethod.currentValue)
+			fieldWidth:   root.parameterFieldWidth
 			decimals:     4
 			inclusive:    JASP.None
 			visible:      root.usesSurvivalAccrual
@@ -708,6 +729,7 @@ Group
 			name:           "survivalEntryGamma"
 			id:             survivalEntryGamma
 			defaultValue:   root.defaultSurvivalEntryGamma
+			fieldWidth:     root.parameterFieldWidth
 			decimals:       4
 			negativeValues: true
 			visible:        root.usesNSurvivalAccrual && survivalEntry.currentValue === "expo"
@@ -722,6 +744,7 @@ Group
 			id:           survivalAccrualRate
 			min:          0
 			defaultValue: root.defaultSurvivalAccrualRate
+			fieldWidth:   root.parameterFieldWidth
 			decimals:     4
 			inclusive:    JASP.None
 			visible:      root.usesGsSurvAccrual
@@ -736,6 +759,7 @@ Group
 			id:           survivalMinimumFollowup
 			min:          0
 			defaultValue: root.defaultSurvivalMinimumFollowup
+			fieldWidth:   root.parameterFieldWidth
 			decimals:     4
 			inclusive:    JASP.None
 			visible:      root.usesGsSurvAccrual
@@ -773,6 +797,7 @@ Group
 			min:          2
 			max:          30
 			defaultValue: root.defaultNumberOfLooks
+			fieldWidth:   root.parameterFieldWidth
 			info:         qsTr("Number of planned analyses, including the final analysis.")
 			onValueChanged:
 			{
