@@ -68,11 +68,10 @@ Group
 	property double defaultGsSurvControlHazard: 0.1155
 	property double defaultSurvivalDropoutHazard: 0
 	property double defaultSurvivalAccrualDuration: 12
-	property double defaultNSurvivalStudyDuration: 24
-	property double defaultGsSurvStudyDuration: 18
 	property double defaultSurvivalEntryGamma: 0.1
 	property double defaultSurvivalAccrualRate: 1
-	property double defaultSurvivalMinimumFollowup: 6
+	property double defaultNSurvivalMinimumFollowup: 12
+	property double defaultGsSurvMinimumFollowup: 6
 	property int defaultNumberOfLooks: 3
 	property int parameterFieldWidth: 1.3 * jaspTheme.numericFieldWidth
 
@@ -132,17 +131,25 @@ Group
 		return root.defaultGsSurvControlHazard
 	}
 
-	function survivalStudyDurationDefault(method)
+	function survivalMinimumFollowupDefault(method)
 	{
 		if (method === "gsSurv")
-			return root.defaultGsSurvStudyDuration
-		return root.defaultNSurvivalStudyDuration
+			return root.defaultGsSurvMinimumFollowup
+		return root.defaultNSurvivalMinimumFollowup
 	}
 
 	function syncPositiveDefault(field, nextDefault, previousDefault, forceDefault)
 	{
 		var value = Number(field.value)
 		if (forceDefault || !isFinite(value) || value <= 0 ||
+			Math.abs(value - previousDefault) < 1e-4)
+			field.value = nextDefault
+	}
+
+	function syncNonNegativeDefault(field, nextDefault, previousDefault, forceDefault)
+	{
+		var value = Number(field.value)
+		if (forceDefault || !isFinite(value) || value < 0 ||
 			Math.abs(value - previousDefault) < 1e-4)
 			field.value = nextDefault
 	}
@@ -166,10 +173,10 @@ Group
 			root.survivalControlHazardDefault(previousMethod),
 			forceDefault
 		)
-		root.syncPositiveDefault(
-			survivalStudyDuration,
-			root.survivalStudyDurationDefault(method),
-			root.survivalStudyDurationDefault(previousMethod),
+		root.syncNonNegativeDefault(
+			survivalMinimumFollowup,
+			root.survivalMinimumFollowupDefault(method),
+			root.survivalMinimumFollowupDefault(previousMethod),
 			forceDefault
 		)
 
@@ -659,7 +666,7 @@ Group
 			decimals:     4
 			inclusive:    JASP.None
 			visible:      root.usesSurvivalAccrual
-			info:         qsTr("Control-group event hazard per time unit. Use the same time unit as accrual, study duration, follow-up, and dropout hazards. Defaults to 0.0833 for subjects + events and 0.1155 for group sequential accrual.")
+			info:         qsTr("Control-group event hazard per time unit. Use the same time unit as accrual, follow-up, and dropout hazards. Defaults to 0.0833 for subjects + events and 0.1155 for group sequential accrual.")
 		}
 
 		Text { text: qsTr("Dropout hazard:"); visible: root.usesSurvivalAccrual }
@@ -689,22 +696,22 @@ Group
 			decimals:     4
 			inclusive:    JASP.None
 			visible:      root.usesSurvivalAccrual
-			info:         qsTr("Enrollment duration in the same time unit as the survival hazards and study duration.")
+			info:         qsTr("Enrollment duration in the same time unit as the survival hazards and minimum follow-up.")
 		}
 
-		Text { text: qsTr("Study duration:"); visible: root.usesSurvivalAccrual }
-		Text { text: root.usesNSurvivalAccrual ? qsTr("Ts") : qsTr("T"); visible: root.usesSurvivalAccrual }
+		Text { text: qsTr("Minimum follow-up:"); visible: root.usesSurvivalAccrual }
+		Text { text: qsTr("minfup"); visible: root.usesSurvivalAccrual }
 		DoubleField
 		{
-			name:         "survivalStudyDuration"
-			id:           survivalStudyDuration
+			name:         "survivalMinimumFollowup"
+			id:           survivalMinimumFollowup
 			min:          0
-			defaultValue: root.survivalStudyDurationDefault(survivalInformationMethod.currentValue)
+			defaultValue: root.survivalMinimumFollowupDefault(survivalInformationMethod.currentValue)
 			fieldWidth:   root.parameterFieldWidth
 			decimals:     4
-			inclusive:    JASP.None
+			inclusive:    JASP.MinMax
 			visible:      root.usesSurvivalAccrual
-			info:         qsTr("Maximum study duration. Use the same time unit as the control hazard and accrual duration. Defaults to 24 for subjects + events and 18 for group sequential accrual.")
+			info:         qsTr("Time from the end of enrollment to the end of the study, in the same time unit as the survival hazards and accrual duration. The study duration is the accrual duration plus this follow-up. Defaults to 12 for subjects + events and 6 for group sequential accrual.")
 		}
 
 		Text { text: qsTr("Entry distribution:"); visible: root.usesNSurvivalAccrual }
@@ -748,22 +755,7 @@ Group
 			decimals:     4
 			inclusive:    JASP.None
 			visible:      root.usesGsSurvAccrual
-			info:         qsTr("Enrollment-rate pattern. With fixed study duration and minimum follow-up, the calculation rescales this value to the required accrual rate; the default scalar 1 gives constant accrual.")
-		}
-
-		Text { text: qsTr("Minimum follow-up:"); visible: root.usesGsSurvAccrual }
-		Text { text: qsTr("minfup"); visible: root.usesGsSurvAccrual }
-		DoubleField
-		{
-			name:         "survivalMinimumFollowup"
-			id:           survivalMinimumFollowup
-			min:          0
-			defaultValue: root.defaultSurvivalMinimumFollowup
-			fieldWidth:   root.parameterFieldWidth
-			decimals:     4
-			inclusive:    JASP.None
-			visible:      root.usesGsSurvAccrual
-			info:         qsTr("Minimum follow-up duration in the same time unit as the study duration.")
+			info:         qsTr("Enrollment-rate pattern. With fixed accrual duration and minimum follow-up, the calculation rescales this value to the required accrual rate; the default scalar 1 gives constant accrual.")
 		}
 
 		Text { Layout.columnSpan: 2; text: qsTr("Accrual calculation method:"); visible: root.usesGsSurvAccrual }

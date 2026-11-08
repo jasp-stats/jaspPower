@@ -49,6 +49,7 @@
 * Grammar of the group sequential design explanation.
 * The binary-endpoint help no longer claims that a baseline event probability of 0.5 is conservative for group sequential designs.
 * The numeric fields in the group sequential Parameters section are wider, so values such as the default control hazards are no longer clipped.
+* Survival group sequential designs ask for the accrual duration and minimum follow-up and derive the study duration, so these durations can no longer disagree. Before, group sequential accrual designs silently replaced the entered accrual duration, and subjects + events designs accepted an accrual longer than the study.
 
 ---
 

@@ -52,7 +52,7 @@ GroupSequentialDesignInternal <- function(jaspResults, dataset, options) {
   "binaryEffectScale", "binaryNullRiskDifference", "binaryNullRiskRatio",
   "binaryNullOddsRatio", "hazardRatio", "nullHazardRatio",
   "survivalInformationMethod", "survivalControlHazard", "survivalDropoutHazard",
-  "survivalAccrualDuration", "survivalStudyDuration", "survivalEntry",
+  "survivalAccrualDuration", "survivalEntry",
   "survivalEntryGamma",
   "survivalAccrualRate", "survivalMinimumFollowup", "survivalGsSurvMethod",
   "upperBoundary", "upperBoundaryParameter", "lowerBoundary",
@@ -143,6 +143,12 @@ GroupSequentialDesignInternal <- function(jaspResults, dataset, options) {
   settings[["nFix"]] <- 1
 
   return(settings)
+}
+
+# Derived, so it cannot disagree with the entered accrual duration and follow-up: gsDesign::gsSurv() would
+# silently replace the accrual duration and gsDesign::nSurvival() would accept negative follow-up
+.csdStudyDuration <- function(settings) {
+  settings[["survivalAccrualDuration"]] + settings[["survivalMinimumFollowup"]]
 }
 
 .csdNormalFixedInformationArgs <- function(settings) {
@@ -249,7 +255,7 @@ GroupSequentialDesignInternal <- function(jaspResults, dataset, options) {
   list(
     lambda1 = settings[["survivalControlHazard"]],
     lambda2 = settings[["survivalControlHazard"]] * settings[["hazardRatio"]],
-    Ts      = settings[["survivalStudyDuration"]],
+    Ts      = .csdStudyDuration(settings),
     Tr      = settings[["survivalAccrualDuration"]],
     eta     = settings[["survivalDropoutHazard"]],
     ratio   = settings[["sampleSizeAllocationRatio"]],
@@ -435,7 +441,7 @@ GroupSequentialDesignInternal <- function(jaspResults, dataset, options) {
     eta       = settings[["survivalDropoutHazard"]],
     gamma     = settings[["survivalAccrualRate"]],
     R         = settings[["survivalAccrualDuration"]],
-    T         = settings[["survivalStudyDuration"]],
+    T         = .csdStudyDuration(settings),
     minfup    = settings[["survivalMinimumFollowup"]],
     ratio     = settings[["sampleSizeAllocationRatio"]],
     method    = settings[["survivalGsSurvMethod"]]
@@ -640,6 +646,9 @@ GroupSequentialDesignInternal <- function(jaspResults, dataset, options) {
     analysisTimeRow <- .csdAnalysisTimePlanningDetailRow(settings, design, fixedSurvivalDesign)
     if (!is.null(analysisTimeRow))
       rows[[length(rows) + 1]] <- analysisTimeRow
+
+    if (settings[["survivalInformationMethod"]] == "nSurvival")
+      rows[[length(rows) + 1]] <- .csdStudyDurationPlanningDetailRow(settings)
   }
 
   if (length(rows) == 0)
@@ -710,6 +719,17 @@ GroupSequentialDesignInternal <- function(jaspResults, dataset, options) {
   )
 }
 
+.csdStudyDurationPlanningDetailRow <- function(settings) {
+  data.frame(
+    quantity    = gettext("Study duration"),
+    fixedDesign = .csdStudyDuration(settings),
+    maximum     = .csdStudyDuration(settings),
+    expectedH0  = NA_real_,
+    expectedH1  = NA_real_,
+    stringsAsFactors = FALSE
+  )
+}
+
 .csdFixedSurvivalPlanningDesign <- function(settings, design) {
   if (!inherits(design, "gsSurv"))
     return(NULL)
@@ -722,7 +742,7 @@ GroupSequentialDesignInternal <- function(jaspResults, dataset, options) {
     eta     = settings[["survivalDropoutHazard"]],
     gamma   = settings[["survivalAccrualRate"]],
     R       = settings[["survivalAccrualDuration"]],
-    T       = settings[["survivalStudyDuration"]],
+    T       = .csdStudyDuration(settings),
     minfup  = settings[["survivalMinimumFollowup"]],
     ratio   = settings[["sampleSizeAllocationRatio"]],
     alpha   = helper[["alpha"]],
@@ -742,7 +762,7 @@ GroupSequentialDesignInternal <- function(jaspResults, dataset, options) {
   if (is.finite(value))
     return(value)
 
-  .csdPositiveFirst(settings[["survivalStudyDuration"]])
+  .csdPositiveFirst(.csdStudyDuration(settings))
 }
 
 .csdPlanningDetailsIncludeExpected <- function(rows) {

@@ -60,16 +60,15 @@
 #'    Defaults to \code{TRUE}.
 #' @param stoppingBoundariesTable, Display the information schedule, Z-boundaries, and nominal p-values by look.
 #'    Defaults to \code{TRUE}.
-#' @param survivalAccrualDuration, Enrollment duration in the same time unit as the survival hazards and study duration.
-#' @param survivalAccrualRate, Enrollment-rate pattern. With fixed study duration and minimum follow-up, the calculation rescales this value to the required accrual rate; the default scalar 1 gives constant accrual.
-#' @param survivalControlHazard, Control-group event hazard per time unit. Use the same time unit as accrual, study duration, follow-up, and dropout hazards. Defaults to 0.0833 for subjects + events and 0.1155 for group sequential accrual.
+#' @param survivalAccrualDuration, Enrollment duration in the same time unit as the survival hazards and minimum follow-up.
+#' @param survivalAccrualRate, Enrollment-rate pattern. With fixed accrual duration and minimum follow-up, the calculation rescales this value to the required accrual rate; the default scalar 1 gives constant accrual.
+#' @param survivalControlHazard, Control-group event hazard per time unit. Use the same time unit as accrual, follow-up, and dropout hazards. Defaults to 0.0833 for subjects + events and 0.1155 for group sequential accrual.
 #' @param survivalDropoutHazard, Equal dropout hazard for both groups, per time unit. Use 0 for no dropout.
 #' @param survivalEntry, Patient entry distribution during the enrollment period.
 #' @param survivalEntryGamma, Non-zero γ for exponential entry; positive values are convex and negative values are concave. The default is a non-zero starting value.
 #' @param survivalGsSurvMethod, Method used for the fixed-design survival calculation inside the group sequential accrual design.
 #' @param survivalInformationMethod, Selects whether survival information is planned as events only, as fixed-design subjects plus events, or directly as a group sequential survival design with study-time accrual assumptions.
-#' @param survivalMinimumFollowup, Minimum follow-up duration in the same time unit as the study duration.
-#' @param survivalStudyDuration, Maximum study duration. Use the same time unit as the control hazard and accrual duration. Defaults to 24 for subjects + events and 18 for group sequential accrual.
+#' @param survivalMinimumFollowup, Time from the end of enrollment to the end of the study, in the same time unit as the survival hazards and accrual duration. The study duration is the accrual duration plus this follow-up. Defaults to 12 for subjects + events and 6 for group sequential accrual.
 #' @param text, Display a short explanation of the design.
 #'    Defaults to \code{TRUE}.
 #' @param timing, Increasing information fractions. Supply K values ending in 1, or K - 1 interim values strictly below 1. The default schedule is generated from K.
@@ -123,8 +122,7 @@ GroupSequentialDesign <- function(
           survivalEntryGamma = 0.1,
           survivalGsSurvMethod = "LachinFoulkes",
           survivalInformationMethod = "events",
-          survivalMinimumFollowup = 6,
-          survivalStudyDuration = 24,
+          survivalMinimumFollowup = 12,
           text = TRUE,
           timing = "0.33, 0.67, 1",
           timingMode = "even",
