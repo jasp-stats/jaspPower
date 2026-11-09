@@ -1549,11 +1549,7 @@ GroupSequentialDesignInternal <- function(jaspResults, dataset, options) {
   informationLabel <- .csdInformationLabels(settings)[["text"]]
   html[["text"]] <- paste0(
     "<p>",
-    gettextf(
-      "This is a %1$s classical group sequential design with %2$s planned looks, including the final analysis.",
-      tolower(.csdDesignTypeLabel(settings[["designType"]])),
-      design[["k"]]
-    ),
+    .csdExplanationOpening(settings[["designType"]], design[["k"]]),
     "</p><p>",
     gettextf(
       "Maximum %1$s: %2$s (corresponding fixed design: %3$s).",
@@ -1562,6 +1558,18 @@ GroupSequentialDesignInternal <- function(jaspResults, dataset, options) {
       .csdFormatNumber(design[["n.fix"]])
     ),
     "</p>"
+  )
+}
+
+# One sentence per design type, so that translations control the case and the inflection of the design type
+# (lower-casing the translated label would, for example, lower-case German nouns)
+.csdExplanationOpening <- function(designType, looks) {
+  switch(
+    designType,
+    oneSided                     = gettextf("This is a one-sided classical group sequential design with %1$s planned looks, including the final analysis.", looks),
+    twoSidedSymmetric            = gettextf("This is a two-sided symmetric classical group sequential design with %1$s planned looks, including the final analysis.", looks),
+    twoSidedAsymmetricBinding    = gettextf("This is a two-sided asymmetric \u03B2-spending (binding futility) classical group sequential design with %1$s planned looks, including the final analysis.", looks),
+    twoSidedAsymmetricNonBinding = gettextf("This is a two-sided asymmetric \u03B2-spending (non-binding futility) classical group sequential design with %1$s planned looks, including the final analysis.", looks)
   )
 }
 

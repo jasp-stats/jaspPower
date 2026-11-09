@@ -23,6 +23,22 @@ test_that("The explanation names the design type in lower case", {
   )
 })
 
+test_that("The explanation has a full sentence for every design type", {
+  designTypes <- c(
+    oneSided                     = "one-sided",
+    twoSidedSymmetric            = "two-sided symmetric",
+    twoSidedAsymmetricBinding    = "two-sided asymmetric \u03B2-spending (binding futility)",
+    twoSidedAsymmetricNonBinding = "two-sided asymmetric \u03B2-spending (non-binding futility)"
+  )
+
+  for (designType in names(designTypes)) {
+    expect_identical(
+      jaspPower:::.csdExplanationOpening(designType, 3),
+      paste0("This is a ", designTypes[[designType]], " classical group sequential design with 3 planned looks, including the final analysis.")
+    )
+  }
+})
+
 test_that("Invalid inputs show validation messages instead of a fatal plot error", {
   results <- .gsdRun("Continuous", 1, numberOfLooks = 3, timingMode = "custom", timing = "0.5, 0.5, 1")
 
