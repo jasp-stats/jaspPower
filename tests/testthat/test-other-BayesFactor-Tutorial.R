@@ -10,10 +10,9 @@ test_that("BayesFactorDesign (analysis 1) results match", {
   opts <- jaspTools::analysisOptions(jaspFile)[[1]]
   dataset <- jaspTools::extractDatasetFromJASPFile(jaspFile)
 
-  # Encode and run analysis
-  encoded <- jaspTools:::encodeOptionsAndDataset(opts, dataset)
+  # Run analysis
   set.seed(1)
-  results <- jaspTools::runAnalysis("BayesFactorDesign", encoded$dataset, encoded$options, encodedDataset = TRUE)
+  results <- jaspTools::runAnalysis("BayesFactorDesign", dataset, opts)
 
   table <- results[["results"]][["evidenceDesignOutcome"]][["data"]]
   jaspTools::expect_equal_tables(table,
@@ -50,10 +49,9 @@ test_that("BayesFactorDesign (analysis 2) results match", {
   opts <- jaspTools::analysisOptions(jaspFile)[[2]]
   dataset <- jaspTools::extractDatasetFromJASPFile(jaspFile)
 
-  # Encode and run analysis
-  encoded <- jaspTools:::encodeOptionsAndDataset(opts, dataset)
+  # Run analysis
   set.seed(1)
-  results <- jaspTools::runAnalysis("BayesFactorDesign", encoded$dataset, encoded$options, encodedDataset = TRUE)
+  results <- jaspTools::runAnalysis("BayesFactorDesign", dataset, opts)
 
   table <- results[["results"]][["evidenceDesignOutcome"]][["data"]]
   jaspTools::expect_equal_tables(table,
@@ -82,10 +80,9 @@ test_that("BayesFactorSequentialDesign (analysis 3) results match", {
   opts <- jaspTools::analysisOptions(jaspFile)[[3]]
   dataset <- jaspTools::extractDatasetFromJASPFile(jaspFile)
 
-  # Encode and run analysis
-  encoded <- jaspTools:::encodeOptionsAndDataset(opts, dataset)
+  # Run analysis
   set.seed(1)
-  results <- jaspTools::runAnalysis("BayesFactorSequentialDesign", encoded$dataset, encoded$options, encodedDataset = TRUE)
+  results <- jaspTools::runAnalysis("BayesFactorSequentialDesign", dataset, opts)
 
   table <- results[["results"]][["sequentialEvidenceDesignOutcome"]][["data"]]
   jaspTools::expect_equal_tables(table,
@@ -137,10 +134,9 @@ test_that("BayesFactorSequentialDesign (analysis 4) results match", {
   opts <- jaspTools::analysisOptions(jaspFile)[[4]]
   dataset <- jaspTools::extractDatasetFromJASPFile(jaspFile)
 
-  # Encode and run analysis
-  encoded <- jaspTools:::encodeOptionsAndDataset(opts, dataset)
+  # Run analysis
   set.seed(1)
-  results <- jaspTools::runAnalysis("BayesFactorSequentialDesign", encoded$dataset, encoded$options, encodedDataset = TRUE)
+  results <- jaspTools::runAnalysis("BayesFactorSequentialDesign", dataset, opts)
 
   table <- results[["results"]][["sequentialEvidenceDesignOutcome"]][["data"]]
   jaspTools::expect_equal_tables(table,
