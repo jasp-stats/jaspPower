@@ -355,8 +355,14 @@ BayesFactorDesignInternal <- function(jaspResults, dataset, options) {
   notReached  <- gettext("Target conclusive evidence probability is not reached within the selected sample-size range.")
 
   # the bfpwr root searches need the target to be crossed inside the range
-  if (.bfdEvidenceProbability(settings, n1 = minimumN, target = target, under = under) >= targetPower)
-    return(as.integer(minimumN))
+  if (.bfdEvidenceProbability(settings, n1 = minimumN, target = target, under = under) >= targetPower) {
+    belowTarget <- .bfdBinomialSampleSizesBelowTarget(settings, minimumN, maximumN, target, under, targetPower)
+    if (length(belowTarget) == 0)
+      return(as.integer(minimumN))
+
+    # search from the last sample size below the target, where the bfpwr search can start
+    minimumN <- max(belowTarget)
+  }
 
   n <- try(.bfdFindSampleSizeWithBfpwr(settings, minimumN, maximumN, target = target, under = under), silent = TRUE)
   if (jaspBase::isTryError(n) || length(n) != 1 || !is.finite(n) || n > maximumN) {
@@ -367,6 +373,18 @@ BayesFactorDesignInternal <- function(jaspResults, dataset, options) {
   }
 
   return(as.integer(max(ceiling(n), minimumN)))
+}
+
+# Binomial probabilities oscillate with the sample size. Like bfpwr::nbinbf01(), a sample size counts only when the
+# target also holds for the next 10 sample sizes; returns those of them that fall below the target.
+.bfdBinomialSampleSizesBelowTarget <- function(settings, minimumN, maximumN, target, under, targetPower) {
+  if (!settings[["isBinomial"]])
+    return(integer(0))
+
+  n           <- seq(minimumN, min(minimumN + 10, maximumN))
+  probability <- vapply(n, function(ni) .bfdEvidenceProbability(settings, n1 = ni, target = target, under = under), numeric(1))
+
+  return(n[probability < targetPower])
 }
 
 .bfdFindSampleSizeWithBfpwr <- function(settings, minimumN, maximumN, target, under) {

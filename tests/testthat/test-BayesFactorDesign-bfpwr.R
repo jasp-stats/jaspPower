@@ -227,6 +227,26 @@ test_that("Fixed sample-size search handles a target met at the minimum and poin
   expect_false(any(grepl("To satisfy both design priors", .bfFootnotes(table), fixed = TRUE)))
 })
 
+test_that("Binomial sample-size search does not stop at an oscillation peak at the minimum sample size", {
+  settings <- jaspPower:::.bfdPrepareSettings(list(
+    statisticalTest = "oneSampleProportion", calculationTarget = "sampleSize", sampleSize = 50,
+    nullProportion = 0.5, nullPriorDistribution = "point", analysisPriorSuccesses = 1, analysisPriorFailures = 1,
+    binomialDesignPriorDistribution = "point", designProportion = 0.7,
+    conclusiveEvidenceThresholdH1 = 6, probabilityOfConclusiveEvidenceUnderH1 = 0.8,
+    minimumSampleSize = 10, maximumSampleSize = 10000
+  ))
+  power <- function(n) bfpwr::pbinbf01(k = 1/6, n = n, p0 = 0.5, type = "point", a = 1, b = 1, dp = 0.7)
+
+  # the target holds at N = 74 and 77 but not at 75, 76 and 78; bfpwr's search returns 79, from where it keeps holding
+  expect_true(power(74) >= 0.8 && power(75) < 0.8 && power(77) >= 0.8 && power(78) < 0.8)
+  expect_equal(bfpwr::nbinbf01(k = 1/6, power = 0.8, p0 = 0.5, type = "point", a = 1, b = 1, dp = 0.7, nrange = c(10, 10000)), 79)
+
+  for (minimumSampleSize in c(10, 74, 77, 79)) {
+    settings[["minimumSampleSize"]] <- minimumSampleSize
+    expect_equal(jaspPower:::.bfdFindSampleSize(settings, target = "h1", under = "h1"), 79L)
+  }
+})
+
 test_that("Observed Bayes factors are computed on the log scale for very strong evidence", {
   results <- do.call(.bfRun, c(list("BayesFactorDesign", 1), .bfFixedZOptions, list(
     analysisPriorDistribution = "normal", analysisPriorDirection = "twoSided",
