@@ -174,7 +174,7 @@ test_that("Sequential directional z-test reflects 'less' designs around the null
 
 test_that("Sequential maximum sample-size search supports one-sided normal-moment priors", {
   results <- do.call(.bfRun, c(list("BayesFactorSequentialDesign", 3), .bfSequentialZOptions, list(
-    calculationTarget = "sampleSize", lookScheduleType = "even", numberOfLooks = 3, firstInformationFraction = 1/3,
+    calculationTarget = "sampleSize", lookScheduleType = "even", numberOfLooks = 3, firstInformationFraction = 0.25,
     analysisPriorDistribution = "normalMomentMode", analysisPriorMode = 0.5, analysisPriorDirection = "greater",
     nullPriorDistribution = "point", sampleSizeSearchStrategy = "adaptive", designSampleSizeBasis = "eachDesignHypothesis",
     lowerSearchBoundForMaximumSampleSize = 10, upperSearchBoundForMaximumSampleSize = 2000
@@ -182,7 +182,7 @@ test_that("Sequential maximum sample-size search supports one-sided normal-momen
 
   expected <- bfpwr::nbf01seq(
     k1 = 1/6, k0 = 6, power = 0.8, usd = 1, null = 0, psd = 0.5/sqrt(2), dpm = 0.5, dpsd = 0, type = "moment",
-    target = "H1", nrange = c(10, 2000), timing = c(1/3, 2/3, 1), alternative = "greater"
+    target = "H1", nrange = c(10, 2000), timing = c(0.25, 0.625, 1), alternative = "greater"
   )
 
   rows <- results[["sequentialEvidenceResults"]][["data"]]
@@ -227,6 +227,40 @@ test_that("Fixed sample-size search handles a target met at the minimum and poin
   expect_false(any(grepl("To satisfy both design priors", .bfFootnotes(table), fixed = TRUE)))
 })
 
+test_that("Binomial sample-size search does not stop at an oscillation peak at the minimum sample size", {
+  settings <- jaspPower:::.bfdPrepareSettings(list(
+    statisticalTest = "oneSampleProportion", calculationTarget = "sampleSize", sampleSize = 50,
+    nullProportion = 0.5, nullPriorDistribution = "point", analysisPriorSuccesses = 1, analysisPriorFailures = 1,
+    binomialDesignPriorDistribution = "point", designProportion = 0.7,
+    conclusiveEvidenceThresholdH1 = 6, probabilityOfConclusiveEvidenceUnderH1 = 0.8,
+    minimumSampleSize = 10, maximumSampleSize = 10000
+  ))
+  power <- function(n) bfpwr::pbinbf01(k = 1/6, n = n, p0 = 0.5, type = "point", a = 1, b = 1, dp = 0.7)
+
+  # the target holds at N = 74 and 77 but not at 75, 76 and 78; bfpwr's search returns 79, from where it keeps holding
+  expect_true(power(74) >= 0.8 && power(75) < 0.8 && power(77) >= 0.8 && power(78) < 0.8)
+  expect_equal(bfpwr::nbinbf01(k = 1/6, power = 0.8, p0 = 0.5, type = "point", a = 1, b = 1, dp = 0.7, nrange = c(10, 10000)), 79)
+
+  for (minimumSampleSize in c(10, 74, 77, 79)) {
+    settings[["minimumSampleSize"]] <- minimumSampleSize
+    expect_equal(jaspPower:::.bfdFindSampleSize(settings, target = "h1", under = "h1"), 79L)
+  }
+})
+
+test_that("The inside legend leaves room for a point prior at the right end of the prior plot axis", {
+  # the tutorial's first analysis has point design priors at 0 and 0.3
+  settings <- jaspPower:::.bfdPrepareSettings(.bfTutorialOptions(1))
+
+  settings[["legendPosition"]] <- "right"
+  expect_equal(jaspPower:::.bfdPriorAxis(settings, "design")[["range"]], c(0, 0.3))
+
+  settings[["legendPosition"]] <- "rightInside"
+  range <- jaspPower:::.bfdPriorAxis(settings, "design")[["range"]]
+  expect_lte((0.3 - range[1]) / diff(range), 0.6)
+  # the analysis prior plot has its point prior (the null value) in the middle of the axis, so it keeps its range
+  expect_equal(jaspPower:::.bfdPriorAxis(settings, "analysis")[["range"]], c(-2, 2))
+})
+
 test_that("Observed Bayes factors are computed on the log scale for very strong evidence", {
   results <- do.call(.bfRun, c(list("BayesFactorDesign", 1), .bfFixedZOptions, list(
     analysisPriorDistribution = "normal", analysisPriorDirection = "twoSided",
@@ -238,7 +272,7 @@ test_that("Observed Bayes factors are computed on the log scale for very strong 
   expect_identical(observed[["data"]][[1]][["decision"]], "BF supports H₁")
 })
 
-test_that("Binomial dataset input rejects a success value that does not occur in the variable", {
+test_that("Binomial dataset input counts a success value that does not occur as zero successes", {
   results <- .bfRun(
     "BayesFactorDesign", 1, statisticalTest = "oneSampleProportion", analysisPriorDistribution = "beta",
     calculationTarget = "evidenceProbability", observedDataAnalysisInput = "columns",
@@ -246,7 +280,8 @@ test_that("Binomial dataset input rejects a success value that does not occur in
   )
 
   observed <- results[["evidenceObservedAnalysis"]][["collection"]][["evidenceObservedAnalysis_result"]]
-  expect_match(observed[["error"]][["errorMessage"]], "does not occur in the selected variable", fixed = TRUE)
+  expect_identical(observed[["status"]], "complete")
+  expect_identical(observed[["data"]][[1]][["statistic"]], 0L)
 })
 
 test_that("One-sided normal-moment priors are described by their single mode", {
@@ -292,7 +327,7 @@ test_that("Sequential independent z designs allow small allocation ratios and us
 
 test_that("Sequential designs blank results that depend on an unreached planning target", {
   results <- do.call(.bfRun, c(list("BayesFactorSequentialDesign", 3), .bfSequentialZOptions, list(
-    calculationTarget = "sampleSize", lookScheduleType = "even", numberOfLooks = 3, firstInformationFraction = 1/3,
+    calculationTarget = "sampleSize", lookScheduleType = "even", numberOfLooks = 3, firstInformationFraction = 0.25,
     analysisPriorDistribution = "normal", analysisPriorMean = 0, analysisPriorScale = 1, analysisPriorDirection = "greater",
     designPriorMean = 1, designSampleSizeBasis = "eachDesignHypothesis", sampleSizeSearchStrategy = "adaptive",
     lowerSearchBoundForMaximumSampleSize = 10, upperSearchBoundForMaximumSampleSize = 30

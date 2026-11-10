@@ -355,8 +355,14 @@ BayesFactorDesignInternal <- function(jaspResults, dataset, options) {
   notReached  <- gettext("Target conclusive evidence probability is not reached within the selected sample-size range.")
 
   # the bfpwr root searches need the target to be crossed inside the range
-  if (.bfdEvidenceProbability(settings, n1 = minimumN, target = target, under = under) >= targetPower)
-    return(as.integer(minimumN))
+  if (.bfdEvidenceProbability(settings, n1 = minimumN, target = target, under = under) >= targetPower) {
+    belowTarget <- .bfdBinomialSampleSizesBelowTarget(settings, minimumN, maximumN, target, under, targetPower)
+    if (length(belowTarget) == 0)
+      return(as.integer(minimumN))
+
+    # search from the last sample size below the target, where the bfpwr search can start
+    minimumN <- max(belowTarget)
+  }
 
   n <- try(.bfdFindSampleSizeWithBfpwr(settings, minimumN, maximumN, target = target, under = under), silent = TRUE)
   if (jaspBase::isTryError(n) || length(n) != 1 || !is.finite(n) || n > maximumN) {
@@ -367,6 +373,18 @@ BayesFactorDesignInternal <- function(jaspResults, dataset, options) {
   }
 
   return(as.integer(max(ceiling(n), minimumN)))
+}
+
+# Binomial probabilities oscillate with the sample size. Like bfpwr::nbinbf01(), a sample size counts only when the
+# target also holds for the next 10 sample sizes; returns those of them that fall below the target.
+.bfdBinomialSampleSizesBelowTarget <- function(settings, minimumN, maximumN, target, under, targetPower) {
+  if (!settings[["isBinomial"]])
+    return(integer(0))
+
+  n           <- seq(minimumN, min(minimumN + 10, maximumN))
+  probability <- vapply(n, function(ni) .bfdEvidenceProbability(settings, n1 = ni, target = target, under = under), numeric(1))
+
+  return(n[probability < targetPower])
 }
 
 .bfdFindSampleSizeWithBfpwr <- function(settings, minimumN, maximumN, target, under) {
@@ -1403,17 +1421,9 @@ BayesFactorDesignInternal <- function(jaspResults, dataset, options) {
   if (length(values) < 1)
     stop(gettext("The selected variable contains no observed values."))
 
+  # a success value that does not occur means zero successes, which is valid binomial data
   successValue <- as.character(options[["observedSuccessValue"]])
-  levels       <- unique(as.character(values))
-  if (!successValue %in% levels) {
-    stop(gettextf(
-      "The success value '%1$s' does not occur in the selected variable. Observed values: %2$s.",
-      successValue,
-      paste(utils::head(sort(levels), 10), collapse = ", ")
-    ))
-  }
-
-  successes <- sum(as.character(values) == successValue)
+  successes    <- sum(as.character(values) == successValue)
   trials    <- length(values)
 
   return(list(
@@ -3881,12 +3891,34 @@ BayesFactorDesignInternal <- function(jaspResults, dataset, options) {
 
 .bfdPriorAxis <- function(settings, priorSet = c("analysis", "design")) {
   requestedRange <- if (settings[["isBinomial"]]) .bfdBinomialPriorRange(settings, priorSet) else .bfdContinuousPriorRange(settings, priorSet)
+  requestedRange <- .bfdPriorRangeBesideInsideLegend(settings, priorSet, requestedRange)
   breaks         <- .bfdPrettyPriorBreaks(requestedRange, isBinomial = settings[["isBinomial"]])
 
   return(list(
     breaks = breaks,
     range  = range(breaks)
   ))
+}
+
+# Point priors are drawn as arrows over the full plot height, and the "Right (inside)" legend sits at the right edge of
+# the plot, so it covered a point prior in the right part of the axis. With that legend, the axis is extended to the
+# right so that every point prior stays in the left 60% of the plot; other legend positions keep the axis as it is.
+.bfdPriorRangeBesideInsideLegend <- function(settings, priorSet, range) {
+  if (!identical(settings[["legendPosition"]], "rightInside"))
+    return(range)
+
+  spikeData <- if (settings[["isBinomial"]]) {
+    .bfdBinomialPriorSpikeData(settings, priorSet, densityData = data.frame())
+  } else {
+    .bfdContinuousPriorSpikeData(settings, priorSet, densityData = data.frame())
+  }
+  spikes <- spikeData[["x"]][is.finite(spikeData[["x"]])]
+  width  <- diff(range)
+  if (length(spikes) == 0 || length(width) != 1 || !is.finite(width) || width <= 0)
+    return(range)
+
+  upper <- range[1] + (max(spikes) - range[1]) / 0.6
+  return(c(range[1], max(range[2], upper)))
 }
 
 .bfdContinuousPriorRange <- function(settings, priorSet = c("analysis", "design")) {
