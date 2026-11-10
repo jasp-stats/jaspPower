@@ -1781,7 +1781,13 @@ GroupSequentialDesignInternal <- function(jaspResults, dataset, options) {
     ggplot2::scale_y_continuous(limits = c(0, 1), labels = function(x) paste0(round(100 * x), "%")) +
     ggplot2::labs(x = gettext("Look"), y = gettext("Cumulative probability"), color = gettext("Boundary"), linetype = gettext("Under"))
 
-  return(.bfdApplyPlotTheme(plot, settings))
+  # Without an explicit order, ggplot2 sorts the two legends by a hash of their contents, so symmetric and asymmetric
+  # designs listed them in different orders. jaspBase's decodeplot() replaces the colour guide (and with it any order
+  # set on it), so only the linetype order survives: "Under" first, then "Boundary"
+  plot <- .bfdApplyPlotTheme(plot, settings) +
+    ggplot2::guides(linetype = ggplot2::guide_legend(order = 1))
+
+  return(plot)
 }
 
 .csdCrossingPlotData <- function(design) {

@@ -66,30 +66,30 @@
 <text x='298.10' y='567.49' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='36.87px' lengthAdjust='spacingAndGlyphs'>Look</text>
 <text transform='translate(16.68,265.42) rotate(-90)' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='167.26px' lengthAdjust='spacingAndGlyphs'>Cumulative probability</text>
 <rect x='518.03' y='20.71' width='201.97' height='216.03' style='stroke-width: 0.75; stroke: none;' />
-<rect x='518.03' y='20.71' width='201.97' height='116.71' style='stroke-width: 10.67; stroke: none;' />
-<text x='616.03' y='39.65' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='72.79px' lengthAdjust='spacingAndGlyphs'>Boundary</text>
+<rect x='518.03' y='20.71' width='69.66' height='88.36' style='stroke-width: 10.67; stroke: none;' />
+<text x='549.87' y='39.65' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='46.31px' lengthAdjust='spacingAndGlyphs'>Under</text>
 <rect x='523.51' y='46.90' width='28.35' height='28.35' style='stroke-width: 10.67; stroke: none;' />
-<line x1='526.35' y1='61.07' x2='549.02' y2='61.07' style='stroke-width: 2.35; stroke: #1B9E77; stroke-linecap: butt;' />
-<circle cx='537.69' cy='61.07' r='2.49' style='stroke-width: 0.71; stroke: #1B9E77; fill: #1B9E77;' />
+<line x1='526.35' y1='61.07' x2='549.02' y2='61.07' style='stroke-width: 2.35; stroke-linecap: butt;' />
 <rect x='523.51' y='75.24' width='28.35' height='28.35' style='stroke-width: 10.67; stroke: none;' />
-<line x1='526.35' y1='89.42' x2='549.02' y2='89.42' style='stroke-width: 2.35; stroke: #B27D5D; stroke-linecap: butt;' />
-<circle cx='537.69' cy='89.42' r='2.49' style='stroke-width: 0.71; stroke: #B27D5D; fill: #B27D5D;' />
-<rect x='523.51' y='103.59' width='28.35' height='28.35' style='stroke-width: 10.67; stroke: none;' />
-<line x1='526.35' y1='117.76' x2='549.02' y2='117.76' style='stroke-width: 2.35; stroke: #666666; stroke-linecap: butt;' />
-<circle cx='537.69' cy='117.76' r='2.49' style='stroke-width: 0.71; stroke: #666666; fill: #666666;' />
-<text x='557.34' y='66.92' style='font-size: 17.00px; font-family: sans;' textLength='46.31px' lengthAdjust='spacingAndGlyphs'>Lower</text>
-<text x='557.34' y='95.26' style='font-size: 17.00px; font-family: sans;' textLength='46.31px' lengthAdjust='spacingAndGlyphs'>Upper</text>
-<text x='557.34' y='123.61' style='font-size: 17.00px; font-family: sans;' textLength='151.20px' lengthAdjust='spacingAndGlyphs'>Upper (non-binding)</text>
-<rect x='518.03' y='148.37' width='69.66' height='88.36' style='stroke-width: 10.67; stroke: none;' />
-<text x='549.87' y='167.32' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='46.31px' lengthAdjust='spacingAndGlyphs'>Under</text>
+<line x1='526.35' y1='89.42' x2='549.02' y2='89.42' style='stroke-width: 2.35; stroke-dasharray: 6.26,6.26; stroke-linecap: butt;' />
+<text x='557.34' y='65.29' style='font-size: 17.00px; font-family: sans;' textLength='12.28px' lengthAdjust='spacingAndGlyphs'>H</text>
+<text x='569.62' y='68.43' style='font-size: 11.90px; font-family: sans;' textLength='6.62px' lengthAdjust='spacingAndGlyphs'>0</text>
+<text x='557.34' y='93.69' style='font-size: 17.00px; font-family: sans;' textLength='12.28px' lengthAdjust='spacingAndGlyphs'>H</text>
+<text x='569.62' y='96.84' style='font-size: 11.90px; font-family: sans;' textLength='6.62px' lengthAdjust='spacingAndGlyphs'>1</text>
+<rect x='518.03' y='120.03' width='201.97' height='116.71' style='stroke-width: 10.67; stroke: none;' />
+<text x='616.03' y='138.97' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='72.79px' lengthAdjust='spacingAndGlyphs'>Boundary</text>
+<rect x='523.51' y='146.21' width='28.35' height='28.35' style='stroke-width: 10.67; stroke: none;' />
+<line x1='526.35' y1='160.39' x2='549.02' y2='160.39' style='stroke-width: 2.35; stroke: #1B9E77; stroke-linecap: butt;' />
+<circle cx='537.69' cy='160.39' r='2.49' style='stroke-width: 0.71; stroke: #1B9E77; fill: #1B9E77;' />
 <rect x='523.51' y='174.56' width='28.35' height='28.35' style='stroke-width: 10.67; stroke: none;' />
-<line x1='526.35' y1='188.73' x2='549.02' y2='188.73' style='stroke-width: 2.35; stroke-linecap: butt;' />
+<line x1='526.35' y1='188.73' x2='549.02' y2='188.73' style='stroke-width: 2.35; stroke: #B27D5D; stroke-linecap: butt;' />
+<circle cx='537.69' cy='188.73' r='2.49' style='stroke-width: 0.71; stroke: #B27D5D; fill: #B27D5D;' />
 <rect x='523.51' y='202.91' width='28.35' height='28.35' style='stroke-width: 10.67; stroke: none;' />
-<line x1='526.35' y1='217.08' x2='549.02' y2='217.08' style='stroke-width: 2.35; stroke-dasharray: 6.26,6.26; stroke-linecap: butt;' />
-<text x='557.34' y='192.95' style='font-size: 17.00px; font-family: sans;' textLength='12.28px' lengthAdjust='spacingAndGlyphs'>H</text>
-<text x='569.62' y='196.10' style='font-size: 11.90px; font-family: sans;' textLength='6.62px' lengthAdjust='spacingAndGlyphs'>0</text>
-<text x='557.34' y='221.36' style='font-size: 17.00px; font-family: sans;' textLength='12.28px' lengthAdjust='spacingAndGlyphs'>H</text>
-<text x='569.62' y='224.50' style='font-size: 11.90px; font-family: sans;' textLength='6.62px' lengthAdjust='spacingAndGlyphs'>1</text>
+<line x1='526.35' y1='217.08' x2='549.02' y2='217.08' style='stroke-width: 2.35; stroke: #666666; stroke-linecap: butt;' />
+<circle cx='537.69' cy='217.08' r='2.49' style='stroke-width: 0.71; stroke: #666666; fill: #666666;' />
+<text x='557.34' y='166.24' style='font-size: 17.00px; font-family: sans;' textLength='46.31px' lengthAdjust='spacingAndGlyphs'>Lower</text>
+<text x='557.34' y='194.58' style='font-size: 17.00px; font-family: sans;' textLength='46.31px' lengthAdjust='spacingAndGlyphs'>Upper</text>
+<text x='557.34' y='222.93' style='font-size: 17.00px; font-family: sans;' textLength='151.20px' lengthAdjust='spacingAndGlyphs'>Upper (non-binding)</text>
 <text x='298.10' y='11.70' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='389.36px' lengthAdjust='spacingAndGlyphs'>analysis-2_figure-2_boundary-crossing-probabilities</text>
 </g>
 </svg>
