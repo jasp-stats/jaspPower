@@ -21,12 +21,12 @@
 #'
 #' Bayes Factor design allows you to design fixed sample size experiments for conclusive evidence.
 #'
-#' @param analysisPriorDirection, Direction of the analysis prior under H₁.
+#' @param analysisPriorDirection, Direction of the analysis prior under H₁. One-sided directions truncate the analysis prior to values below (less) or above (greater) the null value and renormalize it; the prior parameters describe the distribution before truncation.
 #' @param analysisPriorDistribution, Prior distribution under H₁ used to compute the Bayes factor from the data.
 #' @param analysisPriorDistributionFigure, Plot the analysis prior used to compute the Bayes factor from the data.
 #'    Defaults to \code{TRUE}.
 #' @param analysisPriorFailures, Failure parameter of the beta analysis prior under H₁.
-#' @param analysisPriorLocation, Point location of the H₁ analysis prior.
+#' @param analysisPriorLocation, Point location of the H₁ analysis prior. For a one-sided direction, it must lie strictly on the H₁ side of the null value.
 #' @param analysisPriorMean, Mean of the normal H₁ analysis prior.
 #' @param analysisPriorMode, Mode of the non-local moment prior under H₁.
 #' @param analysisPriorScale, Scale of the normal H₁ analysis prior.
@@ -80,13 +80,13 @@
 #'    Defaults to \code{FALSE}.
 #' @param generateReportLatexFormattedOutput, Format the generated report with LaTeX notation for use in manuscripts and preregistrations.
 #'    Defaults to \code{FALSE}.
-#' @param knownStandardDeviation, Known population standard deviation used for z-test sample size planning.
+#' @param knownStandardDeviation, Known population standard deviation of the outcome. The effect and the priors are mean (differences) in the units of the outcome.
 #' @param legendPosition, Choose where the plot legend is shown.
 #' @param logSampleSizeAxis, Use a logarithmic x-axis to inspect changes across small and large sample sizes.
 #'    Defaults to \code{TRUE}.
 #' @param maximumSampleSize, Largest sample size considered when searching for the target probability of conclusive evidence.
 #' @param minimumSampleSize, Smallest sample size considered when searching for the target probability of conclusive evidence.
-#' @param nullPriorDistribution, Prior specification for H₀ used to compute the Bayes factor from the observed data.
+#' @param nullPriorDistribution, Prior specification for H₀ used to compute the Bayes factor from the observed data. A point null fixes the parameter at the null value. A directional null places the opposite half of the analysis prior on H₀ (available for one-sided normal priors in sequential z-test designs and for the proportion test).
 #' @param nullProportion, Proportion specified by the null hypothesis for the binomial test.
 #' @param nullValue, Parameter value specified by the null hypothesis.
 #' @param observedCohensD, Observed standardized mean difference used to compute the observed Bayes factor.
@@ -96,10 +96,10 @@
 #'   \item \code{"columns"}
 #' }
 #' @param observedDependentVariable, Observed outcome variable for the independent-samples Bayes factor.
-#' @param observedEffectSize, Observed effect estimate on the scale selected for the general z-test approximation.
+#' @param observedEffectSize, Observed effect estimate for the general z-test approximation.
 #' @param observedFailures, Number of observed failures used to compute the observed Bayes factor.
 #' @param observedGroupingVariable, Grouping variable that defines the two independent samples.
-#' @param observedInputType, Choose which summary statistics are available for the observed t-test result.
+#' @param observedInputType, Choose which summary statistics are available for the observed result.
 #' \itemize{
 #'   \item \code{"tAndN"}
 #'   \item \code{"cohensD"}
@@ -122,7 +122,7 @@
 #' @param observedStandardError, Standard error of the observed effect estimate.
 #' @param observedSuccessValue, Value in the selected variable that is counted as a success.
 #' @param observedSuccesses, Number of observed successes used to compute the observed Bayes factor.
-#' @param observedT, Observed t statistic used to compute the observed Bayes factor.
+#' @param observedT, Observed t or z statistic used to compute the observed Bayes factor.
 #' @param observedVariable, Observed scale variable for the one-sample or general z-test analysis.
 #' @param observedVariablePairs, Observed paired variables used to compute the paired-samples Bayes factor.
 #' @param probabilityOfConclusiveEvidenceUnderH0, Target probability of obtaining conclusive evidence for H₀ when data are generated under the H₀ design prior.
@@ -133,10 +133,11 @@
 #' @param tPriorDegreesOfFreedom, Degrees of freedom of the Student-t analysis prior under H₁.
 #' @param tPriorLocation, Location of the Cauchy or Student-t analysis prior under H₁.
 #' @param tPriorScale, Scale of the Cauchy or Student-t analysis prior under H₁.
-#' @param tSearchRangeLower, Lower bound of the custom integration range for t-test calculations.
-#' @param tSearchRangeMode, Choose whether the integration range for t-test calculations is selected automatically or supplied manually.
-#' @param tSearchRangeUpper, Upper bound of the custom integration range for t-test calculations.
+#' @param tSearchRangeLower, Lower bound of the custom standardized mean difference range in which the t-test critical values are searched.
+#' @param tSearchRangeMode, Choose whether the standardized mean difference range in which the t-test critical values are searched is selected automatically or supplied manually.
+#' @param tSearchRangeUpper, Upper bound of the custom standardized mean difference range in which the t-test critical values are searched.
 #' @param unitInformationSd, Standard deviation of the estimator at one unit of information for the general z-test approximation.
+#' @param zTestScale, Scale of the effect, the analysis priors and the design priors. Standardized: the standardized mean difference (Cohen's d), like the t-tests, with the standard deviation treated as known. Raw: the mean (difference) in the units of the outcome, with the known standard deviation specified below.
 BayesFactorDesign <- function(
           data = NULL,
           version = "1",
@@ -146,9 +147,9 @@ BayesFactorDesign <- function(
           analysisPriorFailures = 1,
           analysisPriorLocation = 0.5,
           analysisPriorMean = 0,
-          analysisPriorMode = 1,
+          analysisPriorMode = 0.5,
           analysisPriorScale = 0.707,
-          analysisPriorSpread = 0.707,
+          analysisPriorSpread = 0.354,
           analysisPriorSuccesses = 1,
           binomialDesignNullPriorDistribution = "point",
           binomialDesignPriorDistribution = "point",
@@ -232,7 +233,8 @@ BayesFactorDesign <- function(
           tSearchRangeLower = -5,
           tSearchRangeMode = "adaptive",
           tSearchRangeUpper = 5,
-          unitInformationSd = 1) {
+          unitInformationSd = 1,
+          zTestScale = "standardized") {
 
    options <- mget(names(formals(sys.function())), envir = environment(), inherits = FALSE)
    options[["data"]] <- NULL
@@ -243,7 +245,7 @@ BayesFactorDesign <- function(
       jaspBase::storeDataSet(data)
    }
 
-   optionsWithFormula <- c("analysisPriorDirection", "analysisPriorDistribution", "binomialDesignNullPriorDistribution", "binomialDesignPriorDistribution", "calculationTarget", "colorPalette", "designNullPriorDistribution", "designPriorDistribution", "designSampleSizeBasis", "legendPosition", "nullPriorDistribution", "observedDependentVariable", "observedGroupingVariable", "observedProportionVariable", "observedVariable", "observedVariablePairs", "statisticalTest", "tSearchRangeMode")
+   optionsWithFormula <- c("analysisPriorDirection", "analysisPriorDistribution", "binomialDesignNullPriorDistribution", "binomialDesignPriorDistribution", "calculationTarget", "colorPalette", "designNullPriorDistribution", "designPriorDistribution", "designSampleSizeBasis", "legendPosition", "nullPriorDistribution", "observedDependentVariable", "observedGroupingVariable", "observedProportionVariable", "observedVariable", "observedVariablePairs", "statisticalTest", "tSearchRangeMode", "zTestScale")
    for (name in optionsWithFormula) {
       if ((name %in% optionsWithFormula) && inherits(options[[name]], "formula")) options[[name]] = jaspBase::jaspFormula(options[[name]], data)   }
 

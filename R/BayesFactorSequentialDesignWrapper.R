@@ -21,12 +21,12 @@
 #'
 #' Bayes Factor sequential design allows you to design sequential experiments for conclusive evidence.
 #'
-#' @param analysisPriorDirection, Direction of the analysis prior under H₁.
+#' @param analysisPriorDirection, Direction of the analysis prior under H₁. One-sided directions truncate the analysis prior to values below (less) or above (greater) the null value and renormalize it; the prior parameters describe the distribution before truncation.
 #' @param analysisPriorDistribution, Prior distribution under H₁ used to compute the Bayes factor from the data.
 #' @param analysisPriorDistributionFigure, Plot the analysis prior used to compute the Bayes factor from the data.
 #'    Defaults to \code{TRUE}.
 #' @param analysisPriorFailures, Failure parameter of the beta analysis prior under H₁.
-#' @param analysisPriorLocation, Point location of the H₁ analysis prior.
+#' @param analysisPriorLocation, Point location of the H₁ analysis prior. For a one-sided direction, it must lie strictly on the H₁ side of the null value.
 #' @param analysisPriorMean, Mean of the normal H₁ analysis prior.
 #' @param analysisPriorMode, Mode of the non-local moment prior under H₁.
 #' @param analysisPriorScale, Scale of the normal H₁ analysis prior.
@@ -72,7 +72,7 @@
 #'    Defaults to \code{TRUE}.
 #' @param designSummary, Show the main sequential-design result: the maximum sample size or the achieved probability of conclusive evidence.
 #'    Defaults to \code{TRUE}.
-#' @param exactIntegrationOverAllRegions, Use exact integration over all decision regions when computing sequential design characteristics.
+#' @param exactIntegrationOverAllRegions, Use exact integration over all decision regions when computing sequential design characteristics. Only two-sided analysis priors with a spread have more than one decision region per look; for other priors the option has no effect.
 #'    Defaults to \code{FALSE}.
 #' @param explanatoryText, Append brief interpretation notes to each displayed Bayesian result.
 #'    Defaults to \code{TRUE}.
@@ -88,15 +88,16 @@
 #' @param informationFractionSchedule, Comma-separated information fractions for the planned looks, ending at 1.
 #' @param initialSampleSize, Sample size at the first planned look.
 #' @param integrationAbsoluteTolerance, Absolute error tolerance for numerical integration.
+#' @param integrationGridPoints, Number of deterministic quasi-Monte Carlo (Halton) grid points used by the log-scale MVN integration. Increase it to check the convergence of small stopping probabilities.
 #' @param integrationMaximumPoints, Maximum number of integration points used by the numerical routine.
 #' @param integrationMethod, Numerical method used for multivariate normal probabilities in sequential calculations.
 #' @param integrationRelativeTolerance, Relative error tolerance for numerical integration.
-#' @param knownStandardDeviation, Known population standard deviation used for z-test sample size planning.
+#' @param knownStandardDeviation, Known population standard deviation of the outcome. The effect and the priors are mean (differences) in the units of the outcome.
 #' @param legendPosition, Choose where the plot legend is shown.
 #' @param lookScheduleType, Defines how the planned interim looks are spaced across the sequential design.
 #' @param lowerSearchBoundForMaximumSampleSize, Smallest maximum sample size considered when searching for the target probability of conclusive evidence.
 #' @param maximumSampleSize, Maximum sample size reached at the final look if the study has not stopped earlier.
-#' @param nullPriorDistribution, Prior specification for H₀ used to compute the Bayes factor from the observed data.
+#' @param nullPriorDistribution, Prior specification for H₀ used to compute the Bayes factor from the observed data. A point null fixes the parameter at the null value. A directional null places the opposite half of the analysis prior on H₀ (available for one-sided normal priors in sequential z-test designs and for the proportion test).
 #' @param nullProportion, Proportion specified by the null hypothesis for the binomial test.
 #' @param nullValue, Parameter value specified by the null hypothesis.
 #' @param numberOfLooks, Number of planned analyses, including the final look.
@@ -107,10 +108,10 @@
 #'   \item \code{"columns"}
 #' }
 #' @param observedDependentVariable, Observed outcome variable for the independent-samples Bayes factor.
-#' @param observedEffectSize, Observed effect estimate on the scale selected for the general z-test approximation.
+#' @param observedEffectSize, Observed effect estimate for the general z-test approximation.
 #' @param observedFailures, Number of observed failures used to compute the observed Bayes factor.
 #' @param observedGroupingVariable, Grouping variable that defines the two independent samples.
-#' @param observedInputType, Choose which summary statistics are available for the observed t-test result.
+#' @param observedInputType, Choose which summary statistics are available for the observed result.
 #' \itemize{
 #'   \item \code{"tAndN"}
 #'   \item \code{"cohensD"}
@@ -133,7 +134,7 @@
 #' @param observedStandardError, Standard error of the observed effect estimate.
 #' @param observedSuccessValue, Value in the selected variable that is counted as a success.
 #' @param observedSuccesses, Number of observed successes used to compute the observed Bayes factor.
-#' @param observedT, Observed t statistic used to compute the observed Bayes factor.
+#' @param observedT, Observed t or z statistic used to compute the observed Bayes factor.
 #' @param observedVariable, Observed scale variable for the one-sample or general z-test analysis.
 #' @param observedVariablePairs, Observed paired variables used to compute the paired-samples Bayes factor.
 #' @param probabilityOfConclusiveEvidenceUnderH0, Target probability of obtaining conclusive evidence for H₀ when data are generated under the H₀ design prior.
@@ -153,11 +154,12 @@
 #' @param tPriorDegreesOfFreedom, Degrees of freedom of the Student-t analysis prior under H₁.
 #' @param tPriorLocation, Location of the Cauchy or Student-t analysis prior under H₁.
 #' @param tPriorScale, Scale of the Cauchy or Student-t analysis prior under H₁.
-#' @param tSearchRangeLower, Lower bound of the custom integration range for t-test calculations.
-#' @param tSearchRangeMode, Choose whether the integration range for t-test calculations is selected automatically or supplied manually.
-#' @param tSearchRangeUpper, Upper bound of the custom integration range for t-test calculations.
+#' @param tSearchRangeLower, Lower bound of the custom t-statistic range in which the t-test critical values are searched.
+#' @param tSearchRangeMode, Choose whether the t-statistic range in which the t-test critical values are searched is selected automatically or supplied manually.
+#' @param tSearchRangeUpper, Upper bound of the custom t-statistic range in which the t-test critical values are searched.
 #' @param unitInformationSd, Standard deviation of the estimator at one unit of information for the general z-test approximation.
 #' @param upperSearchBoundForMaximumSampleSize, Largest maximum sample size considered when searching for the target probability of conclusive evidence.
+#' @param zTestScale, Scale of the effect, the analysis priors and the design priors. Standardized: the standardized mean difference (Cohen's d), like the t-tests, with the standard deviation treated as known. Raw: the mean (difference) in the units of the outcome, with the known standard deviation specified below.
 BayesFactorSequentialDesign <- function(
           data = NULL,
           version = "1",
@@ -167,9 +169,9 @@ BayesFactorSequentialDesign <- function(
           analysisPriorFailures = 1,
           analysisPriorLocation = 0.5,
           analysisPriorMean = 0,
-          analysisPriorMode = 1,
+          analysisPriorMode = 0.5,
           analysisPriorScale = 0.707,
-          analysisPriorSpread = 0.707,
+          analysisPriorSpread = 0.354,
           analysisPriorSuccesses = 1,
           binomialDesignNullPriorDistribution = "point",
           binomialDesignPriorDistribution = "point",
@@ -213,6 +215,7 @@ BayesFactorSequentialDesign <- function(
           informationFractionSchedule = "0.2, 0.4, 0.6, 0.8, 1",
           initialSampleSize = 20,
           integrationAbsoluteTolerance = 1e-06,
+          integrationGridPoints = 10000,
           integrationMaximumPoints = 25000,
           integrationMethod = "lpmvnorm",
           integrationRelativeTolerance = 0,
@@ -270,7 +273,8 @@ BayesFactorSequentialDesign <- function(
           tSearchRangeMode = "adaptive",
           tSearchRangeUpper = 5,
           unitInformationSd = 1,
-          upperSearchBoundForMaximumSampleSize = 10000) {
+          upperSearchBoundForMaximumSampleSize = 10000,
+          zTestScale = "standardized") {
 
    options <- mget(names(formals(sys.function())), envir = environment(), inherits = FALSE)
    options[["data"]] <- NULL
@@ -281,7 +285,7 @@ BayesFactorSequentialDesign <- function(
       jaspBase::storeDataSet(data)
    }
 
-   optionsWithFormula <- c("analysisPriorDirection", "analysisPriorDistribution", "binomialDesignNullPriorDistribution", "binomialDesignPriorDistribution", "calculationTarget", "colorPalette", "designNullPriorDistribution", "designPriorDistribution", "designSampleSizeBasis", "integrationMethod", "legendPosition", "lookScheduleType", "nullPriorDistribution", "observedDependentVariable", "observedGroupingVariable", "observedProportionVariable", "observedVariable", "observedVariablePairs", "sampleSizeSearchStrategy", "statisticalTest", "tSearchRangeMode")
+   optionsWithFormula <- c("analysisPriorDirection", "analysisPriorDistribution", "binomialDesignNullPriorDistribution", "binomialDesignPriorDistribution", "calculationTarget", "colorPalette", "designNullPriorDistribution", "designPriorDistribution", "designSampleSizeBasis", "integrationMethod", "legendPosition", "lookScheduleType", "nullPriorDistribution", "observedDependentVariable", "observedGroupingVariable", "observedProportionVariable", "observedVariable", "observedVariablePairs", "sampleSizeSearchStrategy", "statisticalTest", "tSearchRangeMode", "zTestScale")
    for (name in optionsWithFormula) {
       if ((name %in% optionsWithFormula) && inherits(options[[name]], "formula")) options[[name]] = jaspBase::jaspFormula(options[[name]], data)   }
 

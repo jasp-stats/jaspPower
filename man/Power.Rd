@@ -13,7 +13,7 @@ Power(
   calculation = "sampleSize",
   comparisonProportion = 0.6,
   effectDirection = "greater",
-  effectDirectionSyntheticDataset = "less",
+  effectDirectionSyntheticDataset = "greater",
   effectSize = 0.5,
   firstGroupMean = 0,
   firstGroupSd = 1,

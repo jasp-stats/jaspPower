@@ -13,9 +13,9 @@ BayesFactorDesign(
   analysisPriorFailures = 1,
   analysisPriorLocation = 0.5,
   analysisPriorMean = 0,
-  analysisPriorMode = 1,
+  analysisPriorMode = 0.5,
   analysisPriorScale = 0.707,
-  analysisPriorSpread = 0.707,
+  analysisPriorSpread = 0.354,
   analysisPriorSuccesses = 1,
   binomialDesignNullPriorDistribution = "point",
   binomialDesignPriorDistribution = "point",
@@ -99,11 +99,12 @@ BayesFactorDesign(
   tSearchRangeLower = -5,
   tSearchRangeMode = "adaptive",
   tSearchRangeUpper = 5,
-  unitInformationSd = 1
+  unitInformationSd = 1,
+  zTestScale = "standardized"
 )
 }
 \arguments{
-\item{analysisPriorDirection, }{Direction of the analysis prior under H₁.}
+\item{analysisPriorDirection, }{Direction of the analysis prior under H₁. One-sided directions truncate the analysis prior to values below (less) or above (greater) the null value and renormalize it; the prior parameters describe the distribution before truncation.}
 
 \item{analysisPriorDistribution, }{Prior distribution under H₁ used to compute the Bayes factor from the data.}
 
@@ -112,7 +113,7 @@ Defaults to \code{TRUE}.}
 
 \item{analysisPriorFailures, }{Failure parameter of the beta analysis prior under H₁.}
 
-\item{analysisPriorLocation, }{Point location of the H₁ analysis prior.}
+\item{analysisPriorLocation, }{Point location of the H₁ analysis prior. For a one-sided direction, it must lie strictly on the H₁ side of the null value.}
 
 \item{analysisPriorMean, }{Mean of the normal H₁ analysis prior.}
 
@@ -208,7 +209,7 @@ Defaults to \code{FALSE}.}
 \item{generateReportLatexFormattedOutput, }{Format the generated report with LaTeX notation for use in manuscripts and preregistrations.
 Defaults to \code{FALSE}.}
 
-\item{knownStandardDeviation, }{Known population standard deviation used for z-test sample size planning.}
+\item{knownStandardDeviation, }{Known population standard deviation of the outcome. The effect and the priors are mean (differences) in the units of the outcome.}
 
 \item{legendPosition, }{Choose where the plot legend is shown.}
 
@@ -219,7 +220,7 @@ Defaults to \code{TRUE}.}
 
 \item{minimumSampleSize, }{Smallest sample size considered when searching for the target probability of conclusive evidence.}
 
-\item{nullPriorDistribution, }{Prior specification for H₀ used to compute the Bayes factor from the observed data.}
+\item{nullPriorDistribution, }{Prior specification for H₀ used to compute the Bayes factor from the observed data. A point null fixes the parameter at the null value. A directional null places the opposite half of the analysis prior on H₀ (available for one-sided normal priors in sequential z-test designs and for the proportion test).}
 
 \item{nullProportion, }{Proportion specified by the null hypothesis for the binomial test.}
 
@@ -235,13 +236,13 @@ Defaults to \code{TRUE}.}
 
 \item{observedDependentVariable, }{Observed outcome variable for the independent-samples Bayes factor.}
 
-\item{observedEffectSize, }{Observed effect estimate on the scale selected for the general z-test approximation.}
+\item{observedEffectSize, }{Observed effect estimate for the general z-test approximation.}
 
 \item{observedFailures, }{Number of observed failures used to compute the observed Bayes factor.}
 
 \item{observedGroupingVariable, }{Grouping variable that defines the two independent samples.}
 
-\item{observedInputType, }{Choose which summary statistics are available for the observed t-test result.
+\item{observedInputType, }{Choose which summary statistics are available for the observed result.
 \itemize{
   \item \code{"tAndN"}
   \item \code{"cohensD"}
@@ -280,7 +281,7 @@ Defaults to \code{TRUE}.}
 
 \item{observedSuccesses, }{Number of observed successes used to compute the observed Bayes factor.}
 
-\item{observedT, }{Observed t statistic used to compute the observed Bayes factor.}
+\item{observedT, }{Observed t or z statistic used to compute the observed Bayes factor.}
 
 \item{observedVariable, }{Observed scale variable for the one-sample or general z-test analysis.}
 
@@ -302,13 +303,15 @@ Defaults to \code{TRUE}.}
 
 \item{tPriorScale, }{Scale of the Cauchy or Student-t analysis prior under H₁.}
 
-\item{tSearchRangeLower, }{Lower bound of the custom integration range for t-test calculations.}
+\item{tSearchRangeLower, }{Lower bound of the custom standardized mean difference range in which the t-test critical values are searched.}
 
-\item{tSearchRangeMode, }{Choose whether the integration range for t-test calculations is selected automatically or supplied manually.}
+\item{tSearchRangeMode, }{Choose whether the standardized mean difference range in which the t-test critical values are searched is selected automatically or supplied manually.}
 
-\item{tSearchRangeUpper, }{Upper bound of the custom integration range for t-test calculations.}
+\item{tSearchRangeUpper, }{Upper bound of the custom standardized mean difference range in which the t-test critical values are searched.}
 
 \item{unitInformationSd, }{Standard deviation of the estimator at one unit of information for the general z-test approximation.}
+
+\item{zTestScale, }{Scale of the effect, the analysis priors and the design priors. Standardized: the standardized mean difference (Cohen's d), like the t-tests, with the standard deviation treated as known. Raw: the mean (difference) in the units of the outcome, with the known standard deviation specified below.}
 }
 \description{
 Bayes Factor design allows you to design fixed sample size experiments for conclusive evidence.
