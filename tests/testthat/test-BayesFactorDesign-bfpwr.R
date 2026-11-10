@@ -247,6 +247,20 @@ test_that("Binomial sample-size search does not stop at an oscillation peak at t
   }
 })
 
+test_that("The inside legend leaves room for a point prior at the right end of the prior plot axis", {
+  # the tutorial's first analysis has point design priors at 0 and 0.3
+  settings <- jaspPower:::.bfdPrepareSettings(.bfTutorialOptions(1))
+
+  settings[["legendPosition"]] <- "right"
+  expect_equal(jaspPower:::.bfdPriorAxis(settings, "design")[["range"]], c(0, 0.3))
+
+  settings[["legendPosition"]] <- "rightInside"
+  range <- jaspPower:::.bfdPriorAxis(settings, "design")[["range"]]
+  expect_lte((0.3 - range[1]) / diff(range), 0.6)
+  # the analysis prior plot has its point prior (the null value) in the middle of the axis, so it keeps its range
+  expect_equal(jaspPower:::.bfdPriorAxis(settings, "analysis")[["range"]], c(-2, 2))
+})
+
 test_that("Observed Bayes factors are computed on the log scale for very strong evidence", {
   results <- do.call(.bfRun, c(list("BayesFactorDesign", 1), .bfFixedZOptions, list(
     analysisPriorDistribution = "normal", analysisPriorDirection = "twoSided",

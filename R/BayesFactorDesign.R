@@ -3899,12 +3899,34 @@ BayesFactorDesignInternal <- function(jaspResults, dataset, options) {
 
 .bfdPriorAxis <- function(settings, priorSet = c("analysis", "design")) {
   requestedRange <- if (settings[["isBinomial"]]) .bfdBinomialPriorRange(settings, priorSet) else .bfdContinuousPriorRange(settings, priorSet)
+  requestedRange <- .bfdPriorRangeBesideInsideLegend(settings, priorSet, requestedRange)
   breaks         <- .bfdPrettyPriorBreaks(requestedRange, isBinomial = settings[["isBinomial"]])
 
   return(list(
     breaks = breaks,
     range  = range(breaks)
   ))
+}
+
+# Point priors are drawn as arrows over the full plot height, and the "Right (inside)" legend sits at the right edge of
+# the plot, so it covered a point prior in the right part of the axis. With that legend, the axis is extended to the
+# right so that every point prior stays in the left 60% of the plot; other legend positions keep the axis as it is.
+.bfdPriorRangeBesideInsideLegend <- function(settings, priorSet, range) {
+  if (!identical(settings[["legendPosition"]], "rightInside"))
+    return(range)
+
+  spikeData <- if (settings[["isBinomial"]]) {
+    .bfdBinomialPriorSpikeData(settings, priorSet, densityData = data.frame())
+  } else {
+    .bfdContinuousPriorSpikeData(settings, priorSet, densityData = data.frame())
+  }
+  spikes <- spikeData[["x"]][is.finite(spikeData[["x"]])]
+  width  <- diff(range)
+  if (length(spikes) == 0 || length(width) != 1 || !is.finite(width) || width <= 0)
+    return(range)
+
+  upper <- range[1] + (max(spikes) - range[1]) / 0.6
+  return(c(range[1], max(range[2], upper)))
 }
 
 .bfdContinuousPriorRange <- function(settings, priorSet = c("analysis", "design")) {
