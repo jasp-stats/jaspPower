@@ -1421,17 +1421,9 @@ BayesFactorDesignInternal <- function(jaspResults, dataset, options) {
   if (length(values) < 1)
     stop(gettext("The selected variable contains no observed values."))
 
+  # a success value that does not occur means zero successes, which is valid binomial data
   successValue <- as.character(options[["observedSuccessValue"]])
-  levels       <- unique(as.character(values))
-  if (!successValue %in% levels) {
-    stop(gettextf(
-      "The success value '%1$s' does not occur in the selected variable. Observed values: %2$s.",
-      successValue,
-      paste(utils::head(sort(levels), 10), collapse = ", ")
-    ))
-  }
-
-  successes <- sum(as.character(values) == successValue)
+  successes    <- sum(as.character(values) == successValue)
   trials    <- length(values)
 
   return(list(

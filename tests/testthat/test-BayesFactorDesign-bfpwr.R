@@ -272,7 +272,7 @@ test_that("Observed Bayes factors are computed on the log scale for very strong 
   expect_identical(observed[["data"]][[1]][["decision"]], "BF supports H₁")
 })
 
-test_that("Binomial dataset input rejects a success value that does not occur in the variable", {
+test_that("Binomial dataset input counts a success value that does not occur as zero successes", {
   results <- .bfRun(
     "BayesFactorDesign", 1, statisticalTest = "oneSampleProportion", analysisPriorDistribution = "beta",
     calculationTarget = "evidenceProbability", observedDataAnalysisInput = "columns",
@@ -280,7 +280,8 @@ test_that("Binomial dataset input rejects a success value that does not occur in
   )
 
   observed <- results[["evidenceObservedAnalysis"]][["collection"]][["evidenceObservedAnalysis_result"]]
-  expect_match(observed[["error"]][["errorMessage"]], "does not occur in the selected variable", fixed = TRUE)
+  expect_identical(observed[["status"]], "complete")
+  expect_identical(observed[["data"]][[1]][["statistic"]], 0L)
 })
 
 test_that("One-sided normal-moment priors are described by their single mode", {
