@@ -174,7 +174,7 @@ test_that("Sequential directional z-test reflects 'less' designs around the null
 
 test_that("Sequential maximum sample-size search supports one-sided normal-moment priors", {
   results <- do.call(.bfRun, c(list("BayesFactorSequentialDesign", 3), .bfSequentialZOptions, list(
-    calculationTarget = "sampleSize", lookScheduleType = "even", numberOfLooks = 3, firstInformationFraction = 1/3,
+    calculationTarget = "sampleSize", lookScheduleType = "even", numberOfLooks = 3, firstInformationFraction = 0.25,
     analysisPriorDistribution = "normalMomentMode", analysisPriorMode = 0.5, analysisPriorDirection = "greater",
     nullPriorDistribution = "point", sampleSizeSearchStrategy = "adaptive", designSampleSizeBasis = "eachDesignHypothesis",
     lowerSearchBoundForMaximumSampleSize = 10, upperSearchBoundForMaximumSampleSize = 2000
@@ -182,7 +182,7 @@ test_that("Sequential maximum sample-size search supports one-sided normal-momen
 
   expected <- bfpwr::nbf01seq(
     k1 = 1/6, k0 = 6, power = 0.8, usd = 1, null = 0, psd = 0.5/sqrt(2), dpm = 0.5, dpsd = 0, type = "moment",
-    target = "H1", nrange = c(10, 2000), timing = c(1/3, 2/3, 1), alternative = "greater"
+    target = "H1", nrange = c(10, 2000), timing = c(0.25, 0.625, 1), alternative = "greater"
   )
 
   rows <- results[["sequentialEvidenceResults"]][["data"]]
@@ -292,7 +292,7 @@ test_that("Sequential independent z designs allow small allocation ratios and us
 
 test_that("Sequential designs blank results that depend on an unreached planning target", {
   results <- do.call(.bfRun, c(list("BayesFactorSequentialDesign", 3), .bfSequentialZOptions, list(
-    calculationTarget = "sampleSize", lookScheduleType = "even", numberOfLooks = 3, firstInformationFraction = 1/3,
+    calculationTarget = "sampleSize", lookScheduleType = "even", numberOfLooks = 3, firstInformationFraction = 0.25,
     analysisPriorDistribution = "normal", analysisPriorMean = 0, analysisPriorScale = 1, analysisPriorDirection = "greater",
     designPriorMean = 1, designSampleSizeBasis = "eachDesignHypothesis", sampleSizeSearchStrategy = "adaptive",
     lowerSearchBoundForMaximumSampleSize = 10, upperSearchBoundForMaximumSampleSize = 30
