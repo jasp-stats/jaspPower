@@ -51,8 +51,7 @@ GroupSequentialDesign(
   survivalEntryGamma = 0.1,
   survivalGsSurvMethod = "LachinFoulkes",
   survivalInformationMethod = "events",
-  survivalMinimumFollowup = 6,
-  survivalStudyDuration = 24,
+  survivalMinimumFollowup = 12,
   text = TRUE,
   timing = "0.33, 0.67, 1",
   timingMode = "even",
@@ -65,7 +64,7 @@ GroupSequentialDesign(
 
 \item{binaryAlternativeEffect, }{Alternative risk difference p1 - p2. With the default baseline event probability 0.5, the default difference 0.1 implies p2 = 0.4.}
 
-\item{binaryBaselineEventRate, }{Event probability for group 1 under the alternative hypothesis. A value near 0.5 is conservative for risk-difference planning because it gives the largest Bernoulli variance.}
+\item{binaryBaselineEventRate, }{Event probability for group 1 under the alternative hypothesis. The group 2 event probability is derived from it and the alternative effect, so the required sample size depends on both probabilities.}
 
 \item{binaryEffectScale, }{Scale used to derive the second event probability and to set the binary fixed-design sample-size calculation.}
 
@@ -108,7 +107,7 @@ Defaults to \code{TRUE}.}
 \item{generateRCode, }{Display copyable R code for the current settings.
 Defaults to \code{FALSE}.}
 
-\item{gridPoints, }{Integer from 1 to 80 controlling the numerical integration grid. Default is 18; larger values can improve accuracy but slow computation.}
+\item{gridPoints, }{Integer from 1 to 80 controlling the numerical integration grid. Default is 18; larger values can improve accuracy but slow computation. Group sequential survival accrual designs always use gsDesign's default grid of 18.}
 
 \item{hazardRatio, }{Experimental/control hazard ratio under the alternative hypothesis. The default example effect is 1.3.}
 
@@ -136,11 +135,11 @@ Defaults to \code{TRUE}.}
 \item{stoppingBoundariesTable, }{Display the information schedule, Z-boundaries, and nominal p-values by look.
 Defaults to \code{TRUE}.}
 
-\item{survivalAccrualDuration, }{Enrollment duration in the same time unit as the survival hazards and study duration.}
+\item{survivalAccrualDuration, }{Enrollment duration in the same time unit as the survival hazards and minimum follow-up.}
 
-\item{survivalAccrualRate, }{Enrollment-rate pattern. With fixed study duration and minimum follow-up, the calculation rescales this value to the required accrual rate; the default scalar 1 gives constant accrual.}
+\item{survivalAccrualRate, }{Enrollment-rate pattern. With fixed accrual duration and minimum follow-up, the calculation rescales this value to the required accrual rate; the default scalar 1 gives constant accrual.}
 
-\item{survivalControlHazard, }{Control-group event hazard per time unit. Use the same time unit as accrual, study duration, follow-up, and dropout hazards. Defaults to 0.0833 for subjects + events and 0.1155 for group sequential accrual.}
+\item{survivalControlHazard, }{Control-group event hazard per time unit. Use the same time unit as accrual, follow-up, and dropout hazards. Defaults to 0.0833 for subjects + events and 0.1155 for group sequential accrual.}
 
 \item{survivalDropoutHazard, }{Equal dropout hazard for both groups, per time unit. Use 0 for no dropout.}
 
@@ -152,9 +151,7 @@ Defaults to \code{TRUE}.}
 
 \item{survivalInformationMethod, }{Selects whether survival information is planned as events only, as fixed-design subjects plus events, or directly as a group sequential survival design with study-time accrual assumptions.}
 
-\item{survivalMinimumFollowup, }{Minimum follow-up duration in the same time unit as the study duration.}
-
-\item{survivalStudyDuration, }{Maximum study duration. Use the same time unit as the control hazard and accrual duration. Defaults to 24 for subjects + events and 18 for group sequential accrual.}
+\item{survivalMinimumFollowup, }{Time from the end of enrollment to the end of the study, in the same time unit as the survival hazards and accrual duration. The study duration is the accrual duration plus this follow-up. Defaults to 12 for subjects + events and 6 for group sequential accrual.}
 
 \item{text, }{Display a short explanation of the design.
 Defaults to \code{TRUE}.}

@@ -59,7 +59,7 @@ Form
 		title:    qsTr("Parameters")
 		columns:  1
 
-		PowerComponents.GroupSequentialParameterControls {}
+		PowerComponents.GroupSequentialParameterControls { id: parameterControls }
 	}
 
 	Section
@@ -176,7 +176,7 @@ Form
 				info:    qsTr("Display copyable R code for the current settings.")
 			}
 
-			Text { Layout.columnSpan: 2; text: qsTr("Integration grid points:") }
+			Text { Layout.columnSpan: 2; text: qsTr("Integration grid points:"); enabled: gridPoints.enabled }
 			IntegerField
 			{
 				name:         "gridPoints"
@@ -184,7 +184,8 @@ Form
 				min:          1
 				max:          80
 				defaultValue: root.defaultGridPoints
-				info:         qsTr("Integer from 1 to 80 controlling the numerical integration grid. Default is %1; larger values can improve accuracy but slow computation.").arg(root.defaultGridPoints)
+				enabled:      !parameterControls.usesGsSurvAccrual
+				info:         qsTr("Integer from 1 to 80 controlling the numerical integration grid. Default is %1; larger values can improve accuracy but slow computation. Group sequential survival accrual designs always use gsDesign's default grid of 18.").arg(root.defaultGridPoints)
 			}
 		}
 	}

@@ -32,10 +32,10 @@ GroupSequentialDesignInternal <- function(jaspResults, dataset, options) {
     .csdText(jaspResults, settings, result)
 
   if (options[["boundariesPlot"]])
-    .csdBoundariesPlot(jaspResults, settings, result)
+    .csdBoundariesPlot(jaspResults, options, settings, result)
 
   if (options[["crossingProbabilitiesPlot"]])
-    .csdCrossingProbabilitiesPlot(jaspResults, settings, result)
+    .csdCrossingProbabilitiesPlot(jaspResults, options, settings, result)
 
   if (options[["generateRCode"]])
     .csdRCode(jaspResults, settings, result)
@@ -52,7 +52,7 @@ GroupSequentialDesignInternal <- function(jaspResults, dataset, options) {
   "binaryEffectScale", "binaryNullRiskDifference", "binaryNullRiskRatio",
   "binaryNullOddsRatio", "hazardRatio", "nullHazardRatio",
   "survivalInformationMethod", "survivalControlHazard", "survivalDropoutHazard",
-  "survivalAccrualDuration", "survivalStudyDuration", "survivalEntry",
+  "survivalAccrualDuration", "survivalEntry",
   "survivalEntryGamma",
   "survivalAccrualRate", "survivalMinimumFollowup", "survivalGsSurvMethod",
   "upperBoundary", "upperBoundaryParameter", "lowerBoundary",
@@ -102,6 +102,10 @@ GroupSequentialDesignInternal <- function(jaspResults, dataset, options) {
   if (settings[["effectScale"]] == "survivalHazardRatio") {
     settings[["delta"]] <- 0
 
+    # equal hazard ratios imply infinite fixed-design events, which gsDesign reports only as a uniroot failure
+    if (isTRUE(all.equal(settings[["hazardRatio"]], settings[["nullHazardRatio"]])))
+      stop(gettext("The alternative hazard ratio must differ from the null hazard ratio."))
+
     if (settings[["survivalInformationMethod"]] == "gsSurv") {
       settings[["nFix"]]      <- 1
       settings[["usesGsSurv"]] <- TRUE
@@ -109,7 +113,16 @@ GroupSequentialDesignInternal <- function(jaspResults, dataset, options) {
     }
 
     if (settings[["survivalInformationMethod"]] == "nSurvival") {
+      # gsDesign::nSurvival() only tests HR0 = 1; the form disables HR0 here, but the R interface does not
+      if (!isTRUE(all.equal(settings[["nullHazardRatio"]], 1)))
+        stop(gettext("The subjects + events survival calculation supports only a null hazard ratio of 1. Use events only or group sequential accrual for a non-null hazard-ratio margin."))
+
       fixed <- do.call(gsDesign::nSurvival, .csdNSurvivalFixedInformationArgs(settings))
+
+      # nSurvival()'s exponential-entry formula is 0/0 when gamma is 0 or equals a group's event-plus-dropout hazard
+      if (!is.finite(fixed[["nEvents"]]) || !is.finite(fixed[["n"]]))
+        stop(gettext("The subjects + events survival calculation returned no finite sample size. With exponential entry, this happens when the entry rate parameter γ is 0 or equals a group's event hazard plus dropout hazard; change γ slightly."))
+
       settings[["nFix"]]     <- fixed[["nEvents"]]
       settings[["nFixSurv"]] <- fixed[["n"]]
       return(settings)
@@ -130,6 +143,12 @@ GroupSequentialDesignInternal <- function(jaspResults, dataset, options) {
   settings[["nFix"]] <- 1
 
   return(settings)
+}
+
+# Derived, so it cannot disagree with the entered accrual duration and follow-up: gsDesign::gsSurv() would
+# silently replace the accrual duration and gsDesign::nSurvival() would accept negative follow-up
+.csdStudyDuration <- function(settings) {
+  settings[["survivalAccrualDuration"]] + settings[["survivalMinimumFollowup"]]
 }
 
 .csdNormalFixedInformationArgs <- function(settings) {
@@ -236,7 +255,7 @@ GroupSequentialDesignInternal <- function(jaspResults, dataset, options) {
   list(
     lambda1 = settings[["survivalControlHazard"]],
     lambda2 = settings[["survivalControlHazard"]] * settings[["hazardRatio"]],
-    Ts      = settings[["survivalStudyDuration"]],
+    Ts      = .csdStudyDuration(settings),
     Tr      = settings[["survivalAccrualDuration"]],
     eta     = settings[["survivalDropoutHazard"]],
     ratio   = settings[["sampleSizeAllocationRatio"]],
@@ -405,6 +424,7 @@ GroupSequentialDesignInternal <- function(jaspResults, dataset, options) {
   return(args)
 }
 
+# gsDesign::gsSurv() accepts r but does not pass it on to gsDesign(), so the grid is always 18 there
 .csdGsSurvArgs <- function(settings) {
   helper <- .csdFixedDesignHelperSettings(settings)
   args   <- list(
@@ -415,14 +435,13 @@ GroupSequentialDesignInternal <- function(jaspResults, dataset, options) {
     beta      = 1 - settings[["power"]],
     timing    = settings[["timing"]],
     sfu       = .csdSpendingFunction(settings[["upperBoundary"]], settings[["testType"]]),
-    r         = settings[["gridPoints"]],
     lambdaC   = settings[["survivalControlHazard"]],
     hr        = settings[["hazardRatio"]],
     hr0       = settings[["nullHazardRatio"]],
     eta       = settings[["survivalDropoutHazard"]],
     gamma     = settings[["survivalAccrualRate"]],
     R         = settings[["survivalAccrualDuration"]],
-    T         = settings[["survivalStudyDuration"]],
+    T         = .csdStudyDuration(settings),
     minfup    = settings[["survivalMinimumFollowup"]],
     ratio     = settings[["sampleSizeAllocationRatio"]],
     method    = settings[["survivalGsSurvMethod"]]
@@ -627,6 +646,9 @@ GroupSequentialDesignInternal <- function(jaspResults, dataset, options) {
     analysisTimeRow <- .csdAnalysisTimePlanningDetailRow(settings, design, fixedSurvivalDesign)
     if (!is.null(analysisTimeRow))
       rows[[length(rows) + 1]] <- analysisTimeRow
+
+    if (settings[["survivalInformationMethod"]] == "nSurvival")
+      rows[[length(rows) + 1]] <- .csdStudyDurationPlanningDetailRow(settings)
   }
 
   if (length(rows) == 0)
@@ -697,6 +719,17 @@ GroupSequentialDesignInternal <- function(jaspResults, dataset, options) {
   )
 }
 
+.csdStudyDurationPlanningDetailRow <- function(settings) {
+  data.frame(
+    quantity    = gettext("Study duration"),
+    fixedDesign = .csdStudyDuration(settings),
+    maximum     = .csdStudyDuration(settings),
+    expectedH0  = NA_real_,
+    expectedH1  = NA_real_,
+    stringsAsFactors = FALSE
+  )
+}
+
 .csdFixedSurvivalPlanningDesign <- function(settings, design) {
   if (!inherits(design, "gsSurv"))
     return(NULL)
@@ -709,7 +742,7 @@ GroupSequentialDesignInternal <- function(jaspResults, dataset, options) {
     eta     = settings[["survivalDropoutHazard"]],
     gamma   = settings[["survivalAccrualRate"]],
     R       = settings[["survivalAccrualDuration"]],
-    T       = settings[["survivalStudyDuration"]],
+    T       = .csdStudyDuration(settings),
     minfup  = settings[["survivalMinimumFollowup"]],
     ratio   = settings[["sampleSizeAllocationRatio"]],
     alpha   = helper[["alpha"]],
@@ -729,7 +762,7 @@ GroupSequentialDesignInternal <- function(jaspResults, dataset, options) {
   if (is.finite(value))
     return(value)
 
-  .csdPositiveFirst(settings[["survivalStudyDuration"]])
+  .csdPositiveFirst(.csdStudyDuration(settings))
 }
 
 .csdPlanningDetailsIncludeExpected <- function(rows) {
@@ -1516,19 +1549,27 @@ GroupSequentialDesignInternal <- function(jaspResults, dataset, options) {
   informationLabel <- .csdInformationLabels(settings)[["text"]]
   html[["text"]] <- paste0(
     "<p>",
-    gettextf(
-      "This classical group sequential design uses %1$s with %2$s planned looks.",
-      .csdDesignTypeLabel(settings[["designType"]]),
-      design[["k"]]
-    ),
+    .csdExplanationOpening(settings[["designType"]], design[["k"]]),
     "</p><p>",
     gettextf(
-      "The maximum %1$s is %2$s, compared with %3$s for the corresponding fixed design.",
+      "Maximum %1$s: %2$s (corresponding fixed design: %3$s).",
       informationLabel,
       .csdFormatNumber(max(design[["n.I"]], na.rm = TRUE)),
       .csdFormatNumber(design[["n.fix"]])
     ),
     "</p>"
+  )
+}
+
+# One sentence per design type, so that translations control the case and the inflection of the design type
+# (lower-casing the translated label would, for example, lower-case German nouns)
+.csdExplanationOpening <- function(designType, looks) {
+  switch(
+    designType,
+    oneSided                     = gettextf("This is a one-sided classical group sequential design with %1$s planned looks, including the final analysis.", looks),
+    twoSidedSymmetric            = gettextf("This is a two-sided symmetric classical group sequential design with %1$s planned looks, including the final analysis.", looks),
+    twoSidedAsymmetricBinding    = gettextf("This is a two-sided asymmetric \u03B2-spending (binding futility) classical group sequential design with %1$s planned looks, including the final analysis.", looks),
+    twoSidedAsymmetricNonBinding = gettextf("This is a two-sided asymmetric \u03B2-spending (non-binding futility) classical group sequential design with %1$s planned looks, including the final analysis.", looks)
   )
 }
 
@@ -1652,11 +1693,12 @@ GroupSequentialDesignInternal <- function(jaspResults, dataset, options) {
   return(format(signif(x, 15), scientific = FALSE, trim = TRUE))
 }
 
-.csdBoundariesPlot <- function(jaspResults, settings, result) {
+.csdBoundariesPlot <- function(jaspResults, options, settings, result) {
   if (!is.null(jaspResults[["classicalSequentialBoundariesPlot"]]))
     return()
 
-  plot <- createJaspPlot(title = gettext("Stopping Boundaries"), width = .bfdPlotWidth(settings), height = 350)
+  # settings is a try-error when the inputs are invalid, so the width comes from the raw options
+  plot <- createJaspPlot(title = gettext("Stopping Boundaries"), width = .bfdPlotWidth(options), height = 350)
   plot$dependOn(.csdBoundariesPlotDependencies)
   plot$position <- 12
   jaspResults[["classicalSequentialBoundariesPlot"]] <- plot
@@ -1706,11 +1748,11 @@ GroupSequentialDesignInternal <- function(jaspResults, dataset, options) {
   return(data)
 }
 
-.csdCrossingProbabilitiesPlot <- function(jaspResults, settings, result) {
+.csdCrossingProbabilitiesPlot <- function(jaspResults, options, settings, result) {
   if (!is.null(jaspResults[["classicalSequentialCrossingProbabilitiesPlot"]]))
     return()
 
-  plot <- createJaspPlot(title = gettext("Boundary Crossing Probabilities"), width = .bfdPlotWidth(settings), height = 350)
+  plot <- createJaspPlot(title = gettext("Boundary Crossing Probabilities"), width = .bfdPlotWidth(options), height = 350)
   plot$dependOn(.csdCrossingProbabilitiesPlotDependencies)
   plot$position <- 13
   jaspResults[["classicalSequentialCrossingProbabilitiesPlot"]] <- plot
@@ -1739,7 +1781,13 @@ GroupSequentialDesignInternal <- function(jaspResults, dataset, options) {
     ggplot2::scale_y_continuous(limits = c(0, 1), labels = function(x) paste0(round(100 * x), "%")) +
     ggplot2::labs(x = gettext("Look"), y = gettext("Cumulative probability"), color = gettext("Boundary"), linetype = gettext("Under"))
 
-  return(.bfdApplyPlotTheme(plot, settings))
+  # Without an explicit order, ggplot2 sorts the two legends by a hash of their contents, so symmetric and asymmetric
+  # designs listed them in different orders. jaspBase's decodeplot() replaces the colour guide (and with it any order
+  # set on it), so only the linetype order survives: "Under" first, then "Boundary"
+  plot <- .bfdApplyPlotTheme(plot, settings) +
+    ggplot2::guides(linetype = ggplot2::guide_legend(order = 1))
+
+  return(plot)
 }
 
 .csdCrossingPlotData <- function(design) {

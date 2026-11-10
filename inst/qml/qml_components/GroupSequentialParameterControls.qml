@@ -68,12 +68,12 @@ Group
 	property double defaultGsSurvControlHazard: 0.1155
 	property double defaultSurvivalDropoutHazard: 0
 	property double defaultSurvivalAccrualDuration: 12
-	property double defaultNSurvivalStudyDuration: 24
-	property double defaultGsSurvStudyDuration: 18
 	property double defaultSurvivalEntryGamma: 0.1
 	property double defaultSurvivalAccrualRate: 1
-	property double defaultSurvivalMinimumFollowup: 6
+	property double defaultNSurvivalMinimumFollowup: 12
+	property double defaultGsSurvMinimumFollowup: 6
 	property int defaultNumberOfLooks: 3
+	property int parameterFieldWidth: 1.3 * jaspTheme.numericFieldWidth
 
 	Component.onCompleted:
 	{
@@ -131,17 +131,25 @@ Group
 		return root.defaultGsSurvControlHazard
 	}
 
-	function survivalStudyDurationDefault(method)
+	function survivalMinimumFollowupDefault(method)
 	{
 		if (method === "gsSurv")
-			return root.defaultGsSurvStudyDuration
-		return root.defaultNSurvivalStudyDuration
+			return root.defaultGsSurvMinimumFollowup
+		return root.defaultNSurvivalMinimumFollowup
 	}
 
 	function syncPositiveDefault(field, nextDefault, previousDefault, forceDefault)
 	{
 		var value = Number(field.value)
 		if (forceDefault || !isFinite(value) || value <= 0 ||
+			Math.abs(value - previousDefault) < 1e-4)
+			field.value = nextDefault
+	}
+
+	function syncNonNegativeDefault(field, nextDefault, previousDefault, forceDefault)
+	{
+		var value = Number(field.value)
+		if (forceDefault || !isFinite(value) || value < 0 ||
 			Math.abs(value - previousDefault) < 1e-4)
 			field.value = nextDefault
 	}
@@ -165,10 +173,10 @@ Group
 			root.survivalControlHazardDefault(previousMethod),
 			forceDefault
 		)
-		root.syncPositiveDefault(
-			survivalStudyDuration,
-			root.survivalStudyDurationDefault(method),
-			root.survivalStudyDurationDefault(previousMethod),
+		root.syncNonNegativeDefault(
+			survivalMinimumFollowup,
+			root.survivalMinimumFollowupDefault(method),
+			root.survivalMinimumFollowupDefault(previousMethod),
 			forceDefault
 		)
 
@@ -303,6 +311,7 @@ Group
 			min:          0
 			max:          1
 			defaultValue: root.defaultAlpha
+			fieldWidth:   root.parameterFieldWidth
 			decimals:     4
 			inclusive:    JASP.None
 			info:         qsTr("One-sided upper-bound Type I error rate. For symmetric two-sided designs, the total Type I error rate is 2\u03B1.")
@@ -317,6 +326,7 @@ Group
 			min:          0
 			max:          1
 			defaultValue: root.defaultPower
+			fieldWidth:   root.parameterFieldWidth
 			decimals:     4
 			inclusive:    JASP.None
 			info:         qsTr("Target power under the alternative hypothesis. gsDesign uses \u03B2 = 1 - power and adjusts the maximum information to achieve this power; for asymmetric \u03B2-spending designs, \u03B2 is also the total lower-bound spending under the alternative.")
@@ -358,6 +368,7 @@ Group
 			id:           fixedSampleSize
 			min:          2
 			defaultValue: root.defaultFixedSampleSize
+			fieldWidth:   root.parameterFieldWidth
 			visible:      sampleSizeMode.currentValue === "fixedDesign"
 			info:         qsTr("Fixed-design value with no interim analyses. For simple sample-size designs this is N; for information-based or event-driven designs, enter information units or events.")
 		}
@@ -389,6 +400,7 @@ Group
 			id:           effectSize
 			min:          0
 			defaultValue: root.defaultEffectSize
+			fieldWidth:   root.parameterFieldWidth
 			decimals:     4
 			inclusive:    JASP.None
 			visible:      root.usesEffectValue
@@ -407,6 +419,7 @@ Group
 			id:           naturalEffectSize
 			min:          0
 			defaultValue: root.defaultNaturalEffectSize
+			fieldWidth:   root.parameterFieldWidth
 			decimals:     4
 			inclusive:    JASP.None
 			visible:      root.usesMeanDifference
@@ -425,6 +438,7 @@ Group
 			id:           effectStandardDeviation
 			min:          0
 			defaultValue: root.defaultEffectStandardDeviation
+			fieldWidth:   root.parameterFieldWidth
 			decimals:     4
 			inclusive:    JASP.None
 			visible:      root.usesNormalSd
@@ -439,6 +453,7 @@ Group
 			id:           sampleSizeRatio
 			min:          0
 			defaultValue: root.defaultAllocationRatio
+			fieldWidth:   root.parameterFieldWidth
 			decimals:     4
 			inclusive:    JASP.None
 			visible:      root.usesAllocationRatio
@@ -468,6 +483,7 @@ Group
 			min:          0
 			max:          1
 			defaultValue: root.defaultBinaryEventRateGroup1
+			fieldWidth:   root.parameterFieldWidth
 			decimals:     4
 			inclusive:    JASP.None
 			visible:      root.usesBinaryEventRateInput
@@ -483,6 +499,7 @@ Group
 			min:          0
 			max:          1
 			defaultValue: root.defaultBinaryEventRateGroup2
+			fieldWidth:   root.parameterFieldWidth
 			decimals:     4
 			inclusive:    JASP.None
 			visible:      root.usesBinaryEventRateInput
@@ -498,10 +515,11 @@ Group
 			min:          0
 			max:          1
 			defaultValue: root.defaultBinaryBaselineEventRate
+			fieldWidth:   root.parameterFieldWidth
 			decimals:     4
 			inclusive:    JASP.None
 			visible:      root.usesBinaryEffectInput
-			info:         qsTr("Event probability for group 1 under the alternative hypothesis. A value near 0.5 is conservative for risk-difference planning because it gives the largest Bernoulli variance.")
+			info:         qsTr("Event probability for group 1 under the alternative hypothesis. The group 2 event probability is derived from it and the alternative effect, so the required sample size depends on both probabilities.")
 		}
 
 		Text { Layout.columnSpan: 2; text: qsTr("Binary effect scale:"); visible: root.usesBinaryEndpoint }
@@ -533,6 +551,7 @@ Group
 			min:          root.binaryAlternativeEffectMinimum(binaryEffectScale.currentValue)
 			max:          root.binaryAlternativeEffectMaximum(binaryEffectScale.currentValue)
 			defaultValue: root.binaryAlternativeEffectDefault(binaryEffectScale.currentValue)
+			fieldWidth:   root.parameterFieldWidth
 			decimals:     4
 			inclusive:    JASP.None
 			negativeValues: binaryEffectScale.currentValue === "riskDifference"
@@ -547,6 +566,7 @@ Group
 			name:           "binaryNullRiskDifference"
 			id:             binaryNullRiskDifference
 			defaultValue:   root.defaultBinaryNullRiskDifference
+			fieldWidth:     root.parameterFieldWidth
 			decimals:       4
 			negativeValues: true
 			visible:        root.usesBinaryEndpoint && binaryEffectScale.currentValue === "riskDifference"
@@ -561,6 +581,7 @@ Group
 			id:           binaryNullRiskRatio
 			min:          0
 			defaultValue: root.defaultNullRatio
+			fieldWidth:   root.parameterFieldWidth
 			decimals:     4
 			inclusive:    JASP.None
 			visible:      root.usesBinaryEndpoint && binaryEffectScale.currentValue === "riskRatio"
@@ -575,6 +596,7 @@ Group
 			id:           binaryNullOddsRatio
 			min:          0
 			defaultValue: root.defaultNullRatio
+			fieldWidth:   root.parameterFieldWidth
 			decimals:     4
 			inclusive:    JASP.None
 			visible:      root.usesBinaryEndpoint && binaryEffectScale.currentValue === "oddsRatio"
@@ -589,6 +611,7 @@ Group
 			id:           hazardRatio
 			min:          0
 			defaultValue: root.survivalHazardRatioDefault(survivalInformationMethod.currentValue)
+			fieldWidth:   root.parameterFieldWidth
 			decimals:     4
 			inclusive:    JASP.None
 			visible:      root.usesSurvivalEndpoint
@@ -603,6 +626,7 @@ Group
 			id:           nullHazardRatio
 			min:          0
 			defaultValue: root.defaultNullRatio
+			fieldWidth:   root.parameterFieldWidth
 			decimals:     4
 			inclusive:    JASP.None
 			visible:      root.usesSurvivalEndpoint
@@ -638,10 +662,11 @@ Group
 			id:           survivalControlHazard
 			min:          0
 			defaultValue: root.survivalControlHazardDefault(survivalInformationMethod.currentValue)
+			fieldWidth:   root.parameterFieldWidth
 			decimals:     4
 			inclusive:    JASP.None
 			visible:      root.usesSurvivalAccrual
-			info:         qsTr("Control-group event hazard per time unit. Use the same time unit as accrual, study duration, follow-up, and dropout hazards. Defaults to 0.0833 for subjects + events and 0.1155 for group sequential accrual.")
+			info:         qsTr("Control-group event hazard per time unit. Use the same time unit as accrual, follow-up, and dropout hazards. Defaults to 0.0833 for subjects + events and 0.1155 for group sequential accrual.")
 		}
 
 		Text { text: qsTr("Dropout hazard:"); visible: root.usesSurvivalAccrual }
@@ -652,6 +677,7 @@ Group
 			id:           survivalDropoutHazard
 			min:          0
 			defaultValue: root.defaultSurvivalDropoutHazard
+			fieldWidth:   root.parameterFieldWidth
 			decimals:     4
 			inclusive:    JASP.MinMax
 			visible:      root.usesSurvivalAccrual
@@ -666,24 +692,26 @@ Group
 			id:           survivalAccrualDuration
 			min:          0
 			defaultValue: root.defaultSurvivalAccrualDuration
+			fieldWidth:   root.parameterFieldWidth
 			decimals:     4
 			inclusive:    JASP.None
 			visible:      root.usesSurvivalAccrual
-			info:         qsTr("Enrollment duration in the same time unit as the survival hazards and study duration.")
+			info:         qsTr("Enrollment duration in the same time unit as the survival hazards and minimum follow-up.")
 		}
 
-		Text { text: qsTr("Study duration:"); visible: root.usesSurvivalAccrual }
-		Text { text: root.usesNSurvivalAccrual ? qsTr("Ts") : qsTr("T"); visible: root.usesSurvivalAccrual }
+		Text { text: qsTr("Minimum follow-up:"); visible: root.usesSurvivalAccrual }
+		Text { text: qsTr("minfup"); visible: root.usesSurvivalAccrual }
 		DoubleField
 		{
-			name:         "survivalStudyDuration"
-			id:           survivalStudyDuration
+			name:         "survivalMinimumFollowup"
+			id:           survivalMinimumFollowup
 			min:          0
-			defaultValue: root.survivalStudyDurationDefault(survivalInformationMethod.currentValue)
+			defaultValue: root.survivalMinimumFollowupDefault(survivalInformationMethod.currentValue)
+			fieldWidth:   root.parameterFieldWidth
 			decimals:     4
-			inclusive:    JASP.None
+			inclusive:    JASP.MinMax
 			visible:      root.usesSurvivalAccrual
-			info:         qsTr("Maximum study duration. Use the same time unit as the control hazard and accrual duration. Defaults to 24 for subjects + events and 18 for group sequential accrual.")
+			info:         qsTr("Time from the end of enrollment to the end of the study, in the same time unit as the survival hazards and accrual duration. The study duration is the accrual duration plus this follow-up. Defaults to 12 for subjects + events and 6 for group sequential accrual.")
 		}
 
 		Text { text: qsTr("Entry distribution:"); visible: root.usesNSurvivalAccrual }
@@ -708,6 +736,7 @@ Group
 			name:           "survivalEntryGamma"
 			id:             survivalEntryGamma
 			defaultValue:   root.defaultSurvivalEntryGamma
+			fieldWidth:     root.parameterFieldWidth
 			decimals:       4
 			negativeValues: true
 			visible:        root.usesNSurvivalAccrual && survivalEntry.currentValue === "expo"
@@ -722,24 +751,11 @@ Group
 			id:           survivalAccrualRate
 			min:          0
 			defaultValue: root.defaultSurvivalAccrualRate
+			fieldWidth:   root.parameterFieldWidth
 			decimals:     4
 			inclusive:    JASP.None
 			visible:      root.usesGsSurvAccrual
-			info:         qsTr("Enrollment-rate pattern. With fixed study duration and minimum follow-up, the calculation rescales this value to the required accrual rate; the default scalar 1 gives constant accrual.")
-		}
-
-		Text { text: qsTr("Minimum follow-up:"); visible: root.usesGsSurvAccrual }
-		Text { text: qsTr("minfup"); visible: root.usesGsSurvAccrual }
-		DoubleField
-		{
-			name:         "survivalMinimumFollowup"
-			id:           survivalMinimumFollowup
-			min:          0
-			defaultValue: root.defaultSurvivalMinimumFollowup
-			decimals:     4
-			inclusive:    JASP.None
-			visible:      root.usesGsSurvAccrual
-			info:         qsTr("Minimum follow-up duration in the same time unit as the study duration.")
+			info:         qsTr("Enrollment-rate pattern. With fixed accrual duration and minimum follow-up, the calculation rescales this value to the required accrual rate; the default scalar 1 gives constant accrual.")
 		}
 
 		Text { Layout.columnSpan: 2; text: qsTr("Accrual calculation method:"); visible: root.usesGsSurvAccrual }
@@ -773,6 +789,7 @@ Group
 			min:          2
 			max:          30
 			defaultValue: root.defaultNumberOfLooks
+			fieldWidth:   root.parameterFieldWidth
 			info:         qsTr("Number of planned analyses, including the final analysis.")
 			onValueChanged:
 			{

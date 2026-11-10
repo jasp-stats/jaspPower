@@ -87,10 +87,6 @@
   return(settings[["analysisPriorScale"]])
 }
 
-.bfdZAnalysisPriorMeanRelative <- function(settings) {
-  return(.bfdZAnalysisPriorMean(settings) - settings[["nullValue"]])
-}
-
 .bfdMomentPriorSpread <- function(settings) {
   if (identical(settings[["analysisPriorDistribution"]], "normalMomentMode"))
     return(settings[["analysisPriorMode"]] / sqrt(2))
@@ -109,18 +105,75 @@
   return(settings[["tPriorDegreesOfFreedom"]])
 }
 
+# Prior location centered at the null value. Use it for bfpwr t-test functions that test against zero
+# (tbf01() and the sequential functions); ptbf01() and ntbf01() take `null` and shift the location internally.
 .bfdTPriorLocationRelative <- function(settings) {
   return(settings[["tPriorLocation"]] - settings[["nullValue"]])
 }
 
+# Composite directional H0 (theta <= theta0 vs. theta > theta0, bfpwr type = "directional"). One-sided normal
+# priors with a point null instead use bfpwr's truncated analysis priors via `alternative`.
 .bfdDirectionalZAnalysis <- function(settings) {
-  if (!settings[["isZTest"]])
-    return(FALSE)
+  return(
+    isTRUE(settings[["isZTest"]]) &&
+      identical(settings[["analysisPriorDistribution"]], "normal") &&
+      settings[["alternative"]] != "two.sided" &&
+      identical(settings[["nullPriorDistribution"]], "directional")
+  )
+}
 
-  if (!settings[["analysisPriorDistribution"]] %in% c("normal", "directional"))
-    return(FALSE)
+# Direction passed to the bfpwr z-test functions. The composite directional test is always run as
+# theta <= null vs. theta > null (reflected for "less"), so bfpwr receives a two-sided `alternative` there.
+.bfdZAlternative <- function(settings) {
+  if (.bfdUsesDirectionalZTest(settings))
+    return("two.sided")
 
-  return(settings[["alternative"]] != "two.sided" || settings[["analysisPriorDistribution"]] == "directional")
+  return(settings[["alternative"]])
+}
+
+.bfdZAnalysisPriorDistributions <- c("normal", "point", "normalMomentMode", "normalMomentSpread")
+
+.bfdValidateAnalysisPrior <- function(settings) {
+  if (!isTRUE(settings[["isZTest"]]))
+    return(invisible(TRUE))
+
+  if (!settings[["analysisPriorDistribution"]] %in% .bfdZAnalysisPriorDistributions)
+    stop(gettextf("The analysis prior '%1$s' is not available for z-tests.", settings[["analysisPriorDistribution"]]))
+
+  if (!identical(settings[["analysisPriorDistribution"]], "point"))
+    return(invisible(TRUE))
+
+  location <- settings[["analysisPriorLocation"]]
+  null     <- settings[["nullValue"]]
+  if ((settings[["alternative"]] == "greater" && location <= null) || (settings[["alternative"]] == "less" && location >= null))
+    stop(gettext("A one-sided point analysis prior must lie strictly on the H\u2081 side of the null value."))
+
+  return(invisible(TRUE))
+}
+
+# Unit SD of a z-test estimate (its standard error at N1 = 1). Independent samples use the exact allocation
+# ratio N2/N1 in every calculation (as the bfpwr searches do); the reported N2 is rounded up, so the planned
+# groups hold at least the evaluated information.
+# z-tests on the standardized scale (the default) plan and analyse the standardized mean difference (Cohen's d)
+# with the standard deviation treated as known, like the t-tests; on the raw scale the effect is the mean
+# (difference) in the units of the outcome and the known standard deviation is specified
+.bfdApplyZTestScale <- function(settings) {
+  settings[["isStandardizedZ"]] <- isTRUE(settings[["isZTest"]]) && !isTRUE(settings[["isGeneralZ"]]) &&
+    !identical(settings[["zTestScale"]], "raw")
+  if (settings[["isStandardizedZ"]])
+    settings[["knownStandardDeviation"]] <- 1
+
+  return(settings)
+}
+
+.bfdZUnitStandardDeviation <- function(settings) {
+  if (isTRUE(settings[["isGeneralZ"]]))
+    return(settings[["unitInformationSd"]])
+
+  if (settings[["isIndependentSamples"]])
+    return(settings[["knownStandardDeviation"]] * sqrt(1 + 1 / settings[["sampleSizeAllocationRatio"]]))
+
+  return(settings[["knownStandardDeviation"]])
 }
 
 .bfdContinuousDesignPrior <- function(settings, under) {
@@ -146,10 +199,6 @@
 
   designPrior[["parameters"]] <- .bfdContinuousDesignParameters(designPrior)
   return(designPrior)
-}
-
-.bfdContinuousDesignPriorMeanRelative <- function(settings, under) {
-  return(.bfdContinuousDesignPrior(settings, under)[["mean"]] - settings[["nullValue"]])
 }
 
 .bfdContinuousDesignParameters <- function(designPrior) {

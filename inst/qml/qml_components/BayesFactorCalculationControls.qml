@@ -32,6 +32,8 @@ Group
 	property bool isGeneralZ: testValue === "generalZApproximation"
 	property bool isZTest: testValue.indexOf("ZTest") !== -1
 	property bool isTTest: testValue.indexOf("TTest") !== -1
+	property alias zTestScaleValue: zTestScale.currentValue
+	property bool usesRawZScale: isZTest && zTestScale.currentValue === "raw"
 	property alias calculationValue: calc.currentValue
 	property bool usesSampleSizeSearch: calc.currentValue === "sampleSize"
 
@@ -141,25 +143,40 @@ Group
 		columns: 3
 		visible: root.isZTest || root.isGeneralZ
 
+		Text { Layout.columnSpan: 2; text: qsTr("Scale:"); visible: root.isZTest }
+		DropDown
+		{
+			name: "zTestScale"
+			id:   zTestScale
+			info: qsTr("Scale of the effect, the analysis priors and the design priors. Standardized: the standardized mean difference (Cohen's d), like the t-tests, with the standard deviation treated as known. Raw: the mean (difference) in the units of the outcome, with the known standard deviation specified below.")
+			indexDefaultValue: 0
+			label: ""
+			visible: root.isZTest
+			values: [
+				{ label: qsTr("Standardized (Cohen's d)"), value: "standardized" },
+				{ label: qsTr("Raw"),                      value: "raw"          }
+			]
+		}
+
 		Text
 		{
 			text: qsTr("Known standard deviation:")
-			visible: root.isZTest
+			visible: root.usesRawZScale
 		}
 		Text
 		{
 			text: "\u03C3"
-			visible: root.isZTest
+			visible: root.usesRawZScale
 		}
 		DoubleField
 		{
 			name: "knownStandardDeviation"
 			id:   standardDeviation
-			info: qsTr("Known population standard deviation used for z-test sample size planning.")
+			info: qsTr("Known population standard deviation of the outcome. The effect and the priors are mean (differences) in the units of the outcome.")
 			min: 0
 			defaultValue: 1
 			inclusive: JASP.None
-			visible: root.isZTest
+			visible: root.usesRawZScale
 		}
 
 		Text

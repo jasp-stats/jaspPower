@@ -28,6 +28,10 @@ Group
 	Layout.columnSpan: 3
 
 	property string testValue: ""
+	// fixed designs search critical standardized mean differences (bfpwr `drange`); sequential designs search
+	// critical t statistics (bfpwr `trange`)
+	property bool sequential: false
+	property string rangeScale: sequential ? qsTr("t-statistic") : qsTr("standardized mean difference")
 
 	visible: testValue.indexOf("TTest") !== -1
 
@@ -39,13 +43,13 @@ Group
 
 	Component.onCompleted: syncRange()
 
-	Text { text: qsTr("t search range:") }
+	Text { text: qsTr("Critical value search:") }
 	Text { text: qsTr("Range") }
 	DropDown
 	{
 		name: "tSearchRangeMode"
 		id:   tRangeMode
-		info: qsTr("Choose whether the integration range for t-test calculations is selected automatically or supplied manually.")
+		info: qsTr("Choose whether the %1 range in which the t-test critical values are searched is selected automatically or supplied manually.").arg(rangeScale)
 		indexDefaultValue: 0
 		values: [
 			{ label: qsTr("Adaptive"), value: "adaptive" },
@@ -67,7 +71,7 @@ Group
 	{
 		name: "tSearchRangeLower"
 		id:   tRangeLower
-		info: qsTr("Lower bound of the custom integration range for t-test calculations.")
+		info: qsTr("Lower bound of the custom %1 range in which the t-test critical values are searched.").arg(rangeScale)
 		defaultValue: -5
 		negativeValues: true
 		visible: tRangeMode.currentValue === "custom"
@@ -88,7 +92,7 @@ Group
 	{
 		name: "tSearchRangeUpper"
 		id:   tRangeUpper
-		info: qsTr("Upper bound of the custom integration range for t-test calculations.")
+		info: qsTr("Upper bound of the custom %1 range in which the t-test critical values are searched.").arg(rangeScale)
 		min: tRangeLower.value
 		defaultValue: 5
 		negativeValues: true
