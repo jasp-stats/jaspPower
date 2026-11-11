@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspPower 0.97.1\n"
 "POT-Creation-Date: 2026-11-07 03:35\n"
-"PO-Revision-Date: 2026-11-11 18:45+0000\n"
+"PO-Revision-Date: 2026-11-11 19:10+0000\n"
 "Last-Translator: Fahad Mahfouz Al-Subhi "
 "<fahadalsubhi@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/jasp/jasppower-r/"
@@ -175,7 +175,7 @@ msgid "General (z-approximation)"
 msgstr ""
 
 msgid "Group"
-msgstr ""
+msgstr "المجموعة"
 
 msgid "Mean"
 msgstr "المتوسط"
@@ -184,7 +184,7 @@ msgid "SD"
 msgstr "الانحراف المعياري (SD)"
 
 msgid "Variable"
-msgstr ""
+msgstr "المتغير"
 
 msgid "Successes"
 msgstr ""
@@ -196,13 +196,13 @@ msgid "Proportion"
 msgstr ""
 
 msgid "Mean Difference"
-msgstr ""
+msgstr "فرق المتوسطين"
 
 msgid "SD Difference"
 msgstr ""
 
 msgid "SE"
-msgstr ""
+msgstr "الخطأ المعياري (SE)"
 
 msgid "Group 1"
 msgstr ""
@@ -220,7 +220,7 @@ msgid "Summary statistics"
 msgstr ""
 
 msgid "Estimate"
-msgstr ""
+msgstr "التقدير"
 
 msgid "Mean 1"
 msgstr ""
@@ -241,7 +241,7 @@ msgid "SD difference"
 msgstr ""
 
 msgid "Cohen's d"
-msgstr ""
+msgstr "معامل d لكوهين"
 
 msgid "Failures"
 msgstr ""
@@ -421,7 +421,7 @@ msgid "%1$s ≤ %2$s"
 msgstr ""
 
 msgid "%1$s < %2$s"
-msgstr ""
+msgstr "%1$s < %2$s"
 
 msgid "%1$s ≥ %2$s"
 msgstr ""
@@ -517,7 +517,7 @@ msgid "Analysis Prior"
 msgstr ""
 
 msgid "Prior"
-msgstr ""
+msgstr "قبلي"
 
 msgid "H₁"
 msgstr ""
@@ -538,7 +538,7 @@ msgid "Density"
 msgstr "الكثافة"
 
 msgid "Hypothesis"
-msgstr ""
+msgstr "الفرضية"
 
 msgid "The sample-size ratio leads to a second-group sample size smaller than 2."
 msgstr ""
@@ -607,7 +607,7 @@ msgid "p₀ = %1$s"
 msgstr ""
 
 msgid "Beta"
-msgstr ""
+msgstr "بيتا"
 
 msgid "Cauchy"
 msgstr ""
@@ -970,10 +970,10 @@ msgid "Critical value"
 msgstr ""
 
 msgid "Lower"
-msgstr ""
+msgstr "الحد الأدنى"
 
 msgid "Upper"
-msgstr ""
+msgstr "الحد الأعلى"
 
 msgid "group 1 event probability"
 msgstr ""
