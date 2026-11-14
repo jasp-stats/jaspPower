@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspPower 0.19.2\n"
-"POT-Creation-Date: 2026-11-07 03:35\n"
+"POT-Creation-Date: 2026-11-14 03:35\n"
 "PO-Revision-Date: 2025-04-15 23:01+0000\n"
 "Last-Translator: Marko Bojović <bojovicmarko@outlook.com>\n"
 "Language-Team: Serbian <https://hosted.weblate.org/projects/jasp/jasppower-r/"
@@ -34,6 +34,13 @@ msgstr ""
 msgid ""
 "Due to rounding of the sample size, Pr(Conclusive Evidence) can deviate from "
 "the target probability."
+msgstr ""
+
+msgid ""
+"For independent samples, N₁ is the sample size in group 1 and N₂ is rounded "
+"up from the requested N₂/N₁ sample-size ratio. The z-test calculations use "
+"the exact ratio, so the rounded-up group sizes provide at least the "
+"evaluated information."
 msgstr ""
 
 msgid ""
@@ -114,6 +121,9 @@ msgstr ""
 msgid ""
 "Probabilities are evaluated at the selected fixed-design sample size: N = "
 "%1$s. Rows use the corresponding design prior under H₁ or H₀."
+msgstr ""
+
+msgid "Not available because the planning target under %1$s was not reached."
 msgstr ""
 
 msgid "Sample size is not available."
@@ -343,7 +353,7 @@ msgstr ""
 msgid "Pooled SD"
 msgstr ""
 
-msgid "Observed Bayes factor is not finite."
+msgid "Observed Bayes factor could not be computed."
 msgstr ""
 
 msgid "Stop for H₁"
@@ -391,6 +401,21 @@ msgstr ""
 msgid "%1$s must be positive."
 msgstr ""
 
+msgid ""
+"The z-test treats the standard deviation as known; the observed pooled "
+"standard deviation (SD = %1$s) is used."
+msgstr ""
+
+msgid ""
+"The z-test treats the standard deviation as known; the observed standard "
+"deviation (SD = %1$s) is used."
+msgstr ""
+
+msgid ""
+"The z-test treats the standard deviation as known; the estimate is the "
+"standardized mean difference (Cohen's d)."
+msgstr ""
+
 msgid "N₁ = %1$s and N₂ = %2$s"
 msgstr ""
 
@@ -420,6 +445,14 @@ msgid "A %1$s Bayes factor design %2$s a %3$s %4$s %5$s."
 msgstr ""
 
 msgid "general z-test (with UISD = %1$s)"
+msgstr ""
+
+msgid ""
+"%1$s on the standardized mean difference (Cohen's d) scale, treating the "
+"standard deviation as known"
+msgstr ""
+
+msgid "%1$s on the raw scale (with known σ = %2$s)"
 msgstr ""
 
 msgid "specified"
@@ -452,7 +485,7 @@ msgstr ""
 msgid "%1$s ~ Student-t(location = %2$s, scale = %3$s, df = %4$s)"
 msgstr ""
 
-msgid "%1$s ~ Normal-moment(spread = %2$s, modes = ±%3$s)"
+msgid "%1$s ~ Normal-moment(location = %2$s, spread = %3$s, %4$s)"
 msgstr ""
 
 msgid "used %1$s"
@@ -491,6 +524,16 @@ msgid ""
 msgstr ""
 
 msgid "The design evaluated %1$s."
+msgstr ""
+
+msgid ""
+"The design selected %1$s, the smallest sample size that reaches target "
+"conclusive evidence probabilities of %2$s under H₁ and %3$s under H₀."
+msgstr ""
+
+msgid ""
+"The design selected %1$s to target a conclusive evidence probability of %2$s "
+"under %3$s; both design priors were evaluated at this sample size."
 msgstr ""
 
 msgid ""
@@ -610,6 +653,11 @@ msgstr ""
 msgid "H₀"
 msgstr ""
 
+msgid ""
+"No sample size is available for this design prior because a required "
+"planning target was not reached."
+msgstr ""
+
 msgid "Conclusive"
 msgstr ""
 
@@ -684,16 +732,16 @@ msgstr ""
 msgid "Point null"
 msgstr ""
 
-msgid "θ >= θ₀, θ₀ = %1$s"
+msgid "θ ≥ θ₀, θ₀ = %1$s"
 msgstr ""
 
-msgid "θ <= θ₀, θ₀ = %1$s"
+msgid "θ ≤ θ₀, θ₀ = %1$s"
 msgstr ""
 
 msgid "θ₀ = %1$s"
 msgstr ""
 
-msgid "p <= p₀, p₀ = %1$s"
+msgid "p ≤ p₀, p₀ = %1$s"
 msgstr ""
 
 msgid "p₀ = %1$s"
@@ -732,7 +780,13 @@ msgstr ""
 msgid "mean = %1$s, sd = %2$s"
 msgstr ""
 
-msgid "spread = %1$s, modes = +/- %2$s"
+msgid "spread = %1$s, %2$s"
+msgstr ""
+
+msgid "mode = %1$s"
+msgstr ""
+
+msgid "modes = %1$s and %2$s"
 msgstr ""
 
 msgid "p = %1$s"
@@ -848,9 +902,12 @@ msgstr ""
 msgid "Searching maximum sample size"
 msgstr ""
 
-msgid ""
-"The bfpwr sample-size search did not return a finite maximum sample size."
+msgid "Invalid target '%1$s'."
 msgstr ""
+
+#, fuzzy
+msgid "The maximum sample-size search failed: %1$s"
+msgstr "Тест Поасонове стопе једног узорка"
 
 msgid "The bfpwr sample-size search did not return a sequential design."
 msgstr ""
@@ -975,6 +1032,12 @@ msgid ""
 msgstr ""
 
 msgid ""
+"The requested BF target could not be reached within the selected maximum "
+"sample size for %1$s; its look-by-look results are evaluated up to the upper "
+"search bound."
+msgstr ""
+
+msgid ""
 "To satisfy both design priors in a single sequential design, use a final "
 "look of N₁ = %1$s and N₂ = %2$s (total N = %3$s)."
 msgstr ""
@@ -1033,6 +1096,11 @@ msgid ""
 "statistic reaches the decision rule at that look."
 msgstr ""
 
+msgid ""
+"The design priors use separate look schedules; the boundaries are shown for "
+"the schedule ending at N = %1$s."
+msgstr ""
+
 msgid "Lower Statistic"
 msgstr ""
 
@@ -1046,8 +1114,8 @@ msgid "Stop for H₀: %1$s"
 msgstr ""
 
 msgid ""
-"Sequential bfpwr calculations are performed on the parameter scale centered "
-"at the null value."
+"Sequential bfpwr t-test calculations are performed on the effect-size scale "
+"centered at the null value."
 msgstr ""
 
 msgid ""
@@ -1073,17 +1141,18 @@ msgid ""
 msgstr ""
 
 msgid ""
-"The design started at n_min,1 = %1$s and n_min,2 = %2$s, used %3$s, and "
-"found maximum sample sizes n_max,1 = %4$s and n_max,2 = %5$s under H₁ and "
-"n_max,1 = %6$s and n_max,2 = %7$s under H₀."
+"The requested BF target was not reached within the upper search bound for "
+"%1$s; the corresponding results are evaluated at that bound."
 msgstr ""
 
 msgid ""
-"The design started at n_min = %1$s, used %2$s, and found maximum sample "
-"sizes n_max = %3$s under H₁ and n_max = %4$s under H₀."
+"Under the %1$s design prior, the design started at n_min,1 = %2$s and "
+"n_min,2 = %3$s, used %4$s, and stopped at n_max,1 = %5$s and n_max,2 = %6$s."
 msgstr ""
 
-msgid "not reached"
+msgid ""
+"Under the %1$s design prior, the design started at n_min = %2$s, used %3$s, "
+"and stopped at n_max = %4$s."
 msgstr ""
 
 msgid "a single planned look"
@@ -1168,6 +1237,21 @@ msgid "Lower"
 msgstr ""
 
 msgid "Upper"
+msgstr ""
+
+msgid "The alternative hazard ratio must differ from the null hazard ratio."
+msgstr ""
+
+msgid ""
+"The subjects + events survival calculation supports only a null hazard ratio "
+"of 1. Use events only or group sequential accrual for a non-null hazard-"
+"ratio margin."
+msgstr ""
+
+msgid ""
+"The subjects + events survival calculation returned no finite sample size. "
+"With exponential entry, this happens when the entry rate parameter γ is 0 or "
+"equals a group's event hazard plus dropout hazard; change γ slightly."
 msgstr ""
 
 msgid "group 1 event probability"
@@ -1325,6 +1409,9 @@ msgid "Enrolled subjects"
 msgstr ""
 
 msgid "Expected analysis time"
+msgstr ""
+
+msgid "Study duration"
 msgstr ""
 
 msgid ""
@@ -1726,13 +1813,28 @@ msgid ""
 "the current settings."
 msgstr ""
 
-msgid ""
-"This classical group sequential design uses %1$s with %2$s planned looks."
+msgid "Maximum %1$s: %2$s (corresponding fixed design: %3$s)."
 msgstr ""
 
 msgid ""
-"The maximum %1$s is %2$s, compared with %3$s for the corresponding fixed "
-"design."
+"This is a one-sided classical group sequential design with %1$s planned "
+"looks, including the final analysis."
+msgstr ""
+
+msgid ""
+"This is a two-sided symmetric classical group sequential design with %1$s "
+"planned looks, including the final analysis."
+msgstr ""
+
+msgid ""
+"This is a two-sided asymmetric β-spending (binding futility) classical group "
+"sequential design with %1$s planned looks, including the final analysis."
+msgstr ""
+
+msgid ""
+"This is a two-sided asymmetric β-spending (non-binding futility) classical "
+"group sequential design with %1$s planned looks, including the final "
+"analysis."
 msgstr ""
 
 msgid ""
@@ -1827,7 +1929,12 @@ msgstr ""
 msgid "BF₀₁ ≥ %1$s"
 msgstr ""
 
-msgid "Invalid target '%1$s'."
+msgid "The analysis prior '%1$s' is not available for z-tests."
+msgstr ""
+
+msgid ""
+"A one-sided point analysis prior must lie strictly on the H₁ side of the "
+"null value."
 msgstr ""
 
 msgid "Point proportion"

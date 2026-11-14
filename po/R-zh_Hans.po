@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspPower 0.18.1\n"
-"POT-Creation-Date: 2026-11-07 03:35\n"
+"POT-Creation-Date: 2026-11-14 03:35\n"
 "PO-Revision-Date: 2026-11-01 03:51+0000\n"
 "Last-Translator: Shun Wang <shuonwang@gmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
@@ -34,6 +34,16 @@ msgid ""
 "Due to rounding of the sample size, Pr(Conclusive Evidence) can deviate from "
 "the target probability."
 msgstr "由于样本量取整，Pr(确定性证据) 可能偏离目标概率。"
+
+#, fuzzy
+msgid ""
+"For independent samples, N₁ is the sample size in group 1 and N₂ is rounded "
+"up from the requested N₂/N₁ sample-size ratio. The z-test calculations use "
+"the exact ratio, so the rounded-up group sizes provide at least the "
+"evaluated information."
+msgstr ""
+"对于独立样本，N₁ 为第 1 组的样本量，N₂ 由所请求的 N₂/N₁ 样本量比率向上取整得"
+"出，除非提供了自定义的第 2 组时间安排。"
 
 msgid ""
 "For independent samples, N₁ is the sample size in group 1 and N₂ is rounded "
@@ -126,6 +136,9 @@ msgid ""
 msgstr ""
 "概率在所选固定设计样本量处计算：N = %1$s。各行使用 H₁ 或 H₀ 下相应的设计先"
 "验。"
+
+msgid "Not available because the planning target under %1$s was not reached."
+msgstr ""
 
 msgid "Sample size is not available."
 msgstr "样本量不可用。"
@@ -359,7 +372,8 @@ msgstr "必须选择变量对。"
 msgid "Pooled SD"
 msgstr "合并标准差"
 
-msgid "Observed Bayes factor is not finite."
+#, fuzzy
+msgid "Observed Bayes factor could not be computed."
 msgstr "观测贝叶斯因子不是有限的。"
 
 msgid "Stop for H₁"
@@ -407,6 +421,22 @@ msgstr "%1$s 必须至少为 %2$s。"
 msgid "%1$s must be positive."
 msgstr "%1$s 必须为正数。"
 
+msgid ""
+"The z-test treats the standard deviation as known; the observed pooled "
+"standard deviation (SD = %1$s) is used."
+msgstr ""
+
+msgid ""
+"The z-test treats the standard deviation as known; the observed standard "
+"deviation (SD = %1$s) is used."
+msgstr ""
+
+#, fuzzy
+msgid ""
+"The z-test treats the standard deviation as known; the estimate is the "
+"standardized mean difference (Cohen's d)."
+msgstr "对于 t 检验，估计值是分析尺度上的标准化均数差。"
+
 msgid "N₁ = %1$s and N₂ = %2$s"
 msgstr "N₁ = %1$s 且 N₂ = %2$s"
 
@@ -436,6 +466,14 @@ msgid "A %1$s Bayes factor design %2$s a %3$s %4$s %5$s."
 msgstr "一个 %1$s 贝叶斯因子设计 %2$s 一个 %3$s %4$s %5$s。"
 
 msgid "general z-test (with UISD = %1$s)"
+msgstr ""
+
+msgid ""
+"%1$s on the standardized mean difference (Cohen's d) scale, treating the "
+"standard deviation as known"
+msgstr ""
+
+msgid "%1$s on the raw scale (with known σ = %2$s)"
 msgstr ""
 
 msgid "specified"
@@ -468,8 +506,9 @@ msgstr "%1$s ~ Cauchy（位置 = %2$s，尺度 = %3$s）"
 msgid "%1$s ~ Student-t(location = %2$s, scale = %3$s, df = %4$s)"
 msgstr "%1$s ~ Student-t（位置 = %2$s，尺度 = %3$s，自由度 = %4$s）"
 
-msgid "%1$s ~ Normal-moment(spread = %2$s, modes = ±%3$s)"
-msgstr "%1$s ~ 正态矩（扩散 = %2$s，众数 = ±%3$s）"
+#, fuzzy
+msgid "%1$s ~ Normal-moment(location = %2$s, spread = %3$s, %4$s)"
+msgstr "%1$s ~ Student-t（位置 = %2$s，尺度 = %3$s，自由度 = %4$s）"
 
 msgid "used %1$s"
 msgstr "使用 %1$s"
@@ -510,6 +549,20 @@ msgstr ""
 
 msgid "The design evaluated %1$s."
 msgstr "该设计评估了 %1$s。"
+
+#, fuzzy
+msgid ""
+"The design selected %1$s, the smallest sample size that reaches target "
+"conclusive evidence probabilities of %2$s under H₁ and %3$s under H₀."
+msgstr ""
+"该设计选择 %1$s 以实现在 H₁ 下确定性证据概率为 %2$s、在 H₀ 下为 %3$s 的目标。"
+
+#, fuzzy
+msgid ""
+"The design selected %1$s to target a conclusive evidence probability of %2$s "
+"under %3$s; both design priors were evaluated at this sample size."
+msgstr ""
+"该设计选择 %1$s 以实现在 H₁ 下确定性证据概率为 %2$s、在 H₀ 下为 %3$s 的目标。"
 
 msgid ""
 "The design selected %1$s to target conclusive evidence probabilities of %2$s "
@@ -643,6 +696,11 @@ msgstr "H₁"
 msgid "H₀"
 msgstr "H₀"
 
+msgid ""
+"No sample size is available for this design prior because a required "
+"planning target was not reached."
+msgstr ""
+
 msgid "Conclusive"
 msgstr "确定性"
 
@@ -710,16 +768,19 @@ msgstr "有方向的"
 msgid "Point null"
 msgstr "点零假设"
 
-msgid "θ >= θ₀, θ₀ = %1$s"
+#, fuzzy
+msgid "θ ≥ θ₀, θ₀ = %1$s"
 msgstr "θ >= θ₀，θ₀ = %1$s"
 
-msgid "θ <= θ₀, θ₀ = %1$s"
-msgstr "θ <= θ₀，θ₀ = %1$s"
+#, fuzzy
+msgid "θ ≤ θ₀, θ₀ = %1$s"
+msgstr "θ >= θ₀，θ₀ = %1$s"
 
 msgid "θ₀ = %1$s"
 msgstr "θ₀ = %1$s"
 
-msgid "p <= p₀, p₀ = %1$s"
+#, fuzzy
+msgid "p ≤ p₀, p₀ = %1$s"
 msgstr "p <= p₀，p₀ = %1$s"
 
 msgid "p₀ = %1$s"
@@ -758,8 +819,17 @@ msgstr "位置 = %1$s"
 msgid "mean = %1$s, sd = %2$s"
 msgstr "均值 = %1$s，标准差 = %2$s"
 
-msgid "spread = %1$s, modes = +/- %2$s"
+#, fuzzy
+msgid "spread = %1$s, %2$s"
 msgstr "扩散 = %1$s，众数 = +/- %2$s"
+
+#, fuzzy
+msgid "mode = %1$s"
+msgstr "N = %1$s"
+
+#, fuzzy
+msgid "modes = %1$s and %2$s"
+msgstr "均值 = %1$s，标准差 = %2$s"
 
 msgid "p = %1$s"
 msgstr "p = %1$s"
@@ -881,9 +951,12 @@ msgstr "%1$s 必须只包含正值。"
 msgid "Searching maximum sample size"
 msgstr "正在搜索最大样本量"
 
-msgid ""
-"The bfpwr sample-size search did not return a finite maximum sample size."
-msgstr "bfpwr 样本量搜索未返回有限的最大样本量。"
+msgid "Invalid target '%1$s'."
+msgstr "无效目标“%1$s”。"
+
+#, fuzzy
+msgid "The maximum sample-size search failed: %1$s"
+msgstr "至少 %1$s 的样本量"
 
 msgid "The bfpwr sample-size search did not return a sequential design."
 msgstr "bfpwr 样本量搜索未返回序贯设计。"
@@ -1024,6 +1097,14 @@ msgid ""
 msgstr ""
 "在 %1$s 的所选最大样本量内无法达到所请求的 BF 目标；依赖达到目标的条目留空。"
 
+#, fuzzy
+msgid ""
+"The requested BF target could not be reached within the selected maximum "
+"sample size for %1$s; its look-by-look results are evaluated up to the upper "
+"search bound."
+msgstr ""
+"在 %1$s 的所选最大样本量内无法达到所请求的 BF 目标；依赖达到目标的条目留空。"
+
 msgid ""
 "To satisfy both design priors in a single sequential design, use a final "
 "look of N₁ = %1$s and N₂ = %2$s (total N = %3$s)."
@@ -1092,6 +1173,11 @@ msgid ""
 msgstr ""
 "边界以检验统计量尺度显示。空格表示在该分析阶段没有有限统计量达到决策规则。"
 
+msgid ""
+"The design priors use separate look schedules; the boundaries are shown for "
+"the schedule ending at N = %1$s."
+msgstr ""
+
 msgid "Lower Statistic"
 msgstr "下统计量"
 
@@ -1104,9 +1190,10 @@ msgstr "为 H₁ 停止：%1$s"
 msgid "Stop for H₀: %1$s"
 msgstr "为 H₀ 停止：%1$s"
 
+#, fuzzy
 msgid ""
-"Sequential bfpwr calculations are performed on the parameter scale centered "
-"at the null value."
+"Sequential bfpwr t-test calculations are performed on the effect-size scale "
+"centered at the null value."
 msgstr "序贯 bfpwr 计算在以零值为中心的参数尺度上进行。"
 
 msgid ""
@@ -1133,24 +1220,26 @@ msgid ""
 "The design started at n_min = %1$s, used %2$s, and stopped at n_max = %3$s."
 msgstr "该设计从 n_min = %1$s 开始，使用 %2$s，并在 n_max = %3$s 处停止。"
 
+#, fuzzy
 msgid ""
-"The design started at n_min,1 = %1$s and n_min,2 = %2$s, used %3$s, and "
-"found maximum sample sizes n_max,1 = %4$s and n_max,2 = %5$s under H₁ and "
-"n_max,1 = %6$s and n_max,2 = %7$s under H₀."
+"The requested BF target was not reached within the upper search bound for "
+"%1$s; the corresponding results are evaluated at that bound."
 msgstr ""
-"该设计从 n_min,1 = %1$s 和 n_min,2 = %2$s 开始，使用 %3$s，并在 H₁ 下求得最大"
-"样本量 n_max,1 = %4$s 和 n_max,2 = %5$s，在 H₀ 下 n_max,1 = %6$s 和 n_max,2 "
-"= %7$s。"
+"在 %1$s 的所选最大样本量内无法达到所请求的 BF 目标；依赖达到目标的条目留空。"
 
+#, fuzzy
 msgid ""
-"The design started at n_min = %1$s, used %2$s, and found maximum sample "
-"sizes n_max = %3$s under H₁ and n_max = %4$s under H₀."
+"Under the %1$s design prior, the design started at n_min,1 = %2$s and "
+"n_min,2 = %3$s, used %4$s, and stopped at n_max,1 = %5$s and n_max,2 = %6$s."
 msgstr ""
-"该设计从 n_min = %1$s 开始，使用 %2$s，并在 H₁ 下求得最大样本量 n_max = "
-"%3$s，在 H₀ 下 n_max = %4$s。"
+"该设计从 n_min,1 = %1$s 和 n_min,2 = %2$s 开始，使用 %3$s，并在 n_max,1 = "
+"%4$s 和 n_max,2 = %5$s 处停止。"
 
-msgid "not reached"
-msgstr "未达到"
+#, fuzzy
+msgid ""
+"Under the %1$s design prior, the design started at n_min = %2$s, used %3$s, "
+"and stopped at n_max = %4$s."
+msgstr "该设计从 n_min = %1$s 开始，使用 %2$s，并在 n_max = %3$s 处停止。"
 
 msgid "a single planned look"
 msgstr "单次计划分析"
@@ -1250,6 +1339,21 @@ msgstr "下限"
 
 msgid "Upper"
 msgstr "上界"
+
+msgid "The alternative hazard ratio must differ from the null hazard ratio."
+msgstr ""
+
+msgid ""
+"The subjects + events survival calculation supports only a null hazard ratio "
+"of 1. Use events only or group sequential accrual for a non-null hazard-"
+"ratio margin."
+msgstr ""
+
+msgid ""
+"The subjects + events survival calculation returned no finite sample size. "
+"With exponential entry, this happens when the entry rate parameter γ is 0 or "
+"equals a group's event hazard plus dropout hazard; change γ slightly."
+msgstr ""
 
 msgid "group 1 event probability"
 msgstr "第 1 组事件概率"
@@ -1406,6 +1510,9 @@ msgstr "入组受试者"
 
 msgid "Expected analysis time"
 msgstr "期望分析时间"
+
+msgid "Study duration"
+msgstr ""
 
 msgid ""
 "Group sample sizes are split from the total sample size using the allocation "
@@ -1832,14 +1939,32 @@ msgid ""
 "the current settings."
 msgstr "无法使用当前设置完成所请求的经典组序贯设计。"
 
+#, fuzzy
+msgid "Maximum %1$s: %2$s (corresponding fixed design: %3$s)."
+msgstr "最大 %1$s 为 %2$s，而相应固定设计为 %3$s。"
+
+#, fuzzy
 msgid ""
-"This classical group sequential design uses %1$s with %2$s planned looks."
+"This is a one-sided classical group sequential design with %1$s planned "
+"looks, including the final analysis."
+msgstr "此经典组序贯设计使用 %1$s，包含 %2$s 次计划分析。"
+
+#, fuzzy
+msgid ""
+"This is a two-sided symmetric classical group sequential design with %1$s "
+"planned looks, including the final analysis."
 msgstr "此经典组序贯设计使用 %1$s，包含 %2$s 次计划分析。"
 
 msgid ""
-"The maximum %1$s is %2$s, compared with %3$s for the corresponding fixed "
-"design."
-msgstr "最大 %1$s 为 %2$s，而相应固定设计为 %3$s。"
+"This is a two-sided asymmetric β-spending (binding futility) classical group "
+"sequential design with %1$s planned looks, including the final analysis."
+msgstr ""
+
+msgid ""
+"This is a two-sided asymmetric β-spending (non-binding futility) classical "
+"group sequential design with %1$s planned looks, including the final "
+"analysis."
+msgstr ""
 
 msgid ""
 "R code could not be generated because the classical group sequential design "
@@ -1920,8 +2045,13 @@ msgstr "BF₁₀ ≥ %1$s"
 msgid "BF₀₁ ≥ %1$s"
 msgstr "BF₀₁ ≥ %1$s"
 
-msgid "Invalid target '%1$s'."
-msgstr "无效目标“%1$s”。"
+msgid "The analysis prior '%1$s' is not available for z-tests."
+msgstr ""
+
+msgid ""
+"A one-sided point analysis prior must lie strictly on the H₁ side of the "
+"null value."
+msgstr ""
 
 msgid "Point proportion"
 msgstr "点比例"
@@ -2686,6 +2816,35 @@ msgid ""
 "Due to the rounding of the number of pairs, the actual power can deviate "
 "from the target power."
 msgstr "由于样本量取整，实际功效可能偏离目标功效。"
+
+#~ msgid "%1$s ~ Normal-moment(spread = %2$s, modes = ±%3$s)"
+#~ msgstr "%1$s ~ 正态矩（扩散 = %2$s，众数 = ±%3$s）"
+
+#~ msgid "θ <= θ₀, θ₀ = %1$s"
+#~ msgstr "θ <= θ₀，θ₀ = %1$s"
+
+#~ msgid ""
+#~ "The bfpwr sample-size search did not return a finite maximum sample size."
+#~ msgstr "bfpwr 样本量搜索未返回有限的最大样本量。"
+
+#~ msgid ""
+#~ "The design started at n_min,1 = %1$s and n_min,2 = %2$s, used %3$s, and "
+#~ "found maximum sample sizes n_max,1 = %4$s and n_max,2 = %5$s under H₁ and "
+#~ "n_max,1 = %6$s and n_max,2 = %7$s under H₀."
+#~ msgstr ""
+#~ "该设计从 n_min,1 = %1$s 和 n_min,2 = %2$s 开始，使用 %3$s，并在 H₁ 下求得"
+#~ "最大样本量 n_max,1 = %4$s 和 n_max,2 = %5$s，在 H₀ 下 n_max,1 = %6$s 和 "
+#~ "n_max,2 = %7$s。"
+
+#~ msgid ""
+#~ "The design started at n_min = %1$s, used %2$s, and found maximum sample "
+#~ "sizes n_max = %3$s under H₁ and n_max = %4$s under H₀."
+#~ msgstr ""
+#~ "该设计从 n_min = %1$s 开始，使用 %2$s，并在 H₁ 下求得最大样本量 n_max = "
+#~ "%3$s，在 H₀ 下 n_max = %4$s。"
+
+#~ msgid "not reached"
+#~ msgstr "未达到"
 
 #~ msgid ""
 #~ "The %1$s parameterization assumes a unit information standard deviation "

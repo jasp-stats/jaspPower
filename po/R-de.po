@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspPower 0.1.0\n"
-"POT-Creation-Date: 2026-11-07 03:35\n"
+"POT-Creation-Date: 2026-11-14 03:35\n"
 "PO-Revision-Date: 2026-10-14 19:51+0000\n"
 "Last-Translator: Johannes Keyser "
 "<jokeyser@users.noreply.hosted.weblate.org>\n"
@@ -39,6 +39,17 @@ msgid ""
 msgstr ""
 "Aufgrund der Rundung des Stichprobenumfangs kann Pr(Aussagekräftige Evidenz) "
 "von der gewünschten Zielwahrscheinlichkeit abweichen."
+
+#, fuzzy
+msgid ""
+"For independent samples, N₁ is the sample size in group 1 and N₂ is rounded "
+"up from the requested N₂/N₁ sample-size ratio. The z-test calculations use "
+"the exact ratio, so the rounded-up group sizes provide at least the "
+"evaluated information."
+msgstr ""
+"Für unabhängige Stichproben ist N₁ der Stichprobenumfang von Gruppe 1 und N₂ "
+"wird auf das gewünschte N₂/N₁-Stichprobenumfangverhältnis aufgerundet, "
+"sofern kein benutzerdefinierter Plan für Gruppe 2 angegeben wird."
 
 msgid ""
 "For independent samples, N₁ is the sample size in group 1 and N₂ is rounded "
@@ -147,6 +158,9 @@ msgstr ""
 "Die Wahrscheinlichkeiten werden beim gewählten Stichprobenumfang des festen "
 "Designs ausgewertet: N = %1$s. Die Zeilen verwenden den entsprechenden "
 "Design-Prior unter H₁ oder H₀."
+
+msgid "Not available because the planning target under %1$s was not reached."
+msgstr ""
 
 msgid "Sample size is not available."
 msgstr "Stichprobenumfang is nicht verfügbar."
@@ -399,7 +413,8 @@ msgstr "Es muss ein Variablenpaar ausgewählt werden."
 msgid "Pooled SD"
 msgstr "Gepoolte SD"
 
-msgid "Observed Bayes factor is not finite."
+#, fuzzy
+msgid "Observed Bayes factor could not be computed."
 msgstr "Der beobachtete Bayesfaktor ist nicht endlich."
 
 msgid "Stop for H₁"
@@ -447,6 +462,24 @@ msgstr "%1$s muss mindestens %2$s sein."
 msgid "%1$s must be positive."
 msgstr "%1$s muss positiv sein."
 
+msgid ""
+"The z-test treats the standard deviation as known; the observed pooled "
+"standard deviation (SD = %1$s) is used."
+msgstr ""
+
+msgid ""
+"The z-test treats the standard deviation as known; the observed standard "
+"deviation (SD = %1$s) is used."
+msgstr ""
+
+#, fuzzy
+msgid ""
+"The z-test treats the standard deviation as known; the estimate is the "
+"standardized mean difference (Cohen's d)."
+msgstr ""
+"Bei t-Tests ist der Schätzwert die standardisierte Mittelwertdifferenz auf "
+"der Analyses-Skala."
+
 msgid "N₁ = %1$s and N₂ = %2$s"
 msgstr "N₁ = %1$s und N₂ = %2$s"
 
@@ -482,6 +515,14 @@ msgstr "Ein %1$s Bayesfaktor-Design %2$s ein %3$s %4$s %5$s."
 msgid "general z-test (with UISD = %1$s)"
 msgstr ""
 
+msgid ""
+"%1$s on the standardized mean difference (Cohen's d) scale, treating the "
+"standard deviation as known"
+msgstr ""
+
+msgid "%1$s on the raw scale (with known σ = %2$s)"
+msgstr ""
+
 msgid "specified"
 msgstr "vorgegeben"
 
@@ -512,8 +553,9 @@ msgstr "%1$s ~ Cauchy(lage = %2$s, skala = %3$s)"
 msgid "%1$s ~ Student-t(location = %2$s, scale = %3$s, df = %4$s)"
 msgstr "%1$s ~ Student-t(lage = %2$s, skala = %3$s, df = %4$s)"
 
-msgid "%1$s ~ Normal-moment(spread = %2$s, modes = ±%3$s)"
-msgstr "%1$s ~ Normal-moment(streung = %2$s, modi = ±%3$s)"
+#, fuzzy
+msgid "%1$s ~ Normal-moment(location = %2$s, spread = %3$s, %4$s)"
+msgstr "%1$s ~ Student-t(lage = %2$s, skala = %3$s, df = %4$s)"
 
 msgid "used %1$s"
 msgstr "%1$s verwendet"
@@ -554,6 +596,22 @@ msgstr ""
 
 msgid "The design evaluated %1$s."
 msgstr "Das Design hat %1$s ausgewertet."
+
+#, fuzzy
+msgid ""
+"The design selected %1$s, the smallest sample size that reaches target "
+"conclusive evidence probabilities of %2$s under H₁ and %3$s under H₀."
+msgstr ""
+"Das Design wählte %1$s, um Zielwahrscheinlichkeiten aussagekräftiger Evidenz "
+"von %2$s unter H₁ und %3$s unter H₀ anzustreben."
+
+#, fuzzy
+msgid ""
+"The design selected %1$s to target a conclusive evidence probability of %2$s "
+"under %3$s; both design priors were evaluated at this sample size."
+msgstr ""
+"Das Design wählte %1$s, um Zielwahrscheinlichkeiten aussagekräftiger Evidenz "
+"von %2$s unter H₁ und %3$s unter H₀ anzustreben."
 
 msgid ""
 "The design selected %1$s to target conclusive evidence probabilities of %2$s "
@@ -700,6 +758,11 @@ msgstr "H₁"
 msgid "H₀"
 msgstr "H₀"
 
+msgid ""
+"No sample size is available for this design prior because a required "
+"planning target was not reached."
+msgstr ""
+
 msgid "Conclusive"
 msgstr "Aussagekräftig"
 
@@ -769,16 +832,19 @@ msgstr "Gerichtet"
 msgid "Point null"
 msgstr "Punkt-Nullhypothese"
 
-msgid "θ >= θ₀, θ₀ = %1$s"
+#, fuzzy
+msgid "θ ≥ θ₀, θ₀ = %1$s"
 msgstr "θ >= θ₀, θ₀ = %1$s"
 
-msgid "θ <= θ₀, θ₀ = %1$s"
-msgstr "θ <= θ₀, θ₀ = %1$s"
+#, fuzzy
+msgid "θ ≤ θ₀, θ₀ = %1$s"
+msgstr "θ >= θ₀, θ₀ = %1$s"
 
 msgid "θ₀ = %1$s"
 msgstr "θ₀ = %1$s"
 
-msgid "p <= p₀, p₀ = %1$s"
+#, fuzzy
+msgid "p ≤ p₀, p₀ = %1$s"
 msgstr "p <= p₀, p₀ = %1$s"
 
 msgid "p₀ = %1$s"
@@ -817,8 +883,17 @@ msgstr "lage = %1$s"
 msgid "mean = %1$s, sd = %2$s"
 msgstr "mittelwert = %1$s, sd = %2$s"
 
-msgid "spread = %1$s, modes = +/- %2$s"
+#, fuzzy
+msgid "spread = %1$s, %2$s"
 msgstr "streuung = %1$s, modi = +/- %2$s"
+
+#, fuzzy
+msgid "mode = %1$s"
+msgstr "N = %1$s"
+
+#, fuzzy
+msgid "modes = %1$s and %2$s"
+msgstr "mittelwert = %1$s, sd = %2$s"
 
 msgid "p = %1$s"
 msgstr "p = %1$s"
@@ -969,11 +1044,12 @@ msgstr "%1$s darf nur positive Werte enthalten."
 msgid "Searching maximum sample size"
 msgstr "Maximalen Stichprobenumfang suchen"
 
-msgid ""
-"The bfpwr sample-size search did not return a finite maximum sample size."
-msgstr ""
-"Die bfpwr-Stichprobenumfangssuche lieferte keinen endlichen maximalen "
-"Stichprobenumfang zurück."
+msgid "Invalid target '%1$s'."
+msgstr "Ungültiges Ziel '%1$s'."
+
+#, fuzzy
+msgid "The maximum sample-size search failed: %1$s"
+msgstr "Stichprobenumfänge von mindestens %1$s"
 
 msgid "The bfpwr sample-size search did not return a sequential design."
 msgstr ""
@@ -1139,6 +1215,16 @@ msgstr ""
 "Stichprobenumfangs für %1$s nicht erreicht werden; Einträge, die vom "
 "Erreichen des Ziels abhängen, bleiben leer."
 
+#, fuzzy
+msgid ""
+"The requested BF target could not be reached within the selected maximum "
+"sample size for %1$s; its look-by-look results are evaluated up to the upper "
+"search bound."
+msgstr ""
+"Das angeforderte BF-Ziel konnte innerhalb des gewählten maximalen "
+"Stichprobenumfangs für %1$s nicht erreicht werden; Einträge, die vom "
+"Erreichen des Ziels abhängen, bleiben leer."
+
 msgid ""
 "To satisfy both design priors in a single sequential design, use a final "
 "look of N₁ = %1$s and N₂ = %2$s (total N = %3$s)."
@@ -1220,6 +1306,11 @@ msgstr ""
 "bedeuten, dass keine endliche Statistik bei diesem Einblick die "
 "Entscheidungsregel erreicht."
 
+msgid ""
+"The design priors use separate look schedules; the boundaries are shown for "
+"the schedule ending at N = %1$s."
+msgstr ""
+
 msgid "Lower Statistic"
 msgstr "Untere Statistik"
 
@@ -1232,9 +1323,10 @@ msgstr "Stopp für H₁: %1$s"
 msgid "Stop for H₀: %1$s"
 msgstr "Stopp für H₀: %1$s"
 
+#, fuzzy
 msgid ""
-"Sequential bfpwr calculations are performed on the parameter scale centered "
-"at the null value."
+"Sequential bfpwr t-test calculations are performed on the effect-size scale "
+"centered at the null value."
 msgstr ""
 "Sequentielle bfpwr-Berechnungen werden auf der um den Nullwert zentrierten "
 "Parameterskala durchgeführt."
@@ -1269,24 +1361,30 @@ msgstr ""
 "Das Design begann bei n_min = %1$s, verwendete %2$s und stoppte bei n_max = "
 "%3$s."
 
+#, fuzzy
 msgid ""
-"The design started at n_min,1 = %1$s and n_min,2 = %2$s, used %3$s, and "
-"found maximum sample sizes n_max,1 = %4$s and n_max,2 = %5$s under H₁ and "
-"n_max,1 = %6$s and n_max,2 = %7$s under H₀."
+"The requested BF target was not reached within the upper search bound for "
+"%1$s; the corresponding results are evaluated at that bound."
+msgstr ""
+"Das angeforderte BF-Ziel konnte innerhalb des gewählten maximalen "
+"Stichprobenumfangs für %1$s nicht erreicht werden; Einträge, die vom "
+"Erreichen des Ziels abhängen, bleiben leer."
+
+#, fuzzy
+msgid ""
+"Under the %1$s design prior, the design started at n_min,1 = %2$s and "
+"n_min,2 = %3$s, used %4$s, and stopped at n_max,1 = %5$s and n_max,2 = %6$s."
 msgstr ""
 "Das Design begann bei n_min,1 = %1$s und n_min,2 = %2$s, verwendete %3$s und "
-"fand maximale Stichprobenumfänge n_max,1 = %4$s und n_max,2 = %5$s unter H₁ "
-"sowie n_max,1 = %6$s und n_max,2 = %7$s unter H₀."
+"stoppte bei n_max,1 = %4$s und n_max,2 = %5$s."
 
+#, fuzzy
 msgid ""
-"The design started at n_min = %1$s, used %2$s, and found maximum sample "
-"sizes n_max = %3$s under H₁ and n_max = %4$s under H₀."
+"Under the %1$s design prior, the design started at n_min = %2$s, used %3$s, "
+"and stopped at n_max = %4$s."
 msgstr ""
-"Das Design begann bei n_min = %1$s, verwendete %2$s und fand maximale "
-"Stichprobenumfänge n_max = %3$s unter H₁ und n_max = %4$s unter H₀."
-
-msgid "not reached"
-msgstr "nicht erreicht"
+"Das Design begann bei n_min = %1$s, verwendete %2$s und stoppte bei n_max = "
+"%3$s."
 
 msgid "a single planned look"
 msgstr "ein einziger geplanter Einblick"
@@ -1393,6 +1491,21 @@ msgstr "Untergrenze"
 
 msgid "Upper"
 msgstr "Obergrenze"
+
+msgid "The alternative hazard ratio must differ from the null hazard ratio."
+msgstr ""
+
+msgid ""
+"The subjects + events survival calculation supports only a null hazard ratio "
+"of 1. Use events only or group sequential accrual for a non-null hazard-"
+"ratio margin."
+msgstr ""
+
+msgid ""
+"The subjects + events survival calculation returned no finite sample size. "
+"With exponential entry, this happens when the entry rate parameter γ is 0 or "
+"equals a group's event hazard plus dropout hazard; change γ slightly."
+msgstr ""
 
 msgid "group 1 event probability"
 msgstr "Ereigniswahrscheinlichkeit von Gruppe 1"
@@ -1558,6 +1671,9 @@ msgstr "Eingeschriebene Probanden"
 
 msgid "Expected analysis time"
 msgstr "Erwartete Analysezeit"
+
+msgid "Study duration"
+msgstr ""
 
 msgid ""
 "Group sample sizes are split from the total sample size using the allocation "
@@ -2054,18 +2170,38 @@ msgstr ""
 "Das angeforderte klassische gruppensequentielle Design konnte mit den "
 "aktuellen Einstellungen nicht abgeschlossen werden."
 
+#, fuzzy
+msgid "Maximum %1$s: %2$s (corresponding fixed design: %3$s)."
+msgstr ""
+"Das Maximum %1$s beträgt %2$s, verglichen mit %3$s für das entsprechende "
+"feste Design."
+
+#, fuzzy
 msgid ""
-"This classical group sequential design uses %1$s with %2$s planned looks."
+"This is a one-sided classical group sequential design with %1$s planned "
+"looks, including the final analysis."
+msgstr ""
+"Dieses klassische gruppensequentielle Design verwendet %1$s mit %2$s "
+"geplanten Einblicken."
+
+#, fuzzy
+msgid ""
+"This is a two-sided symmetric classical group sequential design with %1$s "
+"planned looks, including the final analysis."
 msgstr ""
 "Dieses klassische gruppensequentielle Design verwendet %1$s mit %2$s "
 "geplanten Einblicken."
 
 msgid ""
-"The maximum %1$s is %2$s, compared with %3$s for the corresponding fixed "
-"design."
+"This is a two-sided asymmetric β-spending (binding futility) classical group "
+"sequential design with %1$s planned looks, including the final analysis."
 msgstr ""
-"Das Maximum %1$s beträgt %2$s, verglichen mit %3$s für das entsprechende "
-"feste Design."
+
+msgid ""
+"This is a two-sided asymmetric β-spending (non-binding futility) classical "
+"group sequential design with %1$s planned looks, including the final "
+"analysis."
+msgstr ""
 
 msgid ""
 "R code could not be generated because the classical group sequential design "
@@ -2167,8 +2303,13 @@ msgstr "BF₁₀ ≥ %1$s"
 msgid "BF₀₁ ≥ %1$s"
 msgstr "BF₀₁ ≥ %1$s"
 
-msgid "Invalid target '%1$s'."
-msgstr "Ungültiges Ziel '%1$s'."
+msgid "The analysis prior '%1$s' is not available for z-tests."
+msgstr ""
+
+msgid ""
+"A one-sided point analysis prior must lie strictly on the H₁ side of the "
+"null value."
+msgstr ""
 
 msgid "Point proportion"
 msgstr "Punktanteil"
@@ -3057,6 +3198,37 @@ msgid ""
 msgstr ""
 "Aufgrund der Rundung des Stichprobenumfangs kann die tatsächliche Teststärke "
 "von der gewünschten Teststärke abweichen."
+
+#~ msgid "%1$s ~ Normal-moment(spread = %2$s, modes = ±%3$s)"
+#~ msgstr "%1$s ~ Normal-moment(streung = %2$s, modi = ±%3$s)"
+
+#~ msgid "θ <= θ₀, θ₀ = %1$s"
+#~ msgstr "θ <= θ₀, θ₀ = %1$s"
+
+#~ msgid ""
+#~ "The bfpwr sample-size search did not return a finite maximum sample size."
+#~ msgstr ""
+#~ "Die bfpwr-Stichprobenumfangssuche lieferte keinen endlichen maximalen "
+#~ "Stichprobenumfang zurück."
+
+#~ msgid ""
+#~ "The design started at n_min,1 = %1$s and n_min,2 = %2$s, used %3$s, and "
+#~ "found maximum sample sizes n_max,1 = %4$s and n_max,2 = %5$s under H₁ and "
+#~ "n_max,1 = %6$s and n_max,2 = %7$s under H₀."
+#~ msgstr ""
+#~ "Das Design begann bei n_min,1 = %1$s und n_min,2 = %2$s, verwendete %3$s "
+#~ "und fand maximale Stichprobenumfänge n_max,1 = %4$s und n_max,2 = %5$s "
+#~ "unter H₁ sowie n_max,1 = %6$s und n_max,2 = %7$s unter H₀."
+
+#~ msgid ""
+#~ "The design started at n_min = %1$s, used %2$s, and found maximum sample "
+#~ "sizes n_max = %3$s under H₁ and n_max = %4$s under H₀."
+#~ msgstr ""
+#~ "Das Design begann bei n_min = %1$s, verwendete %2$s und fand maximale "
+#~ "Stichprobenumfänge n_max = %3$s unter H₁ und n_max = %4$s unter H₀."
+
+#~ msgid "not reached"
+#~ msgstr "nicht erreicht"
 
 #~ msgid ""
 #~ "The %1$s parameterization assumes a unit information standard deviation "

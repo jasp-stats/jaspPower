@@ -780,12 +780,6 @@ msgid "Exact integration over all regions:"
 msgstr "すべての領域で厳密積分:"
 
 msgctxt "BayesFactorSequentialDesign|"
-msgid ""
-"Use exact integration over all decision regions when computing sequential "
-"design characteristics."
-msgstr "逐次デザインの特性を計算する際、すべての判定領域で厳密積分を使います。"
-
-msgctxt "BayesFactorSequentialDesign|"
 msgid "Integration method:"
 msgstr "積分の方法:"
 
@@ -993,15 +987,6 @@ msgctxt "GroupSequentialDesign|"
 msgid "Integration grid points:"
 msgstr "数値積分の格子点数:"
 
-#, qt-format
-msgctxt "GroupSequentialDesign|"
-msgid ""
-"Integer from 1 to 80 controlling the numerical integration grid. Default is "
-"%1; larger values can improve accuracy but slow computation."
-msgstr ""
-"数値積分の格子を制御する 1 から 80 の整数です。既定は %1 です。大きくすると精"
-"度は上がりますが計算は遅くなります。"
-
 msgctxt "Power|"
 msgid "Log sample size"
 msgstr "対数サンプルサイズ"
@@ -1017,13 +1002,6 @@ msgstr "H₀ のもとでの事前分布"
 msgctxt "BayesFactorAnalysisPriorSection|"
 msgid "Distribution:"
 msgstr "分布:"
-
-msgctxt "BayesFactorAnalysisPriorSection|"
-msgid ""
-"Prior specification for H₀ used to compute the Bayes factor from the "
-"observed data."
-msgstr ""
-"観測データからベイズファクターを計算するのに使う、H₀ の事前分布の指定です。"
 
 msgctxt "BayesFactorAnalysisPriorSection|"
 msgid "Point null (p = p₀)"
@@ -1104,10 +1082,6 @@ msgid "Prior direction:"
 msgstr "事前分布の向き:"
 
 msgctxt "BayesFactorAnalysisPriorSection|"
-msgid "Direction of the analysis prior under H₁."
-msgstr "H₁ のもとでの分析事前分布の向きです。"
-
-msgctxt "BayesFactorAnalysisPriorSection|"
 msgid "Two-sided"
 msgstr "両側"
 
@@ -1122,10 +1096,6 @@ msgstr "大きい"
 msgctxt "BayesFactorAnalysisPriorSection|"
 msgid "Prior location:"
 msgstr "事前分布の位置:"
-
-msgctxt "BayesFactorAnalysisPriorSection|"
-msgid "Point location of the H₁ analysis prior."
-msgstr "H₁ の分析事前分布の点の位置です。"
 
 msgctxt "BayesFactorAnalysisPriorSection|"
 msgid "Prior mean:"
@@ -1244,26 +1214,12 @@ msgid "Effect size"
 msgstr "効果量"
 
 msgctxt "BayesFactorAnalysisSection|"
-msgid ""
-"Observed effect estimate on the scale selected for the general z-test "
-"approximation."
-msgstr "一般z検定の近似で選んだスケールにおける、観測された効果の推定値です。"
-
-msgctxt "BayesFactorAnalysisSection|"
 msgid "SE"
 msgstr "SE"
 
 msgctxt "BayesFactorAnalysisSection|"
 msgid "Standard error of the observed effect estimate."
 msgstr "観測された効果の推定値の標準誤差です。"
-
-msgctxt "BayesFactorAnalysisSection|"
-msgid "t"
-msgstr "t"
-
-msgctxt "BayesFactorAnalysisSection|"
-msgid "Observed t statistic used to compute the observed Bayes factor."
-msgstr "観測されたベイズファクターの計算に使う、観測されたt統計量です。"
 
 msgctxt "BayesFactorAnalysisSection|"
 msgid "Cohen's d"
@@ -1372,19 +1328,6 @@ msgstr "群2の観測されたサンプルサイズです。"
 msgctxt "BayesFactorAnalysisSection|"
 msgid "Input Type"
 msgstr "入力の種類"
-
-msgctxt "BayesFactorAnalysisSection|"
-msgid ""
-"Choose which summary statistics are available for the observed t-test result."
-msgstr "観測されたt検定の結果として、どの要約統計量が利用できるかを選びます。"
-
-msgctxt "BayesFactorAnalysisSection|"
-msgid "t and Sample Sizes"
-msgstr "t とサンプルサイズ"
-
-msgctxt "BayesFactorAnalysisSection|"
-msgid "t and Sample Size"
-msgstr "t とサンプルサイズ"
 
 msgctxt "BayesFactorAnalysisSection|"
 msgid "Cohen's d and Sample Sizes"
@@ -1606,11 +1549,6 @@ msgstr "検定のパラメータ"
 msgctxt "BayesFactorCalculationControls|"
 msgid "Known standard deviation:"
 msgstr "既知の標準偏差:"
-
-msgctxt "BayesFactorCalculationControls|"
-msgid ""
-"Known population standard deviation used for z-test sample size planning."
-msgstr "z検定のサンプルサイズ計画に使う、既知の母標準偏差です。"
 
 msgctxt "BayesFactorCalculationControls|"
 msgid "Unit information SD:"
@@ -2013,18 +1951,8 @@ msgstr ""
 "です。"
 
 msgctxt "BayesFactorTSearchRangeControls|"
-msgid "t search range:"
-msgstr "t の探索範囲:"
-
-msgctxt "BayesFactorTSearchRangeControls|"
 msgid "Range"
 msgstr "範囲"
-
-msgctxt "BayesFactorTSearchRangeControls|"
-msgid ""
-"Choose whether the integration range for t-test calculations is selected "
-"automatically or supplied manually."
-msgstr "t検定の計算に使う積分範囲を、自動で選ぶか手動で指定するかを選びます。"
 
 msgctxt "BayesFactorTSearchRangeControls|"
 msgid "Adaptive"
@@ -2043,20 +1971,12 @@ msgid "min"
 msgstr "min"
 
 msgctxt "BayesFactorTSearchRangeControls|"
-msgid "Lower bound of the custom integration range for t-test calculations."
-msgstr "t検定の計算に使うカスタム積分範囲の下限です。"
-
-msgctxt "BayesFactorTSearchRangeControls|"
 msgid "Upper:"
 msgstr "上限:"
 
 msgctxt "BayesFactorTSearchRangeControls|"
 msgid "max"
 msgstr "max"
-
-msgctxt "BayesFactorTSearchRangeControls|"
-msgid "Upper bound of the custom integration range for t-test calculations."
-msgstr "t検定の計算に使うカスタム積分範囲の上限です。"
 
 msgctxt "GroupSequentialBoundaryControls|"
 msgid "Δ (WT)"
@@ -2517,15 +2437,6 @@ msgid "Baseline event probability:"
 msgstr "ベースラインのイベント確率:"
 
 msgctxt "GroupSequentialParameterControls|"
-msgid ""
-"Event probability for group 1 under the alternative hypothesis. A value near "
-"0.5 is conservative for risk-difference planning because it gives the "
-"largest Bernoulli variance."
-msgstr ""
-"対立仮説のもとでの第1群のイベント確率です。0.5 に近い値はベルヌーイ分散が最大"
-"になるため、リスク差にもとづく計画では保守的です。"
-
-msgctxt "GroupSequentialParameterControls|"
 msgid "Binary effect scale:"
 msgstr "二値エンドポイントの効果スケール:"
 
@@ -2647,16 +2558,6 @@ msgid "λC"
 msgstr "λC"
 
 msgctxt "GroupSequentialParameterControls|"
-msgid ""
-"Control-group event hazard per time unit. Use the same time unit as accrual, "
-"study duration, follow-up, and dropout hazards. Defaults to 0.0833 for "
-"subjects + events and 0.1155 for group sequential accrual."
-msgstr ""
-"単位時間あたりの対照群のイベントハザードです。登録・試験期間・追跡・脱落のハ"
-"ザードと同じ時間単位を使ってください。既定は被験者 + イベント数では 0.0833、"
-"群逐次の登録では 0.1155 です。"
-
-msgctxt "GroupSequentialParameterControls|"
 msgid "Dropout hazard:"
 msgstr "脱落ハザード:"
 
@@ -2682,33 +2583,6 @@ msgstr "Tr"
 msgctxt "GroupSequentialParameterControls|"
 msgid "R"
 msgstr "R"
-
-msgctxt "GroupSequentialParameterControls|"
-msgid ""
-"Enrollment duration in the same time unit as the survival hazards and study "
-"duration."
-msgstr "生存時間のハザードや試験期間と同じ時間単位での組み入れ期間です。"
-
-msgctxt "GroupSequentialParameterControls|"
-msgid "Study duration:"
-msgstr "試験期間:"
-
-msgctxt "GroupSequentialParameterControls|"
-msgid "Ts"
-msgstr "Ts"
-
-msgctxt "GroupSequentialParameterControls|"
-msgid "T"
-msgstr "T"
-
-msgctxt "GroupSequentialParameterControls|"
-msgid ""
-"Maximum study duration. Use the same time unit as the control hazard and "
-"accrual duration. Defaults to 24 for subjects + events and 18 for group "
-"sequential accrual."
-msgstr ""
-"試験期間の最大値です。対照群のハザードや登録期間と同じ時間単位を使ってくださ"
-"い。既定は被験者 + イベント数では 24、群逐次の登録では 18 です。"
 
 msgctxt "GroupSequentialParameterControls|"
 msgid "Entry distribution:"
@@ -2751,25 +2625,12 @@ msgid "Accrual-rate pattern:"
 msgstr "登録率のパターン:"
 
 msgctxt "GroupSequentialParameterControls|"
-msgid ""
-"Enrollment-rate pattern. With fixed study duration and minimum follow-up, "
-"the calculation rescales this value to the required accrual rate; the "
-"default scalar 1 gives constant accrual."
-msgstr ""
-"組み入れ率のパターンです。試験期間と最小追跡期間を固定すると、計算はこの値を"
-"必要な登録率に再スケールします。既定のスカラー 1 は一定の登録を表します。"
-
-msgctxt "GroupSequentialParameterControls|"
 msgid "Minimum follow-up:"
 msgstr "最小追跡期間:"
 
 msgctxt "GroupSequentialParameterControls|"
 msgid "minfup"
 msgstr "minfup"
-
-msgctxt "GroupSequentialParameterControls|"
-msgid "Minimum follow-up duration in the same time unit as the study duration."
-msgstr "試験期間と同じ時間単位での最小の追跡期間です。"
 
 msgctxt "GroupSequentialParameterControls|"
 msgid "Accrual calculation method:"
@@ -2857,3 +2718,175 @@ msgstr "N₁"
 msgctxt "Power|"
 msgid "N₂/N₁"
 msgstr "N₂/N₁"
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid ""
+"Use exact integration over all decision regions when computing sequential "
+"design characteristics. Only two-sided analysis priors with a spread have "
+"more than one decision region per look; for other priors the option has no "
+"effect."
+msgstr ""
+
+#, fuzzy
+msgctxt "BayesFactorSequentialDesign|"
+msgid "Integration grid points:"
+msgstr "数値積分の格子点数:"
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid "grid"
+msgstr ""
+
+msgctxt "BayesFactorSequentialDesign|"
+msgid ""
+"Number of deterministic quasi-Monte Carlo (Halton) grid points used by the "
+"log-scale MVN integration. Increase it to check the convergence of small "
+"stopping probabilities."
+msgstr ""
+
+#, qt-format
+msgctxt "GroupSequentialDesign|"
+msgid ""
+"Integer from 1 to 80 controlling the numerical integration grid. Default is "
+"%1; larger values can improve accuracy but slow computation. Group "
+"sequential survival accrual designs always use gsDesign's default grid of 18."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid ""
+"Prior specification for H₀ used to compute the Bayes factor from the "
+"observed data. A point null fixes the parameter at the null value. A "
+"directional null places the opposite half of the analysis prior on H₀ "
+"(available for one-sided normal priors in sequential z-test designs and for "
+"the proportion test)."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid ""
+"Direction of the analysis prior under H₁. One-sided directions truncate the "
+"analysis prior to values below (less) or above (greater) the null value and "
+"renormalize it; the prior parameters describe the distribution before "
+"truncation."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisPriorSection|"
+msgid ""
+"Point location of the H₁ analysis prior. For a one-sided direction, it must "
+"lie strictly on the H₁ side of the null value."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Observed effect estimate for the general z-test approximation."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Observed t or z statistic used to compute the observed Bayes factor."
+msgstr ""
+
+msgctxt "BayesFactorAnalysisSection|"
+msgid "Choose which summary statistics are available for the observed result."
+msgstr ""
+
+#, qt-format
+msgctxt "BayesFactorAnalysisSection|"
+msgid "%1 and Sample Sizes"
+msgstr ""
+
+#, qt-format
+msgctxt "BayesFactorAnalysisSection|"
+msgid "%1 and Sample Size"
+msgstr ""
+
+msgctxt "BayesFactorCalculationControls|"
+msgid "Scale:"
+msgstr ""
+
+msgctxt "BayesFactorCalculationControls|"
+msgid ""
+"Scale of the effect, the analysis priors and the design priors. "
+"Standardized: the standardized mean difference (Cohen's d), like the t-"
+"tests, with the standard deviation treated as known. Raw: the mean "
+"(difference) in the units of the outcome, with the known standard deviation "
+"specified below."
+msgstr ""
+
+msgctxt "BayesFactorCalculationControls|"
+msgid "Standardized (Cohen's d)"
+msgstr ""
+
+msgctxt "BayesFactorCalculationControls|"
+msgid "Raw"
+msgstr ""
+
+msgctxt "BayesFactorCalculationControls|"
+msgid ""
+"Known population standard deviation of the outcome. The effect and the "
+"priors are mean (differences) in the units of the outcome."
+msgstr ""
+
+msgctxt "BayesFactorTSearchRangeControls|"
+msgid "t-statistic"
+msgstr ""
+
+msgctxt "BayesFactorTSearchRangeControls|"
+msgid "standardized mean difference"
+msgstr ""
+
+msgctxt "BayesFactorTSearchRangeControls|"
+msgid "Critical value search:"
+msgstr ""
+
+#, qt-format
+msgctxt "BayesFactorTSearchRangeControls|"
+msgid ""
+"Choose whether the %1 range in which the t-test critical values are searched "
+"is selected automatically or supplied manually."
+msgstr ""
+
+#, qt-format
+msgctxt "BayesFactorTSearchRangeControls|"
+msgid ""
+"Lower bound of the custom %1 range in which the t-test critical values are "
+"searched."
+msgstr ""
+
+#, qt-format
+msgctxt "BayesFactorTSearchRangeControls|"
+msgid ""
+"Upper bound of the custom %1 range in which the t-test critical values are "
+"searched."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid ""
+"Event probability for group 1 under the alternative hypothesis. The group 2 "
+"event probability is derived from it and the alternative effect, so the "
+"required sample size depends on both probabilities."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid ""
+"Control-group event hazard per time unit. Use the same time unit as accrual, "
+"follow-up, and dropout hazards. Defaults to 0.0833 for subjects + events and "
+"0.1155 for group sequential accrual."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid ""
+"Enrollment duration in the same time unit as the survival hazards and "
+"minimum follow-up."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid ""
+"Time from the end of enrollment to the end of the study, in the same time "
+"unit as the survival hazards and accrual duration. The study duration is the "
+"accrual duration plus this follow-up. Defaults to 12 for subjects + events "
+"and 6 for group sequential accrual."
+msgstr ""
+
+msgctxt "GroupSequentialParameterControls|"
+msgid ""
+"Enrollment-rate pattern. With fixed accrual duration and minimum follow-up, "
+"the calculation rescales this value to the required accrual rate; the "
+"default scalar 1 gives constant accrual."
+msgstr ""
