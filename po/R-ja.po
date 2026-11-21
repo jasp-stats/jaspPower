@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspPower 0.19.2\n"
 "POT-Creation-Date: 2026-11-14 03:35\n"
-"PO-Revision-Date: 2026-11-08 05:51+0000\n"
+"PO-Revision-Date: 2026-11-16 06:38+0000\n"
 "Last-Translator: Koji Kosugi <kosugitti@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/jasppower-"
 "r/ja/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2026.11.2.dev0\n"
+"X-Generator: Weblate 2026.12.dev0\n"
 
 msgid "Bayes Factor Design"
 msgstr "ベイズファクターデザイン"
@@ -39,7 +39,6 @@ msgstr ""
 "サンプルサイズの丸めにより、Pr(決定的な証拠) が目標確率からずれることがありま"
 "す。"
 
-#, fuzzy
 msgid ""
 "For independent samples, N₁ is the sample size in group 1 and N₂ is rounded "
 "up from the requested N₂/N₁ sample-size ratio. The z-test calculations use "
@@ -47,7 +46,8 @@ msgid ""
 "evaluated information."
 msgstr ""
 "対応のない標本では、N₁ が群1のサンプルサイズであり、N₂ は指定した N₂/N₁ の比"
-"から切り上げて求めます。ただし群2の予定を個別に指定した場合を除きます。"
+"から切り上げて求めます。z検定の計算には正確な比を使うため、切り上げた群の大き"
+"さは、評価した情報量を少なくとも満たします。"
 
 msgid ""
 "For independent samples, N₁ is the sample size in group 1 and N₂ is rounded "
@@ -152,7 +152,7 @@ msgstr ""
 "行は H₁ または H₀ のもとでの対応するデザイン事前分布を使っています。"
 
 msgid "Not available because the planning target under %1$s was not reached."
-msgstr ""
+msgstr "%1$s のもとでの計画目標に到達しなかったため、利用できません。"
 
 msgid "Sample size is not available."
 msgstr "サンプルサイズが得られません。"
@@ -392,9 +392,8 @@ msgstr "変数ペアを選んでください。"
 msgid "Pooled SD"
 msgstr "プールしたSD"
 
-#, fuzzy
 msgid "Observed Bayes factor could not be computed."
-msgstr "観測されたベイズファクターが有限ではありません。"
+msgstr "観測されたベイズファクターを計算できませんでした。"
 
 msgid "Stop for H₁"
 msgstr "H₁ で中止"
@@ -445,17 +444,22 @@ msgid ""
 "The z-test treats the standard deviation as known; the observed pooled "
 "standard deviation (SD = %1$s) is used."
 msgstr ""
+"z検定では標準偏差を既知として扱います。観測されたプールした標準偏差(SD = "
+"%1$s)を使います。"
 
 msgid ""
 "The z-test treats the standard deviation as known; the observed standard "
 "deviation (SD = %1$s) is used."
 msgstr ""
+"z検定では標準偏差を既知として扱います。観測された標準偏差(SD = %1$s)を使いま"
+"す。"
 
-#, fuzzy
 msgid ""
 "The z-test treats the standard deviation as known; the estimate is the "
 "standardized mean difference (Cohen's d)."
-msgstr "t検定では、推定値は分析スケール上の標準化平均差です。"
+msgstr ""
+"z検定では標準偏差を既知として扱います。推定値は標準化平均差(コーエンのd)です"
+"。"
 
 msgid "N₁ = %1$s and N₂ = %2$s"
 msgstr "N₁ = %1$s、N₂ = %2$s"
@@ -495,10 +499,10 @@ msgstr "一般のz検定 (UISD = %1$s)"
 msgid ""
 "%1$s on the standardized mean difference (Cohen's d) scale, treating the "
 "standard deviation as known"
-msgstr ""
+msgstr "標準偏差を既知として扱った、標準化平均差(コーエンのd)のスケールでの %1$s"
 
 msgid "%1$s on the raw scale (with known σ = %2$s)"
-msgstr ""
+msgstr "元の単位のスケールでの %1$s (既知の σ = %2$s)"
 
 msgid "specified"
 msgstr "指定しました"
@@ -530,9 +534,8 @@ msgstr "%1$s ~ Cauchy(位置 = %2$s, 尺度 = %3$s)"
 msgid "%1$s ~ Student-t(location = %2$s, scale = %3$s, df = %4$s)"
 msgstr "%1$s ~ Student-t(位置 = %2$s, 尺度 = %3$s, df = %4$s)"
 
-#, fuzzy
 msgid "%1$s ~ Normal-moment(location = %2$s, spread = %3$s, %4$s)"
-msgstr "%1$s ~ Student-t(位置 = %2$s, 尺度 = %3$s, df = %4$s)"
+msgstr "%1$s ~ Normal-moment(位置 = %2$s, 広がり = %3$s, %4$s)"
 
 msgid "used %1$s"
 msgstr "%1$s を使用"
@@ -574,21 +577,19 @@ msgstr ""
 msgid "The design evaluated %1$s."
 msgstr "このデザインでは %1$s を評価しました。"
 
-#, fuzzy
 msgid ""
 "The design selected %1$s, the smallest sample size that reaches target "
 "conclusive evidence probabilities of %2$s under H₁ and %3$s under H₀."
 msgstr ""
-"このデザインでは、H₁ のもとで %2$s、H₀ のもとで %3$s の決定的な証拠の確率を目"
-"標として %1$s を選びました。"
+"このデザインでは、H₁ のもとで %2$s、H₀ のもとで %3$s という決定的な証拠の目標"
+"確率に到達する最小のサンプルサイズとして、%1$s を選びました。"
 
-#, fuzzy
 msgid ""
 "The design selected %1$s to target a conclusive evidence probability of %2$s "
 "under %3$s; both design priors were evaluated at this sample size."
 msgstr ""
-"このデザインでは、H₁ のもとで %2$s、H₀ のもとで %3$s の決定的な証拠の確率を目"
-"標として %1$s を選びました。"
+"このデザインでは、%3$s のもとで %2$s の決定的な証拠の確率を目標として %1$s を"
+"選びました。両方のデザイン事前分布を、このサンプルサイズで評価しています。"
 
 msgid ""
 "The design selected %1$s to target conclusive evidence probabilities of %2$s "
@@ -731,6 +732,8 @@ msgid ""
 "No sample size is available for this design prior because a required "
 "planning target was not reached."
 msgstr ""
+"必要な計画目標に到達しなかったため、このデザイン事前分布ではサンプルサイズが"
+"得られません。"
 
 msgid "Conclusive"
 msgstr "決定的"
@@ -800,20 +803,17 @@ msgstr "方向つき"
 msgid "Point null"
 msgstr "点帰無仮説"
 
-#, fuzzy
 msgid "θ ≥ θ₀, θ₀ = %1$s"
-msgstr "θ >= θ₀, θ₀ = %1$s"
+msgstr "θ ≥ θ₀, θ₀ = %1$s"
 
-#, fuzzy
 msgid "θ ≤ θ₀, θ₀ = %1$s"
-msgstr "θ >= θ₀, θ₀ = %1$s"
+msgstr "θ ≤ θ₀, θ₀ = %1$s"
 
 msgid "θ₀ = %1$s"
 msgstr "θ₀ = %1$s"
 
-#, fuzzy
 msgid "p ≤ p₀, p₀ = %1$s"
-msgstr "p <= p₀, p₀ = %1$s"
+msgstr "p ≤ p₀, p₀ = %1$s"
 
 msgid "p₀ = %1$s"
 msgstr "p₀ = %1$s"
@@ -851,17 +851,14 @@ msgstr "位置 = %1$s"
 msgid "mean = %1$s, sd = %2$s"
 msgstr "平均 = %1$s, sd = %2$s"
 
-#, fuzzy
 msgid "spread = %1$s, %2$s"
-msgstr "広がり = %1$s, 最頻値 = +/- %2$s"
+msgstr "広がり = %1$s, %2$s"
 
-#, fuzzy
 msgid "mode = %1$s"
-msgstr "N = %1$s"
+msgstr "最頻値 = %1$s"
 
-#, fuzzy
 msgid "modes = %1$s and %2$s"
-msgstr "平均 = %1$s, sd = %2$s"
+msgstr "最頻値 = %1$s と %2$s"
 
 msgid "p = %1$s"
 msgstr "p = %1$s"
@@ -1003,9 +1000,8 @@ msgstr "最大サンプルサイズを探索しています"
 msgid "Invalid target '%1$s'."
 msgstr "対象 '%1$s' が不正です。"
 
-#, fuzzy
 msgid "The maximum sample-size search failed: %1$s"
-msgstr "%1$s 以上のサンプルサイズ"
+msgstr "最大サンプルサイズの探索に失敗しました: %1$s"
 
 msgid "The bfpwr sample-size search did not return a sequential design."
 msgstr "bfpwr のサンプルサイズ探索が、逐次デザインを返しませんでした。"
@@ -1157,14 +1153,13 @@ msgstr ""
 "%1$s について、選択した最大サンプルサイズの範囲では目標とするBFに到達できませ"
 "んでした。到達を前提とする項目は空欄にしてあります。"
 
-#, fuzzy
 msgid ""
 "The requested BF target could not be reached within the selected maximum "
 "sample size for %1$s; its look-by-look results are evaluated up to the upper "
 "search bound."
 msgstr ""
 "%1$s について、選択した最大サンプルサイズの範囲では目標とするBFに到達できませ"
-"んでした。到達を前提とする項目は空欄にしてあります。"
+"んでした。中間解析ごとの結果は、探索の上限まで評価しています。"
 
 msgid ""
 "To satisfy both design priors in a single sequential design, use a final "
@@ -1246,6 +1241,8 @@ msgid ""
 "The design priors use separate look schedules; the boundaries are shown for "
 "the schedule ending at N = %1$s."
 msgstr ""
+"デザイン事前分布ごとに中間解析の予定が異なります。境界は、N = %1$s で終わる予"
+"定について示しています。"
 
 msgid "Lower Statistic"
 msgstr "下側の統計量"
@@ -1259,12 +1256,10 @@ msgstr "H₁ で中止: %1$s"
 msgid "Stop for H₀: %1$s"
 msgstr "H₀ で中止: %1$s"
 
-#, fuzzy
 msgid ""
 "Sequential bfpwr t-test calculations are performed on the effect-size scale "
 "centered at the null value."
-msgstr ""
-"bfpwr の逐次計算は、帰無値を中心としたパラメータのスケールで行われます。"
+msgstr "bfpwr の逐次t検定の計算は、帰無値を中心とした効果量のスケールで行われます。"
 
 msgid ""
 "The report could not be generated because the Bayes factor sequential design "
@@ -1296,29 +1291,27 @@ msgstr ""
 "このデザインは n_min = %1$s から始まり、%2$s を使って、n_max = %3$s で終了し"
 "ました。"
 
-#, fuzzy
 msgid ""
 "The requested BF target was not reached within the upper search bound for "
 "%1$s; the corresponding results are evaluated at that bound."
 msgstr ""
-"%1$s について、選択した最大サンプルサイズの範囲では目標とするBFに到達できませ"
-"んでした。到達を前提とする項目は空欄にしてあります。"
+"%1$s について、探索の上限の範囲では目標とするBFに到達しませんでした。対応する"
+"結果は、その上限で評価しています。"
 
-#, fuzzy
 msgid ""
 "Under the %1$s design prior, the design started at n_min,1 = %2$s and "
 "n_min,2 = %3$s, used %4$s, and stopped at n_max,1 = %5$s and n_max,2 = %6$s."
 msgstr ""
-"このデザインは n_min,1 = %1$s、n_min,2 = %2$s から始まり、%3$s を使って、"
-"n_max,1 = %4$s、n_max,2 = %5$s で終了しました。"
+"%1$s のデザイン事前分布のもとで、このデザインは n_min,1 = %2$s、n_min,2 = "
+"%3$s から始まり、%4$s を使って、n_max,1 = %5$s、n_max,2 = %6$s で終了しました"
+"。"
 
-#, fuzzy
 msgid ""
 "Under the %1$s design prior, the design started at n_min = %2$s, used %3$s, "
 "and stopped at n_max = %4$s."
 msgstr ""
-"このデザインは n_min = %1$s から始まり、%2$s を使って、n_max = %3$s で終了し"
-"ました。"
+"%1$s のデザイン事前分布のもとで、このデザインは n_min = %2$s から始まり"
+"、%3$s を使って、n_max = %4$s で終了しました。"
 
 msgid "a single planned look"
 msgstr "1回の計画された中間解析"
@@ -1415,19 +1408,26 @@ msgid "Upper"
 msgstr "上限"
 
 msgid "The alternative hazard ratio must differ from the null hazard ratio."
-msgstr ""
+msgstr "対立仮説のハザード比は、帰無仮説のハザード比と異なる必要があります。"
 
 msgid ""
 "The subjects + events survival calculation supports only a null hazard ratio "
 "of 1. Use events only or group sequential accrual for a non-null hazard-"
 "ratio margin."
 msgstr ""
+"被験者 + イベント数による生存時間の計算は、帰無仮説のハザード比が 1 の場合に"
+"しか対応していません。帰無仮説のハザード比が 1 でないマージンには、イベント数"
+"のみ、または群逐次の登録を使ってください。"
 
 msgid ""
 "The subjects + events survival calculation returned no finite sample size. "
 "With exponential entry, this happens when the entry rate parameter γ is 0 or "
 "equals a group's event hazard plus dropout hazard; change γ slightly."
 msgstr ""
+"被験者 + イベント数による生存時間の計算で、有限のサンプルサイズが得られません"
+"でした。指数型の組み入れでは、組み入れ率のパラメータ γ が 0 であるか、ある群"
+"のイベントハザードと脱落ハザードの和に等しいときに起こります。γ を少し変えて"
+"ください。"
 
 msgid "group 1 event probability"
 msgstr "群1のイベント確率"
@@ -1592,7 +1592,7 @@ msgid "Expected analysis time"
 msgstr "期待される解析時期"
 
 msgid "Study duration"
-msgstr ""
+msgstr "試験期間"
 
 msgid ""
 "Group sample sizes are split from the total sample size using the allocation "
@@ -2051,35 +2051,37 @@ msgid ""
 msgstr ""
 "現在の設定では、指定された古典的な群逐次デザインを完了できませんでした。"
 
-#, fuzzy
 msgid "Maximum %1$s: %2$s (corresponding fixed design: %3$s)."
-msgstr ""
-"最大の %1$s は %2$s であり、対応する固定デザインの %3$s と比べられます。"
+msgstr "最大の %1$s: %2$s (対応する固定デザイン: %3$s)。"
 
-#, fuzzy
 msgid ""
 "This is a one-sided classical group sequential design with %1$s planned "
 "looks, including the final analysis."
 msgstr ""
-"この古典的な群逐次デザインは、%2$s 回の計画された中間解析で %1$s を使います。"
+"これは、最終解析を含めて %1$s 回の計画された中間解析を持つ、片側の古典的な群"
+"逐次デザインです。"
 
-#, fuzzy
 msgid ""
 "This is a two-sided symmetric classical group sequential design with %1$s "
 "planned looks, including the final analysis."
 msgstr ""
-"この古典的な群逐次デザインは、%2$s 回の計画された中間解析で %1$s を使います。"
+"これは、最終解析を含めて %1$s 回の計画された中間解析を持つ、両側対称の古典的"
+"な群逐次デザインです。"
 
 msgid ""
 "This is a two-sided asymmetric β-spending (binding futility) classical group "
 "sequential design with %1$s planned looks, including the final analysis."
 msgstr ""
+"これは、最終解析を含めて %1$s 回の計画された中間解析を持つ、両側非対称 β消費 "
+"(拘束的な無効中止) の古典的な群逐次デザインです。"
 
 msgid ""
 "This is a two-sided asymmetric β-spending (non-binding futility) classical "
 "group sequential design with %1$s planned looks, including the final "
 "analysis."
 msgstr ""
+"これは、最終解析を含めて %1$s 回の計画された中間解析を持つ、両側非対称 β消費 "
+"(非拘束的な無効中止) の古典的な群逐次デザインです。"
 
 msgid ""
 "R code could not be generated because the classical group sequential design "
@@ -2174,12 +2176,12 @@ msgid "BF₀₁ ≥ %1$s"
 msgstr "BF₀₁ ≥ %1$s"
 
 msgid "The analysis prior '%1$s' is not available for z-tests."
-msgstr ""
+msgstr "分析事前分布 '%1$s' はz検定では利用できません。"
 
 msgid ""
 "A one-sided point analysis prior must lie strictly on the H₁ side of the "
 "null value."
-msgstr ""
+msgstr "片側の点の分析事前分布は、帰無値に対して厳密に H₁ の側にある必要があります。"
 
 msgid "Point proportion"
 msgstr "点比率"
