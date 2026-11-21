@@ -6,12 +6,6 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Language: ja\n"
 "X-Qt-Contexts: true\n"
-"PO-Revision-Date: 2026-11-16 06:38+0000\n"
-"Last-Translator: Koji Kosugi <kosugitti@users.noreply.hosted.weblate.org>\n"
-"Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/jasppower-"
-"qml/ja/>\n"
-"Language: ja\n"
-"X-Generator: Weblate 2026.12.dev0\n"
 
 msgctxt "Description|"
 msgid "Power"
@@ -2802,7 +2796,8 @@ msgstr "一般z検定の近似に使う、観測された効果の推定値で�
 
 msgctxt "BayesFactorAnalysisSection|"
 msgid "Observed t or z statistic used to compute the observed Bayes factor."
-msgstr "観測されたベイズファクターの計算に使う、観測されたt統計量またはz統計量です。"
+msgstr ""
+"観測されたベイズファクターの計算に使う、観測されたt統計量またはz統計量です。"
 
 msgctxt "BayesFactorAnalysisSection|"
 msgid "Choose which summary statistics are available for the observed result."
@@ -2867,7 +2862,8 @@ msgctxt "BayesFactorTSearchRangeControls|"
 msgid ""
 "Choose whether the %1 range in which the t-test critical values are searched "
 "is selected automatically or supplied manually."
-msgstr "t検定の臨界値を探索する %1 の範囲を、自動で選ぶか手動で指定するかを選びます。"
+msgstr ""
+"t検定の臨界値を探索する %1 の範囲を、自動で選ぶか手動で指定するかを選びます。"
 
 #, qt-format
 msgctxt "BayesFactorTSearchRangeControls|"
